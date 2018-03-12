@@ -8,7 +8,8 @@ use App\Subcategory;
 
 class Category extends Model
 {
- 	public function subcategories(){
- 		return $this->hasMany(Subcategory::class,'id','subcategory_id');
- 	}
+	protected $table = "category";
+ //	public function subcategories(){
+ //		return $this->hasMany(Subcategory::class,'id','subcategory_id');
+ //	}
 }
