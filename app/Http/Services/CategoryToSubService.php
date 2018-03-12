@@ -43,9 +43,10 @@ class CategoryToSubService {
 		{
 			$subcategory->where('category_id' ,'=',$filter['category_id']);
 		}
-
+	
 		$subcategory->orderBy('id','desc');
 		$result['total'] = $subcategory->count();
+
 		$skip = ($index == 1) ? 0 : ($index-1)*10 ;
 		$result['data']=$subcategory->take(10)->skip($skip)->get();
 		return $result;

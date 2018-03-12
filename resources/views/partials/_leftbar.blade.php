@@ -17,6 +17,11 @@
                                 <!--<span class="float-xs-right"><i class="icon_plus"></i></span>-->
                             </a>
                         </li>
+                        <li class="sub-item">
+                            <a href="{{route('product.index')}}"><span>Products</span>
+                                <!--<span class="float-xs-right"><i class="icon_plus"></i></span>-->
+                            </a>
+                        </li>
 
                             <li><a class="flat-buttons" href="javascript:void(0)">Icons<span
                                         class="arrow_carrot-right submenu-arrow-right"></span></a>

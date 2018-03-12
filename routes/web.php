@@ -38,4 +38,14 @@ Route::put('/categorytosub/update/{id}', ['uses' => 'CategoryToSubController@upd
 Route::post('/categorytosub/delete/{id}',['uses' => 'CategoryToSubController@destroy'	 	 ,'as' => 'categorytosub.destroy']);
 Route::get('/categorytosub/create/{id}', ['uses' => 'CategoryToSubController@create' 		 ,'as' => 'categorytosub.create' ]);
 Route::post('/subcategory/store',		 ['uses' => 'CategoryToSubController@store' 		 ,'as' => 'categorytosub.store'  ]);
+	//PRODUCTS 
+Route::get('/products',		 			 ['uses' => 'ProductController@index'	   			 ,'as' => 'product.index'	 	 ]);
+Route::post('/products',			 	 ['uses' => 'ProductController@productData'			 ,'as' => 'product.data'   		 ]);
+Route::get('/products/create', 			 ['uses' => 'ProductController@create' 			 	 ,'as' => 'product.create'   	 ]);
+Route::post('/products/store',			 ['uses' => 'ProductController@store' 				 ,'as' => 'product.store'  	 	 ]);
+Route::post('/products/delete/{id}', 	 ['uses' => 'ProductController@destroy'				 ,'as' => 'product.delete' 		 ]);
+Route::get('/products/edit/{id}', 			 ['uses' => 'ProductController@edit' 			 	 ,'as' => 'product.edit'    	 ]);
+Route::put('/products/update',			 ['uses' => 'ProductController@update' 				 ,'as' => 'product.update' 	 	 ]);
+
+
 
