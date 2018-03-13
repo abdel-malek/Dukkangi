@@ -18,7 +18,7 @@ class SubcategoryController extends Controller
 
 	public function index()
 	{
-		return view('subcategories.index');
+		return view('admin/subcategories.index');
 	}
 	public function subcategoryData(Request $request)
 	{
@@ -31,7 +31,7 @@ class SubcategoryController extends Controller
 	{
 		$subcategory = Subcategory::find($id);
 		$categories = Category::all();
-		return view('subcategories/edit')->withSubcategory($subcategory)->withCategories($categories);
+		return view('admin/subcategories/edit')->withSubcategory($subcategory)->withCategories($categories);
 	}
 	public function update(Request $request)
 	{
@@ -47,7 +47,7 @@ class SubcategoryController extends Controller
 	public function create()
 	{
 		$categories = Category::all();
-		return view('subcategories/create')->withCategories($categories);
+		return view('admin/subcategories/create')->withCategories($categories);
 	}
 	public function store(Request $request)
 	{

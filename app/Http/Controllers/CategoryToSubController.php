@@ -15,11 +15,11 @@ use App\Http\Services\CategoryToSubService;
 
 class  CategoryToSubController extends Controller
 {
-	protected static $current_id;
+	//protected static $current_id;
 	public function index($id)
 	{	
-		self::$current_id= $id;
-		return view('categorytosub.index')->withId($id);
+		//self::$current_id= $id;
+		return view('admin/categorytosub.index')->withId($id);
 	}
 	
 	public static function subcategoryData(Request $request,$id)
@@ -32,7 +32,7 @@ class  CategoryToSubController extends Controller
 	{
 		$category = Category::all();
 		$subcategory = Subcategory::find($id);
-		return view('categorytosub/edit')->withSubcategory($subcategory)->withCategories($category);
+		return view('admin/categorytosub/edit')->withSubcategory($subcategory)->withCategories($category);
 	}
 
 	public function update(Request $request){
@@ -47,7 +47,7 @@ class  CategoryToSubController extends Controller
 	}
 	
 	public function create($id){
-		return view('categorytosub/create')->withid($id);
+		return view('admin/categorytosub/create')->withid($id);
 	}
 	
 	public function store(Request $request)

@@ -1,5 +1,4 @@
-@extends('welcome')
-
+@extends('admin.welcome')
 
 @section('stylesheet')
 	 <link rel="stylesheet" href="http://localhost:8000/css/select2.min.css" />
@@ -8,7 +7,7 @@
 @section('grid')
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-			{!! Form::model($subcategory ,  ['route' => ['categorytosub.update',$subcategory->id] , 'method' => 'PUT' ]) !!}
+			{!! Form::open(['route' => ['subcategory.store'] ]) !!}
 				{{ Form::text('id' , null , ['hidden' => 'hidden']) }}
 				
 
@@ -34,8 +33,8 @@
 				@endforeach
 				</select>
 
-				{{ Form::submit('Edit Subcategory' , ['class' => 'btn btn-block btn-success' , 'style' =>'margin-top:7px']) }}
-				<a href="{{route('categorytosub.index',$subcategory->category_id)}}" class="btn btn-default btn-block" style="margin-top: 7px">Cancel</a>
+				{{ Form::submit('Add Subcategory' , ['class' => 'btn btn-block btn-success' , 'style' =>'margin-top:7px']) }}
+				<a href="{{route('subcategory.index')}}" class="btn btn-default btn-block" style="margin-top: 7px">Cancel</a>
 
 			{!! Form::close() !!}
 		</div>

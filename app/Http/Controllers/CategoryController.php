@@ -17,7 +17,7 @@ class CategoryController extends Controller
 
 	public function index()
 	{
-		return view('categories.index');
+		return view('admin/categories.index');
 	}
 	
 	public function categoryData(Request $request)
@@ -29,7 +29,7 @@ class CategoryController extends Controller
 	public function edit($id)
 	{
 		$category = Category::find($id);
-		return view('categories/edit')->withCategory($category);
+		return view('admin/categories/edit')->withCategory($category);
 	}
 	public function update(Request $request){
 		 $this->validate($request, [
@@ -42,7 +42,7 @@ class CategoryController extends Controller
 		 return CategoryService::createUpdateCategory($request, $request->id);
 	}
 	public function create(){
-		return view('categories/create');
+		return view('admin/categories/create');
 	}
 	public function store(Request $request){
 		$category = new Category();

@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends('admin.welcome')
 
 @section('stylesheet')
 
@@ -17,7 +17,7 @@
 
     <div class="row">
         <div class="col-md-6 " >
-            <a href="/" class="btn btn-default btn-block" style="margin-left: 18px">Return Home</a>
+            <a href="/admin/" class="btn btn-default btn-block" style="margin-left: 18px">Return Home</a>
         </div>
         <div class="col-md-6" >
             <a href="{{route('subcategory.create')}}" class="btn btn-primary btn-block" style="width: 628px">Add Subcategory</a> 

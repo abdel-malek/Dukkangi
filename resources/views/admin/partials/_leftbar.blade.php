@@ -21,8 +21,22 @@
                             <a href="{{route('product.index')}}"><span>Products</span>
                                 <!--<span class="float-xs-right"><i class="icon_plus"></i></span>-->
                             </a>
+                        </li> 
+                        <li class="sub-item">
+                            <a href="{{route('user.index')}}"><span>Users</span>
+                                <!--<span class="float-xs-right"><i class="icon_plus"></i></span>-->
+                            </a>
                         </li>
-
+                        <li class="sub-item">
+                            <a href="{{route('order.index')}}"><span>Orders</span>
+                                <!--<span class="float-xs-right"><i class="icon_plus"></i></span>-->
+                            </a>
+                        </li>
+                        <li class="sub-item">
+                            <a href="{{route('payment.index')}}"><span>Payments</span>
+                                <!--<span class="float-xs-right"><i class="icon_plus"></i></span>-->
+                            </a>
+                        </li>
                             <li><a class="flat-buttons" href="javascript:void(0)">Icons<span
                                         class="arrow_carrot-right submenu-arrow-right"></span></a>
                                 <ul class="submenu-sub-sub">

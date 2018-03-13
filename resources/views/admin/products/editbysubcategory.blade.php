@@ -1,10 +1,11 @@
-@extends('welcome')
+@extends('admin.welcome')
 
 @section('grid')
 	<div class="row">
 	<div class="col-md-5 col-md-offset-1">
-			{!! Form::open(['route' =>'product.store']) !!}
-				
+			{!! Form::model($product,['route' =>'productbysubcategory.update' , 'method' =>'PUT']) !!}
+				{{ Form::text('id', $product->id , ['hidden' => ''] ) }}
+
 				{{ Form::label('arabic' , 'Name (Arabic):') }}
 				{{ Form::text('arabic' , null, ['class'=> 'form-control' , 'required'=> '']) }}
 				<br>
@@ -41,7 +42,7 @@
 				{{ Form::label('category_id' , 'Category:')}}
 				<select class="custom-select" name="category_id">
 				@foreach($categories as $category)
-					<option value="{{$category->id}}" >{{$category->english}} </option>
+					<option value="{{$category->id}}" {{($category->id == $product->category_id ? 'selected'  : '' )  }} >{{$category->english}} </option>
 				@endforeach
 				</select>
 				<br>
@@ -49,7 +50,7 @@
 				{{ Form::label('subcategory_id' , 'Subcategory:')}}
 				<select class="custom-select" name="subcategory_id">
 				@foreach($subcategories as $subcategory)
-					<option value="{{$subcategory->id}}" >{{$subcategory->english}} </option>
+					<option value="{{$subcategory->id}}" {{($subcategory->id == $product->subcategory_id ? 'selected'  : '' )}} >{{$subcategory->english}} </option>
 				@endforeach
 				</select>
 		</div>
@@ -69,7 +70,7 @@
 				{{ Form::label('desc_kurdi' ,'Description in Kurdi:')}}
 				{{ Form::textarea('desc_kurdi', 'Type Here!' , ['class' => 'form-control' ]) }}
 
-				{{ Form::submit('Confirm Category' , [ 'class' => 'btn btn-block btn-success' ,'style'=>'margin-top:7px' ])}}
+				{{ Form::submit('Update Product' , [ 'class' => 'btn btn-block btn-success' ,'style'=>'margin-top:7px' ])}}
 				<a href="{{ route('category.index')}}" class="btn btn-block btn-primary" style="margin-top: 7px"> Cancel</a>
 			{!! Form::close() !!}
 		</div>

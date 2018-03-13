@@ -52,6 +52,16 @@ class SubcategoryService {
 		$skip = ($index == 1) ? 0 : ($index-1)*10 ;
 		$result['data']=$subcategory->take(10)->skip($skip)->get();
 
+		foreach ($result['data'] as $p) {	
+			$temp = Category::find($p->category_id);
+
+			if (isset($temp))
+				$p->category_id = "<b>".$temp->english."</b>";
+			else 
+				$p->category_id = $p->category_id . " <i><small>(Deleted)</small></i>";	
+		}
+
+
 		return $result;
 	}
 

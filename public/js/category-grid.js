@@ -47,6 +47,15 @@ function loadCategory(){
                 $edit.attr('href',`categorytosub/`+item.id);
                 return $result.add($edit);
               },
+            }, 
+            {
+              type: "control", width: 10, editButton: false, modeSwitchButton: false, deleteButton: false,
+              itemTemplate: function (value, item) {
+                var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
+                var $edit = $('<a class="btn btn-block btn-default btn-xs">See Products</a>');
+                $edit.attr('href',`categoryproducts/`+item.id);
+                return $result.add($edit);
+              },
             },
             {
               type: "control", width: 10, editButton: false, modeSwitchButton: false, deleteButton: false,

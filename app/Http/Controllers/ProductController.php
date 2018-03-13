@@ -14,10 +14,10 @@ use App\Http\Services\ProductService;
 
 class ProductController extends Controller
 {
-
+						//BY DEFAUlT
 	public function index()
 	{
-		return view('products.index');
+		return view('admin.products.index');
 	}
 	
 	public function productData(Request $request)
@@ -25,13 +25,42 @@ class ProductController extends Controller
 		$filter = $request->input('filter');
 		return ProductService::loadProduct($filter);		
 	}
+						//BY CATEGORY
+	public function indexByCategory()
+	{
+		return view('admin.products.indexbycategory');
+	}	
+	public function productDataByCategory(Request $request , $id)
+	{
+		$filter = $request->input('filter');
+		return ProductService::productDataByCategory($filter, $id);		
+	}
+						//BY SUBCATEGORY
+	public function indexBySubcategory()
+	{
+		return view('admin/products.indexbysubcategory');
+	}	
+	public function productDataBySubcategory(Request $request , $id)
+	{
+		$filter = $request->input('filter');
+		return ProductService::productDataBySubcategory($filter, $id);		
+	}
 
+	public function single($id){
+		$product = Product::find($id);
+		return view('admin/products.single')->withProduct($product);
+	}
+
+
+
+
+						//DEFAULT EDIT
 	public function edit($id)
 	{
 		$categories = Category::all();
 		$subcategories = Subcategory::all();
 		$product = Product::find($id);
-		return view('products/edit')->withProduct($product)->withCategories($categories)->withSubcategories($subcategories);
+		return view('admin/products/edit')->withProduct($product)->withCategories($categories)->withSubcategories($subcategories);
 	}
 
 	public function update(Request $request){
@@ -43,12 +72,57 @@ class ProductController extends Controller
 		 	'kurdi'  =>'max:255|min:2',
 		 	'price'  =>'required|between:0,99999.99'
 		 ]);
-		 return ProductService::updateProduct($request, $request->id);
+		 return ProductService::updateProduct($request, $request->id,1);
 	}
+					//BY CATEGORY EDIT
+	public function editByCategory($id)
+	{
+		$categories = Category::all();
+		$subcategories = Subcategory::all();
+		$product = Product::find($id);
+		return view('admin/products/editbycategory')->withProduct($product)->withCategories($categories)->withSubcategories($subcategories);
+	}
+
+	public function updateByCategory(Request $request){
+		$this->validate($request, [
+		 	'arabic' =>'max:255|min:2',
+		 	'english'=>'max:255|min:2',
+		 	'german' =>'max:255|min:2',
+		 	'turky'  =>'max:255|min:2',
+		 	'kurdi'  =>'max:255|min:2',
+		 	'price'  =>'required|between:0,99999.99'
+		 ]);
+		 return ProductService::updateProduct($request, $request->id,2);
+	}
+					//BY SUBCATEGORY EDIT
+	public function editBySubcategory($id)
+	{
+		$categories = Category::all();
+		$subcategories = Subcategory::all();
+		$product = Product::find($id);
+		return view('admin/products/editbysubcategory')->withProduct($product)->withCategories($categories)->withSubcategories($subcategories);
+	}
+
+	public function updateBySubcategory(Request $request){
+		$this->validate($request, [
+		 	'arabic' =>'max:255|min:2',
+		 	'english'=>'max:255|min:2',
+		 	'german' =>'max:255|min:2',
+		 	'turky'  =>'max:255|min:2',
+		 	'kurdi'  =>'max:255|min:2',
+		 	'price'  =>'required|between:0,99999.99'
+		 ]);
+		 return ProductService::updateProduct($request, $request->id,3);
+	}
+	
+
+
+
+
 	public function create(){
 		$categories = Category::all();
 		$subcategories = Subcategory::all();
-		return view('products/create')->withCategories($categories)->withSubcategories($subcategories);
+		return view('admin/products/create')->withCategories($categories)->withSubcategories($subcategories);
 	}
 	public function store(Request $request){
 		$product = new Product();
@@ -72,16 +146,17 @@ class ProductController extends Controller
 		$product->desc_german 	 = $request->desc_german;
 		$product->desc_turky 	 = $request->desc_turky;
 		$product->desc_kurdi 	 = $request->desc_kurdi;
-		
+
 		$product->qty    		 = $request->qty;
 		$product->price 	 	 = $request->price;
 		$product->category_id    = $request->category_id;
 		$product->subcategory_id = $request->subcategory_id;
+
 		if (isset($request->point)){
 			$product->point 	 = $request->point;
 		}
 		else {
-			$product->point = '0';
+			$product->point 	 = '0';
 		}
 			//		Unused   "YET" !! 
 		$product->option1 = 0;

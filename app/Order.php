@@ -7,6 +7,7 @@ use App\Product;
 use App\Payment;
 class Order extends Model
 {
+	protected $table = "order";
 	public function user(){
 		return $this->belongsTo(User::class,'id','user_id');
 	}

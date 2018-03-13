@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-   @include('partials._head')
+   @include('admin.partials._head')
 </head>
 <body>
 <div class="wrapper">
 
-    @include ('partials._nav')
+    @include ('admin.partials._nav')
 
 
     <!-- Left Side Bar --> 
-    @include ('partials._leftbar')
+    @include ('admin.partials._leftbar')
     <section id="content-wrapper" class="form-elements">
         <!-- START PAGE TITLE -->
         <div class="site-content-title">
@@ -29,7 +29,7 @@
 
             <!-- CONTENT -->
         <input type='hidden' name='_token' value='{{csrf_token()}}' />    
-        @include('partials._messages')
+        @include('admin.partials._messages')
             @yield('grid')
 
 
@@ -38,6 +38,7 @@
 </div>
 
 
-@include ('partials._footer')
 </body>
+
+@include ('admin.partials._footer')
 </html>

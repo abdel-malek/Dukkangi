@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends('admin.welcome')
 
 @section('grid')
 	<div class="row">
@@ -50,25 +50,25 @@
 				{{ Form::label('subcategory_id' , 'Subcategory:')}}
 				<select class="custom-select" name="subcategory_id">
 				@foreach($subcategories as $subcategory)
-					<option value="{{$subcategory->id}}" >{{$subcategory->english}} </option>
+					<option value="{{$subcategory->id}}" {{($subcategory->id == $product->subcategory_id ? 'selected'  : '' )}} >{{$subcategory->english}} </option>
 				@endforeach
 				</select>
 		</div>
 		<div class="col-md-10 col-md-offset-1"> 
 				{{ Form::label('desc_arabic' ,'Description in Arabic:')}}
-				{{ Form::textarea('desc_arabic', 'Type Here!' , ['class' => 'form-control', 'required' =>'']) }}
+				{{ Form::textarea('desc_arabic', null , ['class' => 'form-control', 'required' =>'']) }}
 				<br>
 				{{ Form::label('desc_english' ,'Description in English:')}}
-				{{ Form::textarea('desc_english', 'Type Here!' , ['class' => 'form-control', 'required' =>'']) }}
+				{{ Form::textarea('desc_english', null , ['class' => 'form-control', 'required' =>'']) }}
 				<br>
 				{{ Form::label('desc_german' ,'Description in German:')}}
-				{{ Form::textarea('desc_german', 'Type Here!' , ['class' => 'form-control' ]) }}
+				{{ Form::textarea('desc_german', null , ['class' => 'form-control' ]) }}
 				<br>
 				{{ Form::label('desc_turky' ,'Description in Turky:')}}
-				{{ Form::textarea('desc_turky', 'Type Here!' , ['class' => 'form-control' ]) }}
+				{{ Form::textarea('desc_turky', null , ['class' => 'form-control' ]) }}
 				<br>
 				{{ Form::label('desc_kurdi' ,'Description in Kurdi:')}}
-				{{ Form::textarea('desc_kurdi', 'Type Here!' , ['class' => 'form-control' ]) }}
+				{{ Form::textarea('desc_kurdi', null , ['class' => 'form-control' ]) }}
 
 				{{ Form::submit('Update Product' , [ 'class' => 'btn btn-block btn-success' ,'style'=>'margin-top:7px' ])}}
 				<a href="{{ route('category.index')}}" class="btn btn-block btn-primary" style="margin-top: 7px"> Cancel</a>
