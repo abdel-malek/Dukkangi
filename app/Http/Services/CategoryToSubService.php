@@ -53,7 +53,7 @@ class CategoryToSubService {
 			$temp = Category::find($p->category_id);
 
 			if (isset($temp))
-				$p->category_id = $temp->english;
+				$p->category_id = "<b>".$temp->english."</b>";
 			else 
 				$p->category_id = $p->category_id . " <i><small>(Deleted)</small></i>";
 		}			

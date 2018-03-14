@@ -3,6 +3,7 @@
 namespace App\Http\Services; 
 
 use App\Payment;
+use App\User;
 use Session;
 
 class PaymentService {
@@ -34,6 +35,15 @@ class PaymentService {
 
 		$skip = ($index == 1) ? 0 : ($index-1)*10 ;
 		$result['data']=$payment->take(10)->skip($skip)->get();
+
+		foreach ($result['data'] as $value) {
+			$temp = User::find($value->user_id);
+			
+			if(isset($temp))
+				$value->user_id = $temp->email;
+			else
+				$value->user_id = $value->user_id . "<small><i>(Deleted)</small></i>";	
+		}
 
 		return $result;
 	}

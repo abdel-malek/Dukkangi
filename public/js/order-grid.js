@@ -76,7 +76,7 @@ function deleteOrder(orderId){
     if(result.value){
       $.ajax({
           type: "POST",
-          url: `/orders/delete/${orderId}`,
+          url: `/admin/orders/delete/${orderId}`,
           headers: {
               "x-csrf-token": $("[name=_token]").val()
           },

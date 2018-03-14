@@ -3,6 +3,8 @@
 namespace App\Http\Services; 
 
 use App\Order;
+use App\User;
+use App\Product;
 use Session;
 
 class OrderService {
@@ -37,9 +39,23 @@ class OrderService {
 
 		$skip = ($index == 1) ? 0 : ($index-1)*10 ;
 		$result['data']=$order->take(10)->skip($skip)->get();
+		foreach ($result['data'] as $value) {
+			$email = User::find($value->user_id);
+			if (isset($email))
+				$value->user_id = $email->email;
+			else 
+				$value->user_id =$value->user_id . "<small><i>(Deleted)</small></i>";
+		}
+		foreach ($result['data'] as $value) {
+				$name = Product::find($value->product_id);
+				if (isset($name))
+					$value->product_id = $name->english;
+				else 
+					$value->product_id =$value->product_id . "<small><i>(Deleted)</small></i>";
+			}
 
-		return $result;
-	}
+			return $result;
+		}
 
 	public static function deleteOrder($id)
 	{
