@@ -23,6 +23,8 @@ class PaymentService {
 		} 
 		if (!empty($filter['user_id']))
 		{
+			
+			//Need a Change !
 			$payment->where('user_id' ,'=' , $filter['user_id'] );
 		} 
 		

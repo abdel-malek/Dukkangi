@@ -13,6 +13,10 @@ use App\Http\Services\PaymentService;
 
 class PaymentController extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware('auth');
+    }
 	public function index(){
 		return view('admin/payments.index');
 	}

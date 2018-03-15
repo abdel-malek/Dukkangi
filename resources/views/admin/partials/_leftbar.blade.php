@@ -37,7 +37,7 @@
                                 <!--<span class="float-xs-right"><i class="icon_plus"></i></span>-->
                             </a>
                         </li>
-                            <li><a class="flat-buttons" href="javascript:void(0)">Icons<span
+                       <!--     <li><a class="flat-buttons" href="javascript:void(0)">Icons<span
                                         class="arrow_carrot-right submenu-arrow-right"></span></a>
                                 <ul class="submenu-sub-sub">
                                     <li>
@@ -56,7 +56,7 @@
                                         <a class="flat-buttons" href="material_icons.html">Material-Design</a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li>-->
                         </ul>
                     </ul>
                     

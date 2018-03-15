@@ -13,70 +13,89 @@
 
 Route::get('/admin', function () {
     return view('admin/welcome');
-});
+})->name('home')->middleware('auth');
+Route::get('/home', function () {
+    return view('home');
+})->name('home');
+Route::get('/', function () {
+    return view('home');
+})->name('home');
+
 											//DASHBOARD
 	//CATEGORIES
-Route::get('/admin/categories',			 	 ['uses' => 'CategoryController@index'         	 	 ,'as' => 'category.index' 	     ]);
+Route::get('/admin/categories',			 		 ['uses' => 'CategoryController@index'         	 	 ,'as' => 'category.index' 	     ]);
 Route::post('/admin/categories',			 	 ['uses' => 'CategoryController@categoryData'  	 	 ,'as' => 'category.data'  	     ]);		
-Route::get('/admin/categories/edit/{id}',  	 ['uses' => 'CategoryController@edit' 		 		 ,'as' => 'category.edit'        ]);
+Route::get('/admin/categories/edit/{id}',  		 ['uses' => 'CategoryController@edit' 		 		 ,'as' => 'category.edit'        ]);
 Route::put('/admin/categories/{id}',		 	 ['uses' => 'CategoryController@update'			 	 ,'as' => 'category.update'      ]);
 Route::post('/admin/categories/delete/{id}',	 ['uses' => 'CategoryController@destroy'			 ,'as' => 'category.delete'      ]);
-Route::get('/admin/categories/create',	 	 ['uses' => 'CategoryController@create'			 	 ,'as' => 'category.create'      ]);
-Route::post('/admin/categories/store',	  	 ['uses' => 'CategoryController@store'				 ,'as' => 'category.store'       ]);
+Route::get('/admin/categories/create',	 		 ['uses' => 'CategoryController@create'			 	 ,'as' => 'category.create'      ]);
+Route::post('/admin/categories/store',	  		 ['uses' => 'CategoryController@store'				 ,'as' => 'category.store'       ]);
 
 
 	//SUBCATEGORIES
-Route::get('/admin/subcategories', 			 ['uses' => 'SubcategoryController@index'			 ,'as' => 'subcategory.index'    ]);
+Route::get('/admin/subcategories', 				 ['uses' => 'SubcategoryController@index'			 ,'as' => 'subcategory.index'    ]);
 Route::post('/admin/subcategories' ,			 ['uses' => 'SubcategoryController@subcategoryData'  ,'as' => 'subcategory.data'     ]);
-Route::post('/admin/subcategories/delete/{id}',['uses' => 'SubcategoryController@destroy'		 	 ,'as' => 'subcategory.destroy'  ]);
+Route::post('/admin/subcategories/delete/{id}',  ['uses' => 'SubcategoryController@destroy'		 	 ,'as' => 'subcategory.destroy'  ]);
 Route::get('/admin/subcategories/edit/{id}',	 ['uses' => 'SubcategoryController@edit' 			 ,'as' => 'subcategory.edit'     ]);
 Route::put('/admin/subcategories/update',		 ['uses' => 'SubcategoryController@update'			 ,'as' => 'subcategory.update'   ]);
-Route::get('/admin/subcategories/create', 	 ['uses' => 'SubcategoryController@create' 		 	 ,'as' => 'subcategory.create'   ]);
+Route::get('/admin/subcategories/create', 		 ['uses' => 'SubcategoryController@create' 		 	 ,'as' => 'subcategory.create'   ]);
 Route::post('/admin/subcategories/store',		 ['uses' => 'SubcategoryController@store' 			 ,'as' => 'subcategory.store'    ]);
 	//SUBCATEGORIES FROM CATEGORIES
-Route::get('/admin/categorytosub/{id}',		 ['uses' => 'CategoryToSubController@index'		     ,'as' => 'categorytosub.index'  ]);
+Route::get('/admin/categorytosub/{id}',			 ['uses' => 'CategoryToSubController@index'		     ,'as' => 'categorytosub.index'  ]);
 Route::post('/admin/categorytosub/{id}',		 ['uses' => 'CategoryToSubController@subcategoryData','as' => 'categorytosub.data'   ]);
 Route::get('/admin/categorytosub/edit/{id}',	 ['uses' => 'CategoryToSubController@edit' 			 ,'as' => 'categorytosub.edit'   ]);
-Route::put('/admin/categorytosub/update/{id}', ['uses' => 'CategoryToSubController@update'	 	 ,'as' => 'categorytosub.update' ]);
-Route::post('/admin/categorytosub/delete/{id}',['uses' => 'CategoryToSubController@destroy'	 	 ,'as' => 'categorytosub.destroy']);
-Route::get('/admin/categorytosub/create/{id}', ['uses' => 'CategoryToSubController@create' 		 ,'as' => 'categorytosub.create' ]);
-Route::post('/admin/subcategory/store',		 ['uses' => 'CategoryToSubController@store' 		 ,'as' => 'categorytosub.store'  ]);
+Route::put('/admin/categorytosub/update/{id}',   ['uses' => 'CategoryToSubController@update'	 	 ,'as' => 'categorytosub.update' ]);
+Route::post('/admin/categorytosub/delete/{id}',  ['uses' => 'CategoryToSubController@destroy'	 	 ,'as' => 'categorytosub.destroy']);
+Route::get('/admin/categorytosub/create/{id}',   ['uses' => 'CategoryToSubController@create' 		 ,'as' => 'categorytosub.create' ]);
+Route::post('/admin/subcategory/store',		 	 ['uses' => 'CategoryToSubController@store' 		 ,'as' => 'categorytosub.store'  ]);
 
 
 	//PRODUCTS 
 Route::get('/admin/products',		 			 ['uses' => 'ProductController@index'	   			 ,'as' => 'product.index'	 	 ]);
-Route::post('/admin/products',			 	 ['uses' => 'ProductController@productData'			 ,'as' => 'product.data'   		 ]);
+Route::post('/admin/products',				 	 ['uses' => 'ProductController@productData'			 ,'as' => 'product.data'   		 ]);
 Route::get('/admin/products/create', 			 ['uses' => 'ProductController@create' 			 	 ,'as' => 'product.create'   	 ]);
 Route::post('/admin/products/store',			 ['uses' => 'ProductController@store' 				 ,'as' => 'product.store'  	 	 ]);
-Route::post('/admin/products/delete/{id}', 	 ['uses' => 'ProductController@destroy'				 ,'as' => 'product.delete' 		 ]);
+Route::post('/admin/products/delete/{id}', 		 ['uses' => 'ProductController@destroy'				 ,'as' => 'product.delete' 		 ]);
 Route::get('/admin/products/edit/{id}', 		 ['uses' => 'ProductController@edit' 			 	 ,'as' => 'product.edit'    	 ]);
 Route::put('/admin/products/update',			 ['uses' => 'ProductController@update' 				 ,'as' => 'product.update' 	 	 ]);
 	//PRODUCTS FROM CATEGORIES
-Route::get('/admin/categoryproducts/{id}',	 ['uses' => 'ProductController@indexByCategory' 	 ,'as' => 'productbycategory.index' ]);
-Route::post('/admin/categoryproducts/{id}',	 ['uses' => 'ProductController@productDataByCategory','as' => 'productbycategory.data'  ]);
-Route::get('/admin/categoryproducts/edit/{id}',['uses' => 'ProductController@editByCategory' 	 	 ,'as' => 'productbycategory.edit'  ]);
+Route::get('/admin/categoryproducts/{id}',		 ['uses' => 'ProductController@indexByCategory' 	 ,'as' => 'productbycategory.index' ]);
+Route::post('/admin/categoryproducts/{id}',		 ['uses' => 'ProductController@productDataByCategory','as' => 'productbycategory.data'  ]);
+Route::get('/admin/categoryproducts/edit/{id}',  ['uses' => 'ProductController@editByCategory' 	 	 ,'as' => 'productbycategory.edit'  ]);
 Route::put('/admin/categoryproducts/update',	 ['uses' => 'ProductController@updateByCategory' 	 ,'as' => 'productbycategory.update']);
 	//PRODUCTS FROM SUBCATEGORIES
 Route::get('/admin/subcategoryproducts/{id}',	 ['uses'=> 'ProductController@indexBySubcategory'	   ,'as' => 'productbysubcategory.index' ]);
-Route::post('/admin/subcategoryproducts/{id}', ['uses'=> 'ProductController@productDataBySubcategory','as' => 'productbysubcategory.data'  ]);
-Route::get('/admin/subcategoryproducts/edit/{id}',['uses' => 'ProductController@editBySubcategory'   ,'as' => 'productbysubcategory.edit'  ]);
-Route::put('/admin/subcategoryproducts/update',['uses' => 'ProductController@updateBySubcategory'    ,'as' => 'productbysubcategory.update']);
+Route::post('/admin/subcategoryproducts/{id}', 	 ['uses'=> 'ProductController@productDataBySubcategory','as' => 'productbysubcategory.data'  ]);
+Route::get('/admin/subcategoryproducts/edit/{id}',['uses' =>'ProductController@editBySubcategory'      ,'as' => 'productbysubcategory.edit'  ]);
+Route::put('/admin/subcategoryproducts/update',	 ['uses' => 'ProductController@updateBySubcategory'    ,'as' => 'productbysubcategory.update']);
 	//PRODUCT SINGLE VIEW
-Route::get('/admin/products/single/{id}',['uses' => 'ProductController@single'			   ,'as' => 'productbysubcategory.single']);
+Route::get('/admin/products/single/{id}',		 ['uses' => 'ProductController@single'			   ,'as' => 'productbysubcategory.single']);
 
 	// USERS
-Route::get('/admin/users' ,			  ['uses' => 'UserController@index'     , 'as' => 'user.index' ]);
-Route::post('/admin/users' , 			  ['uses' => 'UserController@loadUsers' , 'as' => 'user.data'  ]);
-Route::post('/admin/users/delete/{id}', ['uses' => 'UserController@destroy'	, 'as' => 'user.delete']);
+Route::get('/admin/users' ,				   	     ['uses' => 'UserController@index'      	 , 'as' => 'user.index' ]);
+Route::post('/admin/users' , 			  		 ['uses' => 'UserController@loadUsers'  	 , 'as' => 'user.data'  ]);
+Route::post('/admin/users/delete/{id}', 		 ['uses' => 'UserController@destroy'		 , 'as' => 'user.delete']);
 
 	//ORDERS
-Route::get('/admin/orders' , 			   ['uses' => 'OrderController@index' 	  , 'as' => 'order.index' ]);
-Route::post('/admin/orders' ,			   ['uses' => 'OrderController@loadOrder' , 'as' => 'order.data'  ]);
-Route::post('/admin/orders/delete/{id}', ['uses' => 'OrderController@destroy'   , 'as' => 'order.delete']);
+Route::get('/admin/orders' , 			  		 ['uses' => 'OrderController@index' 		 , 'as' => 'order.index' ]);
+Route::post('/admin/orders' ,			  		 ['uses' => 'OrderController@loadOrder' 	 , 'as' => 'order.data'  ]);
+Route::post('/admin/orders/delete/{id}', 		 ['uses' => 'OrderController@destroy'   	 , 'as' => 'order.delete']);
 	//PAYMENT
-Route::get('/admin/payment'  , 			 ['uses' => 'PaymentController@index' 		 , 'as' => 'payment.index'  ]);
-Route::post('/admin/payment' , 			 ['uses' => 'PaymentController@loadPayments' , 'as' => 'payment.data'   ]);
-Route::post('/admin/payment/delete/{id}' , ['uses' => 'PaymentController@destroy' 	 , 'as' => 'payment.delete' ]);
+Route::get('/admin/payment'  , 					 ['uses' => 'PaymentController@index' 		 , 'as' => 'payment.index'  ]);
+Route::post('/admin/payment' , 			 		 ['uses' => 'PaymentController@loadPayments' , 'as' => 'payment.data'   ]);
+Route::post('/admin/payment/delete/{id}' , 		 ['uses' => 'PaymentController@destroy' 	 , 'as' => 'payment.delete' ]);
 
 
 											//DASHBOARD END
+	//AUTHENTICATION
+
+Route::get('login', 				 			 ['as' => 'login',  'uses' => 'Auth\LoginController@showLoginForm']);
+Route::post('login', 				 			 ['as' => '',  'uses' => 'Auth\LoginController@login']);
+Route::post('logout',	 			 			 ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
+
+Route::post('password/email', 		 			 ['as' => 'password.email',  'uses' => 'Auth\ForgotPasswordController@sendResetLinkEmail']);
+Route::get('password/reset', 					 ['as' => 'password.request',  'uses' => 'Auth\ForgotPasswordController@showLinkRequestForm']);
+Route::post('password/reset', 		 			 ['as' => '',  'uses' => 'Auth\ResetPasswordController@reset']);
+Route::get('password/reset/{token}', 			 ['as' => 'password.reset',  'uses' => 'Auth\ResetPasswordController@showResetForm']);
+
+

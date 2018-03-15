@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -45,6 +45,12 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+    /*public function register($data){
+        self::validator(data);
+        self::create(data);
+
+        return redirect($redirectTo);
+    }*/
     protected function validator(array $data)
     {
         return Validator::make($data, [

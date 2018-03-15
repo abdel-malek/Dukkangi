@@ -22,6 +22,7 @@
                         </a>
                     </div>
                 </div>
+                @if (Auth::check())
                 <div class="user-dropdown pull-right">
                     <div class="btn-group">
                         <a href="#" class="user-header dropdown-toggle" data-toggle="dropdown"
@@ -32,16 +33,23 @@
                         <div class="dropdown-menu drop-profile">
                             <div class="userProfile">
                                 <!--  <img src="../../../assets/global/image/img_128x128.png" alt="Profile image"/>-->
-                                <h5>Miler Hussey</h5>
-                                <p>milerhussey@yahoo.com</p>
+                                <h5>{{Auth::user()->name}}</h5>
+                                <p>{{ Auth::user()->email}} </p>
                             </div>
                             <div class="dropdown-divider"></div>
                             <a class="btn left-spacing link-btn" href="#" role="button">Link</a>
                             <a class="btn left-second-spacing link-btn" href="#" role="button">Link 2</a>
-                            <a class="btn btn-primary float-xs-right right-spacing" href="#" role="button">Logout</a>
+                            {!! Form::open(['route' => 'logout']) !!}
+                            {{Form::submit('Logout' , ['class' => 'btn btn-primary float-xs-right right-spacing'])}}
+                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>
+                @else
+                 <div class="pull-right" style="margin-top: 5px">
+                     <a class="btn btn-primary btn-lg btn-block" href="{{ route ('login') }}" role="button" >Login | Register </a>
+                 </div>
+                @endif
             </div>
         </div>
     </div>

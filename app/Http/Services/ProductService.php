@@ -150,10 +150,13 @@ class ProductService {
 		} 
 		if (!empty($filter['category_id']))
 		{
+			//Need a Change !
 			$product->where('category_id','=',$filter[ 'category_id' ]);
 		} 
 		if (!empty($filter['subcategory_id']))
 		{
+			
+			//Need a Change !
 			$product->where('subcategory_id','=',$filter['subcategory_id']);
 		}
 		

@@ -14,6 +14,10 @@ use App\Http\Services\ProductService;
 
 class ProductController extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware('auth');
+    }
 						//BY DEFAUlT
 	public function index()
 	{

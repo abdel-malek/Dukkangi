@@ -40,7 +40,8 @@ class CategoryToSubService {
 			$subcategory->where('kurdi'  ,'like','%'.$filter[ 'kurdi' ].'%');
 		} 
 		if (!empty($filter['category_id']))
-		{
+		{	
+			//Need a Change !
 			$subcategory->where('category_id' ,'=',$filter['category_id']);
 		}
 	
