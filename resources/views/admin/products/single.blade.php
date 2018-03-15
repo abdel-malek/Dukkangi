@@ -1,14 +1,41 @@
 @extends('admin.welcome')
 
 @section('stylesheet')
-
+ <link rel="stylesheet" href="http://localhost:8000/css/util.css" />
 @endsection
 @section('grid')
 <br>
 <div class= "row">
 	<div class="col-md-4 " style="margin-left: 35px">
-		<h1> Image / Slider Section </h1>
-			</div>
+			
+		<div id="#carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+		  <ol class="carousel-indicators">
+		    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+		    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+		    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+		  </ol>
+		  <div class="carousel-inner">
+		    <div class="carousel-item active">
+		      <img class="d-block w-100" src="..." alt="First slide">
+		    </div>
+		    <div class="carousel-item">
+		      <img class="d-block w-100" src="..." alt="Second slide">
+		    </div>
+		    <div class="carousel-item">
+		      <img class="d-block w-100" src="..." alt="Third slide">
+		    </div>
+		  </div>
+		  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		    <span class="sr-only">Previous</span>
+		  </a>
+		  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		    <span class="sr-only">Next</span>
+		  </a>
+		</div>
+
+	</div>
 	<div class="col-md-7">
 		<ul class="list-group">
 	  		<li class="list-group-item"><b>Name </b>(EN): {{ $product->english}} </li>
@@ -119,4 +146,8 @@
 	</div>
 </div>
 
+@endsection
+@section('scripts')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 @endsection

@@ -58,7 +58,7 @@ class SubcategoryService {
 			$temp = Category::find($p->category_id);
 
 			if (isset($temp))
-				$p->category_id = "<b>".$temp->english."</b>";
+				$p->category_id = "<b><u><a href='".route('categorytosub.index',$p->category_id)."'>" .$temp->english."</u></a></b>";
 			else 
 				$p->category_id = $p->category_id . " <i><small>(Deleted)</small></i>";	
 		}

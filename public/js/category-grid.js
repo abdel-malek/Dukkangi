@@ -96,7 +96,7 @@ function deleteCategory(categoryId){
     if(result.value){
       $.ajax({
           type: "POST",
-          url: `/categories/delete/${categoryId}`,
+          url: `/admin/categories/delete/${categoryId}`,
           headers: {
               "x-csrf-token": $("[name=_token]").val()
           },

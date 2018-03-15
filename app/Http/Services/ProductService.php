@@ -33,14 +33,14 @@ class ProductService {
 		{
 			$product->where('qty' , '=', $filter['qty']);
 		} 
-		if (!empty($filter['category_id']))
-		{
-			$product->where('category_id','=',$filter[ 'category_id' ]);
-		} 
-		if (!empty($filter['subcategory_id']))
-		{
-			$product->where('subcategory_id','=',$filter['subcategory_id']);
-		}
+		//if (!empty($filter['category_id']))
+		//{
+		//	$product->where('category_id','=',$filter[ 'category_id' ]);
+		//} 
+		//if (!empty($filter['subcategory_id']))
+		//{
+		//	$product->where('subcategory_id','=',$filter['subcategory_id']);
+		//}
 		
 		$product->orderBy('id','desc');
 		$result['total'] = $product->count();
@@ -54,7 +54,7 @@ class ProductService {
 			$p->price = $p->price . " €";
 
 			if (isset($temp1))
-				$p->category_id = "<b>".$temp1->english."</b>";
+				$p->category_id = "<b><u><a href='".route('category.index')."'>".$temp1->english."</a></u></b>";
 			else 
 				$p->category_id = $p->category_id . " <i><small>(Deleted)</small></i>";
 			

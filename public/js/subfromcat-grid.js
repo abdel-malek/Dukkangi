@@ -88,7 +88,7 @@ function deleteSubcategory(subcategoryId){
     if(result.value){
       $.ajax({
           type: "POST",
-          url: `/subcategories/delete/${subcategoryId}`,
+          url: `/admin/subcategories/delete/${subcategoryId}`,
           headers: {
               "x-csrf-token": $("[name=_token]").val()
           },

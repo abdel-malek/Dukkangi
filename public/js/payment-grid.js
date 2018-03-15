@@ -76,7 +76,7 @@ function deletePayment(paymentId){
     if(result.value){
       $.ajax({
           type: "POST",
-          url: `/payment/delete/${paymentId}`,
+          url: `/admin/payment/delete/${paymentId}`,
           headers: {
               "x-csrf-token": $("[name=_token]").val()
           },

@@ -5,7 +5,7 @@ namespace App\Http\Services;
 use App\Category;
 use App\Subcategory;
 use Session;
-
+use Illuminate\Support\Facades\DB;
 class CategoryToSubService {
 
 	public static function loadSubsFromCategories($filter,$id)
@@ -13,12 +13,19 @@ class CategoryToSubService {
 		$index = $filter ? $filter['pageIndex'] : 0 ; 
 
 		$subcategory = Subcategory::select(['id','arabic','english','german','kurdi','turky','category_id']);
-			$subcategory->where('category_id' ,'=',$id);
+		$subcategory->where('category_id' ,'=',$id);
 
+//		if (!empty($filter['category_id']))
+//		{	
+//			$subcategory = DB::table('subcategory')->join('category',null,null,null)->where('category.english' ,'like',$filter['category_id'])->select(['subcategory.id','subcategory.arabic','subcategory.english','subcategory.german','subcategory.kurdi','subcategory.turky','category.english']);
+
+			//Need a Change !
+//			$subcategory->where('category_id' ,'=',$filter['category_id']);
+//		}
 		if (!empty($filter['id']))
 		{
 			$subcategory->where('id' ,'=', $filter['id']);
-		} 
+		}
 		if (!empty($filter['arabic']))
 		{
 			$subcategory->where('arabic' ,'like','%'.$filter['arabic']. '%');
@@ -39,11 +46,7 @@ class CategoryToSubService {
 		{
 			$subcategory->where('kurdi'  ,'like','%'.$filter[ 'kurdi' ].'%');
 		} 
-		if (!empty($filter['category_id']))
-		{	
-			//Need a Change !
-			$subcategory->where('category_id' ,'=',$filter['category_id']);
-		}
+
 	
 		$subcategory->orderBy('id','desc');
 		$result['total'] = $subcategory->count();

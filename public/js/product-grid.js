@@ -89,7 +89,7 @@ function deleteProduct(ProductId){
     if(result.value){
       $.ajax({
           type: "POST",
-          url: `/products/delete/${ProductId}`,
+          url: `/admin/products/delete/${ProductId}`,
           headers: {
               "x-csrf-token": $("[name=_token]").val()
           },

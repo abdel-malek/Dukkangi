@@ -74,7 +74,7 @@ function deleteUser(userId){
     if(result.value){
       $.ajax({
           type: "POST",
-          url: `/users/delete/${userId}`,
+          url: `/admin/users/delete/${userId}`,
           headers: {
               "x-csrf-token": $("[name=_token]").val()
           },

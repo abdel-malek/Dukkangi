@@ -85,7 +85,6 @@ Route::get('/admin/payment'  , 					 ['uses' => 'PaymentController@index' 		 , '
 Route::post('/admin/payment' , 			 		 ['uses' => 'PaymentController@loadPayments' , 'as' => 'payment.data'   ]);
 Route::post('/admin/payment/delete/{id}' , 		 ['uses' => 'PaymentController@destroy' 	 , 'as' => 'payment.delete' ]);
 
-
 											//DASHBOARD END
 	//AUTHENTICATION
 
