@@ -13,9 +13,10 @@ use App\Http\Services\OrderService;
 
 class OrderController extends Controller
 {
-	public function __construct()
+	
+   public function __construct()
     {
-        $this->middleware('auth');
+      $this->middleware('auth');
     }
 	public function index(){
 		return view('admin/orders.index');

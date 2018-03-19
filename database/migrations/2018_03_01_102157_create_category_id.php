@@ -20,7 +20,6 @@ class CreateCategoryId extends Migration
             $table->string('kurdi');
             $table->string('turky');
             $table->string('german');
-            $table->integer('subcategory_id');
             $table->timestamp();
             });
     }
