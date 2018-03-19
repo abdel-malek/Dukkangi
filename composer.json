@@ -8,7 +8,9 @@
         "php": ">=7.1.0",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
-        "laravelcollective/html":"^5.4.0"
+        "laravelcollective/html":"^5.4.0",
+        "guzzlehttp/guzzle": "~5.4",
+        "paypal/rest-api-sdk-php": "*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
