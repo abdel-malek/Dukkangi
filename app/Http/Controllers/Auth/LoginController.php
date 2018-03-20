@@ -25,7 +25,7 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-     
+
 
     /**
      * Where to redirect users after login.
@@ -43,7 +43,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-    
+
 
     public function login(Request $request)
     {
@@ -61,14 +61,14 @@ class LoginController extends Controller
         }
         // Customization: Validate if client status is active (1)
         $email = $request->get($this->username());
-        // Customization: It's assumed that email field should be an unique field 
+        // Customization: It's assumed that email field should be an unique field
         $client = User::where($this->username(), $email)->first();
         // If the login attempt was unsuccessful we will increment the number of attempts
         // to login and redirect the user back to the login form. Of course, when this
         // user surpasses their maximum number of attempts they will get locked out.
         $this->incrementLoginAttempts($request);
         // Customization: If client status is inactive (0) return failed_status error.
-        
+
     }
 
 

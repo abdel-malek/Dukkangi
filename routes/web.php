@@ -11,7 +11,7 @@
 |
 */
 Route::get('/admin', function(){
-	return view('admin/welcome');
+	return view('admin.master');
 })->name('admin.home')->middleware('auth');
 
 
