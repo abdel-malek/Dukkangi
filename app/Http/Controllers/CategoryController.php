@@ -16,23 +16,25 @@ class CategoryController extends Controller
 {
 
  	public function __construct()
-    {
-  	  $this->middleware('auth');}
+  {
+	  $this->middleware('isadmin');
+  }
+
 	public function index()
 	{
 		return view('admin/categories.index');
 	}
-	
+
 	public function categoryData(Request $request)
 	{
 		$filter = $request->input('filter');
-		return CategoryService::loadCategories($filter);		
+		return CategoryService::loadCategories($filter);
 	}
 
 	public function edit($id)
 	{
 		$category = Category::find($id);
-		return view('admin/categories/edit')->withCategory($category);
+		return view('admin.categories.edit')->withCategory($category);
 	}
 	public function update(Request $request){
 		 $this->validate($request, [
@@ -45,7 +47,7 @@ class CategoryController extends Controller
 		 return CategoryService::createUpdateCategory($request, $request->id);
 	}
 	public function create(){
-		return view('admin/categories/create');
+		return view('admin.categories.create');
 	}
 	public function store(Request $request){
 		$category = new Category();
@@ -62,10 +64,10 @@ class CategoryController extends Controller
 		$category->turky = $request->turky;
 		$category->german = $request->german;
 		$category->english = $request->english;
-		
+
 		$category->save();
 		Session::flash('success', 'Added Successfuly!');
-		
+
 		return redirect(route('category.index'));
 	}
 	public  function destroy($id){

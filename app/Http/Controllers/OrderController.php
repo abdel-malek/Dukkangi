@@ -10,25 +10,26 @@ use Session;
 
 use App\Http\Services\OrderService;
 
-
 class OrderController extends Controller
 {
-	
-   public function __construct()
+    public function __construct()
     {
-      $this->middleware('auth');
+        $this->middleware('isadmin');
     }
-	public function index(){
-		return view('admin/orders.index');
-	}
 
-	public function loadOrder(Request $request){
-		$filter = $request->input('filter');
-		return OrderService::loadOrderData($filter);
-	}
+    public function index()
+    {
+        return view('admin.orders.index');
+    }
 
-	public function destroy($id){
-		return OrderService::deleteOrder($id);
-	} 
+    public function loadOrder(Request $request)
+    {
+        $filter = $request->input('filter');
+        return OrderService::loadOrderData($filter);
+    }
 
+    public function destroy($id)
+    {
+        return OrderService::deleteOrder($id);
+    }
 }

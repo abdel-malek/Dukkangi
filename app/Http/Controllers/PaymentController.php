@@ -13,13 +13,14 @@ use App\Http\Services\PaymentService;
 
 class PaymentController extends Controller
 {
-	
-    public function __construct()
-    {
-      $this->middleware('auth');
-    }
+
+  public function __construct()
+  {
+    $this->middleware('isadmin');
+  }
+
 	public function index(){
-		return view('admin/payments.index');
+		return view('admin.payments.index');
 	}
 
 	public function loadPayments(Request $request){
@@ -29,6 +30,6 @@ class PaymentController extends Controller
 
 	public function destroy($id){
 		return PaymentService::deletePayment($id);
-	} 
+	}
 
 }
