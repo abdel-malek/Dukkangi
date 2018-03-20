@@ -1,4 +1,4 @@
-@extends('admin.welcome')
+@extends('admin.master')
 
 @section('stylesheet')
 
@@ -6,11 +6,11 @@
 
 @endsection
 @section('grid')
-   
+
 
     <div class="contain-inner dashboard-v1">
-       
-        <div id="product-grid">    
+
+        <div id="product-grid">
                 <!-- GRID -->
         </div>
     </div>
@@ -27,5 +27,4 @@
 
 @endsection
 @section('scripts')
-    <script type="text/javascript" src="http://localhost:8000/js/productbysubcategory-grid.js"></script>
 @endsection

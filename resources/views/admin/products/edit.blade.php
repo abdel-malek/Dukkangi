@@ -1,4 +1,4 @@
-@extends('admin.welcome')
+@extends('admin.master')
 
 @section('grid')
 	<div class="row">

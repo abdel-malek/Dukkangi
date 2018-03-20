@@ -1,32 +1,23 @@
-@extends('admin.welcome')
+@extends('admin.master')
 
 @section('stylesheet')
-
-
-
 @endsection
+
+@section('title')
+  Manage Sub Category
+@endsection
+
 @section('grid')
-   
+  <div>
+    <div id="subcategory-grid"></div>
+  </div>
 
-    <div class="contain-inner dashboard-v1">
-        <input type='hidden' name='_token' value='{{csrf_token()}}' />    
-        <div id="subcategory-grid">    
-                <!-- GRID -->
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-6 " >
-            <a href="/admin/" class="btn btn-default btn-block" style="margin-left: 18px">Return Home</a>
-        </div>
-        <div class="col-md-6" >
-            <a href="{{route('categorytosub.create',$id)}}" class="btn btn-primary btn-block" style="width: 628px">Add Subcategory</a> 
-        </div>
-    </div>
-
+  <div class="row">
+      <div class="col-md-12 footer" >
+          <a href="{{route('categorytosub.create',$id)}}" class="btn btn-primary btn-new">Add Sub-Category</a>
+      </div>
+  </div>
 
 @endsection
 @section('scripts')
-
-    <script type="text/javascript" src="http://localhost:8000/js/subfromcat-grid.js"></script>
 @endsection

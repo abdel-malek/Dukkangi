@@ -1,4 +1,4 @@
-@extends('admin.welcome')
+@extends('admin.master')
 
 @section('stylesheet')
 	 <link rel="stylesheet" href="http://localhost:8000/css/select2.min.css" />
@@ -8,7 +8,7 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			{!! Form::open(['route' => ['categorytosub.store'] ]) !!}
-				
+
 				{{ Form::text('id' , null , ['hidden' => 'hidden']) }}
 
 				{{ Form::label('arabic','Name (AR):') }}
@@ -41,5 +41,5 @@
 
 
 @section('scripts')
-<script type="text/javascript" src="http://localhost:8000/js/select2.min.js"></script>
+
 @endsection

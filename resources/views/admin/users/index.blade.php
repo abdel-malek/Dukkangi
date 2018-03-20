@@ -1,28 +1,18 @@
-@extends('admin.welcome')
+@extends('admin.master')
 
 @section('stylesheet')
-
-
-
 @endsection
+
+@section('title')
+  Manage Product Category
+@endsection
+
 @section('grid')
-   
-
-    <div class="contain-inner dashboard-v1">
-       
-        <div id="user-grid">    
-                <!-- GRID -->
-        </div>
+    <div>
+      <div id="user-grid">/div>
     </div>
-
-    <div class="row">
-        <div class="col-md-12" >
-            <a href="/admin/" class="btn btn-default btn-block" style="margin-left: 18px">Return Home</a>
-        </div>
-    </div>
-
-
 @endsection
+
 @section('scripts')
-    <script type="text/javascript" src="http://localhost:8000/js/user-grid.js"></script>
+    <script type="text/javascript" src={{ URL::asset('js/user-grid.js') }}></script>
 @endsection

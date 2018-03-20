@@ -1,4 +1,4 @@
-@extends('admin.welcome')
+@extends('admin.master')
 
 @section('stylesheet')
  <link rel="stylesheet" href="http://localhost:8000/css/util.css" />
@@ -7,7 +7,7 @@
 <br>
 <div class= "row">
 	<div class="col-md-4 " style="margin-left: 35px">
-			
+
 		<div id="#carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 		  <ol class="carousel-indicators">
 		    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -50,7 +50,7 @@
 	  		<li class="list-group-item"><b>Sub-Category</b>: {{ $product->subcategory_id }} </li>
 		</ul>
 	</div>
-</div>  
+</div>
 <div class="row">
 	<div class="col-md-12">
 		<div class="col-md-2" style="margin-left: 100px">
@@ -73,7 +73,7 @@
 		  		<li class="list-group-item"><b>Option4</b> : {{ ($product->option4  ? 'Yes' : 'No' ) }}</li>
 		  	</ul>
 		</div>
-	</div> 
+	</div>
 </div>
 
 
@@ -94,7 +94,7 @@
 
 
 <div class="row">
-	
+
 	<div class="col-md-5 " style="margin-left: 35px">
 		<ul class="list-group">
   			<li class="list-group-item">
@@ -148,6 +148,5 @@
 
 @endsection
 @section('scripts')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 @endsection
