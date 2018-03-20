@@ -16,9 +16,10 @@ use App\Http\Services\CategoryToSubService;
 class  CategoryToSubController extends Controller
 {
 	//protected static $current_id;
-	public function __construct()
+	
+    public function __construct()
     {
-        $this->middleware('auth');
+      $this->middleware('auth');
     }
 	public function index($id)
 	{	
