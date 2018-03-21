@@ -13,9 +13,9 @@ class RemoveCategoryIdCategoryTable extends Migration
      */
     public function up()
     {
-      Schema::table('category', function (Blueprint $table) {
-        $table->dropColumn('user_category_id');
-      });
+   //   Schema::table('category', function (Blueprint $table) {
+    //    $table->dropColumn('user_category_id');
+     // });
     }
 
     /**

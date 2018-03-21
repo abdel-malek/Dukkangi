@@ -7,7 +7,7 @@
 @section('grid')
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-			{!! Form::open(['route' => ['categorytosub.store'] ]) !!}
+			{!! Form::open(['route' => ['categorytosub.store'],'files'=>true ]) !!}
 
 				{{ Form::text('id' , null , ['hidden' => 'hidden']) }}
 
@@ -25,6 +25,10 @@
 				<br>
 				{{ Form::label('kurdi', 'Name (KR):') }}
 				{{ Form::text ('kurdi' , null , ['class' => 'form-control']) }}
+				<br>
+ 				{{ Form::label('image' , 'Image:')}}
+ 				{{ Form::file('image') }}
+ 				
 				<br>
 				{{ Form::label('category_id' , 'Category:')}}
 				{{ Form::text ('category_id' , $id , ['class' => 'form-control' , 'readonly' => 'readonly'] ) }}

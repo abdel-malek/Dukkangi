@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Category;
 use App\Subcategory;
+use App\Http\Services\ImageService;
 use Session;
 
 use App\Http\Services\CategoryToSubService;
@@ -71,6 +72,8 @@ class CategoryToSubController extends Controller
         $category->german       = $request->german;
         $category->english       = $request->english;
         $category->category_id = $request->category_id;
+        if($request->hasFile('image'))
+            $category->image_id = ImageService::saveImage($request->file('image'));
 
         $category->save();
 

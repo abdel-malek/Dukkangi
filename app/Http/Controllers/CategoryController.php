@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Http\Services\ImageService;
 use App\Http\Requests;
 use App\Category;
 use Session;
@@ -60,7 +60,8 @@ class CategoryController extends Controller
 		$category->turky = $request->turky;
 		$category->german = $request->german;
 		$category->english = $request->english;
-
+		if($request->hasFile('image'))
+			$category->image_id = ImageService::saveImage($request->file('image'));
 		$category->save();
 		Session::flash('success', 'Added Successfuly!');
 

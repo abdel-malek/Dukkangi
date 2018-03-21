@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class RemoveCategoryUser extends Migration
+class AddImageToCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class RemoveCategoryUser extends Migration
      */
     public function up()
     {
-      Schema::table('users', function (Blueprint $table) {
-        $table->dropColumn('category');
-      });
+        Schema::table('category', function (Blueprint $table) {
+            $table->string('image_id');
+         });
     }
 
     /**

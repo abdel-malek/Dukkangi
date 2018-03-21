@@ -13,7 +13,7 @@ class DropAdminTable extends Migration
      */
     public function up()
     {
-        Schema::drop('admins');
+      //  Schema::drop('admins');
     }
 
     /**

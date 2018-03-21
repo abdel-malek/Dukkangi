@@ -9,6 +9,8 @@ use App\Category;
 use App\Subcategory;
 use Session;
 
+use App\Http\Services\ImageService;
+
 use App\Http\Services\CategoryService;
 use App\Http\Services\SubcategoryService;
 
@@ -66,6 +68,8 @@ class SubcategoryController extends Controller
         $category->german  = $request->german;
         $category->english = $request->english;
         $category->category_id= $request->category_id;
+        if($request->hasFile('image'))
+            $category->image_id = ImageService::saveImage($request->file('image'));
 
         $category->save();
 

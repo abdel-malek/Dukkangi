@@ -1,20 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Dukkangi</title>
-        <link rel="stylesheet" href="./css/lib/bootstrap.min.css">
+@extends('client.main')
+@section('styles')
+        <link rel="stylesheet" href="/front-end/css/lib/bootstrap.min.css">
         <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="./css/jquery-pretty-tabs.css">
+        <link rel="stylesheet" href="/front-end/css/jquery-pretty-tabs.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="./css/style.css">
-        <link rel="stylesheet" href="./css/login.css">
-        <link rel="stylesheet" href="./css/item.css">
-        <link rel="stylesheet" href="./css/item_view.css">
-        <link rel="stylesheet" href="./css/material_icons.css">
-        <script type="text/javascript" src="js/plugin/jssor.slider.min.js"></script>
-        <script type="text/javascript" src="./js/plugin/slide.js"></script>
-        <link rel="stylesheet" href="./css/SimpleStarRating.css">
+        <link rel="stylesheet" href="/front-end/css/style.css">
+        <link rel="stylesheet" href="/front-end/css/login.css">
+        <link rel="stylesheet" href="/front-end/css/item.css">
+        <link rel="stylesheet" href="/front-end/css/item_view.css">
+        <link rel="stylesheet" href="/front-end/css/material_icons.css">
+        <script type="text/javascript" src="/front-end/js/plugin/jssor.slider.min.js"></script>
+        <script type="text/javascript" src="/front-end/js/plugin/slide.js"></script>
+        <link rel="stylesheet" href="/front-end/css/SimpleStarRating.css">
         <style>
             .star{
                 cursor: pointer;
@@ -112,62 +109,13 @@
                 content: "&#xE838;";
             }
         </style>
-    </head>
-    <body>
-        <header id="header">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light" id="main-nav-bar">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="main-navbar-items">
-                    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="./main.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./login.html">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./signup.html">Sign up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./help.html">Help</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light" id="lang-nav-bar">
-                <a class="navbar-brand rate-us" href="#">Rate us?</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">English</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Arabic</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">German</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Kurdish</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Turkish</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-
+@endsection
+@section('main_section')
         <div class="col-md-12" style="padding: 0em 5em;">
             <div class="header_page">
                 <p class="header_page_text_div">
-                    Health Food / Canned Food
-                    <img src="images/items_page/star.png" class="one_start_slider" />
+                   {{$subcategory->english}}
+                    <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
                     <span class="rating" ></span>
                 </p>
             </div>
@@ -175,12 +123,13 @@
                 <div class="one_item_details">
                     <div class="header_item_details">
                          <div class="discount_item_details">
+                            <!-- Need a Change -->
                             <p class="text_discount_details"> 15% off</p>
                          </div>
-                        <img src="./images/slider/item1.jpg" class="img_item_details" />
+                        <img src="{{$product->image_id}}" class="img_item_details" />
                         <div class="div_title_item_details" >
                             <p class="title_item_details">
-                                Item's Name
+                                {{$product->english}}
                             </p>
                             <span class="rating" style="float:left;"></span>
                                <i class="material-icons icon_item_details">&#xE838;</i>
@@ -189,60 +138,65 @@
                     </div>
                     <!--<div class="price_tag_item_details">-->
                     <p class="price_item_details">
-                        <span> 300 $</span>
-                        <img src="images/price-tag/price-tag.png" class="img_price_item_details"/>
+                        <span> {{$product->price}} €</span>
+                        <img src="/front-end/images/price-tag/price-tag.png" class="img_price_item_details"/>
                     </p>
                     <!--</div>-->
                     
                     <p class="points_item_details">
-                        <span> 5 Points </span>Bounce
+                        <span> {{$product->point}} Points </span>Bounce
                     </p>
                     <p class="text_item_details">
-                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        {{ $product->desc_english}}
                     </p>
                      <p class="buy_item_details">
                         <span> Buy This Item</span>
-                        <img src="images/price-tag/buy-this-item.png" class="img_buy_item_details"/>
+                        <img src="/front-end/images/price-tag/buy-this-item.png" class="img_buy_item_details"/>
                     </p>
                      <p class="add_to_card_item_details">
                         <span> Add to cart</span>
-                        <img src="images/price-tag/add-to-cart.png" class="img_add_to_card_item_details"/>
+                        <img src="/front-end/images/price-tag/add-to-cart.png" class="img_add_to_card_item_details"/>
                     </p>
                 </div>
             
             <div class="sections">
                 <div class="section">
                     <h4 class="title_section">
-                        Section 1
+                        Category
                     </h4>
                     <p class="text_section">
-                         Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                        <big>
+                         <span>{{$category->english}}</span>
+                        </big>
                     </p>
                 </div>
                    <div class="section">
                     <h4 class="title_section">
-                        Section 2
+                        <big>
+                        Subcategory
+                        </big>
                     </h4>
                     <p class="text_section">
-                        Lorem ipsum dolor sit amet,<br/><br>
-                         <span class="point_text_section">25 points</span> consectetur adipiscing elit
+                        {{$subcategory->english}}<br/><br>
+                         <span class="point_text_section">{{$product->point}} points</span> <small>This will be given to you !</small> 
+                    </p>
+                </div>
+                <div class="section">
+                    <h4 class="title_section">
+                        Quantity
+                    </h4>
+                    <p class="text_section">
+                        <big>
+                         <span>{{$product->qty}} Pieces</span>
+                        </big>
                     </p>
                 </div>
                 <div class="section" style="width:100%;">
                     <h4 class="title_section">
-                        Section 3
+                        Description
                     </h4>
                     <p class="text_section">
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam,  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    </p>
-                    <p class="text_section">
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam,  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        {{$product->desc_english}}
                     </p>
                 </div>
                 <div class="section" style="width:100%;">
@@ -283,40 +237,43 @@
                             </p>
                         </div>
                     </div>
-                    <img src="./images/user_actions/view-my-cart.png" class="icon_buy_option_section">
+                    <img src="/front-end/images/user_actions/view-my-cart.png" class="icon_buy_option_section">
             </div>
         </div>
-
         <div class="col-md-12" style="float:left;"> 
             <h3 class="title_customer_review">
+              
+        <br>
+        <br>
+        <br>
                 Customer's Reviews
             </h3>
             <div class="customer_reviews col-md-7">
                 <div class="comments_customer_reviews">
-                    <img src="./images/slider/item1.jpg" class="img_user_comments_customer_reviews" >
+                    <img src="/front-end/images/slider/item1.jpg" class="img_user_comments_customer_reviews" >
                     <div class="details_comment">
                         <h3 class="username_details_comment">Johan Dov</h3>
-                        <p class="rated_details_comment">Rated this prodect</p>
-                        <span class="rating"  ></span>
+                        <p class="rated_details_comment">Rated this product </p>
+                        <span class="rating"></span>
                         <p class="text_details_comment">
                               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     Ut enim ad minim veniam,  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </p>
                         <div class="user_actions_details_comment">
                             <div class="upvoted_user_actions">
-                                <img src="./images/user_actions/upvoted.png" class="img_upvoted_user_actions">
+                                <img src="/front-end/images/user_actions/upvoted.png" class="img_upvoted_user_actions">
                                 <p class="text_upvoted_user_actions">
                                     Upvoted
                                 </p>
                             </div>
                              <div class="replay_user_actions">
-                                <img src="./images/user_actions/replay.png" class="img_replay_user_actions">
+                                <img src="/front-end/images/user_actions/replay.png" class="img_replay_user_actions">
                                 <p class="text_replay_user_actions" style="color: #999">
-                                    Replay
+                                    Reply
                                 </p>
                             </div>
                              <div class="report_user_actions">
-                                <img src="./images/user_actions/report.png" class="img_report_user_actions">
+                                <img src="/front-end/images/user_actions/report.png" class="img_report_user_actions">
                                 <p class="text_report_user_actions" style="color: #999">
                                     Report
                                 </p>
@@ -326,10 +283,10 @@
                 </div>
 
                  <div class="comments_customer_reviews">
-                    <img src="./images/slider/item1.jpg" class="img_user_comments_customer_reviews" >
+                    <img src="/front-end/images/slider/item1.jpg" class="img_user_comments_customer_reviews" >
                     <div class="details_comment">
                         <h3 class="username_details_comment">Johan Dov</h3>
-                        <p class="rated_details_comment">Rated this prodect</p>
+                        <p class="rated_details_comment">Rated this product</p>
                         <span class="rating"  ></span>
                         <p class="text_details_comment">
                               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -337,19 +294,19 @@
                         </p>
                         <div class="user_actions_details_comment">
                             <div class="upvoted_user_actions">
-                                <img src="./images/user_actions/upvoted.png" class="img_upvoted_user_actions">
+                                <img src="/front-end/images/user_actions/upvoted.png" class="img_upvoted_user_actions">
                                 <p class="text_upvoted_user_actions">
                                     Upvoted
                                 </p>
                             </div>
                              <div class="replay_user_actions">
-                                <img src="./images/user_actions/replay.png" class="img_replay_user_actions">
+                                <img src="/front-end/images/user_actions/replay.png" class="img_replay_user_actions">
                                 <p class="text_replay_user_actions" style="color: #999">
-                                    Replay
+                                    Reply
                                 </p>
                             </div>
                              <div class="report_user_actions">
-                                <img src="./images/user_actions/report.png" class="img_report_user_actions">
+                                <img src="/front-end/images/user_actions/report.png" class="img_report_user_actions">
                                 <p class="text_report_user_actions" style="color: #999">
                                     Report
                                 </p>
@@ -359,10 +316,10 @@
                 </div>
 
                  <div class="comments_customer_reviews">
-                    <img src="./images/slider/item1.jpg" class="img_user_comments_customer_reviews" >
+                    <img src="/front-end/images/slider/item1.jpg" class="img_user_comments_customer_reviews" >
                     <div class="details_comment">
                         <h3 class="username_details_comment">Johan Dov</h3>
-                        <p class="rated_details_comment">Rated this prodect</p>
+                        <p class="rated_details_comment">Rated this product</p>
                         <span class="rating"  ></span>
                         <p class="text_details_comment">
                               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -370,19 +327,19 @@
                         </p>
                         <div class="user_actions_details_comment">
                             <div class="upvoted_user_actions">
-                                <img src="./images/user_actions/upvoted.png" class="img_upvoted_user_actions">
+                                <img src="/front-end/images/user_actions/upvoted.png" class="img_upvoted_user_actions">
                                 <p class="text_upvoted_user_actions">
                                     Upvoted
                                 </p>
                             </div>
                              <div class="replay_user_actions">
-                                <img src="./images/user_actions/replay.png" class="img_replay_user_actions">
+                                <img src="/front-end/images/user_actions/replay.png" class="img_replay_user_actions">
                                 <p class="text_replay_user_actions" style="color: #999">
-                                    Replay
+                                    Reply
                                 </p>
                             </div>
                              <div class="report_user_actions">
-                                <img src="./images/user_actions/report.png" class="img_report_user_actions">
+                                <img src="/front-end/images/user_actions/report.png" class="img_report_user_actions">
                                 <p class="text_report_user_actions" style="color: #999">
                                     Report
                                 </p>
@@ -404,113 +361,32 @@
             <h3 class="title_similar_items" >
                 Similar item
             </h3>
-                <div class="col-md-3" style="margin-top: 1em;float: left;">
-                                <div class="div_item">
-                                    <img src="images\slider\item1.jpg" class="img_item" />
-                                    <p class="item_name">Item Name</p>
-                                    <p class="item_price" style="margin-bottom: 0em;">300 $</p>
-                                    <span class="rating" ></span>
-                                    <img src="images\user_actions\view-my-cart.png" class="icon_view_my_card" />
-                                </div>
-                            </div>
+
+            <!-- Just Testing for($i=0 ; $i< 9; $i++) -->
+                            @foreach($simiProducts as $simiproduct)
                               <div class="col-md-3" style="margin-top: 1em;float: left;">
                                 <div class="div_item">
-                                    <img src="images\slider\item1.jpg" class="img_item" />
-                                    <p class="item_name">Item Name</p>
-                                    <p class="item_price" style="margin-bottom: 0em;">300 $</p>
+                                    <img src="{{$simiproduct->image_id}}" class="img_item" style="height: 220px" />
+                                    <p class="item_name">{{ $simiproduct->english}}</p>
+                                    <p class="item_price" style="margin-bottom: 0em;">{{$simiproduct->price}} €</p>
                                     <span class="rating" ></span>
-                                    <img src="images\user_actions\view-my-cart.png" class="icon_view_my_card" />
+                                    <img src="/front-end/images\user_actions\view-my-cart.png" class="icon_view_my_card" />
                                 </div>
                             </div>
-                              <div class="col-md-3" style="margin-top: 1em;float: left;">
-                                <div class="div_item">
-                                    <img src="images\slider\item1.jpg" class="img_item" />
-                                    <p class="item_name">Item Name</p>
-                                    <p class="item_price" style="margin-bottom: 0em;">300 $</p>
-                                    <span class="rating" ></span>
-                                    <img src="images\user_actions\view-my-cart.png" class="icon_view_my_card" />
-                                </div>
-                            </div>
-                              <div class="col-md-3" style="margin-top: 1em;float: left;">
-                                <div class="div_item">
-                                    <img src="images\slider\item1.jpg" class="img_item" />
-                                    <p class="item_name">Item Name</p>
-                                    <p class="item_price" style="margin-bottom: 0em;">300 $</p>
-                                    <span class="rating" ></span>
-                                    <img src="images\user_actions\view-my-cart.png" class="icon_view_my_card" />
-                                </div>
-                            </div>
-                              <div class="col-md-3" style="margin-top: 1em;float: left;">
-                                <div class="div_item">
-                                    <img src="images\slider\item1.jpg" class="img_item" />
-                                    <p class="item_name">Item Name</p>
-                                    <p class="item_price" style="margin-bottom: 0em;">300 $</p>
-                                    <span class="rating" ></span>
-                                    <img src="images\user_actions\view-my-cart.png" class="icon_view_my_card" />
-                                </div>
-                            </div>
-                              <div class="col-md-3" style="margin-top: 1em;float: left;">
-                                <div class="div_item">
-                                    <img src="images\slider\item1.jpg" class="img_item" />
-                                    <p class="item_name">Item Name</p>
-                                    <p class="item_price" style="margin-bottom: 0em;">300 $</p>
-                                    <span class="rating" ></span>
-                                    <img src="images\user_actions\view-my-cart.png" class="icon_view_my_card" />
-                                </div>
-                            </div>
-                              <div class="col-md-3" style="margin-top: 1em;float: left;">
-                                <div class="div_item">
-                                    <img src="images\slider\item1.jpg" class="img_item" />
-                                    <p class="item_name">Item Name</p>
-                                    <p class="item_price" style="margin-bottom: 0em;">300 $</p>
-                                    <span class="rating" ></span>
-                                    <img src="images\user_actions\view-my-cart.png" class="icon_view_my_card" />
-                                </div>
-                            </div>
-                              <div class="col-md-3" style="margin-top: 1em;float: left;">
-                                <div class="div_item">
-                                    <img src="images\slider\item1.jpg" class="img_item" />
-                                    <p class="item_name">Item Name</p>
-                                    <p class="item_price" style="margin-bottom: 0em;">300 $</p>
-                                    <span class="rating" ></span>
-                                    <img src="images\user_actions\view-my-cart.png" class="icon_view_my_card" />
-                                </div>
-                            </div>
+                            @endforeach
+            <!-- Testing   endfor -->
+
+
+
         </div>
 
     </div>
         
+@endsection
         
-        
-        <footer class="footer" >
-            <div class="col-md-12" style="float:left">
-                <h2 class="title_footer">
-                    About Dukkangi 
-                </h2> 
-            </div>
-            <div class="col-md-6 " style="float:left;margin-left: 26%;">
-                <p class="text_footer">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                </p>
-            </div>
-            <div class="col-md-6 " style="float:left;margin-left: 26%;">
-                <p class="text_footer">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                </p>
-            </div>
-            <div class="col-md-7 div_icon_footer" >
-                <i class="fa fa-google-plus icon_footer" style="    padding: 0.5em 0.35em;"></i>
-                <i class="fa fa-instagram icon_footer"></i>
-                <i class="fa fa-twitter icon_footer"></i>
-                <i class="fa fa-facebook icon_footer" style="padding: 0.5em 0.7em;"></i>
-            </div>
-        </footer>
+@section('scripts')
         <script src="http://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-        <script src="./js/plugin/jquery-pretty-tabs.js"></script>
+        <script src="/front-end/js/plugin/jquery-pretty-tabs.js"></script>
         <script type="text/javascript">
                 var _gaq = _gaq || [];
                 _gaq.push(['_setAccount', 'UA-36251023-1']);
@@ -526,7 +402,7 @@
                     s.parentNode.insertBefore(ga, s);
                 })();
         </script>
-        <script src="./js/plugin/SimpleStarRating.js"></script>
+        <script src="/front-end/js/plugin/SimpleStarRating.js"></script>
         <script>
                 var ratings = document.getElementsByClassName('rating');
 
@@ -550,5 +426,4 @@
                //      Request Update rating 
             });
         </script>
-    </body>
-</html>
+@endsection

@@ -3,7 +3,7 @@
 @section('grid')
 	<div class="row">
 	<div class="col-md-5 col-md-offset-1">
-			{!! Form::open(['route' =>'product.store']) !!}
+			{!! Form::open(['route' =>'product.store','files' => true]) !!}
 				
 				{{ Form::label('arabic' , 'Name (Arabic):') }}
 				{{ Form::text('arabic' , null, ['class'=> 'form-control' , 'required'=> '']) }}
@@ -37,7 +37,12 @@
 				{{ Form::label('point', 'Points :' ) }}
 				{{ Form::text('point', '0' , ['class'=> 'form-control' , 'required'=>'' ]) }}
 				<br>
-	
+				
+
+ 				{{ Form::label('image' , 'Image:')}}<small><i>optional</i></small>
+ 				{{ Form::file('image') }}
+ 				<br>
+
 				{{ Form::label('category_id' , 'Category:')}}
 				<select class="custom-select" name="category_id">
 				@foreach($categories as $category)

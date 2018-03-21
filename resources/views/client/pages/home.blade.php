@@ -5,7 +5,7 @@
  
 
 
-  $count = sizeof($categories);
+  $count = $categories->count();
   $fullrows = (int)($count / 3);
   $col1 = $fullrows;
   $col2 = $fullrows;
@@ -29,8 +29,8 @@
         </div>
       @for($counter ; $counter < $col1;  $counter++)
         <div class="landing-items-block" style="margin-top: {{($firstflag)? '0':'160'}}px;">
-          <p class="food">{{$categories[$counter]}}</p>
-          <a href="{{route('category' , $ids[$counter]) }}"><img class="" src="front-end/images/landing_page/food.png"/></a>
+          <p class="food">{{$categories[$counter]->english}}</p>
+          <a href="{{route('category' , $categories[$counter]->id) }}"><img class="" src="{{ $categories[$counter]->image_id }}" width="300" height="10" /></a>
         </div>
         <?php $firstflag =1 ; ?> 
       @endfor
@@ -48,8 +48,8 @@
           </p>
           <?php $midflag = 1; ?>
           @endif
-          <p class="house-tools">{{$categories[$counter]}}</p>
-          <a href="{{route('category' , $ids[$counter]) }}"><img class="" src="front-end/images/landing_page/House_tools.png"/></a>
+          <p class="house-tools">{{$categories[$counter]->english}}</p>
+          <a href="{{route('category' , $categories[$counter]->id) }}"><img class="" src="{{$categories[$counter]->image_id}}"/></a>
         </div>
         @endfor
       </div>
@@ -60,8 +60,8 @@
         </div>
         @for($counter ; $counter < $col1+$col2+$col3 ; $counter++ )
         <div class="landing-items-block"  style="margin-top: {{($lastflag)? '0': '160'}}px;"">
-          <p class="shisha">{{$categories[$counter]}}</p>
-          <a href="{{route('category' , $ids[$counter]) }}"><img class="" src="front-end/images/landing_page/shisha.png"/></a>
+          <p class="shisha">{{$categories[$counter]->english}}</p>
+          <a href="{{route('category' , $categories[$counter]->id) }}"><img class="" src="{{$categories[$counter]->image_id}}"/></a>
         </div>
           <?php $lastflag = 1; ?>
         @endfor

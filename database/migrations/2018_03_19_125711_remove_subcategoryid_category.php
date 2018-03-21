@@ -13,9 +13,9 @@ class RemoveSubcategoryidCategory extends Migration
      */
     public function up()
     {
-      Schema::table('category', function (Blueprint $table) {
-        $table->dropColumn(['subcategory_id']);
-      });
+   //   Schema::table('category', function (Blueprint $table) {
+    //    $table->dropColumn(['subcategory_id']);
+     // });
     }
 
     /**

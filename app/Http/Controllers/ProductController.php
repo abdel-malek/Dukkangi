@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use Session;
 use App\Category;
+use App\Http\Services\ImageService;
 use App\Subcategory;
 
 use App\Http\Services\ProductService;
@@ -157,6 +158,9 @@ class ProductController extends Controller
         $product->category_id    = $request->category_id;
         $product->subcategory_id = $request->subcategory_id;
 
+        if($request->hasFile('image'))
+            $product->image_id = ImageService::saveImage($request->file('image'));
+
         if (isset($request->point)) {
             $product->point     = $request->point;
         } else {
@@ -167,7 +171,6 @@ class ProductController extends Controller
         $product->option2 = 0;
         $product->option3 = 0;
         $product->option4 = 0;
-        $product->image_id= 0;
 
         $product->save();
 

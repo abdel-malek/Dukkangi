@@ -7,7 +7,7 @@
 @section('grid')
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-			{!! Form::open(['route' => ['subcategory.store'] ]) !!}
+			{!! Form::open(['route' => ['subcategory.store'] , 'files'=>true ]) !!}
 				{{ Form::text('id' , null , ['hidden' => 'hidden']) }}
 
 
@@ -26,6 +26,10 @@
 				{{ Form::label('kurdi', 'Name (KR):') }}
 				{{ Form::text('kurdi' , null , ['class' => 'form-control']) }}
 				<br>
+ 				{{ Form::label('image' , 'Image:')}}
+ 				{{ Form::file('image') }}
+ 				<br>
+
 				{{ Form::label('category_id' , 'Category:')}}
 				<select class="custom-select" name="category_id">
 				@foreach($categories as $category)
