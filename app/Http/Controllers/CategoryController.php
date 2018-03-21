@@ -15,10 +15,6 @@ use App\Http\Services\CategoryService;
 class CategoryController extends Controller
 {
 
- 	public function __construct()
-  {
-	  $this->middleware('isadmin');
-  }
 
 	public function index()
 	{

@@ -12,12 +12,7 @@ use App\Http\Services\ProductService;
 
 class ProductController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('isadmin');
-    }
-
-
+ 
     public function index()
     {
         return view('admin.products.index');

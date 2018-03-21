@@ -13,19 +13,16 @@
 Route::get('/admin', function(){
 	return view('admin.master');
 })->name('admin.home')->middleware('auth');
-
-
-
-
-Route::get('/home', function () {
-    return view('home');
-})->name('home');
-
 Route::get('/', function () {
-    return view('home');
-})->name('home');
+    return view('client.pages.home');
+});
 
-    //DASHBOARD
+
+//Pages Controller
+Route::get('/home', 'PageController@index')->name('home');
+Route::get('/category', 'PageController@getCategoryPage')->name('category');
+
+   			 //DASHBOARD
     //CATEGORIES
 Route::get('/admin/categories', ['uses' => 'CategoryController@index'                  ,'as' => 'category.index'         ]);
 Route::post('/admin/categories', ['uses' => 'CategoryController@categoryData'         ,'as' => 'category.data'         ]);
@@ -59,16 +56,14 @@ Route::get('/admin/products', ['uses' => 'ProductController@index'              
 Route::post('/admin/products', ['uses' => 'ProductController@productData'             ,'as' => 'product.data'         ]);
 Route::get('/admin/products/create', ['uses' => 'ProductController@create'                 ,'as' => 'product.create'     ]);
 Route::post('/admin/products/store', ['uses' => 'ProductController@store'                 ,'as' => 'product.store'         ]);
-Route::post('/admin/products/delete/{id}', ['uses' => 'ProductController@destroy'                 ,'as' => 'product.delete'         ]);
+Route::post('/admin/products/delete/{id}', ['uses' => 'ProductController@destroy'         ,'as' => 'product.delete'         ]);
 Route::get('/admin/products/edit/{id}', ['uses' => 'ProductController@edit'                 ,'as' => 'product.edit'         ]);
 Route::put('/admin/products/update', ['uses' => 'ProductController@update'                 ,'as' => 'product.update'         ]);
-
     //PRODUCTS FROM CATEGORIES
 Route::get('/admin/categoryproducts/{id}', ['uses' => 'ProductController@indexByCategory'     ,'as' => 'productbycategory.index' ]);
 Route::post('/admin/categoryproducts/{id}', ['uses' => 'ProductController@productDataByCategory','as' => 'productbycategory.data'  ]);
 Route::get('/admin/categoryproducts/edit/{id}', ['uses' => 'ProductController@editByCategory'         ,'as' => 'productbycategory.edit'  ]);
 Route::put('/admin/categoryproducts/update', ['uses' => 'ProductController@updateByCategory'     ,'as' => 'productbycategory.update']);
-
     //PRODUCTS FROM SUBCATEGORIES
 Route::get('/admin/subcategoryproducts/{id}', ['uses'=> 'ProductController@indexBySubcategory'       ,'as' => 'productbysubcategory.index' ]);
 Route::post('/admin/subcategoryproducts/{id}', ['uses'=> 'ProductController@productDataBySubcategory','as' => 'productbysubcategory.data'  ]);
@@ -107,3 +102,7 @@ Route::post('password/reset', ['as' => '',  'uses' => 'Auth\ResetPasswordControl
 Route::get('password/reset/{token}', ['as' => 'password.reset',  'uses' => 'Auth\ResetPasswordController@showResetForm']);
 Route::get('register', ['as' => 'register' , 'uses' => 'Auth\RegisterController@showRegistrationForm']);
 Route::post('register', ['as' => '','uses' => 'Auth\RegisterController@register']);
+
+
+	//Language Change 
+Route::get('/lang/{lang}' , 'PageController@setLanguage');

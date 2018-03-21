@@ -14,10 +14,7 @@ use App\Http\Services\SubcategoryService;
 
 class SubcategoryController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('isadmin');
-    }
+    
 
     public function index()
     {

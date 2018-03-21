@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Dukkangi</title>
+        <link rel="stylesheet" href="./css/lib/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/login.css">
+<link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet">
+    </head>
+    <body>
+        <header id="header">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" id="main-nav-bar">
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="main-navbar-items">
+                    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./main.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./login.html">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./signup.html">Sign up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./help.html">Help</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" id="lang-nav-bar">
+                <a class="navbar-brand rate-us" href="#">Rate us?</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">English</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Arabic</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">German</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Kurdish</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Turkish</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <div  id="main-container" class="main-container main-container_singup">
+            <div class="container">
+                <div class="row">
+                    <div class="col align-self-start">
+                    </div>
+                    <div class="col align-self-center">
+                        <img class="welcome-img" src="./images/welcome-logo2.png" />
+                        <div class="col-md-12 col-xs-12 div_singup">
+                            <div class="col-sm-12 my-1" style="margin-top: 14em !important;float: left;">
+                                <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+                                <div class="input-group">
+
+                                    <input type="text" class="form-control input_singup" id="inlineFormInputGroupUsername" placeholder="Username">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
+                                <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+                                <div class="input-group">
+
+                                    <input type="password" class="form-control input_singup" id="inlineFormInputGroupUsername" placeholder="Email or Phone number">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
+                                <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+                                <div class="input-group">
+
+                                    <input type="password" class="form-control input_singup" id="inlineFormInputGroupUsername" placeholder="Password">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
+                                <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+                                <div class="input-group">
+
+                                    <input type="password" class="form-control input_singup" id="inlineFormInputGroupUsername" placeholder="Confirm Password">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
+                                <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+                                <div class="input-group">
+
+                                    <input type="password" class="form-control input_singup" id="inlineFormInputGroupUsername" placeholder="Location">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
+                                <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+                                <div class="input-group">
+
+                                    <input type="text" class="form-control input_singup" id="date_of_brith" placeholder="Date of birth">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 my-1" style="margin-top: 3em !important;float: left;">
+                                <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+                                <div class="input-group">
+
+                                    <p class="btn_login">
+                                        LOGIN
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
+                                <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+                                <div class="input-group">
+
+                                    <p class="btn_cancel">
+                                        Cancel
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
+                                <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+                                <div class="input-group">
+
+                                    <p class="singup_text">
+                                        <a href="#" style="text-decoration: none;">Or</a>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;padding-left: 1.6em;">
+                                <img src="./images/signup/facebook copy.png" class="icon_social_media" />
+                                <img src="./images/signup/insta.png" class="icon_social_media" />
+                                <img src="./images/signup/twitter.png" class="icon_social_media" />
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <div class="col align-self-end">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+            <script src="./js/lib/bootstrap.min.js"></script>
+            <script src="./js/lib/jquery-3.3.1.min.js"></script>
+            <!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+            <script src="./js/main.js"></script>
+              
+      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+        </footer>
+
+        <div id="help-float-btn"></div>
+
+    </body>
+    <script>
+        $(function () {
+            $("#date_of_brith").datepicker();
+        });
+    </script>
+
+</html>

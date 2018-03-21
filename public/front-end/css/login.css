@@ -1,0 +1,117 @@
+.main-container{
+    height: 39.7em;
+}
+
+.div_login,.div_singup{
+    height: 39.7em;
+    padding: 0em;
+    background-color: #00000024;
+}
+.div_singup{
+    padding: 0em 0.7em;
+    height: 49em;
+}
+.main-container_singup{
+    height: 49em;
+}
+.input_login,.input_singup{
+    background-color: #ffffff26;
+    border-radius: 1.5em !important;
+    border: 0em;
+    color: #fff;
+    border-top-left-radius: 1.5em;
+    border-bottom-left-radius: 1.5em;
+    padding-left: 3em;
+}
+.input_singup,.input_singup{
+    padding-left: 0.5em;
+    border-bottom: 0.07em solid #f9f9f9;
+    background-color: #ffffff00;
+    border-radius: 0em !important;
+    cursor: pointer;
+}
+.input_login:focus{
+    background-color: #ffffff26;
+    border-radius: 1.5em !important;
+    box-shadow:  0px 0px 0px #777;
+    color: #fff;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    
+    color: #555 !important;
+}
+.ui-widget-header {
+     background: none !important; 
+    background-color: #d60202 !important;
+    color: #f2f2f2 !important;
+}
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+     border: 0px solid #fed22f !important; 
+    background: #ffe45c00 !important;
+    background-color: #d60202  !important;
+    color: #fff !important;
+    
+}
+.input_singup:hover{
+    border-color: #d80001;
+}
+
+.ui-state-default:hover, .ui-widget-content .ui-state-default:hover, .ui-widget-header .ui-state-default:hover {
+    border: 0px solid #cccccc !important;
+    background: #f6f6f600 !important;
+     background-color: #d602023c !important;
+    font-weight: bold;
+    color: #f2f2f2 !important;
+}
+
+.input_singup:focus{
+      background-color: #ffffff26;
+    box-shadow:  0px 0px 0px #777;
+    color: #fff;
+     border-color: #d80001;
+}
+.btn_login,.btn_cancel{
+    width:100%;
+    text-align: center;
+    font-size: 1em;
+    border-radius: 1.5em;
+    background-color: #d80001;
+    color: #fff;
+    padding: 0.4em 1em; 
+}
+.btn_cancel{
+    background-color: #fff;
+    color: #d80001;
+}
+.singup_text{
+    width:100%;
+    text-align: center;
+    font-size: 1.1em;
+    color: #fff;
+}
+.singup_text  a{
+    color: #d80001;
+    text-decoration: underline;
+
+}
+.icon_social_media{
+    height: 2.7em ;
+    width: auto;
+    margin-left: 2em;
+}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #fff !important;
+}
+input:-moz-placeholder, textarea:-moz-placeholder {
+    color: #fff !important;
+}
+.input-group-prepend{
+    margin-left: 0.8em;
+    margin-top: 0.5em;
+    float: left;
+    position: absolute;
+}
+.input-group-prepend img{
+    height: 1.3em;
+    width: auto;
+}

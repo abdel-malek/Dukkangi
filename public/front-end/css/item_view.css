@@ -1,0 +1,342 @@
+.header_page{
+    background-image: url('../images/items_page/food.png');
+    background-repeat: no-repeat;
+    background-size: auto;
+    width: 100%;
+    height: 17em;
+}
+.header_page_text_div {
+    width: 88%;
+    padding: 0.4em 2em;
+    padding-left: 26em;
+    background-color: #00000044;
+    position: absolute;
+    bottom: -1em;
+    color: #fff;
+    font-size: 1.1em;
+}
+.one_item_details{
+    width: 30%;
+    background-color: #fff;
+    margin-left: 2em;
+    float: left;
+    position: absolute;
+    margin-top: -12.8em;
+    z-index: 15;
+   box-shadow: 1px 1px 16px #000000b0;
+}
+.header_item_details{
+    /*background-image: url('../images/slider/item1.jpg');*/
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+.img_item_details{
+    width: 100%;
+    height: auto;
+}
+.div_title_item_details{
+    background-color: #00000070;
+    padding: 0.9em 2em;
+    width: 100%;
+        margin-top: -6em;
+    z-index: 12;
+    position: absolute;
+    font-weight: bold; 
+    font-family: 'HeadlinesFont';
+}
+.title_item_details{
+    font-size: 1.5em;
+    color:#fff;
+    float: left;
+    width: 100%;
+    margin-bottom: 0em;
+}
+.icon_item_details{
+    color: #fff;
+    font-size: 2.5em !important;
+    float: right;
+    margin-top: -0.2em;
+    margin-left: 0.1em;
+}
+.price_item_details ,.points_item_details{
+    float: left;
+    width:50%;
+    font-size: 1.5em;
+    font-family: 'EagarFont';
+    margin-top: 1em;
+    color: #fff;
+    text-align: center;
+}
+.price_item_details span,.buy_item_details span,.add_to_card_item_details span{
+       font-size: 1.5em;
+    font-family: 'EagarFont';
+    margin-top: 0.2em;
+    width: 4em;
+    text-align: center;
+    position: absolute;
+    z-index: 18;
+    left: 0em;
+}
+.buy_item_details span,.add_to_card_item_details span{
+    font-family: 'NormalFont';
+    left: unset;
+    right: -1em;
+    margin-top: 11.1em;
+    font-size: 1.5em;
+    width: 8em;
+    color: #fff;
+}
+.add_to_card_item_details span{
+    margin-top: 13.3em;
+    color: #d80001;
+}
+.points_item_details{
+    color: #000;
+    font-weight: bold;
+    font-family: 'HeadlinesFont';
+    float: right;
+    width: 49%;
+    font-size: 1.1em;
+    margin-top: 4em;
+}
+.points_item_details span{
+    color:#d80001;
+    font-family: 'EagarFont';
+}
+.text_item_details{
+    margin-bottom: 12em;
+    width: 100%;
+    padding: 0em 1em;
+   color: #777;
+   font-size: 0.9em;
+   float: left;
+   margin-top: 0em;
+}
+.sections{
+    width:63%;
+    float: right;
+    padding: 2em 1em;
+}
+.section{
+    width: 45%;
+    padding-left: 1em;
+}
+.title_section{
+    color: #d80001;
+    font-family: 'EagarFont';
+    font-size: 1.4em;
+    width: 100%;
+    float: left;
+    font-weight: bold;
+}
+.text_section{
+        color: #222;
+    font-family: 'headlinesFont';
+    font-size: 0.9em;
+    width: 100%;
+    float: left;
+    font-weight: bold;
+}
+.point_text_section{
+    color:#fff;
+    font-family: 'EagarFont';
+     font-size: 1em;
+    padding: 0.4em 1em;
+    background-color: #d80001;
+    margin-top: 0.9em;
+    margin-right: 0.9em;
+}
+.options_section{
+    padding: 0em 4em;
+    float: left;
+    width: 80%;
+
+    
+}
+.option_section{
+    width: 18%;
+    margin-left: 7%;
+    float: left;
+}
+.option_section .box_option_section{
+    height: 4em ;
+    width: 100%;
+    float: left;
+     box-shadow: 1px 1px 6px #999;
+}
+.option_section .title_option_section{
+    width: 100%;
+    text-align: center;
+    margin-top: 0.7em;
+}
+.price_tag_item_details{
+    background-image: url('../images/price-tag/price-tag.png');
+    width: 50%;
+    float: left;
+    margin-left: -3em;
+      background-repeat: no-repeat;
+    background-size: cover;
+}
+.img_price_item_details{
+    width: 9em;
+    height: auto;
+    position: absolute;
+    left:-1.4em;
+    
+}
+.img_buy_item_details ,.img_add_to_card_item_details{
+width: 13em;
+    height: auto;
+    position: absolute;
+    right: -2.1em;
+    margin-top: 14.5em;
+    
+}
+.img_add_to_card_item_details{
+        margin-top: 18em;
+    z-index: -1;
+}
+.icon_buy_option_section{
+   float: right;
+   width: 12%;
+   height: auto; 
+   margin-top: 2em;
+}
+.title_customer_review,.title_similar_items{
+    width:100%;
+    color:#d80001;
+    font-family: 'EagarFont';
+    font-size: 1.9em;
+
+}
+.title_similar_items{
+    margin-top: 1em;
+}
+.customer_reviews{
+    float:left;
+        min-height: 10em;
+    overflow: auto;
+    max-height: 35em;
+}
+.leave_constructive_review{
+    float: right;
+    background-color: #fff;
+        box-shadow: 1px 1px 16px #000000b0;
+        padding: 0.9em 1em;
+}
+.comments_customer_reviews{
+    width:100%;
+    float:left;
+    margin-top: 1em;
+}
+.img_user_comments_customer_reviews{
+    width: 10%;
+    height: auto;
+    float: left;
+    margin-right: 5%;
+    border-radius: 22em; 
+}
+.details_comment{
+    float:left;
+    width: 85%;
+}
+.username_details_comment{
+    width: 50%;
+    color: #222;
+    float:left;
+    font-family: 'EagarFont';
+    font-size: 1.4em;
+}
+.rated_details_comment{
+    float:left;
+    color: #222;
+    font-family: 'EagarFont';
+    font-size: 1.1em;
+
+}
+.text_details_comment{
+    width:100%;
+    color: #888;
+    font-size: 0.9em;
+    margin-bottom: 1em;
+    float: left;
+}
+.upvoted_user_actions,.replay_user_actions,.report_user_actions{
+    width: 25%;
+    float:left;
+}
+.img_upvoted_user_actions,.img_replay_user_actions,.img_report_user_actions{
+width: 24%;
+height: auto;
+float: left;
+}
+.text_upvoted_user_actions,.text_replay_user_actions,.text_report_user_actions{
+    width: 65%;
+    float: left;
+    margin-left: 5%;
+    font-family: 'EagarFont';
+    font-size: 1em;
+    color: #d80001;
+    margin-top: 0.5em;
+}
+.text_leave_constructive_review{
+    width: 100%;
+    color: #222;
+    font-family: 'EagarFont';
+    font-size: 1.5em;
+    float: left;
+    font-weight: bold;
+    margin-top: 2em;
+}
+.input_leave_constructive_review{
+        background-color: #ffffff26;
+    border-radius: 1.5em !important;
+    border-top-left-radius: 1.5em;
+    border-bottom-left-radius: 1.5em;
+    padding-right: 3em;
+        padding: 0.6em 1em;
+    border: 0.1em solid #aaa;
+    color: #aaa;
+    width: 100%; 
+}
+.input_leave_constructive_review:focus{
+    background-color: #ffffff26;
+    border-radius: 1.5em !important;
+    box-shadow:  0px 0px 0px #777 !important;
+    color: #aaa;
+    border: 0.1em solid #aaa;
+}
+.btn_leave_constructive_review{
+    padding: 0.6em 1em;
+    width: 100%;
+    border-radius: 1.5em;
+    text-align: center;
+    box-shadow: 1px 1px 6px #000000b0;
+    background-color: #fff;
+    margin-top: 1em;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #222;
+    font-family: 'EagarFont';
+    cursor: pointer;
+}
+.discount_item_details{
+    width: 0;
+    height: 0;
+    border-top: 8em solid #d80001;
+    border-right: 7em solid transparent;
+    position: absolute;
+    top:0em;
+    left:-0.1em;
+}
+.text_discount_details{
+       font-family: 'EagarFont';
+    position: absolute;
+    top: -5.2em;
+    width: 3em;
+    left: 0.3em;
+    z-index: 5;
+    color: #fff;
+    font-size: 1.5em;
+}

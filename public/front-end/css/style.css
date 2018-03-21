@@ -1,0 +1,221 @@
+@font-face {
+    font-family: EagarFont;
+    src: url(../fonts/eager.ttf);
+    font-weight: bold;
+}
+@font-face {
+    font-family: NormalFont;
+    src: url(../fonts/HelveticaNeueLight.ttf);
+    font-weight: bold;
+}
+@font-face {
+    font-family: HeadlinesFont;
+    src: url(../fonts/HelveticaNeue-Medium.ttf);
+    font-weight: bold;
+}
+*{
+  font-family: NormalFont;
+}
+/*nav bar styles   --BEGIN--*/
+#main-nav-bar {
+  background-color: #D80F16 !important;
+  box-shadow: 1px 2px 5px #888888;
+}
+
+#lang-nav-bar{
+  margin-top: 3px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background-color: white !important;
+}
+
+#main-navbar-items ul li{
+  margin-right: 26px;
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+#navbarSupportedContent ul li{
+  margin-right: 20px;
+  font-size: 16px;
+}
+
+.navbar{
+      padding: .5rem 8rem;
+}
+
+.logo{
+  width: 130px;
+}
+
+#main-nav-bar .navbar-nav .nav-link{
+  color: white;
+}
+
+#main-nav-bar .navbar-nav .active>.nav-link{
+  font-weight: bold;
+}
+
+.rate-us{
+  font-size: 16px;
+}
+
+/*nav bar styles   --END--*/
+
+
+/*landing page styles   --BEGIN--*/
+
+#main-container{
+  background-image: url("../images/landing_page/long_background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+}
+#main-container .col-4{
+
+}
+.landing-items-block{
+  position: relative;
+    margin-top: 130px;
+}
+
+.landing-items-block img{
+  height: 340px;
+}
+
+.landing-items-block p{
+  font-family: EagarFont;
+  color: #D80F16;
+}
+.landing-items-block .title{
+  font-family: NormalFont;
+  color:white;
+  font-size: 22px;
+  margin-left: 70px;
+  position: relative;
+  top: 30px;
+}
+
+.landing-items-block .food{
+  position: absolute;
+  right: 105px;
+  font-size: 38px;
+  top: 65px;
+  transform: rotate(-10deg);
+}
+
+.landing-items-block .detergents{
+  position: absolute;
+  right: 185px;
+  font-size: 38px;
+  transform: rotate(5deg);
+  top: 74px;
+}
+.landing-items-block .sales{
+  position: absolute;
+  right: 270px;
+  font-size: 38px;
+  top: 95px;
+  transform: rotate(-10deg);
+}
+
+.landing-items-block .house-tools{
+  bottom: 75px;
+  position: absolute;
+  left: 50px;
+  font-size: 38px;
+  transform: rotate(-10deg);
+}
+
+.landing-items-block .health-beauty{
+  position: absolute;
+  right: 96px;
+  font-size: 31px;
+  transform: rotate(8deg);
+  bottom: 85px;
+}
+
+.landing-items-block .euro{
+  position: absolute;
+  left: 35px;
+  font-size: 38px;
+  bottom: 67px;
+  transform: rotate(-10deg);
+}
+
+.landing-items-block .shisha{
+  position: absolute;
+  left: 57px;
+  font-size: 38px;
+  top: 95px;
+  transform: rotate(-10deg);
+}
+
+.landing-items-block .fashion{
+  position: absolute;
+  top: 70px;
+  font-size: 38px;
+  right: 110px;
+  transform: rotate(-10deg);
+}
+
+.landing-items-block .brands{
+  position: absolute;
+  top: 68px;
+  font-size: 38px;
+  right: 90px;
+  transform: rotate(-10deg);
+}
+
+.margin-top-70m{
+  margin-top: -70px;
+}
+
+.items-col{
+  height: 100%;
+  width: 58%;
+  position: absolute;
+  left: 65px;
+}
+
+.first-col{
+  background-color: rgba(94, 48, 48,0.5);
+}
+
+.second-col{
+  background-color: rgba(239, 239, 239,0.5);
+}
+
+.third-col{
+  background-color: rgba(134, 113, 89,0.5);
+}
+
+.second .landing-items-block{
+}
+
+.welcome-img{
+  position: absolute;
+  z-index: 5;
+  margin-left: auto;
+  margin-right: auto;
+  width: 720px;
+  left: -170px;
+}
+/*landing page styles   --END--*/
+
+
+/*Footer --BEGIN--*/
+#help-float-btn{
+  position:fixed;
+  right:0;
+  bottom:0;
+}
+#help-float-btn:after {
+    content: "\f106";
+    font-family: 'FontAwesome';
+}
+
+#help-float-btn:hover {
+    opacity: 0.8;
+}
+/*Footer --END--*/

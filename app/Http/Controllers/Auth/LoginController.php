@@ -47,6 +47,8 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+        $lang = session('lang');
+        \App::setLocale($lang);
         $this->validateLogin($request);
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
@@ -68,7 +70,7 @@ class LoginController extends Controller
         // user surpasses their maximum number of attempts they will get locked out.
         $this->incrementLoginAttempts($request);
         // Customization: If client status is inactive (0) return failed_status error.
-
+        return $this->sendFailedLoginResponse($request);
     }
 
 
