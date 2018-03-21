@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoryId extends Migration
+class CreateStripeCustomerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateCategoryId extends Migration
      */
     public function up()
     {
-           Schema::create('category', function (Blueprint $table) {
+        Schema::create('stripe_customer', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('arabic');
-            $table->string('english');
-            $table->string('kurdi');
-            $table->string('turky');
-            $table->string('german');
-            $table->timestamp();
-            });
+            $table->string('email');
+            $table->string('stripe_id');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -31,6 +28,6 @@ class CreateCategoryId extends Migration
      */
     public function down()
     {
-        Schema::drop('category');
+        Schema::dropIfExists('stripe_customer');
     }
 }

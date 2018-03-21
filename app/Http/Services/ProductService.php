@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-namespace App\Http\Services; 
+namespace App\Http\Services;
 
 use App\Product;
 use App\Category;
@@ -9,7 +9,7 @@ use Session;
 
 class ProductService {
 	public function loadHomeProduct($filter){
-//			Home Code... 
+//			Home Code...
 	}
 
 	public static function loadProduct($filter)
@@ -20,55 +20,55 @@ class ProductService {
 		if (!empty($filter['id']))
 		{
 			$product->where('id' ,'=', $filter['id']);
-		} 
+		}
 		if (!empty($filter['arabic']))
 		{
 			$product->where('arabic' ,'like','%'.$filter['arabic']. '%');
-		} 		
+		}
 		if (!empty($filter['english']))
 		{
 			$product->where('english','like','%'.$filter['english'].'%');
-		} 
+		}
 		if (!empty($filter['qty']))
 		{
 			$product->where('qty' , '=', $filter['qty']);
-		} 
+		}
 		//if (!empty($filter['category_id']))
 		//{
 		//	$product->where('category_id','=',$filter[ 'category_id' ]);
-		//} 
+		//}
 		//if (!empty($filter['subcategory_id']))
 		//{
 		//	$product->where('subcategory_id','=',$filter['subcategory_id']);
 		//}
-		
+
 		$product->orderBy('id','desc');
 		$result['total'] = $product->count();
 
 		$skip = ($index == 1) ? 0 : ($index-1)*10 ;
 		$result['data']=$product->take(10)->skip($skip)->get();
 
-		foreach ($result['data'] as $p) {	
+		foreach ($result['data'] as $p) {
 			$temp1 = Category::find($p->category_id);
 			$temp2 = Subcategory::find($p->subcategory_id);
 			$p->price = $p->price . " €";
 
 			if (isset($temp1))
 				$p->category_id = "<b><u><a href='".route('category.index')."'>".$temp1->english."</a></u></b>";
-			else 
+			else
 				$p->category_id = $p->category_id . " <i><small>(Deleted)</small></i>";
-			
+
 
 			if (isset($temp2))
 				$p->subcategory_id = "<b>".$temp2->english."</b>";
-			else 
+			else
 				$p->subcategory_id = $p->subcategory_id . " <i><small>(Deleted)</small></i>";
 
 		}
-		
+
 		return $result;
 	}
-   		// Load From Category 
+   		// Load From Category
 	public static function productDataByCategory($filter,$id)
 	{
 		$index = $filter ? $filter['pageIndex'] : 0 ;
@@ -77,52 +77,52 @@ class ProductService {
 		if (!empty($filter['id']))
 		{
 			$product->where('id' ,'=', $filter['id']);
-		} 
+		}
 		if (!empty($filter['arabic']))
 		{
 			$product->where('arabic' ,'like','%'.$filter['arabic']. '%');
-		} 		
+		}
 		if (!empty($filter['english']))
 		{
 			$product->where('english','like','%'.$filter['english'].'%');
-		} 
+		}
 		if (!empty($filter['qty']))
 		{
 			$product->where('qty' , '=', $filter['qty']);
-		} 
+		}
 		if (!empty($filter['category_id']))
 		{
 			$product->where('category_id','=',$filter[ 'category_id' ]);
-		} 
+		}
 		if (!empty($filter['subcategory_id']))
 		{
 			$product->where('subcategory_id','=',$filter['subcategory_id']);
 		}
-		
+
 		$product->orderBy('id','desc');
 		$result['total'] = $product->count();
 
 		$skip = ($index == 1) ? 0 : ($index-1)*10 ;
 		$result['data']=$product->take(10)->skip($skip)->get();
 
-		foreach ($result['data'] as $p) {	
+		foreach ($result['data'] as $p) {
 			$temp1 = Category::find($p->category_id);
 			$temp2 = Subcategory::find($p->subcategory_id);
 			$p->price = $p->price . " €";
 
 			if (isset($temp1))
 				$p->category_id = "<b>".$temp1->english."</b>";
-			else 
+			else
 				$p->category_id = $p->category_id . " <i><small>(Deleted)</small></i>";
-			
+
 
 			if (isset($temp2))
 				$p->subcategory_id = "<b>".$temp2->english."</b>";
-			else 
+			else
 				$p->subcategory_id = $p->subcategory_id . " <i><small>(Deleted)</small></i>";
 
 		}
-		
+
 		return $result;
 	}
 
@@ -135,55 +135,55 @@ class ProductService {
 		if (!empty($filter['id']))
 		{
 			$product->where('id' ,'=', $filter['id']);
-		} 
+		}
 		if (!empty($filter['arabic']))
 		{
 			$product->where('arabic' ,'like','%'.$filter['arabic']. '%');
-		} 		
+		}
 		if (!empty($filter['english']))
 		{
 			$product->where('english','like','%'.$filter['english'].'%');
-		} 
+		}
 		if (!empty($filter['qty']))
 		{
 			$product->where('qty' , '=', $filter['qty']);
-		} 
+		}
 		if (!empty($filter['category_id']))
 		{
 			//Need a Change !
 			$product->where('category_id','=',$filter[ 'category_id' ]);
-		} 
+		}
 		if (!empty($filter['subcategory_id']))
 		{
-			
+
 			//Need a Change !
 			$product->where('subcategory_id','=',$filter['subcategory_id']);
 		}
-		
+
 		$product->orderBy('id','desc');
 		$result['total'] = $product->count();
 
 		$skip = ($index == 1) ? 0 : ($index-1)*10 ;
 		$result['data']=$product->take(10)->skip($skip)->get();
 
-		foreach ($result['data'] as $p) {	
+		foreach ($result['data'] as $p) {
 			$temp1 = Category::find($p->category_id);
 			$temp2 = Subcategory::find($p->subcategory_id);
 			$p->price = $p->price . " €";
 
 			if (isset($temp1))
 				$p->category_id = "<b>".$temp1->english."</b>";
-			else 
+			else
 				$p->category_id = $p->category_id . " <i><small>(Deleted)</small></i>";
-			
+
 
 			if (isset($temp2))
 				$p->subcategory_id = "<b>".$temp2->english."</b>";
-			else 
+			else
 				$p->subcategory_id = $p->subcategory_id . " <i><small>(Deleted)</small></i>";
 
 		}
-		
+
 		return $result;
 	}
 
@@ -207,7 +207,7 @@ class ProductService {
 		$product->desc_german 	 = $request->desc_german;
 		$product->desc_turky 	 = $request->desc_turky;
 		$product->desc_kurdi 	 = $request->desc_kurdi;
-		
+
 		$product->qty    		 = $request->qty;
 		$product->price 	 	 = $request->price;
 		$product->category_id    = $request->category_id;
@@ -218,7 +218,7 @@ class ProductService {
 		else {
 			$product->point = '0';
 		}
-			//		Unused   "YET" !! 
+			//		Unused   "YET" !!
 		$product->option1 = 0;
 		$product->option2 = 0;
 		$product->option3 = 0;
@@ -230,7 +230,7 @@ class ProductService {
 
 		Session::flash('success', 'Updated Successfuly!');
 		if ($redirect == 1 )
-			return redirect(route('product.index'));	
+			return redirect(route('product.index'));
 		if ($redirect == 2 )
 			return redirect(route('productbycategory.index' , $product->category_id) );
 		if ($redirect == 3 )
@@ -242,5 +242,3 @@ class ProductService {
 
 
 }
-
-

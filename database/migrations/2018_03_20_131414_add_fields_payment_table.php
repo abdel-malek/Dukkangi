@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUserCategoryIdUser extends Migration
+class AddFieldsPaymentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddUserCategoryIdUser extends Migration
      */
     public function up()
     {
-      Schema::table('user', function (Blueprint $table) {
-        $table->integer('user_category_id');
+      Schema::table('payment', function (Blueprint $table) {
+        $table->float('amount');
+        $table->string('currency');
+        $table->string('coupon');
       });
     }
 

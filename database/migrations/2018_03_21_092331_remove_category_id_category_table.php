@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUserCategoryIdUser extends Migration
+class RemoveCategoryIdCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddUserCategoryIdUser extends Migration
      */
     public function up()
     {
-      Schema::table('user', function (Blueprint $table) {
-        $table->integer('user_category_id');
+      Schema::table('category', function (Blueprint $table) {
+        $table->dropColumn('user_category_id');
       });
     }
 
