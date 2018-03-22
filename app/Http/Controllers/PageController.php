@@ -9,9 +9,13 @@ use App\Category;
 use App\Subcategory;
 use App\Product;
 use App\User;
+use App\Rate;
+use App\Comment;
+
 use Redirect;
 use Session;
 use App;
+use Auth;
 
 class PageController extends Controller
 {
@@ -162,12 +166,18 @@ class PageController extends Controller
 		$product = Product::find($id);
 		$category = Category::find($product->category_id);
 		$subcategory = Subcategory::find($product->subcategory_id);
+		$comments = Comment::with(['user'])->where('product_id','=',$product->id)->get()->take(3);
+//		echo $comments ;
+//die();
+		foreach ($comments as $comment) {
+			$comment->user_id = User::find($comment->user_id)->name;
+		}
 		$simiproducts = Product::select('*')->where('subcategory_id','=',$product->subcategory_id)->get();
 		if ($lang == "ar"){
 			$product->english = $product->arabic;
 			$product->desc_english = $product->desc_arabic;
 			$category->english = $category->arabic;
-			$subcategory->english = $category->arabic;
+			$subcategory->english = $subcategory->arabic;
 			foreach ($simiproducts as $simi) {
 				$simi->english = $simi->arabic;
 			}
@@ -176,7 +186,7 @@ class PageController extends Controller
 			$product->english = $product->german;
 			$product->desc_english = $product->desc_german;
 			$category->english = $category->german;
-			$subcategory->english = $category->german;
+			$subcategory->english = $subcategory->german;
 			foreach ($simiproducts as $simi) {
 				$simi->english = $simi->german;
 			}
@@ -185,7 +195,7 @@ class PageController extends Controller
 			$product->english = $product->kurdi;
 			$product->desc_english = $product->desc_kurdi;
 			$category->english = $category->kurdi;
-			$subcategory->english = $category->kurdi;
+			$subcategory->english = $subcategory->kurdi;
 			foreach ($simiproducts as $simi) {
 				$simi->english = $simi->kurdi;
 			}
@@ -195,21 +205,60 @@ class PageController extends Controller
 			$product->english = $product->turky;
 			$product->desc_english = $product->desc_turky;
 			$category->english = $category->turky;
-			$subcategory->english = $category->turky;
+			$subcategory->english = $subcategory->turky;
 			foreach ($simiproducts as $simi) {
 				$simi->english = $simi->turky;
 			}
 		}
 
-		return view('client.pages.item_view')->withProduct($product)->withCategory($category)->withSubcategory($subcategory)->withSimiProducts($simiproducts);	
+		return view('client.pages.item_view')->withProduct($product)->withCategory($category)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments);	
 
 	}
 
 
-	public function setLanguage( $lang)
+	public function rate(Request $request){
+		$userId = Auth::id();
+
+		$type = $request->input('type') == "subategory" ? 2 : 1 ;
+		$id   = $request->input('id');
+		$rate = $request->input('rate');
+
+		
+		$update = Rate::updateOrCreate(
+			['type' => $type , 'user_id'=>$userId ,$type == 1 ?'product_id' :'subcategory_id'  => $id ],  
+	  		['rate' => $rate,'type' => $type , 'user_id'=>$userId ,$type == 1 ?'product_id' :'subcategory_id'  => $id ]
+		);		
+	}
+
+	public function comment(Request $request){
+		$rate =$request->input('rate') ;
+		$description =$request->input('comment');
+		$user_id = Auth::id();
+		$productId = $request->input('id');
+		//dd($rate);
+
+		$comment = new Comment;
+		$comment->rate= $rate;
+		$comment->description = $description;
+		$comment->user_id = $user_id;
+		$comment->product_id = $productId;
+		
+		$comment->save();		
+		
+		return Redirect(route('product' , $productId));
+	}
+
+
+
+
+
+
+
+
+	public function setLanguage($lang)
 	{
-//		App::setLocale((string)$lang);
   		session(['lang' => $lang]);
   		return Redirect::back();
 	} 
+	
 }

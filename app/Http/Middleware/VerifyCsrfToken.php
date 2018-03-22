@@ -13,6 +13,8 @@ class VerifyCsrfToken extends BaseVerifier
      */
     protected $except = [
     	'categories',
-    	'categorytosub'
+    	'categorytosub',
+    	'rate',
+        'comment-save'
     ];
 }

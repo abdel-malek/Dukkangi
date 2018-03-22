@@ -23,6 +23,9 @@ Route::get('/home', 'PageController@index')->name('home');
 Route::get('/category/{id}', 'PageController@getCategoryPage')->name('category');
 Route::get('/categoryfilter', 'PageController@getCategoryNameFilteredPage')->name('categoryfilter');
 Route::get('/productview/{id}' , 'PageController@getProductView')->name('product');
+Route::post('/rate' , 'PageController@rate');
+Route::post('/comment-save' , 'PageController@comment')->name('comment');
+
    			 //DASHBOARD
     //CATEGORIES
 Route::get('/admin/categories', ['uses' => 'CategoryController@index'                  ,'as' => 'category.index'         ]);

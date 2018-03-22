@@ -112,11 +112,11 @@
 @endsection
 @section('main_section')
         <div class="col-md-12" style="padding: 0em 5em;">
-            <div class="header_page">
+            <div class="header_page"  style = "background-image: url('{{$subcategory->image_id}}');">
                 <p class="header_page_text_div">
                    {{$subcategory->english}}
                     <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
-                    <span class="rating" ></span>
+                    <span class="rating rating-info" data-type="subcategory" data-id="{{$subcategory->id}}" ></span>
                 </p>
             </div>
            
@@ -131,7 +131,7 @@
                             <p class="title_item_details">
                                 {{$product->english}}
                             </p>
-                            <span class="rating" style="float:left;"></span>
+                            <span class="rating rating-info" data-type="product" data-id="{{$product->id}}" style="float:left;"></span>
                                <i class="material-icons icon_item_details">&#xE838;</i>
                             <i class="material-icons icon_item_details">error_outline</i>
                         </div>
@@ -249,48 +249,15 @@
                 Customer's Reviews
             </h3>
             <div class="customer_reviews col-md-7">
-                <div class="comments_customer_reviews">
-                    <img src="/front-end/images/slider/item1.jpg" class="img_user_comments_customer_reviews" >
-                    <div class="details_comment">
-                        <h3 class="username_details_comment">Johan Dov</h3>
-                        <p class="rated_details_comment">Rated this product </p>
-                        <span class="rating"></span>
-                        <p class="text_details_comment">
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam,  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </p>
-                        <div class="user_actions_details_comment">
-                            <div class="upvoted_user_actions">
-                                <img src="/front-end/images/user_actions/upvoted.png" class="img_upvoted_user_actions">
-                                <p class="text_upvoted_user_actions">
-                                    Upvoted
-                                </p>
-                            </div>
-                             <div class="replay_user_actions">
-                                <img src="/front-end/images/user_actions/replay.png" class="img_replay_user_actions">
-                                <p class="text_replay_user_actions" style="color: #999">
-                                    Reply
-                                </p>
-                            </div>
-                             <div class="report_user_actions">
-                                <img src="/front-end/images/user_actions/report.png" class="img_report_user_actions">
-                                <p class="text_report_user_actions" style="color: #999">
-                                    Report
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                @foreach($comments as $comment)
                  <div class="comments_customer_reviews">
                     <img src="/front-end/images/slider/item1.jpg" class="img_user_comments_customer_reviews" >
                     <div class="details_comment">
-                        <h3 class="username_details_comment">Johan Dov</h3>
+                        <h3 class="username_details_comment">{{$comment->user_id}}</h3>
                         <p class="rated_details_comment">Rated this product</p>
                         <span class="rating"  ></span>
                         <p class="text_details_comment">
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam,  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            {{$comment->description}}
                         </p>
                         <div class="user_actions_details_comment">
                             <div class="upvoted_user_actions">
@@ -314,47 +281,23 @@
                         </div>
                     </div>
                 </div>
-
-                 <div class="comments_customer_reviews">
-                    <img src="/front-end/images/slider/item1.jpg" class="img_user_comments_customer_reviews" >
-                    <div class="details_comment">
-                        <h3 class="username_details_comment">Johan Dov</h3>
-                        <p class="rated_details_comment">Rated this product</p>
-                        <span class="rating"  ></span>
-                        <p class="text_details_comment">
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam,  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </p>
-                        <div class="user_actions_details_comment">
-                            <div class="upvoted_user_actions">
-                                <img src="/front-end/images/user_actions/upvoted.png" class="img_upvoted_user_actions">
-                                <p class="text_upvoted_user_actions">
-                                    Upvoted
-                                </p>
-                            </div>
-                             <div class="replay_user_actions">
-                                <img src="/front-end/images/user_actions/replay.png" class="img_replay_user_actions">
-                                <p class="text_replay_user_actions" style="color: #999">
-                                    Reply
-                                </p>
-                            </div>
-                             <div class="report_user_actions">
-                                <img src="/front-end/images/user_actions/report.png" class="img_report_user_actions">
-                                <p class="text_report_user_actions" style="color: #999">
-                                    Report
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+                
             </div>
             <div class="leave_constructive_review col-md-4">
+                {!! Form::open(['route' => ['comment',$product->id ]]) !!}
                <h3 class="text_leave_constructive_review" style="color: #d80001;margin-top: 0em;">Leave a constructive review</h3> 
-               <p class="text_leave_constructive_review" style="margin-top: 1.5em;">Rate this product</p>
+               <p class="text_leave_constructive_review" style="margin-top: 1.5em;">Rate this product
+                </p>
+                <span class="rating" ></span> 
                <p class="text_leave_constructive_review">Leave a comment</p>
-               <input type="text" class="input_leave_constructive_review"  />
-               <p class="btn_leave_constructive_review" style="background-color: #d80001;color: #fff">Post my review</p>
+               {{ Form::text('commentbody' , null,['class' => 'input_leave_constructive_review']) }} 
+               <!-- input_leave_constructive_review -->
+               {{ Form::text('rate', 0,['hidden' => 'hidden' , 'id'=>'rate'])}}
+               <a class="btn_leave_constructive_review btn-block"  id="btn-comment" data-id="{{$product->id}}" style="background-color: #d80001;color: #fff">Post my review</a>
+               {{ Form::submit('',['hidden' =>'hidden' , 'id' =>'myBtn'])}}
                <p class="btn_leave_constructive_review">Cancel</p>
+                {!! Form::close() !!}
             </div>
         </div>
         <div class="col-md-12" style="float:left;"> 
@@ -369,7 +312,7 @@
                                     <img src="{{$simiproduct->image_id}}" class="img_item" style="height: 220px" />
                                     <p class="item_name">{{ $simiproduct->english}}</p>
                                     <p class="item_price" style="margin-bottom: 0em;">{{$simiproduct->price}} €</p>
-                                    <span class="rating" ></span>
+                                    <span class="rating rating-info"   data-type="product" data-id="{{$simiproduct->id}}" ></span>
                                     <img src="/front-end/images\user_actions\view-my-cart.png" class="icon_view_my_card" />
                                 </div>
                             </div>
@@ -385,7 +328,7 @@
 @endsection
         
 @section('scripts')
-        <script src="http://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
         <script src="/front-end/js/plugin/jquery-pretty-tabs.js"></script>
         <script type="text/javascript">
                 var _gaq = _gaq || [];
@@ -405,7 +348,7 @@
         <script src="/front-end/js/plugin/SimpleStarRating.js"></script>
         <script>
                 var ratings = document.getElementsByClassName('rating');
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 for (var i = 0; i < ratings.length; i++) {
                     var r = new SimpleStarRating(ratings[i]);
 
@@ -422,8 +365,56 @@
                       num_star_active ++;
                   }  
                });
+               type = $(this).data('type');
+               id=$(this).data('id');
+               
+            data = {};
+            console.log(data);
+            $.ajax({
+                url: "/rate" ,
+               type: "POST",
+                data: {"type":type,"rate": num_star_active , "id": id } ,
+                dataType: 'json',
+                success: function (response) {
+                    alert(response.status);
+                }
+             }); 
                //      Value star is variable : num_star_active
                //      Request Update rating 
+            });
+        
+            $('.rating').click(function(){
+                var num_star_active = 0;
+               $(this).find('.star').each(function(){
+                  if($(this).hasClass('active')){
+                      num_star_active ++;
+                  }  
+               });
+           });
+
+            $('#btn-comment').on("click",function(e){
+                e.preventDefault();
+
+                var num_star_active = 0;
+               $('.leave_constructive_review').find('.star').each(function(){
+                  if($(this).hasClass('active')){
+                      num_star_active ++;
+                  }  
+               });
+               var comment = $('input[name=commentbody]').val();
+               var id = $(this).data('id');
+
+              $.ajax({
+                    url: "/comment-save" ,
+                    type: "POST",
+                    data: {"comment":comment,"rate": num_star_active , "id": id } ,
+                    dataType: 'json',
+                    success: function (response) {
+                        alert(response.status);
+                    }
+                 }); 
+
+                console.log(num_star_active);
             });
         </script>
 @endsection
