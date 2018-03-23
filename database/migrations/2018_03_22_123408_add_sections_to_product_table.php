@@ -13,7 +13,7 @@ class AddSectionsToProductTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('products', function (Blueprint $table) {
             $table->text('section1_english');
             $table->text('section1_arabic');
             $table->text('section1_turky');

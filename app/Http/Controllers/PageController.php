@@ -163,16 +163,19 @@ class PageController extends Controller
 		$lang = session('lang');
 
 		App::setLocale((string)$lang);
+		
 		$product = Product::find($id);
 		$category = Category::find($product->category_id);
 		$subcategory = Subcategory::find($product->subcategory_id);
 		$comments = Comment::with(['user'])->where('product_id','=',$product->id)->get()->take(3);
-//		echo $comments ;
-//die();
+
 		foreach ($comments as $comment) {
 			$comment->user_id = User::find($comment->user_id)->name;
+			$comment->rate = round($comment->rate);
 		}
+		
 		$simiproducts = Product::select('*')->where('subcategory_id','=',$product->subcategory_id)->get();
+		
 		if ($lang == "ar"){
 			$product->english = $product->arabic;
 			$product->desc_english = $product->desc_arabic;
@@ -211,6 +214,28 @@ class PageController extends Controller
 			}
 		}
 
+		//Calculate Average Rate For Subcategory
+		
+
+		$subcategoryRate = Rate::select('rate')->where('subcategory_id' , '=',$subcategory->id)->get();
+		if($subcategoryRate->count() != 0){
+			$precalculation = 0;
+			foreach ($subcategoryRate as $temp) {
+					$precalculation = $precalculation + $temp->rate;
+			}
+			$subcategory->rate = round( $precalculation / $subcategoryRate->count() );
+		}
+		//Calculate Average Rate For Product
+		
+
+		$productRate = Rate::select('rate')->where('product_id' , '=',$product->id)->get();
+		if($productRate->count() != 0){
+			$precalculation =0 ;
+			foreach ($productRate as $temp) {
+					$precalculation = $precalculation + $temp->rate;
+			}
+			$product->rate = round( $precalculation / $productRate->count() );
+		}
 		return view('client.pages.item_view')->withProduct($product)->withCategory($category)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments);	
 
 	}
@@ -222,8 +247,7 @@ class PageController extends Controller
 		$type = $request->input('type') == "subategory" ? 2 : 1 ;
 		$id   = $request->input('id');
 		$rate = $request->input('rate');
-
-		
+		//dd($type);
 		$update = Rate::updateOrCreate(
 			['type' => $type , 'user_id'=>$userId ,$type == 1 ?'product_id' :'subcategory_id'  => $id ],  
 	  		['rate' => $rate,'type' => $type , 'user_id'=>$userId ,$type == 1 ?'product_id' :'subcategory_id'  => $id ]
@@ -235,8 +259,7 @@ class PageController extends Controller
 		$description =$request->input('comment');
 		$user_id = Auth::id();
 		$productId = $request->input('id');
-		//dd($rate);
-
+	//	dd($description);
 		$comment = new Comment;
 		$comment->rate= $rate;
 		$comment->description = $description;

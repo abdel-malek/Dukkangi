@@ -116,7 +116,7 @@
                 <p class="header_page_text_div">
                    {{$subcategory->english}}
                     <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
-                    <span class="rating rating-info" data-type="subcategory" data-id="{{$subcategory->id}}" ></span>
+                    <span class="rating rating-info subcategory" data-type="subcategory" data-id="{{$subcategory->id}}" ></span>
                 </p>
             </div>
            
@@ -126,12 +126,12 @@
                             <!-- Need a Change -->
                             <p class="text_discount_details"> 15% off</p>
                          </div>
-                        <img src="{{$product->image_id}}" class="img_item_details" />
+                        <img src="{{$product->image_id}}" class="img_item_details" style="height: 380px" />
                         <div class="div_title_item_details" >
                             <p class="title_item_details">
                                 {{$product->english}}
                             </p>
-                            <span class="rating rating-info" data-type="product" data-id="{{$product->id}}" style="float:left;"></span>
+                            <span class="rating rating-info product" data-type="product" data-id="{{$product->id}}" style="float:left;"></span>
                                <i class="material-icons icon_item_details">&#xE838;</i>
                             <i class="material-icons icon_item_details">error_outline</i>
                         </div>
@@ -162,24 +162,33 @@
             <div class="sections">
                 <div class="section">
                     <h4 class="title_section">
-                        Category
+                        Section 1
                     </h4>
                     <p class="text_section">
                         <big>
-                         <span>{{$category->english}}</span>
+                         <span>{{$product->section1_english}}</span>
                         </big>
                     </p>
                 </div>
-                   <div class="section">
+                <div class="section">
                     <h4 class="title_section">
-                        <big>
-                        Subcategory
-                        </big>
+                        Section 2
                     </h4>
                     <p class="text_section">
-                        {{$subcategory->english}}<br/><br>
+                         <span>{{$product->section2_english}}</span>
+                         <p>
                          <span class="point_text_section">{{$product->point}} points</span> <small>This will be given to you !</small> 
-                    </p>
+                         </p>
+                    </p>                    
+                </div>
+                
+                <div class="section">
+                    <h4 class="title_section">
+                        Section 3
+                    </h4>
+                      <p class="text_section">
+                         {{$product->section3_english}}<br/><br>
+                       </p>
                 </div>
                 <div class="section">
                     <h4 class="title_section">
@@ -253,9 +262,9 @@
                  <div class="comments_customer_reviews">
                     <img src="/front-end/images/slider/item1.jpg" class="img_user_comments_customer_reviews" >
                     <div class="details_comment">
-                        <h3 class="username_details_comment">{{$comment->user_id}}</h3>
-                        <p class="rated_details_comment">Rated this product</p>
-                        <span class="rating"  ></span>
+                        <h3 class="username_details_comment" style="width:225px">{{$comment->user_id}}</h3>
+                        <p class="rated_details_comment" style="margin-left: 0px">Rated this product</p>
+                        <span class="rating comment"  ></span>
                         <p class="text_details_comment">
                             {{$comment->description}}
                         </p>
@@ -282,21 +291,21 @@
                     </div>
                 </div>
                 @endforeach
+                    
                 
             </div>
             <div class="leave_constructive_review col-md-4">
                 {!! Form::open(['route' => ['comment',$product->id ]]) !!}
-               <h3 class="text_leave_constructive_review" style="color: #d80001;margin-top: 0em;">Leave a constructive review</h3> 
-               <p class="text_leave_constructive_review" style="margin-top: 1.5em;">Rate this product
-                </p>
-                <span class="rating" ></span> 
-               <p class="text_leave_constructive_review">Leave a comment</p>
-               {{ Form::text('commentbody' , null,['class' => 'input_leave_constructive_review']) }} 
-               <!-- input_leave_constructive_review -->
-               {{ Form::text('rate', 0,['hidden' => 'hidden' , 'id'=>'rate'])}}
-               <a class="btn_leave_constructive_review btn-block"  id="btn-comment" data-id="{{$product->id}}" style="background-color: #d80001;color: #fff">Post my review</a>
-               {{ Form::submit('',['hidden' =>'hidden' , 'id' =>'myBtn'])}}
-               <p class="btn_leave_constructive_review">Cancel</p>
+                    <h3 class="text_leave_constructive_review" style="color: #d80001;margin-top: 0em;">Leave a constructive review</h3> 
+                    <p class="text_leave_constructive_review" style="margin-top: 1.5em;">Rate this product </p>
+                    <span class="rating form-rate" data-id="{{$product->id }}" style="margin-bottom: 347px;margin-left: 200px" ></span>
+                    <p class="text_leave_constructive_review">Leave a comment</p>
+                    {{ Form::text('commentbody' , null,['class' => 'input_leave_constructive_review']) }} 
+                    <!-- input_leave_constructive_review -->
+                    {{ Form::text('rate', 0,['hidden' => 'hidden' , 'id'=>'rate'])}}
+                    <a class="btn_leave_constructive_review btn-block commentbody"  id="btn-comment" data-id="{{$product->id}}" style="background-color: #d80001;color: #fff">Post my review</a>
+                    {{ Form::submit('',['hidden' =>'hidden' , 'id' =>'myBtn'])}}
+                    <p class="btn_leave_constructive_review" onclick="document.getElementsByClassName('commentbody').thisext ='' ">Cancel</p>
                 {!! Form::close() !!}
             </div>
         </div>
@@ -310,14 +319,14 @@
                               <div class="col-md-3" style="margin-top: 1em;float: left;">
                                 <div class="div_item">
                                     <img src="{{$simiproduct->image_id}}" class="img_item" style="height: 220px" />
-                                    <p class="item_name">{{ $simiproduct->english}}</p>
+                                    <p class="item_name">{{ $simiproduct->english}}  </p>
                                     <p class="item_price" style="margin-bottom: 0em;">{{$simiproduct->price}} €</p>
-                                    <span class="rating rating-info"   data-type="product" data-id="{{$simiproduct->id}}" ></span>
+                                    <span class="rating simi"  ></span>
                                     <img src="/front-end/images\user_actions\view-my-cart.png" class="icon_view_my_card" />
                                 </div>
                             </div>
                             @endforeach
-            <!-- Testing   endfor -->
+            <!-- Testing  endfor -->
 
 
 
@@ -346,9 +355,22 @@
                 })();
         </script>
         <script src="/front-end/js/plugin/SimpleStarRating.js"></script>
+        
         <script>
-                var ratings = document.getElementsByClassName('rating');
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //5 functions for 1, 2, 3, 4, 5 Stars for anything 
+            //one more function for those which don't have any rate
+                //Initial Rate Subcategory
+                var ratings = document.getElementsByClassName('subcategory');
+                for (var i = 0; i < ratings.length; i++) {
+                    var r = new SimpleStarRating<?php echo ($subcategory->rate==0?'':$subcategory->rate)?>(ratings[i]);
+
+                    ratings[i].addEventListener('rate', function (e) {
+                        console.log('Rating: ' + e.detail);
+                    });
+                }
+                
+                //Form Rate This Product
+                var ratings = document.getElementsByClassName('form-rate');
                 for (var i = 0; i < ratings.length; i++) {
                     var r = new SimpleStarRating(ratings[i]);
 
@@ -356,9 +378,46 @@
                         console.log('Rating: ' + e.detail);
                     });
                 }
+                //Initial Rate Product
+                 var ratings = document.getElementsByClassName('product');
+                for (var i = 0; i < ratings.length; i++) {
+                    var r = new SimpleStarRating<?php echo ($product->rate==0?'':$product->rate) ?>(ratings[i]);
+
+                    ratings[i].addEventListener('rate', function (e) {
+                        console.log('Rating: ' + e.detail);
+                    });
+                }
+
+                //Initial Rate Comments
+                
+                var ratings = document.getElementsByClassName('comment');
+                <?php $counter= 0 ?>
+
+                for (var i = 0; i < ratings.length; i++) {
+
+                    var r = new SimpleStarRating<?php echo isset($comments[$counter]->rate)?$comments[$counter]->rate : '' ?>(ratings[i]);
+                    <?php $counter++?>
+                    ratings[i].addEventListener('rate', function (e) {
+                        console.log('Rating: ' + e.detail);
+                    });
+                }
+                //Initial Rate Simiproducts
+                
+                var ratings = document.getElementsByClassName('simi');
+                <?php $counter= 0 ?>
+
+                for (var i = 0; i < ratings.length; i++) {
+                    var r = new SimpleStarRating<?php echo (isset($simiProducts[$counter]->rate)?$simiProducts[$counter]->rate:'0') ?>(ratings[i]);
+                    <?php $counter++?>
+                    ratings[i].addEventListener('rate', function (e) {
+                        console.log('Rating: ' + e.detail);
+                    });
+                }
+                
+
         </script>
         <script>
-            $('.rating').click(function(){
+            $('.form-rate').click(function(){
                 var num_star_active = 0;
                $(this).find('.star').each(function(){
                   if($(this).hasClass('active')){
@@ -417,4 +476,5 @@
                 console.log(num_star_active);
             });
         </script>
+
 @endsection

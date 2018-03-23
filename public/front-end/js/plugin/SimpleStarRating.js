@@ -115,7 +115,772 @@ var SimpleStarRating = (function () {
         }
 
         function showDefaultRating() {
+            //Hon al initial rate
             defaultRating = parseFloat(attr('data-default-rating', 0));
+            showRating(defaultRating);
+        }
+
+        function clearRating() {
+            for (var i = 0; i < stars.length; i++) {
+                stars[i].classList.remove('active');
+                stars[i].classList.remove('half');
+            }
+        }
+
+        function starClick(e) {
+            if (disabled) return;
+
+            if (this === e.target) {
+                var starClicked = stars.indexOf(e.target);
+                if (starClicked !== -1) {
+                    var starRating = starClicked + 1;
+                    setCurrentRating(starRating);
+                    if (typeof this.onrate === 'function')
+                        this.onrate(currentRating);
+                    var evt = new CustomEvent('rate', {
+                        detail: starRating,
+                    });
+                    target.dispatchEvent(evt);
+                }
+            }
+        }
+    }
+
+    return SimpleStarRating;
+})();
+
+
+var SimpleStarRating0 = (function () {
+    function SimpleStarRating(target) {
+        function attr(name, d) {
+            var a = target.getAttribute(name);
+            return (a ? a : d);
+        }
+
+        var max = parseInt(attr('data-stars', 5)),
+            disabled = typeof target.getAttribute('disabled') != 'undefined',
+            defaultRating = parseFloat(attr('data-default-rating', 0)),
+            currentRating = -1,
+            stars = [];
+
+        target.style.display = 'inline-block';
+
+        for (var s = 0; s < max; s++) {
+            var n = document.createElement('span');
+            n.className = 'star';
+            n.addEventListener('click', starClick);
+            if (s > 0)
+                stars[s - 1].appendChild(n);
+            else
+                target.appendChild(n);
+
+            stars.push(n);
+        }
+
+        function disable() {
+            target.setAttribute('disabled', '');
+            disabled = true;
+        }
+        this.disable = disable;
+
+        function enable() {
+            target.removeAttribute('disabled');
+            disabled = false;
+        }
+//        this.enable = enable;
+
+        function setCurrentRating(rating) {
+            currentRating = rating;
+            target.setAttribute('data-rating', currentRating);
+            showCurrentRating();
+        }
+        this.setCurrentRating = setCurrentRating;
+
+        function setDefaultRating(rating) {
+            defaultRating = rating;
+            target.setAttribute('data-default-rating', defaultRating);
+            showDefaultRating();
+        }
+        this.setDefaultRating = setDefaultRating;
+
+        this.onrate = function (rating) {};
+
+        // target.addEventListener('mouseout', function () {
+        //     disabled = target.getAttribute('disabled') !== null;
+        //     if (!disabled)
+        //         showCurrentRating();
+        // });
+
+        // target.addEventListener('mouseover', function () {
+        //     disabled = target.getAttribute('disabled') !== null;
+        //     if (!disabled)
+        //         clearRating();
+        // });
+
+        showDefaultRating();
+
+        function showRating(r) {
+            clearRating();
+            for (var i = 0; i < stars.length; i++) {
+                if (i >= r)
+                    break;
+                if (i === Math.floor(r) && i !== r)
+                    stars[i].classList.add('half');
+                stars[i].classList.add('active');
+            }
+        }
+
+        function showCurrentRating() {
+            var ratingAttr = parseFloat(attr('data-rating', 0));
+            if (ratingAttr) {
+                currentRating = ratingAttr;
+                showRating(currentRating);
+            } else {
+                showDefaultRating();
+            }
+        }
+
+        function showDefaultRating() {
+            //Hon al initial rate
+            defaultRating = parseFloat(attr('data-default-rating', 0));
+            showRating(defaultRating);
+        }
+
+        function clearRating() {
+            for (var i = 0; i < stars.length; i++) {
+                stars[i].classList.remove('active');
+                stars[i].classList.remove('half');
+            }
+        }
+
+        function starClick(e) {
+            if (disabled) return;
+
+            if (this === e.target) {
+                var starClicked = stars.indexOf(e.target);
+                if (starClicked !== -1) {
+                    var starRating = starClicked + 1;
+                    setCurrentRating(starRating);
+                    if (typeof this.onrate === 'function')
+                        this.onrate(currentRating);
+                    var evt = new CustomEvent('rate', {
+                        detail: starRating,
+                    });
+                    target.dispatchEvent(evt);
+                }
+            }
+        }
+    }
+
+    return SimpleStarRating;
+})();
+
+
+
+
+var SimpleStarRating1 = (function () {
+    function SimpleStarRating(target) {
+        function attr(name, d) {
+            var a = target.getAttribute(name);
+            return (a ? a : d);
+        }
+
+        var max = parseInt(attr('data-stars', 5)),
+            disabled = typeof target.getAttribute('disabled') != 'undefined',
+            defaultRating = parseFloat(attr('data-default-rating', 0)),
+            currentRating = -1,
+            stars = [];
+
+        target.style.display = 'inline-block';
+
+        for (var s = 0; s < max; s++) {
+            var n = document.createElement('span');
+            n.className = 'star';
+            n.addEventListener('click', starClick);
+            if (s > 0)
+                stars[s - 1].appendChild(n);
+            else
+                target.appendChild(n);
+
+            stars.push(n);
+        }
+
+        function disable() {
+            target.setAttribute('disabled', '');
+            disabled = true;
+        }
+        this.disable = disable;
+
+        function enable() {
+            target.removeAttribute('disabled');
+            disabled = false;
+        }
+//        this.enable = enable;
+
+        function setCurrentRating(rating) {
+            currentRating = rating;
+            target.setAttribute('data-rating', currentRating);
+            showCurrentRating();
+        }
+        this.setCurrentRating = setCurrentRating;
+
+        function setDefaultRating(rating) {
+            defaultRating = rating;
+            target.setAttribute('data-default-rating', defaultRating);
+            showDefaultRating();
+        }
+        this.setDefaultRating = setDefaultRating;
+
+        this.onrate = function (rating) {};
+
+        // target.addEventListener('mouseout', function () {
+        //     disabled = target.getAttribute('disabled') !== null;
+        //     if (!disabled)
+        //         showCurrentRating();
+        // });
+
+        // target.addEventListener('mouseover', function () {
+        //     disabled = target.getAttribute('disabled') !== null;
+        //     if (!disabled)
+        //         clearRating();
+        // });
+
+        showDefaultRating();
+
+        function showRating(r) {
+            clearRating();
+            for (var i = 0; i < stars.length; i++) {
+                if (i >= r)
+                    break;
+                if (i === Math.floor(r) && i !== r)
+                    stars[i].classList.add('half');
+                stars[i].classList.add('active');
+            }
+        }
+
+        function showCurrentRating() {
+            var ratingAttr = parseFloat(attr('data-rating', 0));
+            if (ratingAttr) {
+                currentRating = ratingAttr;
+                showRating(currentRating);
+            } else {
+                showDefaultRating();
+            }
+        }
+
+        function showDefaultRating() {
+            //Hon al initial rate
+            defaultRating = parseFloat(attr('data-default-rating', 1));
+            showRating(defaultRating);
+        }
+
+        function clearRating() {
+            for (var i = 0; i < stars.length; i++) {
+                stars[i].classList.remove('active');
+                stars[i].classList.remove('half');
+            }
+        }
+
+        function starClick(e) {
+            if (disabled) return;
+
+            if (this === e.target) {
+                var starClicked = stars.indexOf(e.target);
+                if (starClicked !== -1) {
+                    var starRating = starClicked + 1;
+                    setCurrentRating(starRating);
+                    if (typeof this.onrate === 'function')
+                        this.onrate(currentRating);
+                    var evt = new CustomEvent('rate', {
+                        detail: starRating,
+                    });
+                    target.dispatchEvent(evt);
+                }
+            }
+        }
+    }
+
+    return SimpleStarRating;
+})();
+
+var SimpleStarRating2 = (function () {
+    function SimpleStarRating(target) {
+        function attr(name, d) {
+            var a = target.getAttribute(name);
+            return (a ? a : d);
+        }
+
+        var max = parseInt(attr('data-stars', 5)),
+            disabled = typeof target.getAttribute('disabled') != 'undefined',
+            defaultRating = parseFloat(attr('data-default-rating', 0)),
+            currentRating = -1,
+            stars = [];
+
+        target.style.display = 'inline-block';
+
+        for (var s = 0; s < max; s++) {
+            var n = document.createElement('span');
+            n.className = 'star';
+            n.addEventListener('click', starClick);
+            if (s > 0)
+                stars[s - 1].appendChild(n);
+            else
+                target.appendChild(n);
+
+            stars.push(n);
+        }
+
+        function disable() {
+            target.setAttribute('disabled', '');
+            disabled = true;
+        }
+        this.disable = disable;
+
+        function enable() {
+            target.removeAttribute('disabled');
+            disabled = false;
+        }
+       // this.enable = enable;
+
+        function setCurrentRating(rating) {
+            currentRating = rating;
+            target.setAttribute('data-rating', currentRating);
+            showCurrentRating();
+        }
+        this.setCurrentRating = setCurrentRating;
+
+        function setDefaultRating(rating) {
+            defaultRating = rating;
+            target.setAttribute('data-default-rating', defaultRating);
+            showDefaultRating();
+        }
+        this.setDefaultRating = setDefaultRating;
+
+        this.onrate = function (rating) {};
+
+        // target.addEventListener('mouseout', function () {
+        //     disabled = target.getAttribute('disabled') !== null;
+        //     if (!disabled)
+        //         showCurrentRating();
+        // });
+
+        // target.addEventListener('mouseover', function () {
+        //     disabled = target.getAttribute('disabled') !== null;
+        //     if (!disabled)
+        //         clearRating();
+        // });
+
+        showDefaultRating();
+
+        function showRating(r) {
+            clearRating();
+            for (var i = 0; i < stars.length; i++) {
+                if (i >= r)
+                    break;
+                if (i === Math.floor(r) && i !== r)
+                    stars[i].classList.add('half');
+                stars[i].classList.add('active');
+            }
+        }
+
+        function showCurrentRating() {
+            var ratingAttr = parseFloat(attr('data-rating', 0));
+            if (ratingAttr) {
+                currentRating = ratingAttr;
+                showRating(currentRating);
+            } else {
+                showDefaultRating();
+            }
+        }
+
+        function showDefaultRating() {
+            //Hon al initial rate
+            defaultRating = parseFloat(attr('data-default-rating', 2));
+            showRating(defaultRating);
+        }
+
+        function clearRating() {
+            for (var i = 0; i < stars.length; i++) {
+                stars[i].classList.remove('active');
+                stars[i].classList.remove('half');
+            }
+        }
+
+        function starClick(e) {
+            if (disabled) return;
+
+            if (this === e.target) {
+                var starClicked = stars.indexOf(e.target);
+                if (starClicked !== -1) {
+                    var starRating = starClicked + 1;
+                    setCurrentRating(starRating);
+                    if (typeof this.onrate === 'function')
+                        this.onrate(currentRating);
+                    var evt = new CustomEvent('rate', {
+                        detail: starRating,
+                    });
+                    target.dispatchEvent(evt);
+                }
+            }
+        }
+    }
+
+    return SimpleStarRating;
+})();
+
+
+
+
+var SimpleStarRating3 = (function () {
+    function SimpleStarRating(target) {
+        function attr(name, d) {
+            var a = target.getAttribute(name);
+            return (a ? a : d);
+        }
+
+        var max = parseInt(attr('data-stars', 5)),
+            disabled = typeof target.getAttribute('disabled') != 'undefined',
+            defaultRating = parseFloat(attr('data-default-rating', 0)),
+            currentRating = -1,
+            stars = [];
+
+        target.style.display = 'inline-block';
+
+        for (var s = 0; s < max; s++) {
+            var n = document.createElement('span');
+            n.className = 'star';
+            n.addEventListener('click', starClick);
+            if (s > 0)
+                stars[s - 1].appendChild(n);
+            else
+                target.appendChild(n);
+
+            stars.push(n);
+        }
+
+        function disable() {
+            target.setAttribute('disabled', '');
+            disabled = true;
+        }
+        this.disable = disable;
+
+        function enable() {
+            target.removeAttribute('disabled');
+            disabled = false;
+        }
+       // this.enable = enable;
+
+        function setCurrentRating(rating) {
+            currentRating = rating;
+            target.setAttribute('data-rating', currentRating);
+            showCurrentRating();
+        }
+        this.setCurrentRating = setCurrentRating;
+
+        function setDefaultRating(rating) {
+            defaultRating = rating;
+            target.setAttribute('data-default-rating', defaultRating);
+            showDefaultRating();
+        }
+        this.setDefaultRating = setDefaultRating;
+
+        this.onrate = function (rating) {};
+
+        // target.addEventListener('mouseout', function () {
+        //     disabled = target.getAttribute('disabled') !== null;
+        //     if (!disabled)
+        //         showCurrentRating();
+        // });
+
+        // target.addEventListener('mouseover', function () {
+        //     disabled = target.getAttribute('disabled') !== null;
+        //     if (!disabled)
+        //         clearRating();
+        // });
+
+        showDefaultRating();
+
+        function showRating(r) {
+            clearRating();
+            for (var i = 0; i < stars.length; i++) {
+                if (i >= r)
+                    break;
+                if (i === Math.floor(r) && i !== r)
+                    stars[i].classList.add('half');
+                stars[i].classList.add('active');
+            }
+        }
+
+        function showCurrentRating() {
+            var ratingAttr = parseFloat(attr('data-rating', 0));
+            if (ratingAttr) {
+                currentRating = ratingAttr;
+                showRating(currentRating);
+            } else {
+                showDefaultRating();
+            }
+        }
+
+        function showDefaultRating() {
+            //Hon al initial rate
+            defaultRating = parseFloat(attr('data-default-rating', 3));
+            showRating(defaultRating);
+        }
+
+        function clearRating() {
+            for (var i = 0; i < stars.length; i++) {
+                stars[i].classList.remove('active');
+                stars[i].classList.remove('half');
+            }
+        }
+
+        function starClick(e) {
+            if (disabled) return;
+
+            if (this === e.target) {
+                var starClicked = stars.indexOf(e.target);
+                if (starClicked !== -1) {
+                    var starRating = starClicked + 1;
+                    setCurrentRating(starRating);
+                    if (typeof this.onrate === 'function')
+                        this.onrate(currentRating);
+                    var evt = new CustomEvent('rate', {
+                        detail: starRating,
+                    });
+                    target.dispatchEvent(evt);
+                }
+            }
+        }
+    }
+
+    return SimpleStarRating;
+})();
+
+
+
+
+var SimpleStarRating4 = (function () {
+    function SimpleStarRating(target) {
+        function attr(name, d) {
+            var a = target.getAttribute(name);
+            return (a ? a : d);
+        }
+
+        var max = parseInt(attr('data-stars', 5)),
+            disabled = typeof target.getAttribute('disabled') != 'undefined',
+            defaultRating = parseFloat(attr('data-default-rating', 0)),
+            currentRating = -1,
+            stars = [];
+
+        target.style.display = 'inline-block';
+
+        for (var s = 0; s < max; s++) {
+            var n = document.createElement('span');
+            n.className = 'star';
+            n.addEventListener('click', starClick);
+            if (s > 0)
+                stars[s - 1].appendChild(n);
+            else
+                target.appendChild(n);
+
+            stars.push(n);
+        }
+
+        function disable() {
+            target.setAttribute('disabled', '');
+            disabled = true;
+        }
+        this.disable = disable;
+
+        function enable() {
+            target.removeAttribute('disabled');
+            disabled = false;
+        }
+      //  this.enable = enable;
+
+        function setCurrentRating(rating) {
+            currentRating = rating;
+            target.setAttribute('data-rating', currentRating);
+            showCurrentRating();
+        }
+        this.setCurrentRating = setCurrentRating;
+
+        function setDefaultRating(rating) {
+            defaultRating = rating;
+            target.setAttribute('data-default-rating', defaultRating);
+            showDefaultRating();
+        }
+        this.setDefaultRating = setDefaultRating;
+
+        this.onrate = function (rating) {};
+
+       // target.addEventListener('mouseout', function () {
+       //     disabled = target.getAttribute('disabled') !== null;
+       //     if (!disabled)
+       //         showCurrentRating();
+       // });
+
+       // target.addEventListener('mouseover', function () {
+       //     disabled = target.getAttribute('disabled') !== null;
+       //     if (!disabled)
+       //         clearRating();
+       //  });
+
+        showDefaultRating();
+
+        function showRating(r) {
+            clearRating();
+            for (var i = 0; i < stars.length; i++) {
+                if (i >= r)
+                    break;
+                if (i === Math.floor(r) && i !== r)
+                    stars[i].classList.add('half');
+                stars[i].classList.add('active');
+            }
+        }
+
+        function showCurrentRating() {
+            var ratingAttr = parseFloat(attr('data-rating', 0));
+            if (ratingAttr) {
+                currentRating = ratingAttr;
+                showRating(currentRating);
+            } else {
+                showDefaultRating();
+            }
+        }
+
+        function showDefaultRating() {
+            //Hon al initial rate
+            defaultRating = parseFloat(attr('data-default-rating', 4));
+            showRating(defaultRating);
+        }
+
+        function clearRating() {
+            for (var i = 0; i < stars.length; i++) {
+                stars[i].classList.remove('active');
+                stars[i].classList.remove('half');
+            }
+        }
+
+       function starClick(e) {
+           if (disabled) return;
+
+           if (this === e.target) {
+               var starClicked = stars.indexOf(e.target);
+               if (starClicked !== -1) {
+                   var starRating = starClicked + 1;
+                   setCurrentRating(starRating);
+                    if (typeof this.onrate === 'function')
+                       this.onrate(currentRating);
+                   var evt = new CustomEvent('rate', {
+                       detail: starRating,
+                   });
+                   target.dispatchEvent(evt);
+               }
+           }
+    }
+    }
+
+    return SimpleStarRating;
+})();
+
+
+
+
+
+var SimpleStarRating5 = (function () {
+    function SimpleStarRating(target) {
+        function attr(name, d) {
+            var a = target.getAttribute(name);
+            return (a ? a : d);
+        }
+
+        var max = parseInt(attr('data-stars', 5)),
+            disabled = typeof target.getAttribute('disabled') != 'undefined',
+            defaultRating = parseFloat(attr('data-default-rating', 0)),
+            currentRating = -1,
+            stars = [];
+
+        target.style.display = 'inline-block';
+
+        for (var s = 0; s < max; s++) {
+            var n = document.createElement('span');
+            n.className = 'star';
+            n.addEventListener('click', starClick);
+            if (s > 0)
+                stars[s - 1].appendChild(n);
+            else
+                target.appendChild(n);
+
+            stars.push(n);
+        }
+
+        function disable() {
+            target.setAttribute('disabled', '');
+            disabled = true;
+        }
+        this.disable = disable;
+
+        function enable() {
+            target.removeAttribute('disabled');
+            disabled = false;
+        }
+      //  this.enable = enable;
+
+        function setCurrentRating(rating) {
+            currentRating = rating;
+            target.setAttribute('data-rating', currentRating);
+            showCurrentRating();
+        }
+        this.setCurrentRating = setCurrentRating;
+
+        function setDefaultRating(rating) {
+            defaultRating = rating;
+            target.setAttribute('data-default-rating', defaultRating);
+            showDefaultRating();
+        }
+        this.setDefaultRating = setDefaultRating;
+
+        this.onrate = function (rating) {};
+
+        // target.addEventListener('mouseout', function () {
+        //     disabled = target.getAttribute('disabled') !== null;
+        //     if (!disabled)
+        //         showCurrentRating();
+        // });
+
+        // target.addEventListener('mouseover', function () {
+        //     disabled = target.getAttribute('disabled') !== null;
+        //     if (!disabled)
+        //         clearRating();
+        // });
+
+        showDefaultRating();
+
+        function showRating(r) {
+            clearRating();
+            for (var i = 0; i < stars.length; i++) {
+                if (i >= r)
+                    break;
+                if (i === Math.floor(r) && i !== r)
+                    stars[i].classList.add('half');
+                stars[i].classList.add('active');
+            }
+        }
+
+        function showCurrentRating() {
+            var ratingAttr = parseFloat(attr('data-rating', 0));
+            if (ratingAttr) {
+                currentRating = ratingAttr;
+                showRating(currentRating);
+            } else {
+                showDefaultRating();
+            }
+        }
+
+        function showDefaultRating() {
+            //Hon al initial rate
+            defaultRating = parseFloat(attr('data-default-rating', 5));
             showRating(defaultRating);
         }
 
