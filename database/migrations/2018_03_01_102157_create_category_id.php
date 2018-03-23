@@ -20,7 +20,7 @@ class CreateCategoryId extends Migration
             $table->string('kurdi');
             $table->string('turky');
             $table->string('german');
-            $table->timestamp();
+            $table->timestamps();
             });
     }
 
