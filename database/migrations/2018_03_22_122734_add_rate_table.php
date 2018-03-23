@@ -20,7 +20,7 @@ class AddRateTable extends Migration
             $table->integer('type');
             $table->integer('product_id')->nullable();
             $table->integer('subcategory_id')->nullable();
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 
