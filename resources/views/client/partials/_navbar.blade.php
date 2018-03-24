@@ -14,7 +14,7 @@
               <a class="nav-link" href="{{route('login')}}">@lang('Login')</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./signup.html">@lang('Sign up')</a>
+              <a class="nav-link" href="{{route('register')}}">@lang('Sign up')</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./help.html">@lang('Help')</a>
