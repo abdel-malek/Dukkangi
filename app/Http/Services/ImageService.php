@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-namespace App\Http\Services; 
+namespace App\Http\Services;
 
 use App\Category;
 use App\Subcategory;
@@ -10,7 +10,7 @@ class ImageService {
 
     public static function saveImage($image)
     {
-        $path = str_replace('\app\Http\Services', '\public\uploads', dirname(__FILE__));
+        $path = str_replace('/app/Http/Services', '/public/uploads', dirname(__FILE__));
         if (!empty($image) && $image->isValid()) {
             if ($image->isValid()) {
                 $image->move($path, $image->getClientOriginalName());
