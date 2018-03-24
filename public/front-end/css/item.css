@@ -13,8 +13,14 @@
     src: url(../fonts/HelveticaNeue-Medium.ttf);
     font-weight: bold;
 }
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
 *{
-  font-family: NormalFont;
+    font-family: NormalFont;
 }
 #slider1_container{
     height:15em !important;
@@ -25,12 +31,70 @@
     border: 0.1em solid #aaa;
     color: #aaa;
 }
+.page_content_item #jssor_1{
+    background-color: rgba(255, 255, 255, 0) !important;
+}
+#jssor_1 .jssort101{
+    left: 3.14844px !important;
+}
+.modal_filter{
+    position: fixed;
+    top:0em;
+    width: 35%;
+    margin-left: 30%;
+    height: 100%;
+    background-color: #00000060;
+    padding: 6em 1em;
+    z-index: 27;
+}
+.lable_input_filter{
+    float: left;
+    color: #d80001;
+    font-family: 'EagarFont';
+    width: 24%;
+    font-size: 1.3em;
+    margin-top: 1em;
+}
+.input_filter{
+    border: 0em;
+    padding-left: 0.5em;
+    border-bottom: 0.07em solid #f4f4f4aa;
+    background-color: #ffffff00;
+    border-radius: 0em !important;
+    cursor: pointer;
+    color: #fff;
+    margin-top: 0.4em;
+}
+.input_filter:focus{
+    background-color: #ffffff00;
+    box-shadow:  0px 0px 0px #777 !important;
+    color: #fff;
+    border: 0em;
+    border-bottom:  0.1em solid #fff;
+}
+.background_modal{
+    position: fixed;
+    width: 100%;
+    height:100%;
+    z-index: 24;
+    top: 0em;
+    background-color: #00000044;
+}
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
     color: #aaa !important;
     font-weight: bold !important;
 }
 input:-moz-placeholder, textarea:-moz-placeholder {
     color: #aaa !important;
+    font-weight: bold !important;
+}
+
+.input_filter::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #fff !important;
+    font-weight: bold !important;
+}
+.input_filter:-moz-placeholder, textarea:-moz-placeholder {
+    color: #fff !important;
     font-weight: bold !important;
 }
 .input_search{
@@ -56,7 +120,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 }
 .tabs__item{
     border: 0em !important;
-    padding: 0.6em 1em;
+    padding: 0.6em 1.74em;
     font-size: 1em;
     color: #444 ;
 }
@@ -67,6 +131,11 @@ input:-moz-placeholder, textarea:-moz-placeholder {
     font-size: 1.2em;
     font-family: 'HeadlinesFont';
 }
+.tabs__content .col-md-3{
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+}
+
 .title_footer{
     width: 100%;
     text-align: center;
@@ -76,10 +145,10 @@ input:-moz-placeholder, textarea:-moz-placeholder {
     margin-bottom: 1em;
     font-family: 'HeadlinesFont';
     font-weight: bold;
-    
+
 }
 .text_footer{
-      width: 100%;
+    width: 100%;
     text-align: center;
     color:#fff;
     margin-top: 0.5em;
@@ -87,8 +156,8 @@ input:-moz-placeholder, textarea:-moz-placeholder {
     margin-bottom: 1em; 
 }
 .footer{
-float: left;
-   margin-top: 2em;
+    float: left;
+    margin-top: 2em;
     background-color: #d80f17;
     width: 100%;
 }
@@ -103,7 +172,7 @@ float: left;
     cursor: pointer;
 }
 .div_icon_footer{
-      float: left;
+    float: left;
     margin-left: 22%;
     padding-left: 10%;
     padding-top: 1em;
@@ -112,7 +181,7 @@ float: left;
 }
 .text_big_image_slider{
     width: 100%;
-    padding: 0.4em 2em;
+    padding: 0.4em 1em;
     background-color: #00000044;
     position: absolute;
     bottom: -1em;
@@ -124,7 +193,7 @@ float: left;
     float: right;
     margin-right: 0em;
     height: 2.5em;
-  margin-top: 0.25em;
+    margin-top: 0.25em;
     margin-bottom: 0.25em;
 }
 .text_small_image_slider{
@@ -133,16 +202,16 @@ float: left;
     background-color: #00000044;
     position: absolute;
     bottom: -1.2vw;
-    font-size: 0.7em;
+    font-size: 0.8em;
     color: #fff;
 }
 .page_content_item{
     padding: 0em 0em;
 }
 .jssort101 .t{
-    left: -16em !important;
+    left: -22em !important;
     width: auto !important;
-    height: 5.5em !important;
+    height: 7em !important;
 }
 .jssort101 .p .cv{
     background-color: #ffffff00 !important;
@@ -158,7 +227,7 @@ float: left;
     box-shadow: 1px 1px 6px #999;
     margin-top: 1em;
     z-index: 4;
-        float: left;
+    float: left;
     margin-top: 0em;
 }
 .item_name{
@@ -168,8 +237,8 @@ float: left;
     color: #444;
     font-weight: bold;
     margin-top: 0.5em;
-   font-family: 'HeadlinesFont';
-   
+    font-family: 'HeadlinesFont';
+
 }
 .item_price{
     float: left;
@@ -179,7 +248,7 @@ float: left;
     font-weight: bold;
     margin-top: 0.2em;
     text-align: right;
-      font-family: 'EagarFont';
+    font-family: 'EagarFont';
 }
 
 .i{
@@ -191,18 +260,18 @@ float: left;
     overflow: none !important;
 }
 .jssort101{
-    background-color: #ffffff !important;
-    top:24.8em !important;
+    background-color: #ffffff00 !important;
+    top :14.4em !important
 }
 .jssort101 .t{
     opacity: 0.8 !important;
 }
 .jssort101 .pav .t, .jssort101 .p:hover .t{
 
-     opacity: 1 !important;
+    opacity: 1 !important;
 }
 .shadow_div_discount{
-     height: 0.1em;
+    height: 0.1em;
     width: 5.9em;
     box-shadow: 6px -5px 5px #000000a3;
     transform: rotate(129deg);
@@ -213,7 +282,7 @@ float: left;
 }
 .img_item{
     width: 100%;
-    height: auto;
+    height: 8.4em;
 }
 .text_discount{
     font-family: 'EagarFont';
@@ -232,14 +301,14 @@ float: left;
     border-right: 4em solid transparent;
     position: absolute;
     top:0em;
-    left:0.9em;
+    left:1.4em;
 
 }
 .rating{
-   width: auto;
-position: absolute;
-bottom: 0.5em;
-left: 1.9em;
+    width: auto;
+    position: absolute;
+    bottom: 0.5em;
+    left: 1.9em;
 }
 .btn_filter{
     width: 100%;
@@ -249,6 +318,7 @@ left: 1.9em;
     padding: 0.3em 1em;
     color: #fff;
     text-align: center; 
+    cursor: pointer;
 }
 .rating i{
     font-size: 1.5vw;
@@ -257,13 +327,18 @@ left: 1.9em;
     cursor: pointer;
 }
 .logo_text{
-height: 4em;
+    height: 4em;
+}
+.tabs {
+    width: 98.3% !important;
+    float: right !important;
 }
 .section_item{
     float: right;
-    padding-right: 5em;
+    padding-right: 1.7em;
     margin-top: 1em;
-    margin-right: 4em;
+    margin-right: 5em;
+    padding-left: 0em;
 }
 .icon_view_my_card{
     height: 2.5em;
@@ -272,7 +347,7 @@ height: 4em;
 }
 
 .rating_item{
-        margin-top: 3em;
+    margin-top: 3em;
     bottom: unset;
     width: 50%;
     color: #d70001;
@@ -281,4 +356,29 @@ height: 4em;
 }
 .rating_item i{
     color: #d80001;
+}
+select{
+    background:red;
+}
+
+option{
+    background:#00000077;
+    color:#fff;
+}
+.btn_model_filter{
+    width: 100%;
+    text-align: center;
+    font-size: 1.3em;
+    border-radius: 1.5em;
+    background-color: #d80001;
+    color: #fff;
+    padding: 0.4em 1em;
+    font-family: 'EagarFont';
+}
+.line_title_input_modal{
+    float: left;
+    width: 100%;
+    height: 0em;
+    background-color: #d80001;
+    margin-top: 2.5em;
 }

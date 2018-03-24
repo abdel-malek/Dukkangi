@@ -1,0 +1,123 @@
+.title_detail_my_card{
+    font-family: 'EagarFont';
+    font-size: 1.4em;
+    color: #d80001;
+    font-weight: bold;
+    float: left;
+}
+.line_title_detail_my_card{
+    height: 0em;
+    background-color: #d80001;
+    float: left;
+}
+.item_qty_detail_my_card{
+    float: left;
+}
+.img_item_qty{
+    width: 20%;
+    border: 0.05em solid #d80001;
+    border-radius: 22em;
+    float: left;
+    height: auto;
+    margin-left: 3%;
+}
+.text_item_qty{
+    float: left;
+    width: 45%;
+    margin-left: 5%;
+}
+.control_item_qty{
+    float: left;
+    width: 26%;
+}
+.text_item_qty h3{
+    font-size: 1.2em;
+    width: 100%;
+    color: #222;
+    font-weight: bold;
+    float: left;
+    font-family: 'HeadlinesFont';
+    
+}
+.text_item_qty p{
+    float: left;
+    width: 100%;
+    font-size: 0.8em;
+    color: #222;
+    font-weight: bold;
+    font-family: 'HeadlinesFont';
+}
+.num_item_qty{
+    width: 40%;
+    float: left;
+    font-family: 'EagarFont';
+    font-size: 1.3em;
+    color: #d80001;
+    text-align: center;
+    margin-top: 0.8em;
+}
+.btn_control_item_qty img{
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    float: left;
+}
+.btn_control_item_qty{
+    float: left;
+    width: 60%;
+}
+.total_item_qty{
+    width: 100%;
+    font-size: 0.9em;
+        font-weight: bold;
+    font-family: 'HeadlinesFont';
+    text-align: center;
+}
+.total_item_qty span{
+    color: #d80001;
+     font-family: 'EagarFont';
+     font-size: 1em;
+     font-weight: bold;
+}
+.gained_point_rewards,.taxes_taxes,.total_discount,.discount_discount,.code_voucher_code{
+    width: 100%;
+    float: left;
+}
+.gained_point_rewards p,.taxes_taxes p,.total_discount p,.discount_discount p,.code_voucher_code p{
+    float: left;
+    width: 70%;
+    font-weight: bold;
+    font-family: 'HeadlinesFont';
+    font-size: 1em;
+    color: #222;
+    padding-left: 2em;
+}
+
+.gained_point_rewards h3,.taxes_taxes h3,.total_discount h3,.discount_discount h3{
+    float: right;
+    width: 28%;
+    font-weight: bold;
+    font-family: 'EagarFont';
+    font-size: 1.5em;
+    color: #d80001;
+    padding-right: 1em;
+}
+.one_code_voucher_code{
+    width: 60%;
+    height: 2.3em;
+    border-radius: 0.8em;
+    border:0.06em solid #d80001;
+    margin-left: 3%;
+    float: left;
+    padding-left: 1em;
+}
+.title_one_item_details{
+    font-size: 2em;
+    width: 100%;
+    text-align: center;
+     font-weight: bold;
+    font-family: 'EagarFont';
+    color: #d80001;
+    margin-top: 0.5em;
+        margin-bottom: 0.5em;
+}

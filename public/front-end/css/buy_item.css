@@ -1,0 +1,258 @@
+.title_size,.title_color,.title_qty{
+	color: #d80001;
+	font-size: 1.4em;
+	font-family: 'EagarFont';
+	margin-left: 0.4em;
+	margin-top: 0.3em;
+}
+.num_qty{
+	float: left;
+	color: #d80001;
+	font-size: 1.4em;
+	font-family: 'EagarFont';
+	margin-left: 0.9em;
+	margin-top: 0.3em;
+	width: 50%;
+	text-align: right;
+}
+.btn_qty{
+width: 60%;
+height: auto;
+}
+.option_color{
+	width: 20%;
+	margin-left: 7%;
+	height: 2.5em;
+	float: left;
+	box-shadow: 1px 1px 6px #999;
+}
+.active_option_color{
+	width: 23%;
+	height: 3.2em;
+	margin-top: -0.4em;
+}
+.option_size{
+	float: left;;
+	width: 30%;
+	text-align: center;
+	color: #888;
+	font-family: 'EagarFont';
+	font-weight: bold;
+	font-size: 1.3em;
+
+}
+.active_option_size{
+	color: #d80001;
+	font-size: 1.9em;
+    margin-top: -0.3em
+
+}
+.choose_payment,.credit_card_details{
+	float:left;
+	width:100%;
+}
+.title_choose_payment,.title_credit_card_details{
+ font-size: 1.2em;
+ font-family: 'headlinesFont';
+ width: 100%;
+ color: #222;
+}
+.visa_choose_payment,.paypal_choose_payment{
+width: 42%;
+float: left;
+}
+.radio_visa_choose_payment,.radio_paypal_choose_payment{
+float: left;
+}
+.img_visa_choose_payment,.img_paypal_choose_payment{
+	float:right;
+	width: 40%;
+	height: auto;
+	margin-right: 20%;
+	margin-top: 0.7em
+}
+.input_credit_card_details{
+    padding-left: 0.5em;
+    border: 0em;
+    border-bottom: 0.07em solid #888;
+    background-color: #ffffff00;
+    border-radius: 0em !important;
+    cursor: pointer;
+    width: 70%;
+    margin-top: 0.7em;
+}
+.input_credit_card_details:focus{
+      background-color: #ffffff;
+    box-shadow:  0px 0px 0px #777;
+    color: #444;
+     border-color: #444;
+}
+.title_input{
+	width: 100%;
+	float: left;
+	font-size: 1em;
+	font-family: 'headlinesFont';
+	color: #444;
+	margin-top: 1em;
+	margin-bottom: 0em;
+}
+
+.btn_credit_card_details{
+	width: 30%;
+	border-radius: 1.5em;
+	background-color: #fff;
+	color: #111;
+	text-align: center;
+	box-shadow: 1px 1px 6px #999;
+	float: left;
+	padding: 0.4em 1em;
+	margin-top: 1.2em;
+	font-size: 1.1em;
+	font-family: 'headlinesFont';
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #555 !important;
+    font-weight: bold !important;
+    font-family: 'headlinesFont';
+}
+input:-moz-placeholder, textarea:-moz-placeholder {
+    color: #555 !important;
+    font-weight: bold !important;
+    font-family: 'headlinesFont';
+}
+
+/*plugin radio */
+* {
+  box-sizing: border-box;
+}
+
+input[type=radio] {
+  display: none;
+}
+
+.circle {
+  position: absolute;
+  width: 2em;
+  height: 2em;
+  top: unset;
+  left: unset;
+      margin-top: 2em;
+    margin-left: 4em;
+  transform: translate(-50%, -50%);
+  filter: url('#gooey');
+}
+
+@keyframes circle__in {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  16% {
+    transform: translate(-50%, -50%) scale(0.95, 1.05);
+  }
+
+  33% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.05, 0.95);
+  }
+
+  66% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  83% {
+    transform: translate(-50%, -50%) scale(0.98, 1.02);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+
+input:checked + .circle {
+  transform-origin: 50% 50%;
+  animation-name: circle__in;
+  animation-duration: 750ms;
+  animation-timing-function: linear;
+}
+
+.circle {
+  transform-origin: 50% 50%;
+  animation-name: circle__out;
+  animation-duration: 1000ms;
+  animation-timing-function: ease;
+}
+
+.circle--outer {
+  width: 2em;
+  height: 2em;
+  border-radius: 100%;
+  border: 2px solid #d80001;
+}
+
+.circle--inner {
+  top: 0.4em;
+    left: 0.4em;
+    position: absolute;
+    width: 1.23em;
+    height: 1.2em;
+    border-radius: 100%;
+    background: #d80001;
+}
+
+@keyframes circle--inner__in {
+  0% {
+    transform: scale(0.0);
+  }
+
+  80% {
+    transform: scale(1.02);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+input:checked + .circle .circle--inner {
+  transform-origin: 50% -20%;
+  animation-name: circle--inner__in;
+  animation-duration: 500ms;
+  animation-timing-function: cubic-bezier(0.85, 0, 0.2, 1);
+}
+
+@keyframes circle--inner__out {
+  0% {
+    transform: scale(1);
+  }
+
+  80% {
+    transform: scale(0.19);
+  }
+
+  99% {
+    transform: scale(0.21);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}
+
+.circle--inner {
+  animation-name: circle--inner__out;
+  animation-duration: 500ms;
+  animation-timing-function: cubic-bezier(0.85, 0, 0.2, 1);
+  animation-fill-mode: forwards;
+}
+
+.circle--inner__1 { transform-origin: -12% -8%; }
+.circle--inner__2 { transform-origin: -35% 50%; }
+.circle--inner__3 { transform-origin: 60% 130%; }
+.circle--inner__4 { transform-origin: 112% 90%; }
+.circle--inner__5 { transform-origin: 75% -30%; }

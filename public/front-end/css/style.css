@@ -27,6 +27,7 @@
   padding-top: 0px;
   padding-bottom: 0px;
   background-color: white !important;
+  box-shadow: 0px 2px 16px #7777778c;
 }
 
 #main-navbar-items ul li{
@@ -41,7 +42,7 @@
 }
 
 .navbar{
-      padding: .5rem 8rem;
+      padding: .5rem 6rem ;
 }
 
 .logo{

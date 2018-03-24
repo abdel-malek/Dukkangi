@@ -236,6 +236,21 @@ class PageController extends Controller
 			}
 			$product->rate = round( $precalculation / $productRate->count() );
 		}
+		// Calculate Average Rate For Simiproducts
+	//	$simiproducts = array_diff($simiproducts, [$product]);
+		foreach ($simiproducts as $simi) {
+
+			$simiRate = Rate::select('rate')->where('product_id' , '=', $simi->id)->get();
+			if($simiRate->count() != 0 ){
+				$precalculation = 0;
+				foreach($simiRate as $temp){
+					$precalculation = $precalculation + $temp->rate;
+				}
+				$simi->rate = round( $precalculation / $simiRate->count());
+			//	echo $simi->id."   ";
+			}
+		}
+		//die();
 		return view('client.pages.item_view')->withProduct($product)->withCategory($category)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments);	
 
 	}
@@ -259,7 +274,7 @@ class PageController extends Controller
 		$description =$request->input('comment');
 		$user_id = Auth::id();
 		$productId = $request->input('id');
-	//	dd($description);
+
 		$comment = new Comment;
 		$comment->rate= $rate;
 		$comment->description = $description;

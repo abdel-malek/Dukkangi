@@ -8,14 +8,25 @@
         <link rel="stylesheet" href="/front-end/css/login.css">
         <link rel="stylesheet" href="/front-end/css/item.css">
         <link rel="stylesheet" href="/front-end/css/item_view.css">
+        <link rel="stylesheet" href="/front-end/css/buy_item.css">
+     
         <link rel="stylesheet" href="/front-end/css/material_icons.css">
         <script type="text/javascript" src="/front-end/js/plugin/jssor.slider.min.js"></script>
         <script type="text/javascript" src="/front-end/js/plugin/slide.js"></script>
         <link rel="stylesheet" href="/front-end/css/SimpleStarRating.css">
-        <style>
+          <style>
             .star{
                 cursor: pointer;
                 color: #fff;
+            }
+                   #content_page{
+                margin-top: 6.6em;
+                float: left;
+            }
+                  header{
+                position: absolute;
+                z-index: 33;
+                width: 100%;
             }
             .rating{
                 font-size: 1.3em;
@@ -25,7 +36,7 @@
             }
                 .header_page  .rating{
                 bottom: 0.2em;
-                left: 19.9em;
+                left: 18em;
             }
             .rating .star::after{
                 color: #d80001;
@@ -35,9 +46,16 @@
             }
             .div_item  .rating .star::after{
                 color: #d80001;
+                width: 0.75em;
+                height: 0.7em;
             }
             .div_item .rating .star::before{
                 color: #d80001;
+                width: 0.75em;
+                height: 0.7em;
+            }
+            .div_item .rating{
+                left: 2em;
             }
             .details_comment .rating{
                 bottom: unset;
@@ -66,7 +84,10 @@
                 font-size: 50px;
             }
             .navbar {
-                padding: .5rem 5rem;
+                padding: .5rem 7rem;
+            }
+            .btn_qty{
+                cursor: pointer;
             }
         </style>
         <style>
@@ -109,9 +130,10 @@
                 content: "&#xE838;";
             }
         </style>
-@endsection
-@section('main_section')
-        <div class="col-md-12" style="padding: 0em 5em;">
+
+    @endsection
+    @section('main_section')
+        <div class="col-md-12" style="padding: 0em 5em;" id="content_page">
             <div class="header_page"  style = "background-image: url('{{$subcategory->image_id}}');">
                 <p class="header_page_text_div">
                    {{$subcategory->english}}
@@ -149,14 +171,15 @@
                     <p class="text_item_details">
                         {{ $product->desc_english}}
                     </p>
-                     <p class="buy_item_details">
-                        <span> Buy This Item</span>
+                    <p class="buy_item_details">
+                         <a href="" ><span style="cursor: pointer;"> Buy This Item</span></a>
                         <img src="/front-end/images/price-tag/buy-this-item.png" class="img_buy_item_details"/>
                     </p>
-                     <p class="add_to_card_item_details">
+                     <p class="add_to_card_item_details" style="cursor: pointer;" id="btn_modal_one_item_details" >
                         <span> Add to cart</span>
                         <img src="/front-end/images/price-tag/add-to-cart.png" class="img_add_to_card_item_details"/>
                     </p>
+                   
                 </div>
             
             <div class="sections">
@@ -297,8 +320,10 @@
             <div class="leave_constructive_review col-md-4">
                 {!! Form::open(['route' => ['comment',$product->id ]]) !!}
                     <h3 class="text_leave_constructive_review" style="color: #d80001;margin-top: 0em;">Leave a constructive review</h3> 
-                    <p class="text_leave_constructive_review" style="margin-top: 1.5em;">Rate this product </p>
-                    <span class="rating form-rate" data-id="{{$product->id }}" style="margin-bottom: 347px;margin-left: 200px" ></span>
+                    <p class="text_leave_constructive_review" style="margin-top:0.6em;">Rate this product </p>
+                   <div class="details_comment" style="margin-bottom: 50px">
+                    <span class="rating form-rate" data-id="{{$product->id }}" style="margin-right: 160px"></span>
+                    </div>
                     <p class="text_leave_constructive_review">Leave a comment</p>
                     {{ Form::text('commentbody' , null,['class' => 'input_leave_constructive_review']) }} 
                     <!-- input_leave_constructive_review -->
@@ -316,27 +341,125 @@
 
             <!-- Just Testing for($i=0 ; $i< 9; $i++) -->
                             @foreach($simiProducts as $simiproduct)
+                            @if($simiproduct->id == $product->id)
+                            <?php 
+                            continue;
+                            ?>
+                            @endif
                               <div class="col-md-3" style="margin-top: 1em;float: left;">
-                                <div class="div_item">
-                                    <img src="{{$simiproduct->image_id}}" class="img_item" style="height: 220px" />
+                                <div class="div_item" style="width: 229px">
+                                    <a href="{{ route('product',$simiproduct->id) }}">
+                                    <img src="{{$simiproduct->image_id}}" class="img_item"  />
                                     <p class="item_name">{{ $simiproduct->english}}  </p>
+                                    </a>
                                     <p class="item_price" style="margin-bottom: 0em;">{{$simiproduct->price}} €</p>
+                                    
                                     <span class="rating simi"  ></span>
-                                    <img src="/front-end/images\user_actions\view-my-cart.png" class="icon_view_my_card" />
+                                    <img src="/front-end/images/user_actions/view-my-cart.png" class="icon_view_my_card" />
                                 </div>
                             </div>
                             @endforeach
+
             <!-- Testing  endfor -->
 
 
 
-        </div>
 
-    </div>
+
+
+<!-- Add To Cart -->
+
+
+         <div class="background_modal" style="display: none;" >
+             
+         </div>
+         
+         
+         <div class="modal_one_item_details" id="modal_one_item_details" style="display: none;">
+                    <div class="header_item_details">
+                        <img src="./images/slider/slider1.jpg" class="img_item_details" />
+                        <div class="div_title_item_details" >
+                            <p class="title_item_details">
+                                Item's Name
+                            </p>
+                            <span class="rating" style="float:left;"></span>
+                               <i class="material-icons icon_item_details">&#xE838;</i>
+                            <i class="material-icons icon_item_details">error_outline</i>
+                        </div>
+                    </div>
+                    <!--<div class="price_tag_item_details">-->
+                        <div class="col-md-12" style="margin-top: 0.6em;float: left;">
+                            <div style="width: 30%;float: left;">
+                                <h3 class="title_qty">
+                                    Quantity
+                                </h3>
+                            </div>
+                            <div style="width: 70%;float: right;">
+                                <p class="num_qty">
+                                    3
+                                </p>
+                                <div style="width:30%;float: right;">
+                                    <img src="./images/payment/handler-plus.png" onclick="num_plus(this)" class="btn_qty">
+                                     <img src="./images/payment/handler-min.png" onclick="num_min(this)" class="btn_qty" style="margin-top: -0.9em">
+                                </div>
+                                <!-- <img -->
+                            </div>
+                        </div>
+                           <div class="col-md-12" style="float: left;">
+                            <div style="width: 30%;float: left;">
+                                <h3 class="title_color" style="margin-top: 0.4em;">
+                                    Color
+                                </h3>
+                            </div>
+                            <div style="width: 70%;float: right;">
+                                <div class="option_color" style="background-color: #303030;">
+                                    
+                                </div>
+                                  <div class="option_color active_option_color" style="background-color: #e8e8e8;">
+                                    
+                                </div>
+                                  <div class="option_color" style="background-color: #f5f5f5;">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                           <div class="col-md-12" style="float: left;margin-top: 1em;">
+                            <div style="width: 30%;float: left;">
+                                <h3 class="title_size" style="margin-top: -0.1em;">
+                                    Size
+                                </h3>
+                            </div>
+                            <div style="width: 70%;float: right;">
+                                <p class="option_size active_option_size">
+                                    Small
+                                </p>
+                                 <p class="option_size">
+                                    Medium
+                                </p>
+                                 <p class="option_size">
+                                    Large
+                                </p>
+                            </div>
+                        </div>
+                    <p class="price_item_details" style="margin-top: 0em;">
+                        <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">Total</span>
+                        <span style="left:4em;"> 900 $</span>
+                        <img src="images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details"/>
+                    </p>
+                    <div class="button_modal_one_item_details">
+                        <p class="btn_done" style="background-color: #d80001;color: #fff;">Done</p>
+                        <p class="btn_cancel" style="margin-left: 9%;">Cancel</p>
+                        <p class="btn_view_my_cart" style="width: 100%;">View my Cart</p>
+                    </div>
+                </div>
+
+
+</div></div>
         
 @endsection
         
 @section('scripts')
+        <script src="http://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
         <script src="/front-end/js/plugin/jquery-pretty-tabs.js"></script>
         <script type="text/javascript">
@@ -362,7 +485,7 @@
                 //Initial Rate Subcategory
                 var ratings = document.getElementsByClassName('subcategory');
                 for (var i = 0; i < ratings.length; i++) {
-                    var r = new SimpleStarRating<?php echo ($subcategory->rate==0?'':$subcategory->rate)?>(ratings[i]);
+                    var r = new SimpleStarRating<?php echo (!isset($subcategory->rate)?'0':$subcategory->rate)?>(ratings[i]);
 
                     ratings[i].addEventListener('rate', function (e) {
                         console.log('Rating: ' + e.detail);
@@ -476,5 +599,30 @@
                 console.log(num_star_active);
             });
         </script>
-
+        <script>
+            $('#btn_modal_one_item_details').click(function(){
+               $('#modal_one_item_details').show(); 
+               $('.background_modal').show();
+               $('#header').css( 'filter','blur(5px)');
+               $('#content_page').css('filter','blur(5px)');
+               $('.footer').css('filter','blur(5px)');
+            });
+            $('.background_modal').click(function(){
+               $('#modal_one_item_details').hide();
+                $('.background_modal').hide();
+                 $('#header').css( 'filter','blur(0px)');
+               $('#content_page').css('filter','blur(0px)');
+               $('.footer').css('filter','blur(0px)');
+            });
+        </script>
+               <script>
+            function num_plus(obj) {
+                $(obj).parent().parent().find('p').text(parseInt($(obj).parent().parent().find('p').text()) + 1);
+            }
+            function num_min(obj) {
+                if ((parseInt($(obj).parent().parent().text()) > 0)) {
+                    $(obj).parent().parent().find('p').text(parseInt($(obj).parent().parent().find('p').text()) - 1);
+                }
+            }
+        </script>
 @endsection

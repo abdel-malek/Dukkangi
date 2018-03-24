@@ -1,0 +1,41 @@
+.item_out_of_stock{
+	width: 100%;
+	background-color: #00000055;
+	position: absolute;
+	z-index: 22;
+	    margin-top: 0em;
+    height: 50.5%;
+}
+.title_item_out_of_stock{
+	width: 100%;
+	text-align: center;;
+	color: #d80001;
+	font-family: 'EagarFont';
+	font-size: 2em;
+	margin-top: 2em;
+}
+.text_item_out_of_stock{
+	width: 100%;
+	text-align: center;;
+	color: #fff;
+	padding: 0em 2.8em;
+	font-size: 1.7em;
+}
+.icon_item_out_of_stock{
+    height: 3.4em;
+    width: auto;
+    margin-left: -0.7em;
+    margin-top: -0.7em;
+    margin-bottom: 2em;
+}
+.circle_check{
+    height: 2.5em;
+    width: 2.5em;
+    border-radius: 1.5em;
+    border: 0.2em solid #fff;
+    float: left;
+    margin-right: 40%;
+    margin-bottom: 2em;
+    margin-top: 1.5em;
+    margin-left: 46%;
+}

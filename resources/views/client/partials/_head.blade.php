@@ -1,6 +1,6 @@
 
       <meta charset="UTF-8">
-      <link rel="stylesheet" href="/front-end/css/lib/bootstrap.min.css">
+      <link rel="stylesheet" href="/front-end/css/lib/bootstrmnap.min.css">
       <link rel="stylesheet" href="/front-end/css/style.css">
 
  <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
@@ -12,20 +12,29 @@
         <script type="text/javascript" src="/front-end/js/plugin/jssor.slider.min.js"></script>
         <script type="text/javascript" src="/front-end/js/plugin/slide.js"></script>
         <link rel="stylesheet" href="/front-end/css/SimpleStarRating.css">
-        <style>
+       <style>
             .star{
                 cursor: pointer;
                 color: #fff;
             }
+                   #content_page{
+                margin-top: 6.6em;
+                float: left;
+            }
+                  header{
+                position: absolute;
+                z-index: 33;
+                width: 100%;
+            }
             .rating{
                 font-size: 1.3em;
                 color: #fff;
-                bottom: 0.2em;
+                bottom: 0.6em;
                 left: 1.4em;
             }
-                .div_item  .rating{
-                bottom: 0.6em;
-                left: 1.1em;
+                .header_page  .rating{
+                bottom: 0.2em;
+                left: 18em;
             }
             .rating .star::after{
                 color: #d80001;
@@ -35,8 +44,26 @@
             }
             .div_item  .rating .star::after{
                 color: #d80001;
+                width: 0.75em;
+                height: 0.7em;
             }
             .div_item .rating .star::before{
+                color: #d80001;
+                width: 0.75em;
+                height: 0.7em;
+            }
+            .div_item .rating{
+                left: 2em;
+            }
+            .details_comment .rating{
+                bottom: unset;
+                right: 1.4em;
+                left: unset;
+            }
+             .details_comment  .rating .star::after{
+                color: #d80001;
+            }
+            .details_comment .rating .star::before{
                 color: #d80001;
             }
             main {
@@ -53,6 +80,12 @@
             .big-red {
                 color: #f11;
                 font-size: 50px;
+            }
+            .navbar {
+                padding: .5rem 7rem;
+            }
+            .btn_qty{
+                cursor: pointer;
             }
         </style>
         <style>
@@ -94,7 +127,7 @@
             .star_1 i:hover{
                 content: "&#xE838;";
             }
-        </style> 
+        </style>
 
       @yield('styles')
        

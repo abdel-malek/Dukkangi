@@ -1,29 +1,56 @@
 .header_page{
-   
     background-repeat: no-repeat;
     background-size: auto;
-    width: 100%;
+    width: 92.5%;
     height: 17em;
+    margin-left: 2.7%;
+    border: 0.04em solid rgb(138, 138, 138);
 }
 .header_page_text_div {
-    width: 88%;
+    width: 81.5%;
     padding: 0.4em 2em;
-    padding-left: 26em;
+    padding-left: 23.5em;
     background-color: #00000044;
     position: absolute;
-    bottom: -1em;
+       top: 11.6em;
     color: #fff;
     font-size: 1.1em;
 }
-.one_item_details{
-    width: 30%;
+.one_item_details ,.modal_one_item_details {
+    width: 26%;
     background-color: #fff;
-    margin-left: 2em;
+    margin-left: 4em;
     float: left;
     position: absolute;
     margin-top: -12.8em;
     z-index: 15;
    box-shadow: 1px 1px 16px #000000b0;
+}
+.leave_constructive_review{
+    width: 30%;
+}
+.modal_one_item_details{
+    position: fixed;
+    top: 2em;
+    left:30%;
+    z-index: 26;
+    margin-top: 0em;
+}
+.button_modal_one_item_details .btn_done,.button_modal_one_item_details .btn_cancel,.button_modal_one_item_details .btn_view_my_cart{
+    width: 45%;
+    text-align: center;
+    font-size: 1.1em;
+    padding: 0.5em 1em;
+    color: #222;
+    box-shadow: 1px 1px 6px #999;
+    border-radius: 1.5em;
+    float: left;
+}
+.button_modal_one_item_details{
+    float: left;
+    width: 100%;
+    margin-top: 3em;
+        padding: 1em 1em;
 }
 .header_item_details{
     /*background-image: url('../images/slider/item1.jpg');*/
@@ -87,6 +114,7 @@
     width: 8em;
     color: #fff;
 }
+
 .add_to_card_item_details span{
     margin-top: 13.3em;
     color: #d80001;
@@ -114,9 +142,27 @@
    margin-top: 0em;
 }
 .sections{
-    width:63%;
+    width:64.8%;
     float: right;
-    padding: 2em 1em;
+    padding: 1.5em 1em;
+}
+.logo_prodect{
+    width:20%;
+  padding: 0.4em 1em;
+  border-radius: 0.6em;
+  box-shadow: 1px 1px 16px #000000b0;
+  margin-top: -1em;
+  float:left;
+}
+.logo_prodect img{
+   width: 38%;
+    height: auto;
+    margin-left: 21%;
+}
+
+.similar_item .col-md-3{
+    padding-left: 2em;
+    padding-right: 2em;
 }
 .section{
     width: 45%;
@@ -265,6 +311,7 @@ width: 13em;
 .upvoted_user_actions,.replay_user_actions,.report_user_actions{
     width: 25%;
     float:left;
+    cursor: pointer;
 }
 .img_upvoted_user_actions,.img_replay_user_actions,.img_report_user_actions{
 width: 24%;
@@ -287,7 +334,7 @@ float: left;
     font-size: 1.5em;
     float: left;
     font-weight: bold;
-    margin-top: 2em;
+    margin-top: 1em;
 }
 .input_leave_constructive_review{
         background-color: #ffffff26;
@@ -308,14 +355,14 @@ float: left;
     border: 0.1em solid #aaa;
 }
 .btn_leave_constructive_review{
-    padding: 0.6em 1em;
+    padding: 0.5em 1em;
     width: 100%;
     border-radius: 1.5em;
     text-align: center;
     box-shadow: 1px 1px 6px #000000b0;
     background-color: #fff;
     margin-top: 1em;
-    font-size: 1.4em;
+    font-size: 1.2em;
     font-weight: bold;
     color: #222;
     font-family: 'EagarFont';
