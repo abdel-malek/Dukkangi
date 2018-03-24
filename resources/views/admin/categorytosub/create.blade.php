@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section('stylesheet')
-	 <link rel="stylesheet" href="http://localhost:8000/css/select2.min.css" />
+	 
 @endsection
 
 @section('grid')
@@ -28,7 +28,7 @@
 				<br>
  				{{ Form::label('image' , 'Image:')}}
  				{{ Form::file('image') }}
- 				
+
 				<br>
 				{{ Form::label('category_id' , 'Category:')}}
 				{{ Form::text ('category_id' , $id , ['class' => 'form-control' , 'readonly' => 'readonly'] ) }}
