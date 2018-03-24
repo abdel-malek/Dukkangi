@@ -112,14 +112,14 @@
 @endsection
 @section('main_section')
         <div class="col-md-12" style="padding: 0em 5em;">
-            <div class="header_page"  style = "background-image: url('{{$subcategory->image_id}}');">
+            <div class="header_page"  style = "background-image: url('{{$subcategory->image_id}}');background-size: 100%;">
                 <p class="header_page_text_div">
                    {{$subcategory->english}}
                     <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
                     <span class="rating rating-info subcategory" data-type="subcategory" data-id="{{$subcategory->id}}" ></span>
                 </p>
             </div>
-           
+
                 <div class="one_item_details">
                     <div class="header_item_details">
                          <div class="discount_item_details">
@@ -142,7 +142,7 @@
                         <img src="/front-end/images/price-tag/price-tag.png" class="img_price_item_details"/>
                     </p>
                     <!--</div>-->
-                    
+
                     <p class="points_item_details">
                         <span> {{$product->point}} Points </span>Bounce
                     </p>
@@ -158,7 +158,7 @@
                         <img src="/front-end/images/price-tag/add-to-cart.png" class="img_add_to_card_item_details"/>
                     </p>
                 </div>
-            
+
             <div class="sections">
                 <div class="section">
                     <h4 class="title_section">
@@ -177,11 +177,11 @@
                     <p class="text_section">
                          <span>{{$product->section2_english}}</span>
                          <p>
-                         <span class="point_text_section">{{$product->point}} points</span> <small>This will be given to you !</small> 
+                         <span class="point_text_section">{{$product->point}} points</span> <small>This will be given to you !</small>
                          </p>
-                    </p>                    
+                    </p>
                 </div>
-                
+
                 <div class="section">
                     <h4 class="title_section">
                         Section 3
@@ -215,7 +215,7 @@
                     <div class="options_section">
                         <div class="option_section">
                             <div class="box_option_section">
-                                
+
                             </div>
                             <p class="title_option_section">
                                 Option 1
@@ -223,7 +223,7 @@
                         </div>
                          <div class="option_section">
                              <div class="box_option_section" style="background-color: #303030;">
-                                
+
                             </div>
                             <p class="title_option_section">
                                 Option 2
@@ -231,7 +231,7 @@
                         </div>
                          <div class="option_section">
                              <div class="box_option_section" style="background-color: #e8e8e8;">
-                                
+
                             </div>
                             <p class="title_option_section">
                                 Option 3
@@ -239,7 +239,7 @@
                         </div>
                          <div class="option_section">
                              <div class="box_option_section" style="background-color: #f5f5f5;">
-                                
+
                             </div>
                             <p class="title_option_section">
                                 Option 4
@@ -249,9 +249,9 @@
                     <img src="/front-end/images/user_actions/view-my-cart.png" class="icon_buy_option_section">
             </div>
         </div>
-        <div class="col-md-12" style="float:left;"> 
+        <div class="col-md-12" style="float:left;">
             <h3 class="title_customer_review">
-              
+
         <br>
         <br>
         <br>
@@ -291,16 +291,16 @@
                     </div>
                 </div>
                 @endforeach
-                    
-                
+
+
             </div>
             <div class="leave_constructive_review col-md-4">
                 {!! Form::open(['route' => ['comment',$product->id ]]) !!}
-                    <h3 class="text_leave_constructive_review" style="color: #d80001;margin-top: 0em;">Leave a constructive review</h3> 
+                    <h3 class="text_leave_constructive_review" style="color: #d80001;margin-top: 0em;">Leave a constructive review</h3>
                     <p class="text_leave_constructive_review" style="margin-top: 1.5em;">Rate this product </p>
                     <span class="rating form-rate" data-id="{{$product->id }}" style="margin-bottom: 347px;margin-left: 200px" ></span>
                     <p class="text_leave_constructive_review">Leave a comment</p>
-                    {{ Form::text('commentbody' , null,['class' => 'input_leave_constructive_review']) }} 
+                    {{ Form::text('commentbody' , null,['class' => 'input_leave_constructive_review']) }}
                     <!-- input_leave_constructive_review -->
                     {{ Form::text('rate', 0,['hidden' => 'hidden' , 'id'=>'rate'])}}
                     <a class="btn_leave_constructive_review btn-block commentbody"  id="btn-comment" data-id="{{$product->id}}" style="background-color: #d80001;color: #fff">Post my review</a>
@@ -309,7 +309,7 @@
                 {!! Form::close() !!}
             </div>
         </div>
-        <div class="col-md-12" style="float:left;"> 
+        <div class="col-md-12" style="float:left;">
             <h3 class="title_similar_items" >
                 Similar item
             </h3>
@@ -333,11 +333,11 @@
         </div>
 
     </div>
-        
+
 @endsection
-        
+
 @section('scripts')
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="/front-end/js/plugin/jquery-pretty-tabs.js"></script>
         <script type="text/javascript">
                 var _gaq = _gaq || [];
@@ -355,9 +355,9 @@
                 })();
         </script>
         <script src="/front-end/js/plugin/SimpleStarRating.js"></script>
-        
+
         <script>
-            //5 functions for 1, 2, 3, 4, 5 Stars for anything 
+            //5 functions for 1, 2, 3, 4, 5 Stars for anything
             //one more function for those which don't have any rate
                 //Initial Rate Subcategory
                 var ratings = document.getElementsByClassName('subcategory');
@@ -368,7 +368,7 @@
                         console.log('Rating: ' + e.detail);
                     });
                 }
-                
+
                 //Form Rate This Product
                 var ratings = document.getElementsByClassName('form-rate');
                 for (var i = 0; i < ratings.length; i++) {
@@ -389,7 +389,7 @@
                 }
 
                 //Initial Rate Comments
-                
+
                 var ratings = document.getElementsByClassName('comment');
                 <?php $counter= 0 ?>
 
@@ -402,7 +402,7 @@
                     });
                 }
                 //Initial Rate Simiproducts
-                
+
                 var ratings = document.getElementsByClassName('simi');
                 <?php $counter= 0 ?>
 
@@ -413,7 +413,7 @@
                         console.log('Rating: ' + e.detail);
                     });
                 }
-                
+
 
         </script>
         <script>
@@ -422,11 +422,11 @@
                $(this).find('.star').each(function(){
                   if($(this).hasClass('active')){
                       num_star_active ++;
-                  }  
+                  }
                });
                type = $(this).data('type');
                id=$(this).data('id');
-               
+
             data = {};
             console.log(data);
             $.ajax({
@@ -437,17 +437,17 @@
                 success: function (response) {
                     alert(response.status);
                 }
-             }); 
+             });
                //      Value star is variable : num_star_active
-               //      Request Update rating 
+               //      Request Update rating
             });
-        
+
             $('.rating').click(function(){
                 var num_star_active = 0;
                $(this).find('.star').each(function(){
                   if($(this).hasClass('active')){
                       num_star_active ++;
-                  }  
+                  }
                });
            });
 
@@ -458,7 +458,7 @@
                $('.leave_constructive_review').find('.star').each(function(){
                   if($(this).hasClass('active')){
                       num_star_active ++;
-                  }  
+                  }
                });
                var comment = $('input[name=commentbody]').val();
                var id = $(this).data('id');
@@ -471,7 +471,7 @@
                     success: function (response) {
                         alert(response.status);
                     }
-                 }); 
+                 });
 
                 console.log(num_star_active);
             });
