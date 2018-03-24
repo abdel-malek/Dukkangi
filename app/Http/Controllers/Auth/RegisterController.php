@@ -75,7 +75,7 @@ class RegisterController extends Controller
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
-                'category' => "admin",
+                'user_category_id' => 2,
             ]);
         }
         else{
