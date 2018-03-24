@@ -28,7 +28,7 @@
                         <a href="#" class="user-header dropdown-toggle" data-toggle="dropdown"
                            data-animation="slideOutUp" aria-haspopup="true"
                            aria-expanded="false">
-                            <img src="http://localhost:8000/css/download.png" width="128" height="32" alt="Profile image"/>
+                            <img src={{URL::asset('css/download.png')}} width="128" height="32" alt="Profile image"/>
                         </a>
                         <div class="dropdown-menu drop-profile">
                             <div class="userProfile">
@@ -54,5 +54,3 @@
         </div>
     </div>
     </header>
-
-

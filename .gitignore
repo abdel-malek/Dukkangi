@@ -1,2 +1,4 @@
 vendor
 
+resources/views/client/pages/item_view.blade.php
+resources/views/client/pages/item_view.blade.php

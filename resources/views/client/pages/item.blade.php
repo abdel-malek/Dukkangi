@@ -8,8 +8,8 @@
                 <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
                 </div>
                 <div data-u="slides" style="cursor:default;position:relative;top:0px;left:240px;width:850px;height:200px;overflow:hidden;">
-                    
-                    @foreach($subcategories as $subcategory) 
+
+                    @foreach($subcategories as $subcategory)
                     <div>
                         <img data-u="image" src="{{$subcategory->image_id}}" style="height:15em !important;" />
                         <img data-u="thumb" src="{{$subcategory->image_id}}" style="left: -4em !important;width: auto !important;height: 4.1em !important;" />
@@ -42,7 +42,7 @@
 
         <div class="col-md-9 col-sm-12 section_item" >
             <div class="col-sm-3" style="float:left;">
-                <img src="http://localhost:8000/front-end/images/light_logo.png" class="img-resposive logo_text" />
+                <img src={{URL::asset('/front-end/images/light_logo.png')}} class="img-resposive logo_text" />
             </div>
             <div class="col-sm-3" style="float:left;margin-left: 2em;">
                 <p class="btn_filter">
@@ -70,12 +70,12 @@
                     <ul class="tabs__items">
                         @foreach($categories as $category)
                         <a href="{{route('category',$category->id)}}"><li class="tabs__item {{ isset($subcategories[0]) ?($subcategories[0]->category_id == $category->id ? 'tabs_active':'' ) : ''}} ">{{ $category->english }}</li></a>
-                        @endforeach 
+                        @endforeach
                        </ul>
                     <div class="tabs__content-wrapper" style="    border-top: 0.1em solid #aaa;">
-                 
+
                         <div class="tabs__content tabs_active"><!-- Tab 1 -->
-                            @foreach($products as $product)        
+                            @foreach($products as $product)
                             <div class="col-md-3" style="margin-top: 1em;float: left;">
                                 <div class="div_item">
                                     <div class="discount_item">
@@ -92,13 +92,13 @@
                             </div>
                             @endforeach
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
         </div>
         @endsection
-        
+
         @section('scripts')
         <script src="http://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
         <script src="/front-end/js/plugin/jquery-pretty-tabs.js"></script>
@@ -135,10 +135,10 @@
                $(this).find('.star').each(function(){
                   if($(this).hasClass('active')){
                       num_star_active ++;
-                  }  
+                  }
                });
                //      Value star is variable : num_star_active
-               //      Request Update rating 
+               //      Request Update rating
             });
         </script>
         <script >

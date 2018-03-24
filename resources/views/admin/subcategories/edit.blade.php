@@ -2,7 +2,7 @@
 
 
 @section('stylesheet')
-	 <link rel="stylesheet" href="http://localhost:8000/css/select2.min.css" />
+	 
 @endsection
 
 @section('grid')

@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section('stylesheet')
- <link rel="stylesheet" href="http://localhost:8000/css/util.css" />
+
 @endsection
 @section('grid')
 <br>

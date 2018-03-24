@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 
 //Pages Controller
-Route::get('/home', 'PageController@index')->name('home');
+Route::get('/', 'PageController@index')->name('home');
 Route::get('/category/{id}', 'PageController@getCategoryPage')->name('category');
 Route::get('/categoryfilter', 'PageController@getCategoryNameFilteredPage')->name('categoryfilter');
 Route::get('/productview/{id}' , 'PageController@getProductView')->name('product');
@@ -108,5 +108,5 @@ Route::get('register', ['as' => 'register' , 'uses' => 'Auth\RegisterController@
 Route::post('register', ['as' => '','uses' => 'Auth\RegisterController@register']);
 
 
-	//Language Change 
+	//Language Change
 Route::get('/lang/{lang}' , 'PageController@setLanguage');
