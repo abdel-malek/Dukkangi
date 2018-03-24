@@ -1,10 +1,6 @@
 <header id="header">
       <nav class="navbar navbar-expand-lg navbar-light bg-light" id="main-nav-bar">
       <img class="logo" src="/front-end/images/logo.png"/>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
         <div class="collapse navbar-collapse" id="main-navbar-items">
           <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
             <li class="nav-item active">
@@ -25,9 +21,6 @@
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light" id="lang-nav-bar">
         <a class="navbar-brand rate-us" href="#">@lang('Rate us?')</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">

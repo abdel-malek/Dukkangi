@@ -22,7 +22,7 @@
   $firstflag = 0;
   $lastflag = 0;
 ?>
-
+ <div class="col-md-12" style="padding-right: 0px;padding-left: 0px" id="content_page">
     <div  id="main-container" >
       <div class="col-4">
         <div class="items-col first-col">
@@ -68,4 +68,5 @@
    
       </div>
     </div>
+  </div>
 @endsection

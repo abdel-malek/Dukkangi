@@ -17,8 +17,7 @@
 
   @include('client.partials._footer')
 
-    <div id="help-float-btn"></div>
-
+    
   </body>
 
 </html>

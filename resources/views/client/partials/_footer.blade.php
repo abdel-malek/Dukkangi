@@ -17,10 +17,11 @@
                 <i class="fa fa-facebook icon_footer" style="padding: 0.5em 0.7em;"></i>
             </div>
 </footer>
-<script src="{{url('/front-end/js/lib/bootstrap.min.js')}}"></script>
-<script src="{{url('/front-end/js/lib/jquery-3.3.1.min.js')}}"></script>
 <script src="{{url('/js/jquery.min.js')}}"></script>
+<script src="{{url('/js/bootstrap.min.js')}}"></script>
+<script src="{{url('/front-end/js/lib/jquery-3.3.1.min.js')}}"></script>
 
 <script src="{{url('/front-end/js/main.js')}}"></script>
+<script src="/front-end/js/main.js"></script>
 
       @yield('scripts')
