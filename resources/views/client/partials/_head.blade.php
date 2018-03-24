@@ -1,17 +1,17 @@
 
       <meta charset="UTF-8">
-      <link rel="stylesheet" href="/front-end/css/lib/bootstrmnap.min.css">
-      <link rel="stylesheet" href="/front-end/css/style.css">
+      <link rel="stylesheet" href={{URL::asset('css/bootstrap.min.css')}} />
+      <link rel="stylesheet" href="{{url('/front-end/css/style.css')}}">
 
- <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="/front-end/css/jquery-pretty-tabs.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/front-end/css/login.css">
-        <link rel="stylesheet" href="/front-end/css/item.css">
-        <link rel="stylesheet" href="/front-end/css/material_icons.css">
-        <script type="text/javascript" src="/front-end/js/plugin/jssor.slider.min.js"></script>
-        <script type="text/javascript" src="/front-end/js/plugin/slide.js"></script>
-        <link rel="stylesheet" href="/front-end/css/SimpleStarRating.css">
+      <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+      <link rel="stylesheet" href="{{url('/front-end/css/jquery-pretty-tabs.css')}}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="{{url('/front-end/css/login.css')}}">
+      <link rel="stylesheet" href="{{url('/front-end/css/item.css')}}">
+      <link rel="stylesheet" href="{{url('/front-end/css/material_icons.css')}}">
+      <script type="text/javascript" src="{{url('/front-end/js/plugin/jssor.slider.min.js')}}"></script>
+      <script type="text/javascript" src="{{url('/front-end/js/plugin/slide.js')}}"></script>
+      <link rel="stylesheet" href="{{url('/front-end/css/SimpleStarRating.css')}}">
        <style>
             .star{
                 cursor: pointer;
@@ -130,4 +130,3 @@
         </style>
 
       @yield('styles')
-       
