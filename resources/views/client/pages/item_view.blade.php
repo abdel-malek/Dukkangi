@@ -135,7 +135,7 @@
     @section('main_section')
         <div class="col-md-12" style="padding: 0em 5em;" id="content_page">
             <div class="header_page"  style = "background-image: url('{{$subcategory->image_id}}');background-size:100%">
-                <p class="header_page_text_div" style="margin-left: 50px">
+                <p class="header_page_text_div">
                    {{$subcategory->english}}
                     <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
                     <span class="rating rating-info subcategory" data-type="subcategory" data-id="{{$subcategory->id}}" ></span>
