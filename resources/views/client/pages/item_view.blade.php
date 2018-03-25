@@ -134,7 +134,7 @@
     @endsection
     @section('main_section')
         <div class="col-md-12" style="padding: 0em 5em;" id="content_page">
-            <div class="header_page"  style = "background-image: url('{{$subcategory->image_id}}');">
+            <div class="header_page"  style = "background-image: url('{{$subcategory->image_id}}');background-size:100%">
                 <p class="header_page_text_div" style="margin-left: 50px">
                    {{$subcategory->english}}
                     <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
@@ -159,7 +159,7 @@
                         </div>
                     </div>
                     @if ($product->qty == 0)
-                        
+
                     <div class="item_out_of_stock">
                         <h3 class="title_item_out_of_stock">
                             Sorry!
@@ -189,10 +189,10 @@
                     </p>
                     <p  class="text_item_details" {{ $product->qty == 0 ?"style='filter: blur(5px)'" : '' }}>
                         {{ $product->desc_english}}
-                        
+
                     </p>
                      @if ($product->qty != 0 )
-                 
+
                     <p class="buy_item_details" style="margin-top: 50px">
                          <a href="" ><span style="cursor: pointer;"> Buy This Item</span></a>
                         <img src="/front-end/images/price-tag/buy-this-item.png" class="img_buy_item_details"/>
@@ -341,7 +341,7 @@
             </div>
             <div class="leave_constructive_review col-md-4">
                 {!! Form::open(['route' => ['comment',$product->id ]]) !!}
-                    <h3 class="text_leave_constructive_review" style="color: #d80001;margin-top: 0em;">Leave a constructive review</h3> 
+                    <h3 class="text_leave_constructive_review" style="color: #d80001;margin-top: 0em;">Leave a constructive review</h3>
                     <p class="text_leave_constructive_review" style="margin-top:0.6em;">Rate this product </p>
                    <div class="details_comment" style="margin-bottom: 50px">
                     <span class="rating form-rate" data-id="{{$product->id }}" style="margin-right: 160px"></span>
@@ -365,7 +365,7 @@
             <!-- Just Testing for($i=0 ; $i< 9; $i++) -->
                             @foreach($simiProducts as $simiproduct)
                             @if($simiproduct->id == $product->id)
-                            <?php 
+                            <?php
                             continue;
                             ?>
                             @endif
@@ -393,10 +393,10 @@
 <!-- Add To Cart -->
 
  <div class="background_modal" style="display: none;" >
-             
+
          </div>
-         
-         
+
+
          <div class="modal_one_item_details" id="modal_one_item_details" style="display: none;">
                     <div class="header_item_details">
                         <img src="/front-end/images/slider/slider1.jpg" class="img_item_details" />
@@ -421,7 +421,7 @@
                                     1
                                 </p>
                                 <div style="width:30%;float: right;">
-                                    <img src="/front-end/images/payment/handler-plus.png" 
+                                    <img src="/front-end/images/payment/handler-plus.png"
                                     onclick="num_plus(this)" class="btn_qty">
                                      <img src="/front-end/images/payment/handler-min.png" onclick="num_min(this)" class="btn_qty" style="margin-top: -0.9em">
                                 </div>
@@ -436,13 +436,13 @@
                             </div>
                             <div style="width: 70%;float: right;">
                                 <div class="option_color" style="background-color: #303030;">
-                                    
+
                                 </div>
                                   <div class="option_color active_option_color" style="background-color: #e8e8e8;">
-                                    
+
                                 </div>
                                   <div class="option_color" style="background-color: #f5f5f5;">
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -496,19 +496,19 @@
                 })();
         </script>
         <script src="{{URL::asset('/front-end/js/plugin/SimpleStarRating.js')}}"></script>
-        
+
 
  <script>
     var ratings = document.getElementsByClassName('rating');
 
-            
+
             //5 functions for 1, 2, 3, 4, 5 Stars for anything
             //one more function for those which don't have any rate
                 //Initial Rate Subcategory
                 var ratings = document.getElementsByClassName('subcategory');
 
                 for (var i = 0; i < ratings.length; i++) {
-                    
+
                     var r = new SimpleStarRating<?php echo (!isset($subcategory->rate)?'0':$subcategory->rate)?>(ratings[i]);
 
                 }
@@ -618,15 +618,15 @@
                $(this).find('.star').each(function(){
                   if($(this).hasClass('active')){
                       num_star_active ++;
-                  }  
+                  }
                });
                //      Value star is variable : num_star_active
-               //      Request Update rating 
+               //      Request Update rating
             });
         </script>
         <script>
             $('#btn_modal_one_item_details').click(function(){
-               $('#modal_one_item_details').show(); 
+               $('#modal_one_item_details').show();
                $('.background_modal').show();
                $('#header').css( 'filter','blur(5px)');
                $('#content_page').css('filter','blur(5px)');
@@ -652,7 +652,7 @@
                     counter= counter+1;
 
                 }
-                
+
             }
             function num_min(obj) {
                 if ((parseInt($(obj).parent().parent().text()) > 0)) {
@@ -666,14 +666,14 @@
                     $(obj).find('.icon_item_out_of_stock').css('display', 'none');
                 } else {
                     $(obj).find('.icon_item_out_of_stock').css('display', 'block');
-                }      
+                }
             }
         </script>
         <script>
           if(parseInt($('.one_item_details').height()) < 730){
               $('.one_item_details .text_item_details').css('paddingBottom','8em');
           }else{
-              $('.one_item_details .text_item_details').css('paddingBottom','0em'); 
+              $('.one_item_details .text_item_details').css('paddingBottom','0em');
           }
           $('.item_out_of_stock').css('height',parseInt($('.one_item_details').height()) - 380);
         </script>
