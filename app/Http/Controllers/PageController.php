@@ -167,7 +167,8 @@ class PageController extends Controller
 		$product = Product::find($id);
 		$category = Category::find($product->category_id);
 		$subcategory = Subcategory::find($product->subcategory_id);
-		$comments = Comment::with(['user'])->where('product_id','=',$product->id)->get()->take(3);
+		$skip = Comment::with(['user'])->where('product_id','=',$product->id)->get()->count();
+		$comments = Comment::with(['user'])->where('product_id','=',$product->id)->skip($skip-3)->take(3)->get();
 
 		foreach ($comments as $comment) {
 			$comment->user_id = User::find($comment->user_id)->name;
@@ -227,8 +228,9 @@ class PageController extends Controller
 		}
 		//Calculate Average Rate For Product
 		
-
+		/// NOTE : NEED A CHANGE		
 		$productRate = Rate::select('rate')->where('product_id' , '=',$product->id)->get();
+
 		if($productRate->count() != 0){
 			$precalculation =0 ;
 			foreach ($productRate as $temp) {
@@ -251,6 +253,7 @@ class PageController extends Controller
 			}
 		}
 		//die();
+		//$product->qty  = 0;
 		return view('client.pages.item_view')->withProduct($product)->withCategory($category)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments);	
 
 	}

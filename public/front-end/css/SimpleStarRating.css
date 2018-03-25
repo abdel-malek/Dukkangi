@@ -56,6 +56,7 @@ SOFTWARE.
   overflow: hidden; }
 
 .rating:not([disabled]) .star:hover::after,
+
 .rating .star.active::after {
   opacity: 1;
   width: 1em;

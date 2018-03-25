@@ -25,6 +25,48 @@
 				{{ Form::label('turky' , 'Name (Turki):') }}
 				{{ Form::text('turky' , null, ['class'=> 'form-control' , 'required'=> '']) }}
 				<br>
+				<div class="col-md-12">
+					<div class="row">
+
+						<div class="col-md-6">
+						<ul class="list-group">
+	  						<li class="list-group-item">
+							{{ Form::label('option1','Option 1:')}}
+							{{ Form::checkbox('option1', '1') }}
+							</li>
+						</ul>
+						</div>
+						<div class="col-md-6">
+						<ul class="list-group">
+	  						<li class="list-group-item">
+							
+							{{ Form::label('option2','Option 2:')}}
+							{{ Form::checkbox('option2', '1') }}
+							</li>
+						</ul>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<ul class="list-group">
+	  							<li class="list-group-item">
+					
+							{{ Form::label('option3','Option 3:')}}
+							{{ Form::checkbox('option3', '1') }}
+							</li>
+						</ul>
+						</div>
+						<div class="col-md-6">
+							<ul class="list-group">
+	  							<li class="list-group-item">
+					
+							{{ Form::label('option4','Option 4:')}}
+							{{ Form::checkbox('option4', '1') }}
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
 	</div>
 	<div class="col-md-5">
 				{{ Form::label('qty', 'Quantity :' ) }}
@@ -38,7 +80,18 @@
 				{{ Form::label('point', 'Points :' ) }}
 				{{ Form::text('point', '0' , ['class'=> 'form-control' , 'required'=>'' ]) }}
 				<br>
-	
+	<br>
+				{{ Form::label('section1', 'Section 1 :' ) }}
+				{{ Form::text('section1', null , ['class'=> 'form-control' , 'required'=>'' ]) }}
+				
+				<br>
+				{{ Form::label('section2', 'Section 2 :' ) }}
+				{{ Form::text('section2', null, ['class'=> 'form-control' , 'required'=>'' ]) }}
+				
+				<br>
+				{{ Form::label('section3', 'Section 3 :' ) }}
+				{{ Form::text('section3', null , ['class'=> 'form-control' , 'required'=>'' ]) }}
+				<br>
 				{{ Form::label('category_id' , 'Category:')}}
 				<select class="custom-select" name="category_id">
 				@foreach($categories as $category)

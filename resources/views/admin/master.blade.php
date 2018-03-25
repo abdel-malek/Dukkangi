@@ -48,7 +48,7 @@
             <!-- CONTENT -->
         <input type='hidden' name='_token' value='{{csrf_token()}}' />
         @include('admin.partials._messages')
-        <div class='main-container'>
+        <div class='main-container' style="float: right;">
             @yield('grid')
           </div>
 

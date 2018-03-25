@@ -1,7 +1,23 @@
 @extends('client.main')
+@section('styles')
+    <style >
+    .image_slider{
+                height:13em !important; 
+                border: 0.04em solid #8a8a8a;
+                width: 100% !important;
+            }
+            .image_thum{
+                left: -4em !important;
+                width: auto !important;
+                height: 4.1em !important;
+            }
+
+
+    </style>
+@endsection
 
 @section('main_section')
-
+      <div class="col-md-12" style="padding: 0em 5em;" id="content_page">
         <div class="col-md-12 col-sm-12 page_content_item">
             <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:-85px;width:1024px;height:200px;overflow:none;visibility:hidden;background-color:#24262e;">
                 <!-- Loading Screen -->
@@ -11,12 +27,13 @@
 
                     @foreach($subcategories as $subcategory)
                     <div>
-                        <img data-u="image" src="{{$subcategory->image_id}}" style="height:15em !important;" />
-                        <img data-u="thumb" src="{{$subcategory->image_id}}" style="left: -4em !important;width: auto !important;height: 4.1em !important;" />
-                        <p class="text_big_image_slider">
+                        <!--Some Changes-->
+                        <img class="image_slider" data-u="image" src="{{$subcategory->image_id}}" />
+                        <img class="image_thum" data-u="thumb" src="{{$subcategory->image_id}}" />
+                        <p  class="text_big_image_slider">
                             {{ $subcategory->english}}
                             <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
-                            <span class="rating" ></span>
+                            <span class=" subcategory" ></span>
                         </p>
                     </div>
                     @endforeach
@@ -29,7 +46,7 @@
 
                             </div>
                             <p class="text_small_image_slider">
-                                @lang('Subcategory')
+                                @lang('Subcategory') 
                             </p>
                             <svg viewBox="0 0 16000 16000" class="cv">
                             </svg>
@@ -86,7 +103,7 @@
                                    <a href="{{route('product',$product->id)}}"> <img src="{{$product->image_id}}" class="img_item" />
                                     <p class="item_name">{{ $product->english}}</p>
                                     <p class="item_price" style="margin-bottom: 0em;">{{$product->price }}€</p>
-                                    <span class="rating" ></span>
+                                    <span class="rating product" ></span>
                                     <img src="\front-end\images\user_actions\view-my-cart.png" class="icon_view_my_card" /></a>
                                 </div>
                             </div>
@@ -97,6 +114,7 @@
                 </div>
             </div>
         </div>
+    </div>
         @endsection
 
         @section('scripts')
@@ -130,16 +148,27 @@
                 }
         </script>
         <script>
-            $('.rating').click(function(){
-                var num_star_active = 0;
-               $(this).find('.star').each(function(){
-                  if($(this).hasClass('active')){
-                      num_star_active ++;
-                  }
-               });
-               //      Value star is variable : num_star_active
-               //      Request Update rating
-            });
+                var ratings = document.getElementsByClassName('subcategory');
+
+                for (var i = 0; i < ratings.length; i++) {
+                    
+                    var r = new SimpleStarRating<?php echo (!isset($subcategory->rate)?'0':$subcategory->rate)?>(ratings[i]);
+
+                    ratings[i].addEventListener('rate', function (e) {
+                        console.log('Rating: ' + e.detail);
+                    });
+                }
+
+                var ratings = document.getElementsByClassName('simi');
+                <?php $counter= 0 ?>
+
+                for (var i = 0; i < ratings.length; i++) {
+                    var r = new SimpleStarRating<?php echo (isset($simiProducts[$counter]->rate)?$simiProducts[$counter]->rate:'0') ?>(ratings[i]);
+                    <?php $counter++?>
+                    ratings[i].addEventListener('rate', function (e) {
+                        console.log('Rating: ' + e.detail);
+                    });
+                }
         </script>
         <script >
             var input = document.getElementById("search");

@@ -157,6 +157,10 @@ class ProductController extends Controller
         $product->price         = $request->price;
         $product->category_id    = $request->category_id;
         $product->subcategory_id = $request->subcategory_id;
+        $product->option1 = $request->option1;
+        $product->option2 = $request->option2;
+        $product->option3 = $request->option3;
+        $product->option4 = $request->option4;
 
         if($request->hasFile('image'))
             $product->image_id = ImageService::saveImage($request->file('image'));
@@ -166,11 +170,6 @@ class ProductController extends Controller
         } else {
             $product->point     = '0';
         }
-        //		Unused   "YET" !!
-        $product->option1 = 0;
-        $product->option2 = 0;
-        $product->option3 = 0;
-        $product->option4 = 0;
 
         $product->save();
 
