@@ -15,9 +15,10 @@
       @yield('main_section')
 
 
+
   @include('client.partials._footer')
 
-    
+    @yield('cart')
   </body>
 
 </html>
