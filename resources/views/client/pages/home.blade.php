@@ -137,7 +137,7 @@
       @for($counter ; $counter < $col1;  $counter++)
         <div class="landing-items-block {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}} " style="margin-top: {{($firstflag)? '8':'14'}}em;">
           <p class="text_item_block">{{$categories[$counter]->english}}</p>
-          <a href="{{route('category' , $categories[$counter]->id) }}"><img class="" src="/front-end/images/slider/item1.jpg" /></a>
+          <a href="{{route('category' , $categories[$counter]->id) }}"><img class="" src="{{$categories[$counter]->image_id }}" /></a>
         </div>
         <?php $firstflag =1 ; ?> 
       @endfor

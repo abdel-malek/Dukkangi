@@ -11,28 +11,13 @@
 		<div id="#carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 		  <ol class="carousel-indicators">
 		    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-		    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-		    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 		  </ol>
 		  <div class="carousel-inner">
 		    <div class="carousel-item active">
-		      <img class="d-block w-100" src="..." alt="First slide">
-		    </div>
-		    <div class="carousel-item">
-		      <img class="d-block w-100" src="..." alt="Second slide">
-		    </div>
-		    <div class="carousel-item">
-		      <img class="d-block w-100" src="..." alt="Third slide">
+		      <img class="d-block w-100" src="{{$product->image_id}}" alt="First slide" style="height: 400px">
 		    </div>
 		  </div>
-		  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		    <span class="sr-only">Previous</span>
-		  </a>
-		  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-		    <span class="sr-only">Next</span>
-		  </a>
+		  
 		</div>
 
 	</div>
@@ -53,28 +38,124 @@
 </div>
 <div class="row">
 	<div class="col-md-12">
-		<div class="col-md-2" style="margin-left: 100px">
+		<div class="col-md-2" style="margin-left: 20px;max-width: 100%;width: 23%">
 			<ul class="list-group">
 		  		<li class="list-group-item"><b>Option1</b> : {{ ($product->option1  ? 'Yes' : 'No' ) }}</li>
 		  	</ul>
 		</div>
-		<div class="col-md-2 " style="margin-left: 50px">
+		<div class="col-md-2 " style="max-width: 100%;width: 23%">
 			<ul class="list-group">
 		  		<li class="list-group-item"><b>Option2</b> : {{ ($product->option2  ? 'Yes' : 'No' ) }}</li>
 		  	</ul>
 		</div>
-		<div class="col-md-2 " style="margin-left: 50px">
+		<div class="col-md-2 "  style="max-width: 100%;width: 23%">
 			<ul class="list-group">
 		  		<li class="list-group-item"><b>Option3</b> : {{ ($product->option3  ? 'Yes' : 'No' ) }}</li>
 		  	</ul>
 		</div>
-		<div class="col-md-2 " style="margin-left: 50px">
+		<div class="col-md-2 "  style="max-width: 100%;width: 23%">
 			<ul class="list-group">
 		  		<li class="list-group-item"><b>Option4</b> : {{ ($product->option4  ? 'Yes' : 'No' ) }}</li>
 		  	</ul>
 		</div>
 	</div>
 </div>
+<div class="row">
+	<div class="col-md-12 jumbotron" style="margin-left: 30px;margin-right: 30px;padding-right: 0px;max-width: 960px;padding-top: 20px">
+		<p >
+		<h3 class="text-center"><i> Section 1</i></h3>
+		</p>
+		<div class="col-md-2" style="margin-left: 20px;max-width: 100%;width: 46%">
+			<ul class="list-group">
+		  		<li class="list-group-item"><b>English</b> : {{ $product->section1_english }}</li>
+		  	</ul>
+		</div>
+		<div class="col-md-2 " style="max-width: 100%;width: 46%">
+			<ul class="list-group">
+		  		<li class="list-group-item"><b>Arabic</b> : {{ $product->section1_arabic  }}</li>
+		  	</ul>
+		</div>
+		<div class="col-md-2 "  style="max-width: 100%;margin-left: 20px;width: 46%">
+			<ul class="list-group">
+		  		<li class="list-group-item"><b>German</b> : {{ $product->section1_german    }}</li>
+		  	</ul>
+		</div>
+		<div class="col-md-2 "  style="max-width: 100%;width: 46%">
+			<ul class="list-group">
+		  		<li class="list-group-item"><b>Kurdi</b> : {{ $product->section1_kurdi}}   </li>
+		  	</ul>
+		</div>
+		<div class="col-md-2 col-md-offset-4"  style="max-width: 100%;width: 46%;margin-left: 260px">
+			<ul class="list-group">
+		  		<li class="list-group-item"><b>Turky</b> : {{ $product->section1_turky   }}</li>
+		  	</ul>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12  jumbotron" style="margin-left: 30px;margin-right: 30px;padding-right: 0px;max-width: 960px;padding-top: 20px">
+		<p >
+		<h3 class="text-center"><i> Section 2</i></h3>
+		</p>
+		<div class="col-md-2" style="margin-left: 20px;max-width: 100%;width: 46%">
+			<ul class="list-group">
+		  		<li class="list-group-item"><b>English</b> : {{ $product->section2_english }}</li>
+		  	</ul>
+		</div>
+		<div class="col-md-2 " style="max-width: 100%;width: 46%">
+			<ul class="list-group">
+		  		<li class="list-group-item"><b>Arabic</b> : {{ $product->section2_arabic  }}</li>
+		  	</ul>
+		</div>
+		<div class="col-md-2 "  style="max-width: 100%;margin-left: 20px;width: 46%">
+			<ul class="list-group">
+		  		<li class="list-group-item"><b>German</b> : {{ $product->section2_german    }}</li>
+		  	</ul>
+		</div>
+		<div class="col-md-2 "  style="max-width: 100%;width: 46%">
+			<ul class="list-group">
+		  		<li class="list-group-item"><b>Kurdi</b> : {{ $product->section2_kurdi}}   </li>
+		  	</ul>
+		</div>
+		<div class="col-md-2 col-md-offset-4"  style="max-width: 100%;width: 46%;margin-left: 260px">
+			<ul class="list-group">
+		  		<li class="list-group-item"><b>Turky</b> : {{ $product->section2_kurdi_turky   }}</li>
+		  	</ul>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12 jumbotron" style="margin-left: 30px;margin-right: 30px;padding-right: 0px;max-width: 960px;padding-top: 20px">
+		
+		<h3 class="text-center"><i> Section 3</i></h3>
+		<div class="col-md-2" style="margin-left: 20px;max-width: 100%;width: 46%">
+			<ul class="list-group">
+		  		<li class="list-group-item"><b>English</b> : {{ $product->section3_english }}</li>
+		  	</ul>
+		</div>
+		<div class="col-md-2 " style="max-width: 100%;width: 46%">
+			<ul class="list-group">
+		  		<li class="list-group-item"><b>Arabic</b> : {{ $product->section3_arabic  }}</li>
+		  	</ul>
+		</div>
+		<div class="col-md-2 "  style="max-width: 100%;margin-left: 20px;width: 46%">
+			<ul class="list-group">
+		  		<li class="list-group-item"><b>German</b> : {{ $product->section3_german    }}</li>
+		  	</ul>
+		</div>
+		<div class="col-md-2 "  style="max-width: 100%;width: 46%">
+			<ul class="list-group">
+		  		<li class="list-group-item"><b>Kurdi</b> : {{ $product->section3_kurdi}}   </li>
+		  	</ul>
+		</div>
+		<div class="col-md-2 col-md-offset-4"  style="max-width: 100%;width: 46%;margin-left: 260px">
+			<ul class="list-group">
+		  		<li class="list-group-item"><b>Turky</b> : {{ $product->section3_kurdi_turky   }}</li>
+		  	</ul>
+		</div>
+	</div>
+</div>
+
 
 
 <div class="row">

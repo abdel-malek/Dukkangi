@@ -6,15 +6,36 @@
             <li class="nav-item active">
               <a class="nav-link" href="{{ route('home') }}">@lang('Home')</a>
             </li>
+         
+            @if(!Auth::check() )
+          
             <li class="nav-item">
               <a class="nav-link" href="{{route('login')}}">@lang('Login')</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('register')}}">@lang('Sign up')</a>
             </li>
+            
+            @else
+          
+
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">My Cart </a>
+            </li>
+            
+            <li class="nav-item">
+              {!! Form::open(['route' => 'logout' , 'id' => 'logout-form']) !!}
+                <a class="nav-link" href="javascript:{}" onclick="document.getElementById('logout-form').submit();" >Logout </a>
+                
+              {!! Form::close() !!}    
+            </li>
+            @endif
             <li class="nav-item">
               <a class="nav-link" href="./help.html">@lang('Help')</a>
             </li>
+
+           
           </ul>
         </div>
       </nav>

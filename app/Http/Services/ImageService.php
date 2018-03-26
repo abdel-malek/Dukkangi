@@ -10,7 +10,7 @@ class ImageService {
 
     public static function saveImage($image)
     {
-        $path = str_replace('/app/Http/Services', '/public/uploads', dirname(__FILE__));
+        $path = str_replace('app/Http/Services', '/public/uploads', dirname(__FILE__));
         if (!empty($image) && $image->isValid()) {
             if ($image->isValid()) {
                 $image->move($path, $image->getClientOriginalName());

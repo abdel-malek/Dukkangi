@@ -119,7 +119,7 @@
 
         @section('scripts')
         <script src="http://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-        <script src="/front-end/js/plugin/jquery-pretty-tabs.js"></script>
+        <script src="{{URL::asset('/front-end/js/plugin/jquery-pretty-tabs.js')"></script>
         <script type="text/javascript">
                 var _gaq = _gaq || [];
                 _gaq.push(['_setAccount', 'UA-36251023-1']);

@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -66,6 +66,10 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+    public function showRegistrationForm()
+    {
+        return view('client.pages.signup');
+    }
     protected function create(array $data)
     {
         $users = User::all() ;

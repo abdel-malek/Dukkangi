@@ -66,6 +66,8 @@
 							</ul>
 						</div>
 					</div>
+					{{ Form::label('image' , 'Image:')}}
+ 					{{ Form::file('image') }}
 				</div>
 	</div>
 	<div class="col-md-5">
