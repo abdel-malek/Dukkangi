@@ -23,10 +23,11 @@ Route::get('/', 'PageController@index')->name('home');
 Route::get('/home', 'PageController@index');
 Route::get('/category/{id}', 'PageController@getCategoryPage')->name('category');
 Route::get('/categoryfilter', 'PageController@getCategoryNameFilteredPage')->name('categoryfilter');
+Route::get('/subcategoryfilter/{id1}' , 'PageController@getCategorySubcategoryFilteredPage')->name('subcategoryfilter');
 Route::get('/productview/{id}' , 'PageController@getProductView')->name('product');
 Route::post('/rate' , 'PageController@rate');
 Route::post('/comment-save' , 'PageController@comment')->name('comment');
-
+Route::get('/buyitem/{id}' ,  'PageController@getBuyItemPage')->name('buyitem');
 
    			 //DASHBOARD
     //CATEGORIES

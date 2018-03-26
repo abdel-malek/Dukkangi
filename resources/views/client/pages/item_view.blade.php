@@ -194,7 +194,7 @@
                      @if ($product->qty != 0 )
 
                     <p class="buy_item_details" style="margin-top: 50px">
-                         <a href="" ><span style="cursor: pointer;"> Buy This Item</span></a>
+                         <a href="#" ><span style="cursor: pointer;"> Buy This Item</span></a>
                         <img src="/front-end/images/price-tag/buy-this-item.png" class="img_buy_item_details"/>
                     </p>
                      <p class="add_to_card_item_details" style="cursor: pointer;margin-top: 60px" id="btn_modal_one_item_details" >

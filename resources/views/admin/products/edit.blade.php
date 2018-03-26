@@ -184,10 +184,9 @@
 		</div>
 		<div class="col-md-2 col-md-offset-4"  style="max-width: 100%;width: 46%;margin-left: 260px">
 			<ul class="list-group">
-		  		<li class="list-group-item">
 		  			{{ Form::label('section2_turky' , 'Section 2 (TR) :')}}
 		  			{{ Form::text('section2_turky' , null,['class' => 'form-control'])}}
-		  		</li>
+		  		
 		  	</ul>
 		</div>
 	</div>
@@ -231,10 +230,9 @@
 		</div>
 		<div class="col-md-2 col-md-offset-4"  style="max-width: 100%;width: 46%;margin-left: 260px">
 			<ul class="list-group">
-		  		<li class="list-group-item">
 		  			{{ Form::label('section3_turky' , 'Section 3 (TR) :')}}
 		  			{{ Form::text('section3_turky' , null,['class' => 'form-control'])}}
-		  		</li>
+		  	
 		  	</ul>
 		</div>
 	</div>

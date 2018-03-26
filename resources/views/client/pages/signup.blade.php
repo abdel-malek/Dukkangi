@@ -63,7 +63,7 @@
                             </div>
                             <div class="col-sm-12 my-1" style="margin-top: 3em !important;float: left;">
                                 <div class="input-group">
-                                    <button type="submit" class="btn_login">
+                                    <button type="submit" class="btn_login" style="border :0px">
                                         Sign up
                                     </button>
                                 </div>

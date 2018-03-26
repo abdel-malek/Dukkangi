@@ -54,7 +54,8 @@ class PageController extends Controller
 		$lang = session('lang');
 		App::setLocale($lang);
 		$categories = Category::all();
-		$subcategories = DB::table('subcategory')->where('category_id','=',$categoryId)->orderBy('category_id','asc')->get();
+		$subcategories = Subcategory::all()->where('category_id','=',$categoryId);
+		//dd($subcategories);
 		$products = DB::table('product')->where('category_id','=',$categoryId)->orderBy('category_id', 'asc')->get();
 		if ($lang == "ar"){
 			foreach ($categories as $category) {
@@ -159,6 +160,68 @@ class PageController extends Controller
 		}
 		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withLastSearch($request->search);
 	}
+
+	public function getCategorySubcategoryFilteredPage($subcategory){
+		$subcategory = Subcategory::find($subcategory);
+		
+		$lang = session('lang');
+		App::setLocale($lang);
+
+		$products = Product::where('subcategory_id','=',$subcategory->id)->get();
+		
+		$categories = Category::all();
+
+		$subcategories = Subcategory::where('category_id','=',$subcategory->category_id)->get();
+
+		if ($lang == "ar"){
+			foreach ($categories as $category) {
+				$category->english = $category->arabic;
+			}
+			foreach ($subcategories as $subcategory1) {
+				$subcategory1->english = $subcategory1->arabic;
+			}
+			foreach ($products as $product) {
+				$product->english = $product->arabic;
+			}
+		}
+		if ($lang == "de"){
+			foreach ($categories as $category) {
+				$category->english = $category->german;
+			}
+			foreach ($subcategories as $subcategory) {
+				$subcategory->english = $subcategory->german;
+			}
+			foreach ($products as $product) {
+				$product->english = $product->german;
+			}
+		}
+		if ($lang == "tr"){
+			foreach ($categories as $category) {
+				$category->english = $category->turky;
+			}
+			foreach ($subcategories as $subcategory) {
+				$subcategory->english = $subcategory->turky;
+			}
+			foreach ($products as $product) {
+				$product->english = $product->turky;
+			}
+		}
+		if ($lang == "ku"){
+			foreach ($categories as $category) {
+				$category->english = $category->kurdi;
+			}
+			foreach ($subcategories as $subcategory) {
+				$subcategory->english = $subcategory->kurdi;
+			}
+			foreach ($products as $product) {
+				$product->english = $product->kurdi;
+			}
+		}
+
+		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withLastSearch($subcategory->category_id);
+	}
+
+
 	public function getProductView($id){
 		$lang = session('lang');
 
@@ -228,7 +291,7 @@ class PageController extends Controller
 		}
 		//Calculate Average Rate For Product
 		
-		/// NOTE : NEED A CHANGE		
+		/// NOTE : NEED A CHANGE To Rate Proccess		
 		$productRate = Rate::select('rate')->where('product_id' , '=',$product->id)->get();
 
 		if($productRate->count() != 0){
@@ -239,7 +302,6 @@ class PageController extends Controller
 			$product->rate = round( $precalculation / $productRate->count() );
 		}
 		// Calculate Average Rate For Simiproducts
-	//	$simiproducts = array_diff($simiproducts, [$product]);
 		foreach ($simiproducts as $simi) {
 
 			$simiRate = Rate::select('rate')->where('product_id' , '=', $simi->id)->get();
@@ -249,10 +311,8 @@ class PageController extends Controller
 					$precalculation = $precalculation + $temp->rate;
 				}
 				$simi->rate = round( $precalculation / $simiRate->count());
-			//	echo $simi->id."   ";
 			}
 		}
-		//die();
 		//$product->qty  = 0;
 		return view('client.pages.item_view')->withProduct($product)->withCategory($category)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments);	
 
@@ -288,7 +348,12 @@ class PageController extends Controller
 		
 		return Redirect(route('product' , $productId));
 	}
-
+	public function getBuyItemPage($id){
+		$product = Product::find($id);
+		$subcategory = Subcategory::find($product->subcategory_id);
+		
+		return view('client.pages.buy_item')->withProduct($product)->withSubcategory($subcategory);
+	}
 
 
 

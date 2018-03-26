@@ -119,7 +119,7 @@
 		</div>
 		<div class="col-md-2 col-md-offset-4"  style="max-width: 100%;width: 46%;margin-left: 260px">
 			<ul class="list-group">
-		  		<li class="list-group-item"><b>Turky</b> : {{ $product->section2_kurdi_turky   }}</li>
+		  		<li class="list-group-item"><b>Turky</b> : {{ $product->section2_turky   }}</li>
 		  	</ul>
 		</div>
 	</div>
@@ -150,7 +150,7 @@
 		</div>
 		<div class="col-md-2 col-md-offset-4"  style="max-width: 100%;width: 46%;margin-left: 260px">
 			<ul class="list-group">
-		  		<li class="list-group-item"><b>Turky</b> : {{ $product->section3_kurdi_turky   }}</li>
+		  		<li class="list-group-item"><b>Turky</b> : {{ $product->section3_turky   }}</li>
 		  	</ul>
 		</div>
 	</div>

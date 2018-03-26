@@ -11,9 +11,22 @@
                 width: auto !important;
                 height: 4.1em !important;
             }
+    a:hover{
+        color: inherit;
+        text-decoration:none;
+    }
+    a{
 
+        color: inherit;
+        text-decoration:none;
+
+    }
 
     </style>
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        
 @endsection
 
 @section('main_section')
@@ -26,15 +39,24 @@
                 <div data-u="slides" style="cursor:default;position:relative;top:0px;left:240px;width:850px;height:200px;overflow:hidden;">
 
                     @foreach($subcategories as $subcategory)
+
                     <div>
                         <!--Some Changes-->
-                        <img class="image_slider" data-u="image" src="{{$subcategory->image_id}}" />
-                        <img class="image_thum" data-u="thumb" src="{{$subcategory->image_id}}" />
+                        <img  data-u="image" src="{{$subcategory->image_id}}" style="height:15em;width: 45em;    border: 0.04em solid #8a8a8a" />
+                       
+                        <img  data-u="thumb" src="{{$subcategory->image_id}}"    />
+                        
+                        
+                         
                         <p  class="text_big_image_slider">
-                            {{ $subcategory->english}}
-                            <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
-                            <span class=" subcategory" ></span>
+                            <a href="{{ route('subcategoryfilter',$subcategory->id) }}">
+                            {{ $subcategory->english }}
+                            </a>    
+                        <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
+                       
+                        <span class=" subcategory" ></span>
                         </p>
+                        
                     </div>
                     @endforeach
                 </div>
@@ -118,9 +140,7 @@
         @endsection
 
         @section('scripts')
-        <script src="http://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-        <script src="{{URL::asset('/front-end/js/plugin/jquery-pretty-tabs.js')"></script>
-        <script type="text/javascript">
+       <script type="text/javascript">
                 var _gaq = _gaq || [];
                 _gaq.push(['_setAccount', 'UA-36251023-1']);
                 _gaq.push(['_setDomainName', 'jqueryscript.net']);
