@@ -39,7 +39,7 @@
                                 </div>
                             </div>
                             <p class="singup_text">
-                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} style="margin-left: 0px;"> Remember Me
+                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} style="margin-left: 0px;"> @lang('Remember Me')
                             </p> 
                             <div class="col-sm-12 my-1" style="margin-top: 3em !important;float: left;">
                                 <div class="input-group">

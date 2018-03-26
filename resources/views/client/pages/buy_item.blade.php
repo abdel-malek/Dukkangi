@@ -1,21 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Dukkangi</title>
-        <link rel="stylesheet" href="./css/lib/bootstrap.min.css">
+@extends('client.main')
+@section('styles')
+        <link rel="stylesheet" href="/front-end/css/lib/bootstrap.min.css">
         <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="./css/jquery-pretty-tabs.css">
+        <link rel="stylesheet" href="/front-end/css/jquery-pretty-tabs.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="./css/style.css">
-        <link rel="stylesheet" href="./css/login.css">
-        <link rel="stylesheet" href="./css/item.css">
-        <link rel="stylesheet" href="./css/item_view.css">
-        <link rel="stylesheet" href="./css/buy_item.css">
-        <link rel="stylesheet" href="./css/material_icons.css">
-        <script type="text/javascript" src="js/plugin/jssor.slider.min.js"></script>
-        <script type="text/javascript" src="./js/plugin/slide.js"></script>
-        <link rel="stylesheet" href="./css/SimpleStarRating.css">
+        <link rel="stylesheet" href="/front-end/css/style.css">
+        <link rel="stylesheet" href="/front-end/css/login.css">
+        <link rel="stylesheet" href="/front-end/css/item.css">
+        <link rel="stylesheet" href="/front-end/css/item_view.css">
+        <link rel="stylesheet" href="/front-end/css/buy_item.css">
+        <link rel="stylesheet" href="/front-end/css/material_icons.css">
+        <script type="text/javascript" src="/front-end/js/plugin/jssor.slider.min.js"></script>
+        <script type="text/javascript" src="/front-end/js/plugin/slide.js"></script>
+        <link rel="stylesheet" href="/front-end/css/SimpleStarRating.css">
         <style>
             .star{
                 cursor: pointer;
@@ -122,74 +119,27 @@
                 content: "&#xE838;";
             }
         </style>
-    </head>
-    <body>
-        <header id="header">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light" id="main-nav-bar">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="main-navbar-items">
-                    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="./main.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./login.html">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./signup.html">Sign up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./help.html">Help</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light" id="lang-nav-bar">
-                <a class="navbar-brand rate-us" href="#">Rate us?</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">English</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Arabic</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">German</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Kurdish</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Turkish</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
+@endsection
+@section('main_section')
+       <div class="col-md-12" style="padding: 0em 5em;" id="content_page">
 
         <div class="col-md-12" style="padding: 0em 5em;">
-            <div class="header_page">
+            <div class="header_page" style="background-image: url('{{$subcategory->image_id}}')">
                 <p class="header_page_text_div">
-                    Health Food / Canned Food
-                    <img src="images/items_page/star.png" class="one_start_slider" />
-                    <span class="rating" ></span>
+                    {{ $subcategory->english }}
+                    <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
+                    <span class="rating subcategory"  style="left: 17.9em;"></span>
                 </p>
             </div>
            
-                <div class="one_item_details">
+                <div class="one_item_details" style="width: 30% ;margin-left: 2em">
                     <div class="header_item_details">
-                        <img src="./images/slider/item1.jpg" class="img_item_details" />
+                        <img src="{{$product->image_id}}" class="img_item_details" style="height: 380px;" />
                         <div class="div_title_item_details" >
                             <p class="title_item_details">
-                                Item's Name
+                                {{$product->english}}
                             </p>
-                            <span class="rating" style="float:left;"></span>
+                            <span class="rating product" style="float:left;"></span>
                                <i class="material-icons icon_item_details">&#xE838;</i>
                             <i class="material-icons icon_item_details">error_outline</i>
                         </div>
@@ -203,62 +153,80 @@
                             </div>
                             <div style="width: 70%;float: right;">
                                 <p class="num_qty">
-                                    3
+                                    1
                                 </p>
                                 <div style="width:30%;float: right;">
-                                    <img src="./images/payment/handler-plus.png" class="btn_qty" onclick="num_plus(this);">
-                                    <img src="./images/payment/handler-min.png" class="btn_qty" style="margin-top: -0.9em" onclick="num_min(this)">
+                                    <img src="/front-end/images/payment/handler-plus.png" class="btn_qty" onclick="num_plus(this);">
+                                    <img src="/front-end/images/payment/handler-min.png" class="btn_qty" style="margin-top: -0.9em" onclick="num_min(this)">
                                 </div>
                                 <!-- <img -->
                             </div>
                         </div>
                            <div class="col-md-12" style="float: left;">
-                            <div style="width: 30%;float: left;">
+                            <div style="width: 39%;float: left;">
                                 <h3 class="title_color" style="margin-top: 0.4em;">
-                                    Color
+                                    Option 1
                                 </h3>
                             </div>
-                            <div style="width: 70%;float: right;">
+                            <div style="width: 60%;float: right;">
                                 <div class="option_color" style="background-color: #303030;">
                                     
-                                </div>
-                                  <div class="option_color active_option_color" style="background-color: #e8e8e8;">
+                                </div><div class="option_color" style="background-color: #303030;">
+                                    
+                                </div><div class="option_color" style="background-color: #303030;">
                                     
                                 </div>
-                                  <div class="option_color" style="background-color: #f5f5f5;">
-                                    
-                                </div>
-                            </div>
+                             
+                             </div>
                         </div>
-                           <div class="col-md-12" style="float: left;margin-top: 1em;">
-                            <div style="width: 30%;float: left;">
+                        <div class="col-md-12" style="float: left;margin-top: 20px;">
+                            <div style="width: 39%;float: left;">
                                 <h3 class="title_size" style="margin-top: -0.1em;">
-                                    Size
+                                    Option 2
                                 </h3>
                             </div>
-                            <div style="width: 70%;float: right;">
-                                <p class="option_size active_option_size">
+                            <div style="width: 60%;float: right;">
+                                <p class="option_size active_option_size" style="width: 100%">
                                     Small
                                 </p>
-                                 <p class="option_size">
-                                    Medium
-                                </p>
-                                 <p class="option_size">
-                                    Large
-                                </p>
+                                
                             </div>
                         </div>
+                        <div style="width: 39%;float: left;margin-top: 0px;padding-left: 15px">
+                                <h3 class="title_size" style="margin-top: -0.1em;">
+                                    Option 3
+                                </h3>
+                            </div>
+                            <div style="width: 60%;float: right;margin-top: 0px;">
+                                <p class="option_size active_option_size" style="width: 100%">
+                                    Small
+                                </p>
+                               
+                            </div>
+                        
+                        <div style="width: 39%;float: left;margin-top: 0px;">
+                                <h3 class="title_size" style="margin-top: 1.0em;padding-left: 15px">
+                                    Option 4
+                                </h3>
+                            </div>
+                            <div style="width: 60%;float: right;margin-top: 0px;">
+                                <p class="option_size active_option_size" style="width: 100%">
+                                    Small
+                                </p>
+                                
+                            </div>
+            
                     <p class="price_item_details">
                         <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">Total</span>
                         <span style="left:4em;"> 900 $</span>
-                        <img src="images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details"/>
+                        <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details"/>
                     </p>
-                </div>
-            
-            <div class="sections">
+            </div>       
+
+            <div class="sections" style="width: 60.8%;">
                 <div class="choose_payment">
                     <h4 class="title_choose_payment">
-                        Choose your payment methode:
+                        Choose your payment method:
                     </h4>
                     <div  class="visa_choose_payment">
                         <label style="float: left;">
@@ -300,7 +268,7 @@
   </svg>
 </label>
 
-                        <img src="./images/payment/visa.png" class="img_visa_choose_payment">
+                        <img src="/front-end/images/payment/visa.png" class="img_visa_choose_payment">
                     </div>
                     <div  class="paypal_choose_payment">
                                           <label style="float: left;">
@@ -341,7 +309,7 @@
     </defs>
   </svg>
 </label>
-                        <img src="./images/payment/paypal.png" class="img_paypal_choose_payment">
+                        <img src="/front-end/images/payment/paypal.png" class="img_paypal_choose_payment">
                     </div>
                    
                 </div>
@@ -362,39 +330,13 @@
             
         </div>
 
-    </div>
+        </div></div>
         
         
-        
-        <footer class="footer" >
-            <div class="col-md-12" style="float:left">
-                <h2 class="title_footer">
-                    About Dukkangi 
-                </h2> 
-            </div>
-            <div class="col-md-6 " style="float:left;margin-left: 26%;">
-                <p class="text_footer">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                </p>
-            </div>
-            <div class="col-md-6 " style="float:left;margin-left: 26%;">
-                <p class="text_footer">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                </p>
-            </div>
-            <div class="col-md-7 div_icon_footer" >
-                <i class="fa fa-google-plus icon_footer" style="    padding: 0.5em 0.35em;"></i>
-                <i class="fa fa-instagram icon_footer"></i>
-                <i class="fa fa-twitter icon_footer"></i>
-                <i class="fa fa-facebook icon_footer" style="padding: 0.5em 0.7em;"></i>
-            </div>
-        </footer>
+   @endsection
+   @section('scripts')
         <script src="http://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-        <script src="./js/plugin/jquery-pretty-tabs.js"></script>
+        <script src="/front-end/js/plugin/jquery-pretty-tabs.js"></script>
         <script type="text/javascript">
                 var _gaq = _gaq || [];
                 _gaq.push(['_setAccount', 'UA-36251023-1']);
@@ -410,17 +352,24 @@
                     s.parentNode.insertBefore(ga, s);
                 })();
         </script>
-        <script src="./js/plugin/SimpleStarRating.js"></script>
+        <script src="/front-end/js/plugin/SimpleStarRating.js"></script>
         <script>
-                var ratings = document.getElementsByClassName('rating');
+                var ratings = document.getElementsByClassName('subcategory');
 
                 for (var i = 0; i < ratings.length; i++) {
-                    var r = new SimpleStarRating(ratings[i]);
 
-                    ratings[i].addEventListener('rate', function (e) {
-                        console.log('Rating: ' + e.detail);
-                    });
+                    var r = new SimpleStarRating<?php echo (!isset($subcategory->rate)?'0':$subcategory->rate)?>(ratings[i]);
+
+                }        
+
+                var ratings = document.getElementsByClassName('product');
+                for (var i = 0; i < ratings.length; i++) {
+                    var r = new SimpleStarRating<?php echo ($product->rate==0?'':$product->rate) ?>(ratings[i]);
+
+                    
                 }
+
+
         </script>
         <script>
             $('.rating').click(function(){
@@ -441,7 +390,17 @@
     </script>
        <script>
             function num_plus(obj) {
+
+                if (parseInt($(obj).parent().parent().find('p').text()) < <?php echo $product->qty?> ){
                 $(obj).parent().parent().find('p').text(parseInt($(obj).parent().parent().find('p').text()) + 1);
+                counter = 0;
+                }
+                else if (counter < 1){
+                    $(obj).parent().parent().find('p').text($(obj).parent().parent().find('p').text() + "MAX");
+                    counter= counter+1;
+
+                }
+
             }
             function num_min(obj) {
                 if ((parseInt($(obj).parent().parent().text()) > 0)) {
@@ -449,5 +408,4 @@
                 }
             }
         </script>
-    </body>
-</html>
+@endsection

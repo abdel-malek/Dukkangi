@@ -48,7 +48,9 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $lang = session('lang');
-        \App::setLocale($lang);
+
+        App::setLocale((string)$lang);
+        
         $this->validateLogin($request);
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and

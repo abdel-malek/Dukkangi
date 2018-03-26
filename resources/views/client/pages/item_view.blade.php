@@ -135,7 +135,7 @@
     @section('main_section')
         <div class="col-md-12" style="padding: 0em 5em;" id="content_page">
             <div class="header_page"  style = "background-image: url('{{$subcategory->image_id}}');background-size:100%">
-                <p class="header_page_text_div">
+                <p class="header_page_text_div" style="width: 80.8%">
                    {{$subcategory->english}}
                     <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
                     <span class="rating rating-info subcategory" data-type="subcategory" data-id="{{$subcategory->id}}" ></span>
@@ -146,7 +146,7 @@
                     <div class="header_item_details">
                          <div class="discount_item_details">
                             <!-- Need a Change -->
-                            <p class="text_discount_details"> 15% off</p>
+                            <p class="text_discount_details"> 15% @lang('off')</p>
                          </div>
                         <img src="{{$product->image_id}}" class="img_item_details" style="height: 380px" />
                         <div class="div_title_item_details" >
@@ -185,7 +185,7 @@
                     <!--</div>-->
 
                     <p class="points_item_details" {{ $product->qty == 0 ?"style='filter: blur(5px)'" : '' }}>
-                        <span> {{$product->point}} Points </span>Bounce
+                        <span> {{$product->point}} @lang('Points') </span> @lang('Bounce')
                     </p>
                     <p  class="text_item_details" {{ $product->qty == 0 ?"style='filter: blur(5px)'" : '' }}>
                         {{ $product->desc_english}}
@@ -194,11 +194,11 @@
                      @if ($product->qty != 0 )
 
                     <p class="buy_item_details" style="margin-top: 50px">
-                         <a href="#" ><span style="cursor: pointer;"> Buy This Item</span></a>
+                         <a href="{{route('buyitem' , $product->id)}}" ><span style="cursor: pointer;"> @lang('Buy This Item')</span></a>
                         <img src="/front-end/images/price-tag/buy-this-item.png" class="img_buy_item_details"/>
                     </p>
                      <p class="add_to_card_item_details" style="cursor: pointer;margin-top: 60px" id="btn_modal_one_item_details" >
-                        <span> Add to cart</span>
+                        <span> @lang('Add to cart')</span>
                         <img src="/front-end/images/price-tag/add-to-cart.png" class="img_add_to_card_item_details"/>
                     </p>
                    @endif
@@ -207,7 +207,7 @@
             <div class="sections">
                 <div class="section">
                     <h4 class="title_section">
-                        Section 1
+                        @lang('Section') 1
                     </h4>
                     <p class="text_section">
                         <big>
@@ -217,45 +217,28 @@
                 </div>
                 <div class="section">
                     <h4 class="title_section">
-                        Section 2
+                        @lang('Section') 2
                     </h4>
                     <p class="text_section">
                          <span>{{$product->section2_english}}</span>
                          <p>
-                         <span class="point_text_section">{{$product->point}} points</span> <small>This will be given to you !</small>
+                         <span class="point_text_section">{{$product->point}} points</span> <small>@lang('This will be given to you !') </small>
                          </p>
                     </p>
                 </div>
 
                 <div class="section">
                     <h4 class="title_section">
-                        Section 3
+                        @lang('Section') 3
                     </h4>
                       <p class="text_section">
                          {{$product->section3_english}}<br/><br>
                        </p>
                 </div>
-                <div class="section">
-                    <h4 class="title_section">
-                        Quantity
-                    </h4>
-                    <p class="text_section">
-                        <big>
-                         <span>{{$product->qty}} Pieces</span>
-                        </big>
-                    </p>
-                </div>
+                
                 <div class="section" style="width:100%;">
                     <h4 class="title_section">
-                        Description
-                    </h4>
-                    <p class="text_section">
-                        {{$product->desc_english}}
-                    </p>
-                </div>
-                <div class="section" style="width:100%;">
-                    <h4 class="title_section">
-                        Options
+                        @lang('Options')
                     </h4>
                     <div class="options_section">
                         <div class="option_section">
@@ -263,7 +246,7 @@
 
                             </div>
                             <p class="title_option_section">
-                                Option 1
+                                @lang('Option') 1
                             </p>
                         </div>
                          <div class="option_section">
@@ -271,7 +254,7 @@
 
                             </div>
                             <p class="title_option_section">
-                                Option 2
+                                @lang('Option') 2
                             </p>
                         </div>
                          <div class="option_section">
@@ -279,7 +262,7 @@
 
                             </div>
                             <p class="title_option_section">
-                                Option 3
+                                @lang('Option') 3
                             </p>
                         </div>
                          <div class="option_section">
@@ -287,20 +270,20 @@
 
                             </div>
                             <p class="title_option_section">
-                                Option 4
+                                @lang('Option') 4
                             </p>
                         </div>
                     </div>
                     <img src="/front-end/images/user_actions/view-my-cart.png" class="icon_buy_option_section">
             </div>
         </div>
-        <div class="col-md-12" style="float:left;">
+        <div class="col-md-12" style="float:left;margin-top: 100px" >
             <h3 class="title_customer_review">
 
         <br>
         <br>
         <br>
-                Customer's Reviews
+                @lang("Customer's Reviews")
             </h3>
             <div class="customer_reviews col-md-7">
                 @foreach($comments as $comment)
@@ -308,7 +291,7 @@
                     <img src="/front-end/images/slider/item1.jpg" class="img_user_comments_customer_reviews" >
                     <div class="details_comment">
                         <h3 class="username_details_comment" style="width:225px">{{$comment->user_id}}</h3>
-                        <p class="rated_details_comment" style="margin-left: 0px">Rated this product</p>
+                        <p class="rated_details_comment" style="margin-left: 0px">@lang('Rated this product')</p>
                         <span class="rating comment"  ></span>
                         <p class="text_details_comment">
                             {{$comment->description}}
@@ -317,19 +300,19 @@
                             <div class="upvoted_user_actions">
                                 <img src="/front-end/images/user_actions/upvoted.png" class="img_upvoted_user_actions">
                                 <p class="text_upvoted_user_actions">
-                                    Upvoted
+                                    @lang('Upvoted')
                                 </p>
                             </div>
                              <div class="replay_user_actions">
                                 <img src="/front-end/images/user_actions/replay.png" class="img_replay_user_actions">
                                 <p class="text_replay_user_actions" style="color: #999">
-                                    Reply
+                                    @lang('Reply')
                                 </p>
                             </div>
                              <div class="report_user_actions">
                                 <img src="/front-end/images/user_actions/report.png" class="img_report_user_actions">
                                 <p class="text_report_user_actions" style="color: #999">
-                                    Report
+                                    @lang('Report')
                                 </p>
                             </div>
                         </div>
@@ -341,25 +324,25 @@
             </div>
             <div class="leave_constructive_review col-md-4">
                 {!! Form::open(['route' => ['comment',$product->id ]]) !!}
-                    <h3 class="text_leave_constructive_review" style="color: #d80001;margin-top: 0em;">Leave a constructive review</h3>
-                    <p class="text_leave_constructive_review" style="margin-top:0.6em;">Rate this product </p>
+                    <h3 class="text_leave_constructive_review" style="color: #d80001;margin-top: 0em;">@lang('Leave a constructive review')</h3>
+                    <p class="text_leave_constructive_review" style="margin-top:0.6em;">@lang('Rate this product') </p>
                    <div class="details_comment" style="margin-bottom: 50px">
                     <span class="rating form-rate" data-id="{{$product->id }}" style="margin-right: 160px"></span>
                     </div>
 
-                    <p class="text_leave_constructive_review">Leave a comment</p>
+                    <p class="text_leave_constructive_review">@lang('Leave a comment')</p>
                     {{ Form::text('commentbody' , null,['class' => 'input_leave_constructive_review']) }}
                     <!-- input_leave_constructive_review -->
                     {{ Form::text('rate', 0,['hidden' => 'hidden' , 'id'=>'rate'])}}
-                    <a class="btn_leave_constructive_review btn-block commentbody"  id="btn-comment" data-id="{{$product->id}}" style="background-color: #d80001;color: #fff">Post my review</a>
+                    <a class="btn_leave_constructive_review btn-block commentbody"  id="btn-comment" data-id="{{$product->id}}" style="background-color: #d80001;color: #fff">@lang('Post my review')</a>
                     {{ Form::submit('',['hidden' =>'hidden' , 'id' =>'myBtn'])}}
-                    <p class="btn_leave_constructive_review" onclick="document.getElementsByClassName('commentbody').thisext ='' ">Cancel</p>
+                    <p class="btn_leave_constructive_review" onclick="document.getElementsByClassName('commentbody').thisext ='' ">@lang('Cancel') </p>
                 {!! Form::close() !!}
             </div>
         </div>
         <div class="col-md-12" style="float:left;">
             <h3 class="title_similar_items" >
-                Similar item
+                @lang('Similar item')
             </h3>
 
             <!-- Just Testing for($i=0 ; $i< 9; $i++) -->
@@ -399,7 +382,7 @@
 
          <div class="modal_one_item_details" id="modal_one_item_details" style="display: none;">
                     <div class="header_item_details">
-                        <img src="/front-end/images/slider/slider1.jpg" class="img_item_details" />
+                        <img src="/front-end/images/slider/slider1.jpg" class="img_item_details" style="height: 200px" />
                         <div class="div_title_item_details" >
                             <p class="title_item_details">
                                 {{$product->english}}
@@ -413,7 +396,7 @@
                         <div class="col-md-12" style="margin-top: 0.6em;float: left;">
                             <div style="width: 30%;float: left;">
                                 <h3 class="title_qty">
-                                    Quantity
+                                    @lang('Quantity')
                                 </h3>
                             </div>
                             <div style="width: 70%;float: right;">
@@ -429,50 +412,47 @@
                             </div>
                         </div>
                            <div class="col-md-12" style="float: left;">
-                            <div style="width: 30%;float: left;">
+                            <div style="width: 39%;float: left;">
                                 <h3 class="title_color" style="margin-top: 0.4em;">
-                                    Color
+                                    @lang('Option') 1
                                 </h3>
                             </div>
-                            <div style="width: 70%;float: right;">
+                            <div style="width: 60%;float: right;">
                                 <div class="option_color" style="background-color: #303030;">
-
+                                    
+                                </div><div class="option_color" style="background-color: #303030;">
+                                    
+                                </div><div class="option_color" style="background-color: #303030;">
+                                    
                                 </div>
-                                  <div class="option_color active_option_color" style="background-color: #e8e8e8;">
-
-                                </div>
-                                  <div class="option_color" style="background-color: #f5f5f5;">
-
-                                </div>
-                            </div>
+                             
+                             </div>
                         </div>
-                           <div class="col-md-12" style="float: left;margin-top: 1em;">
-                            <div style="width: 30%;float: left;">
+                        <div class="col-md-12" style="float: left;margin-top: 20px;">
+                            <div style="width: 39%;float: left;">
                                 <h3 class="title_size" style="margin-top: -0.1em;">
-                                    Size
+                                    @lang('Option') 2
                                 </h3>
                             </div>
-                            <div style="width: 70%;float: right;">
-                                <p class="option_size active_option_size">
-                                    Small
+                            <div style="width: 60%;float: right;">
+                                <p class="option_size active_option_size" style="width: 100%">
+                                    @lang('Something')
                                 </p>
-                                 <p class="option_size">
-                                    Medium
-                                </p>
-                                 <p class="option_size">
-                                    Large
-                                </p>
+                                
                             </div>
                         </div>
+                        
+                        
+                       
                     <p class="price_item_details" style="margin-top: 0em;">
-                        <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">Total</span>
+                        <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">@lang('Total') </span>
                         <span style="left:4em;"> {{$product->price}} $</span>
                         <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details"/>
                     </p>
                     <div class="button_modal_one_item_details">
-                        <p class="btn_done" style="background-color: #d80001;color: #fff;">Done</p>
-                        <p class="btn_cancel" style="margin-left: 9%;">Cancel</p>
-                        <p class="btn_view_my_cart" style="width: 100%;">View my Cart</p>
+                        <p class="btn_done" style="background-color: #d80001;color: #fff;">@lang('Done') </p>
+                        <p class="btn_cancel" style="margin-left: 9%;">@lang('Cancel') </p>
+                        <p class="btn_view_my_cart" style="width: 100%;">@lang('View my Cart') </p>
                     </div>
                 </div>
 

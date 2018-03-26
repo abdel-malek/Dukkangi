@@ -351,6 +351,16 @@ class PageController extends Controller
 	public function getBuyItemPage($id){
 		$product = Product::find($id);
 		$subcategory = Subcategory::find($product->subcategory_id);
+		$productRate = Rate::select('rate')->where('product_id' , '=',$product->id)->get();
+
+		if($productRate->count() != 0){
+			$precalculation =0 ;
+			foreach ($productRate as $temp) {
+					$precalculation = $precalculation + $temp->rate;
+			}
+			$product->rate = round( $precalculation / $productRate->count() );
+		}
+		$subcategory->rate =3;
 		
 		return view('client.pages.buy_item')->withProduct($product)->withSubcategory($subcategory);
 	}

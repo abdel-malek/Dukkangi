@@ -1,4 +1,4 @@
-<footer class="footer" >
+<footer class="footer" style="margin-top: 0px" >
             <div class="col-md-12" style="float:left">
                 <h2 class="title_footer">
                     About Dukkangi

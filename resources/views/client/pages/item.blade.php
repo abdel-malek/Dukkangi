@@ -44,13 +44,14 @@
                         <!--Some Changes-->
                         <img  data-u="image" src="{{$subcategory->image_id}}" style="height:15em;width: 45em;    border: 0.04em solid #8a8a8a" />
                        
-                        <img  data-u="thumb" src="{{$subcategory->image_id}}"    />
+                        <img  data-u="thumb" src="{{$subcategory->image_id}}" />
                         
                         
                          
                         <p  class="text_big_image_slider">
                             <a href="{{ route('subcategoryfilter',$subcategory->id) }}">
                             {{ $subcategory->english }}
+
                             </a>    
                         <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
                        
