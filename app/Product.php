@@ -8,6 +8,11 @@ use App\Subcategory;
 class Product extends Model
 {
 	protected $table="product";
+	proteced $fillable = ['english','arabic','german','kurdi','turky','desc_arabic','desc_english','desc_german',
+	'desc_kurdi','desc_turky','option1','option2','option3','option4','qty','category_id','subcategory_id',
+	'image_id','price','point','rate','section1_english','section1_arabic','section1_turky','section1_kurdi',
+	'section1_german','section2_english','section2_arabic','section2_turky','section2_kurdi','section2_german',
+	'section3_english','section3_arabic','section3_turky','section3_kurdi','section3_german'];
     public function category()
     {
         return $this->belongsTo(Category::class,'id','category_id');
