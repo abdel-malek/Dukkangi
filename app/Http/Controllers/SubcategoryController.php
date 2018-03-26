@@ -16,8 +16,10 @@ use App\Http\Services\SubcategoryService;
 
 class SubcategoryController extends Controller
 {
-    
-
+    public function __construct()
+    {
+        $this->middleware('isadmin');
+    }
     public function index()
     {
         return view('admin.subcategories.index');
@@ -68,8 +70,9 @@ class SubcategoryController extends Controller
         $category->german  = $request->german;
         $category->english = $request->english;
         $category->category_id= $request->category_id;
-        if($request->hasFile('image'))
+        if ($request->hasFile('image')) {
             $category->image_id = ImageService::saveImage($request->file('image'));
+        }
 
         $category->save();
 
