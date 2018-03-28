@@ -2,7 +2,7 @@
 @section('styles')
     <style >
     .image_slider{
-                height:13em !important; 
+                height:13em !important;
                 border: 0.04em solid #8a8a8a;
                 width: 100% !important;
             }
@@ -26,7 +26,7 @@
  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        
+
 @endsection
 
 @section('main_section')
@@ -43,21 +43,21 @@
                     <div>
                         <!--Some Changes-->
                         <img  data-u="image" src="{{$subcategory->image_id}}" style="height:15em;width: 45em;    border: 0.04em solid #8a8a8a" />
-                       
+
                         <img  data-u="thumb" src="{{$subcategory->image_id}}" />
-                        
-                        
-                         
+
+
+
                         <p  class="text_big_image_slider">
                             <a href="{{ route('subcategoryfilter',$subcategory->id) }}">
                             {{ $subcategory->english }}
 
-                            </a>    
+                            </a>
                         <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
-                       
+
                         <span class=" subcategory" ></span>
                         </p>
-                        
+
                     </div>
                     @endforeach
                 </div>
@@ -69,10 +69,10 @@
 
                             </div>
                             <p class="text_small_image_slider">
-                                @lang('Subcategory') 
+                                {{-- @lang('Subcategory') --}}
                             </p>
-                            <svg viewBox="0 0 16000 16000" class="cv">
-                            </svg>
+                            {{-- <svg viewBox="0 0 16000 16000" class="cv">
+                            </svg> --}}
                         </div>
                     </div>
                 </div>
@@ -172,7 +172,7 @@
                 var ratings = document.getElementsByClassName('subcategory');
 
                 for (var i = 0; i < ratings.length; i++) {
-                    
+
                     var r = new SimpleStarRating<?php echo (!isset($subcategory->rate)?'0':$subcategory->rate)?>(ratings[i]);
 
                     ratings[i].addEventListener('rate', function (e) {
