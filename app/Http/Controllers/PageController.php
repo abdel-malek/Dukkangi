@@ -26,7 +26,7 @@ class PageController extends Controller
 		$categories = Category::all();
 		if ($lang == "ar"){
 			foreach ($categories as $category) {
-				$category->english = $category->arabic;	
+				$category->english = $category->arabic;
 			}
 		}
 		if ($lang == "tr"){
@@ -47,7 +47,7 @@ class PageController extends Controller
 				$category->english = $category->german;
 			}
 		}
-		return view('client.pages.home')->withCategories($categories);	
+		return view('client.pages.home')->withCategories($categories);
 	}
 	public function getCategoryPage($categoryId){
 
@@ -55,7 +55,7 @@ class PageController extends Controller
 		App::setLocale($lang);
 		$categories = Category::all();
 		$subcategories = Subcategory::all()->where('category_id','=',$categoryId);
-		//dd($subcategories);
+		// dd($subcategories);
 		$products = DB::table('product')->where('category_id','=',$categoryId)->orderBy('category_id', 'asc')->get();
 		if ($lang == "ar"){
 			foreach ($categories as $category) {
@@ -111,7 +111,7 @@ class PageController extends Controller
 
 		$products = Product::where('category_id','=',$request->categoryId)
 		->where(DB::raw("concat_ws('-',english,arabic,turky,kurdi,german)"),'like','%'.$request->search.'%')->get();
-		
+
 		$categories = Category::all();
 		$subcategories = DB::table('subcategory')->where('category_id','=',$request->categoryId)->orderBy('category_id','asc')->get();
 		if ($lang == "ar"){
@@ -237,12 +237,12 @@ class PageController extends Controller
 
 	public function getCategorySubcategoryFilteredPage($subcategory){
 		$subcategory = Subcategory::find($subcategory);
-		
+
 		$lang = session('lang');
 		App::setLocale($lang);
 
 		$products = Product::where('subcategory_id','=',$subcategory->id)->get();
-		
+
 		$categories = Category::all();
 
 		$subcategories = Subcategory::where('category_id','=',$subcategory->category_id)->get();
@@ -300,7 +300,7 @@ class PageController extends Controller
 		$lang = session('lang');
 
 		App::setLocale((string)$lang);
-		
+
 		$product = Product::find($id);
 		$category = Category::find($product->category_id);
 		$subcategory = Subcategory::find($product->subcategory_id);
@@ -311,9 +311,9 @@ class PageController extends Controller
 			$comment->user_id = User::find($comment->user_id)->name;
 			$comment->rate = round($comment->rate);
 		}
-		
+
 		$simiproducts = Product::select('*')->where('subcategory_id','=',$product->subcategory_id)->get();
-		
+
 		if ($lang == "ar"){
 			$product->english = $product->arabic;
 			$product->desc_english = $product->desc_arabic;
@@ -353,7 +353,7 @@ class PageController extends Controller
 		}
 
 		//Calculate Average Rate For Subcategory
-		
+
 
 		$subcategoryRate = Rate::select('rate')->where('subcategory_id' , '=',$subcategory->id)->get();
 		if($subcategoryRate->count() != 0){
@@ -364,8 +364,8 @@ class PageController extends Controller
 			$subcategory->rate = round( $precalculation / $subcategoryRate->count() );
 		}
 		//Calculate Average Rate For Product
-		
-		/// NOTE : NEED A CHANGE To Rate Proccess		
+
+		/// NOTE : NEED A CHANGE To Rate Proccess
 		$productRate = Rate::select('rate')->where('product_id' , '=',$product->id)->get();
 
 		if($productRate->count() != 0){
@@ -388,7 +388,7 @@ class PageController extends Controller
 			}
 		}
 		//$product->qty  = 0;
-		return view('client.pages.item_view')->withProduct($product)->withCategory($category)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments);	
+		return view('client.pages.item_view')->withProduct($product)->withCategory($category)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments);
 
 	}
 
@@ -401,9 +401,9 @@ class PageController extends Controller
 		$rate = $request->input('rate');
 		//dd($type);
 		$update = Rate::updateOrCreate(
-			['type' => $type , 'user_id'=>$userId ,$type == 1 ?'product_id' :'subcategory_id'  => $id ],  
+			['type' => $type , 'user_id'=>$userId ,$type == 1 ?'product_id' :'subcategory_id'  => $id ],
 	  		['rate' => $rate,'type' => $type , 'user_id'=>$userId ,$type == 1 ?'product_id' :'subcategory_id'  => $id ]
-		);		
+		);
 	}
 
 	public function comment(Request $request){
@@ -417,9 +417,9 @@ class PageController extends Controller
 		$comment->description = $description;
 		$comment->user_id = $user_id;
 		$comment->product_id = $productId;
-		
-		$comment->save();		
-		
+
+		$comment->save();
+
 		return Redirect(route('product' , $productId));
 	}
 	public function getBuyItemPage($id){
@@ -435,7 +435,7 @@ class PageController extends Controller
 			$product->rate = round( $precalculation / $productRate->count() );
 		}
 		$subcategory->rate =3;
-		
+
 		return view('client.pages.buy_item')->withProduct($product)->withSubcategory($subcategory);
 	}
 
@@ -451,6 +451,6 @@ class PageController extends Controller
 	{
   		session(['lang' => $lang]);
   		return Redirect::back();
-	} 
-	
+	}
+
 }

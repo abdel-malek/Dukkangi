@@ -120,7 +120,7 @@
             .jssort101 .p:hover.pdn .cv {border:2px solid #fff;background:none;opacity:.35;}
             .jssort101 .pav .cv {border-color:#fff;opacity:.35;}
             .jssort101 .pav .a, .jssort101 .p:hover .a {visibility:visible;}
-            .jssort101 .t {position:absolute;top:0;left:0;width:100%;height:100%;border:none;opacity:.6;}
+            .jssort101 .t {position:initial;top:0;left:0;width:100%;height:100%;border:none;opacity:.6;}
             .jssort101 .pav .t, .jssort101 .p:hover .t{opacity:1;}
         </style>
         <style>

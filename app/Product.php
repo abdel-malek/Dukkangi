@@ -7,7 +7,7 @@ use App\Subcategory;
 
 class Product extends Model
 {
-	protected $table="product";
+	protected $table = "product";
 	protected $fillable = ['english','arabic','german','kurdi','turky','desc_arabic','desc_english','desc_german',
 	'desc_kurdi','desc_turky','option1','option2','option3','option4','qty','category_id','subcategory_id',
 	'image_id','price','point','rate','section1_english','section1_arabic','section1_turky','section1_kurdi',

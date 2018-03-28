@@ -2,7 +2,7 @@
 @section('styles')
     <style >
     .image_slider{
-                height:13em !important; 
+                height:13em !important;
                 border: 0.04em solid #8a8a8a;
                 width: 100% !important;
             }
@@ -23,11 +23,11 @@
     }
 
     </style>
+
 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
         
         <link rel="stylesheet" href="/front-end/css/multe_select.css">
       <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-        
 @endsection
 
 @section('main_section')
@@ -41,26 +41,10 @@
                 <div data-u="slides" style="cursor:default;position:relative;top:0px;left:240px;width:850px;height:200px;overflow:hidden;">
 
                     @foreach($subcategories as $subcategory)
-
-                    <div>
-                        <!--Some Changes-->
-                        <img  data-u="image" src="{{$subcategory->image_id}}" style="height:15em;width: 45em;    border: 0.04em solid #8a8a8a" />
-                       
-                        <img  data-u="thumb" src="{{$subcategory->image_id}}" />
-                        
-                        
-                         
-                        <p  class="text_big_image_slider">
-                            <a href="{{ route('subcategoryfilter',$subcategory->id) }}">
-                            {{ $subcategory->english }}
-
-                            </a>    
-                        <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
-                       
-                        <span class=" subcategory" ></span>
-                        </p>
-                        
-                    </div>
+                      <div>
+                          <!--Some Changes-->
+                          <img  data-u="image" src="{{$subcategory->image_id}}" style="height:15em;width: 45em;    border: 0.04em solid #8a8a8a" />
+                          <img  data-u="thumb" src="{{$subcategory->image_id}}" />
                     @endforeach
                 </div>
                 <!-- Thumbnail Navigator -->
@@ -68,15 +52,9 @@
                     <div data-u="slides">
                         <div data-u="prototype" class="p" style="width:110px;height:88px;">
                             <div data-u="thumbnailtemplate" class="t">
-
                             </div>
-                            <p class="text_small_image_slider">
-                                @lang('Subcategory') 
-                            </p>
-                            <svg viewBox="0 0 16000 16000" class="cv">
-                            </svg>
                         </div>
-                    </div>
+                      </div>
                 </div>
             </div>
             <script type="text/javascript">jssor_1_slider_init();</script>
@@ -282,7 +260,7 @@
                 var ratings = document.getElementsByClassName('subcategory');
 
                 for (var i = 0; i < ratings.length; i++) {
-                    
+
                     var r = new SimpleStarRating<?php echo (!isset($subcategory->rate)?'0':$subcategory->rate)?>(ratings[i]);
 
                     ratings[i].addEventListener('rate', function (e) {
