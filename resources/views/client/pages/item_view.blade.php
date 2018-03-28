@@ -134,7 +134,7 @@
     @endsection
     @section('main_section')
         <div class="col-md-12" style="padding: 0em 5em;" id="content_page">
-            <div class="header_page"  style = "background-image: url('{{$subcategory->image_id}}');background-size:100%">
+            <div class="header_page"  style = "background-image: url('{{$subcategory->image_id}}');background-size:133%">
                 <p class="header_page_text_div" style="width: 80.8%">
                    {{$subcategory->english}}
                     <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
@@ -457,6 +457,7 @@
                 </div>
 
 <!--script src="{{url('/js/jquery.min.js')}}"></script-->
+
         <script src="{{URL::asset('js/jquery.min.js')}}"></script>
         <script src="{{URL::asset('/front-end/js/plugin/jquery-pretty-tabs.js')}}"></script>
 

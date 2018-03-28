@@ -28,7 +28,8 @@ Route::get('/productview/{id}' , 'PageController@getProductView')->name('product
 Route::post('/rate' , 'PageController@rate');
 Route::post('/comment-save' , 'PageController@comment')->name('comment');
 Route::get('/buyitem/{id}' ,  'PageController@getBuyItemPage')->name('buyitem');
-
+Route::get('/mycart/', 'PageController@getViewMyCartPage')->name('mycart');
+Rote
    			 //DASHBOARD
     //CATEGORIES
 Route::get('/admin/categories', ['uses' => 'CategoryController@index'                  ,'as' => 'category.index'         ]);

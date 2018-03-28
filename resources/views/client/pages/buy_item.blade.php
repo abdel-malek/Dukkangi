@@ -24,7 +24,7 @@
                 bottom: 0.6em;
                 left: 1.4em;
             }
-                .header_page  .rating{
+            .header_page  .rating{
                 bottom: 0.2em;
                 left: 19.9em;
             }

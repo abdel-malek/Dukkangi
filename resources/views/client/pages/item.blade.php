@@ -23,14 +23,16 @@
     }
 
     </style>
- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="/front-end/css/multe_select.css">
+      <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
         
 @endsection
 
 @section('main_section')
       <div class="col-md-12" style="padding: 0em 5em;" id="content_page">
+          <div id="content_page_item">
         <div class="col-md-12 col-sm-12 page_content_item">
             <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:-85px;width:1024px;height:200px;overflow:none;visibility:hidden;background-color:#24262e;">
                 <!-- Loading Screen -->
@@ -85,7 +87,7 @@
                 <img src={{URL::asset('/front-end/images/light_logo.png')}} class="img-resposive logo_text" />
             </div>
             <div class="col-sm-3" style="float:left;margin-left: 2em;">
-                <p class="btn_filter">
+                <p class="btn_filter" id="btn_modal_filter">
                     @lang('Filter')
                 </p>
             </div>
@@ -138,10 +140,118 @@
             </div>
         </div>
     </div>
+</div>
+
+
+     <div class="background_modal" style="display: none;" >
+        </div>
+        {!! Form::open(['route'=> ''  ]) !!}
+        <div class="modal_filter" id="modal_filter" style="display: none;">
+            <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
+                <div class="input-group">
+                    <input type="text" class="form-control input_filter" id="inlineFormInputGroupUsername" name = "" placeholder="Search ..">
+                </div>
+            </div>
+            <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
+                <p class="lable_input_filter">Category</p>
+                <div class="input-group" style="width:76%;float:right;">
+                    <hr class="line_title_input_modal">
+
+                </div>
+            </div>
+            <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
+                <div class="select-menu js-select-menu" id="unique-id">
+                    <input class="menu-state js-menu-state" id="unique-id-menu-state" type="checkbox"/>
+                    <label class="select-label js-select-label" data-default-label="Category" data-label="Category" for="unique-id-menu-state">
+                    </label>
+                    <ul class="menu js-select-options">
+                        <li class="js-filterable" data-filter-criteria="Aliquam erat volutpat">
+                            <label class="menu-item">
+                                <input class="checkbox js-option" type="checkbox" value="1111"/>
+                                <div class="choice-input"></div><span>Categorey 1</span>
+                            </label>
+                        </li>
+                        <li class="js-filterable" data-filter-criteria="Fusce consectetuer luctus ipsum. Sed accumsan dolor ac augue">
+                            <label class="menu-item">
+                                <input class="checkbox js-option" type="checkbox" value="2222"/>
+                                <div class="choice-input"></div><span>Categorey 2</span>
+                            </label>
+                        </li>
+                        <li class="js-filterable" data-filter-criteria="Phasellus ac libero a lorem auctor mattis">
+                            <label class="menu-item">
+                                <input class="checkbox js-option" type="checkbox" value="3333"/>
+                                <div class="choice-input"></div><span>Categorey 3</span>
+                            </label>
+                        </li>
+                        <li class="js-filterable" data-filter-criteria="Duis quis nunc">
+                            <label class="menu-item">
+                                <input class="checkbox js-option" type="checkbox" value="4444"/>
+                                <div class="choice-input"></div><span>Categorey 4</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
+                <p class="lable_input_filter" style="width: 16%;">Price</p>
+                <div class="input-group" style="width:84%;float:right;">
+                    <hr class="line_title_input_modal">
+                </div>
+            </div>
+            <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
+                <div class="input-group">
+                    <div class="input-search_icon">
+                        <!--                        <img src="./images/signup/at.png">-->
+                        <i class="material-icons" style="color:#fff;">&#xE227;</i>
+                    </div>
+                    <input type="text" class="form-control input_filter validation_just_number" id="inlineFormInputGroupUsername" placeholder="Max">
+                </div>
+            </div>
+            <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
+                <div class="input-group">
+                    <div class="input-search_icon">
+                        <!--                        <img src="./images/signup/at.png">-->
+                        <i class="material-icons" style="color:#fff;">&#xE227;</i>
+                    </div>
+                    <input type="text" class="form-control input_filter validation_just_number" id="inlineFormInputGroupUsername" placeholder="Min">
+                </div>
+            </div>
+            <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
+                <div class="input-group">
+                    <input type="text" hidden="" class="form-control input_filter" id="inlineFormInputGroupUsername" placeholder="Custom field">
+                </div>
+            </div>
+
+            <div class="col-sm-12 my-1" style="margin-top: 2em !important;float: left;">
+                <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+                <div class="input-group">
+                    <p class="btn_model_filter">
+                        Show results
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
+                <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+                <div class="input-group">
+                    <p class="btn_model_filter" style="background-color: #fff;color: #222;">
+                        Cancel
+                    </p>
+                </div>
+            </div>
+        </div>
         @endsection
 
         @section('scripts')
-       <script type="text/javascript">
+
+        <script src = "/front-end/js/plugin/multe_select.js"></script>
+         
+        <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+
+        <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+        <script src="/front-end/js/plugin/jquery-pretty-tabs.js"></script>
+
+        <script type="text/javascript">
                 var _gaq = _gaq || [];
                 _gaq.push(['_setAccount', 'UA-36251023-1']);
                 _gaq.push(['_setDomainName', 'jqueryscript.net']);
@@ -201,5 +311,32 @@
                     click1.click();
                     }
                 });
+        </script>
+        <script>
+            $('#btn_modal_filter').click(function () {
+                $('.background_modal').show();
+                $('#modal_filter').show();
+                $('#content_page_item').css('filter', 'blur(5px)');
+            });
+            $('.background_modal').click(function () {
+                $('.background_modal').hide();
+                $('#modal_filter').hide();
+                $('#content_page_item').css('filter', 'blur(0px)');
+            });
+        </script>
+        <script>
+            $(".validation_just_number").keypress(function (event) {
+                $(this).val($(this).val().replace(/[^0-9\.]/g, ''));
+                if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+                    event.preventDefault();
+                }
+            });
+        </script>
+        <script type="text/javascript">
+            $(function () {
+                $('.multiselect-ui').multiselect({
+                    includeSelectAllOption: true
+                });
+            });
         </script>
         @endsection

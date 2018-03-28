@@ -1,6 +1,6 @@
 <header id="header">
       <nav class="navbar navbar-expand-lg navbar-light bg-light" id="main-nav-bar">
-      <img class="logo" src="/front-end/images/logo.png"/>
+      <a href="{{route('home')}}"> <img class="logo" src="/front-end/images/logo.png"/></a>
         <div class="collapse navbar-collapse" id="main-navbar-items">
           <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
             <li class="nav-item active">
