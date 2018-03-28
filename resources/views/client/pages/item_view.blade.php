@@ -122,7 +122,7 @@
             .jssort101 .p:hover.pdn .cv {border:2px solid #fff;background:none;opacity:.35;}
             .jssort101 .pav .cv {border-color:#fff;opacity:.35;}
             .jssort101 .pav .a, .jssort101 .p:hover .a {visibility:visible;}
-            .jssort101 .t {position:absolute;top:0;left:0;width:100%;height:100%;border:none;opacity:.6;}
+            .jssort101 .t {position:initial;top:0;left:0;width:100%;height:100%;border:none;opacity:.6;}
             .jssort101 .pav .t, .jssort101 .p:hover .t{opacity:1;}
         </style>
         <style>
@@ -235,7 +235,7 @@
                          {{$product->section3_english}}<br/><br>
                        </p>
                 </div>
-                
+
                 <div class="section" style="width:100%;">
                     <h4 class="title_section">
                         @lang('Options')
@@ -419,13 +419,13 @@
                             </div>
                             <div style="width: 60%;float: right;">
                                 <div class="option_color" style="background-color: #303030;">
-                                    
+
                                 </div><div class="option_color" style="background-color: #303030;">
-                                    
+
                                 </div><div class="option_color" style="background-color: #303030;">
-                                    
+
                                 </div>
-                             
+
                              </div>
                         </div>
                         <div class="col-md-12" style="float: left;margin-top: 20px;">
@@ -438,12 +438,12 @@
                                 <p class="option_size active_option_size" style="width: 100%">
                                     @lang('Something')
                                 </p>
-                                
+
                             </div>
                         </div>
-                        
-                        
-                       
+
+
+
                     <p class="price_item_details" style="margin-top: 0em;">
                         <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">@lang('Total') </span>
                         <span style="left:4em;"> {{$product->price}} $</span>

@@ -111,7 +111,7 @@
             .jssort101 .p:hover.pdn .cv {border:2px solid #fff;background:none;opacity:.35;}
             .jssort101 .pav .cv {border-color:#fff;opacity:.35;}
             .jssort101 .pav .a, .jssort101 .p:hover .a {visibility:visible;}
-            .jssort101 .t {position:absolute;top:0;left:0;width:100%;height:100%;border:none;opacity:.6;}
+            .jssort101 .t {position:initial;top:0;left:0;width:100%;height:100%;border:none;opacity:.6;}
             .jssort101 .pav .t, .jssort101 .p:hover .t{opacity:1;}
         </style>
         <style>
@@ -131,7 +131,7 @@
                     <span class="rating subcategory"  style="left: 17.9em;"></span>
                 </p>
             </div>
-           
+
                 <div class="one_item_details" style="width: 30% ;margin-left: 2em">
                     <div class="header_item_details">
                         <img src="{{$product->image_id}}" class="img_item_details" style="height: 380px;" />
@@ -170,13 +170,13 @@
                             </div>
                             <div style="width: 60%;float: right;">
                                 <div class="option_color" style="background-color: #303030;">
-                                    
+
                                 </div><div class="option_color" style="background-color: #303030;">
-                                    
+
                                 </div><div class="option_color" style="background-color: #303030;">
-                                    
+
                                 </div>
-                             
+
                              </div>
                         </div>
                         <div class="col-md-12" style="float: left;margin-top: 20px;">
@@ -189,7 +189,7 @@
                                 <p class="option_size active_option_size" style="width: 100%">
                                     Small
                                 </p>
-                                
+
                             </div>
                         </div>
                         <div style="width: 39%;float: left;margin-top: 0px;padding-left: 15px">
@@ -201,9 +201,9 @@
                                 <p class="option_size active_option_size" style="width: 100%">
                                     Small
                                 </p>
-                               
+
                             </div>
-                        
+
                         <div style="width: 39%;float: left;margin-top: 0px;">
                                 <h3 class="title_size" style="margin-top: 1.0em;padding-left: 15px">
                                     Option 4
@@ -213,15 +213,15 @@
                                 <p class="option_size active_option_size" style="width: 100%">
                                     Small
                                 </p>
-                                
+
                             </div>
-            
+
                     <p class="price_item_details">
                         <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">Total</span>
                         <span style="left:4em;"> 900 $</span>
                         <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details"/>
                     </p>
-            </div>       
+            </div>
 
             <div class="sections" style="width: 60.8%;">
                 <div class="choose_payment">
@@ -311,13 +311,13 @@
 </label>
                         <img src="/front-end/images/payment/paypal.png" class="img_paypal_choose_payment">
                     </div>
-                   
+
                 </div>
          <div class="credit_card_details">
                <h4 class="title_credit_card_details">
                         Credit Card Details:
                     </h4>
-                    <div class="col-md-12" style="float:left;padding: 0em 2em;"> 
+                    <div class="col-md-12" style="float:left;padding: 0em 2em;">
                     <input type="text" class="form-control input_credit_card_details" placeholder="Card number ..">
                     <input type="text" class="form-control input_credit_card_details" placeholder="Cardholder name ..">
                     <p class="title_input">Expiration Date</p>
@@ -327,12 +327,12 @@
                      <p class="btn_credit_card_details" style="margin-left: 8%;">Cancel</p>
                 </div>
          </div>
-            
+
         </div>
 
         </div></div>
-        
-        
+
+
    @endsection
    @section('scripts')
         <script src="http://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
@@ -360,13 +360,13 @@
 
                     var r = new SimpleStarRating<?php echo (!isset($subcategory->rate)?'0':$subcategory->rate)?>(ratings[i]);
 
-                }        
+                }
 
                 var ratings = document.getElementsByClassName('product');
                 for (var i = 0; i < ratings.length; i++) {
                     var r = new SimpleStarRating<?php echo ($product->rate==0?'':$product->rate) ?>(ratings[i]);
 
-                    
+
                 }
 
 
@@ -377,10 +377,10 @@
                $(this).find('.star').each(function(){
                   if($(this).hasClass('active')){
                       num_star_active ++;
-                  }  
+                  }
                });
                //      Value star is variable : num_star_active
-               //      Request Update rating 
+               //      Request Update rating
             });
         </script>
          <script>
