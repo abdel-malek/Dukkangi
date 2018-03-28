@@ -48,7 +48,7 @@
 
 
 
-                        <p  class="text_big_image_slider">
+                        <p  class="text_small_image_slider">
                             <a href="{{ route('subcategoryfilter',$subcategory->id) }}">
                             {{ $subcategory->english }}
 
