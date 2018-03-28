@@ -39,41 +39,31 @@
                 <div data-u="slides" style="cursor:default;position:relative;top:0px;left:240px;width:850px;height:200px;overflow:hidden;">
 
                     @foreach($subcategories as $subcategory)
-
-                    <div>
-                        <!--Some Changes-->
-                        <img  data-u="image" src="{{$subcategory->image_id}}" style="height:15em;width: 45em;    border: 0.04em solid #8a8a8a" />
-
-                        <img  data-u="thumb" src="{{$subcategory->image_id}}" />
-
-
-
-                        <p  class="text_small_image_slider">
-                            <a href="{{ route('subcategoryfilter',$subcategory->id) }}">
-                            {{ $subcategory->english }}
-
-                            </a>
-                        <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
-
-                        <span class=" subcategory" ></span>
-                        </p>
-
-                    </div>
+                      <div>
+                          <!--Some Changes-->
+                          <img  data-u="image" src="{{$subcategory->image_id}}" style="height:15em;width: 45em;    border: 0.04em solid #8a8a8a" />
+                          <img  data-u="thumb" src="{{$subcategory->image_id}}" />
+                          <p  class="text_big_image_slider">
+                              <a href="{{ route('subcategoryfilter',$subcategory->id) }}">{{ $subcategory->english }}</a>
+                              <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
+                              <span class="subcategory" ></span>
+                          </p>
+                      </div>
                     @endforeach
                 </div>
                 <!-- Thumbnail Navigator -->
                 <div data-u="thumbnavigator" class="jssort101" style="position:absolute;left:0px;top:0px;width:240px;height:900px;background-color:#000;" data-autocenter="2" data-scale-left="0.75">
                     <div data-u="slides">
+                      @foreach($subcategories as $subcategory)
                         <div data-u="prototype" class="p" style="width:110px;height:88px;">
                             <div data-u="thumbnailtemplate" class="t">
-
                             </div>
                             <p class="text_small_image_slider">
+                              {{$subcategory->english}}
                                 {{-- @lang('Subcategory') --}}
                             </p>
-                            {{-- <svg viewBox="0 0 16000 16000" class="cv">
-                            </svg> --}}
                         </div>
+                      @endforeach
                     </div>
                 </div>
             </div>
