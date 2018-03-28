@@ -43,10 +43,10 @@
                           <!--Some Changes-->
                           <img  data-u="image" src="{{$subcategory->image_id}}" style="height:15em;width: 45em;    border: 0.04em solid #8a8a8a" />
                           <img  data-u="thumb" src="{{$subcategory->image_id}}" />
-                          <p  class="text_big_image_slider">
+                          <p class="text_big_image_slider">
                               <a href="{{ route('subcategoryfilter',$subcategory->id) }}">{{ $subcategory->english }}</a>
                               <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
-                              <span class="subcategory" ></span>
+                              <span class="subcategory"></span>
                           </p>
                       </div>
                     @endforeach
@@ -57,11 +57,8 @@
                         <div data-u="prototype" class="p" style="width:110px;height:88px;">
                             <div data-u="thumbnailtemplate" class="t">
                             </div>
-                            <p class="text_small_image_slider">
-                                {{-- @lang('Subcategory') --}}
-                            </p>
                         </div>
-                    </div>
+                      </div>
                 </div>
             </div>
             <script type="text/javascript">jssor_1_slider_init();</script>
