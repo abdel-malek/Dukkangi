@@ -274,7 +274,7 @@
                             </p>
                         </div>
                     </div>
-                    <img src="/front-end/images/user_actions/view-my-cart.png" class="icon_buy_option_section">
+                    <a href="{{route('mycart')}}"><img src="/front-end/images/user_actions/view-my-cart.png" class="icon_buy_option_section"></a>
             </div>
         </div>
         <div class="col-md-12" style="float:left;margin-top: 100px" >
@@ -444,7 +444,7 @@
       <div class="button_modal_one_item_details">
           <p class="btn_done" style="background-color: #d80001;color: #fff;cursor: pointer">@lang('Done') </p>
           <p class="btn_cancel" style="margin-left: 9%;cursor: pointer">@lang('Cancel') </p>
-          <p class="btn_view_my_cart" style="width: 100%;">@lang('View my Cart') </p>
+          <a href="{{route('mycart')}}"><p class="btn_view_my_cart" style="width: 100%;">@lang('View my Cart') </p></a>
       </div>
   </div>
   <script src="{{URL::asset('js/jquery.min.js')}}"></script>

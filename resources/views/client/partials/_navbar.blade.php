@@ -21,12 +21,12 @@
 
 
             <li class="nav-item">
-              <a class="nav-link" href="#">My Cart </a>
+              <a class="nav-link" href="{{ route('mycart')}}">@lang('My Cart') </a>
             </li>
             
             <li class="nav-item">
               {!! Form::open(['route' => 'logout' , 'id' => 'logout-form']) !!}
-                <a class="nav-link" href="javascript:{}" onclick="document.getElementById('logout-form').submit();" >Logout </a>
+                <a class="nav-link" href="javascript:{}" onclick="document.getElementById('logout-form').submit();" >@lang('Logout') </a>
                 
               {!! Form::close() !!}    
             </li>

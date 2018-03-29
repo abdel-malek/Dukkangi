@@ -132,7 +132,7 @@
 @endsection
 @section('main_section')
 
-  <div class="col-md-12" style="" id="content_page">
+  <div class="col-md-12" style="height: 1200px" id="content_page">
 
   <div class="col-md-12" style="padding: 0em 5em;">
             <div class="header_page" style="background-image: url('/front-end/images/items_page/2.png')"/>
@@ -151,25 +151,7 @@
                     <h3 class="title_detail_my_card" style="width:30%;">Quantities</h3>
                     <hr class="line_title_detail_my_card" style="width:70%;">
                 </div>
-                <div class="item_qty_detail_my_card">
-                    <img src="/front-end/images/slider/item1.jpg" class="img_item_qty" />
-                    <div class="text_item_qty">
-                        <h3>Donuts</h3>
-                        <p style="margin-bottom: 0.1em;">Choclate flavour - with nuts</p>
-                        <p>Price :150 $</p>
-
-                    </div>
-                    <div class="control_item_qty">
-                        <h4 class="num_item_qty" >3</h4>
-                        <div class="btn_control_item_qty">
-                            <img src="/front-end/images/payment/handler-plus.png" onclick="num_plus(this);" />
-                            <img src="/front-end/images/payment/handler-min.png" onclick="num_min(this);" style="margin-top:-0.8em;" />
-                        </div>
-                        <p class="total_item_qty">
-                            Total <span>50 $</span>
-                        </p>
-                    </div>
-                </div>
+            
 
                 <div class="item_qty_detail_my_card">
                     <img src="/front-end/images/slider/item1.jpg" class="img_item_qty" />
@@ -191,26 +173,7 @@
                     </div>
                 </div>
 
-                <div class="item_qty_detail_my_card">
-                    <img src="/front-end/images/slider/item1.jpg" class="img_item_qty" />
-                    <div class="text_item_qty">
-                        <h3>Donuts</h3>
-                        <p style="margin-bottom: 0.1em;">Choclate flavour - with nuts</p>
-                        <p>Price :150 $</p>
-
-                    </div>
-                    <div class="control_item_qty">
-                        <h4 class="num_item_qty" >3</h4>
-                        <div class="btn_control_item_qty">
-                            <img src="/front-end/images/payment/handler-plus.png" onclick="num_plus(this);" />
-                            <img src="/front-end/images/payment/handler-min.png" onclick="num_min(this);" style="margin-top:-0.8em;" />
-                        </div>
-                        <p class="total_item_qty">
-                            Total <span>50 $</span>
-                        </p>
-                    </div>
-                </div>
-                
+         
                  <div class="col-md-12" style="float:left;">
                     <h3 class="title_detail_my_card" style="width:40%;">Points rewards</h3>
                     <hr class="line_title_detail_my_card" style="width:60%;">
