@@ -10,35 +10,34 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/admin', function(){
-	return view('admin.master');
-})->name('admin.home')->middleware('auth');
-Route::get('/', function () {
-    return view('client.pages.home');
-});
+Route::get('/admin', function(){return view('admin.master');})->name('admin.home')->middleware('auth');
+Route::get('/', function(){return view('client.pages.home');});
 
 
 //Pages Controller
 Route::get('/', 'PageController@index')->name('home');
 Route::get('/home', 'PageController@index');
 Route::get('/category/{id}', 'PageController@getCategoryPage')->name('category');
-Route::get('/categoryfilter', 'PageController@getCategoryNameFilteredPage')->name('categoryfilter');
-Route::get('/subcategoryfilter/{id1}' , 'PageController@getCategorySubcategoryFilteredPage')->name('subcategoryfilter');
+Route::get('/categorynamefilter/', 'PageController@getCategoryNameFilteredPage')->name('categoryfilter');
+Route::get('/subcategoryfilter/{id}' , 'PageController@getCategorySubcategoryFilteredPage')->name('subcategoryfilter');
 Route::get('/productview/{id}' , 'PageController@getProductView')->name('product');
 Route::post('/rate' , 'PageController@rate');
 Route::post('/comment-save' , 'PageController@comment')->name('comment');
 Route::get('/buyitem/{id}' ,  'PageController@getBuyItemPage')->name('buyitem');
 Route::get('/mycart/', 'PageController@getViewMyCartPage')->name('mycart');
-Rote
+Route::get('/categoryfilter/' , 'PageController@getCategoryFilteredPage')->name('fullfiltercategory');
+Route::post('/categoryfilter/' ,'PageController@loadMoreProducts');
+
+
    			 //DASHBOARD
     //CATEGORIES
-Route::get('/admin/categories', ['uses' => 'CategoryController@index'                  ,'as' => 'category.index'         ]);
-Route::post('/admin/categories', ['uses' => 'CategoryController@categoryData'         ,'as' => 'category.data'         ]);
-Route::get('/admin/categories/edit/{id}', ['uses' => 'CategoryController@edit'                 ,'as' => 'category.edit'        ]);
-Route::put('/admin/categories/{id}', ['uses' => 'CategoryController@update'                 ,'as' => 'category.update'      ]);
-Route::post('/admin/categories/delete/{id}', ['uses' => 'CategoryController@destroy'             ,'as' => 'category.delete'      ]);
-Route::get('/admin/categories/create', ['uses' => 'CategoryController@create'                 ,'as' => 'category.create'      ]);
-Route::post('/admin/categories/store', ['uses' => 'CategoryController@store'                 ,'as' => 'category.store'       ]);
+Route::get('/admin/categories', ['uses' => 'CategoryController@index'                 ,'as' => 'category.index'       ]);
+Route::post('/admin/categories', ['uses' => 'CategoryController@categoryData'         ,'as' => 'category.data'        ]);
+Route::get('/admin/categories/edit/{id}', ['uses' => 'CategoryController@edit'        ,'as' => 'category.edit'        ]);
+Route::put('/admin/categories/{id}', ['uses' => 'CategoryController@update'           ,'as' => 'category.update'      ]);
+Route::post('/admin/categories/delete/{id}', ['uses' => 'CategoryController@destroy'  ,'as' => 'category.delete'      ]);
+Route::get('/admin/categories/create', ['uses' => 'CategoryController@create'         ,'as' => 'category.create'      ]);
+Route::post('/admin/categories/store', ['uses' => 'CategoryController@store'          ,'as' => 'category.store'       ]);
 
 
     //SUBCATEGORIES

@@ -1,3 +1,4 @@
+
 @extends('client.main')
 @section('styles')
     <style >
@@ -16,10 +17,13 @@
         text-decoration:none;
     }
     a{
-
         color: inherit;
         text-decoration:none;
 
+    }
+    a:click{
+        color: inherit;
+        text-decoration:none;
     }
 
     </style>
@@ -28,10 +32,11 @@
         
         <link rel="stylesheet" href="/front-end/css/multe_select.css">
       <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+
 @endsection
 
 @section('main_section')
-      <div class="col-md-12" style="padding: 0em 5em;" id="content_page">
+      <div class="col-md-12" style="padding: 0em 5em;" id="content_page" >
           <div id="content_page_item">
         <div class="col-md-12 col-sm-12 page_content_item">
             <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:-85px;width:1024px;height:200px;overflow:none;visibility:hidden;background-color:#24262e;">
@@ -41,10 +46,17 @@
                 <div data-u="slides" style="cursor:default;position:relative;top:0px;left:240px;width:850px;height:200px;overflow:hidden;">
 
                     @foreach($subcategories as $subcategory)
+                    
                       <div>
                           <!--Some Changes-->
                           <img  data-u="image" src="{{$subcategory->image_id}}" style="height:15em;width: 45em;    border: 0.04em solid #8a8a8a" />
                           <img  data-u="thumb" src="{{$subcategory->image_id}}" />
+                          <p class="text_big_image_slider">
+                              <a href="{{ route('subcategoryfilter',$subcategory->id) }}">{{ $subcategory->english }}</a>
+                              <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
+                              <span class="subcategory"></span>
+                          </p>
+                      </div>
                     @endforeach
                 </div>
                 <!-- Thumbnail Navigator -->
@@ -71,63 +83,55 @@
             </div>
             <div class="col-sm-5 my-1" style="margin-top: 0em !important;float: left;">
                 <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
-                <div class="input-group">
+                <div class="input-gr'oup">
                     <div class="input-search_icon">
                         <!--                        <img src="./images/signup/at.png">-->
                         <i class="material-icons">&#xE8B6;</i>
                     </div>
                     {!! Form::open(['route' => 'categoryfilter' , 'method' =>'GET']) !!}
                         <input type="text" class="form-control input_search" id="search" name="search" placeholder="{{ (isset($lastSearch) ? $lastSearch : __('Search' .'..')) }}">
-                        <input type="text" hidden="hidden"  id = "category_id" name="categoryId" value="{{isset($products[0]) ? $products[0]->category_id : ''}}">
+                        <input type="text" hidden="hidden"  id = "category_id" name="categoryId" value="{{isset($categoryId) ? $categoryId : ''}}">
                         <button type="submit" id="myBtn" hidden="hidden">
                     {!! Form::close() !!}
                     Button</button>
                 </div>
             </div>
-
-            <div class="container" style="margin-top: 6em;padding-right: 0em;padding-left: 0em;">
-                <div class="tabs">
+            <div class="container"  style="margin-top: 6em;padding-right: 0em;padding-left: 0em;" >
+                    <div class="tabs">
                     <ul class="tabs__items">
                         @foreach($categories as $category)
                         <a href="{{route('category',$category->id)}}"><li class="tabs__item {{ isset($subcategories[0]) ?($subcategories[0]->category_id == $category->id ? 'tabs_active':'' ) : ''}} ">{{ $category->english }}</li></a>
                         @endforeach
                        </ul>
                     <div class="tabs__content-wrapper" style="    border-top: 0.1em solid #aaa;">
+                       <div class="tabs__content tabs_active" id= "filteredproducts" >
+                            @include('client.pages.item_products',["products" =>$products ])
 
-                        <div class="tabs__content tabs_active"><!-- Tab 1 -->
-                            @foreach($products as $product)
-                            <div class="col-md-3" style="margin-top: 1em;float: left;">
-                                <div class="div_item">
-                                    <div class="discount_item">
-                                        <!-- Need a Change -->
-                                        <p class="text_discount"> 15% off</p>
-                                        <div class="shadow_div_discount"></div>
-                                    </div>
-                                   <a href="{{route('product',$product->id)}}"> <img src="{{$product->image_id}}" class="img_item" />
-                                    <p class="item_name">{{ $product->english}}</p>
-                                    <p class="item_price" style="margin-bottom: 0em;">{{$product->price }}€</p>
-                                    <span class="rating product" ></span>
-                                    <img src="\front-end\images\user_actions\view-my-cart.png" class="icon_view_my_card" /></a>
-                                </div>
-                            </div>
-                            @endforeach
+                            
+                      </div>
+                      @if(isset($filter))
+                        <div class="col-sm-3" style="float:left;margin-left: 20em;margin-top: 50px">
+                            <p class="btn_filter" id="btn_modal_filter" onclick="scrollload()">
+                                @lang('Load More')
+                             </p>
                         </div>
-
+                      @endif
                     </div>
                 </div>
+            
             </div>
-        </div>
+        </div>  
     </div>
 </div>
 
 
-     <div class="background_modal" style="display: none;" >
+     <div class="background_modal" style="display: none" >
         </div>
-        {!! Form::open(['route'=> ''  ]) !!}
-        <div class="modal_filter" id="modal_filter" style="display: none;">
+        {!! Form::open(['route'=> 'fullfiltercategory' , 'method'=>'GET' ]) !!}
+        <div class="modal_filter" id="modal_filter" style="display: none;overflow: auto;max-height: 800px;">
             <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
                 <div class="input-group">
-                    <input type="text" class="form-control input_filter" id="inlineFormInputGroupUsername" name = "" placeholder="Search ..">
+                    <input type="text" class="form-control input_filter" id="inlineFormInputGroupUsername" name = "name" placeholder="Search ...">
                 </div>
             </div>
             <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
@@ -139,34 +143,18 @@
             </div>
             <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
                 <div class="select-menu js-select-menu" id="unique-id">
-                    <input class="menu-state js-menu-state" id="unique-id-menu-state" type="checkbox"/>
-                    <label class="select-label js-select-label" data-default-label="Category" data-label="Category" for="unique-id-menu-state">
+                    <input class="menu-state js-menu-state" id="unique-id-menu-state" type="checkbox" />
+                    <label class="select-label js-select-label" data-default-label="Category" data-label="Category" name="categories[]" for="unique-id-menu-state">
                     </label>
                     <ul class="menu js-select-options">
+                        @foreach($categories as $category) 
                         <li class="js-filterable" data-filter-criteria="Aliquam erat volutpat">
                             <label class="menu-item">
-                                <input class="checkbox js-option" type="checkbox" value="1111"/>
-                                <div class="choice-input"></div><span>Categorey 1</span>
+                                <input class="checkbox js-option" name = "categories[]" type="checkbox" value="{{$category->id}}"/>
+                                <div class="choice-input"></div><span>{{$category->english}}</span>
                             </label>
                         </li>
-                        <li class="js-filterable" data-filter-criteria="Fusce consectetuer luctus ipsum. Sed accumsan dolor ac augue">
-                            <label class="menu-item">
-                                <input class="checkbox js-option" type="checkbox" value="2222"/>
-                                <div class="choice-input"></div><span>Categorey 2</span>
-                            </label>
-                        </li>
-                        <li class="js-filterable" data-filter-criteria="Phasellus ac libero a lorem auctor mattis">
-                            <label class="menu-item">
-                                <input class="checkbox js-option" type="checkbox" value="3333"/>
-                                <div class="choice-input"></div><span>Categorey 3</span>
-                            </label>
-                        </li>
-                        <li class="js-filterable" data-filter-criteria="Duis quis nunc">
-                            <label class="menu-item">
-                                <input class="checkbox js-option" type="checkbox" value="4444"/>
-                                <div class="choice-input"></div><span>Categorey 4</span>
-                            </label>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -182,7 +170,7 @@
                         <!--                        <img src="./images/signup/at.png">-->
                         <i class="material-icons" style="color:#fff;">&#xE227;</i>
                     </div>
-                    <input type="text" class="form-control input_filter validation_just_number" id="inlineFormInputGroupUsername" placeholder="Max">
+                    <input type="text" class="form-control input_filter validation_just_number" name="max" id="inlineFormInputGroupUsername" placeholder="Max">
                 </div>
             </div>
             <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
@@ -191,7 +179,7 @@
                         <!--                        <img src="./images/signup/at.png">-->
                         <i class="material-icons" style="color:#fff;">&#xE227;</i>
                     </div>
-                    <input type="text" class="form-control input_filter validation_just_number" id="inlineFormInputGroupUsername" placeholder="Min">
+                    <input type="text" name = "min"class="form-control input_filter validation_just_number" id="inlineFormInputGroupUsername" placeholder="Min">
                 </div>
             </div>
             <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
@@ -203,11 +191,11 @@
             <div class="col-sm-12 my-1" style="margin-top: 2em !important;float: left;">
                 <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
                 <div class="input-group">
-                    <p class="btn_model_filter">
-                        Show results
-                    </p>
+                    <input type="submit" class="btn_model_filter" value="Show results" style="border: 0px">
+
                 </div>
             </div>
+            {!! Form::close() !!}
             <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
                 <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
                 <div class="input-group">
@@ -316,5 +304,20 @@
                     includeSelectAllOption: true
                 });
             });
+        </script>
+        <script>
+            var counter = 1;
+            function scrollload(){
+                counter++;
+                console.log(counter);
+                var request = $.ajax({
+                    url: '' ,
+                    type: "POST",
+                    data: {"loads": counter } ,
+                    //dataType: 'json'
+                 }).done((response) => $('#filteredproducts').append(response));
+                
+            }            
+
         </script>
         @endsection

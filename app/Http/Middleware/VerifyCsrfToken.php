@@ -16,6 +16,7 @@ class VerifyCsrfToken extends BaseVerifier
     	'categorytosub',
     	'rate',
       'comment-save',
-      '/admin/products/store'
+      '/admin/products/store',
+      'categoryfilter'
     ];
 }

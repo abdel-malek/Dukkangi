@@ -11,7 +11,7 @@ use App\Product;
 use App\User;
 use App\Rate;
 use App\Comment;
-
+use App\Http\Services\FilterService;
 use Redirect;
 use Session;
 use App;
@@ -114,80 +114,9 @@ class PageController extends Controller
 
 		$categories = Category::all();
 		$subcategories = DB::table('subcategory')->where('category_id','=',$request->categoryId)->orderBy('category_id','asc')->get();
+		dd($products);
 		if ($lang == "ar"){
-			foreach ($categories as $category) {
-				$category->english = $category->arabic;
-			}
-			foreach ($subcategories as $subcategory) {
-				$subcategory->english = $subcategory->arabic;
-			}
-			foreach ($products as $product) {
-				$product->english = $product->arabic;
-			}
-		}
-		if ($lang == "de"){
-			foreach ($categories as $category) {
-				$category->english = $category->german;
-			}
-			foreach ($subcategories as $subcategory) {
-				$subcategory->english = $subcategory->german;
-			}
-			foreach ($products as $product) {
-				$product->english = $product->german;
-			}
-		}
-		if ($lang == "tr"){
-			foreach ($categories as $category) {
-				$category->english = $category->turky;
-			}
-			foreach ($subcategories as $subcategory) {
-				$subcategory->english = $subcategory->turky;
-			}
-			foreach ($products as $product) {
-				$product->english = $product->turky;
-			}
-		}
-		if ($lang == "ku"){
-			foreach ($categories as $category) {
-				$category->english = $category->kurdi;
-			}
-			foreach ($subcategories as $subcategory) {
-				$subcategory->english = $subcategory->kurdi;
-			}
-			foreach ($products as $product) {
-				$product->english = $product->kurdi;
-			}
-		}
 
-		public function getCategoryFilteredPage(Request $request){
-		$lang = session('lang');
-		App::setLocale($lang);
-
-		$products = Product::select(['id','image_id','english','arabic','german', 'kurdi', 'turky','price' ,'rate']);
-		
-		if (isset($request->name) ){
-				$products->where(DB::raw("concat_ws('-',english,arabic,turky,kurdi,german)"),'like','%'.$request->name.'%');
-		}
-		
-		if (isset($request->categories) ){
-			$products->whereIn('category_id' ,$request->categories);
-		}
-
-		if(isset($request->min) && !isset($request->max) ){
-			$products->where('price' ,'>=', $request->min);
-		}
-		else if (isset($request->max && !isset($request->min))
-		{
-			$products->where('price' ,'<=', $request->max);
-		}
-		else if (isset($request->max) && isset($request->min)){
-			$products->whereBetween ('price', [$request->min , $request->max]);
-		}
-		
-		$subcategories = DB::table('subcategory')->where('category_id','=',$request->categoryId)->orderBy('category_id','asc')->get();
-
-
-		if ($lang == "ar"){
 			foreach ($categories as $category) {
 				$category->english = $category->arabic;
 			}
@@ -235,6 +164,65 @@ class PageController extends Controller
 		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withLastSearch($request->search);
 	}
 
+
+		public function getCategoryFilteredPage(Request $request){
+		
+		$lang = session('lang');
+		App::setLocale($lang);
+
+		$products =  FilterService::loadProducts($request,0);
+			
+
+		$categories = Category::all();
+
+		
+		$subcategories = Subcategory::all();
+
+		
+
+		if ($lang == "ar"){
+			foreach ($categories as $category) {
+				$category->english = $category->arabic;
+			}
+			foreach ($subcategories as $subcategory) {
+				$subcategory->english = $subcategory->arabic;
+			}
+		}
+		if ($lang == "de"){
+			foreach ($categories as $category) {
+				$category->english = $category->german;
+			}
+			foreach ($subcategories as $subcategory) {
+				$subcategory->english = $subcategory->german;
+			}
+		}
+		if ($lang == "tr"){
+			foreach ($categories as $category) {
+				$category->english = $category->turky;
+			}
+			foreach ($subcategories as $subcategory) {
+				$subcategory->english = $subcategory->turky;
+			}
+		}
+		if ($lang == "ku"){
+			foreach ($categories as $category) {
+				$category->english = $category->kurdi;
+			}
+			foreach ($subcategories as $subcategory) {
+				$subcategory->english = $subcategory->kurdi;
+			}
+		}
+		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withLastSearch('Filter')->withCategoryId('0')->withFilter(1);
+	}
+
+	public function loadMoreProducts(Request $request){
+
+		
+		$products =  FilterService::loadProducts($request,$request->loads);
+		
+		return view('client.pages.item_products')->withProducts($products);
+
+	}
 	public function getCategorySubcategoryFilteredPage($subcategory){
 		$subcategory = Subcategory::find($subcategory);
 
