@@ -142,7 +142,7 @@
                 </p>
             </div>
 
-                <div class="one_item_details">
+                <div class="one_item_details" data-id="{{$product->id}}">
                     <div class="header_item_details">
                          <div class="discount_item_details">
                             <!-- Need a Change -->
@@ -368,67 +368,61 @@
             <!-- Testing  endfor -->
         </div>
     </div>
-
-
 @endsection
 @section('cart')
 
 <!-- Add To Cart -->
 
- <div class="background_modal" style="display: none;" >
+ <div class="background_modal" style="display: none;" ></div>
+ <div class="modal_one_item_details" id="modal_one_item_details" style="display: none;"
+      data-productId={{$product->id}} data-qty='1'>
+      <div class="header_item_details">
+          <img src="/front-end/images/slider/slider1.jpg" class="img_item_details" style="height: 200px" />
+          <div class="div_title_item_details" >
+              <p class="title_item_details">
+                  {{$product->english}}
+              </p>
+              <span class="rating product" style="float:left;"></span>
+                 <i class="material-icons icon_item_details">&#xE838;</i>
+              <i class="material-icons icon_item_details">error_outline</i>
+          </div>
+      </div>
+      <div class="col-md-12" style="margin-top: 0.6em;float: left;">
+          <div style="width: 30%;float: left;">
+              <h3 class="title_qty">
+                  @lang('Quantity')
+              </h3>
+          </div>
+          <div style="width: 70%;float: right;">
+              <p class="num_qty">
+                  1
+              </p>
+              <div style="width:30%;float: right;">
+                  <img src="/front-end/images/payment/handler-plus.png"
+                  onclick="num_plus(this)" class="btn_qty">
+                   <img src="/front-end/images/payment/handler-min.png" onclick="num_min(this)" class="btn_qty" style="margin-top: -0.9em">
+              </div>
+              <!-- <img -->
+          </div>
+      </div>
+      <div class="col-md-12" style="float: left;">
+          <div style="width: 39%;float: left;">
+              <h3 class="title_color" style="margin-top: 0.4em;">
+                  @lang('Option') 1
+              </h3>
+          </div>
+          <div style="width: 60%;float: right;">
+              <div class="option_color" style="background-color: #303030;">
 
-         </div>
+              </div><div class="option_color" style="background-color: #303030;">
 
+              </div><div class="option_color" style="background-color: #303030;">
 
-         <div class="modal_one_item_details" id="modal_one_item_details" style="display: none;">
-                    <div class="header_item_details">
-                        <img src="/front-end/images/slider/slider1.jpg" class="img_item_details" style="height: 200px" />
-                        <div class="div_title_item_details" >
-                            <p class="title_item_details">
-                                {{$product->english}}
-                            </p>
-                            <span class="rating product" style="float:left;"></span>
-                               <i class="material-icons icon_item_details">&#xE838;</i>
-                            <i class="material-icons icon_item_details">error_outline</i>
-                        </div>
-                    </div>
-                    <!--<div class="price_tag_item_details">-->
-                        <div class="col-md-12" style="margin-top: 0.6em;float: left;">
-                            <div style="width: 30%;float: left;">
-                                <h3 class="title_qty">
-                                    @lang('Quantity')
-                                </h3>
-                            </div>
-                            <div style="width: 70%;float: right;">
-                                <p class="num_qty">
-                                    1
-                                </p>
-                                <div style="width:30%;float: right;">
-                                    <img src="/front-end/images/payment/handler-plus.png"
-                                    onclick="num_plus(this)" class="btn_qty">
-                                     <img src="/front-end/images/payment/handler-min.png" onclick="num_min(this)" class="btn_qty" style="margin-top: -0.9em">
-                                </div>
-                                <!-- <img -->
-                            </div>
-                        </div>
-                           <div class="col-md-12" style="float: left;">
-                            <div style="width: 39%;float: left;">
-                                <h3 class="title_color" style="margin-top: 0.4em;">
-                                    @lang('Option') 1
-                                </h3>
-                            </div>
-                            <div style="width: 60%;float: right;">
-                                <div class="option_color" style="background-color: #303030;">
+              </div>
 
-                                </div><div class="option_color" style="background-color: #303030;">
-
-                                </div><div class="option_color" style="background-color: #303030;">
-
-                                </div>
-
-                             </div>
-                        </div>
-                        <div class="col-md-12" style="float: left;margin-top: 20px;">
+           </div>
+      </div>
+      <div class="col-md-12" style="float: left;margin-top: 20px;">
                             <div style="width: 39%;float: left;">
                                 <h3 class="title_size" style="margin-top: -0.1em;">
                                     @lang('Option') 2
@@ -442,41 +436,37 @@
                             </div>
                         </div>
 
+      <p class="price_item_details" style="margin-top: 0em;" data-product-price='{{$product->price}}'>
+          <span  style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">@lang('Total') </span>
+          <span class="total_qty" style="left:4em;"> {{$product->price}} Eur</span>
+          <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details"/>
+      </p>
+      <div class="button_modal_one_item_details">
+          <p class="btn_done" style="background-color: #d80001;color: #fff;cursor: pointer">@lang('Done') </p>
+          <p class="btn_cancel" style="margin-left: 9%;cursor: pointer">@lang('Cancel') </p>
+          <p class="btn_view_my_cart" style="width: 100%;">@lang('View my Cart') </p>
+      </div>
+  </div>
+  <script src="{{URL::asset('js/jquery.min.js')}}"></script>
+  <script src="{{URL::asset('/front-end/js/plugin/jquery-pretty-tabs.js')}}"></script>
 
+  <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-36251023-1']);
+          _gaq.push(['_setDomainName', 'jqueryscript.net']);
+          _gaq.push(['_trackPageview']);
 
-                    <p class="price_item_details" style="margin-top: 0em;">
-                        <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">@lang('Total') </span>
-                        <span style="left:4em;"> {{$product->price}} $</span>
-                        <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details"/>
-                    </p>
-                    <div class="button_modal_one_item_details">
-                        <p class="btn_done" style="background-color: #d80001;color: #fff;">@lang('Done') </p>
-                        <p class="btn_cancel" style="margin-left: 9%;">@lang('Cancel') </p>
-                        <p class="btn_view_my_cart" style="width: 100%;">@lang('View my Cart') </p>
-                    </div>
-                </div>
+          (function () {
+              var ga = document.createElement('script');
+              ga.type = 'text/javascript';
+              ga.async = true;
+              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+              var s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(ga, s);
+          })();
+  </script>
+  <script src="{{URL::asset('/front-end/js/plugin/SimpleStarRating.js')}}"></script>
 
-<!--script src="{{url('/js/jquery.min.js')}}"></script-->
-
-        <script src="{{URL::asset('js/jquery.min.js')}}"></script>
-        <script src="{{URL::asset('/front-end/js/plugin/jquery-pretty-tabs.js')}}"></script>
-
-        <script type="text/javascript">
-                var _gaq = _gaq || [];
-                _gaq.push(['_setAccount', 'UA-36251023-1']);
-                _gaq.push(['_setDomainName', 'jqueryscript.net']);
-                _gaq.push(['_trackPageview']);
-
-                (function () {
-                    var ga = document.createElement('script');
-                    ga.type = 'text/javascript';
-                    ga.async = true;
-                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                    var s = document.getElementsByTagName('script')[0];
-                    s.parentNode.insertBefore(ga, s);
-                })();
-        </script>
-        <script src="{{URL::asset('/front-end/js/plugin/SimpleStarRating.js')}}"></script>
 
 
  <script>
@@ -506,7 +496,7 @@
                     var r = new SimpleStarRating<?php echo ($product->rate==0?'':$product->rate) ?>(ratings[i]);
 
                     ratings[i].addEventListener('rate', function (e) {
-                        console.log('Rating: ' + e.detail);
+
                     });
                 }
 
@@ -534,7 +524,6 @@
         </script>
         <script>
             $('.form-rate').click(function(){
-                console.log("asdlijasd");
                 var num_star_active = 0;
                $(this).find('.star').each(function(){
                   if($(this).hasClass('active')){
@@ -545,7 +534,6 @@
                id=$(this).data('id');
 
             data = {};
-            console.log(data);
             $.ajax({
                 url: "/rate" ,
                type: "POST",
@@ -589,8 +577,6 @@
                         alert(response.status);
                     }
                  });
-
-                console.log(num_star_active);
             });
         </script>
         <script>
@@ -607,38 +593,76 @@
         </script>
         <script>
             $('#btn_modal_one_item_details').click(function(){
-               $('#modal_one_item_details').show();
-               $('.background_modal').show();
-               $('#header').css( 'filter','blur(5px)');
-               $('#content_page').css('filter','blur(5px)');
-               $('.footer').css('filter','blur(5px)');
+               showModal();
             });
             $('.background_modal').click(function(){
-                $('#modal_one_item_details').hide();
-                $('.background_modal').hide();
-                $('#header').css( 'filter','blur(0px)');
-                $('#content_page').css('filter','blur(0px)');
-                $('.footer').css('filter','blur(0px)');
+              hideModal();
             });
-        </script>
-               <script>
-            function num_plus(obj) {
+            $('#modal_one_item_details .btn_cancel').on('click',function(){
+              hideModal();
+            });
 
-                if (parseInt($(obj).parent().parent().find('p').text()) < <?php echo $product->qty?> ){
-                $(obj).parent().parent().find('p').text(parseInt($(obj).parent().parent().find('p').text()) + 1);
-                counter = 0;
+            $('#modal_one_item_details .btn_done').on('click',function(){
+              //get productId,Qty
+              productId = $('#modal_one_item_details').attr('data-productId');
+              qty = $('#modal_one_item_details').attr('data-qty');
+              //submit add to cart ajax.
+              $.ajax({
+                  type: "POST",
+                  url: `/cart/add`,
+                  data:{'productId':productId,'qty':qty},
+                  headers: {
+                      "x-csrf-token": $("[name=_token]").val()
+                  },
+              }).done(response => {
+                if(response.id > 0){
+                  swal("Successfully!", "Item Added.", "success");
+                }
+              });
+            });
+
+            function showModal(){
+              $('#modal_one_item_details').show();
+              $('.background_modal').show();
+              $('#header').css( 'filter','blur(5px)');
+              $('#content_page').css('filter','blur(5px)');
+              $('.footer').css('filter','blur(5px)');
+            }
+
+            function hideModal(){
+              $('#modal_one_item_details').hide();
+              $('.background_modal').hide();
+              $('#header').css( 'filter','blur(0px)');
+              $('#content_page').css('filter','blur(0px)');
+              $('.footer').css('filter','blur(0px)');
+            }
+        </script>
+        <script>
+            function num_plus(obj) {
+                counter = parseInt($(obj).parent().parent().find('p').text());
+                if (counter < <?php echo $product->qty - 1?> ){
+                  counter = counter + 1
+                  $(obj).parent().parent().find('p').text(counter);
                 }
                 else if (counter < 1){
-                    $(obj).parent().parent().find('p').text($(obj).parent().parent().find('p').text() + "MAX");
-                    counter= counter+1;
-
+                  counter = 1;
+                    $(obj).parent().parent().find('p').text(counter);
                 }
-
+                changeTotal(counter);
             }
             function num_min(obj) {
-                if ((parseInt($(obj).parent().parent().text()) > 0)) {
-                    $(obj).parent().parent().find('p').text(parseInt($(obj).parent().parent().find('p').text()) - 1);
+              counter = parseInt($(obj).parent().parent().text());
+                if ((counter > 0)) {
+                  counter = counter - 1;
+                    $(obj).parent().parent().find('p').text(counter);
                 }
+                changeTotal(counter);
+            }
+
+            function changeTotal(qty){
+              productPrice = $('#modal_one_item_details .price_item_details').attr('data-product-price');
+              $('.total_qty').html(parseInt(qty) * productPrice + ' Eur');
+              $('#modal_one_item_details').attr('data-qty',parseInt(qty));
             }
         </script>
         <script>

@@ -12,5 +12,5 @@
     <script type="text/javascript" src={{ URL::asset('js/jsgrid.min.js') }}></script>
     <script type="text/javascript" src={{ URL::asset('js/subfromcat-grid.js') }}></script>
     <script type="text/javascript" src={{ URL::asset('js/select2.min.js') }}></script>
-    <script src="https://unpkg.com/sweetalert2@7.15.1/dist/sweetalert2.all.js"></script>
+    <script src={{url("static/sweetalert/sweetalert2.all.js")}}></script>
     @yield('scripts')

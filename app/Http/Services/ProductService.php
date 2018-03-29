@@ -8,9 +8,6 @@ use App\Subcategory;
 use Session;
 
 class ProductService {
-	public function loadHomeProduct($filter){
-//			Home Code...
-	}
 
 	public static function loadProduct($filter)
 	{
@@ -212,12 +209,12 @@ class ProductService {
 		$product->price 	 	 = $request->price;
 		$product->category_id    = $request->category_id;
 		$product->subcategory_id = $request->subcategory_id;
-		
+
 		$product->option1 	     = isset($request->option1) ?$request->option1 : 0;
 		$product->option2		 = isset($request->option2) ?$request->option2 : 0;
 		$product->option3		 = isset($request->option3) ?$request->option3 : 0;
 		$product->option4		 = isset($request->option4) ?$request->option4 : 0;
-		
+
 		$product->section1_english = $request->section1_english;
 		$product->section1_german  = $request->section1_german;
 		$product->section1_arabic  = $request->section1_arabic;
@@ -238,7 +235,7 @@ class ProductService {
 
 		$product->section3_turky   = $request->section3_turky;
 
-	
+
 		 if($request->hasFile('image'))
             $product->image_id = ImageService::saveImage($request->file('image'));
 
@@ -257,6 +254,10 @@ class ProductService {
 			return redirect(route('productbycategory.index' , $product->category_id) );
 		if ($redirect == 3 )
 			return redirect(route('productbysubcategory.index' , $product->subcategory_id));
+	}
+
+	public static function loadById($id){
+		return Product::where('id','=',$id)->get()->first();
 	}
 
 

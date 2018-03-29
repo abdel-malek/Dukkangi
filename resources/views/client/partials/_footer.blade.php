@@ -17,5 +17,5 @@
                 <a href="https://www.facebook.com/"><i class="fa fa-facebook icon_footer" style="padding: 0.5em 0.7em;"></i></a>
             </div>
 </footer>
-
+<script src={{url("static/sweetalert/sweetalert2.all.js")}}></script>
       @yield('scripts')
