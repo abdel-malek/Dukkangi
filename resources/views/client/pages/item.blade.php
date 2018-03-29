@@ -54,11 +54,11 @@
                 <!-- Thumbnail Navigator -->
                 <div data-u="thumbnavigator" class="jssort101" style="position:absolute;left:0px;top:0px;width:240px;height:900px;background-color:#000;" data-autocenter="2" data-scale-left="0.75">
                     <div data-u="slides">
-                        <div data-u="prototype" class="p" style="width:110px;height:88px;">
-                            <div data-u="thumbnailtemplate" class="t">
-                            </div>
-                        </div>
+                      <div data-u="prototype" class="p" style="width:110px;height:88px;">
+                          <div data-u="thumbnailtemplate" class="t">
+                          </div>
                       </div>
+                    </div>
                 </div>
             </div>
             <script type="text/javascript">jssor_1_slider_init();</script>

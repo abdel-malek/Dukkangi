@@ -12,6 +12,7 @@
       <script type="text/javascript" src="{{url('/front-end/js/plugin/jssor.slider.min.js')}}"></script>
       <script type="text/javascript" src="{{url('/front-end/js/plugin/slide.js')}}"></script>
       <link rel="stylesheet" href="{{url('/front-end/css/SimpleStarRating.css')}}">
+      <link rel="stylesheet" type="text/css" href="{{url('static/sweetalert/sweetalert2.min.css')}}">
        <style>
             .star{
                 cursor: pointer;

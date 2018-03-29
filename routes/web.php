@@ -113,3 +113,7 @@ Route::post('register', ['as' => '','uses' => 'Auth\RegisterController@register'
 
 	//Language Change
 Route::get('/lang/{lang}' , 'PageController@setLanguage');
+
+
+	//cart
+Route::post('/cart/add','CartController@addToCart');
