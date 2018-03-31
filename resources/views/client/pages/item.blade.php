@@ -25,6 +25,13 @@
         color: inherit;
         text-decoration:none;
     }
+    .sub-paragraph{
+        background-color: #00000044;
+    position: relative;
+    bottom: 29px;
+    font-size: 0.9em;
+    color: #fff;
+    }
 
     </style>
 
@@ -40,7 +47,9 @@
           <div id="content_page_item">
         <div class="col-md-12 col-sm-12 page_content_item">
             <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:-85px;width:1024px;height:200px;overflow:none;visibility:hidden;background-color:#24262e;">
-                <!-- Loading Screen -->
+ 
+
+
                 <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
                 </div>
                 <div data-u="slides" style="cursor:default;position:relative;top:0px;left:240px;width:850px;height:200px;overflow:hidden;">
@@ -48,28 +57,38 @@
                     @foreach($subcategories as $subcategory)
                     
                       <div>
-                          <!--Some Changes-->
                           <img  data-u="image" src="{{$subcategory->image_id}}" style="height:15em;width: 45em;    border: 0.04em solid #8a8a8a" />
                           <img  data-u="thumb" src="{{$subcategory->image_id}}" />
                           <p class="text_big_image_slider">
-                              <a href="{{ route('subcategoryfilter',$subcategory->id) }}">{{ $subcategory->english }}</a>
+                              {{ $subcategory->english }}
                               <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
-                              <span class="subcategory"></span>
+                              <span class="rating" style="bottom: 0.1em;left: 0.9em;"></span>
                           </p>
                       </div>
                     @endforeach
                 </div>
-                <!-- Thumbnail Navigator -->
-                <div data-u="thumbnavigator" class="jssort101" style="position:absolute;left:0px;top:0px;width:240px;height:900px;background-color:#000;" data-autocenter="2" data-scale-left="0.75">
-                    <div data-u="slides">
-                      <div data-u="prototype" class="p" style="width:110px;height:88px;">
-                          <div data-u="thumbnailtemplate" class="t">
-                          </div>
-                      </div>
-                    </div>
-                </div>
+    
             </div>
+ 
             <script type="text/javascript">jssor_1_slider_init();</script>
+ 
+            <div class='thumnbail' style="position: absolute;margin-left: 158px;top: 35px;" >
+                @foreach($subcategories as $subcategory)
+                <a href="{{ route('subcategoryfilter',$subcategory->id) }}">
+                    <div data-id="{{$subcategory->id}}">
+                        <div style="z-index: 1; width: 120px; height: 110px;overflow: hidden;">
+                            <div style="width: 110px; height: 95px; left: 0px; top: 0px; z-index: 1;">
+                            <img src="{{$subcategory->image_id}}" style="z-index: 1;" width="110px" height="88px" />
+                                <p class="sub-paragraph" style="z-index: 1;padding: 4.4px 32.5px;">
+                                    {{$subcategory->english}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                @endforeach
+            </div>
+                
         </div>
 
         <div class="col-md-9 col-sm-12 section_item" >
@@ -243,8 +262,7 @@
                         console.log('Rating: ' + e.detail);
                     });
                 }
-        </script>
-        <script>
+      
                 var ratings = document.getElementsByClassName('subcategory');
 
                 for (var i = 0; i < ratings.length; i++) {

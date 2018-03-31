@@ -210,7 +210,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 }
 .jssort101 .t{
     left: -22em !important;
-    width: auto !important;
+    width: auto ;
     height: 7em !important;
 }
 .jssort101 .p .cv{
