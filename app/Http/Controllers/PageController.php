@@ -344,39 +344,8 @@ class PageController extends Controller
 		//Calculate Average Rate For Subcategory
 
 
-		$subcategoryRate = Rate::select('rate')->where('subcategory_id' , '=',$subcategory->id)->get();
-		if($subcategoryRate->count() != 0){
-			$precalculation = 0;
-			foreach ($subcategoryRate as $temp) {
-					$precalculation = $precalculation + $temp->rate;
-			}
-			$subcategory->rate = round( $precalculation / $subcategoryRate->count() );
-		}
-		//Calculate Average Rate For Product
+		//dd($product->rate);
 
-		/// NOTE : NEED A CHANGE To Rate Proccess
-		$productRate = Rate::select('rate')->where('product_id' , '=',$product->id)->get();
-
-		if($productRate->count() != 0){
-			$precalculation =0 ;
-			foreach ($productRate as $temp) {
-					$precalculation = $precalculation + $temp->rate;
-			}
-			$product->rate = round( $precalculation / $productRate->count() );
-		}
-		// Calculate Average Rate For Simiproducts
-		foreach ($simiproducts as $simi) {
-
-			$simiRate = Rate::select('rate')->where('product_id' , '=', $simi->id)->get();
-			if($simiRate->count() != 0 ){
-				$precalculation = 0;
-				foreach($simiRate as $temp){
-					$precalculation = $precalculation + $temp->rate;
-				}
-				$simi->rate = round( $precalculation / $simiRate->count());
-			}
-		}
-		//$product->qty  = 0;
 		return view('client.pages.item_view')->withProduct($product)->withCategory($category)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments);
 
 	}
@@ -387,12 +356,43 @@ class PageController extends Controller
 
 		$type = $request->input('type') == "subategory" ? 2 : 1 ;
 		$id   = $request->input('id');
-		$rate = $request->input('rate');
-		//dd($type);
-		$update = Rate::updateOrCreate(
-			['type' => $type , 'user_id'=>$userId ,$type == 1 ?'product_id' :'subcategory_id'  => $id ],
-	  		['rate' => $rate,'type' => $type , 'user_id'=>$userId ,$type == 1 ?'product_id' :'subcategory_id'  => $id ]
-		);
+		$userrate = $request->input('rate');
+		
+		if ( $type == 1 )
+			$rates = Rate::where('product_id' ,'=',$id)->where('type', '=', $type)->get();
+		else 
+			$rates = Rate::where('subcategory_id' ,'=',$id)->where('type', '=', $type)->get();
+		
+
+		$flag = 0;
+		$precalculation = $userrate;
+		foreach ($rates as $rate) {
+			if ($rate->user_id == $userId){
+				$flag =1;
+				continue;
+			}
+			$precalculation += $rate->rate;
+		}
+
+		if (count($rates) != 0 ){
+			$lastrate = $precalculation / (count($rates) + ($flag ? 0 : 1) );
+		
+			if ($type == 1){
+				$update = Product::find($id);
+				$update->rate = round($lastrate);
+				$update->save();
+			}
+			else if ($type == 2){
+				$update = Subcategory::find($id);
+				$update->rate = round($lastrate);
+				$update->save();
+			}
+		}
+
+			 $update = Rate::updateOrCreate(
+				['type' => $type , 'user_id'=>$userId ,$type == 1 ?'product_id' :'subcategory_id'  => $id ],
+	   			['rate' => $userrate,'type' => $type , 'user_id'=>$userId ,$type == 1 ?'product_id' :'subcategory_id'  => $id ]
+		 	);
 	}
 
 	public function comment(Request $request){
@@ -423,7 +423,7 @@ class PageController extends Controller
 			}
 			$product->rate = round( $precalculation / $productRate->count() );
 		}
-		$subcategory->rate =3;
+//		$subcategory->rate =3;
 
 		return view('client.pages.buy_item')->withProduct($product)->withSubcategory($subcategory);
 	}

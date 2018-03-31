@@ -14,7 +14,7 @@ class VerifyCsrfToken extends BaseVerifier
     protected $except = [
     	'categories',
     	'categorytosub',
-    	'rate',
+    	'/rate',
       'comment-save',
       '/admin/products/store',
       'categoryfilter'
