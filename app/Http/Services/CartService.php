@@ -48,5 +48,19 @@ class CartService{
     return Order::where('id','=',$cartId)->update(['status_id' => OrderStatus::COMPLETED,'payment_id' => $paymentId]);
   }
 
+  public static function loadCart($cartId){
+    // load  order items with products 
+    $result = OrderItem::with('product' )
+    ->where('order_id','=',$cartId)
+    ->where('status_id','=',OrderStatus::CREATED);
+    $gainPoints = $result->sum('gain_point');
+
+    $orderItems = $result->get();
+
+    $taxes = $result->sum('total_amount');
+
+    return ['orderItems' => $orderItems,'gainPoints' => $gainPoints,'taxes' => $taxes * .19];
+   }
+   
 }
  ?>

@@ -10,6 +10,7 @@ use App\Subcategory;
 use App\Product;
 use App\User;
 use App\Rate;
+use App\OrderItem;
 use App\Comment;
 use App\Http\Services\FilterService;
 use Redirect;
@@ -427,12 +428,8 @@ class PageController extends Controller
 		return view('client.pages.buy_item')->withProduct($product)->withSubcategory($subcategory);
 	}
 
-	public function getViewMyCartPage(){
-		return view('client.pages.view_my_cart');
-	}
 
-
-
+	
 
 
 	public function setLanguage($lang)

@@ -131,7 +131,9 @@
         </style>
 @endsection
 @section('main_section')
-
+    <?php 
+        $total = 0;
+    ?>
   <div class="col-md-12" style="height: 1200px" id="content_page">
 
   <div class="col-md-12" style="padding: 0em 5em;">
@@ -152,26 +154,32 @@
                     <hr class="line_title_detail_my_card" style="width:70%;">
                 </div>
             
-
-                <div class="item_qty_detail_my_card">
-                    <img src="/front-end/images/slider/item1.jpg" class="img_item_qty" />
+            
+                @foreach($orders as $order)
+                <?php 
+                 $total += $order->total_amount;
+                ?>
+                <div class="item_qty_detail_my_card" data-price="{{$order->product->price}}" data-gain="{{$order->gain_point}}">
+                    <img src="{{$order->product->image_id}}" class="img_item_qty" />
                     <div class="text_item_qty">
-                        <h3>Donuts</h3>
-                        <p style="margin-bottom: 0.1em;">Choclate flavour - with nuts</p>
-                        <p>Price :150 $</p>
-
+                        <h3>{{$order->product->english}}</h3>
+                        <p style="margin-bottom: 0.1em;">{{$order->product->section1_english}}</p>
+                        <span>
+                            <p> @lang('Price') :{{$order->product->price}} $</p>
+                        </span>
                     </div>
                     <div class="control_item_qty">
-                        <h4 class="num_item_qty" >3</h4>
+                        <h4 class="num_item_qty" >{{ $order->qty }}</h4>
                         <div class="btn_control_item_qty">
                             <img src="/front-end/images/payment/handler-plus.png" onclick="num_plus(this);" />
                             <img src="/front-end/images/payment/handler-min.png" onclick="num_min(this);" style="margin-top:-0.8em;" />
                         </div>
                         <p class="total_item_qty">
-                            Total <span>50 $</span>
+                            Total <span id="total">{{ $order->total_amount }} </span> <i style="color: #d80001;font-weight: bold;font-family: 'EagarFont';font-size: 1em;">$</i>
                         </p>
                     </div>
                 </div>
+                @endforeach
 
          
                  <div class="col-md-12" style="float:left;">
@@ -182,8 +190,8 @@
                     <p>
                        You gained 
                     </p>
-                    <h3>
-                        24PT
+                    <h3 id="total-gain">
+                        {{$gainPoints}} PT
                     </h3>
                 </div>
                 
@@ -195,11 +203,12 @@
                        <p>
                         Taxes
                     </p>
-                    <h3>
-                        18 $
+
+                    <h3 id="tax">
+                        {{ sprintf('%0.2f', $taxes)}}
                     </h3>
-                </div>
-                
+                    </div>
+           <!--                        DISCOUNTS    
                    <div class="col-md-12" style="float:left;">
                     <h3 class="title_detail_my_card" style="width:25%;">Discounts</h3>
                     <hr class="line_title_detail_my_card" style="width:75%;">
@@ -208,10 +217,11 @@
                        <p>
                         Total before discounts
                     </p>
-                    <h3>
-                        1990 $
+                    <h3 id="total-price">
+                        {{$total }} $
                     </h3>
                 </div>
+               
                 <div class="discount_discount">
                        <p>
                         Discount
@@ -220,7 +230,7 @@
                         3 %
                     </h3>
                 </div>
-                
+               --> 
                    <div class="col-md-12" style="float:left;">
                     <h3 class="title_detail_my_card" style="width:35%;">Voucher Code</h3>
                     <hr class="line_title_detail_my_card" style="width:65%;">
@@ -234,7 +244,8 @@
 
                 <p class="price_item_details">
                     <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">Total</span>
-                    <span style="left:4em;"> 900 $</span>
+                    <span style="left:4em;" id="Total"> {{$total + $taxes}}</span> 
+                    <i style="color: #fff;    font-size: 1.5em;font-family: 'EagarFont';margin-top: 0.2em;width: 4em;margin-left: 94px;text-align: center;position: absolute;z-index: 18;">$</i>
                     <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details"/>
                 </p>
             </div>
@@ -242,7 +253,7 @@
             <div class="sections">
                 <div class="choose_payment">
                     <h4 class="title_choose_payment">
-                        Choose your payment methode:
+                        Choose your payment method:
                     </h4>
                     <div  class="visa_choose_payment">
                         <label style="float: left;">
@@ -343,68 +354,12 @@
                 </div>
             </div>
             </div>
-        </div> <script src="http://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-        <script src="/front-end/js/plugin/jquery-pretty-tabs.js"></script>
-        <script type="text/javascript">
-                                var _gaq = _gaq || [];
-                                _gaq.push(['_setAccount', 'UA-36251023-1']);
-                                _gaq.push(['_setDomainName', 'jqueryscript.net']);
-                                _gaq.push(['_trackPageview']);
-
-                                (function () {
-                                    var ga = document.createElement('script');
-                                    ga.type = 'text/javascript';
-                                    ga.async = true;
-                                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                                    var s = document.getElementsByTagName('script')[0];
-                                    s.parentNode.insertBefore(ga, s);
-                                })();
-        </script>
-        <script src="/front-end/js/plugin/SimpleStarRating.js"></script>
-        <script>
-                                var ratings = document.getElementsByClassName('rating');
-
-                                for (var i = 0; i < ratings.length; i++) {
-                                    var r = new SimpleStarRating(ratings[i]);
-
-                                    ratings[i].addEventListener('rate', function (e) {
-                                        console.log('Rating: ' + e.detail);
-                                    });
-                                }
-        </script>
-        <script>
-            $('.rating').click(function () {
-                var num_star_active = 0;
-                $(this).find('.star').each(function () {
-                    if ($(this).hasClass('active')) {
-                        num_star_active++;
-                    }
-                });
-                //      Value star is variable : num_star_active
-                //      Request Update rating 
-            });
-        </script>
-        <script>
-            $(function () {
-                $("#expiration_date").datepicker();
-            });
-        </script>
-        <script>
-            function num_plus(obj) {
-                $(obj).parent().parent().find('h4').text(parseInt($(obj).parent().parent().find('.num_item_qty').text()) + 1);
-            }
-            function num_min(obj) {
-                if ((parseInt($(obj).parent().parent().text()) > 0)) {
-                    $(obj).parent().parent().find('h4').text(parseInt($(obj).parent().parent().find('h4').text()) - 1);
-                }
-            }
-        </script>
-
+        </div>
 
 
 @endsection
 @section('scripts')
-
+ <script src="http://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
           <script src="/front-end/js/plugin/jquery-pretty-tabs.js"></script>
      <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -465,13 +420,43 @@
         </script>
         <script>
             function num_plus(obj) {
+               // console.log( parseFloat($(obj).parent().parent().parent().data('price')));
+               $(obj).parent().parent().find('p').find('span').text(
+                parseFloat(
+                parseFloat($(obj).parent().parent().find('p').find('span').text())  + parseFloat($(obj).parent().parent().parent().data('price'))
+                ).toFixed(2));
+
+                $('#total-gain').text(parseInt($(obj).parent().parent().parent().data('gain')) + parseInt($('#total-gain').text()) );
+
+                
+                $('#tax').text( parseFloat( parseFloat($('#tax').text() ) + parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19)).toFixed(2));
+               
+
+               $('#Total').text(parseFloat(parseFloat($(obj).parent().parent().parent().data('price')) + parseFloat( $('#Total').text() ) +parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19) ).toFixed(2));
+
                 $(obj).parent().parent().find('h4').text(parseInt($(obj).parent().parent().find('.num_item_qty').text()) + 1);
+ 
             }
             function num_min(obj) {
                 if ((parseInt($(obj).parent().parent().text()) > 0)) {
-                    $(obj).parent().parent().find('h4').text(parseInt($(obj).parent().parent().find('h4').text()) - 1);
+                                   $(obj).parent().parent().find('p').find('span').text(
+                parseFloat(
+                parseFloat($(obj).parent().parent().find('p').find('span').text())  - parseFloat($(obj).parent().parent().parent().data('price'))
+                ).toFixed(2));
+
+                $('#total-gain').text(parseInt( parseInt($('#total-gain').text()) -$(obj).parent().parent().parent().data('gain') ) );
+
+               
+
+                $('#tax').text( parseFloat( parseFloat($('#tax').text() ) - parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19)).toFixed(2));
+                if ( parseFloat($('#tax').text()) < 0  )
+                    $('#tax').text('0');
+                $('#Total').text(parseFloat(parseFloat(parseFloat( $('#Total').text() ) - $(obj).parent().parent().parent().data('price')) -parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19) ).toFixed(2));
+               
+                $(obj).parent().parent().find('h4').text(parseInt($(obj).parent().parent().find('h4').text()) - 1);
+  
+
                 }
             }
         </script>
-
 @endsection
