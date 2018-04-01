@@ -35,6 +35,7 @@ class SubcategoryController extends Controller
     {
         $subcategory = Subcategory::find($id);
         $categories = Category::all();
+
         return view('admin.subcategories.edit')->withSubcategory($subcategory)->withCategories($categories);
     }
     public function update(Request $request)

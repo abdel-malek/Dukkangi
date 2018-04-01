@@ -39,7 +39,7 @@ function loadSubcategories(){
             {name: "german" , title: 'Name (GR)', type: "text", width: 5},
             {name: "kurdi"  , title: 'Name (KR)', type: "text", width: 5},
             {name: "turky"  , title: 'Name (TR)', type: "text", width: 5},
-            
+
             {name: "category_id",  title: 'Category' , type: "text", width: 5},
             {
               type: "control", width: 10, editButton: false, modeSwitchButton: false, deleteButton: false,
@@ -55,7 +55,7 @@ function loadSubcategories(){
               itemTemplate: function (value, item) {
                 var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
                 var $edit = $('<a class="btn btn-block btn-info btn-xs">Edit</a>');
-                $edit.attr('href',`admin/subcategories/edit/`+item.id);
+                $edit.attr('href',`subcategories/edit/`+item.id);
                 return $result.add($edit);
               },
             },
@@ -102,4 +102,3 @@ function deleteSubcategory(subcategoryId){
     }
   });
 }
-
