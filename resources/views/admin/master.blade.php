@@ -3,7 +3,7 @@
 <head>
    @include('admin.partials._head')
    <style>
-   .footer{
+   #footer{
      padding-top:10px;
      position: fixed;
      width: 100%;
