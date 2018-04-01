@@ -88,7 +88,9 @@ Route::post('/admin/users/delete/{id}', ['uses' => 'UserController@destroy'     
     //ORDERS
 Route::get('/admin/orders', ['uses' => 'OrderController@index'         , 'as' => 'order.index' ]);
 Route::post('/admin/orders', ['uses' => 'OrderController@loadOrder'     , 'as' => 'order.data'  ]);
-Route::post('/admin/orders/delete/{id}', ['uses' => 'OrderController@destroy'     , 'as' => 'order.delete']);
+
+Route::get('/admin/orders/{id}/order-items', ['uses' => 'OrderController@orderItemPage'         , 'as' => 'orderItems.index' ]);
+Route::post('/admin/orders/{id}/order-items', ['uses' => 'OrderController@loadOrderItems'     , 'as' => 'orderItems.data'  ]);
 
     //PAYMENT
 Route::get('/admin/payment', ['uses' => 'PaymentController@index'         , 'as' => 'payment.index'  ]);
@@ -117,3 +119,4 @@ Route::get('/lang/{lang}' , 'PageController@setLanguage');
 
 	//cart
 Route::post('/cart/add','CartController@addToCart');
+Route::post('/cart/checkout','CartController@checkout');

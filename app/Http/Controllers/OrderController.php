@@ -32,4 +32,13 @@ class OrderController extends Controller
     {
         return OrderService::deleteOrder($id);
     }
+
+    public function orderItemPage(){
+      return view('admin.orders.orderItems');
+    }
+
+    public function loadOrderItems(Request $request,$id){
+      $filter = $request->input('filter');
+      return OrderService::loadOrderItemData($filter,$id);
+    }
 }

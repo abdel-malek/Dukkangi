@@ -55,9 +55,16 @@ class PaymentService {
 		return Payment::where('id','=',$id)->delete();
 	}
 
-	public static function createNewPayment($paymentMethodId,$userId,$amount,$currency){
+	public static function createPayment($paymentMethodId,$cartId,$userId,$amount,$currency){
+		$subAmount = $amount;
+		$amount = self::calculateTax($amount,0.19);
 		return Payment::create(['payment_method_id'=>$paymentMethodId,'amount' => $amount,'currency' => $currency,
-		'user_id' => $userId]);
+		'user_id' => $userId,'order_id' => $cartId,'request'=>'','response'=>'','coupon'=>'','sub_amount' => $subAmount]);
+	}
+
+	private static function calculateTax($amount,$tax){
+		$result = $amount + ($amount * $tax);
+		return $result;
 	}
 
 }

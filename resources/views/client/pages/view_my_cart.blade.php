@@ -1,6 +1,6 @@
 @extends('client.main')
 @section('styles')
- <link rel="stylesheet" href="/front-end/css/lib/bootstrap.min.css">
+        <link rel="stylesheet" href="/front-end/css/lib/bootstrap.min.css">
         <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="/front-end/css/jquery-pretty-tabs.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="/front-end/css/item.css">
         <link rel="stylesheet" href="/front-end/css/item_view.css">
         <link rel="stylesheet" href="/front-end/css/buy_item.css">
-        <link rel="stylesheet" href="/front-end/css/view_my_card.css"> 
+        <link rel="stylesheet" href="/front-end/css/view_my_card.css">
         <link rel="stylesheet" href="/front-end/css/material_icons.css">
         <script type="text/javascript" src="/front-end/js/plugin/jssor.slider.min.js"></script>
         <script type="text/javascript" src="/front-end/js/plugin/slide.js"></script>
@@ -29,7 +29,7 @@
     width: 61.8%;
             }
             .header_page_text_div{
-             padding-left: 25em;   
+             padding-left: 25em;
             }
             .rating{
                 font-size: 1.3em;
@@ -131,7 +131,7 @@
         </style>
 @endsection
 @section('main_section')
-    <?php 
+    <?php
         $total = 0;
     ?>
   <div class="col-md-12" style="height: 1200px" id="content_page">
@@ -153,13 +153,14 @@
                     <h3 class="title_detail_my_card" style="width:30%;">Quantities</h3>
                     <hr class="line_title_detail_my_card" style="width:70%;">
                 </div>
-            
-            
+
+
                 @foreach($orders as $order)
-                <?php 
+                <?php
                  $total += $order->total_amount;
                 ?>
-                <div class="item_qty_detail_my_card" data-price="{{$order->product->price}}" data-gain="{{$order->gain_point}}">
+                <div class="item_qty_detail_my_card" data-price="{{$order->product->price}}" data-gain="{{$order->gain_point}}"
+                  data-productId='{{$order->product->id}}'>
                     <img src="{{$order->product->image_id}}" class="img_item_qty" />
                     <div class="text_item_qty">
                         <h3>{{$order->product->english}}</h3>
@@ -181,20 +182,20 @@
                 </div>
                 @endforeach
 
-         
+
                  <div class="col-md-12" style="float:left;">
                     <h3 class="title_detail_my_card" style="width:40%;">Points rewards</h3>
                     <hr class="line_title_detail_my_card" style="width:60%;">
                 </div>
                 <div class="gained_point_rewards">
                     <p>
-                       You gained 
+                       You gained
                     </p>
                     <h3 id="total-gain">
                         {{$gainPoints}} PT
                     </h3>
                 </div>
-                
+
                    <div class="col-md-12" style="float:left;">
                     <h3 class="title_detail_my_card" style="width:16%;">Taxes</h3>
                     <hr class="line_title_detail_my_card" style="width:84%;">
@@ -208,7 +209,7 @@
                         {{ sprintf('%0.2f', $taxes)}}
                     </h3>
                     </div>
-           <!--                        DISCOUNTS    
+           <!--                        DISCOUNTS
                    <div class="col-md-12" style="float:left;">
                     <h3 class="title_detail_my_card" style="width:25%;">Discounts</h3>
                     <hr class="line_title_detail_my_card" style="width:75%;">
@@ -221,7 +222,7 @@
                         {{$total }} $
                     </h3>
                 </div>
-               
+
                 <div class="discount_discount">
                        <p>
                         Discount
@@ -230,7 +231,7 @@
                         3 %
                     </h3>
                 </div>
-               --> 
+               -->
                    <div class="col-md-12" style="float:left;">
                     <h3 class="title_detail_my_card" style="width:35%;">Voucher Code</h3>
                     <hr class="line_title_detail_my_card" style="width:65%;">
@@ -244,7 +245,7 @@
 
                 <p class="price_item_details">
                     <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">Total</span>
-                    <span style="left:4em;" id="Total"> {{$total + $taxes}}</span> 
+                    <span style="left:4em;" id="Total"> {{$total + $taxes}}</span>
                     <i style="color: #fff;    font-size: 1.5em;font-family: 'EagarFont';margin-top: 0.2em;width: 4em;margin-left: 94px;text-align: center;position: absolute;z-index: 18;">$</i>
                     <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details"/>
                 </p>
@@ -342,13 +343,13 @@
                     <h4 class="title_credit_card_details">
                         Credit Card Details:
                     </h4>
-                    <div class="col-md-12" style="float:left;padding: 0em 2em;"> 
+                    <div class="col-md-12" style="float:left;padding: 0em 2em;">
                         <input type="text" class="form-control input_credit_card_details" placeholder="Card number ..">
                         <input type="text" class="form-control input_credit_card_details" placeholder="Cardholder name ..">
                         <p class="title_input">Expiration Date</p>
                         <input type="date" id="expiration_date" class="form-control input_credit_card_details" placeholder="" style="margin-top: 0.2em;">
                         <input type="text" class="form-control input_credit_card_details" placeholder="CVV">
-                        <p class="btn_credit_card_details" style="background-color: #d80001;color: #fff;">Make Payment</p>
+                        <p class="btn_credit_card_details" id='btn-checkout' style="background-color: #d80001;color: #fff;cursor: pointer;">Make Payment</p>
                         <p class="btn_credit_card_details" style="margin-left: 8%;">Cancel</p>
                     </div>
                 </div>
@@ -359,104 +360,134 @@
 
 @endsection
 @section('scripts')
- <script src="http://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-          <script src="/front-end/js/plugin/jquery-pretty-tabs.js"></script>
-     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-           <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-             <!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
-            <script src="/front-end/js/main.js"></script>
+    <script src="http://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+    <script src="/front-end/js/plugin/jquery-pretty-tabs.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="/front-end/js/main.js"></script>
 
-      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
-      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-
-
-
-
+    <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
  <script type="text/javascript">
-                                var _gaq = _gaq || [];
-                                _gaq.push(['_setAccount', 'UA-36251023-1']);
-                                _gaq.push(['_setDomainName', 'jqueryscript.net']);
-                                _gaq.push(['_trackPageview']);
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-36251023-1']);
+      _gaq.push(['_setDomainName', 'jqueryscript.net']);
+      _gaq.push(['_trackPageview']);
 
-                                (function () {
-                                    var ga = document.createElement('script');
-                                    ga.type = 'text/javascript';
-                                    ga.async = true;
-                                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                                    var s = document.getElementsByTagName('script')[0];
-                                    s.parentNode.insertBefore(ga, s);
-                                })();
-        </script>
-        <script src="/front-end/js/plugin/SimpleStarRating.js"></script>
-        <script>
-                                var ratings = document.getElementsByClassName('rating');
+      (function () {
+          var ga = document.createElement('script');
+          ga.type = 'text/javascript';
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+      })();
+</script>
+<script src="/front-end/js/plugin/SimpleStarRating.js"></script>
+<script>
+    var ratings = document.getElementsByClassName('rating');
 
-                                for (var i = 0; i < ratings.length; i++) {
-                                    var r = new SimpleStarRating(ratings[i]);
+    for (var i = 0; i < ratings.length; i++) {
+        var r = new SimpleStarRating(ratings[i]);
 
-                                    ratings[i].addEventListener('rate', function (e) {
-                                        console.log('Rating: ' + e.detail);
-                                    });
-                                }
-        </script>
-        <script>
-            $('.rating').click(function () {
-                var num_star_active = 0;
-                $(this).find('.star').each(function () {
-                    if ($(this).hasClass('active')) {
-                        num_star_active++;
-                    }
-                });
-                //      Value star is variable : num_star_active
-                //      Request Update rating 
-            });
-        </script>
-        <script>
-            $(function () {
-                $("#expiration_date").datepicker();
-            });
-        </script>
-        <script>
-            function num_plus(obj) {
-               // console.log( parseFloat($(obj).parent().parent().parent().data('price')));
-               $(obj).parent().parent().find('p').find('span').text(
-                parseFloat(
-                parseFloat($(obj).parent().parent().find('p').find('span').text())  + parseFloat($(obj).parent().parent().parent().data('price'))
-                ).toFixed(2));
-
-                $('#total-gain').text(parseInt($(obj).parent().parent().parent().data('gain')) + parseInt($('#total-gain').text()) );
-
-                
-                $('#tax').text( parseFloat( parseFloat($('#tax').text() ) + parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19)).toFixed(2));
-               
-
-               $('#Total').text(parseFloat(parseFloat($(obj).parent().parent().parent().data('price')) + parseFloat( $('#Total').text() ) +parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19) ).toFixed(2));
-
-                $(obj).parent().parent().find('h4').text(parseInt($(obj).parent().parent().find('.num_item_qty').text()) + 1);
- 
+        ratings[i].addEventListener('rate', function (e) {
+            console.log('Rating: ' + e.detail);
+        });
+    }
+</script>
+<script>
+    $('.rating').click(function () {
+        var num_star_active = 0;
+        $(this).find('.star').each(function () {
+            if ($(this).hasClass('active')) {
+                num_star_active++;
             }
-            function num_min(obj) {
-                if ((parseInt($(obj).parent().parent().text()) > 0)) {
-                                   $(obj).parent().parent().find('p').find('span').text(
-                parseFloat(
-                parseFloat($(obj).parent().parent().find('p').find('span').text())  - parseFloat($(obj).parent().parent().parent().data('price'))
-                ).toFixed(2));
+        });
+        //      Value star is variable : num_star_active
+        //      Request Update rating
+    });
+</script>
+<script>
+    $(function () {
+        $("#expiration_date").datepicker();
+    });
+</script>
+<script>
+    function num_plus(obj) {
+       // console.log( parseFloat($(obj).parent().parent().parent().data('price')));
+       $(obj).parent().parent().find('p').find('span').text(
+        parseFloat(
+        parseFloat($(obj).parent().parent().find('p').find('span').text())  + parseFloat($(obj).parent().parent().parent().data('price'))
+        ).toFixed(2));
 
-                $('#total-gain').text(parseInt( parseInt($('#total-gain').text()) -$(obj).parent().parent().parent().data('gain') ) );
+        $('#total-gain').text(parseInt($(obj).parent().parent().parent().data('gain')) + parseInt($('#total-gain').text()) );
 
-               
 
-                $('#tax').text( parseFloat( parseFloat($('#tax').text() ) - parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19)).toFixed(2));
-                if ( parseFloat($('#tax').text()) < 0  )
-                    $('#tax').text('0');
-                $('#Total').text(parseFloat(parseFloat(parseFloat( $('#Total').text() ) - $(obj).parent().parent().parent().data('price')) -parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19) ).toFixed(2));
-               
-                $(obj).parent().parent().find('h4').text(parseInt($(obj).parent().parent().find('h4').text()) - 1);
-  
+        $('#tax').text( parseFloat( parseFloat($('#tax').text() ) + parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19)).toFixed(2));
 
+
+       $('#Total').text(parseFloat(parseFloat($(obj).parent().parent().parent().data('price')) + parseFloat( $('#Total').text() ) +parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19) ).toFixed(2));
+
+        $(obj).parent().parent().find('h4').text(parseInt($(obj).parent().parent().find('.num_item_qty').text()) + 1);
+
+    }
+    function num_min(obj) {
+        if ((parseInt($(obj).parent().parent().text()) > 0)) {
+                           $(obj).parent().parent().find('p').find('span').text(
+        parseFloat(
+        parseFloat($(obj).parent().parent().find('p').find('span').text())  - parseFloat($(obj).parent().parent().parent().data('price'))
+        ).toFixed(2));
+
+        $('#total-gain').text(parseInt( parseInt($('#total-gain').text()) -$(obj).parent().parent().parent().data('gain') ) );
+
+
+
+        $('#tax').text( parseFloat( parseFloat($('#tax').text() ) - parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19)).toFixed(2));
+        if ( parseFloat($('#tax').text()) < 0  )
+            $('#tax').text('0');
+        $('#Total').text(parseFloat(parseFloat(parseFloat( $('#Total').text() ) - $(obj).parent().parent().parent().data('price')) -parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19) ).toFixed(2));
+
+        $(obj).parent().parent().find('h4').text(parseInt($(obj).parent().parent().find('h4').text()) - 1);
+
+
+        }
+    }
+
+    $('#btn-checkout').on('click',function(){
+      //get productIds and qtys
+        products = [];
+        $('.item_qty_detail_my_card').each(function(i,obj){
+            productId = $(obj).attr('data-productId');
+            qty = $(obj).find('.num_item_qty').html();
+            var product = {};
+            product.id = productId;
+            product.qty = qty;
+            products.push(product);
+        })
+        $.ajax({
+            type: "POST",
+            url: `/cart/checkout`,
+            data:{'products':products},
+            headers: {
+                "x-csrf-token": $("[name=_token]").val()
+            },
+        }).done(response => {
+            swal({
+                title: 'Successfully',
+                text: "Thank you For purchasing with us!",
+                type: 'success',
+                confirmButtonColor: '#d90f17',
+                confirmButtonText: 'Return To Home!'
+              }).then((result) => {
+                if (result.value) {
+                  window.location.href ='/';
                 }
-            }
-        </script>
+              })
+
+        });
+    })
+
+</script>
 @endsection

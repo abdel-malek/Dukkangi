@@ -3,6 +3,7 @@
 namespace App;
 use App\Order;
 use App\Product;
+use App\OrderStatus;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,6 +18,10 @@ class OrderItem extends Model
     }
 
     public function product(){
-    	return $this->belongsTo(Product::class,'item_id','id');	
+    	return $this->belongsTo(Product::class,'item_id','id');
+    }
+
+    public function orderStatus(){
+      return $this->belongsTo(OrderStatus::class,'status_id','id');
     }
 }

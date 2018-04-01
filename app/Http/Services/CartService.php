@@ -3,7 +3,7 @@ namespace App\Http\Services;
 use App\Order;
 use App\OrderItem;
 use App\OrderStatus;
-use App\Services\PaymentService;
+use App\Http\Services\PaymentService;
 
 class CartService{
 
@@ -40,17 +40,21 @@ class CartService{
     return OrderItem::where('order_id','=',$cartId)->update(['status_id' => $status]);
   }
 
-  public static function completeCart($cartId,$paymentId){
+  private static function completeCart($cartId,$paymentId){
     //change order item to complete status
     self::updateOrderItemStatus($cartId,OrderStatus::COMPLETED);
 
     //change order to  complete status and add $paymentId
-    return Order::where('id','=',$cartId)->update(['status_id' => OrderStatus::COMPLETED,'payment_id' => $paymentId]);
+    Order::where('id','=',$cartId)->update(['status_id' => OrderStatus::COMPLETED,'payment_id' => $paymentId]);
+
+    //remove cart from Session
+    session()->forget('cartId');
+    return true;
   }
 
   public static function loadCart($cartId){
-    // load  order items with products 
-    $result = OrderItem::with('product' )
+    // load  order items with products
+    $result = OrderItem::with('product')
     ->where('order_id','=',$cartId)
     ->where('status_id','=',OrderStatus::CREATED);
     $gainPoints = $result->sum('gain_point');
@@ -61,6 +65,26 @@ class CartService{
 
     return ['orderItems' => $orderItems,'gainPoints' => $gainPoints,'taxes' => $taxes * .19];
    }
-   
+
+  public static function checkout($cartId,$products,$paymentMethodId = 1 ,$userId){
+    foreach ($products as $product) {
+      self::addToCart($product['id'],$product['qty'],$cartId,$userId);
+    }
+
+    //Calculate Amount
+    $amount = self::getTotalAmount($cartId);
+    //make a payment
+    // TODO: Pass payment method id
+    $payment = PaymentService::createPayment($paymentMethodId,$cartId,$userId,$amount,'EUR');
+    return self::completeCart($cartId,$payment->id);
+  }
+
+  private static function getTotalAmount($cartId){
+    return OrderItem::where('order_id','=',$cartId)->where('status_id','=',OrderStatus::CREATED)
+    ->sum('total_amount');
+  }
+
+
+
 }
  ?>

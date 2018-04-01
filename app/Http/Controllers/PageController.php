@@ -167,19 +167,19 @@ class PageController extends Controller
 
 
 		public function getCategoryFilteredPage(Request $request){
-		
+
 		$lang = session('lang');
 		App::setLocale($lang);
 
 		$products =  FilterService::loadProducts($request,0);
-			
+
 
 		$categories = Category::all();
 
-		
+
 		$subcategories = Subcategory::all();
 
-		
+
 
 		if ($lang == "ar"){
 			foreach ($categories as $category) {
@@ -218,9 +218,9 @@ class PageController extends Controller
 
 	public function loadMoreProducts(Request $request){
 
-		
+
 		$products =  FilterService::loadProducts($request,$request->loads);
-		
+
 		return view('client.pages.item_products')->withProducts($products);
 
 	}
@@ -286,6 +286,9 @@ class PageController extends Controller
 
 
 	public function getProductView($id){
+		if(Auth::id()<= 0){
+			return redirect('login');
+		}
 		$lang = session('lang');
 
 		App::setLocale((string)$lang);
@@ -357,12 +360,12 @@ class PageController extends Controller
 		$type = $request->input('type') == "subategory" ? 2 : 1 ;
 		$id   = $request->input('id');
 		$userrate = $request->input('rate');
-		
+
 		if ( $type == 1 )
 			$rates = Rate::where('product_id' ,'=',$id)->where('type', '=', $type)->get();
-		else 
+		else
 			$rates = Rate::where('subcategory_id' ,'=',$id)->where('type', '=', $type)->get();
-		
+
 
 		$flag = 0;
 		$precalculation = $userrate;
@@ -376,7 +379,7 @@ class PageController extends Controller
 
 		if (count($rates) != 0 ){
 			$lastrate = $precalculation / (count($rates) + ($flag ? 0 : 1) );
-		
+
 			if ($type == 1){
 				$update = Product::find($id);
 				$update->rate = round($lastrate);
@@ -429,7 +432,7 @@ class PageController extends Controller
 	}
 
 
-	
+
 
 
 	public function setLanguage($lang)

@@ -3,7 +3,7 @@
 })(jQuery);
 
 function loadUsers(){
-  $("#order-grid").jsGrid({
+  $("#order-items-grid").jsGrid({
         filtering: true,
         width: '100%',
         height: 'auto',
@@ -33,19 +33,13 @@ function loadUsers(){
         },
        fields: [
             {name: "id"         , title: 'ID'      , type: "text", width: 5},
-            {name: "user.email"    , title: 'User'    , type: "text", width: 5},
-            {name: "payment.amount" , title: 'Amount' , type: "text", width: 5},
-            {name: "payment.sub_amount" , title: 'Sub Amount' , type: "text", width: 5},
-            {name: "order_status.name" , title: 'Status' , type: "text", width: 5},
-            {
-              type: "control", width: 10, editButton: false, modeSwitchButton: false, deleteButton: false,
-              itemTemplate: function (value, item) {
-                var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
-                var $orderItems = $('<a class="btn btn-block btn-success btn-xs">Order Item</a>');
-                $orderItems.attr('href',`orders/${item.id}/order-items`);
-                return $result.add($orderItems);
-              },
-            }
+            {name: "order_id"    , title: 'Order ID'    , type: "text", width: 5},
+            {name: "product.arabic" , title: 'Product' , type: "text", width: 5},
+            {name: "sub_amount" , title: 'Sub Amount' , type: "text", width: 5},
+            {name: "qty" , title: 'Qty' , type: "text", width: 5},
+            {name: "total_amount" , title: 'total_amount' , type: "text", width: 5},
+            {name: "gain_point" , title: 'gain_point' , type: "text", width: 5},
+            {name: "order_status.name" , title: 'Status' , type: "text", width: 5}
         ]
     });
 }

@@ -18,14 +18,24 @@ class CartController extends Controller
 
     public function getViewMyCartPage(){
 		$cartId = session('cartId');
-		
+
 		$cart = CartService::loadCart($cartId);
-		
-		$orders= $cart['orderItems']; 
+
+		$orders= $cart['orderItems'];
 		$gainPoints = $cart['gainPoints'];
 		$taxes = $cart['taxes'];
-		
+
 		return view('client.pages.view_my_cart')->withOrders($orders)->withGainPoints($gainPoints)->withTaxes($taxes);
 	}
+
+  public function checkout(Request $request){
+    $cartId = session('cartId');
+    $products = $request->input('products');
+    $userId = Auth::id();
+    $status = CartService::checkout($cartId,$products,1,$userId);
+    if($status){
+      return redirect('home');
+    }
+  }
 
 }
