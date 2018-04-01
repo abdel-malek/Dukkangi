@@ -23,10 +23,19 @@
                 margin-top: 6.6em;
                 float: left;
             }
+
                   header{
                 position: absolute;
                 z-index: 33;
                 width: 100%;
+            }
+            a:hover{
+                color: inherit;
+                text-decoration:none;
+            }
+            a{
+                color: inherit;
+                text-decoration:none;
             }
             .rating{
                 font-size: 1.3em;
@@ -444,9 +453,15 @@
           <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details"/>
       </p>
       <div class="button_modal_one_item_details">
-          <p class="btn_done" style="background-color: #d80001;color: #fff;cursor: pointer">@lang('Done') </p>
+        @if( Auth::check())
+          <p class="btn_done" style="background-color: #d80001;color: #fff;cursor: pointer">@lang('Done')</p>
           <p class="btn_cancel" style="margin-left: 9%;cursor: pointer">@lang('Cancel') </p>
           <a href="{{route('mycart')}}"><p class="btn_view_my_cart" style="width: 100%;">@lang('View my Cart') </p></a>
+        @else
+          <a href="{{route('login')}}" class="btn_done" style="background-color: #d80001;color: #fff;cursor: pointer">Login To Add</a>
+        
+          <a class="btn_cancel" style="margin-left: 9%;cursor: pointer" onclick="hideModal()">@lang('Cancel') </a>
+        @endif
       </div>
   </div>
   <script src="{{URL::asset('js/jquery.min.js')}}"></script>
@@ -676,7 +691,7 @@
 
             function changeTotal(qty){
               productPrice = $('#modal_one_item_details .price_item_details').attr('data-product-price');
-              $('.total_qty').html(parseInt(qty) * productPrice + ' Eur');
+              $('.total_qty').html(parseFloat(parseFloat(qty) * productPrice).toFixed(2) + ' Eur');
               $('#modal_one_item_details').attr('data-qty',parseInt(qty));
             }
         </script>

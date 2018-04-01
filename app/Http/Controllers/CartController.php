@@ -8,6 +8,9 @@ use App\Http\Services\CartService;
 class CartController extends Controller
 {
     public function addToCart(Request $request){
+     if(Auth::id()<= 0){
+      return redirect('login');
+    }
       $productId = $request->input('productId');
       $qty = $request->input('qty');
       $userId = Auth::id();
@@ -17,6 +20,9 @@ class CartController extends Controller
 
 
     public function getViewMyCartPage(){
+      if(Auth::id()<= 0){
+      return redirect('login');
+    }
 		$cartId = session('cartId');
 
 		$cart = CartService::loadCart($cartId);
@@ -29,6 +35,9 @@ class CartController extends Controller
 	}
 
   public function checkout(Request $request){
+    if(Auth::id()<= 0){
+      return redirect('login');
+    }
     $cartId = session('cartId');
     $products = $request->input('products');
     $userId = Auth::id();

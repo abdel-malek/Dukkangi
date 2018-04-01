@@ -285,9 +285,7 @@ class PageController extends Controller
 
 
 	public function getProductView($id){
-		if(Auth::id()<= 0){
-			return redirect('login');
-		}
+		
 		$lang = session('lang');
 
 		App::setLocale((string)$lang);
@@ -414,6 +412,9 @@ class PageController extends Controller
 		return Redirect(route('product' , $productId));
 	}
 	public function getBuyItemPage($id){
+		if(Auth::id()<= 0){
+			return redirect('login');
+		}
 		$product = Product::find($id);
 		$subcategory = Subcategory::find($product->subcategory_id);
 		$productRate = Rate::select('rate')->where('product_id' , '=',$product->id)->get();

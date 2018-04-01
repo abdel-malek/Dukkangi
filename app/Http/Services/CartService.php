@@ -19,7 +19,7 @@ class CartService{
     return OrderItem::updateOrCreate(['order_id' => $cartId,'item_id' => $product->id,'user_id' => $userId],
           ['order_id' => $cartId,'item_id' => $product->id,
           'sub_amount' => $product->price,'qty' => $qty, 'total_amount' => $product->price * $qty,
-          'gain_point' => $product->point /5,'user_id' => $userId,'status_id' => OrderStatus::CREATED,
+          'gain_point' => ceil($product->point /5),'user_id' => $userId,'status_id' => OrderStatus::CREATED,
           'currency' => $product->currency]);
   }
 
