@@ -36,7 +36,7 @@
     </style>
 
 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-        
+
         <link rel="stylesheet" href="/front-end/css/multe_select.css">
       <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 
@@ -47,7 +47,7 @@
           <div id="content_page_item">
         <div class="col-md-12 col-sm-12 page_content_item">
             <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:-85px;width:1024px;height:200px;overflow:none;visibility:hidden;background-color:#24262e;">
- 
+
 
 
                 <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
@@ -55,7 +55,7 @@
                 <div data-u="slides" style="cursor:default;position:relative;top:0px;left:240px;width:850px;height:200px;overflow:hidden;">
 
                     @foreach($subcategories as $subcategory)
-                    
+
                       <div>
                           <img  data-u="image" src="{{$subcategory->image_id}}" style="height:15em;width: 45em;    border: 0.04em solid #8a8a8a" />
                           <img  data-u="thumb" src="{{$subcategory->image_id}}" />
@@ -67,12 +67,12 @@
                       </div>
                     @endforeach
                 </div>
-    
+
             </div>
- 
+
             <script type="text/javascript">jssor_1_slider_init();</script>
- 
-            <div class='thumnbail' style="position: absolute;margin-left: 158px;top: 35px;" >
+
+            <div class='thumnbail' style="position: absolute;margin-left: 30px;top: 35px;" >
                 @foreach($subcategories as $subcategory)
                 <a href="{{ route('subcategoryfilter',$subcategory->id) }}">
                     <div data-id="{{$subcategory->id}}">
@@ -88,7 +88,7 @@
                 </a>
                 @endforeach
             </div>
-                
+
         </div>
 
         <div class="col-md-9 col-sm-12 section_item" >
@@ -126,7 +126,7 @@
                        <div class="tabs__content tabs_active" id= "filteredproducts" >
                             @include('client.pages.item_products',["products" =>$products ])
 
-                            
+
                       </div>
                       @if(isset($filter))
                         <div class="col-sm-3" style="float:left;margin-left: 20em;margin-top: 50px">
@@ -137,9 +137,9 @@
                       @endif
                     </div>
                 </div>
-            
+
             </div>
-        </div>  
+        </div>
     </div>
 </div>
 
@@ -166,7 +166,7 @@
                     <label class="select-label js-select-label" data-default-label="Category" data-label="Category" name="categories[]" for="unique-id-menu-state">
                     </label>
                     <ul class="menu js-select-options">
-                        @foreach($categories as $category) 
+                        @foreach($categories as $category)
                         <li class="js-filterable" data-filter-criteria="Aliquam erat volutpat">
                             <label class="menu-item">
                                 <input class="checkbox js-option" name = "categories[]" type="checkbox" value="{{$category->id}}"/>
@@ -229,7 +229,7 @@
         @section('scripts')
 
         <script src = "/front-end/js/plugin/multe_select.js"></script>
-         
+
         <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
 
         <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
@@ -262,7 +262,7 @@
                         console.log('Rating: ' + e.detail);
                     });
                 }
-      
+
                 var ratings = document.getElementsByClassName('subcategory');
 
                 for (var i = 0; i < ratings.length; i++) {
@@ -334,8 +334,8 @@
                     data: {"loads": counter } ,
                     //dataType: 'json'
                  }).done((response) => $('#filteredproducts').append(response));
-                
-            }            
+
+            }
 
         </script>
         @endsection
