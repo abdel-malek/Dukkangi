@@ -7,6 +7,7 @@
      padding-top:10px;
      position: fixed;
      width: 100%;
+     margin-top: 10px;
    }
    .footer .btn-new {
       float: right;
