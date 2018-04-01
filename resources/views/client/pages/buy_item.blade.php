@@ -125,10 +125,10 @@
 
         <div class="col-md-12" style="padding: 0em 5em;">
             <div class="header_page" style="background-image: url('{{$subcategory->image_id}}')">
-                <p class="header_page_text_div">
+                <p class="header_page_text_div" style="padding-left: 26.5em">
                     {{ $subcategory->english }}
                     <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
-                    <span class="rating subcategory"  style="left: 17.9em;"></span>
+                    <span class="rating subcategory"  style="left: 19.9em;"></span>
                 </p>
             </div>
 
@@ -155,14 +155,14 @@
                                 <p class="num_qty">
                                     1
                                 </p>
-                                <div style="width:30%;float: right;">
+                                <div style="width:30%;float: right;" data-price="{{$product->price}}">
                                     <img src="/front-end/images/payment/handler-plus.png" class="btn_qty" onclick="num_plus(this);">
                                     <img src="/front-end/images/payment/handler-min.png" class="btn_qty" style="margin-top: -0.9em" onclick="num_min(this)">
                                 </div>
                                 <!-- <img -->
                             </div>
                         </div>
-                           <div class="col-md-12" style="float: left;">
+                        <!-- <div class="col-md-12" style="float: left;">
                             <div style="width: 39%;float: left;">
                                 <h3 class="title_color" style="margin-top: 0.4em;">
                                     Option 1
@@ -214,11 +214,37 @@
                                     Small
                                 </p>
 
+                            </div> -->
+                             <div style="width: 39%;float: left;margin-top: 0px;">
+                                <big>
+                                <h3 class="title_size" style="margin-top: 1.0em;padding-left: 15px">
+                                    Price:
+                                </h3>
+                                </big>
                             </div>
+                            <div style="width: 60%;float: right;margin-top:25px;">
+                                <p class="option_size active_option_size" style="width: 100%">
+                                    {{$product->price}} $
+                                </p>
+
+                            </div> 
+                            <div style="width: 39%;float: left;margin-top: 0px;">
+                                <big>
+                                <h3 class="title_size" style="margin-top: 1.0em;padding-left: 15px" >
+                                    Gain Points:
+                                </h3>
+                                </big>
+                            </div>
+                            <div style="width: 60%;float: right;margin-top:25px;">
+                                <p class="option_size active_option_size" style="width: 100%"   id="gain" data-gain="{{ceil($product->price/5)}}">
+                                    {{ceil($product->price/5)}} Points
+                                </p>
+
+                            </div> 
 
                     <p class="price_item_details">
                         <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">Total</span>
-                        <span style="left:4em;"> 900 $</span>
+                        <span style="left:4em;" id="total"> {{$product->price}} $</span>
                         <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details"/>
                     </p>
             </div>
@@ -394,17 +420,31 @@
                 if (parseInt($(obj).parent().parent().find('p').text()) < <?php echo $product->qty?> ){
                 $(obj).parent().parent().find('p').text(parseInt($(obj).parent().parent().find('p').text()) + 1);
                 counter = 0;
+                $('#total').text( parseFloat(
+                        parseFloat( $('#total').text() ) + parseFloat($(obj).parent().data('price') )  
+                     ).toFixed(2) + " $");
+                $('#gain').text(parseInt(
+                    parseInt($('#gain').text()) + parseInt($('#gain').data('gain')) 
+                    ) + " Points");
+
                 }
                 else if (counter < 1){
                     $(obj).parent().parent().find('p').text($(obj).parent().parent().find('p').text() + "MAX");
                     counter= counter+1;
-
+                     
                 }
 
             }
             function num_min(obj) {
+                console.log(   );
                 if ((parseInt($(obj).parent().parent().text()) > 0)) {
                     $(obj).parent().parent().find('p').text(parseInt($(obj).parent().parent().find('p').text()) - 1);
+                    $('#total').text( parseFloat(
+                        parseFloat( $('#total').text() ) - parseFloat($(obj).parent().data('price') )  
+                     ).toFixed(2) + " $");
+                     $('#gain').text(parseInt(
+                    parseInt($('#gain').text()) - parseInt($('#gain').data('gain')) 
+                    ) + " Points");
                 }
             }
         </script>

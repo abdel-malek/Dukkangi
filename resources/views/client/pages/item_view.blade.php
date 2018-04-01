@@ -220,10 +220,10 @@
                         @lang('Section') 2
                     </h4>
                     <p class="text_section">
-                         <span>{{$product->section2_english}}</span>
-                         <p>
-                         <span class="point_text_section">{{$product->point}} points</span> <small>@lang('This will be given to you !') </small>
-                         </p>
+                        <span>{{$product->section2_english}}</span>
+                        <p>
+                            <span class="point_text_section">{{$product->point}} points</span> <small>@lang('This will be given to you !') </small>
+                        </p>
                     </p>
                 </div>
 
@@ -231,12 +231,14 @@
                     <h4 class="title_section">
                         @lang('Section') 3
                     </h4>
-                      <p class="text_section">
-                         {{$product->section3_english}}<br/><br>
-                       </p>
+                        <p class="text_section">
+                            {{$product->section3_english}}<br/><br>
+                        </p>
+                    <a href="{{route('mycart')}}"><img src="/front-end/images/user_actions/view-my-cart.png" class="icon_buy_option_section"></a>
+        
                 </div>
 
-                <div class="section" style="width:100%;">
+           <!--     <div class="section" style="width:100%;">
                     <h4 class="title_section">
                         @lang('Options')
                     </h4>
@@ -275,9 +277,9 @@
                         </div>
                     </div>
                     <a href="{{route('mycart')}}"><img src="/front-end/images/user_actions/view-my-cart.png" class="icon_buy_option_section"></a>
-            </div>
+            </div> -->
         </div>
-        <div class="col-md-12" style="float:left;margin-top: 100px" >
+        <div class="col-md-12" style="float:left;margin-top: 150px" >
             <h3 class="title_customer_review">
 
         <br>
