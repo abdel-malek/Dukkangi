@@ -21,6 +21,16 @@
         text-decoration:none;
 
     }
+     .div_item  .rating .star::after{
+                color: #d80001;
+                width: 0.75em;
+                height: 1.7em;
+            }
+            .div_item .rating .star::before{
+                color: #d80001;
+                width: 0.75em;
+                height: 0.7em;
+            }
     a:click{
         color: inherit;
         text-decoration:none;
@@ -62,7 +72,7 @@
                           <p class="text_big_image_slider">
                               {{ $subcategory->english }}
                               <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
-                              <span class="rating" style="bottom: 0.1em;left: 0.9em;"></span>
+                              <span class="rating ratings{{$subcategory->rate}}" style="bottom: 0.1em;left: 0.9em;"></span>
                           </p>
                       </div>
                     @endforeach
@@ -253,37 +263,66 @@
         </script>
         <script src="/front-end/js/plugin/SimpleStarRating.js"></script>
         <script>
-                var ratings = document.getElementsByClassName('rating');
+                        var ratings = document.getElementsByClassName('ratings');
 
+                for (var i = 0; i < ratings.length; i++) {
+
+                    var r = new SimpleStarRating0(ratings[i]);
+
+                }
+                //5 functions for 1, 2, 3, 4, 5 Stars for anything
+                //one more function for those which don't have any rate
+                //Initial Rate Subcategory
+                var ratings = document.getElementsByClassName('ratings1');
+
+                for (var i = 0; i < ratings.length; i++) {
+
+                    var r = new SimpleStarRating1(ratings[i]);
+
+                }
+
+
+                //Form Rate This Product
+                var ratings = document.getElementsByClassName('form-rate');
                 for (var i = 0; i < ratings.length; i++) {
                     var r = new SimpleStarRating(ratings[i]);
 
-                    ratings[i].addEventListener('rate', function (e) {
-                        console.log('Rating: ' + e.detail);
-                    });
                 }
-
-                var ratings = document.getElementsByClassName('subcategory');
-
+                //Initial Rate Product
+                 var ratings = document.getElementsByClassName('ratings2');
                 for (var i = 0; i < ratings.length; i++) {
-
-                    var r = new SimpleStarRating<?php echo (!isset($subcategory->rate)?'0':$subcategory->rate)?>(ratings[i]);
+                    var r = new SimpleStarRating2(ratings[i]);
 
                     ratings[i].addEventListener('rate', function (e) {
-                        console.log('Rating: ' + e.detail);
+
                     });
                 }
 
-                var ratings = document.getElementsByClassName('simi');
+                //Initial Rate Comments
+
+                var ratings = document.getElementsByClassName('ratings3');
                 <?php $counter= 0 ?>
 
                 for (var i = 0; i < ratings.length; i++) {
-                    var r = new SimpleStarRating<?php echo (isset($simiProducts[$counter]->rate)?$simiProducts[$counter]->rate:'0') ?>(ratings[i]);
+
+                    var r = new SimpleStarRating3(ratings[i]);
                     <?php $counter++?>
-                    ratings[i].addEventListener('rate', function (e) {
-                        console.log('Rating: ' + e.detail);
-                    });
                 }
+                //Initial Rate Simiproducts
+
+
+                var ratings = document.getElementsByClassName('ratings4');
+                for (var i = 0; i < ratings.length; i++) {
+                    var r = new SimpleStarRating4(ratings[i]);
+                    
+                }
+
+                var ratings = document.getElementsByClassName('ratings5');
+                for (var i = 0; i < ratings.length; i++) {
+                    var r = new SimpleStarRating5(ratings[i]);
+                    
+                }
+
         </script>
         <script >
             var input = document.getElementById("search");

@@ -138,7 +138,7 @@
                 <p class="header_page_text_div" style="width: 83.0%;padding-left: 25.5em " >
                    {{$subcategory->english}}
                     <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
-                    <span class="rating rating-info subcategory" data-type="subcategory" data-id="{{$subcategory->id}}" style="margin-left: 40px" ></span>
+                    <span class="rating rating-info ratings{{$subcategory->rate}}" data-type="subcategory" data-id="{{$subcategory->id}}" style="margin-left: 40px" ></span>
                 </p>
             </div>
 
@@ -153,7 +153,7 @@
                             <p class="title_item_details">
                                 {{$product->english}}
                             </p>
-                            <span class="rating rating-info product" data-type="product" data-id="{{$product->id}}" style="float:left;"></span>
+                            <span class="rating rating-info ratings{{$product->rate}}" data-type="product" data-id="{{$product->id}}" style="float:left;"></span>
                                <i class="material-icons icon_item_details">&#xE838;</i>
                             <i class="material-icons icon_item_details">error_outline</i>
                         </div>
@@ -292,7 +292,7 @@
                     <div class="details_comment">
                         <h3 class="username_details_comment" style="width:225px">{{$comment->user_id}}</h3>
                         <p class="rated_details_comment" style="margin-left: 0px">@lang('Rated this product')</p>
-                        <span class="rating comment"  ></span>
+                        <span class="rating ratings{{$comment->rate}}"  ></span>
                         <p class="text_details_comment">
                             {{$comment->description}}
                         </p>
@@ -359,7 +359,7 @@
                                     <p class="item_name">{{ $simiproduct->english}}  </p>
                                     </a>
                                     <p class="item_price" style="margin-bottom: 0em;">{{$simiproduct->price}} €</p>
-                                    <span class="rating simi" style="width: 0.75em;height: 1.7em;" ></span>
+                                    <span class="rating ratings{{$simiproduct->rate}}" style="width: 0.75em;height: 1.7em;" ></span>
                                     <img src="/front-end/images/user_actions/view-my-cart.png" class="icon_view_my_card" />
                                 </div>
                             </div>
@@ -382,7 +382,7 @@
               <p class="title_item_details">
                   {{$product->english}}
               </p>
-              <span class="rating product" style="float:left;"></span>
+              <span class="rating ratings{{$product->rate}}" style="float:left;"></span>
                  <i class="material-icons icon_item_details">&#xE838;</i>
               <i class="material-icons icon_item_details">error_outline</i>
           </div>
@@ -473,16 +473,24 @@
     var ratings = document.getElementsByClassName('rating');
 
 
-            //5 functions for 1, 2, 3, 4, 5 Stars for anything
-            //one more function for those which don't have any rate
-                //Initial Rate Subcategory
-                var ratings = document.getElementsByClassName('subcategory');
+                var ratings = document.getElementsByClassName('ratings');
 
                 for (var i = 0; i < ratings.length; i++) {
 
-                    var r = new SimpleStarRating<?php echo (!isset($subcategory->rate)?'0':$subcategory->rate)?>(ratings[i]);
+                    var r = new SimpleStarRating0(ratings[i]);
 
                 }
+                //5 functions for 1, 2, 3, 4, 5 Stars for anything
+                //one more function for those which don't have any rate
+                //Initial Rate Subcategory
+                var ratings = document.getElementsByClassName('ratings1');
+
+                for (var i = 0; i < ratings.length; i++) {
+
+                    var r = new SimpleStarRating1(ratings[i]);
+
+                }
+
 
                 //Form Rate This Product
                 var ratings = document.getElementsByClassName('form-rate');
@@ -491,9 +499,9 @@
 
                 }
                 //Initial Rate Product
-                 var ratings = document.getElementsByClassName('product');
+                 var ratings = document.getElementsByClassName('ratings2');
                 for (var i = 0; i < ratings.length; i++) {
-                    var r = new SimpleStarRating<?php echo ($product->rate==0?'':$product->rate) ?>(ratings[i]);
+                    var r = new SimpleStarRating2(ratings[i]);
 
                     ratings[i].addEventListener('rate', function (e) {
 
@@ -502,22 +510,27 @@
 
                 //Initial Rate Comments
 
-                var ratings = document.getElementsByClassName('comment');
+                var ratings = document.getElementsByClassName('ratings3');
                 <?php $counter= 0 ?>
 
                 for (var i = 0; i < ratings.length; i++) {
 
-                    var r = new SimpleStarRating<?php echo isset($comments[$counter]->rate)?$comments[$counter]->rate : '' ?>(ratings[i]);
+                    var r = new SimpleStarRating3(ratings[i]);
                     <?php $counter++?>
                 }
                 //Initial Rate Simiproducts
 
-                var ratings = document.getElementsByClassName('simi');
-                <?php $counter= 0 ?>
 
+                var ratings = document.getElementsByClassName('ratings4');
                 for (var i = 0; i < ratings.length; i++) {
-                    var r = new SimpleStarRating<?php echo (isset($simiProducts[$counter]->rate)?$simiProducts[$counter]->rate:'0') ?>(ratings[i]);
-                    <?php $counter++?>
+                    var r = new SimpleStarRating4(ratings[i]);
+                    
+                }
+
+                var ratings = document.getElementsByClassName('ratings5');
+                for (var i = 0; i < ratings.length; i++) {
+                    var r = new SimpleStarRating5(ratings[i]);
+                    
                 }
 
 
