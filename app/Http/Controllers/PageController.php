@@ -102,20 +102,20 @@ class PageController extends Controller
 				$product->english = $product->kurdi;
 			}
 		}
-		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products);
+		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withCategoryId($categoryId);
 	}
 
 
 	public function getCategoryNameFilteredPage(Request $request){
 		$lang = session('lang');
 		App::setLocale($lang);
-
+//		dd($request->categoryId);
 		$products = Product::where('category_id','=',$request->categoryId)
 		->where(DB::raw("concat_ws('-',english,arabic,turky,kurdi,german)"),'like','%'.$request->search.'%')->get();
 
 		$categories = Category::all();
 		$subcategories = DB::table('subcategory')->where('category_id','=',$request->categoryId)->orderBy('category_id','asc')->get();
-		dd($products);
+		// dd($products);
 		if ($lang == "ar"){
 
 			foreach ($categories as $category) {
@@ -162,15 +162,14 @@ class PageController extends Controller
 			}
 		}
 
-		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withLastSearch($request->search);
+		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withLastSearch($request->search)->withCategoryId($request->categoryId);
 	}
 
 
 		public function getCategoryFilteredPage(Request $request){
 
 		$lang = session('lang');
-		App::setLocale($lang);
-
+		App::setLocale($lang);;
 		$products =  FilterService::loadProducts($request,0);
 
 
@@ -213,7 +212,7 @@ class PageController extends Controller
 				$subcategory->english = $subcategory->kurdi;
 			}
 		}
-		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withLastSearch('Filter')->withCategoryId('0')->withFilter(1);
+		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withLastSearch('Filter')->withCategoryId($categories[0]->id)->withFilter(1);
 	}
 
 	public function loadMoreProducts(Request $request){
