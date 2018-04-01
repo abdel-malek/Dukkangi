@@ -5,6 +5,8 @@
    <style>
    .footer{
      padding-top:10px;
+     position: fixed;
+     width: 100%;
    }
    .footer .btn-new {
       float: right;
