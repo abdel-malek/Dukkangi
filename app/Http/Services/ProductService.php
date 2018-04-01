@@ -180,7 +180,6 @@ class ProductService {
 				$p->subcategory_id = $p->subcategory_id . " <i><small>(Deleted)</small></i>";
 
 		}
-
 		return $result;
 	}
 

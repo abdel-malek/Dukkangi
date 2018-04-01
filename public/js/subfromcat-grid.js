@@ -45,7 +45,7 @@ function loadSubcategories(){
               itemTemplate: function (value, item) {
                 var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
                 var $edit = $('<a class="btn btn-block btn-default btn-xs">See Products</a>');
-                $edit.attr('href',`admin/subcategoryproducts/`+item.id);
+                $edit.attr('href',`/admin/subcategoryproducts/`+item.id);
                 return $result.add($edit);
               },
             },

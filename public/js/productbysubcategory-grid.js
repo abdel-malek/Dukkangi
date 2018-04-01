@@ -33,6 +33,7 @@ function loadProduct(){
                 return data.promise();
             },
         },
+        
        fields: [
             {name: "id"            , title: 'ID'         , type: "text", width: 5},
             {name: "arabic"        , title: 'Name (AR)'  , type: "text", width: 5},

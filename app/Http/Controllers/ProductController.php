@@ -47,7 +47,7 @@ class ProductController extends Controller
 
     public function productDataBySubcategory(Request $request, $id)
     {
-        $filter = $request->input('filter');
+       $filter = $request->input('filter');
         return ProductService::productDataBySubcategory($filter, $id);
     }
 

@@ -27,4 +27,5 @@
 
 @endsection
 @section('scripts')
+    <script type="text/javascript" src={{ URL::asset('js/productbysubcategory-grid.js') }}></script>
 @endsection
