@@ -1,4 +1,4 @@
-    <footer id="footer">
+    <footer id="footer" style="top:85%;">
         Copyright &copy; 2018, All Rights Reserved.
     </footer>
 
