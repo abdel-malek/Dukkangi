@@ -6,6 +6,9 @@
    .footer{
      padding-top:10px;
    }
+   #top{
+     top:85%;
+   }
    .footer .btn-new {
       float: right;
     }
