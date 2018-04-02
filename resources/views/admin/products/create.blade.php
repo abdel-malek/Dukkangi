@@ -63,6 +63,15 @@
 					<option value="{{$subcategory->id}}" >{{$subcategory->english}} </option>
 				@endforeach
 				</select>
+
+				<br/>
+				<br/>
+				{{ Form::label('brand_id' , 'Brand:')}}
+				<select class="custom-select" name="brand_id">
+				@foreach($brands as $brand)
+					<option value="{{$brand->id}}" >{{$brand->english}} </option>
+				@endforeach
+				</select>
 		</div>
 
 <div class="row">

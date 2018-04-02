@@ -14,14 +14,18 @@
                         </li>
                         <li class="sub-item">
                             <a href="{{route('subcategory.index')}}"><span>Sub-Categories</span>
-                                <!--<span class="float-xs-right"><i class="icon_plus"></i></span>-->
+                            </a>
+                        </li>
+
+                        <li class="sub-item">
+                            <a href="{{route('brand.index')}}"><span>Product Brands</span>
                             </a>
                         </li>
                         <li class="sub-item">
                             <a href="{{route('product.index')}}"><span>Products</span>
                                 <!--<span class="float-xs-right"><i class="icon_plus"></i></span>-->
                             </a>
-                        </li> 
+                        </li>
                         <li class="sub-item">
                             <a href="{{route('user.index')}}"><span>Users</span>
                                 <!--<span class="float-xs-right"><i class="icon_plus"></i></span>-->
@@ -59,9 +63,9 @@
                             </li>-->
                         </ul>
                     </ul>
-                    
+
                 </li>
-                
+
             </ul>
         </div>
         <div class="sidebar-extra">

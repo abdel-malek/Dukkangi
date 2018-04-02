@@ -40,6 +40,14 @@ Route::get('/admin/categories/create', ['uses' => 'CategoryController@create'   
 Route::post('/admin/categories/store', ['uses' => 'CategoryController@store'          ,'as' => 'category.store'       ]);
 
 
+// Brand
+Route::get('/admin/brand', ['uses' =>'BrandController@brandPage','as' => 'brand.index']);
+Route::post('/admin/brand', 'BrandController@brands');
+Route::get('/admin/brand/create', ['as' => 'brand.createPage','uses' => 'BrandController@createBrand']);
+Route::post('/admin/brand/create', ['as' => 'brand.create', 'uses' => 'BrandController@createBrandInfo']);
+Route::get('/admin/brand/edit/{id}', 'BrandController@editBrand');
+Route::post('/admin/brand/delete/{id}', 'BrandController@deleteBrand');
+
     //SUBCATEGORIES
 Route::get('/admin/subcategories', ['uses' => 'SubcategoryController@index'             ,'as' => 'subcategory.index'    ]);
 Route::post('/admin/subcategories', ['uses' => 'SubcategoryController@subcategoryData'  ,'as' => 'subcategory.data'     ]);

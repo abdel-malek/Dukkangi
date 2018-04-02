@@ -8,6 +8,7 @@ use Session;
 use App\Category;
 use App\Http\Services\ImageService;
 use App\Subcategory;
+use App\Brand;
 
 use App\Http\Services\ProductService;
 
@@ -62,8 +63,9 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $subcategories = Subcategory::all();
+        $brands = Brand::all();
         $product = Product::find($id);
-        return view('admin.products.edit')->withProduct($product)->withCategories($categories)->withSubcategories($subcategories);
+        return view('admin.products.edit')->withProduct($product)->withCategories($categories)->withSubcategories($subcategories)->withBrands($brands);
     }
 
     public function update(Request $request)
@@ -83,8 +85,9 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $subcategories = Subcategory::all();
+        $brands = Brand::all();
         $product = Product::find($id);
-        return view('admin.products.editbycategory')->withProduct($product)->withCategories($categories)->withSubcategories($subcategories);
+        return view('admin.products.editbycategory')->withBrands($brands)->withProduct($product)->withCategories($categories)->withSubcategories($subcategories);
     }
 
     public function updateByCategory(Request $request)
@@ -104,8 +107,9 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $subcategories = Subcategory::all();
+        $brands = Brand::all();
         $product = Product::find($id);
-        return view('admin.products.editbysubcategory')->withProduct($product)->withCategories($categories)->withSubcategories($subcategories);
+        return view('admin.products.editbysubcategory')->withBrands($brands)->withProduct($product)->withCategories($categories)->withSubcategories($subcategories);
     }
 
     public function updateBySubcategory(Request $request)
@@ -129,7 +133,8 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $subcategories = Subcategory::all();
-        return view('admin.products.create')->withCategories($categories)->withSubcategories($subcategories);
+        $brands = Brand::all();
+        return view('admin.products.create')->withBrands($brands)->withCategories($categories)->withSubcategories($subcategories);
     }
     public function store(Request $request)
     {
@@ -159,14 +164,14 @@ class ProductController extends Controller
         $product->price         = $request->price;
         $product->category_id    = $request->category_id;
         $product->subcategory_id = $request->subcategory_id;
-
+        $product->brand_id = $request->brand_id;
         // $product->option1        = isset($request->option1) ?$request->option1 : 0;
         // $product->option2        = isset($request->option2) ?$request->option2 : 0;
         // $product->option3        = isset($request->option3) ?$request->option3 : 0;
         // $product->option4        = isset($request->option4) ?$request->option4 : 0;
 
         $product->active        = isset($request->active) ?$request->active : 0;
-        
+
 
         $product->section1_english = $request->section1_english;
         $product->section1_german  = $request->section1_german;

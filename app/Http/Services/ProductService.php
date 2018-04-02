@@ -207,6 +207,7 @@ class ProductService {
 		$product->price 	 	 = $request->price;
 		$product->category_id    = $request->category_id;
 		$product->subcategory_id = $request->subcategory_id;
+		$product->brand_id = $request->brand_id;
 		//
 		// $product->option1 	     = isset($request->option1) ?$request->option1 : 0;
 		// $product->option2		 = isset($request->option2) ?$request->option2 : 0;

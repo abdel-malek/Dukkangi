@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Category;
 use App\Subcategory;
+use App\Brand;
 
 class Product extends Model
 {
@@ -14,7 +15,7 @@ class Product extends Model
     'image_id','price','point','rate','section1_english','section1_arabic','section1_turky','section1_kurdi',
     'section1_german','section2_english','section2_arabic','section2_turky','section2_kurdi','section2_german',
     'section3_english','section3_arabic','section3_turky','section3_kurdi','section3_german','active'];
-		
+
     public function category()
     {
         return $this->belongsTo(Category::class, 'id', 'category_id');
@@ -28,5 +29,9 @@ class Product extends Model
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class, 'id', 'product_id');
+    }
+
+    public function brand(){
+      return $this->belongsTo(Brand::class,'id','brand_id');
     }
 }
