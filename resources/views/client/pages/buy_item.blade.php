@@ -224,10 +224,10 @@
                             </div>
                             <div style="width: 60%;float: right;margin-top:25px;">
                                 <p class="option_size active_option_size" style="width: 100%">
-                                    {{$product->price}} $
+                                    {{$product->price}} €
                                 </p>
 
-                            </div> 
+                            </div>
                             <div style="width: 39%;float: left;margin-top: 0px;">
                                 <big>
                                 <h3 class="title_size" style="margin-top: 1.0em;padding-left: 15px" >
@@ -240,11 +240,11 @@
                                     {{ceil($product->price/5)}} Points
                                 </p>
 
-                            </div> 
+                            </div>
 
                     <p class="price_item_details">
                         <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">Total</span>
-                        <span style="left:4em;" id="total"> {{$product->price}} $</span>
+                        <span style="left:4em;" id="total"> {{$product->price}} €</span>
                         <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details"/>
                     </p>
             </div>
@@ -421,17 +421,17 @@
                 $(obj).parent().parent().find('p').text(parseInt($(obj).parent().parent().find('p').text()) + 1);
                 counter = 0;
                 $('#total').text( parseFloat(
-                        parseFloat( $('#total').text() ) + parseFloat($(obj).parent().data('price') )  
-                     ).toFixed(2) + " $");
+                        parseFloat( $('#total').text() ) + parseFloat($(obj).parent().data('price') )
+                     ).toFixed(2) + " €");
                 $('#gain').text(parseInt(
-                    parseInt($('#gain').text()) + parseInt($('#gain').data('gain')) 
+                    parseInt($('#gain').text()) + parseInt($('#gain').data('gain'))
                     ) + " Points");
 
                 }
                 else if (counter < 1){
                     $(obj).parent().parent().find('p').text($(obj).parent().parent().find('p').text() + "MAX");
                     counter= counter+1;
-                     
+
                 }
 
             }
@@ -440,10 +440,10 @@
                 if ((parseInt($(obj).parent().parent().text()) > 0)) {
                     $(obj).parent().parent().find('p').text(parseInt($(obj).parent().parent().find('p').text()) - 1);
                     $('#total').text( parseFloat(
-                        parseFloat( $('#total').text() ) - parseFloat($(obj).parent().data('price') )  
-                     ).toFixed(2) + " $");
+                        parseFloat( $('#total').text() ) - parseFloat($(obj).parent().data('price') )
+                     ).toFixed(2) + " €");
                      $('#gain').text(parseInt(
-                    parseInt($('#gain').text()) - parseInt($('#gain').data('gain')) 
+                    parseInt($('#gain').text()) - parseInt($('#gain').data('gain'))
                     ) + " Points");
                 }
             }
