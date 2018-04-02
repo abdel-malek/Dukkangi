@@ -9,72 +9,38 @@
 				{{ Form::label('arabic' , 'Name (Arabic):') }}
 				{{ Form::text('arabic' , null, ['class'=> 'form-control' , 'required'=> '']) }}
 				<br>
-				
+
 				{{ Form::label('english' , 'Name (English):') }}
 				{{ Form::text('english' , null, ['class'=> 'form-control' , 'required'=> '']) }}
 				<br>
-				
+
 				{{ Form::label('german' , 'Name (German):') }}
 				{{ Form::text('german' , null, ['class'=> 'form-control' , 'required'=> '']) }}
 				<br>
-				
+
 				{{ Form::label('kurdi' , 'Name (Kurdi):') }}
 				{{ Form::text('kurdi' , null, ['class'=> 'form-control' , 'required'=> '']) }}
 				<br>
-				
+
 				{{ Form::label('turky' , 'Name (Turyi):') }}
 				{{ Form::text('turky' , null, ['class'=> 'form-control' , 'required'=> '']) }}
 				<br>
-				<div class="col-md-12">
-					<div class="row">
 
-						<div class="col-md-6">
-						<ul class="list-group">
-	  						<li class="list-group-item">
-							{{ Form::label('option1','Option 1:')}}
-							{{ Form::checkbox('option1', '1') }}
-							</li>
-						</ul>
-						</div>
-						<div class="col-md-6">
-						<ul class="list-group">
-	  						<li class="list-group-item">
-							
-							{{ Form::label('option2','Option 2:')}}
-							{{ Form::checkbox('option2', '1') }}
-							</li>
-						</ul>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<ul class="list-group">
-	  							<li class="list-group-item">
-					
-							{{ Form::label('option3','Option 3:')}}
-							{{ Form::checkbox('option3', '1') }}
-							</li>
-						</ul>
-						</div>
-						<div class="col-md-6">
-							<ul class="list-group">
-	  							<li class="list-group-item">
-					
-							{{ Form::label('option4','Option 4:')}}
-							{{ Form::checkbox('option4', '1') }}
-								</li>
-							</ul>
-						</div>
-					</div>
-					{{ Form::label('image' , 'Image:')}}
- 					{{ Form::file('image') }}
-				</div>
+			<div class="col-md-12">
+				{{ Form::label('active','Active:')}}
+        {!! Form::select('active',array('1'=>'Yes','0'=>'NO'),$product->active,['class'=>'form-control']) !!}
+			</div>
+			<br/>
+			<div class="col-md-12">
+				{{ Form::label('image' , 'Image:')}}
+				{{ Form::file('image') }}
+			</div>
 	</div>
 	<div class="col-md-5">
 				{{ Form::label('qty', 'Quantity :' ) }}
 				{{ Form::text('qty', null , ['class'=> 'form-control' , 'required'=>'' ]) }}
 				<br>
-				
+
 				{{ Form::label('price', 'Price :' ) }}
 				{{ Form::text('price', null , ['class'=> 'form-control' , 'required'=>'' ]) }}
 				<br>
@@ -82,7 +48,7 @@
 				{{ Form::label('point', 'Points :' ) }}
 				{{ Form::text('point', null , ['class'=> 'form-control' , 'required'=>'' ]) }}
 				<br>
-	
+
 				{{ Form::label('category_id' , 'Category:')}}
 				<select class="custom-select" name="category_id">
 				@foreach($categories as $category)
@@ -132,7 +98,7 @@
 			<ul class="list-group">
 		  		<li class="list-group-item">
 		  			{{ Form::label('section1_kurdi' , 'Section 1 (KU) :')}}
-		  			{{ Form::text('section1_kurdi' , null,['class' => 'form-control'])}}   
+		  			{{ Form::text('section1_kurdi' , null,['class' => 'form-control'])}}
 		  		</li>
 		  	</ul>
 		</div>
@@ -178,7 +144,7 @@
 			<ul class="list-group">
 		  		<li class="list-group-item">
 		  			{{ Form::label('section2_kurdi' , 'Section 2 (KU) :')}}
-		  			{{ Form::text('section2_kurdi' , null,['class' => 'form-control'])}}   
+		  			{{ Form::text('section2_kurdi' , null,['class' => 'form-control'])}}
 		  		</li>
 		  	</ul>
 		</div>
@@ -186,7 +152,7 @@
 			<ul class="list-group">
 		  			{{ Form::label('section2_turky' , 'Section 2 (TR) :')}}
 		  			{{ Form::text('section2_turky' , null,['class' => 'form-control'])}}
-		  		
+
 		  	</ul>
 		</div>
 	</div>
@@ -224,7 +190,7 @@
 			<ul class="list-group">
 		  		<li class="list-group-item">
 		  			{{ Form::label('section3_kurdi' , 'Section 3 (KU) :')}}
-		  			{{ Form::text('section3_kurdi' , null,['class' => 'form-control'])}}   
+		  			{{ Form::text('section3_kurdi' , null,['class' => 'form-control'])}}
 		  		</li>
 		  	</ul>
 		</div>
@@ -232,12 +198,12 @@
 			<ul class="list-group">
 		  			{{ Form::label('section3_turky' , 'Section 3 (TR) :')}}
 		  			{{ Form::text('section3_turky' , null,['class' => 'form-control'])}}
-		  	
+
 		  	</ul>
 		</div>
 	</div>
 </div>
-		<div class="col-md-10 col-md-offset-1"> 
+		<div class="col-md-10 col-md-offset-1">
 				{{ Form::label('desc_arabic' ,'Description in Arabic:')}}
 				{{ Form::textarea('desc_arabic', null , ['class' => 'form-control', 'required' =>'']) }}
 				<br>

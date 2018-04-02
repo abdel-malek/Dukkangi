@@ -191,7 +191,6 @@ class ProductService {
 
 	public static function updateProduct($request, $id,$redirect){
 		$product = Product::find($id);
-
 		$product->arabic  		 = $request->arabic;
 		$product->english 		 = $request->english;
 		$product->german  		 = $request->german;
@@ -208,11 +207,13 @@ class ProductService {
 		$product->price 	 	 = $request->price;
 		$product->category_id    = $request->category_id;
 		$product->subcategory_id = $request->subcategory_id;
+		//
+		// $product->option1 	     = isset($request->option1) ?$request->option1 : 0;
+		// $product->option2		 = isset($request->option2) ?$request->option2 : 0;
+		// $product->option3		 = isset($request->option3) ?$request->option3 : 0;
+		// $product->option4		 = isset($request->option4) ?$request->option4 : 0;
 
-		$product->option1 	     = isset($request->option1) ?$request->option1 : 0;
-		$product->option2		 = isset($request->option2) ?$request->option2 : 0;
-		$product->option3		 = isset($request->option3) ?$request->option3 : 0;
-		$product->option4		 = isset($request->option4) ?$request->option4 : 0;
+		$product->active 	     = isset($request->active) ?$request->active : 0;
 
 		$product->section1_english = $request->section1_english;
 		$product->section1_german  = $request->section1_german;

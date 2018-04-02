@@ -160,24 +160,26 @@ class ProductController extends Controller
         $product->category_id    = $request->category_id;
         $product->subcategory_id = $request->subcategory_id;
 
-        $product->option1        = isset($request->option1) ?$request->option1 : 0;
-        $product->option2        = isset($request->option2) ?$request->option2 : 0;
-        $product->option3        = isset($request->option3) ?$request->option3 : 0;
-        $product->option4        = isset($request->option4) ?$request->option4 : 0;
+        // $product->option1        = isset($request->option1) ?$request->option1 : 0;
+        // $product->option2        = isset($request->option2) ?$request->option2 : 0;
+        // $product->option3        = isset($request->option3) ?$request->option3 : 0;
+        // $product->option4        = isset($request->option4) ?$request->option4 : 0;
 
+        $product->active        = isset($request->active) ?$request->active : 0;
+        
 
         $product->section1_english = $request->section1_english;
         $product->section1_german  = $request->section1_german;
         $product->section1_arabic  = $request->section1_arabic;
         $product->section1_kurdi   = $request->section1_kurdi;
         $product->section1_turky   = $request->section1_turky;
-                
+
         $product->section2_english = $request->section2_english;
         $product->section2_german  = $request->section2_german;
         $product->section2_arabic  = $request->section2_arabic;
         $product->section2_kurdi   = $request->section2_kurdi;
         $product->section2_turky   = $request->input('section2_turky');
-                
+
         $product->section3_english = $request->section3_english;
         $product->section3_german  = $request->section3_german;
         $product->section3_arabic  = $request->section3_arabic;

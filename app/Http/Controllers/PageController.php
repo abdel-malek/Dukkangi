@@ -111,7 +111,8 @@ class PageController extends Controller
 		App::setLocale($lang);
 //		dd($request->categoryId);
 		$products = Product::where('category_id','=',$request->categoryId)
-		->where(DB::raw("concat_ws('-',english,arabic,turky,kurdi,german)"),'like','%'.$request->search.'%')->get();
+		->where(DB::raw("concat_ws('-',english,arabic,turky,kurdi,german)"),'like','%'.$request->search.'%')
+		->where('active','=',true)->get();
 
 		$categories = Category::all();
 		$subcategories = DB::table('subcategory')->where('category_id','=',$request->categoryId)->orderBy('category_id','asc')->get();
@@ -229,7 +230,8 @@ class PageController extends Controller
 		$lang = session('lang');
 		App::setLocale($lang);
 
-		$products = Product::where('subcategory_id','=',$subcategory->id)->get();
+		$products = Product::where('subcategory_id','=',$subcategory->id)
+		->where('active','=',true)->get();
 
 		$categories = Category::all();
 
@@ -285,7 +287,7 @@ class PageController extends Controller
 
 
 	public function getProductView($id){
-		
+
 		$lang = session('lang');
 
 		App::setLocale((string)$lang);
@@ -301,7 +303,8 @@ class PageController extends Controller
 			$comment->rate = round($comment->rate);
 		}
 
-		$simiproducts = Product::select('*')->where('subcategory_id','=',$product->subcategory_id)->get();
+		$simiproducts = Product::select('*')->where('subcategory_id','=',$product->subcategory_id)
+		->where('active','=',true)->get();
 
 		if ($lang == "ar"){
 			$product->english = $product->arabic;
