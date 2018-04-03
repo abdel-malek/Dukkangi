@@ -173,6 +173,7 @@ class ProductController extends Controller
         $product->active        = isset($request->active) ?$request->active : 0;
 
 
+
         $product->section1_english = $request->section1_english;
         $product->section1_german  = $request->section1_german;
         $product->section1_arabic  = $request->section1_arabic;
@@ -191,9 +192,21 @@ class ProductController extends Controller
         $product->section3_kurdi   = $request->section3_kurdi;
         $product->section3_turky   = $request->input('section3_turky');
 
+        $product->barcode   = $request->input('barcode');
+        $product->custom_id   = $request->input('custom_id');
+
 
         if($request->hasFile('image'))
             $product->image_id = ImageService::saveImage($request->file('image'));
+
+        if($request->hasFile('image_path_2'))
+            $product->image_id = ImageService::saveImage($request->file('image_path_2'));
+
+        if($request->hasFile('image_path_3'))
+            $product->image_id = ImageService::saveImage($request->file('image_path_3'));
+
+        if($request->hasFile('image_path_4'))
+            $product->image_id = ImageService::saveImage($request->file('image_path_4'));
 
         if (isset($request->point)) {
             $product->point     = $request->point;

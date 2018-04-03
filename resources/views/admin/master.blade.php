@@ -56,7 +56,9 @@
     </section>
 
 </div>
-
+{{-- <footer id="footer" style="top:50%;">
+    Copyright &copy; 2018, All Rights Reserved.
+</footer> --}}
   @include ('admin.partials._footer')
 </body>
 

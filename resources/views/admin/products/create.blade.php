@@ -26,14 +26,11 @@
 				<br/>
 				<div class="col-md-12">
 					{{ Form::label('active','Active:')}}
-          {!! Form::select('active',array('1'=>'Yes','0'=>'NO'),null,['class'=>'form-control']) !!}
+          			{!! Form::select('active',array('1'=>'Yes','0'=>'NO'),null,['class'=>'form-control']) !!}
 				</div>
 				<br/>
-				<div class="col-md-12">
-					{{ Form::label('image' , 'Image:')}}
- 					{{ Form::file('image') }}
-				</div>
 	</div>
+
 	<div class="col-md-5">
 				{{ Form::label('qty', 'Quantity :' ) }}
 				{{ Form::text('qty', null , ['class'=> 'form-control' , 'required'=>'' ]) }}
@@ -75,7 +72,7 @@
 		</div>
 
 <div class="row">
-	<div class="col-md-12 jumbotron" style="margin-left: 30px;margin-right: 30px;padding-right: 0px;max-width: 960px;padding-top: 20px">
+	<div class="col-md-12 jumbotron" style="margin-left: 30px;margin-right: 30px;padding-right: 0px;max-width: 960px;padding-top: 30px">
 		<p >
 		<h3 class="text-center"><i> Section 1</i></h3>
 		</p>
@@ -229,6 +226,38 @@
 				<br>
 				{{ Form::label('desc_kurdi' ,'Description in Kurdi:')}}
 				{{ Form::textarea('desc_kurdi', 'Type Here!' , ['class' => 'form-control' ]) }}
+
+				<div class="row">
+					<div class="col-md-3">
+						{{ Form::label('image' , 'Image:')}}
+						{{ Form::file('image') }}
+					</div>
+
+					<div class="col-md-3">
+						{{ Form::label('image_path_2' , 'Image 2:')}}
+						{{ Form::file('image_path_2') }}
+					</div>
+
+					<div class="col-md-3">
+						{{ Form::label('image_path_3' , 'Image 3:')}}
+						{{ Form::file('image_path_3') }}
+					</div>
+
+					<div class="col-md-3">
+						{{ Form::label('image_path_3' , 'Image 4:')}}
+						{{ Form::file('image_path_4') }}
+					</div>
+				</div>
+				<div class='row'>
+							<div class='col-md-6'>
+								{{ Form::label('barcode' , 'Barcode') }}
+								{{ Form::text('barcode' , null, ['class'=> 'form-control' , 'required'=> '']) }}
+							</div>
+							<div class='col-md-6'>
+								{{ Form::label('custom_id' , 'Custom ID:') }}
+								{{ Form::text('custom_id' , null, ['class'=> 'form-control' , 'required'=> '']) }}
+							</div>
+				</div>
 
 				{{ Form::submit('Confirm Category' , [ 'class' => 'btn btn-block btn-success' ,'style'=>'margin-top:7px' ])}}
 				<a href="{{ route('category.index')}}" class="btn btn-block btn-primary" style="margin-top: 7px"> Cancel</a>

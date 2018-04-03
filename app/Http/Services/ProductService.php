@@ -237,8 +237,22 @@ class ProductService {
 		$product->section3_turky   = $request->section3_turky;
 
 
-		 if($request->hasFile('image'))
-            $product->image_id = ImageService::saveImage($request->file('image'));
+		$product->barcode   = $request->input('barcode');
+		$product->custom_id   = $request->input('custom_id');
+
+
+		if($request->hasFile('image'))
+				$product->image_id = ImageService::saveImage($request->file('image'));
+
+		if($request->hasFile('image_path_2'))
+				$product->image_id = ImageService::saveImage($request->file('image_path_2'));
+
+		if($request->hasFile('image_path_3'))
+				$product->image_id = ImageService::saveImage($request->file('image_path_3'));
+
+		if($request->hasFile('image_path_4'))
+				$product->image_id = ImageService::saveImage($request->file('image_path_4'));
+
 
         if (isset($request->point)) {
             $product->point     = $request->point;
