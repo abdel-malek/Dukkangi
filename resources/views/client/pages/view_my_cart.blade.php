@@ -170,6 +170,7 @@
                         </span>
                         <span>
                             <p> @lang('Tax') :{{ $order->product->tax}} $</p>
+
                         </span>
                     </div>
                     <div class="control_item_qty">
@@ -179,7 +180,7 @@
                             <img src="/front-end/images/payment/handler-min.png" onclick="num_min(this);" style="margin-top:-0.8em;" />
                         </div>
                         <p class="total_item_qty">
-                            Total <span id="total">{{ $order->total_amount }} </span> <i style="color: #d80001;font-weight: bold;font-family: 'EagarFont';font-size: 1em;">$</i>
+                            Total <span id="total">{{ $order->total_amount }} </span> <i style="color: #d80001;font-weight: bold;font-family: 'EagarFont';font-size: 1em;">€</i>
                         </p>
                     </div>
                 </div>
@@ -250,6 +251,7 @@
                     <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">Total</span>
                     <span style="left:4em;" id="Total"> {{$total }}</span>
                     <i style="color: #fff;    font-size: 1.5em;font-family: 'EagarFont';margin-top: 0.2em;width: 4em;margin-left: 94px;text-align: center;position: absolute;z-index: 18;">$</i>
+
                     <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details"/>
                 </p>
             </div>

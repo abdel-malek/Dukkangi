@@ -20,9 +20,6 @@ class CartController extends Controller
 
 
     public function getViewMyCartPage(){
-      if(Auth::id()<= 0){
-      return redirect('login');
-    }
 		$cartId = session('cartId');
 
 		$cart = CartService::loadCart($cartId);

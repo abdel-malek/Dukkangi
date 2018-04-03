@@ -1,7 +1,3 @@
-    <footer id="footer" style="top:50%;">
-        Copyright &copy; 2018, All Rights Reserved.
-    </footer>
-
     <script type="text/javascript" src={{ URL::asset('js/screenfull.min.js') }}></script>
     <script type="text/javascript" src={{ URL::asset('js/jquery.min.js') }}></script>
     <script type="text/javascript" src={{ URL::asset('js/bootstrap.min.js') }}></script>
