@@ -457,7 +457,7 @@
  <div class="modal_one_item_details" id="modal_one_item_details" style="display: none;"
       data-productId={{$product->id}} data-qty='1'>
       <div class="header_item_details">
-          <img src="/front-end/images/slider/slider1.jpg" class="img_item_details" style="height: 200px" />
+          <img src="/front-end/images/slider/slider1.jpg" class="img_item_details" style="height: 380px" />
           <div class="div_title_item_details" >
               <p class="title_item_details">
                   {{$product->english}}
@@ -486,9 +486,9 @@
           </div>
       </div>
       
-      <p class="price_item_details" style="margin-top: 0em;" data-product-price='{{$product->price}}'>
-          <span  style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">@lang('Total') </span>
-          <span class="total_qty" style="left:4em;"> {{$product->price}} Eur</span>
+      <p class="price_item_details" style="margin-top: 0em;" data-product-price='{{isset($product->discount_price) ? $product->discount_price: $product->price}}'>
+          <span  style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;left: -1em;">@lang('Total') </span>
+          <span class="total_qty" style="left:2.2em;width: 6em"> {{isset($product->discount_price) ? $product->discount_price: $product->price}} €</span>
           <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details"/>
       </p>
       <div class="button_modal_one_item_details">
@@ -730,7 +730,7 @@
 
             function changeTotal(qty){
               productPrice = $('#modal_one_item_details .price_item_details').attr('data-product-price');
-              $('.total_qty').text( (parseFloat(parseFloat(qty) * productPrice).toFixed(2)) + " Eur");
+              $('.total_qty').text( (parseFloat(parseFloat(qty) * productPrice).toFixed(2)) + " €");
               $('#modal_one_item_details').attr('data-qty',parseInt(qty));
             }
         </script>

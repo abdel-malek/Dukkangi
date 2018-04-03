@@ -133,6 +133,8 @@
 @section('main_section')
     <?php
         $total = 0;
+        $gain=0;
+        $taxes=0;
     ?>
   <div class="col-md-12" style="height: 1200px" id="content_page">
 
@@ -157,19 +159,23 @@
 
                 @foreach($orders as $order)
                 <?php
-                 $total += $order->total_amount;
+            $total += (isset($order->product->discount_price) ? $order->product->discount_price : $order->product->price );
+            $gain  += (isset($order->product->discount_price) ? ceil($order->product->discount_price/5) : ceil($order->product->price/5 ));
+            $taxes += isset($order->product->discount_price) ? sprintf('%0.2f',$order->product->discount_price*0.19 ): 
+            sprintf('%0.2f',$order->product->price*0.19 );
+                
                 ?>
-                <div class="item_qty_detail_my_card" data-price="{{$order->product->price}}" data-gain="{{$order->gain_point}}"
+                <div class="item_qty_detail_my_card" data-price="{{(isset($order->product->discount_price) ? $order->product->discount_price : $order->product->price )}}" data-gain="{{(isset($order->product->discount_price) ? ceil($order->product->discount_price /5) : ceil($order->product->price/5) )}}"
                   data-productId='{{$order->product->id}}'>
                     <img src="{{$order->product->image_id}}" class="img_item_qty" />
                     <div class="text_item_qty">
                         <h3>{{$order->product->english}}</h3>
-                        <p style="margin-bottom: 0.1em;">{{$order->product->section1_english}}</p>
+                        <p style="margin-bottom: 0.01em;">{{$order->product->section1_english}}</p>
                         <span>
-                            <p> @lang('Price') :{{ $order->product->price }} $</p>
+                            <p  style="margin-bottom: 0rem;"> @lang('Price') :{{isset($order->product->discount_price)?sprintf('%0.2f', $order->product->discount_price -($order->product->discount_price *0.19)) : sprintf('%0.2f',$order->product->price - ($order->product->price *0.19)) }} €</p>
                         </span>
                         <span>
-                            <p> @lang('Tax') :{{ $order->product->tax}} $</p>
+                            <p> @lang('Tax') :{{ isset($order->product->discount_price)?sprintf('%0.2f', $order->product->discount_price *0.19)  : sprintf('%0.2f', $order->product->price *0.19) }} €</p>
 
                         </span>
                     </div>
@@ -180,7 +186,7 @@
                             <img src="/front-end/images/payment/handler-min.png" onclick="num_min(this);" style="margin-top:-0.8em;" />
                         </div>
                         <p class="total_item_qty">
-                            Total <span id="total">{{ $order->total_amount }} </span> <i style="color: #d80001;font-weight: bold;font-family: 'EagarFont';font-size: 1em;">€</i>
+                            Total <span id="total">{{ isset($order->product->discount_price) ? $order->product->discount_price : $order->product->price }} </span> <i style="color: #d80001;font-weight: bold;font-family: 'EagarFont';font-size: 1em;">€</i>
                         </p>
                     </div>
                 </div>
@@ -196,7 +202,7 @@
                        You gained
                     </p>
                     <h3 id="total-gain">
-                        {{$gainPoints}} PT
+                        {{$gain }} PT
                     </h3>
                 </div>
 

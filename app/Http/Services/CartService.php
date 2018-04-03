@@ -61,9 +61,9 @@ class CartService{
 
     $orderItems = $result->get();
 
-    $taxes = $result->sum('total_amount');
+    //$taxes = $result->sum('total_amount');
 
-    return ['orderItems' => $orderItems,'gainPoints' => $gainPoints,'taxes' => $taxes * .19];
+    return ['orderItems' => $orderItems,'gainPoints' => $gainPoints];
    }
 
   public static function checkout($cartId,$products,$paymentMethodId = 1 ,$userId){
