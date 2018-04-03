@@ -166,7 +166,10 @@
                         <h3>{{$order->product->english}}</h3>
                         <p style="margin-bottom: 0.1em;">{{$order->product->section1_english}}</p>
                         <span>
-                            <p> @lang('Price') :{{$order->product->price}} $</p>
+                            <p> @lang('Price') :{{ $order->product->price }} $</p>
+                        </span>
+                        <span>
+                            <p> @lang('Tax') :{{ $order->product->tax}} $</p>
                         </span>
                     </div>
                     <div class="control_item_qty">
@@ -202,11 +205,11 @@
                 </div>
                 <div class="taxes_taxes">
                        <p>
-                        Taxes
+                        Taxes <small><small> <i>(Included in product price)<i></small></small>
                     </p>
 
                     <h3 id="tax">
-                        {{ sprintf('%0.2f', $taxes)}}
+                        {{ sprintf('%0.2f', $taxes)}} $
                     </h3>
                     </div>
            <!--                        DISCOUNTS
@@ -245,7 +248,7 @@
 
                 <p class="price_item_details">
                     <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">Total</span>
-                    <span style="left:4em;" id="Total"> {{$total + $taxes}}</span>
+                    <span style="left:4em;" id="Total"> {{$total }}</span>
                     <i style="color: #fff;    font-size: 1.5em;font-family: 'EagarFont';margin-top: 0.2em;width: 4em;margin-left: 94px;text-align: center;position: absolute;z-index: 18;">$</i>
                     <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details"/>
                 </p>
@@ -422,13 +425,13 @@
         parseFloat($(obj).parent().parent().find('p').find('span').text())  + parseFloat($(obj).parent().parent().parent().data('price'))
         ).toFixed(2));
 
-        $('#total-gain').text(parseInt($(obj).parent().parent().parent().data('gain')) + parseInt($('#total-gain').text()) );
+        $('#total-gain').text(parseInt($(obj).parent().parent().parent().data('gain')) + parseInt($('#total-gain').text()) +" PT");
 
 
-        $('#tax').text( parseFloat( parseFloat($('#tax').text() ) + parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19)).toFixed(2));
+        $('#tax').text( parseFloat( parseFloat($('#tax').text() ) + parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19)).toFixed(2) +"$");
 
 
-       $('#Total').text(parseFloat(parseFloat($(obj).parent().parent().parent().data('price')) + parseFloat( $('#Total').text() ) +parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19) ).toFixed(2));
+       $('#Total').text(parseFloat(parseFloat($(obj).parent().parent().parent().data('price')) + parseFloat( $('#Total').text() )  ).toFixed(2));
 
         $(obj).parent().parent().find('h4').text(parseInt($(obj).parent().parent().find('.num_item_qty').text()) + 1);
 
@@ -440,14 +443,14 @@
         parseFloat($(obj).parent().parent().find('p').find('span').text())  - parseFloat($(obj).parent().parent().parent().data('price'))
         ).toFixed(2));
 
-        $('#total-gain').text(parseInt( parseInt($('#total-gain').text()) -$(obj).parent().parent().parent().data('gain') ) );
+        $('#total-gain').text(parseInt( parseInt($('#total-gain').text()) -$(obj).parent().parent().parent().data('gain') ) +" PT");
 
 
 
-        $('#tax').text( parseFloat( parseFloat($('#tax').text() ) - parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19)).toFixed(2));
+        $('#tax').text( parseFloat( parseFloat($('#tax').text() ) - parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19)).toFixed(2) + "$");
         if ( parseFloat($('#tax').text()) < 0  )
             $('#tax').text('0');
-        $('#Total').text(parseFloat(parseFloat(parseFloat( $('#Total').text() ) - $(obj).parent().parent().parent().data('price')) -parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19) ).toFixed(2));
+        $('#Total').text(parseFloat(parseFloat(parseFloat( $('#Total').text() ) - $(obj).parent().parent().parent().data('price')) ).toFixed(2));
 
         $(obj).parent().parent().find('h4').text(parseInt($(obj).parent().parent().find('h4').text()) - 1);
 

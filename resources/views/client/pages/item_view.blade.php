@@ -14,6 +14,10 @@
         <script type="text/javascript" src="{{URL::asset('/front-end/js/plugin/jssor.slider.min.js')}}"></script>
         <script type="text/javascript" src="{{URL::asset('/front-end/js/plugin/slide.js')}}"></script>
         <link rel="stylesheet" href="{{URL::asset('/front-end/css/SimpleStarRating.css')}}">
+          <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      
           <style>
             .star{
                 cursor: pointer;
@@ -43,7 +47,7 @@
                 bottom: 0.6em;
                 left: 1.4em;
             }
-                .header_page  .rating{
+            .header_page  .rating{
                 bottom: 0.2em;
                 left: 18em;
             }
@@ -94,6 +98,14 @@
             }
             .navbar {
                 padding: .5rem 7rem;
+            }
+            .imgslide{
+                width: 30px !important ;
+                height: 3px !important;
+                margin-top:1px !important; 
+                margin-right: 3px !important;
+                margin-left: 3px !important;
+                text-indent: -999px !important;
             }
             .btn_qty{
                 cursor: pointer;
@@ -153,11 +165,54 @@
 
                 <div class="one_item_details" data-id="{{$product->id}}">
                     <div class="header_item_details">
-                         <div class="discount_item_details">
-                            <!-- Need a Change -->
-                            <p class="text_discount_details"> 15% @lang('off')</p>
+                         @if(isset($product->discount))
+                         <div class="discount_item_details" style="z-index: 20">
+                            <p class="text_discount_details">   <small>{{$product->discount}}</small>     % @lang('off')</p>
                          </div>
-                        <img src="{{$product->image_id}}" class="img_item_details" style="height: 380px" />
+                         @endif
+
+                        <!-- -Slider -->
+                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="height: 380px" >
+                              <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active imgslide" ></li>
+                                @if(isset($product->image_id2))
+                                  <li data-target="#carouselExampleIndicators" data-slide-to="1" class="imgslide"></li>
+                                @endif
+                                @if(isset($product->image_id2))
+                                  <li data-target="#carouselExampleIndicators" data-slide-to="2" class="imgslide"></li>
+                              
+                                @endif
+                                @if(isset($product->image_id2))
+                                  <li data-target="#carouselExampleIndicators" data-slide-to="3" class="imgslide"></li>
+                                @endif
+                              </ol>
+                              <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                  <img class=" d-block w-100" style="height: 380px"  src="{{$product->image_id}}" alt="First slide">
+                                </div>
+                            
+                                @if(isset($product->image_id2))
+                                <div class="carousel-item">
+                                  <img class="img_item_details" style="height: 380px"  src="{{$product->image_id2}}" alt="Second slide">
+                                </div>
+                                @endif
+                                @if(isset($product->image_id3))
+                                <div class="carousel-item">
+                                  <img class="img_item_details" style="height: 380px"  src="{{$product->image_id3}}" alt="Third slide">
+                                </div>
+                                @endif
+                                @if(isset($product->image_id4))
+                                <div class="carousel-item">
+                                  <img class="img_item_details" style="height: 380px"  src="{{$product->image_id4}}" alt="Fourth slide">
+                                </div>
+                                @endif
+                              </div>
+                              
+                            </div>
+
+
+                        <!-- /Slider -->
+                        <!-- <img src="{{$product->image_id}}" /> -->
                         <div class="div_title_item_details" >
                             <p class="title_item_details">
                                 {{$product->english}}
@@ -186,15 +241,29 @@
                     @endif
                     <!--<div class="price_tag_item_details">-->
                     @if ($product->qty != 0 )
-                    <p class="price_item_details">
-                        <span> {{$product->price}} €</span>
+                    <p class="price_item_details" >
+                        
+                        @if (isset($product->discount)) 
+                        <span style="left: -16px;width: 5em;">
+
+                           <small><small> {{$product->price}}-{{ $product->discount  }}%  = <b>{{$product->discount_price}} € </b></small></small> 
+                        @else
+                        <span>
+                            {{$product->price}} $
+                        @endif
+                        </span>
                         <img src="/front-end/images/price-tag/price-tag.png" class="img_price_item_details"/>
                     </p>
                     @endif
                     <!--</div>-->
-
-                    <p class="points_item_details" {{ $product->qty == 0 ?"style='filter: blur(5px)'" : '' }}>
-                        <span> {{$product->point}} @lang('Points') </span> @lang('Bounce')
+                    <p class="points_item_details" style="margin-top:1em ;{{ $product->qty == 0 ?"filter: blur(5px)" : '' }}">
+                        <span>{{ sprintf('%0.2f', $product->tax) }} € </span>Tax
+                    </p>
+                    <p class="points_item_details" style="margin-left:50px;margin-top: 0em; {{ $product->qty == 0 ?"filter: blur(5px)" : '' }}">
+                        <span> {{ sprintf('%0.2f',$product->abstract_price)}} €</span> Product Price
+                    </p>
+                    <p class="points_item_details" style=";margin-top: 0em; {{ $product->qty == 0 ?"filter: blur(5px)" : '' }}">
+                        <span> {{ $product->gain_points }} @lang('Points') </span> @lang('Bounce')
                     </p>
                     <p  class="text_item_details" {{ $product->qty == 0 ?"style='filter: blur(5px)'" : '' }}>
                         {{ $product->desc_english}}
@@ -202,11 +271,11 @@
                     </p>
                      @if ($product->qty != 0 )
 
-                    <p class="buy_item_details" style="margin-top: 50px">
+                    <p class="buy_item_details" style="margin-top: 100px">
                          <a href="{{route('buyitem' , $product->id)}}" ><span style="cursor: pointer;"> @lang('Buy This Item')</span></a>
                         <img src="/front-end/images/price-tag/buy-this-item.png" class="img_buy_item_details"/>
                     </p>
-                     <p class="add_to_card_item_details" style="cursor: pointer;margin-top: 60px" id="btn_modal_one_item_details" >
+                     <p class="add_to_card_item_details" style="cursor: pointer;margin-top: 110px" id="btn_modal_one_item_details" >
                         <span> @lang('Add to cart')</span>
                         <img src="/front-end/images/price-tag/add-to-cart.png" class="img_add_to_card_item_details"/>
                     </p>
@@ -231,7 +300,7 @@
                     <p class="text_section">
                         <span>{{$product->section2_english}}</span>
                         <p>
-                            <span class="point_text_section">{{$product->point}} points</span> <small>@lang('This will be given to you !') </small>
+                            <span class="point_text_section">{{$product->point}} points</span> <small>@lang('Price in Points') </small>
                         </p>
                     </p>
                 </div>
@@ -288,7 +357,7 @@
                     <a href="{{route('mycart')}}"><img src="/front-end/images/user_actions/view-my-cart.png" class="icon_buy_option_section"></a>
             </div> -->
         </div>
-        <div class="col-md-12" style="float:left;margin-top: 150px" >
+        <div class="col-md-12" style="float:left;margin-top: 170px" >
             <h3 class="title_customer_review">
 
         <br>
@@ -331,8 +400,7 @@
                 </div>
                 @endforeach
 
-
-            </div>
+        </div>
             <div class="leave_constructive_review col-md-4">
                 {!! Form::open(['route' => ['comment',$product->id ]]) !!}
                     <h3 class="text_leave_constructive_review" style="color: #d80001;margin-top: 0em;">@lang('Leave a constructive review')</h3>
@@ -351,6 +419,7 @@
                 {!! Form::close() !!}
             </div>
         </div>
+    </div>
         <div class="col-md-12" style="float:left;">
             <h3 class="title_similar_items" >
                 @lang('Similar item')
@@ -363,7 +432,7 @@
                             continue;
                             ?>
                             @endif
-                              <div class="col-md-3" style="margin-top: 1em;float: left;">
+                              <div class="col-md-3" style="margin-top: 1em;float: left;margin-bottom: 20px">
                                 <div class="div_item" style="width: 229px">
                                     <a href="{{ route('product',$simiproduct->id) }}">
                                     <img src="{{$simiproduct->image_id}}" class="img_item"  />
@@ -416,37 +485,7 @@
               <!-- <img -->
           </div>
       </div>
-      <div class="col-md-12" style="float: left;">
-          <div style="width: 39%;float: left;">
-              <h3 class="title_color" style="margin-top: 0.4em;">
-                  @lang('Option') 1
-              </h3>
-          </div>
-          <div style="width: 60%;float: right;">
-              <div class="option_color" style="background-color: #303030;">
-
-              </div><div class="option_color" style="background-color: #303030;">
-
-              </div><div class="option_color" style="background-color: #303030;">
-
-              </div>
-
-           </div>
-      </div>
-      <div class="col-md-12" style="float: left;margin-top: 20px;">
-                            <div style="width: 39%;float: left;">
-                                <h3 class="title_size" style="margin-top: -0.1em;">
-                                    @lang('Option') 2
-                                </h3>
-                            </div>
-                            <div style="width: 60%;float: right;">
-                                <p class="option_size active_option_size" style="width: 100%">
-                                    @lang('Something')
-                                </p>
-
-                            </div>
-                        </div>
-
+      
       <p class="price_item_details" style="margin-top: 0em;" data-product-price='{{$product->price}}'>
           <span  style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">@lang('Total') </span>
           <span class="total_qty" style="left:4em;"> {{$product->price}} Eur</span>
@@ -691,7 +730,7 @@
 
             function changeTotal(qty){
               productPrice = $('#modal_one_item_details .price_item_details').attr('data-product-price');
-              $('.total_qty').html(parseFloat(parseFloat(qty) * productPrice).toFixed(2) + ' Eur');
+              $('.total_qty').text( (parseFloat(parseFloat(qty) * productPrice).toFixed(2)) + " Eur");
               $('#modal_one_item_details').attr('data-qty',parseInt(qty));
             }
         </script>

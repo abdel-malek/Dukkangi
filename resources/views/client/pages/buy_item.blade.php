@@ -155,7 +155,7 @@
                                 <p class="num_qty">
                                     1
                                 </p>
-                                <div style="width:30%;float: right;" data-price="{{$product->price}}">
+                                <div style="width:30%;float: right;" data-price="{{isset($product->discount)?$product->discount_price :$product->price}}">
                                     <img src="/front-end/images/payment/handler-plus.png" class="btn_qty" onclick="num_plus(this);">
                                     <img src="/front-end/images/payment/handler-min.png" class="btn_qty" style="margin-top: -0.9em" onclick="num_min(this)">
                                 </div>
@@ -222,12 +222,21 @@
                                 </h3>
                                 </big>
                             </div>
+                            @if(!isset($product->discount))
                             <div style="width: 60%;float: right;margin-top:25px;">
                                 <p class="option_size active_option_size" style="width: 100%">
-                                    {{$product->price}} €
+                                    {{$product->price * 0.81}} €
                                 </p>
-
                             </div>
+                            @else
+                            <div style="width: 60%;float: right;margin-top:25px;">
+                                <p class="option_size active_option_size" style="width: 100%">
+ <!-- ----------------------------------------------------------------------------------------------------------------- -->                                
+                                    {{$product->price}}-{{  100 - (($product->discount_price * 100) / $product->price) }}% = {{$product->discount_price}} € 
+                                </p>
+                            </div>
+                            
+                            @endif
                             <div style="width: 39%;float: left;margin-top: 0px;">
                                 <big>
                                 <h3 class="title_size" style="margin-top: 1.0em;padding-left: 15px" >
@@ -237,14 +246,29 @@
                             </div>
                             <div style="width: 60%;float: right;margin-top:25px;">
                                 <p class="option_size active_option_size" style="width: 100%"   id="gain" data-gain="{{ceil($product->price/5)}}">
-                                    {{ceil($product->price/5)}} Points
+                                    {{ceil($product->price /5)}} Points
+                                </p>
+
+                            </div>
+                           <div style="width: 39%;float: left;margin-top: 0px;">
+                                <big>
+                                <h3 class="title_size" style="margin-top: 1.0em;padding-left: 15px" >
+                                    Tax:
+                                </h3>
+                                </big>
+                            </div>
+                            <div style="width: 60%;float: right;margin-top:25px;">
+                                <p class="option_size active_option_size" style="width: 100%"   id="tax" data-tax="{{ceil($product->price*0.19)}}">
+<!-- ---------------------------------------------------------------------------------------------------------------  -->
+                                    {{sprintf('%0.2f',$product->price * 0.19)}} $
                                 </p>
 
                             </div>
 
+
                     <p class="price_item_details">
                         <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">Total</span>
-                        <span style="left:4em;" id="total"> {{$product->price}} €</span>
+                        <span style="left:4em;" id="total"> {{isset($product->discount) ?$product->discount_price :$product->price}} €</span>
                         <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details"/>
                     </p>
             </div>
