@@ -128,3 +128,7 @@ Route::get('/lang/{lang}' , 'PageController@setLanguage');
 	//cart
 Route::post('/cart/add','CartController@addToCart');
 Route::post('/cart/checkout','CartController@checkout');
+
+
+//Test
+Route::get('/test/load-cart/{id}','TestController@loadCart');

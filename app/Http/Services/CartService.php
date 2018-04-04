@@ -4,6 +4,7 @@ use App\Order;
 use App\OrderItem;
 use App\OrderStatus;
 use App\Http\Services\PaymentService;
+use App\Http\Services\ProductService;
 
 class CartService{
 
@@ -15,7 +16,7 @@ class CartService{
   }
 
   private static function createOrderItem($product,$qty,$cartId,$userId){
-  $cartId =  self::createCart($cartId,$userId,null);
+    $cartId =  self::createCart($cartId,$userId,null);
     return OrderItem::updateOrCreate(['order_id' => $cartId,'item_id' => $product->id,'user_id' => $userId],
           ['order_id' => $cartId,'item_id' => $product->id,
           'sub_amount' => $product->price,'qty' => $qty, 'total_amount' => $product->price * $qty,
@@ -61,27 +62,40 @@ class CartService{
 
     $orderItems = $result->get();
 
-    //$taxes = $result->sum('total_amount');
+    $amount = $result->sum('total_amount');
+    $tax = 0;
+    foreach ($orderItems as $orderItem) {
+      $taxFees = $orderItem->product->tax_fees;
+      $orderItemAmount = $orderItem->total_amount;
+      $tax += self::calculateTaxAmount($orderItemAmount,$taxFees);
+    }
 
-    return ['orderItems' => $orderItems,'gainPoints' => $gainPoints];
+    return ['orderItems' => $orderItems,'gainPoints' => $gainPoints,'taxes' => $tax,'amount' => $amount];
    }
 
   public static function checkout($cartId,$products,$paymentMethodId = 1 ,$userId){
+    $tax = 0;
     foreach ($products as $product) {
-      self::addToCart($product['id'],$product['qty'],$cartId,$userId);
+      $orderItem = self::addToCart($product['id'],$product['qty'],$cartId,$userId);
+      $taxFees = ProductService::getProductTax($product['id']);
+      $tax += self::calculateTaxAmount($orderItem->total_amount,$taxFees);
     }
 
     //Calculate Amount
     $amount = self::getTotalAmount($cartId);
     //make a payment
     // TODO: Pass payment method id
-    $payment = PaymentService::createPayment($paymentMethodId,$cartId,$userId,$amount,'EUR');
+    $payment = PaymentService::createPayment($paymentMethodId,$cartId,$userId,$amount,'EUR',$tax);
     return self::completeCart($cartId,$payment->id);
   }
 
   private static function getTotalAmount($cartId){
     return OrderItem::where('order_id','=',$cartId)->where('status_id','=',OrderStatus::CREATED)
     ->sum('total_amount');
+  }
+
+  private static function calculateTaxAmount($amount,$productTax){
+    return ($amount * $productTax);
   }
 
 

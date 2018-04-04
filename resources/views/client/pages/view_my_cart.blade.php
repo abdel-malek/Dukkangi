@@ -161,11 +161,12 @@
                 <?php
             $total += (isset($order->product->discount_price) ? $order->product->discount_price : $order->product->price );
             $gain  += (isset($order->product->discount_price) ? ceil($order->product->discount_price/5) : ceil($order->product->price/5 ));
-            $taxes += isset($order->product->discount_price) ? sprintf('%0.2f',$order->product->discount_price*0.19 ): 
+            $taxes += isset($order->product->discount_price) ? sprintf('%0.2f',$order->product->discount_price*0.19 ):
             sprintf('%0.2f',$order->product->price*0.19 );
-                
+
                 ?>
-                <div class="item_qty_detail_my_card" data-price="{{(isset($order->product->discount_price) ? $order->product->discount_price : $order->product->price )}}" data-gain="{{(isset($order->product->discount_price) ? ceil($order->product->discount_price /5) : ceil($order->product->price/5) )}}"
+                <div class="item_qty_detail_my_card" data-price="{{$order->product->price}}"
+                  data-tax="{{$order->product->tax_fees}}" data-gain="{{$order->gain_point}}"
                   data-productId='{{$order->product->id}}'>
                     <img src="{{$order->product->image_id}}" class="img_item_qty" />
                     <div class="text_item_qty">
@@ -255,9 +256,9 @@
 
                 <p class="price_item_details">
                     <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">Total</span>
-                    <span style="left:4em;" id="Total"> {{$total }}</span>
-                    <i style="color: #fff;    font-size: 1.5em;font-family: 'EagarFont';margin-top: 0.2em;width: 4em;margin-left: 94px;text-align: center;position: absolute;z-index: 18;">€</i>
 
+                    <span style="left:3em;" id="Total"> {{$total}} </span>
+                    <i style="color: #fff;    font-size: 1.5em;font-family: 'EagarFont';margin-top: 0.2em;width: 4em;margin-left: 94px;text-align: center;position: absolute;z-index: 18;"> €</i>
                     <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details"/>
                 </p>
             </div>
@@ -427,7 +428,6 @@
 </script>
 <script>
     function num_plus(obj) {
-       // console.log( parseFloat($(obj).parent().parent().parent().data('price')));
        $(obj).parent().parent().find('p').find('span').text(
         parseFloat(
         parseFloat($(obj).parent().parent().find('p').find('span').text())  + parseFloat($(obj).parent().parent().parent().data('price'))
@@ -436,7 +436,7 @@
         $('#total-gain').text(parseInt($(obj).parent().parent().parent().data('gain')) + parseInt($('#total-gain').text()) +" PT");
 
 
-        $('#tax').text( parseFloat( parseFloat($('#tax').text() ) + parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19)).toFixed(2) +"$");
+        $('#tax').text( parseFloat( parseFloat($('#tax').text() ) + parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19)).toFixed(2) +"€");
 
 
        $('#Total').text(parseFloat(parseFloat($(obj).parent().parent().parent().data('price')) + parseFloat( $('#Total').text() )  ).toFixed(2));
@@ -455,7 +455,7 @@
 
 
 
-        $('#tax').text( parseFloat( parseFloat($('#tax').text() ) - parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19)).toFixed(2) + "$");
+        $('#tax').text( parseFloat( parseFloat($('#tax').text() ) - parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19)).toFixed(2) + "€");
         if ( parseFloat($('#tax').text()) < 0  )
             $('#tax').text('0');
         $('#Total').text(parseFloat(parseFloat(parseFloat( $('#Total').text() ) - $(obj).parent().parent().parent().data('price')) ).toFixed(2));
