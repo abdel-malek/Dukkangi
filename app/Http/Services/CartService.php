@@ -61,9 +61,15 @@ class CartService{
 
     $orderItems = $result->get();
 
-    $taxes = $result->sum('total_amount');
+    $amount = $result->sum('total_amount');
+    $tax = 0;
+    foreach ($orderItems as $orderItem) {
+      $taxFees = $orderItem->product->tax_fees;
+      $orderItemAmount = $orderItem->total_amount;
+      $tax += self::calculateTaxAmount($orderItemAmount,$taxFees);
+    }
 
-    return ['orderItems' => $orderItems,'gainPoints' => $gainPoints,'taxes' => $taxes * .19];
+    return ['orderItems' => $orderItems,'gainPoints' => $gainPoints,'taxes' => $tax,'amount' => $amount];
    }
 
   public static function checkout($cartId,$products,$paymentMethodId = 1 ,$userId){
@@ -82,6 +88,10 @@ class CartService{
   private static function getTotalAmount($cartId){
     return OrderItem::where('order_id','=',$cartId)->where('status_id','=',OrderStatus::CREATED)
     ->sum('total_amount');
+  }
+
+  private static function calculateTaxAmount($amount,$productTax){
+    return ($amount * $productTax);
   }
 
 

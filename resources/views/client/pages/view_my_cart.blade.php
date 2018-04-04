@@ -159,7 +159,8 @@
                 <?php
                  $total += $order->total_amount;
                 ?>
-                <div class="item_qty_detail_my_card" data-price="{{$order->product->price}}" data-gain="{{$order->gain_point}}"
+                <div class="item_qty_detail_my_card" data-price="{{$order->product->price}}"
+                  data-tax="{{$order->product->tax_fees}}" data-gain="{{$order->gain_point}}"
                   data-productId='{{$order->product->id}}'>
                     <img src="{{$order->product->image_id}}" class="img_item_qty" />
                     <div class="text_item_qty">
@@ -245,7 +246,7 @@
 
                 <p class="price_item_details">
                     <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">Total</span>
-                    <span style="left:4em;" id="Total"> {{$total + $taxes}} </span>
+                    <span style="left:3em;" id="Total"> {{$total}} </span>
                     <i style="color: #fff;    font-size: 1.5em;font-family: 'EagarFont';margin-top: 0.2em;width: 4em;margin-left: 94px;text-align: center;position: absolute;z-index: 18;"> €</i>
                     <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details"/>
                 </p>
@@ -416,7 +417,6 @@
 </script>
 <script>
     function num_plus(obj) {
-       // console.log( parseFloat($(obj).parent().parent().parent().data('price')));
        $(obj).parent().parent().find('p').find('span').text(
         parseFloat(
         parseFloat($(obj).parent().parent().find('p').find('span').text())  + parseFloat($(obj).parent().parent().parent().data('price'))
