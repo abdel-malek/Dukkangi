@@ -239,8 +239,8 @@ class ProductService {
 
 		$product->barcode   = $request->input('barcode');
 		$product->custom_id   = $request->input('custom_id');
-
-
+		$product->tax_fees   = $request->input('tax_fees');
+		
 		if($request->hasFile('image'))
 				$product->image_id = ImageService::saveImage($request->file('image'));
 

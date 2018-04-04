@@ -194,6 +194,7 @@ class ProductController extends Controller
 
         $product->barcode   = $request->input('barcode');
         $product->custom_id   = $request->input('custom_id');
+        $product->tax_fees   = $request->input('tax_fees') || 0.19;
 
 
         if($request->hasFile('image'))

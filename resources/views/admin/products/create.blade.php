@@ -249,13 +249,17 @@
 					</div>
 				</div>
 				<div class='row'>
-							<div class='col-md-6'>
+							<div class='col-md-4'>
 								{{ Form::label('barcode' , 'Barcode') }}
 								{{ Form::text('barcode' , null, ['class'=> 'form-control' , 'required'=> '']) }}
 							</div>
-							<div class='col-md-6'>
+							<div class='col-md-4'>
 								{{ Form::label('custom_id' , 'Custom ID:') }}
 								{{ Form::text('custom_id' , null, ['class'=> 'form-control' , 'required'=> '']) }}
+							</div>
+							<div class='col-md-4'>
+								{{ Form::label('tax_fees' , 'Tax Fees:') }}
+								{{ Form::text('tax_fees' , null, ['class'=> 'form-control' , 'required'=> '']) }}
 							</div>
 				</div>
 
