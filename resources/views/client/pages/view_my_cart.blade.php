@@ -216,7 +216,7 @@
                     </p>
 
                     <h3 id="tax">
-                        {{ sprintf('%0.2f', $taxes)}} $
+                        {{ sprintf('%0.2f', $taxes)}} €
                     </h3>
                     </div>
            <!--                        DISCOUNTS
@@ -256,7 +256,7 @@
                 <p class="price_item_details">
                     <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">Total</span>
                     <span style="left:4em;" id="Total"> {{$total }}</span>
-                    <i style="color: #fff;    font-size: 1.5em;font-family: 'EagarFont';margin-top: 0.2em;width: 4em;margin-left: 94px;text-align: center;position: absolute;z-index: 18;">$</i>
+                    <i style="color: #fff;    font-size: 1.5em;font-family: 'EagarFont';margin-top: 0.2em;width: 4em;margin-left: 94px;text-align: center;position: absolute;z-index: 18;">€</i>
 
                     <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details"/>
                 </p>
