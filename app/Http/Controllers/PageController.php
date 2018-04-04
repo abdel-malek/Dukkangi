@@ -102,6 +102,11 @@ class PageController extends Controller
 				$product->english = $product->kurdi;
 			}
 		}
+		foreach ($products as $product) {
+			if (isset($product->discount_price)) {
+				$product->discount =  sprintf('%0.0f',100 - (($product->discount_price * 100) / $product->price));
+			}
+		}
 		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withCategoryId($categoryId);
 	}
 
@@ -162,7 +167,11 @@ class PageController extends Controller
 				$product->english = $product->kurdi;
 			}
 		}
-
+		foreach ($products as $product) {
+			if (isset($product->discount_price)) {
+				$product->discount =  sprintf('%0.0f',100 - (($product->discount_price * 100) / $product->price));
+			}
+		}
 		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withLastSearch($request->search)->withCategoryId($request->categoryId);
 	}
 
@@ -211,6 +220,11 @@ class PageController extends Controller
 			}
 			foreach ($subcategories as $subcategory) {
 				$subcategory->english = $subcategory->kurdi;
+			}
+		}
+		foreach ($products as $product) {
+			if (isset($product->discount_price)) {
+				$product->discount =  sprintf('%0.0f',100 - (($product->discount_price * 100) / $product->price));
 			}
 		}
 		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withLastSearch('Filter')->withCategoryId($categories[0]->id)->withFilter(1);
@@ -281,7 +295,11 @@ class PageController extends Controller
 				$product->english = $product->kurdi;
 			}
 		}
-
+		foreach ($products as $product) {
+			if (isset($product->discount_price)) {
+				$product->discount =  sprintf('%0.0f',100 - (($product->discount_price * 100) / $product->price));
+			}
+		}
 		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withLastSearch($subcategory->category_id);
 	}
 
@@ -343,11 +361,16 @@ class PageController extends Controller
 				$simi->english = $simi->turky;
 			}
 		}
-
-		//Calculate Average Rate For Subcategory
-
-
-		//dd($product->rate);
+			$product->tax = sprintf('%0.2f',$product->price *0.19);
+			$product->gain_points= ceil($product->price / 5);
+			$product->abstract_price = $product->price - $product->tax;
+		if (isset($product->discount_price)) {
+			$product->discount =  sprintf('%0.1f',100 - (($product->discount_price * 100) / $product->price));
+			
+			$product->tax = sprintf('%0.2f',$product->discount_price *0.19);
+			$product->gain_points= ceil($product->discount_price / 5);
+			$product->abstract_price = $product->discount_price - $product->tax;
+		}
 
 		return view('client.pages.item_view')->withProduct($product)->withCategory($category)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments);
 
@@ -430,6 +453,17 @@ class PageController extends Controller
 			$product->rate = round( $precalculation / $productRate->count() );
 		}
 //		$subcategory->rate =3;
+
+			$product->tax = sprintf('%0.2f',$product->price *0.19);
+			$product->gain_points= ceil($product->price / 5);
+			$product->abstract_price = $product->price - $product->tax;
+		if (isset($product->discount_price)) {
+			$product->discount =  sprintf('%0.0f',100 - (($product->discount_price * 100) / $product->price));
+			$product->tax = sprintf('%0.2f',$product->discount_price *0.19);
+			$product->gain_points= ceil($product->discount_price / 5);
+			$product->abstract_price = $product->discount_price - $product->tax;
+		}
+
 
 		return view('client.pages.buy_item')->withProduct($product)->withSubcategory($subcategory);
 	}

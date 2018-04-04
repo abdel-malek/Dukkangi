@@ -125,7 +125,7 @@
                     Button</button>
                 </div>
             </div>
-            <div class="container"  style="margin-top: 6em;padding-right: 0em;padding-left: 0em;" >
+            <div class="container"  style="margin-top: 6em;padding-right: 0em;padding-left: 0em;margin-bottom:20px" >
                     <div class="tabs">
                     <ul class="tabs__items">
                         @foreach($categories as $category)

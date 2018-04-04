@@ -155,7 +155,7 @@
                                 <p class="num_qty">
                                     1
                                 </p>
-                                <div style="width:30%;float: right;" data-price="{{$product->price}}">
+                                <div style="width:30%;float: right;" data-price="{{isset($product->discount)?$product->discount_price :$product->price}}">
                                     <img src="/front-end/images/payment/handler-plus.png" class="btn_qty" onclick="num_plus(this);">
                                     <img src="/front-end/images/payment/handler-min.png" class="btn_qty" style="margin-top: -0.9em" onclick="num_min(this)">
                                 </div>
@@ -222,12 +222,21 @@
                                 </h3>
                                 </big>
                             </div>
+                            @if(!isset($product->discount))
                             <div style="width: 60%;float: right;margin-top:25px;">
                                 <p class="option_size active_option_size" style="width: 100%">
-                                    {{$product->price}} €
+                                    {{$product->price - $product->tax}} €
                                 </p>
-
                             </div>
+                            @else
+                            <div style="width: 60%;float: right;margin-top:25px;">
+                                <p class="option_size active_option_size" style="width: 100%">
+ 
+                                 {{ $product->price - ($product->price*0.19) }} - {{$product->discount}}% = {{$product->abstract_price}} € 
+                                </p>
+                            </div>
+                            
+                            @endif
                             <div style="width: 39%;float: left;margin-top: 0px;">
                                 <big>
                                 <h3 class="title_size" style="margin-top: 1.0em;padding-left: 15px" >
@@ -236,15 +245,45 @@
                                 </big>
                             </div>
                             <div style="width: 60%;float: right;margin-top:25px;">
-                                <p class="option_size active_option_size" style="width: 100%"   id="gain" data-gain="{{ceil($product->price/5)}}">
-                                    {{ceil($product->price/5)}} Points
+                                <p class="option_size active_option_size" style="width: 100%"   id="gain" data-gain="{{$product->gain_points}}">
+                                    {{$product->gain_points}} Points
+                                </p>
+
+                            </div>
+                           <div style="width: 39%;float: left;margin-top: 0px;">
+                                <big>
+                                <h3 class="title_size" style="margin-top: 1.0em;padding-left: 15px" >
+                                    Tax:
+                                </h3>
+                                </big>
+                            </div>
+                            <div style="width: 60%;float: right;margin-top:25px;">
+                                <p class="option_size active_option_size" style="width: 100%"   id="tax" data-tax="{{$product->tax}}">
+
+                                    {{ $product->tax }} €
                                 </p>
 
                             </div>
 
+                            <div style="width: 39%;float: left;margin-top: 0px;">
+                                <big>
+                                <h3 class="title_size" style="margin-top: 1.0em;padding-left: 15px" >
+                                    Products Price:
+                                </h3>
+                                </big>
+                            </div>
+                            <div style="width: 60%;float: right;margin-top:25px;">
+                                <p class="option_size active_option_size" style="width: 100%"   id="totprice" data-abstract="{{$product->abstract_price}}">
+
+                                    {{$product->abstract_price }} €
+                                </p>
+
+                            </div>
+
+
                     <p class="price_item_details">
-                        <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">Total</span>
-                        <span style="left:4em;" id="total"> {{$product->price}} €</span>
+                        <span style="font-family: 'HeadlinesFont';font-size: 1.3em;left: -1em;margin-top: 0.4em;">Total</span>
+                        <span style="left:3em;" id="total"> {{isset($product->discount) ?$product->discount_price :$product->price}} €</span>
                         <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details"/>
                     </p>
             </div>
@@ -422,11 +461,16 @@
                 counter = 0;
                 $('#total').text( parseFloat(
                         parseFloat( $('#total').text() ) + parseFloat($(obj).parent().data('price') )
-                     ).toFixed(2) + " €");
+                     ).toFixed(2) + "€");
                 $('#gain').text(parseInt(
                     parseInt($('#gain').text()) + parseInt($('#gain').data('gain'))
                     ) + " Points");
-
+                $('#tax').text(parseFloat(
+                    parseFloat($('#tax').text() ) + parseFloat($('#tax').data('tax'))
+                    ).toFixed(2) + " €" );
+                $('#totprice').text(parseFloat(
+                    parseFloat($('#totprice').data('abstract')) + parseFloat($('#totprice').text())
+                    ).toFixed(2) + " €");
                 }
                 else if (counter < 1){
                     $(obj).parent().parent().find('p').text($(obj).parent().parent().find('p').text() + "MAX");
@@ -436,16 +480,25 @@
 
             }
             function num_min(obj) {
-                console.log(   );
                 if ((parseInt($(obj).parent().parent().text()) > 0)) {
                     $(obj).parent().parent().find('p').text(parseInt($(obj).parent().parent().find('p').text()) - 1);
                     $('#total').text( parseFloat(
                         parseFloat( $('#total').text() ) - parseFloat($(obj).parent().data('price') )
-                     ).toFixed(2) + " €");
+                    ).toFixed(2) + "€");
                      $('#gain').text(parseInt(
-                    parseInt($('#gain').text()) - parseInt($('#gain').data('gain'))
+                        parseInt($('#gain').text()) - parseInt($('#gain').data('gain'))
                     ) + " Points");
+                    $('#tax').text(parseFloat(
+                        parseFloat($('#tax').text() ) - parseFloat($('#tax').data('tax'))
+                    ).toFixed(2) + " €" );
+                
+                    $('#totprice').text(parseFloat(
+                     parseFloat($('#totprice').text()) - parseFloat($('#totprice').data('abstract')) 
+                    ).toFixed(2) + " €");
+              
+
                 }
             }
+
         </script>
 @endsection

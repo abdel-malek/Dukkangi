@@ -26,9 +26,9 @@ class CartController extends Controller
 
 		$orders= $cart['orderItems'];
 		$gainPoints = $cart['gainPoints'];
-		$taxes = $cart['taxes'];
+	//	$taxes = $cart['taxes'];
 
-		return view('client.pages.view_my_cart')->withOrders($orders)->withGainPoints($gainPoints)->withTaxes($taxes);
+		return view('client.pages.view_my_cart')->withOrders($orders)->withGainPoints($gainPoints);
 	}
 
   public function checkout(Request $request){
