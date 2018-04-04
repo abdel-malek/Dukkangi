@@ -240,7 +240,7 @@ class ProductService {
 		$product->barcode   = $request->input('barcode');
 		$product->custom_id   = $request->input('custom_id');
 		$product->tax_fees   = $request->input('tax_fees');
-		
+
 		if($request->hasFile('image'))
 				$product->image_id = ImageService::saveImage($request->file('image'));
 
@@ -273,6 +273,11 @@ class ProductService {
 
 	public static function loadById($id){
 		return Product::where('id','=',$id)->get()->first();
+	}
+
+	public static function getProductTax($id){
+		$product = Product::select('tax_fees')->where('id','=',$id)->get()->first();
+		return $product->tax_fees;
 	}
 
 

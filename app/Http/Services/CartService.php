@@ -4,6 +4,7 @@ use App\Order;
 use App\OrderItem;
 use App\OrderStatus;
 use App\Http\Services\PaymentService;
+use App\Http\Services\ProductService;
 
 class CartService{
 
@@ -15,7 +16,7 @@ class CartService{
   }
 
   private static function createOrderItem($product,$qty,$cartId,$userId){
-  $cartId =  self::createCart($cartId,$userId,null);
+    $cartId =  self::createCart($cartId,$userId,null);
     return OrderItem::updateOrCreate(['order_id' => $cartId,'item_id' => $product->id,'user_id' => $userId],
           ['order_id' => $cartId,'item_id' => $product->id,
           'sub_amount' => $product->price,'qty' => $qty, 'total_amount' => $product->price * $qty,
@@ -73,15 +74,18 @@ class CartService{
    }
 
   public static function checkout($cartId,$products,$paymentMethodId = 1 ,$userId){
+    $tax = 0;
     foreach ($products as $product) {
-      self::addToCart($product['id'],$product['qty'],$cartId,$userId);
+      $orderItem = self::addToCart($product['id'],$product['qty'],$cartId,$userId);
+      $taxFees = ProductService::getProductTax($product['id']);
+      $tax += self::calculateTaxAmount($orderItem->total_amount,$taxFees);
     }
 
     //Calculate Amount
     $amount = self::getTotalAmount($cartId);
     //make a payment
     // TODO: Pass payment method id
-    $payment = PaymentService::createPayment($paymentMethodId,$cartId,$userId,$amount,'EUR');
+    $payment = PaymentService::createPayment($paymentMethodId,$cartId,$userId,$amount,'EUR',$tax);
     return self::completeCart($cartId,$payment->id);
   }
 

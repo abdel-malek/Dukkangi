@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 
 use App\Payment;
+use App\PaymentMethod;
 use App\User;
 use Session;
 
@@ -55,15 +56,23 @@ class PaymentService {
 		return Payment::where('id','=',$id)->delete();
 	}
 
-	public static function createPayment($paymentMethodId,$cartId,$userId,$amount,$currency){
+	public static function createPayment($paymentMethodId,$cartId,$userId,$amount,$currency,$tax){
 		$subAmount = $amount;
-		$amount = self::calculateTax($amount,0.19);
+		$paymentFees = self::calcualtePaymentFees($amount,$paymentMethodId);
 		return Payment::create(['payment_method_id'=>$paymentMethodId,'amount' => $amount,'currency' => $currency,
-		'user_id' => $userId,'order_id' => $cartId,'request'=>'','response'=>'','coupon'=>'','sub_amount' => $subAmount]);
+		'user_id' => $userId,'order_id' => $cartId,'request'=>'','response'=>'','coupon'=>'','sub_amount' => $subAmount,
+		'payment_fees' => $paymentFees,'tax_fees' => $tax]);
 	}
 
-	private static function calculateTax($amount,$tax){
-		$result = $amount + ($amount * $tax);
+	private static function calcualtePaymentFees($amount,$paymentMethodId){
+		$paymentMethod = PaymentMethod::where('id','=',$paymentMethodId)->get()->first();
+		$result = 0;
+		if($paymentMethod->percent_fees > 0){
+			$result = $amount * $paymentMethod->percent_fees;
+		}
+		if($paymentMethod->fixed_fees > 0){
+			$result += $paymentMethod->fixed_fees;
+		}
 		return $result;
 	}
 
