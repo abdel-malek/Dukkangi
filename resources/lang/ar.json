@@ -41,8 +41,20 @@
 "Total":"الإجمالي",
 "My Cart":"السلة",
 "Logout":"تسجيل الخروج",
-
-
+"Product Price":"سعر المنتج",
+"Tax":"ضريبة",
+"Taxes":"ضرائب",
+"Quantities":"الكميات",
+"Price":"السعر",
+"Gain Points":"النقاط",
+"Products Price":"اسعار المنتجات",
+"Choose your payment method:":"اختر طريقة الدفع:",
+"Credit Card Details:":"تفاصيل البطاقة:",
+"Make Payment":"دفع",
+"You gained":"حصلت",
+"Points rewards":"النقاط",
+"Enter Code":"ادخل الرمز",
+"(Included in product price)":"مضمنة بثمن المنتج",
 
 "" : "" 
 }

@@ -277,7 +277,12 @@
                     </p>
                      <p class="add_to_card_item_details" style="cursor: pointer;margin-top: 110px" id="btn_modal_one_item_details" >
                         <span> <small>@lang('Add to cart')</small></span>
-                        <img src="/front-end/images/price-tag/add-to-cart.png" class="img_add_to_card_item_details"/>
+
+                        <img src="/front-end/images/price-tag/add-to-cart.png" class="img_add_to_card_item_details" 
+                        @if(session('lang') == 'de') 
+                            style="height: 7.2em;" 
+                        @endif
+                        />
                     </p>
                    @endif
                 </div>
@@ -420,7 +425,7 @@
             </div>
         </div>
     </div>
-        <div class="col-md-12" style="float:left;">
+        <div class="col-md-12" style="float:left;margin-left: 92px;padding-right: 120px;">
             <h3 class="title_similar_items" >
                 @lang('Similar item')
             </h3>

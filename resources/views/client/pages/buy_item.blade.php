@@ -125,14 +125,14 @@
 
         <div class="col-md-12" style="padding: 0em 5em;">
             <div class="header_page" style="background-image: url('{{$subcategory->image_id}}')">
-                <p class="header_page_text_div" style="padding-left: 26.5em">
+                <p class="header_page_text_div" style="padding-left: 26.9em ;width:82%;">
                     {{ $subcategory->english }}
                     <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
-                    <span class="rating subcategory"  style="left: 19.9em;"></span>
+                    <span class="rating subcategory"  style="left: 20.9em;"></span>
                 </p>
             </div>
 
-                <div class="one_item_details" style="width: 30% ;margin-left: 2em">
+                <div class="one_item_details" style="width: 36%;position: relative;margin-left: 2em;margin-bottom: 20px;height: 900px;">
                     <div class="header_item_details">
                         <img src="{{$product->image_id}}" class="img_item_details" style="height: 380px;" />
                         <div class="div_title_item_details" >
@@ -250,14 +250,14 @@
                                 </p>
 
                             </div>
-                           <div style="width: 39%;float: left;margin-top: 0px;">
+                           <div style="width: @if(session('lang')== 'de' ||session('lang')== 'tr' ) 67%;@else 39%;@endif ;float: left;margin-top: 0px;">
                                 <big>
                                 <h3 class="title_size" style="margin-top: 1.0em;padding-left: 15px" >
                                     @lang('Tax'):
                                 </h3>
                                 </big>
                             </div>
-                            <div style="width: 60%;float: right;margin-top:25px;">
+                            <div style="width: @if(session('lang') == 'de' || session('lang')== 'tr' ) 30%;@else 60%;@endif ;float: right;margin-top:25px;">
                                 <p class="option_size active_option_size" style="width: 100%"   id="tax" data-tax="{{$product->tax}}">
 
                                     {{ $product->tax }} €
