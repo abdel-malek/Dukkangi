@@ -257,13 +257,13 @@
                     @endif
                     <!--</div>-->
                     <p class="points_item_details" style="margin-top:1em ;{{ $product->qty == 0 ?"filter: blur(5px)" : '' }}">
-                        <span>{{ sprintf('%0.2f', $product->tax) }} € </span>Tax
+                        <span>{{ sprintf('%0.2f', $product->tax) }} € </span>@lang('Tax')
                     </p>
                     <p class="points_item_details" style="margin-left:50px;margin-top: 0em; {{ $product->qty == 0 ?"filter: blur(5px)" : '' }}">
-                        <span> {{ sprintf('%0.2f',$product->abstract_price)}} €</span> Product Price
+                        <span> {{ sprintf('%0.2f',$product->abstract_price)}} €</span> @lang('Product Price')
                     </p>
                     <p class="points_item_details" style=";margin-top: 0em; {{ $product->qty == 0 ?"filter: blur(5px)" : '' }}">
-                        <span> {{ $product->gain_points }} @lang('Points') </span> @lang('Bounce')
+                        <span> {{ $product->gain_points }} @lang('Points') </span> @lang('Bounce')  
                     </p>
                     <p  class="text_item_details" {{ $product->qty == 0 ?"style='filter: blur(5px)'" : '' }}>
                         {{ $product->desc_english}}
@@ -272,11 +272,11 @@
                      @if ($product->qty != 0 )
 
                     <p class="buy_item_details" style="margin-top: 100px">
-                         <a href="{{route('buyitem' , $product->id)}}" ><span style="cursor: pointer;"> @lang('Buy This Item')</span></a>
+                         <a href="{{route('buyitem' , $product->id)}}" ><span style="cursor: pointer;"><small> @lang('Buy This Item')</small></span></a>
                         <img src="/front-end/images/price-tag/buy-this-item.png" class="img_buy_item_details"/>
                     </p>
                      <p class="add_to_card_item_details" style="cursor: pointer;margin-top: 110px" id="btn_modal_one_item_details" >
-                        <span> @lang('Add to cart')</span>
+                        <span> <small>@lang('Add to cart')</small></span>
                         <img src="/front-end/images/price-tag/add-to-cart.png" class="img_add_to_card_item_details"/>
                     </p>
                    @endif
@@ -455,7 +455,7 @@
 
  <div class="background_modal" style="display: none;" ></div>
  <div class="modal_one_item_details" id="modal_one_item_details" style="display: none;"
-      data-productId={{$product->id}} data-qty='1'>
+      data-productId="{{$product->id}}" data-qty='1'>
       <div class="header_item_details">
           <img src="/front-end/images/slider/slider1.jpg" class="img_item_details" style="height: 380px" />
           <div class="div_title_item_details" >

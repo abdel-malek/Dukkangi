@@ -437,38 +437,7 @@ class PageController extends Controller
 
 		return Redirect(route('product' , $productId));
 	}
-	public function getBuyItemPage($id){
-		if(Auth::id()<= 0){
-			return redirect('login');
-		}
-		$product = Product::find($id);
-		$subcategory = Subcategory::find($product->subcategory_id);
-		$productRate = Rate::select('rate')->where('product_id' , '=',$product->id)->get();
-
-		if($productRate->count() != 0){
-			$precalculation =0 ;
-			foreach ($productRate as $temp) {
-					$precalculation = $precalculation + $temp->rate;
-			}
-			$product->rate = round( $precalculation / $productRate->count() );
-		}
-//		$subcategory->rate =3;
-
-			$product->tax = sprintf('%0.2f',$product->price *0.19);
-			$product->gain_points= ceil($product->price / 5);
-			$product->abstract_price = $product->price - $product->tax;
-		if (isset($product->discount_price)) {
-			$product->discount =  sprintf('%0.0f',100 - (($product->discount_price * 100) / $product->price));
-			$product->tax = sprintf('%0.2f',$product->discount_price *0.19);
-			$product->gain_points= ceil($product->discount_price / 5);
-			$product->abstract_price = $product->discount_price - $product->tax;
-		}
-
-
-		return view('client.pages.buy_item')->withProduct($product)->withSubcategory($subcategory);
-	}
-
-
+	
 
 
 

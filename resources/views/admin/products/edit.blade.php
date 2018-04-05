@@ -22,7 +22,7 @@
 				{{ Form::text('kurdi' , null, ['class'=> 'form-control' , 'required'=> '']) }}
 				<br>
 
-				{{ Form::label('turky' , 'Name (Turyi):') }}
+				{{ Form::label('turky' , 'Name (Turky):') }}
 				{{ Form::text('turky' , null, ['class'=> 'form-control' , 'required'=> '']) }}
 				<br>
 
@@ -70,7 +70,7 @@
 		</div>
 
 <div class="row">
-	<div class="col-md-12 jumbotron" style="margin-left: 30px;margin-right: 30px;padding-right: 0px;max-width: 960px;padding-top: 20px">
+	<div class="col-md-12 jumbotron" style="margin-left: 200px;margin-right: 30px;padding-right: 0px;max-width: 960px;padding-top: 20px">
 		<p >
 		<h3 class="text-center"><i> Section 1</i></h3>
 		</p>
@@ -116,7 +116,7 @@
 		</div>
 	</div>
 </div><div class="row">
-	<div class="col-md-12 jumbotron" style="margin-left: 30px;margin-right: 30px;padding-right: 0px;max-width: 960px;padding-top: 20px">
+	<div class="col-md-12 jumbotron" style="margin-left: 200px;margin-right: 30px;padding-right: 0px;max-width: 960px;padding-top: 20px">
 		<p >
 		<h3 class="text-center"><i> Section 2</i></h3>
 		</p>
@@ -162,7 +162,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-12 jumbotron" style="margin-left: 30px;margin-right: 30px;padding-right: 0px;max-width: 960px;padding-top: 20px">
+	<div class="col-md-12 jumbotron" style="margin-left: 200px;margin-right: 30px;padding-right: 0px;max-width: 960px;padding-top: 20px">
 		<p >
 		<h3 class="text-center"><i> Section 3</i></h3>
 		</p>

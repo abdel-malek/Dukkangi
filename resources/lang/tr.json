@@ -13,6 +13,47 @@
 "Password":"Parola",
 "My Cart":"benim kartım",
 "Logout":"çıkış Yap",
+"Section":"Bölüm",
+"Tax":"Vergi",
+"Product Price":"Ürün fiyatı",
+"off":"Satıldı",
+"Buy This Item":"Bu öğeyi satın al",
+"Add to cart":"Sepete ekle",
+"Price in Points":"Puanlarda Fiyat",
+"Customer's Reviews":"Müşteri Yorumları",
+"Rated this product":"Bu ürünü puanla",
+"Leave a constructive review":"Yapıcı bir inceleme bırakın",
+"Rate this product":"Bu ürünü derecelendir",
+"Leave a comment":"yorum Yap",
+"Post my review":"İnceleme gönder",
+"Cancel":"İptal etmek",
+"Similar item":"Benzer öğe",
+"Bounce":"Sıçrama",
+"Upvoted":"Upvoted",
+"Reply":"cevap",
+"Report":"Rapor",
+"Quantity":"miktar",
+"Price":"Fiyat",
+"Gain Points":"Kazanç Puanları",
+
+"Products Price":"Ürün Fiyatı",
+"Total":"Genel Toplam",
+"Choose your payment method:":"Ödeme yönteminizi seçin:",
+"Credit Card Details:":"Kredi kartı detayları:",
+"Make Payment":"Ödeme yapmak",
+"Quantities":"Miktarları",
+"Points rewards":"Puan ödülleri",
+"You gained":"Kazandın",
+"Taxes":"Vergiler",
+"(Included in product price)":"(Ürün fiyatına dahildir)",
+"Voucher Code":"Kupon Kodu",
+"Enter Code":"Kodu girin",
+"Done":"tamam",
+"View my Cart":"Sepetimizi Görüntüle",
+
+
+
+
 
 
 "" : "" 

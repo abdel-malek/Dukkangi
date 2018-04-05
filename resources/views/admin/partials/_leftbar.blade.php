@@ -41,26 +41,7 @@
                                 <!--<span class="float-xs-right"><i class="icon_plus"></i></span>-->
                             </a>
                         </li>
-                       <!--     <li><a class="flat-buttons" href="javascript:void(0)">Icons<span
-                                        class="arrow_carrot-right submenu-arrow-right"></span></a>
-                                <ul class="submenu-sub-sub">
-                                    <li>
-                                        <a class="flat-buttons" href="font_awesome.html">Font-Awesome</a>
-                                    </li>
-                                    <li>
-                                        <a class="flat-buttons" href="themify_icons.html">Themify-Icons</a>
-                                    </li>
-                                    <li>
-                                        <a class="flat-buttons" href="7-Stroke_icons.html">7-stroke</a>
-                                    </li>
-                                    <li>
-                                        <a class="flat-buttons" href="weather_icons.html">Weather-Icons</a>
-                                    </li>
-                                    <li>
-                                        <a class="flat-buttons" href="material_icons.html">Material-Design</a>
-                                    </li>
-                                </ul>
-                            </li>-->
+                    
                         </ul>
                     </ul>
 

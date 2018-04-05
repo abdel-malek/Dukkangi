@@ -15,11 +15,31 @@ class CartService{
     return $order->id;
   }
 
+  
   private static function createOrderItem($product,$qty,$cartId,$userId){
     $cartId =  self::createCart($cartId,$userId,null);
     return OrderItem::updateOrCreate(['order_id' => $cartId,'item_id' => $product->id,'user_id' => $userId],
-          ['order_id' => $cartId,'item_id' => $product->id,
-          'sub_amount' => $product->price,'qty' => $qty, 'total_amount' => $product->price * $qty,
+         ['order_id' => $cartId,'item_id' => $product->id,
+          'sub_amount' => $product->price,'qty' => $qty, 
+          'total_amount' => $product->price * $qty,
+          'gain_point' => ceil($product->point /5),'user_id' => $userId,'status_id' => OrderStatus::CREATED,
+          'currency' => $product->currency]);
+  }
+
+  private static function buyItemCart($userId,$paymentId = null){
+    $order = Order::updateOrCreate(['id' => 0],
+    ['payment_id' => $paymentId,'user_id' => $userId,'status_id' => OrderStatus::CREATED]);
+    session(['cartIdBuyItem' => $order->id]);
+    return $order->id;
+  }
+
+
+  private static function createBuyItem($product,$qty,$userId){
+    $cartId =  self::buyItemCart($userId,null);
+    return OrderItem::updateOrCreate(['order_id' => $cartId,'item_id' => $product->id,'user_id' => $userId],
+         ['order_id' => $cartId,'item_id' => $product->id,
+          'sub_amount' => $product->price,'qty' => $qty, 
+          'total_amount' => $product->price * $qty,
           'gain_point' => ceil($product->point /5),'user_id' => $userId,'status_id' => OrderStatus::CREATED,
           'currency' => $product->currency]);
   }
@@ -32,6 +52,12 @@ class CartService{
     $product = ProductService::loadById($productId);
     return self::createOrderItem($product,$qty,$cartId,$userId);
   }
+
+  public static function BuyThisItem($productId,$qty,$userId){
+    $product = ProductService::loadById($productId);
+    return self::createBuyItem($product,$qty,$userId);
+  }
+
 
   public static function updateCartStatus($cartId,$status){
     self::updateOrderItemStatus($cartId,$status);
@@ -96,6 +122,22 @@ class CartService{
 
   private static function calculateTaxAmount($amount,$productTax){
     return ($amount * $productTax);
+  }
+
+
+  public static function buyItemCheckout($cartId,$product,$paymentMethodId = 1 ,$userId){
+    $tax = 0;
+    
+    $orderItem = self::BuyThisItem($product['id'],$product['qty'],$userId);
+    $taxFees = ProductService::getProductTax($product['id']);
+    $tax += self::calculateTaxAmount($orderItem->total_amount,$taxFees);
+  
+    //Calculate Amount
+    $amount = self::getTotalAmount($cartId);
+    //make a payment
+    // TODO: Pass payment method id
+    $payment = PaymentService::createPayment($paymentMethodId,$cartId,$userId,$amount,'EUR',$tax);
+    return self::completeCart($cartId,$payment->id);
   }
 
 

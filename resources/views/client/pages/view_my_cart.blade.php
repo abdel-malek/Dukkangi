@@ -140,22 +140,21 @@
 
   <div class="col-md-12" style="padding: 0em 5em;">
             <div class="header_page" style="background-image: url('/front-end/images/items_page/2.png')"/>
-                <p class="header_page_text_div">
+                <p class="header_page_text_div" style="width: 83.0%;padding-left: 29.5em ">
                     Health Food / Canned Food
                     <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
-                    <span class="rating" ></span>
+                    <span class="rating"  style="padding-left: 4em"></span>
                 </p>
             </div>
 
             <div class="one_item_details" style="padding-top: 1em;">
                 <h3 class="title_one_item_details">
-                    My Cart
+                    @lang('My Cart')
                 </h3>
                 <div class="col-md-12" style="float:left;">
-                    <h3 class="title_detail_my_card" style="width:30%;">Quantities</h3>
+                    <h3 class="title_detail_my_card" style="width:30%;">@lang('Quantities')</h3>
                     <hr class="line_title_detail_my_card" style="width:70%;">
                 </div>
-
 
                 @foreach($orders as $order)
                 <?php
@@ -183,11 +182,11 @@
                     <div class="control_item_qty">
                         <h4 class="num_item_qty" >{{ $order->qty }}</h4>
                         <div class="btn_control_item_qty">
-                            <img src="/front-end/images/payment/handler-plus.png" onclick="num_plus(this);" />
+                            <img src="/front-end/images/payment/handler-plus.png" onclick="num_plus(this);" id ="this" />
                             <img src="/front-end/images/payment/handler-min.png" onclick="num_min(this);" style="margin-top:-0.8em;" />
                         </div>
                         <p class="total_item_qty">
-                            Total <span id="total">{{ isset($order->product->discount_price) ? $order->product->discount_price : $order->product->price }} </span> <i style="color: #d80001;font-weight: bold;font-family: 'EagarFont';font-size: 1em;">€</i>
+                            @lang('Total') <span id="total">{{ isset($order->product->discount_price) ? $order->product->discount_price : $order->product->price }} </span> <i style="color: #d80001;font-weight: bold;font-family: 'EagarFont';font-size: 1em;">€</i>
                         </p>
                     </div>
                 </div>
@@ -195,12 +194,12 @@
 
 
                  <div class="col-md-12" style="float:left;">
-                    <h3 class="title_detail_my_card" style="width:40%;">Points rewards</h3>
+                    <h3 class="title_detail_my_card" style="width:40%;">@lang('Points rewards')</h3>
                     <hr class="line_title_detail_my_card" style="width:60%;">
                 </div>
                 <div class="gained_point_rewards">
                     <p>
-                       You gained
+                       @lang('You gained')
                     </p>
                     <h3 id="total-gain">
                         {{$gain }} PT
@@ -208,12 +207,12 @@
                 </div>
 
                    <div class="col-md-12" style="float:left;">
-                    <h3 class="title_detail_my_card" style="width:16%;">Taxes</h3>
+                    <h3 class="title_detail_my_card" style="width:16%;">@lang('Taxes')</h3>
                     <hr class="line_title_detail_my_card" style="width:84%;">
                 </div>
                 <div class="taxes_taxes">
                        <p>
-                        Taxes <small><small> <i>(Included in product price)<i></small></small>
+                        @lang('Taxes') <small><small> <i>@lang('(Included in product price)')<i></small></small>
                     </p>
 
                     <h3 id="tax">
@@ -244,18 +243,18 @@
                 </div>
                -->
                    <div class="col-md-12" style="float:left;">
-                    <h3 class="title_detail_my_card" style="width:35%;">Voucher Code</h3>
+                    <h3 class="title_detail_my_card" style="width:35%;">@lang('Voucher Code')</h3>
                     <hr class="line_title_detail_my_card" style="width:65%;">
                 </div>
                 <div class="code_voucher_code">
                     <p style="width: 35%;margin-top: 0.4em;">
-                        Enter Code
+                        @lang('Enter Code')
                     </p>
                     <input class="form-group one_code_voucher_code"  />
                 </div>
 
                 <p class="price_item_details">
-                    <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">Total</span>
+                    <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">@lang('Total')</span>
 
                     <span style="left:3em;" id="Total"> {{$total}} </span>
                     <i style="color: #fff;    font-size: 1.5em;font-family: 'EagarFont';margin-top: 0.2em;width: 4em;margin-left: 94px;text-align: center;position: absolute;z-index: 18;"> €</i>
@@ -266,7 +265,7 @@
             <div class="sections">
                 <div class="choose_payment">
                     <h4 class="title_choose_payment">
-                        Choose your payment method:
+                        @lang('Choose your payment method:')
                     </h4>
                     <div  class="visa_choose_payment">
                         <label style="float: left;">
@@ -353,7 +352,7 @@
                 </div>
                 <div class="credit_card_details">
                     <h4 class="title_credit_card_details">
-                        Credit Card Details:
+                        @lang('Credit Card Details:')
                     </h4>
                     <div class="col-md-12" style="float:left;padding: 0em 2em;">
                         <input type="text" class="form-control input_credit_card_details" placeholder="Card number ..">
@@ -361,8 +360,8 @@
                         <p class="title_input">Expiration Date</p>
                         <input type="date" id="expiration_date" class="form-control input_credit_card_details" placeholder="" style="margin-top: 0.2em;">
                         <input type="text" class="form-control input_credit_card_details" placeholder="CVV">
-                        <p class="btn_credit_card_details" id='btn-checkout' style="background-color: #d80001;color: #fff;cursor: pointer;">Make Payment</p>
-                        <p class="btn_credit_card_details" style="margin-left: 8%;">Cancel</p>
+                        <p class="btn_credit_card_details" id='btn-checkout' style="background-color: #d80001;color: #fff;cursor: pointer;">@lang('Make Payment')</p>
+                        <p class="btn_credit_card_details" style="margin-left: 8%;">@lang('Cancel')</p>
                     </div>
                 </div>
             </div>
@@ -442,7 +441,7 @@
        $('#Total').text(parseFloat(parseFloat($(obj).parent().parent().parent().data('price')) + parseFloat( $('#Total').text() )  ).toFixed(2));
 
         $(obj).parent().parent().find('h4').text(parseInt($(obj).parent().parent().find('.num_item_qty').text()) + 1);
-
+        //$(obj).parent().find('input').val($(obj).parent().parent().find('h4').text());
     }
     function num_min(obj) {
         if ((parseInt($(obj).parent().parent().text()) > 0)) {
@@ -461,7 +460,7 @@
         $('#Total').text(parseFloat(parseFloat(parseFloat( $('#Total').text() ) - $(obj).parent().parent().parent().data('price')) ).toFixed(2));
 
         $(obj).parent().parent().find('h4').text(parseInt($(obj).parent().parent().find('h4').text()) - 1);
-
+        //$(obj).parent().find('input').val($(obj).parent().parent().find('h4').text());
 
         }
     }

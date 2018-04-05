@@ -148,11 +148,11 @@
                         <div class="col-md-12" style="margin-top: 0.6em;float: left;">
                             <div style="width: 30%;float: left;">
                                 <h3 class="title_qty">
-                                    Quantity
+                                    @lang('Quantity')
                                 </h3>
                             </div>
                             <div style="width: 70%;float: right;">
-                                <p class="num_qty">
+                                <p class="num_qty" id="quant">
                                     1
                                 </p>
                                 <div style="width:30%;float: right;" data-price="{{isset($product->discount)?$product->discount_price :$product->price}}">
@@ -218,7 +218,7 @@
                              <div style="width: 39%;float: left;margin-top: 0px;">
                                 <big>
                                 <h3 class="title_size" style="margin-top: 1.0em;padding-left: 15px">
-                                    Price:
+                                    @lang('Price'):
                                 </h3>
                                 </big>
                             </div>
@@ -239,8 +239,8 @@
                             @endif
                             <div style="width: 39%;float: left;margin-top: 0px;">
                                 <big>
-                                <h3 class="title_size" style="margin-top: 1.0em;padding-left: 15px" >
-                                    Gain Points:
+                                <h3 class="title_size" style="margin-top: 1.0em;padding-left: 15px;width: 200px" >
+                                    @lang('Gain Points'):
                                 </h3>
                                 </big>
                             </div>
@@ -253,7 +253,7 @@
                            <div style="width: 39%;float: left;margin-top: 0px;">
                                 <big>
                                 <h3 class="title_size" style="margin-top: 1.0em;padding-left: 15px" >
-                                    Tax:
+                                    @lang('Tax'):
                                 </h3>
                                 </big>
                             </div>
@@ -268,7 +268,7 @@
                             <div style="width: 39%;float: left;margin-top: 0px;">
                                 <big>
                                 <h3 class="title_size" style="margin-top: 1.0em;padding-left: 15px" >
-                                    Products Price:
+                                    @lang('Products Price'):
                                 </h3>
                                 </big>
                             </div>
@@ -282,7 +282,7 @@
 
 
                     <p class="price_item_details">
-                        <span style="font-family: 'HeadlinesFont';font-size: 1.3em;left: -1em;margin-top: 0.4em;">Total</span>
+                        <span style="font-family: 'HeadlinesFont';font-size: 1.3em;left: -1em;margin-top: 0.4em;">@lang('Total')</span>
                         <span style="left:3em;" id="total"> {{isset($product->discount) ?$product->discount_price :$product->price}} €</span>
                         <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details"/>
                     </p>
@@ -291,7 +291,7 @@
             <div class="sections" style="width: 60.8%;">
                 <div class="choose_payment">
                     <h4 class="title_choose_payment">
-                        Choose your payment method:
+                        @lang('Choose your payment method:')
                     </h4>
                     <div  class="visa_choose_payment">
                         <label style="float: left;">
@@ -380,7 +380,7 @@
                 </div>
          <div class="credit_card_details">
                <h4 class="title_credit_card_details">
-                        Credit Card Details:
+                        @lang('Credit Card Details:')
                     </h4>
                     <div class="col-md-12" style="float:left;padding: 0em 2em;">
                     <input type="text" class="form-control input_credit_card_details" placeholder="Card number ..">
@@ -388,8 +388,10 @@
                     <p class="title_input">Expiration Date</p>
                     <input type="date" id="expiration_date" class="form-control input_credit_card_details" placeholder="" style="margin-top: 0.2em;">
                     <input type="text" class="form-control input_credit_card_details" placeholder="CVV">
-                    <p class="btn_credit_card_details" style="background-color: #d80001;color: #fff;">Make Payment</p>
-                     <p class="btn_credit_card_details" style="margin-left: 8%;">Cancel</p>
+                    {!! Form::open(['route'=> ['completebuyitem', $product->id] , 'id' => 'formcomp']) !!}
+                    {{ Form::text('qty', null,['hidden' => 'hidden', 'id' => 'form-qty'])}}
+                    <a href="#" class="btn_credit_card_details" style="background-color: #d80001;color: #fff;"  onclick="getElementById('formcomp').submit()">@lang('Make Payment')</a>
+                     <p class="btn_credit_card_details" style="margin-left: 8%;">@lang('Cancel')</p>
                 </div>
          </div>
 
@@ -471,6 +473,7 @@
                 $('#totprice').text(parseFloat(
                     parseFloat($('#totprice').data('abstract')) + parseFloat($('#totprice').text())
                     ).toFixed(2) + " €");
+                $('#form-qty').val($(obj).parent().parent().find('p').text());            
                 }
                 else if (counter < 1){
                     $(obj).parent().parent().find('p').text($(obj).parent().parent().find('p').text() + "MAX");
@@ -495,8 +498,9 @@
                     $('#totprice').text(parseFloat(
                      parseFloat($('#totprice').text()) - parseFloat($('#totprice').data('abstract')) 
                     ).toFixed(2) + " €");
-              
+                    $('#form-qty').val($(obj).parent().parent().find('p').text()); 
 
+                    
                 }
             }
 
