@@ -133,3 +133,4 @@ Route::post('/cart/checkout','CartController@checkout');
 
 //Test
 Route::get('/test/load-cart/{id}','TestController@loadCart');
+Route::get('/test/mail' , 'TestController@mail');

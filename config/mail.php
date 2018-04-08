@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'smtp'),
+    'driver' => env('MAIL_DRIVER', 'mailgun'),
 
     /*
     |--------------------------------------------------------------------------
@@ -111,6 +111,7 @@ return [
     | of the emails. Or, you may simply stick with the Laravel defaults!
     |
     */
+
 
     'markdown' => [
         'theme' => 'default',
