@@ -71,7 +71,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => env('MAIL_ENCRYPTION', null),
 
     /*
     |--------------------------------------------------------------------------
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => env('MAIL_USERNAME','postmaster@sandbox6defec9ccf1347779da51aa449edd49e.mailgun.org'),
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => env('MAIL_PASSWORD','8d1169e28512c239aa44b04c65b5acf5-bdd08c82-2b8f65cc'),
 
     /*
     |--------------------------------------------------------------------------
