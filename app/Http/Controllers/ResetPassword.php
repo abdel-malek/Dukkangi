@@ -22,13 +22,13 @@ class ResetPassword extends Controller
 
           $authDate = ['email' => $email, 'password' => $password];
           if (Auth::attempt($authDate)) {
-              //return redirect()->intended(Lang::getLocale() . '/profile');
+              return redirect(route('home'));
           }else{
               //return redirect()->intended(Lang::getLocale() . '/reset');
           }
 
       } else {
-          //return redirect()->intended(Lang::getLocale() . '/auth/login');
+          return redirect(route('login'));
       }
 
   }

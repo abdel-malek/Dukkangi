@@ -43,15 +43,20 @@ class CartController extends Controller
   public function checkout(Request $request){
     if(Auth::id()<= 0){
       return redirect('login');
+
     }
     $cartId = session('cartId');
     $products = $request->input('products');
     $userId = Auth::id();
     $status = CartService::checkout($cartId,$products,1,$userId);
-    //dd("hey");
+    
+    $data = CartService::loadCart($cartId);
+    $TotalPrice = CartService::getTotalPrice($cartId);
+
     if($status){
-        MailService::send('emails.payment',[] , 'payment@dukkangi.com',Auth::user()->email , 'payment successed');
-        MailService::send('emails.complete_order',[], 'info@dukkangi.com', Auth::user()->email, 'order successed');
+      MailService::send('emails.payment', $TotalPrice , 'payment@dukkangi.com',Auth::user()->email , 'payment successed');
+      MailService::send('emails.complete_order',$data, 'info@dukkangi.com', Auth::user()->email, 'order successed');
+      
       return redirect('home');
     }
   }
@@ -83,18 +88,25 @@ class CartController extends Controller
   }
 
   public function buyItemComplete(Request $request){
+
     if(Auth::id()<= 0){
       return redirect('login');
     }
     $product = Product::find($request->id);
     $userId = Auth::id();
-    $cartId = session('cartIdBuyItem');
+    $cartId = session('cartIdBuyItem');    
+    $payment = CartService::buyItemCheckout($cartId,$product,1,$userId);
 
-    MailService::send('emails.payment',[] , 'payment@dukkangi.com', Auth::user()->email , 'payment successed');
-    MailService::send('emails.complete_order',[], 'info@dukkangi.com', Auth::user()->email , 'order successed');
-    
-    return redirect('home');
-        
+    $TotalPrice = CartService::getTotalPrice($cartId);
+    $orders = CartService::loadCart($cartId);
+
+    MailService::send('emails.payment',['totalPrice'=> $TotalPrice] , 'payment@dukkangi.com', Auth::user()->email , 'payment successed');
+    MailService::send('emails.complete_order',['orders'=> $orders['orderItems']], 'info@dukkangi.com', Auth::user()->email , 'order successed');
+    $status = CartService::closeCart($cartId , $payment);
+
+    if ($status){
+      return redirect('home');
+    }
   }
 
 

@@ -18,6 +18,7 @@ class CartService{
   
   private static function createOrderItem($product,$qty,$cartId,$userId){
     $cartId =  self::createCart($cartId,$userId,null);
+   // dd($qty);
     return OrderItem::updateOrCreate(['order_id' => $cartId,'item_id' => $product->id,'user_id' => $userId],
          ['order_id' => $cartId,'item_id' => $product->id,
           'sub_amount' => $product->price,'qty' => $qty, 
@@ -123,6 +124,12 @@ class CartService{
   private static function calculateTaxAmount($amount,$productTax){
     return ($amount * $productTax);
   }
+  public static function getTotalPrice($cartId)
+  {
+return OrderItem::where('order_id','=',$cartId)->where('status_id','=',OrderStatus::CREATED)
+    ->sum('total_amount');
+  
+  }
 
 
   public static function buyItemCheckout($cartId,$product,$paymentMethodId = 1 ,$userId){
@@ -137,9 +144,11 @@ class CartService{
     //make a payment
     // TODO: Pass payment method id
     $payment = PaymentService::createPayment($paymentMethodId,$cartId,$userId,$amount,'EUR',$tax);
-    return self::completeCart($cartId,$payment->id);
+    return $payment->id;
   }
-
+  public static function closeCart($cartId,$payment){
+    return self::completeCart($cartId,$payment);
+  }
 
 
 }

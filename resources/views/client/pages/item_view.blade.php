@@ -257,12 +257,9 @@
                     @endif
                     <!--</div>-->
                     <p class="points_item_details" style="margin-top:1em ;{{ $product->qty == 0 ?"filter: blur(5px)" : '' }}">
-                        <span>{{ sprintf('%0.2f', $product->tax) }} € </span>@lang('Tax')
+                        <span>{{ sprintf('%0.2f', $product->tax) }} € </span>@lang('Tax')<small><small><i>(included)</i></small></small>
                     </p>
                     <p class="points_item_details" style="margin-left:50px;margin-top: 0em; {{ $product->qty == 0 ?"filter: blur(5px)" : '' }}">
-                        <span> {{ sprintf('%0.2f',$product->abstract_price)}} €</span> @lang('Product Price')
-                    </p>
-                    <p class="points_item_details" style=";margin-top: 0em; {{ $product->qty == 0 ?"filter: blur(5px)" : '' }}">
                         <span> {{ $product->gain_points }} @lang('Points') </span> @lang('Bounce')  
                     </p>
                     <p  class="text_item_details" {{ $product->qty == 0 ?"style='filter: blur(5px)'" : '' }}>
