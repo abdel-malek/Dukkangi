@@ -10,11 +10,12 @@ use Auth;
 
 class TestController extends Controller
 {
-  	public function loadCart($id)
-  	{
-		return CartService::loadCart($id);
-  	}
-  	public function mail(){
-      return MailService::send('emails.test','info@dukkangi.com','aimankabbani@gmail.com','payment successed');
-  }
+    public function loadCart($id)
+    {
+        return CartService::loadCart($id);
+    }
+    public function mail()
+    {
+        return MailService::send('emails.test', 'info@dukkangi.com', 'aimankabbani@gmail.com', 'payment successed');
+    }
 }
