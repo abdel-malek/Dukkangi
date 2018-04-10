@@ -105,7 +105,7 @@ class RegisterController extends Controller
 
         $this->guard()->login($user);
 
-        MailService::send('emails.signup', 'register@dukkangi.com', $request->email, 'register successed');
+        MailService::send('emails.signup', [],'register@dukkangi.com', $request->email, 'register successed');
 
         return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());
