@@ -90,7 +90,7 @@ class CartController extends Controller
     $userId = Auth::id();
     $cartId = session('cartIdBuyItem');
 
-    MailService::send('emails.payment'.[] , 'payment@dukkangi.com', Auth::user()->email , 'payment successed');
+    MailService::send('emails.payment',[] , 'payment@dukkangi.com', Auth::user()->email , 'payment successed');
     MailService::send('emails.complete_order',[], 'info@dukkangi.com', Auth::user()->email , 'order successed');
     
     return redirect('home');
