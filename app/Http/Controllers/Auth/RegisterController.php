@@ -91,4 +91,21 @@ class RegisterController extends Controller
             ]);
         }
     }
+
+
+   public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        MailService::send('emails.signup', 'register@dukkangi.com', $request->email, 'register successed');
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
+    }
+
+
 }

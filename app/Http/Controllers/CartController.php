@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Services\CartService;
+use App\Http\Services\MailService;
 use Auth;
 use App;
 use App\Product;
-//use Mailgun\Mailgun;
-//use vendor\autoload;
 use Mail;
 use App\Subcategory;
 class CartController extends Controller
@@ -51,6 +50,8 @@ class CartController extends Controller
     $status = CartService::checkout($cartId,$products,1,$userId);
     //dd("hey");
     if($status){
+        MailService::send('emails.payment' , 'payment@dukkangi.com',Auth::user()->email , 'payment successed');
+        MailService::send('emails.complete_order', 'info@dukkangi.com', 'iteng.moustafa@gmail.com', 'order successed');
       return redirect('home');
     }
   }
@@ -88,29 +89,12 @@ class CartController extends Controller
     $product = Product::find($request->id);
     $userId = Auth::id();
     $cartId = session('cartIdBuyItem');
-    //dd($request->qty);
 
-    $mgClient = new Mailgun('key-0666bf6c9c55fe8ec56d33c6ce0c0a25');
-    $domain = "sandbox6defec9ccf1347779da51aa449edd49e.mailgun.org";
-
-    # Make the call to the client.
-    $result = $mgClient->sendMessage("$domain",
-          array('from'    => 'Mailgun Sandbox <postmaster@sandbox6defec9ccf1347779da51aa449edd49e.mailgun.org>',
-                'to'      => 'Moustafa Unknown <iteng.moustafa@gmail.com>',
-                'subject' => 'Hello Moustafa Unknown',
-                'text'    => 'Congratulations Moustafa Unknown, you just sent an email with Mailgun!  You are truly awesome! '));
-
-
-//    $status = CartService::buyItemCheckout($cartId,$product,1,$userId);
-  //    Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
-    //  {
-      //  $message->subject('Testing ');
-        //$message->from('Larvel Testing');
-//        $message->to('iteng.moustafa@gmail.com');
-  //    });
-    if ($status){
-      return redirect('home');
-    }    
+    MailService::send('emails.payment' , 'payment@dukkangi.com',Auth::user()->email , 'payment successed');
+    MailService::send('emails.complete_order', 'info@dukkangi.com', 'iteng.moustafa@gmail.com', 'order successed');
+    
+    return redirect('home');
+        
   }
 
 
