@@ -57,6 +57,9 @@
                                     
                                 </div>
                                     <p class="singup_text">
+                                        <a href="{{ route('password.request') }}">@lang('Forgot My Password')</a>
+                                    </p>
+                                    <p class="singup_text">
                                         @lang("Don't have an account ?") <a href="{{ route('register') }}">@lang('Sign up')</a>
                                     </p>
                                 </div>
