@@ -131,6 +131,9 @@ Route::post('/cart/add','CartController@addToCart');
 Route::post('/cart/checkout','CartController@checkout');
 
 
+// Stripe
+Route::post('stripe','StripeController@stripePost');
+
 //Test
 Route::get('/test/load-cart/{id}','TestController@loadCart');
 Route::get('/test/mail' , 'TestController@mail');

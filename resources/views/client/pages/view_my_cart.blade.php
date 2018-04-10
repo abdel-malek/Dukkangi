@@ -158,10 +158,10 @@
 
                 @foreach($orders as $order)
                 <?php
-            $total += (isset($order->product->discount_price) ? $order->product->discount_price : $order->product->price );
-            $gain  += (isset($order->product->discount_price) ? ceil($order->product->discount_price/5) : ceil($order->product->price/5 ));
-            $taxes += isset($order->product->discount_price) ? sprintf('%0.2f',$order->product->discount_price*0.19 ):
-            sprintf('%0.2f',$order->product->price*0.19 );
+            $total += (isset($order->product->discount_price) ? $order->product->discount_price : $order->product->price);
+            $gain  += (isset($order->product->discount_price) ? ceil($order->product->discount_price/5) : ceil($order->product->price/5));
+            $taxes += isset($order->product->discount_price) ? sprintf('%0.2f', $order->product->discount_price*0.19):
+            sprintf('%0.2f', $order->product->price*0.19);
 
                 ?>
                 <div class="item_qty_detail_my_card" data-price="{{ isset($order->product->discount_price) ? $order->product->discount_price : $order->product->price }}"
@@ -357,7 +357,71 @@
                         <p class="title_input">Expiration Date</p>
                         <input type="date" id="expiration_date" class="form-control input_credit_card_details" placeholder="" style="margin-top: 0.2em;">
                         <input type="text" class="form-control input_credit_card_details" placeholder="CVV">
-                        <p class="btn_credit_card_details" id='btn-checkout' style="background-color: #d80001;color: #fff;cursor: pointer;">@lang('Make Payment')</p>
+                        <p class="btn_credit_card_details" id='btn-checkout' style="background-color: #d80001;color: #fff;cursor: pointer;">@lang('Make Payment')
+                          <form action="/stripe" method="POST" id='stripe-form'>
+                            <input type="text" class="form-control products" name='products' hidden value=''>
+                            <input type="text" class="form-control" name='token' hidden value=''>
+                            <script src="https://checkout.stripe.com/checkout.js"></script>
+                            <script>
+                            var handler = StripeCheckout.configure({
+                              key: 'pk_test_fHrlUIH5LLkAQpihvDVDH7Di',
+                              image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+                              locale: 'auto',
+                              token: function(token) {
+                                products = [];
+                                   $('.item_qty_detail_my_card').each(function(i,obj){
+                                       productId = $(obj).attr('data-productId');
+                                       qty = $(obj).find('.num_item_qty').html();
+                                       var product = {};
+                                       product.id = productId;
+                                       product.qty = qty;
+                                       products.push(product);
+                                   });
+                                   $.ajax({
+                                       type: "POST",
+                                       url: `/stripe`,
+                                       data:{'products':products,'token':token.id,'email':token.email},
+                                       headers: {
+                                           "x-csrf-token": $("[name=_token]").val()
+                                       },
+                                   }).done(response => {
+                                       swal({
+                                           title: 'Successfully',
+                                           text: "Thank you For purchasing with us!",
+                                           type: 'success',
+                                           confirmButtonColor: '#d90f17',
+                                           confirmButtonText: 'Return To Home!'
+                                         }).then((result) => {
+                                           if (result.value) {
+                                             window.location.href ='/';
+                                           }
+                                         })
+
+                                   });
+                                // You can access the token ID with `token.id`.
+                                // Get the token ID to your server-side code for use.
+                              }
+                            });
+
+                            document.getElementById('btn-checkout').addEventListener('click', function(e) {
+                              // Open Checkout with further options:
+                              total = parseInt($('#Total').html()) * 100;
+                              handler.open({
+                                name: 'Dukkangi',
+                                description: '2 widgets',
+                                currency: 'eur',
+                                amount: total
+                              });
+                              e.preventDefault();
+                            });
+
+                            // Close Checkout on page navigation:
+                            window.addEventListener('popstate', function() {
+                              handler.close();
+                            });
+                            </script>
+                          </form>
+                        </p>
                         <p class="btn_credit_card_details" style="margin-left: 8%;">@lang('Cancel')</p>
                     </div>
                 </div>
@@ -434,10 +498,11 @@
 
         $('#tax').text( parseFloat( parseFloat($('#tax').text() ) + parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19)).toFixed(2) +"€");
 
-
-       $('#Total').text(parseFloat(parseFloat($(obj).parent().parent().parent().data('price')) + parseFloat( $('#Total').text() )  ).toFixed(2));
-
-        $(obj).parent().parent().find('h4').text(parseInt($(obj).parent().parent().find('.num_item_qty').text()) + 1);
+        total = parseFloat(parseFloat($(obj).parent().parent().parent().data('price')) + parseFloat( $('#Total').text() )  ).toFixed(2);
+        $('#Total').text(total);
+        qty = parseInt($(obj).parent().parent().find('.num_item_qty').text()) + 1;
+        $(obj).parent().parent().find('h4').text(qty);
+        $('.stripe-button').attr('data-amount',total);
         //$(obj).parent().find('input').val($(obj).parent().parent().find('h4').text());
     }
     function num_min(obj) {
@@ -454,8 +519,10 @@
         $('#tax').text( parseFloat( parseFloat($('#tax').text() ) - parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19)).toFixed(2) + "€");
         if ( parseFloat($('#tax').text()) < 0  )
             $('#tax').text('0');
-        $('#Total').text(parseFloat(parseFloat(parseFloat( $('#Total').text() ) - $(obj).parent().parent().parent().data('price')) ).toFixed(2));
-
+            total = parseFloat(parseFloat(parseFloat( $('#Total').text() ) - $(obj).parent().parent().parent().data('price')) ).toFixed(2);
+        $('#Total').text(total);
+        console.log(total);
+        $('.stripe-button').attr('data-amount',total);
         $(obj).parent().parent().find('h4').text(parseInt($(obj).parent().parent().find('h4').text()) - 1);
         //$(obj).parent().find('input').val($(obj).parent().parent().find('h4').text());
 
@@ -496,6 +563,7 @@
 
         });
     })
+
 
 </script>
 @endsection
