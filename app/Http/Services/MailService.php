@@ -5,10 +5,10 @@ use Mail;
 
 class MailService
 {
-    public static function send($template, $from, $to, $subject)
+    public static function send($template,$data, $from, $to, $subject)
     {
     	//dd("sth");
-        return  Mail::send($template, [], function ($msg) use ($from,$to,$subject) {
+        return  Mail::send($template, $data , function ($msg) use ($from,$to,$subject) {
             $msg->from($from)->to($to)->subject($subject);
         });
     }
