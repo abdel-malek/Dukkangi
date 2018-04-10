@@ -20,7 +20,7 @@ class StripeService
             if (!empty($stripeCustomer)) {
                 $charge = $stripe->charges()->create([
                 'customer' => $stripeCustomer->stripe_id,
-                'currency' => 'USD',
+                'currency' => $currency,
                 'amount'   => $amount,
                 'description' => $description,
                 'capture'=> true,
