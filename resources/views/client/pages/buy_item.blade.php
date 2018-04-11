@@ -225,14 +225,14 @@
                             @if(!isset($product->discount))
                             <div style="width: 60%;float: right;margin-top:25px;">
                                 <p class="option_size active_option_size" style="width: 100%">
-                                    {{$product->price - $product->tax}} €
+                                    {{$product->price }} €
                                 </p>
                             </div>
                             @else
                             <div style="width: 60%;float: right;margin-top:25px;">
                                 <p class="option_size active_option_size" style="width: 100%">
  
-                                 {{ $product->price - ($product->price*0.19) }} - {{$product->discount}}% = {{$product->abstract_price}} € 
+                                 {{ $product->price  }} - {{$product->discount}}% = {{$product->price * ($product->discount / 100)}} € 
                                 </p>
                             </div>
                             
@@ -253,7 +253,7 @@
                            <div style="width: @if(session('lang')== 'de' ||session('lang')== 'tr' ) 67%;@else 39%;@endif ;float: left;margin-top: 0px;">
                                 <big>
                                 <h3 class="title_size" style="margin-top: 1.0em;padding-left: 15px" >
-                                    @lang('Tax'):
+                                    @lang('Tax')<small><small><small><i>(included)</i></small></small></small>:
                                 </h3>
                                 </big>
                             </div>
@@ -273,9 +273,9 @@
                                 </big>
                             </div>
                             <div style="width: 60%;float: right;margin-top:25px;">
-                                <p class="option_size active_option_size" style="width: 100%"   id="totprice" data-abstract="{{$product->abstract_price}}">
+                                <p class="option_size active_option_size" style="width: 100%"   id="totprice" data-abstract="                                    {{isset($product->discount)? $product->price * ($product->discount / 100) : $product->price }}">
 
-                                    {{$product->abstract_price }} €
+                                    {{isset($product->discount)? $product->price * ($product->discount / 100) : $product->price }} €
                                 </p>
 
                             </div>

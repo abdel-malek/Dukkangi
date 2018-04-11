@@ -164,16 +164,13 @@
             sprintf('%0.2f', $order->product->price*0.19);
 
                 ?>
-                <div class="item_qty_detail_my_card" data-price="{{$order->product->price}}"
-                  data-tax="{{$order->product->tax_fees}}" data-gain="{{$order->gain_point}}"
+                <div class="item_qty_detail_my_card" data-price="{{ isset($order->product->discount_price) ? $order->product->discount_price : $order->product->price }}"
+                  data-tax="{{$order->product->tax_fees}}" data-gain="{{isset($order->product->discount_price ) ? ceil($order->product->discount_price /5) : ceil($order->product->price /5 ) }}"
                   data-productId='{{$order->product->id}}'>
                     <img src="{{$order->product->image_id}}" class="img_item_qty" />
                     <div class="text_item_qty">
                         <h3>{{$order->product->english}}</h3>
                         <p style="margin-bottom: 0.01em;">{{$order->product->section1_english}}</p>
-                        <span>
-                            <p  style="margin-bottom: 0rem;"> @lang('Price') :{{isset($order->product->discount_price)?sprintf('%0.2f', $order->product->discount_price -($order->product->discount_price *0.19)) : sprintf('%0.2f',$order->product->price - ($order->product->price *0.19)) }} €</p>
-                        </span>
                         <span>
                             <p> @lang('Tax') :{{ isset($order->product->discount_price)?sprintf('%0.2f', $order->product->discount_price *0.19)  : sprintf('%0.2f', $order->product->price *0.19) }} €</p>
 
@@ -538,6 +535,7 @@
     //     $('.item_qty_detail_my_card').each(function(i,obj){
     //         productId = $(obj).attr('data-productId');
     //         qty = $(obj).find('.num_item_qty').html();
+    //
     //         var product = {};
     //         product.id = productId;
     //         product.qty = qty;
@@ -565,6 +563,7 @@
     //
     //     });
     // })
+
 
 </script>
 @endsection
