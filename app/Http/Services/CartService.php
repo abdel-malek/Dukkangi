@@ -15,12 +15,12 @@ class CartService{
     return $order->id;
   }
 
-  
+
   private static function createOrderItem($product,$qty,$cartId,$userId){
     $cartId =  self::createCart($cartId,$userId,null);
     return OrderItem::updateOrCreate(['order_id' => $cartId,'item_id' => $product->id,'user_id' => $userId],
          ['order_id' => $cartId,'item_id' => $product->id,
-          'sub_amount' => $product->price,'qty' => $qty, 
+          'sub_amount' => $product->price,'qty' => $qty,
           'total_amount' => $product->price * $qty,
           'gain_point' => ceil($product->point /5),'user_id' => $userId,'status_id' => OrderStatus::CREATED,
           'currency' => $product->currency]);
@@ -38,7 +38,7 @@ class CartService{
     $cartId =  self::buyItemCart($userId,null);
     return OrderItem::updateOrCreate(['order_id' => $cartId,'item_id' => $product->id,'user_id' => $userId],
          ['order_id' => $cartId,'item_id' => $product->id,
-          'sub_amount' => $product->price,'qty' => $qty, 
+          'sub_amount' => $product->price,'qty' => $qty,
           'total_amount' => $product->price * $qty,
           'gain_point' => ceil($product->point /5),'user_id' => $userId,'status_id' => OrderStatus::CREATED,
           'currency' => $product->currency]);
@@ -127,11 +127,11 @@ class CartService{
 
   public static function buyItemCheckout($cartId,$product,$paymentMethodId = 1 ,$userId){
     $tax = 0;
-    
+
     $orderItem = self::BuyThisItem($product['id'],$product['qty'],$userId);
     $taxFees = ProductService::getProductTax($product['id']);
     $tax += self::calculateTaxAmount($orderItem->total_amount,$taxFees);
-  
+
     //Calculate Amount
     $amount = self::getTotalAmount($cartId);
     //make a payment
@@ -140,6 +140,15 @@ class CartService{
     return self::completeCart($cartId,$payment->id);
   }
 
+  public static function prepareCartAndReturnTotalAmount($products,$cartId,$userId){
+    //forloop
+    $description =''
+    foreach ($products as $product) {
+      self::addToCart($product['id'],$product['qty'],$cartId,$userId);
+      
+    }
+    return ['amount' => self::getTotalAmount($cartId),'desciption' => $description ];
+  }
 
 
 }
