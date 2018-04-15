@@ -11,12 +11,10 @@ class CartService
 {
     private static function createCart($id, $userId, $paymentId = null)
     {
-        $orderId = session('cartId');
+      $orderId = $id;
         if (!empty($orderId)) {
-            $order = Order::updateOrCreate(
-            ['id' => $id],
-            ['id' => $id, 'payment_id' => $paymentId, 'user_id' => $userId, 'status_id' => OrderStatus::CREATED]
-        );
+            $order = Order::updateOrCreate(['id' => $id],
+            ['id' => $id, 'payment_id' => $paymentId, 'user_id' => $userId, 'status_id' => OrderStatus::CREATED]);
             session(['cartId' => $order->id]);
             $orderId =  $order->id;
         }
