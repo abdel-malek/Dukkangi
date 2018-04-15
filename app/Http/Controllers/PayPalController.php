@@ -18,16 +18,16 @@ class PayPalController extends Controller
     {
 // Reply with an empty 200 response to indicate to paypal the IPN was received correctly.
         header("HTTP/1.1 200 OK");
-
+        dd($_POST);
         $ipn = new PaypalIPN();
 // Use the sandbox endpoint during testing.
         $ipn->useSandbox();
         $verified=false;
         try {
-            $verified = $ipn->verifyIPN();
+            $verified = $ipn->verifyIPN($_POST);
         } catch (\Exception $e) {
         }
-        
+
         if ($verified) {
             /*
              * Process IPN

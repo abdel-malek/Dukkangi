@@ -59,9 +59,8 @@ class PaypalIPN extends Model
      * @return bool
      * @throws Exception
      */
-    public function verifyIPN()
+    public function verifyIPN($_POST)
     {
-        dd($_POST);
         if ( ! count($_POST)) {
             throw new Exception("Missing POST Data");
         }
