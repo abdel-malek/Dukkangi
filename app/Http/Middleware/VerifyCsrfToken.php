@@ -18,7 +18,7 @@ class VerifyCsrfToken extends BaseVerifier
       'comment-save',
       '/admin/products/store',
       'categoryfilter',
-      'stripe'
+      'stripe',
       'paypal'
     ];
 }
