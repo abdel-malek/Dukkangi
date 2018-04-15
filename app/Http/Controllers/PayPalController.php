@@ -62,8 +62,7 @@ class PayPalController extends Controller
 
                     //load the product for specfic cartId
                     $products = CartService::loadProductCart($cartId);
-                    dd($products);
-                    die();
+                    
                     CartService::checkout($cartId, $products, PaymentMethod::PAYAPL, $userId);
                 }
             }
