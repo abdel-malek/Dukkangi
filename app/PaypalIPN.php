@@ -59,13 +59,12 @@ class PaypalIPN extends Model
      * @return bool
      * @throws Exception
      */
-    public function verifyIPN($_POST)
+    public function verifyIPN($raw_post_array)
     {
-        if ( ! count($_POST)) {
+        if ( ! count($raw_post_array)) {
             throw new Exception("Missing POST Data");
         }
-        $raw_post_data = file_get_contents('php://input');
-        $raw_post_array = explode('&', $raw_post_data);
+
         $myPost = array();
         foreach ($raw_post_array as $keyval) {
             $keyval = explode('=', $keyval);
