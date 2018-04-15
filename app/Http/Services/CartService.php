@@ -185,7 +185,7 @@ class CartService
 
     public static function loadProductCart($cartId){
       return OrderItem::where('order_id','=',$cartId)
-      ->select('item_id as id','qty')->toArray();
+      ->select('item_id as id','qty')->get()->toArray();
     }
 
 }
