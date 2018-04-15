@@ -26,7 +26,7 @@ class PayPalController extends Controller
             if (count($keyval) == 2)
                 $myPost[$keyval[0]] = urldecode($keyval[1]);
         }
-        dd($myPost);
+        
         $ipn = new PaypalIPN();
 // Use the sandbox endpoint during testing.
         $ipn->useSandbox();
