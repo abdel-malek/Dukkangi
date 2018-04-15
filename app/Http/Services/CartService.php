@@ -183,6 +183,10 @@ class CartService
         return ['amount' => self::getTotalAmount($cartId), 'description' => $description];
     }
 
+    public static function loadProductCart($cartId){
+      return OrderItem::where('order_id','=',$cartId)
+      ->select('item_id as id','qty')->toArray();
+    }
 
 }
 
