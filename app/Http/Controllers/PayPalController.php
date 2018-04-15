@@ -49,10 +49,11 @@ class PayPalController extends Controller
                     // Provider Parameters
                     $item_name = $myPost['item_name'];
                     //cart id
-                    $cartId = $myPost['item_number'];
+
+                    $items = $myPost['item_number'];
+                    $item_id = explode(',', $items);
                     $payer_email = $myPost['payer_email'];
                     // Custom Fields
-
                     $cartId = $item_id[0];
                     $userId = $item_id[1];
 
