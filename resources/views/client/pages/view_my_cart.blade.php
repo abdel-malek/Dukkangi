@@ -423,9 +423,10 @@
                           </form>
 
 
-                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-
+                        {{-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post"> --}}
+                        <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
                             <!-- Identify your business so that you can collect the payments. -->
+                            {{-- <input type="hidden" name="business" value="info@dukkangi.com"> --}}
                             <input type="hidden" name="business" value="info-facilitator@dukkangi.com">
 
                             <!-- Specify a Buy Now button. -->
