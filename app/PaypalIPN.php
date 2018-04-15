@@ -121,6 +121,7 @@ class PaypalIPN extends Model
         }
         $info = curl_getinfo($ch);
         $http_code = $info['http_code'];
+        dd($http_code);
         if ($http_code != 200) {
             throw new Exception("PayPal responded with http code $http_code");
         }

@@ -27,7 +27,7 @@ class PayPalController extends Controller
             $verified = $ipn->verifyIPN();
         } catch (\Exception $e) {
         }
-        dd($verified);
+        
         if ($verified) {
             /*
              * Process IPN
