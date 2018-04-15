@@ -266,7 +266,7 @@
                     </h4>
                     <div  class="visa_choose_payment">
                         <label style="float: left;">
-                            <input type="radio" name="choose_payment" />
+                            {{-- <input type="radio" name="choose_payment" />
                             <div class="circle">
                                 <div class="circle--inner circle--inner__1" ></div>
                                 <div class="circle--inner circle--inner__2" ></div>
@@ -274,8 +274,8 @@
                                 <div class="circle--inner circle--inner__4" ></div>
                                 <div class="circle--inner circle--inner__5" ></div>
                                 <div class="circle--outer" ></div>
-                            </div>
-                            <svg style="height: 4em;width: 3em;">
+                            </div> --}}
+                            {{-- <svg style="height: 4em;width: 3em;">
                             <defs>
                             <filter id="gooey">
                                 <feGaussianBlur
@@ -301,22 +301,22 @@
                                     />
                             </filter>
                             </defs>
-                            </svg>
+                            </svg> --}}
                         </label>
-                        <img src="/front-end/images/payment/visa.png" class="img_visa_choose_payment">
+                        {{-- <img src="/front-end/images/payment/visa.png" class="img_visa_choose_payment"> --}}
                     </div>
                     <div  class="paypal_choose_payment">
                         <label style="float: left;">
-                            <input type="radio" name="choose_payment" />
-                            <div class="circle">
+                            {{-- <input type="radio" name="choose_payment" /> --}}
+                            {{-- <div class="circle">
                                 <div class="circle--inner circle--inner__1" ></div>
                                 <div class="circle--inner circle--inner__2" ></div>
                                 <div class="circle--inner circle--inner__3" ></div>
                                 <div class="circle--inner circle--inner__4" ></div>
                                 <div class="circle--inner circle--inner__5" ></div>
                                 <div class="circle--outer" ></div>
-                            </div>
-                            <svg style="height: 4em;width: 3em;">
+                            </div> --}}
+                            {{-- <svg style="height: 4em;width: 3em;">
                             <defs>
                             <filter id="gooey">
                                 <feGaussianBlur
@@ -342,22 +342,24 @@
                                     />
                             </filter>
                             </defs>
-                            </svg>
+                            </svg> --}}
                         </label>
-                        <img src="/front-end/images/payment/paypal.png" class="img_paypal_choose_payment">
+                        {{-- <img src="/front-end/images/payment/paypal.png" class="img_paypal_choose_payment"> --}}
                     </div>
                 </div>
                 <div class="credit_card_details">
-                    <h4 class="title_credit_card_details">
+                    {{-- <h4 class="title_credit_card_details">
                         @lang('Credit Card Details:')
-                    </h4>
+                    </h4> --}}
                     <div class="col-md-12" style="float:left;padding: 0em 2em;">
-                        <input type="text" class="form-control input_credit_card_details" placeholder="Card number ..">
-                        <input type="text" class="form-control input_credit_card_details" placeholder="Cardholder name ..">
-                        <p class="title_input">Expiration Date</p>
-                        <input type="date" id="expiration_date" class="form-control input_credit_card_details" placeholder="" style="margin-top: 0.2em;">
-                        <input type="text" class="form-control input_credit_card_details" placeholder="CVV">
-                        <p class="btn_credit_card_details" id='btn-checkout' style="background-color: #d80001;color: #fff;cursor: pointer;">@lang('Make Payment')
+                        {{-- <input type="text" class="form-control input_credit_card_details" placeholder="Card number .."> --}}
+                        {{-- <input type="text" class="form-control input_credit_card_details" placeholder="Cardholder name .."> --}}
+                        {{-- <p class="title_input">Expiration Date</p> --}}
+                        {{-- <input type="date" id="expiration_date" class="form-control input_credit_card_details" placeholder="" style="margin-top: 0.2em;"> --}}
+                        {{-- <input type="text" class="form-control input_credit_card_details" placeholder="CVV"> --}}
+                        {{-- <p class="btn_credit_card_details" id='btn-checkout' style="background-color: #d80001;color: #fff;cursor: pointer;">
+                          @lang('Make Payment')</p> --}}
+                          <img src="/front-end/images/payment/visa.png" id='btn-checkout' class="img_visa_choose_payment">
                           <form action="/stripe" method="POST" id='stripe-form'>
                             <input type="text" class="form-control products" name='products' hidden value=''>
                             <input type="text" class="form-control" name='token' hidden value=''>
@@ -365,7 +367,7 @@
                             <script>
                             var handler = StripeCheckout.configure({
                               key: 'pk_test_fHrlUIH5LLkAQpihvDVDH7Di',
-                              image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+                              image: '/front-end/images/dukkangi_man.png',
                               locale: 'auto',
                               token: function(token) {
                                 products = [];
@@ -439,13 +441,13 @@
                             <input type="hidden" name="currency_code" value="EUR">
                             <!-- Display the payment button. -->
                             <input type="image" name="submit" border="0"
-                                   src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
+                                   src="/front-end/images/payment/paypal.png"
                                    alt="Buy Now">
                             <img alt="" border="0" width="1" height="1"
                                  src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
 
                         </form>
-                        </p>
+
                         <p class="btn_credit_card_details" style="margin-left: 8%;">@lang('Cancel')</p>
                     </div>
                 </div>
