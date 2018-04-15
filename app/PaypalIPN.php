@@ -4,6 +4,9 @@ namespace App;
 
 use Exception;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
 
 class PaypalIPN extends Model
 {
