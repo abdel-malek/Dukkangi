@@ -20,7 +20,13 @@ class PayPalController extends Controller
         header("HTTP/1.1 200 OK");
         $data = $raw_post_data = file_get_contents('php://input');
         $raw_post_array = explode('&', $data);
-        dd($raw_post_array);
+        $myPost = array();
+        foreach ($raw_post_array as $keyval) {
+            $keyval = explode('=', $keyval);
+            if (count($keyval) == 2)
+                $myPost[$keyval[0]] = urldecode($keyval[1]);
+        }
+        dd($myPost);
         $ipn = new PaypalIPN();
 // Use the sandbox endpoint during testing.
         $ipn->useSandbox();
@@ -36,16 +42,16 @@ class PayPalController extends Controller
              * A list of variables is available here:
              * https://developer.paypal.com/webapps/developer/docs/classic/ipn/integration-guide/IPNandPDTVariables/
              */
-            $request = json_encode($_POST);
-            if (isset($_POST['payment_status'])) {
-                if ($_POST['payment_status'] == "Completed") {
+
+            if (isset($myPost['payment_status'])) {
+                if ($myPost['payment_status'] == "Completed") {
 
                     // Provider Parameters
-                    $item_name = $_POST['item_name'];
-                    $item_number = $_POST['item_number'];
+                    $item_name = $myPost['item_name'];
+                    $item_number = $myPost['item_number'];
 
 
-                   $payer_email = $_POST['payer_email'];
+                   $payer_email = $myPost['payer_email'];
 
 
                     // Custom Fields
@@ -53,8 +59,8 @@ class PayPalController extends Controller
                     $cartId = $item_id[0];
                     $userId = $item_id[1];
 
-                    $invoice_id = $_POST['txn_id'];
-                    $amount = $_POST['mc_gross'];
+                    $invoice_id = $myPost['txn_id'];
+                    $amount = $myPost['mc_gross'];
 
 
                     CartService::checkout($cartId,$products,PaymentMethod::PAYAPL,$userId);
