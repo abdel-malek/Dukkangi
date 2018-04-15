@@ -9,13 +9,18 @@ use App\Http\Services\ProductService;
 
 class CartService
 {
-
     private static function createCart($id, $userId, $paymentId = null)
     {
-        $order = Order::updateOrCreate(['id' => $id],
-            ['id' => $id, 'payment_id' => $paymentId, 'user_id' => $userId, 'status_id' => OrderStatus::CREATED]);
-        session(['cartId' => $order->id]);
-        return $order->id;
+        $orderId = session('cartId');
+        if (!empty($orderId)) {
+            $order = Order::updateOrCreate(
+            ['id' => $id],
+            ['id' => $id, 'payment_id' => $paymentId, 'user_id' => $userId, 'status_id' => OrderStatus::CREATED]
+        );
+            session(['cartId' => $order->id]);
+            $orderId =  $order->id;
+        }
+        return $orderId;
     }
 
 
@@ -23,18 +28,22 @@ class CartService
     {
         $cartId = self::createCart($cartId, $userId, null);
         // dd($qty);
-        return OrderItem::updateOrCreate(['order_id' => $cartId, 'item_id' => $product->id, 'user_id' => $userId],
+        return OrderItem::updateOrCreate(
+            ['order_id' => $cartId, 'item_id' => $product->id, 'user_id' => $userId],
             ['order_id' => $cartId, 'item_id' => $product->id,
                 'sub_amount' => $product->price, 'qty' => $qty,
                 'total_amount' => $product->price * $qty,
                 'gain_point' => ceil($product->point / 5), 'user_id' => $userId, 'status_id' => OrderStatus::CREATED,
-                'currency' => $product->currency]);
+                'currency' => $product->currency]
+        );
     }
 
     private static function buyItemCart($userId, $paymentId = null)
     {
-        $order = Order::updateOrCreate(['id' => 0],
-            ['payment_id' => $paymentId, 'user_id' => $userId, 'status_id' => OrderStatus::CREATED]);
+        $order = Order::updateOrCreate(
+            ['id' => 0],
+            ['payment_id' => $paymentId, 'user_id' => $userId, 'status_id' => OrderStatus::CREATED]
+        );
         session(['cartIdBuyItem' => $order->id]);
         return $order->id;
     }
@@ -43,12 +52,14 @@ class CartService
     private static function createBuyItem($product, $qty, $userId)
     {
         $cartId = self::buyItemCart($userId, null);
-        return OrderItem::updateOrCreate(['order_id' => $cartId, 'item_id' => $product->id, 'user_id' => $userId],
+        return OrderItem::updateOrCreate(
+            ['order_id' => $cartId, 'item_id' => $product->id, 'user_id' => $userId],
             ['order_id' => $cartId, 'item_id' => $product->id,
                 'sub_amount' => $product->price, 'qty' => $qty,
                 'total_amount' => $product->price * $qty,
                 'gain_point' => ceil($product->point / 5), 'user_id' => $userId, 'status_id' => OrderStatus::CREATED,
-                'currency' => $product->currency]);
+                'currency' => $product->currency]
+        );
     }
 
     public static function removeOrderItem($id)
@@ -146,7 +157,6 @@ class CartService
     {
         return OrderItem::where('order_id', '=', $cartId)->where('status_id', '=', OrderStatus::CREATED)
             ->sum('total_amount');
-
     }
 
 
@@ -183,11 +193,9 @@ class CartService
         return ['amount' => self::getTotalAmount($cartId), 'description' => $description];
     }
 
-    public static function loadProductCart($cartId){
-      return OrderItem::where('order_id','=',$cartId)
-      ->select('item_id as id','qty')->get()->toArray();
+    public static function loadProductCart($cartId)
+    {
+        return OrderItem::where('order_id', '=', $cartId)
+      ->select('item_id as id', 'qty')->get()->toArray();
     }
-
 }
-
-?>
