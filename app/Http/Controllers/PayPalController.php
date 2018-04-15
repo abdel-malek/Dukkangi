@@ -20,7 +20,7 @@ class PayPalController extends Controller
         header("HTTP/1.1 200 OK");
         $data = $raw_post_data = file_get_contents('php://input');
         $raw_post_array = explode('&', $data);
-        dd($raw_post_array);
+        
         $ipn = new PaypalIPN();
 // Use the sandbox endpoint during testing.
         $ipn->useSandbox();
