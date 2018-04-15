@@ -133,6 +133,9 @@ Route::post('/cart/checkout','CartController@checkout');
 
 // Stripe
 Route::post('stripe','StripeController@stripePost');
+// paypal
+Route::post('/paypal','PayPalController@ipn');
+
 
 //Test
 Route::get('/test/load-cart/{id}','TestController@loadCart');

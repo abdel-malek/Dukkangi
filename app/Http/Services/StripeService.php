@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Services;
 
+use Cartalyst\Stripe\Exception\ServerErrorException;
+use Cartalyst\Stripe\Exception\StripeException;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Illuminate\Support\Facades\Auth;
 use App\StripeCustomer;
@@ -16,9 +18,11 @@ class StripeService
     public static function chargeCard($amount, $currency, $description, $email,$stripeToken)
     {
         $stripe = Stripe::make(self::STRIPE_KEY,self::VERSION);
-        $stripeCustomer = self::getStripeCustomer($stripe,$stripeToken,$email);
-        $charge = null;
 
+        $stripeCustomer = self::getStripeCustomer($stripe,$stripeToken,$email);
+
+        $charge = null;
+//dd($stripeCustomer);
         try {
             if (!empty($stripeCustomer)) {
                 $charge = $stripe->charges()->create([
@@ -38,18 +42,21 @@ class StripeService
     private static function getStripeCustomer($stripe,$stripeToken,$email)
     {
         $stripCustomer = StripeCustomer::where('email', '=', $email)->get()->first();
+
         if (empty($stripeCustomer)) {
             self::createCustomerStripe($stripe,$stripeToken,$email);
         }
+
         return $stripCustomer;
     }
 
     private static function createCustomerStripe($stripe,$stripeToken,$email)
     {
         $stripeCustomer = null;
+            $customer = $stripe->customers()->create(['email' => $email/*,'source' => $stripeToken*/]);
         try {
-            $customer = $stripe->customers()->create(['email' => $email]);
 
+//            dd($customer);
             //get user Id
             $userId = Auth::id();
             //create stripe customer
@@ -59,8 +66,9 @@ class StripeService
             }
             //create card for the customer
             $card  = $stripe->cards()->create($stripeCustomer->stripe_id, $stripeToken);
-        } catch (Stripe\Exception\ServerErrorException $e) {
+        } catch (StripeException $e) {
         }
+//        dd($stripeCustomer);
         return $stripeCustomer;
     }
 }
