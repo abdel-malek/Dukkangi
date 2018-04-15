@@ -16,7 +16,7 @@ class PayPalController extends Controller
 
     public function ipn()
     {
-
+      dd('sss');
 // Reply with an empty 200 response to indicate to paypal the IPN was received correctly.
         header("HTTP/1.1 200 OK");
 
@@ -67,4 +67,3 @@ class PayPalController extends Controller
 
 
 }
-
