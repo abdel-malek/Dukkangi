@@ -90,7 +90,7 @@ class CartService
 
         //remove cart from Session
         session()->forget('cartId');
-        return true;
+        return 'true';
     }
 
     public static function loadCart($cartId)
