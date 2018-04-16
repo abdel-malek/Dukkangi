@@ -10,13 +10,10 @@
   </head>
   <body>
     @include('client.partials._navbar')
-
-
+    
       @yield('main_section')
-
-
-
-  @include('client.partials._footer')
+    
+    @include('client.partials._footer')
 
     @yield('cart')
   </body>

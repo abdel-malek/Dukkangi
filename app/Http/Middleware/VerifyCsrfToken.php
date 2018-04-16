@@ -19,6 +19,7 @@ class VerifyCsrfToken extends BaseVerifier
       '/admin/products/store',
       'categoryfilter',
       'stripe',
-      'paypal'
+      'paypal',
+      '/admin/coupons'
     ];
 }
