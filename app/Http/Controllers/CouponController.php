@@ -25,7 +25,8 @@ class CouponController extends Controller
 
 
 
-    public function sendCoupon(Request $requset){
-
+    public function sendCoupon($id){
+    	CouponService::sendCoupon($id);
+    	return redirect(route('coupon.index'));
     }
 }

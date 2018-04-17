@@ -87,7 +87,7 @@ Route::get('/admin/subcategoryproducts/edit/{id}', ['uses' =>'ProductController@
 Route::put('/admin/subcategoryproducts/update', ['uses' => 'ProductController@updateBySubcategory'    ,'as' => 'productbysubcategory.update']);
 
     //PRODUCT SINGLE VIEW
-Route::get('/admin/products/single/{id}', ['uses' => 'ProductController@single'               ,'as' => 'productbysubcategory.single']);
+Route::get('/admin/products/single/{id}', ['uses' => 'ProductController@single' ,'as' => 'productbysubcategory.single']);
 
     // USERS
 Route::get('/admin/users', ['uses' => 'UserController@index'           , 'as' => 'user.index' ]);
@@ -98,18 +98,18 @@ Route::post('/admin/users/delete/{id}', ['uses' => 'UserController@destroy'     
 Route::get('/admin/orders', ['uses' => 'OrderController@index'         , 'as' => 'order.index' ]);
 Route::post('/admin/orders', ['uses' => 'OrderController@loadOrder'     , 'as' => 'order.data'  ]);
 
-Route::get('/admin/orders/{id}/order-items', ['uses' => 'OrderController@orderItemPage'         , 'as' => 'orderItems.index' ]);
-Route::post('/admin/orders/{id}/order-items', ['uses' => 'OrderController@loadOrderItems'     , 'as' => 'orderItems.data'  ]);
+Route::get('/admin/orders/{id}/order-items', ['uses' => 'OrderController@orderItemPage'   , 'as' => 'orderItems.index' ]);
+Route::post('/admin/orders/{id}/order-items', ['uses' => 'OrderController@loadOrderItems'  , 'as' => 'orderItems.data'  ]);
 
     //PAYMENT
 Route::get('/admin/payment', ['uses' => 'PaymentController@index'         , 'as' => 'payment.index'  ]);
 Route::post('/admin/payment', ['uses' => 'PaymentController@loadPayments' , 'as' => 'payment.data'   ]);
-Route::post('/admin/payment/delete/{id}', ['uses' => 'PaymentController@destroy'     , 'as' => 'payment.delete' ]);
+Route::post('/admin/payment/delete/{id}', ['uses' => 'PaymentController@destroy' , 'as' => 'payment.delete' ]);
 
     //COUPONS
 Route::get('/admin/coupons', ['uses' => 'CouponController@index' , 'as' => 'coupon.index'] );
-Route::post('/admin/coupons' ,'CouponController@loadCoupons' );
-Route::post('admin/coupons/{id}' , ['uses' => 'CouponController@sendCoupon' , 'as' =>'coupon.send']);
+Route::post('/admin/coupons' ,'CouponController@loadCoupons');
+Route::get('/admin/coupons/{id}' , 'CouponController@sendCoupon'  );
 
 
     //DASHBOARD END

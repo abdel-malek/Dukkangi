@@ -14,7 +14,7 @@ class AddUserIdToCouponTable extends Migration
     public function up()
     {
           Schema::table('coupon' , function (Blueprint $table){
-            $table->integer('user_id');
+            $table->integer('user_id')->nullable();
 
         });
     }

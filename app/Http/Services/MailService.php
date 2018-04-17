@@ -12,7 +12,7 @@ class MailService
                 $msg->from($from)->to($to)->subject($subject);
             });
         }
-        catch(exception ex){}
+        catch(Exception $ex){}
 
     }
 }

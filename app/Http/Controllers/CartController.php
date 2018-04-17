@@ -68,7 +68,6 @@ class CartController extends Controller
         if ($status) {
             MailService::send('emails.payment', $TotalPrice, 'payment@dukkangi.com', Auth::user()->email, 'payment successed');
             MailService::send('emails.complete_order', $data, 'info@dukkangi.com', Auth::user()->email, 'order successed');
-
             return redirect('home');
         }
     }

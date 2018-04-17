@@ -41,7 +41,11 @@
                                 <!--<span class="float-xs-right"><i class="icon_plus"></i></span>-->
                             </a>
                         </li>
-                    
+                        <li class="sub-item">
+                            <a href="{{route('coupon.index')}}"><span>Coupons</span>
+                                <!--<span class="float-xs-right"><i class="icon_plus"></i></span>-->
+                            </a>
+                        </li>
                         </ul>
                     </ul>
 

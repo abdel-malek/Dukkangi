@@ -14,7 +14,7 @@ class AddUserEmailToCouponTable extends Migration
     public function up()
     {
           Schema::table('coupon' , function (Blueprint $table){
-            $table->string('user_email');
+            $table->string('user_email')->nullable();
         });
     }
 

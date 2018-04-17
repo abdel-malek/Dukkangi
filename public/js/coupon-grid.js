@@ -32,7 +32,7 @@ function loadUsers(){
             },
         },
        fields: [
-            {name: "id"    , title: 'User ID'         , type: "text", width: 5},
+            {name: "id"    , title: 'User ID'    , type: "text", width: 5},
             {name: "email" , title: 'User Email' , type: "text", width: 5},
             {name: "points", tilte: 'Gain Points', type: "text", width: 5},
             {
@@ -40,7 +40,7 @@ function loadUsers(){
               itemTemplate: function (value, item) {
                 var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
                 var $orderItems = $('<a class="btn btn-block btn-success btn-xs">Send Coupon</a>');
-                $orderItems.attr('href',`coupons/${"id"}`);
+                $orderItems.attr('href',`coupons/${item.id}`);
                 return $result.add($orderItems);
               },
             }
