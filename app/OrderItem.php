@@ -4,6 +4,7 @@ namespace App;
 use App\Order;
 use App\Product;
 use App\OrderStatus;
+use App\User;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,5 +24,9 @@ class OrderItem extends Model
 
     public function orderStatus(){
       return $this->belongsTo(OrderStatus::class,'status_id','id');
+    }
+
+    public function user(){
+      return $this->belongsTo(User::class,'user_id','id');
     }
 }

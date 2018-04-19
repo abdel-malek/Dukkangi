@@ -25,7 +25,6 @@ class CartService
     private static function createOrderItem($product, $qty, $cartId, $userId)
     {
         $cartId = self::createCart($cartId, $userId, null);
-        // dd($qty);
         return OrderItem::updateOrCreate(
             ['order_id' => $cartId, 'item_id' => $product->id, 'user_id' => $userId],
             ['order_id' => $cartId, 'item_id' => $product->id,

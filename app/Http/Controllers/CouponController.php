@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
 use App\Http\Services\CouponService;
 class CouponController extends Controller
 {
@@ -25,8 +26,16 @@ class CouponController extends Controller
 
 
 
-    public function sendCoupon($id){
-    	CouponService::sendCoupon($id);
-    	return redirect(route('coupon.index'));
+    public function sendCoupon(Request $request){
+    	
+        $id = $request->input('user_id');
+        $type = $request->input('type');
+        $amount = $request->input('fixedamount');
+        
+        CouponService::sendCoupon($id, $type,$amount);
+    	
+
+        Session::flash('success', 'Coupon Created and Sent Successfully!');
+        return redirect(route('coupon.index'));
     }
 }

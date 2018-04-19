@@ -1,7 +1,7 @@
 (function ($){
   loadUsers();
 })(jQuery);
-
+        
 function loadUsers(){
     $("#coupon-grid").jsGrid({
         filtering: true,
@@ -31,19 +31,23 @@ function loadUsers(){
                 return data.promise();
             },
         },
-       fields: [
-            {name: "id"    , title: 'User ID'    , type: "text", width: 5},
-            {name: "email" , title: 'User Email' , type: "text", width: 5},
-            {name: "points", tilte: 'Gain Points', type: "text", width: 5},
+        fields: [
+            {name: "user_id"           , title: 'User ID'    , type: "text", width: 5},
+            {name: "user.email"        , title: 'User Email' , type: "text", width: 5},
+            {name: "points"            , title: 'Gain Points', type: "text", width: 5},
+            {name: "user.coupon.0.code", title: 'Last Coupon', type: "text", width: 5},
             {
               type: "control", width: 10, editButton: false, modeSwitchButton: false, deleteButton: false,
               itemTemplate: function (value, item) {
                 var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
                 var $orderItems = $('<a class="btn btn-block btn-success btn-xs">Send Coupon</a>');
-                $orderItems.attr('href',`coupons/${item.id}`);
+                //$orderItems.attr('href',`coupons/${item.id}`);
+                $orderItems.attr('onclick',`viewModal( ${item.user_id} )`);
                 return $result.add($orderItems);
               },
             }
         ]
     });
 }
+
+

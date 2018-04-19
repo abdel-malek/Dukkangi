@@ -107,10 +107,10 @@ Route::post('/admin/payment', ['uses' => 'PaymentController@loadPayments' , 'as'
 Route::post('/admin/payment/delete/{id}', ['uses' => 'PaymentController@destroy' , 'as' => 'payment.delete' ]);
 
     //COUPONS
-Route::get('/admin/coupons', ['uses' => 'CouponController@index' , 'as' => 'coupon.index'] );
-Route::post('/admin/coupons' ,'CouponController@loadCoupons');
-Route::get('/admin/coupons/{id}' , 'CouponController@sendCoupon'  );
 
+Route::get('/admin/coupons', 'CouponController@index'  )->name('coupon.index');
+Route::post('/admin/coupons' ,'CouponController@loadCoupons');
+Route::post('/admin/submitcoupons/' , 'CouponController@sendCoupon')->name('submitcoupon');
 
     //DASHBOARD END
 
