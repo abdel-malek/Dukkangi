@@ -106,7 +106,8 @@ class CouponService {
 		if ($coupon->coupon_status == CouponStatus::ACTIVE){
 			$activefalg = 1;
 		}
-		if ($coupon->user_id == Auth::id())
+		if ($coupon->user_id != Auth::id())
+			return 0;
 
 
 		if ($timeflag == 1 && $activefalg == 1 ) {
