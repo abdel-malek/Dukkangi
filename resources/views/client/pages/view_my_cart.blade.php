@@ -158,11 +158,10 @@
 
                 @foreach($orders as $order)
                 <?php
-            $total += (isset($order->product->discount_price) ? $order->product->discount_price : $order->product->price);
-            $gain  += (isset($order->product->discount_price) ? ceil($order->product->discount_price/5) : ceil($order->product->price/5));
-            $taxes += isset($order->product->discount_price) ? sprintf('%0.2f', $order->product->discount_price*0.19):
-            sprintf('%0.2f', $order->product->price*0.19);
-
+                    $total += (isset($order->product->discount_price) ? $order->product->discount_price : $order->product->price);
+                    $gain  += (isset($order->product->discount_price) ? ceil($order->product->discount_price/5) : ceil($order->product->price/5));
+                    $taxes += isset($order->product->discount_price) ? sprintf('%0.2f', $order->product->discount_price*0.19):
+                    sprintf('%0.2f', $order->product->price*0.19);
                 ?>
                 <div class="item_qty_detail_my_card" data-price="{{ isset($order->product->discount_price) ? $order->product->discount_price : $order->product->price }}"
                   data-tax="{{$order->product->tax_fees}}" data-gain="{{isset($order->product->discount_price ) ? ceil($order->product->discount_price /5) : ceil($order->product->price /5 ) }}"
@@ -183,7 +182,9 @@
                             <img src="/front-end/images/payment/handler-min.png" onclick="num_min(this);" style="margin-top:-0.8em;" />
                         </div>
                         <p class="total_item_qty">
-                            @lang('Total') <span id="total">{{ isset($order->product->discount_price) ? $order->product->discount_price : $order->product->price }} </span> <i style="color: #d80001;font-weight: bold;font-family: 'EagarFont';font-size: 1em;">€</i>
+                            @lang('Total') 
+                            <span class="findit" id="total">{{ isset($order->product->discount_price) ? $order->product->discount_price : $order->product->price }} </span> 
+                            <i style="color: #d80001;font-weight: bold;font-family: 'EagarFont';font-size: 1em;">€</i>
                         </p>
                     </div>
                 </div>
@@ -247,7 +248,7 @@
                     <p style="width: 35%;margin-top: 0.4em;">
                         @lang('Enter Code')
                     </p>
-                    <input class="form-group one_code_voucher_code" value="" placeholder="Enter Code" type="text" onchange="checkCode(this.value)" >
+                    <input class="form-group one_code_voucher_code" value="" id="couponcode" placeholder="Enter Code" type="text" onchange="checkCode(this.value)" >
                 </div>
 
                 <p class="price_item_details">
@@ -371,6 +372,8 @@
                               locale: 'auto',
                               token: function(token) {
                                 products = [];
+                                code = $('#couponcode').val();
+
                                    $('.item_qty_detail_my_card').each(function(i,obj){
                                        productId = $(obj).attr('data-productId');
                                        qty = $(obj).find('.num_item_qty').html();
@@ -382,7 +385,7 @@
                                    $.ajax({
                                        type: "POST",
                                        url: `/stripe`,
-                                       data:{'products':products,'token':token.id,'email':token.email},
+                                       data:{'products':products,'code':code,'token':token.id,'email':token.email},
                                        headers: {
                                            "x-csrf-token": $("[name=_token]").val()
                                        },
@@ -601,43 +604,62 @@
 
 </script>
 <script>
-    function checkCode(val){
-        alert('hi');
-         $.ajax({
-             type: "POST",
-             url: `/checkcoupon`,
-             data:{'code':val},
-             headers: {
-                 "x-csrf-token": $("[name=_token]").val()
-             },
-         }).done(response => {
-             if (Array.isArray(response)){
-                 swal({
-                   title: 'Successfully',
-                   text: "Coupon Check Successfully",
-                   type: 'success',
-                   confirmButtonColor: '#d90f17',
-                   confirmButtonText: 'OK'
-                 });
-                 if (response[3] == 'fixed')
-                 {
-                    $('#Total').text( $('#Total').text() - response[2]);  
-                 }
-                 if (response[3] == 'percentage'){
-                    $('#Total').text( $('#Total').text() * response[2]);  
-                 }
 
-                }
-             if(response == 0){
-                swal({
-                    title:'Fail',
-                    text: 'Coupon Code Not Valid',
-                    type: 'error',
-                    confirmButtonColor: '#d90f17',
-                    confirmButtonText: 'OK'
-                });
-             }         
-        });    
+    code = 0 ;
+    function checkCode(val){
+        if (val.length == 12 ){ // validating coupon pattern 
+            if (code == 0 ) // fixing insterting coupon multiple times
+                $.ajax({
+                     type: "POST",
+                     url: `/checkcoupon`,
+                     data:{'code':val},
+                     headers: {
+                         "x-csrf-token": $("[name=_token]").val()
+                     },
+                 }).done(response => {
+                     if (Array.isArray(response)){
+                         swal({
+                           title: 'Successfully',
+                           text: "Coupon Check Successfully",
+                           type: 'success',
+                           confirmButtonColor: '#d90f17',
+                           confirmButtonText: 'OK'
+                         });
+                         if (response[3] == 'fixed') // Changing Total Price 
+                         {
+                            $('#Total').text( $('#Total').text() - response[2]);  
+                         }
+                         if (response[3] == 'percentage'){ // Changing List prices and Details
+                            $('#Total').text( $('#Total').text() -( $('#Total').text() * response[2]));
+                            $('.item_qty_detail_my_card').each(function(i,obj){
+                                $(obj).data('price' , parseFloat($(obj).data('price') - ($(obj).data('price') * response[2])).toFixed(2) );
+                            });
+                            $('.findit').each(function(i,obj){
+                                $(obj).text(parseFloat( parseFloat($(obj).text())  - (parseFloat($(obj).text()) * response[2])).toFixed(2)); 
+                            });
+                            $('#tax').text( parseFloat(  parseFloat($('#tax').text()) - ( parseFloat($('#tax').text() )  * response[2] )  ).toFixed(2) + '€');
+                         }
+                           code ++; 
+                        }
+                     if(response == 0){
+                        swal({
+                            title:'Fail',
+                            text: 'Coupon Code Not Valid',
+                            type: 'error',
+                            confirmButtonColor: '#d90f17',
+                            confirmButtonText: 'OK'
+                        });
+                     }         
+                });       
+        }
+        else 
+             swal({
+                title:'Fail',
+                text: 'Coupon Code Not Valid',
+                type: 'error',
+                confirmButtonColor: '#d90f17',
+                confirmButtonText: 'OK'
+            });
     }
         
 
