@@ -28,9 +28,10 @@ Route::get('/mycart/', 'CartController@getViewMyCartPage')->name('mycart');
 Route::get('/categoryfilter/' , 'PageController@getCategoryFilteredPage')->name('fullfiltercategory');
 Route::post('/categoryfilter/' ,'PageController@loadMoreProducts');
 Route::post('/completebuyitem/{id}' ,'CartController@buyItemComplete' )->name('completebuyitem');
+Route::post('/checkcoupon/', 'CartController@checkCoupon');
 //Route::post('/completebuycart/' , 'CartController@checkout')->name('completebuycart');
 
-   			 //DASHBOARD
+   			                        //DASHBOARD
     //CATEGORIES
 Route::get('/admin/categories', ['uses' => 'CategoryController@index'                 ,'as' => 'category.index'       ]);
 Route::post('/admin/categories', ['uses' => 'CategoryController@categoryData'         ,'as' => 'category.data'        ]);

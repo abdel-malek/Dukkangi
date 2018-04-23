@@ -247,7 +247,7 @@
                     <p style="width: 35%;margin-top: 0.4em;">
                         @lang('Enter Code')
                     </p>
-                    <input class="form-group one_code_voucher_code"  />
+                    <input class="form-group one_code_voucher_code" value="" placeholder="Enter Code" type="text" onchange="checkCode(this.value)" >
                 </div>
 
                 <p class="price_item_details">
@@ -555,6 +555,14 @@
         }
     }
 
+
+
+    
+
+
+    
+
+
     // $('#btn-checkout').on('click',function(){
     //   //get productIds and qtys
     //     products = [];
@@ -590,6 +598,48 @@
     //     });
     // })
 
+
+</script>
+<script>
+    function checkCode(val){
+        alert('hi');
+         $.ajax({
+             type: "POST",
+             url: `/checkcoupon`,
+             data:{'code':val},
+             headers: {
+                 "x-csrf-token": $("[name=_token]").val()
+             },
+         }).done(response => {
+             if (Array.isArray(response)){
+                 swal({
+                   title: 'Successfully',
+                   text: "Coupon Check Successfully",
+                   type: 'success',
+                   confirmButtonColor: '#d90f17',
+                   confirmButtonText: 'OK'
+                 });
+                 if (response[3] == 'fixed')
+                 {
+                    $('#Total').text( $('#Total').text() - response[2]);  
+                 }
+                 if (response[3] == 'percentage'){
+                    $('#Total').text( $('#Total').text() * response[2]);  
+                 }
+
+                }
+             if(response == 0){
+                swal({
+                    title:'Fail',
+                    text: 'Coupon Code Not Valid',
+                    type: 'error',
+                    confirmButtonColor: '#d90f17',
+                    confirmButtonText: 'OK'
+                });
+             }         
+        });    
+    }
+        
 
 </script>
 @endsection

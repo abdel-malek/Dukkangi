@@ -37,11 +37,14 @@
                                 <p>{{ Auth::user()->email}} </p>
                             </div>
                             <div class="dropdown-divider"></div>
-                            <a class="btn left-spacing link-btn" href="#" role="button">Link</a>
-                            <a class="btn left-second-spacing link-btn" href="#" role="button">Link 2</a>
-                            {!! Form::open(['route' => 'logout']) !!}
-                            {{Form::submit('Logout' , ['class' => 'btn btn-primary float-xs-right right-spacing'])}}
-                            {!! Form::close() !!}
+                            <div class="col-md-6">
+                                <a class="btn btn-block btn-default" href="{{route('home')}}" role="button">View Website</a>
+                            </div>
+                            <div class="col-md-6"> 
+                                {!! Form::open(['route' => 'logout']) !!}
+                                    {{Form::submit('Logout' , ['class' => 'btn btn-primary btn-block'])}}
+                                {!! Form::close() !!}
+                            </div>
                         </div>
                     </div>
                 </div>

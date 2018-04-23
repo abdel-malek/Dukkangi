@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Services\CartService;
 use App\Http\Services\MailService;
+use App\Http\Services\CouponService;
 use Auth;
 use App;
 use App\Product;
@@ -121,6 +122,9 @@ class CartController extends Controller
             return redirect('home');
         }
     }
-
+    public function checkCoupon(Request $request){
+        $code = $request->code;
+        return CouponService::checkCoupon($code);
+    }
 
 }

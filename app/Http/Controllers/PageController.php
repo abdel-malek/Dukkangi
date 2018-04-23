@@ -317,7 +317,13 @@ class PageController extends Controller
 		$comments = Comment::with(['user'])->where('product_id','=',$product->id)->skip($skip-3)->take(3)->get();
 
 		foreach ($comments as $comment) {
-			$comment->user_id = User::find($comment->user_id)->name;
+			$user =  User::find($comment->user_id);
+			if (!isset($user)) 
+				$name = "Anonymous";
+			else 
+				$name = $user->name;
+			
+			$comment->user_id = $name;
 			$comment->rate = round($comment->rate);
 		}
 

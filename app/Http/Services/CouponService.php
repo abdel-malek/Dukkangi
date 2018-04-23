@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Services\MailService;
 use App\OrderItem;
 use App\OrderStatus; 
+use App\CouponStatus;
 use Carbon\Carbon;
+use Auth;
 
 class CouponService {
 
@@ -61,11 +63,15 @@ class CouponService {
 		
 		$coupon->code = $code;
 		$coupon->coupon_type = $type;
-		$coupon->amount= $amount;
+		if ($type == 'fixed')
+			$coupon->amount= $amount;
+		else
+			$coupon->amount = $amount /100; 
 		$coupon->user_id = $userId;
 		$coupon->user_email= $email;
 		$coupon->start_date = Carbon::now();
 		$coupon->end_date =Carbon::now()->addDays(90);
+		$coupon->coupon_status = CouponStatus::ACTIVE ;
 
 		$coupon->save();
 		DB::table('order_item')->where('user_id' , '=' , $userId)->update(['gain_point' => '0']);
@@ -84,5 +90,33 @@ class CouponService {
 
 	}
 
+	public static function checkCoupon($code){
+		$coupon = Coupon::where('code' , '=', $code )->get()->first();
+		if (!isset($coupon)) return 0;
+		//dd($coupon);
+		$timeflag =0;
+		$activefalg = 0;
+		$userflag = 0;
+		if (isset($coupon->end_date)){
+			$time = Carbon::now();
+			if ($time->lt($coupon->end_date)){
+				$timeflag =1;
+			}
+		}
+		if ($coupon->coupon_status == CouponStatus::ACTIVE){
+			$activefalg = 1;
+		}
+		if ($coupon->user_id == Auth::id())
+
+
+		if ($timeflag == 1 && $activefalg == 1 ) {
+			$array[]= 0;
+ 			array_push($array , 	 '1');
+			array_push($array ,  $coupon->amount);
+			array_push($array ,  $coupon->coupon_type);
+			return $array;
+		}
+		else return 0;
+	}
 
 }
