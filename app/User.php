@@ -30,6 +30,10 @@ class User extends Authenticatable
     ];
 
     public function coupon(){
-        return $this->hasMany(Coupon::class,'user_id','id');
+        return $this->hasMany(Coupon::class,'id','user_id');
+    }
+
+    public function orderItem(){
+      return $this->hasMany(OrderItem::class,'user_id','id');
     }
 }

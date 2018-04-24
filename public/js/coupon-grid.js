@@ -1,7 +1,7 @@
 (function ($){
   loadUsers();
 })(jQuery);
-        
+
 function loadUsers(){
     $("#coupon-grid").jsGrid({
         filtering: true,
@@ -32,10 +32,10 @@ function loadUsers(){
             },
         },
         fields: [
-            {name: "user_id"           , title: 'User ID'    , type: "text", width: 5},
-            {name: "user.email"        , title: 'User Email' , type: "text", width: 5},
-            {name: "points"            , title: 'Gain Points', type: "text", width: 5},
-            {name: "user.coupon.0.code", title: 'Last Coupon', type: "text", width: 5},
+            {name: "id"           , title: 'User ID'    , type: "text", width: 5},
+            {name: "email"        , title: 'User Email' , type: "text", width: 5},
+            {name: "order_item.0.points"            , title: 'Gain Points', type: "text", width: 5},
+            {name: "coupon.0.code", title: 'Last Coupon', type: "text", width: 5},
             {
               type: "control", width: 10, editButton: false, modeSwitchButton: false, deleteButton: false,
               itemTemplate: function (value, item) {
@@ -49,5 +49,3 @@ function loadUsers(){
         ]
     });
 }
-
-
