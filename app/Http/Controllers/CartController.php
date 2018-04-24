@@ -52,26 +52,26 @@ class CartController extends Controller
             ->withItemNumber($itemNumber)->withProductsName($productsName);
     }
 
-    public function checkout(Request $request)
-    {
-        if (Auth::id() <= 0) {
-            return redirect('login');
+    // public function checkout(Request $request)
+    // {
+    //     if (Auth::id() <= 0) {
+    //         return redirect('login');
 
-        }
-        $cartId = session('cartId');
-        $products = $request->input('products');
-        $userId = Auth::id();
-        $status = CartService::checkout($cartId, $products, 1, $userId);
+    //     }
+    //     $cartId = session('cartId');
+    //     $products = $request->input('products');
+    //     $userId = Auth::id();
+    //     $status = CartService::checkout($cartId, $products, 1, $userId);
 
-        $data = CartService::loadCart($cartId);
-        $TotalPrice = CartService::getTotalPrice($cartId);
+    //     $data = CartService::loadCart($cartId);
+    //     $TotalPrice = CartService::getTotalPrice($cartId);
 
-        if ($status) {
-            MailService::send('emails.payment', $TotalPrice, 'payment@dukkangi.com', Auth::user()->email, 'payment successed');
-            MailService::send('emails.complete_order', $data, 'info@dukkangi.com', Auth::user()->email, 'order successed');
-            return redirect('home');
-        }
-    }
+    //     if ($status) {
+    //         MailService::send('emails.payment', $TotalPrice, 'payment@dukkangi.com', Auth::user()->email, 'payment successed');
+    //         MailService::send('emails.complete_order', $data, 'info@dukkangi.com', Auth::user()->email, 'order successed');
+    //         return redirect('home');
+    //     }
+    // }
 
     public function getBuyItemPage($id)
     {

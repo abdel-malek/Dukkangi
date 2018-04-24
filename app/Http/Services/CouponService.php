@@ -12,7 +12,7 @@ use App\OrderStatus;
 use App\CouponStatus;
 use Carbon\Carbon;
 use Auth;
-
+use App\Order;
 class CouponService {
 
 	public static function loadCoupons($filter){
@@ -121,9 +121,22 @@ class CouponService {
  			array_push($array , 	 '1');
 			array_push($array ,  $coupon->amount);
 			array_push($array ,  $coupon->coupon_type);
+			
+			$cartId = session('cartId');
+			$cart = Order::find($cartId);
+			$cart->coupon_id = $cartId;
+			$cart->update();
+
 			return $array;
+
 		}
 		else return 0;
+	}
+
+	public static function couponUsed($couponId){
+		$coupon = Coupon::find($couponId);
+		$coupon_status = CouponStatus::CONSUMED ; 
+		$coupon->update();
 	}
 
 }
