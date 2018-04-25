@@ -15,6 +15,9 @@ Route::get('/', function(){return view('client.pages.home');});
 
 
 //Pages Controller
+Route::get('/test/email' , function(){
+    return view('emails.signup');
+});
 Route::get('/', 'PageController@index')->name('home');
 Route::get('/home', 'PageController@index');
 Route::get('/category/{id}', 'PageController@getCategoryPage')->name('category');

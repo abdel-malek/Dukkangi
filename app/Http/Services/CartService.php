@@ -4,8 +4,11 @@ namespace App\Http\Services;
 use App\Order;
 use App\OrderItem;
 use App\OrderStatus;
+
 use App\Http\Services\PaymentService;
+use App\Http\Services\CouponService;
 use App\Http\Services\ProductService;
+use App\Http\Services\MAilService;
 
 class CartService
 {
@@ -96,8 +99,15 @@ class CartService
         //change order to  complete status and add $paymentId
         Order::where('id', '=', $cartId)->update(['status_id' => OrderStatus::COMPLETED, 'payment_id' => $paymentId]);
 
+        //Coupon
+        $order = Order::find($cartId);
+        if (isset($order->coupon_id)){
+            CouponService::couponUsed($order->coupon_id);  
+        }
+
         //remove cart from Session
         session()->forget('cartId');
+
         return 'true';
     }
 
@@ -122,7 +132,7 @@ class CartService
         return ['orderItems' => $orderItems, 'gainPoints' => $gainPoints, 'taxes' => $tax, 'amount' => $amount];
     }
 
-    public static function checkout($cartId, $products, $paymentMethodId = 1, $userId)
+    public static function checkout($cartId, $products, $paymentMethodId = 1, $userId,$amount)
     {
         $tax = 0;
         foreach ($products as $product) {
@@ -132,10 +142,34 @@ class CartService
         }
 
         //Calculate Amount
-        $amount = self::getTotalAmount($cartId);
+        $calcAmount = self::getTotalAmount($cartId);
+        $order = Order::find(session('cartId'));
+        if (isset($order->coupon_id) ){
+            $coupon = Coupon::find($order->coupon_id);
+            if ($coupon->coupon_type == 'fixed'){
+                $calcAmount -= $coupon->amount;
+            }
+            else {
+                $calcAmount = $calcAmount - ($calcAmount * $coupon->amount);
+            }
+        }
+        if ($calcAmount != $amount){
+            throw new Exception("Payment Doesn't Match !", 1);
+        }  
+        
+
+        MailService::send('emails.complete_order' , ['total'=>$amount,
+        'subtotal' => $amount - ($amount * 0.19),
+        'username' => Auth::user()->name,
+        'orderItem' => $products,
+        'taxes' => $tax ] , 'Order@dukkangi.com' , Auth::user()->email, 'order complete');
+
+        
+
         //make a payment
         // TODO: Pass payment method id
         $payment = PaymentService::createPayment($paymentMethodId, $cartId, $userId, $amount, 'EUR', $tax);
+        
         return self::completeCart($cartId, $payment->id);
     }
 
