@@ -22,9 +22,10 @@
                             </a>
                         </li>
                         <li class="sub-item">
-                            <a href="{{route('product.index')}}"><span>Products</span>
-                                <!--<span class="float-xs-right"><i class="icon_plus"></i></span>-->
-                            </a>
+                            <a href="{{route('product.index')}}"><span>Products</span></a>
+                        </li>
+                        <li class="sub-item">
+                            <a href="{{route('productQty.index')}}"><span>Product Qty</span></a>
                         </li>
                         <li class="sub-item">
                             <a href="{{route('user.index')}}"><span>Users</span>

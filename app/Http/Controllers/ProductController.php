@@ -14,13 +14,10 @@ use App\Http\Services\ProductService;
 
 class ProductController extends Controller
 {
-
-
     public function index()
     {
         return view('admin.products.index');
     }
-
 
     public function productData(Request $request)
     {
@@ -48,7 +45,7 @@ class ProductController extends Controller
 
     public function productDataBySubcategory(Request $request, $id)
     {
-       $filter = $request->input('filter');
+        $filter = $request->input('filter');
         return ProductService::productDataBySubcategory($filter, $id);
     }
 
@@ -80,6 +77,7 @@ class ProductController extends Controller
          ]);
         return ProductService::updateProduct($request, $request->id, 1);
     }
+
     //BY CATEGORY EDIT
     public function editByCategory($id)
     {
@@ -125,10 +123,6 @@ class ProductController extends Controller
         return ProductService::updateProduct($request, $request->id, 3);
     }
 
-
-
-
-
     public function create()
     {
         $categories = Category::all();
@@ -136,6 +130,7 @@ class ProductController extends Controller
         $brands = Brand::all();
         return view('admin.products.create')->withBrands($brands)->withCategories($categories)->withSubcategories($subcategories);
     }
+
     public function store(Request $request)
     {
         $product = new Product();
@@ -197,17 +192,21 @@ class ProductController extends Controller
         $product->tax_fees   = $request->input('tax_fees') || 0.19;
 
 
-        if($request->hasFile('image'))
+        if ($request->hasFile('image')) {
             $product->image_id = ImageService::saveImage($request->file('image'));
+        }
 
-        if($request->hasFile('image_path_2'))
+        if ($request->hasFile('image_path_2')) {
             $product->image_id = ImageService::saveImage($request->file('image_path_2'));
+        }
 
-        if($request->hasFile('image_path_3'))
+        if ($request->hasFile('image_path_3')) {
             $product->image_id = ImageService::saveImage($request->file('image_path_3'));
+        }
 
-        if($request->hasFile('image_path_4'))
+        if ($request->hasFile('image_path_4')) {
             $product->image_id = ImageService::saveImage($request->file('image_path_4'));
+        }
 
         if (isset($request->point)) {
             $product->point     = $request->point;
@@ -216,13 +215,39 @@ class ProductController extends Controller
         }
 
         $product->save();
+        
+        ProductService::addProductQty($product->id,$product->qty);
 
         Session::flash('success', 'Added Successfuly!');
 
         return redirect(route('product.index'));
     }
+
     public function destroy($id)
     {
         return ProductService::deleteProduct($id);
+    }
+
+    public function productQtyIndex()
+    {
+        return view('admin.products.qtyIndex');
+    }
+
+    public function productQtyData(Request $request)
+    {
+        $filter = $request->input('filter');
+        return ProductService::loadProductQty($filter);
+    }
+
+    public function productQtyCreate($id)
+    {
+        return view('admin.products.createQty', compact('id'));
+    }
+
+    public function productQtyStore(Request $request, $id)
+    {
+        $qty = $request->input('qty');
+        ProductService::addProductQty($id, $qty);
+        return redirect(route('productQty.index'));
     }
 }
