@@ -9,6 +9,7 @@ use App\Http\Services\PaymentService;
 use App\Http\Services\CouponService;
 use App\Http\Services\ProductService;
 use App\Http\Services\MAilService;
+use App\User;
 
 class CartService
 {
@@ -102,7 +103,7 @@ class CartService
         //Coupon
         $order = Order::find($cartId);
         if (isset($order->coupon_id)){
-            CouponService::couponUsed($order->coupon_id);  
+            CouponService::couponUsed($order->coupon_id);
         }
 
         //remove cart from Session
@@ -155,21 +156,23 @@ class CartService
         }
         if ($calcAmount != $amount){
             throw new Exception("Payment Doesn't Match !", 1);
-        }  
-        
+        }
+
+        $user = User::find($userId);
 
         MailService::send('emails.complete_order' , ['total'=>$amount,
         'subtotal' => $amount - ($amount * 0.19),
-        'username' => Auth::user()->name,
+        'username' => $user->name,
         'orderItem' => $products,
-        'taxes' => $tax ] , 'Order@dukkangi.com' , Auth::user()->email, 'order complete');
+        'orderId' => $cartId,
+        'taxes' => $tax ] , 'Order@dukkangi.com' , $user->email, 'order complete');
 
-        
+
 
         //make a payment
         // TODO: Pass payment method id
         $payment = PaymentService::createPayment($paymentMethodId, $cartId, $userId, $amount, 'EUR', $tax);
-        
+
         return self::completeCart($cartId, $payment->id);
     }
 

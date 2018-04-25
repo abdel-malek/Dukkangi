@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 
@@ -17,13 +17,13 @@
 		.header{
 			background-color: #d80000;
 			height:206px;
-		}		
+		}
 		.header-img{
 			margin-top:20px;
 		}
 		.text{
 			font-family:"NormalFont";
-			font-size: 24px ; 
+			font-size: 24px ;
 			color:#545454;
 		}
 		.border{
@@ -31,7 +31,7 @@
 			margin-top: 24px;
 			border:2px solid #d80000  !important;
 			height:auto;
-			padding: 15px 0px; 
+			padding: 15px 0px;
 		}
 		.first{
 			margin-left: 50px;
@@ -69,13 +69,13 @@
 		}
 		.borderpink{
 			margin:0px 74px;
-		
+
 		}
 		.insidetable{
 			line-height: 10px;
 			text-align: center;
 			height: 200px;
-			border:1px 
+			border:1px
 			solid #d80000
 		}
 		.borderbottom{
@@ -162,12 +162,12 @@
 					<p class="text red">Delivery at</p>
 					<p class="text">04.04.2018</p>
 					<p class="text red">Order Number</p>
-					<p class="text">{{$order->id}}</p>
-					<p class="text red">Shipping Method</p>	
+					<p class="text">{{$orderId}}</p>
+					<p class="text red">Shipping Method</p>
 					<p class="text">Lieferservice mit DHL-Kurier</p>
 					<p class="text red">Payment Method</p>
 					<p class="text">Paypal</p>
-				</div>	
+				</div>
 				<div  class="right">
 					<p class="text red">Expected Arrival at</p>
 					<p class="text">{{$username}}</p>
@@ -179,7 +179,7 @@
 					<p class="text">Dumptener strafe 24</p>
 					<p class="text">Her</p>
 					<p class="text">45476, Mulheim an der Ruhr DE</p>
-				</div>	
+				</div>
 			</div>
 							<div>
 								<center>
@@ -195,12 +195,12 @@
 								</div>
 		<div class="borderpink">
 			<table style="width: -webkit-fill-available;">
-				<thead ">
+				<thead>
 				<th class="tableth text white"><b>#</b></th>
 				<th class="tableth text white"><b>Item</b></th>
 				<th class="tableth text white"><b>Price</b></th>
 				<th class="tableth text white"><b>Total Price</b></th>
-																						
+
 			</thead>
 			<tbody>
 			<tr class="text insidetable">
@@ -210,21 +210,21 @@
 				<td>{{$orderItem->price * $orderItem->qty}}€</td>
 			</tr>
 		</tbody>
-													
+
 		</table>
 		<div class="order"></div>
 		<div class="borderbottom">
-				
+
 				<div class="borderline">
 								<span class="text white marginleft">Sub-Total</span>
 								<span class="text white marginright">{{$subtotal}}€</span>
 				</div>
-				
+
 				<div class="borderline">
 								<span class="text white marginleft">Taxes</span>
 								<span class="text white marginright">{{$taxes}}€</span>
 				</div>
-				
+
 				<div class="borderline">
 								<span class="text white marginleft">Delivery Chargers</span>
 								<span class="text white marginright">NaN €</span>
@@ -234,7 +234,7 @@
 					<span class="text white marginleft">Total</span>
 					<span class="text white marginright">{{$total}}€</span>
 				</div>
-			</div>	
+			</div>
 	</div>
 
 <footer>
@@ -254,7 +254,7 @@
 				<p class="rightfooter">www.dukkangi.com</p>
 				<p class="media twit"><span><img src="/emails/twitter.png" alt="logo" width="28px" height="28px"></span>  twitter/dukkangi.com</p>
 		</div>
-		
+
 		</div>
 	</div>
 </footer>
