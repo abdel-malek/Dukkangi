@@ -8,11 +8,11 @@ use Session;
 use App\Http\Services\PaymentService;
 use App\Http\Services\CouponService;
 use App\Http\Services\ProductService;
-use App\Http\Services\MAilService;
+use App\Http\Services\MailService;
 use App\User;
 use Illuminate\Support\Carbon;
 use App\Http\Services\SessionService;
-
+use App\Coupon;
 
 class CartService
 {
@@ -157,18 +157,18 @@ class CartService
                 $calcAmount = $calcAmount - ($calcAmount * $coupon->amount);
             }
         }
-        if ($calcAmount != $amount){
-            throw new Exception("Payment Doesn't Match !", 1);
-        }
+        // if ($calcAmount != $amount){
+        //     throw new Exception("Payment Doesn't Match !", 1);
+        // }
 
         $user = User::find($userId);
 
-        MailService::send('emails.complete_order' , ['total'=>$amount,
-        'subtotal' => $amount - ($amount * 0.19),
-        'username' => $user->name,
-        'orderItem' => $products,
-        'orderId' => $cartId,
-        'taxes' => $tax ] , 'Order@dukkangi.com' , $user->email, 'order complete');
+        // MailService::send('emails.complete_order' , ['total'=>$amount,
+        // 'subtotal' => $amount - ($amount * 0.19),
+        // 'username' => $user->name,
+        // 'orderItem' => $products,
+        // 'orderId' => $cartId,
+        // 'taxes' => $tax ] , 'Order@dukkangi.com' , $user->email, 'order complete');
 
 
 

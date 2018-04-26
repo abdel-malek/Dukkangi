@@ -309,10 +309,9 @@ class ProductService
 
     public static function checkProductQty($productId , $qty)
     {
-		$productQty = 20;
-  //        ProducyQty::where('product_id','=',$productId)
-		// ->groupBy('productId')
-		// ->sum('qty');
+		$productQty = ProducyQty::where('product_id','=',$productId)
+		->groupBy('productId')
+		->sum('qty');
 		$orderQty =  OrderItem::select()
 					->where('item_id', '=', $productId)
 					->groupBy('item_id')
