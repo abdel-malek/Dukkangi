@@ -161,12 +161,12 @@ class CartService
 
         $user = User::find($userId);
 
-        MailService::send('emails.complete_order' , ['total'=>$amount,
-        'subtotal' => $amount - ($amount * 0.19),
-        'username' => $user->name,
-        'orderItem' => $products,
-        'orderId' => $cartId,
-        'taxes' => $tax ] , 'Order@dukkangi.com' , $user->email, 'order complete');
+        // MailService::send('emails.complete_order' , ['total'=>$amount,
+        // 'subtotal' => $amount - ($amount * 0.19),
+        // 'username' => $user->name,
+        // 'orderItem' => $products,
+        // 'orderId' => $cartId,
+        // 'taxes' => $tax ] , 'Order@dukkangi.com' , $user->email, 'order complete');
 
 
 
