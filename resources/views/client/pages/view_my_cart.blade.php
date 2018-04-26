@@ -158,10 +158,9 @@
 
                 @foreach($orders as $order)
                 <?php
-                    $total += (isset($order->product->discount_price) ? $order->product->discount_price : $order->product->price);
-                    $gain  += (isset($order->product->discount_price) ? ceil($order->product->discount_price/5) : ceil($order->product->price/5));
-                    $taxes += isset($order->product->discount_price) ? sprintf('%0.2f', $order->product->discount_price*0.19):
-                    sprintf('%0.2f', $order->product->price*0.19);
+                    $total += (isset($order->product->discount_price) ? $order->product->discount_price : $order->product->price) * $order->qty ;
+                    $gain  += (isset($order->product->discount_price) ? ceil($order->product->discount_price/5) : ceil($order->product->price/5)) * $order->qty;
+                    $taxes += (isset($order->product->discount_price) ? sprintf('%0.2f', $order->product->discount_price*0.19 * $order->qty ) : sprintf('%0.2f', $order->product->price*0.19 * $order->qty )  );
                 ?>
                 <div class="item_qty_detail_my_card" data-price="{{ isset($order->product->discount_price) ? $order->product->discount_price : $order->product->price }}"
                   data-tax="{{$order->product->tax_fees}}" data-gain="{{isset($order->product->discount_price ) ? ceil($order->product->discount_price /5) : ceil($order->product->price /5 ) }}"
@@ -176,14 +175,14 @@
                         </span>
                     </div>
                     <div class="control_item_qty">
-                        <h4 class="num_item_qty" >{{ $order->qty }}</h4>
+                        <h4 class="num_item_qty"  >{{ $order->qty }}</h4>
                         <div class="btn_control_item_qty">
                             <img src="/front-end/images/payment/handler-plus.png" onclick="num_plus(this);" id ="this" />
                             <img src="/front-end/images/payment/handler-min.png" onclick="num_min(this);" style="margin-top:-0.8em;" />
                         </div>
                         <p class="total_item_qty">
                             @lang('Total') 
-                            <span class="findit" id="total">{{ isset($order->product->discount_price) ? $order->product->discount_price : $order->product->price }} </span> 
+                            <span class="findit" >{{ isset($order->product->discount_price) ? $order->product->discount_price *  $order->qty : $order->product->price *  $order->qty }} </span> 
                             <i style="color: #d80001;font-weight: bold;font-family: 'EagarFont';font-size: 1em;">€</i>
                         </p>
                     </div>
@@ -214,7 +213,7 @@
                     </p>
 
                     <h3 id="tax">
-                        {{ sprintf('%0.2f', $taxes)}} €
+                        {{ sprintf('%0.2f', $taxes )}} €
                     </h3>
                     </div>
            <!--                        DISCOUNTS
@@ -254,7 +253,7 @@
                 <p class="price_item_details">
                     <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">@lang('Total')</span>
 
-                    <span style="left:3em;" id="Total"> {{$total}} </span>
+                    <span style="left:3em;" id="Total"> {{$total }} </span>
                     <i style="color: #fff;    font-size: 1.5em;font-family: 'EagarFont';margin-top: 0.2em;width: 4em;margin-left: 94px;text-align: center;position: absolute;z-index: 18;"> €</i>
                     <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details"/>
                 </p>
@@ -516,6 +515,7 @@
     });
 </script>
 <script>
+    var total= 0;
     function num_plus(obj) {
        $(obj).parent().parent().find('p').find('span').text(
         parseFloat(
@@ -527,10 +527,14 @@
 
         $('#tax').text( parseFloat( parseFloat($('#tax').text() ) + parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19)).toFixed(2) +"€");
 
-        total = parseFloat(parseFloat($(obj).parent().parent().parent().data('price')) + parseFloat( $('#Total').text() )  ).toFixed(2);
+        // total = parseFloat(parseFloat($(obj).parent().parent().parent().data('price')) * $(obj).parent().parent().find('h4').text() ).toFixed(2);
+        total = parseFloat(parseFloat(parseFloat( $('#Total').text() ) + $(obj).parent().parent().parent().data('price')) ).toFixed(2);
+
         $('#Total').text(total);
+
         qty = parseInt($(obj).parent().parent().find('.num_item_qty').text()) + 1;
         $(obj).parent().parent().find('h4').text(qty);
+      
         $('.stripe-button').attr('data-amount',total);
         //$(obj).parent().find('input').val($(obj).parent().parent().find('h4').text());
     }
@@ -548,11 +552,15 @@
         $('#tax').text( parseFloat( parseFloat($('#tax').text() ) - parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19)).toFixed(2) + "€");
         if ( parseFloat($('#tax').text()) < 0  )
             $('#tax').text('0');
-            total = parseFloat(parseFloat(parseFloat( $('#Total').text() ) - $(obj).parent().parent().parent().data('price')) ).toFixed(2);
-        $('#Total').text(total);
-        console.log(total);
-        $('.stripe-button').attr('data-amount',total);
+
+        // console.log($(obj).parent().parent().parent().data('price'));
+        
         $(obj).parent().parent().find('h4').text(parseInt($(obj).parent().parent().find('h4').text()) - 1);
+        total = parseFloat(parseFloat(parseFloat( $('#Total').text() ) - $(obj).parent().parent().parent().data('price')) ).toFixed(2);
+
+        $('#Total').text(total);
+        // console.log(total);
+        $('.stripe-button').attr('data-amount',total);
         //$(obj).parent().find('input').val($(obj).parent().parent().find('h4').text());
 
         }
