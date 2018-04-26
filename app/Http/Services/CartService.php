@@ -10,6 +10,7 @@ use App\Http\Services\CouponService;
 use App\Http\Services\ProductService;
 use App\Http\Services\MAilService;
 use App\User;
+use App\Coupon;
 
 class CartService
 {
