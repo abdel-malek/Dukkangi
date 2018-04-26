@@ -8,7 +8,7 @@ use App\OrderStatus;
 use App\Http\Services\PaymentService;
 use App\Http\Services\CouponService;
 use App\Http\Services\ProductService;
-use App\Http\Services\MAilService;
+use App\Http\Services\MailService;
 use App\User;
 use App\Coupon;
 
