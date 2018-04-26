@@ -1,9 +1,10 @@
 (function ($){
-  loadUsers();
+  loadProduct();
+
 })(jQuery);
 
-function loadUsers(){
-    $("#coupon-grid").jsGrid({
+function loadProduct(){
+  $("#product-qty-grid").jsGrid({
         filtering: true,
         width: '100%',
         height: 'auto',
@@ -31,21 +32,20 @@ function loadUsers(){
                 return data.promise();
             },
         },
-        fields: [
-            {name: "id"           , title: 'User ID'    , type: "text", width: 5},
-            {name: "email"        , title: 'User Email' , type: "text", width: 5},
-            {name: "order_item.0.points"            , title: 'Gain Points', type: "text", width: 5},
-            {name: "coupon.0.code", title: 'Last Coupon', type: "text", width: 5},
+       fields: [
+            {name: "product.id", title:'ID',type: "text",width: 5},
+            {name: "product.arabic", title: 'Product', type: "text", width: 5},
+            {name: "qty", title: 'Available Qty'  , type: "text", width: 5},
             {
               type: "control", width: 10, editButton: false, modeSwitchButton: false, deleteButton: false,
               itemTemplate: function (value, item) {
+                console.log(item);
                 var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
-                var $orderItems = $('<a class="btn btn-block btn-success btn-xs">Send Coupon</a>');
-                //$orderItems.attr('href',`coupons/${item.id}`);
-                $orderItems.attr('onclick',`viewModal( ${item.id} )`);
-                return $result.add($orderItems);
+                var $edit = $('<a class="btn btn-block btn-info btn-xs">Add</a>');
+                $edit.attr('href',`/admin/products/qty/`+item.product.id+`/create`);
+                return $result.add($edit);
               },
-            }
+            },
         ]
     });
 }

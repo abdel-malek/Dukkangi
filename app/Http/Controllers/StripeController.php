@@ -21,9 +21,9 @@ class StripeController extends Controller
         $result=CartService::prepareCartAndReturnTotalAmount($products, $cartId, $userId);
 
         $charge= StripeService::chargeCard($result['amount'], 'EUR', $result['description'], $email, $token);
-        if (!empty($charge))
-        {
-            return CartService::checkout($cartId,$products,PaymentMethod::STRIPE,$userId);
+        if (!empty($charge)) {
+            $amount = $charge['amount'] / 100;
+            return CartService::checkout($cartId, $products, PaymentMethod::STRIPE, $userId, $amount);
         }
         return null;
     }

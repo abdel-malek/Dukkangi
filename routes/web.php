@@ -79,6 +79,13 @@ Route::post('/admin/products/store', ['uses' => 'ProductController@store'       
 Route::post('/admin/products/delete/{id}', ['uses' => 'ProductController@destroy'         ,'as' => 'product.delete'         ]);
 Route::get('/admin/products/edit/{id}', ['uses' => 'ProductController@edit'                 ,'as' => 'product.edit'         ]);
 Route::put('/admin/products/update', ['uses' => 'ProductController@update'                 ,'as' => 'product.update'         ]);
+
+//PRODUCTS QTY
+Route::get('/admin/products/qty', ['uses' => 'ProductController@productQtyIndex','as' => 'productQty.index']);
+Route::post('/admin/products/qty', ['uses' => 'ProductController@productQtyData','as' => 'productQty.data']);
+Route::get('/admin/products/qty/{id}/create', ['uses' => 'ProductController@productQtyCreate','as' => 'productQty.create']);
+Route::post('/admin/products/qty/{id}/store', ['uses' => 'ProductController@productQtyStore','as' => 'productQty.store']);
+
     //PRODUCTS FROM CATEGORIES
 Route::get('/admin/categoryproducts/{id}', ['uses' => 'ProductController@indexByCategory'     ,'as' => 'productbycategory.index' ]);
 Route::post('/admin/categoryproducts/{id}', ['uses' => 'ProductController@productDataByCategory','as' => 'productbycategory.data'  ]);
