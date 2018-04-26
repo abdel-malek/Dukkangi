@@ -155,9 +155,9 @@ class CartService
                 $calcAmount = $calcAmount - ($calcAmount * $coupon->amount);
             }
         }
-        if ($calcAmount != $amount){
-            throw new Exception("Payment Doesn't Match !", 1);
-        }
+        // if ($calcAmount != $amount){
+        //     throw new Exception("Payment Doesn't Match !", 1);
+        // }
 
         $user = User::find($userId);
 
