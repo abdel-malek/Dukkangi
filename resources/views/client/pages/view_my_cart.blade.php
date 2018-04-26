@@ -527,7 +527,6 @@
 
         $('#tax').text( parseFloat( parseFloat($('#tax').text() ) + parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19)).toFixed(2) +"€");
 
-        // total = parseFloat(parseFloat($(obj).parent().parent().parent().data('price')) * $(obj).parent().parent().find('h4').text() ).toFixed(2);
         total = parseFloat(parseFloat(parseFloat( $('#Total').text() ) + $(obj).parent().parent().parent().data('price')) ).toFixed(2);
 
         $('#Total').text(total);
@@ -536,7 +535,6 @@
         $(obj).parent().parent().find('h4').text(qty);
       
         $('.stripe-button').attr('data-amount',total);
-        //$(obj).parent().find('input').val($(obj).parent().parent().find('h4').text());
     }
     function num_min(obj) {
         if ((parseInt($(obj).parent().parent().text()) > 0)) {
@@ -550,19 +548,17 @@
 
 
         $('#tax').text( parseFloat( parseFloat($('#tax').text() ) - parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19)).toFixed(2) + "€");
+        
         if ( parseFloat($('#tax').text()) < 0  )
             $('#tax').text('0');
-
-        // console.log($(obj).parent().parent().parent().data('price'));
         
         $(obj).parent().parent().find('h4').text(parseInt($(obj).parent().parent().find('h4').text()) - 1);
+        
         total = parseFloat(parseFloat(parseFloat( $('#Total').text() ) - $(obj).parent().parent().parent().data('price')) ).toFixed(2);
-
         $('#Total').text(total);
-        // console.log(total);
-        $('.stripe-button').attr('data-amount',total);
-        //$(obj).parent().find('input').val($(obj).parent().parent().find('h4').text());
 
+
+        $('.stripe-button').attr('data-amount',total);
         }
     }
 

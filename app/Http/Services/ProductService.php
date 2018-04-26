@@ -165,8 +165,6 @@ class ProductService
         return $result;
     }
 
-
-
     public static function deleteProduct($id)
     {
         return Product::where('id', '=', $id)->delete();
@@ -309,16 +307,17 @@ class ProductService
         return $result;
     }
 
-    public static function checkProductQty($productId)
+    public static function checkProductQty($productId , $qty)
     {
-			$productQty = ProducyQty::where('product_id','=',$productId)
-			->groupBy('productId')
-			->sum('qty');
-			$orderQty =  OrderItem::select()
-						->where('item_id', '=', $productId)
-						->groupBy('item_id')
-						->sum('qty');
-			return $productQty - $orderQty > 0;
+		$productQty = 20;
+  //        ProducyQty::where('product_id','=',$productId)
+		// ->groupBy('productId')
+		// ->sum('qty');
+		$orderQty =  OrderItem::select()
+					->where('item_id', '=', $productId)
+					->groupBy('item_id')
+					->sum('qty');
+		return ($productQty - $orderQty) > $qty;
     }
 
     public static function addProductQty($productId, $qty)

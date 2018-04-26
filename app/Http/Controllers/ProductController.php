@@ -9,8 +9,8 @@ use App\Category;
 use App\Http\Services\ImageService;
 use App\Subcategory;
 use App\Brand;
-
 use App\Http\Services\ProductService;
+
 
 class ProductController extends Controller
 {
@@ -236,7 +236,7 @@ class ProductController extends Controller
     public function productQtyData(Request $request)
     {
         $filter = $request->input('filter');
-        return ProductService::loadProductQty($filter);
+       // return ProductService::loadProductQty($filter);
     }
 
     public function productQtyCreate($id)

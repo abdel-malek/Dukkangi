@@ -11,5 +11,5 @@ class OrderStatus extends Model
     const CREATED = 1;
     const INPROGRESS = 2;
     const COMPLETED = 3;
-
+    const DELETED = 4;
 }

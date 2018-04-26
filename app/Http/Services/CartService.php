@@ -4,12 +4,15 @@ namespace App\Http\Services;
 use App\Order;
 use App\OrderItem;
 use App\OrderStatus;
-
+use Session;
 use App\Http\Services\PaymentService;
 use App\Http\Services\CouponService;
 use App\Http\Services\ProductService;
 use App\Http\Services\MAilService;
 use App\User;
+use Illuminate\Support\Carbon;
+use App\Http\Services\SessionService;
+
 
 class CartService
 {
@@ -107,7 +110,7 @@ class CartService
         }
 
         //remove cart from Session
-        session()->forget('cartId');
+        SessionService::clearCartFromSession();
 
         return 'true';
     }
@@ -231,5 +234,11 @@ class CartService
     {
         return OrderItem::where('order_id', '=', $cartId)
       ->select('item_id as id', 'qty')->get()->toArray();
+    }
+    public static function clearCart(){
+        // $session =Session::all();
+    
+        Order::where('created_at' , '<', Carbon::now()->subMinutes(30)->toDateTimeString())->where('status_id' , '=' , OrderStatus::INPROGRESS )->update('status_id' , OrderStatus::DELETED);
+        OrderItem::where('created_at', '<', Carbon::now()->subMinutes(30)->toDateTimeString())->where('status_id' , '=' ,OrderStatus::INPROGRESS)->update('status_id' , OrderStatus::DELETED);
     }
 }

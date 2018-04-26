@@ -12,7 +12,7 @@
 */
 Route::get('/admin', function(){return view('admin.master');})->name('admin.home')->middleware('isadmin');
 Route::get('/', function(){return view('client.pages.home');});
-
+//Route::get('/sessiontest' , "TestController@test");
 
 //Pages Controller
 Route::get('/test/email' , function(){

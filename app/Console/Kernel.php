@@ -4,6 +4,13 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Http\Services\CartService;
+use App\Http\Services\SessoinService;
+use App\Http\Services\MailService;
+use App\User;
+use App\Order;
+use App\OrderStatus;
+
 
 class Kernel extends ConsoleKernel
 {
@@ -24,8 +31,14 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->call(function () {
+            CartService::clearCart();
+        })->everyThirtyMinutes();
+
+        $schedule->call(function(){
+            NotificationService::notifyUser();
+        });
+
     }
 
     /**
