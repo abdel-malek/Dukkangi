@@ -204,10 +204,12 @@
 			</thead>
 			<tbody>
 			<tr class="text insidetable">
-				<td>{{$orderItem->qty}}</td>
-				<td><p>{{$orderItem->name}}</p></td>
-				<td>{{$orderItem->price}}€</td>
-				<td>{{$orderItem->price * $orderItem->qty}}€</td>
+				@foreach($orderItem as $order)
+				<td>{{$order->qty}}</td>
+				<td><p>{{$order->name}}</p></td>
+				<td>{{$order->price}}€</td>
+				<td>{{$order->price * $order->qty}}€</td>
+				@endforeach
 			</tr>
 		</tbody>
 

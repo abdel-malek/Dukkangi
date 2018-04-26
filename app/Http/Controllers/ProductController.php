@@ -236,7 +236,7 @@ class ProductController extends Controller
     public function productQtyData(Request $request)
     {
         $filter = $request->input('filter');
-       // return ProductService::loadProductQty($filter);
+        return ProductService::loadProductQty($filter);
     }
 
     public function productQtyCreate($id)

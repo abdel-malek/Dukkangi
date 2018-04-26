@@ -63,7 +63,7 @@ class PaymentService {
 		'user_id' => $userId,'order_id' => $cartId,'request'=>'','response'=>'','coupon'=>'','sub_amount' => $subAmount,
 		'payment_fees' => $paymentFees,'tax_fees' => $tax]);
 
-		MailService::send('emails.payemnt' , ['cost'=>$amount, 'username' => Auth::user()->name ], 'Payment@dukkangi.com' , Auth::user()->email , 'payment successed' );
+		MailService::send('emails.payment' , ['cost'=>$amount, 'username' => Auth::user()->name ], 'Payment@dukkangi.com' , Auth::user()->email , 'payment successed' );
 	}
 
 	private static function calcualtePaymentFees($amount,$paymentMethodId){

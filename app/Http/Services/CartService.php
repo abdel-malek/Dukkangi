@@ -157,18 +157,18 @@ class CartService
                 $calcAmount = $calcAmount - ($calcAmount * $coupon->amount);
             }
         }
-        // if ($calcAmount != $amount){
-        //     throw new Exception("Payment Doesn't Match !", 1);
-        // }
+        if (sprintf('%0.2f', $calcAmount ) != sprintf('%0.2f', $amount){
+            throw new Exception("Payment Doesn't Match !", 1);
+        }
 
         $user = User::find($userId);
 
-        // MailService::send('emails.complete_order' , ['total'=>$amount,
-        // 'subtotal' => $amount - ($amount * 0.19),
-        // 'username' => $user->name,
-        // 'orderItem' => $products,
-        // 'orderId' => $cartId,
-        // 'taxes' => $tax ] , 'Order@dukkangi.com' , $user->email, 'order complete');
+        MailService::send('emails.complete_order' , ['total'=>$amount,
+        'subtotal' => $amount - ($amount * 0.19),
+        'username' => $user->name,
+        'orderItem' => $products,
+        'orderId' => $cartId,
+        'taxes' => $tax ] , 'Order@dukkangi.com' , $user->email, 'order complete');
 
 
 
@@ -234,6 +234,11 @@ class CartService
     {
         return OrderItem::where('order_id', '=', $cartId)
       ->select('item_id as id', 'qty')->get()->toArray();
+    }
+    public static function loadProductCartAllData($cartId){
+        return OrderItem::where('order_id', '=', $cartId)
+      ->select('*')->get()->toArray();
+        
     }
     public static function clearCart(){
         // $session =Session::all();

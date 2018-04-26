@@ -175,7 +175,7 @@
                         </span>
                     </div>
                     <div class="control_item_qty">
-                        <h4 class="num_item_qty"  >{{ $order->qty }}</h4>
+                        <h4 class="num_item_qty" id="total" >{{ $order->qty }}</h4>
                         <div class="btn_control_item_qty">
                             <img src="/front-end/images/payment/handler-plus.png" onclick="num_plus(this);" id ="this" />
                             <img src="/front-end/images/payment/handler-min.png" onclick="num_min(this);" style="margin-top:-0.8em;" />
