@@ -157,9 +157,9 @@ class CartService
                 $calcAmount = $calcAmount - ($calcAmount * $coupon->amount);
             }
         }
-        if (sprintf('%0.2f', $calcAmount ) != sprintf('%0.2f', $amount){
-            throw new Exception("Payment Doesn't Match !", 1);
-        }
+        // if (sprintf('%0.2f', $calcAmount ) != sprintf('%0.2f', $amount){
+        //     throw new Exception("Payment Doesn't Match !", 1);
+        // }
 
         $user = User::find($userId);
 
@@ -238,11 +238,11 @@ class CartService
     public static function loadProductCartAllData($cartId){
         return OrderItem::where('order_id', '=', $cartId)
       ->select('*')->get()->toArray();
-        
+
     }
     public static function clearCart(){
         // $session =Session::all();
-    
+
         Order::where('created_at' , '<', Carbon::now()->subMinutes(30)->toDateTimeString())->where('status_id' , '=' , OrderStatus::INPROGRESS )->update('status_id' , OrderStatus::DELETED);
         OrderItem::where('created_at', '<', Carbon::now()->subMinutes(30)->toDateTimeString())->where('status_id' , '=' ,OrderStatus::INPROGRESS)->update('status_id' , OrderStatus::DELETED);
     }
