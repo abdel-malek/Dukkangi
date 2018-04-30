@@ -245,10 +245,14 @@
 }
 .icon_buy_option_section{
    float: right;
-   width: 12%;
+   width: 64px;
    height: auto;
    margin-top: 2em;
-}
+   position: -webkit-sticky;
+   position: sticky;
+   top: 0;
+   z-index: 999;
+ }
 .title_customer_review,.title_similar_items{
     width:100%;
     color:#d80001;

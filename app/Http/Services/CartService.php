@@ -32,7 +32,7 @@ class CartService
     private static function createOrderItem($product, $qty, $cartId, $userId)
     {
         $cartId = self::createCart($cartId, $userId, null);
-        return OrderItem::updateOrCreate(
+        $orderItems = OrderItem::updateOrCreate(
             ['order_id' => $cartId, 'item_id' => $product->id, 'user_id' => $userId],
             ['order_id' => $cartId, 'item_id' => $product->id,
                 'sub_amount' => $product->price, 'qty' => $qty,
@@ -40,6 +40,13 @@ class CartService
                 'gain_point' => ceil($product->point / 5), 'user_id' => $userId, 'status_id' => OrderStatus::CREATED,
                 'currency' => $product->currency]
         );
+        return $orderItems;
+    }
+    private static function getOrderItemCount($cartId){
+      $count = OrderItem::where('order_id','=',$cartId)
+      ->where('status_id','=',OrderStatus::CREATED)
+      ->count();
+      session(['order_item_count' => $count]);
     }
 
     private static function buyItemCart($userId, $paymentId = null)
@@ -74,7 +81,9 @@ class CartService
     public static function addToCart($productId, $qty, $cartId, $userId)
     {
         $product = ProductService::loadById($productId);
-        return self::createOrderItem($product, $qty, $cartId, $userId);
+        $orderItem = self::createOrderItem($product, $qty, $cartId, $userId);
+        self::getOrderItemCount($cartId);
+        return $orderItem;
     }
 
     public static function BuyThisItem($productId, $qty, $userId)

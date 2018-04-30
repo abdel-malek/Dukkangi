@@ -110,6 +110,29 @@
             .btn_qty{
                 cursor: pointer;
             }
+            #ex3{
+              float: right;
+
+            }
+            #ex3 .fa-stack[data-count]:after{
+                position:absolute;
+                right:0%;
+                top:1%;
+                content: attr(data-count);
+                font-size:30%;
+                padding:.6em;
+                border-radius:50%;
+                line-height:.8em;
+                color: white;
+                background:rgba(255,0,0,.85);
+                text-align:center;
+                min-width: 1em;
+                font-weight:bold;
+              }
+              #ex3 .fa-stack-1x, .fa-stack-2x{
+                background-color:#d90000;
+                border-radius: 100px;
+              }
         </style>
         <style>
             /* jssor slider loading skin spin css */
@@ -319,51 +342,19 @@
                         <p class="text_section">
                             {{$product->section3_english}}<br/><br>
                         </p>
-                    <a href="{{route('mycart')}}"><img src="/front-end/images/user_actions/view-my-cart.png" class="icon_buy_option_section"></a>
 
                 </div>
-
-           <!--     <div class="section" style="width:100%;">
-                    <h4 class="title_section">
-                        @lang('Options')
-                    </h4>
-                    <div class="options_section">
-                        <div class="option_section">
-                            <div class="box_option_section">
-
-                            </div>
-                            <p class="title_option_section">
-                                @lang('Option') 1
-                            </p>
-                        </div>
-                         <div class="option_section">
-                             <div class="box_option_section" style="background-color: #303030;">
-
-                            </div>
-                            <p class="title_option_section">
-                                @lang('Option') 2
-                            </p>
-                        </div>
-                         <div class="option_section">
-                             <div class="box_option_section" style="background-color: #e8e8e8;">
-
-                            </div>
-                            <p class="title_option_section">
-                                @lang('Option') 3
-                            </p>
-                        </div>
-                         <div class="option_section">
-                             <div class="box_option_section" style="background-color: #f5f5f5;">
-
-                            </div>
-                            <p class="title_option_section">
-                                @lang('Option') 4
-                            </p>
-                        </div>
-                    </div>
-                    <a href="{{route('mycart')}}"><img src="/front-end/images/user_actions/view-my-cart.png" class="icon_buy_option_section"></a>
-            </div> -->
+                <a href="{{route('mycart')}}">
+                  {{-- <img src="/front-end/images/user_actions/view-my-cart.png" class="icon_buy_option_section"> --}}
+                  <div id="ex3">
+                    <span class="p1 fa-stack fa-2x has-badge" data-count=@if(!empty(Session::get('order_item_count'))) {{ Session::get('order_item_count')}} @endif>
+                      <i class="p2 fa fa-circle fa-stack-2x"></i>
+                      <i class="p3 fa fa-shopping-cart fa-stack-1x fa-inverse" data-count=@if(!empty(Session::get('order_item_count'))) {{ Session::get('order_item_count')}} @endif></i>
+                    </span>
+                  </div>
+                </a>
         </div>
+
         <div class="col-md-12" style="float:left;margin-top: 170px" >
             <h3 class="title_customer_review">
                 @lang("Customer's Reviews")
@@ -443,7 +434,7 @@
                                     </a>
                                     <p class="item_price" style="margin-bottom: 0em;">{{$simiproduct->price}} €</p>
                                     <span class="rating ratings{{$simiproduct->rate}}" style="width: 0.75em;height: 1.7em;" ></span>
-                                    <img src="/front-end/images/user_actions/view-my-cart.png" class="icon_view_my_card" />
+
                                 </div>
                             </div>
                             @endforeach
