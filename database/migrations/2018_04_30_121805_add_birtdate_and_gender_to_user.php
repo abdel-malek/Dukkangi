@@ -16,7 +16,7 @@ class AddBirtdateAndGenderToUser extends Migration
     {
         Schema::table('users',function(Blueprint $table)
         {
-            $table->timestamp('birth_date')->default(Carbon::now());
+            $table->date('birth_date')->default(Carbon::now());
             $table->string('gender');
         });
     }
