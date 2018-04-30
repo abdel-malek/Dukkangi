@@ -153,7 +153,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
     color:#fff;
     margin-top: 0.5em;
     font-size: 1em;
-    margin-bottom: 1em; 
+    margin-bottom: 1em;
 }
 .footer{
     float: left;
@@ -317,7 +317,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
     background-color: #D80F16 ;
     padding: 0.3em 1em;
     color: #fff;
-    text-align: center; 
+    text-align: center;
     cursor: pointer;
 }
 .rating i{
@@ -381,4 +381,8 @@ option{
     height: 0em;
     background-color: #d80001;
     margin-top: 2.5em;
+}
+.icon-flag{
+  width: 16px;
+  height: 16px;
 }
