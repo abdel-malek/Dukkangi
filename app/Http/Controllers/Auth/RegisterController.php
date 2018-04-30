@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
 use App\Http\Services\MailService;
 use Illuminate\Http\Request;
-
+use \Datetime;
 class RegisterController extends Controller
 {
     /*
@@ -84,6 +84,8 @@ class RegisterController extends Controller
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
                 'user_category_id' => 2,
+                'gender' => $data['gender'],
+                'birth_date' => $data['dateofbirth'],
             ]);
         }
         else{
@@ -92,6 +94,8 @@ class RegisterController extends Controller
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
                 'user_category_id' => 2,
+                'gender' => $data['gender'],
+                'birth_date' => new DateTime($data['dateofbirth']),
             ]);
         }
     }
@@ -102,7 +106,6 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
 
         event(new Registered($user = $this->create($request->all())));
-
         $this->guard()->login($user);
 
         MailService::send('emails.signup', [],'register@dukkangi.com', $request->email, 'register successed');

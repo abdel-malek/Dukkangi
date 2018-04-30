@@ -10,7 +10,7 @@ class UserService {
 	{	
 		$index = $filter ? $filter['pageIndex'] : 0 ; 
 
-		$user = User::select(['id' , 'name', 'email']);
+		$user = User::select(['id' , 'name', 'email' ,'birth_date','gender']);
 
 		if (!empty($filter['id']))
 		{
@@ -26,12 +26,24 @@ class UserService {
 		{
 			$user->where('email' ,'like' , '%'.$filter['email'].'%' );
 		} 
+		if (!empty($filter['gender']))
+		{
+			$user->where('gender' ,'like' , '%'.$filter['gender'].'%' );
+		}	
+		if (!empty($filter['birth_date']))
+		{
+			$user->where('birth_date' ,'like' , '%'.$filter['birth_date'].'%' );
+		}	
 		$user->orderBy('id','desc');
 		$result['total'] = $user->count();
 
 		$skip = ($index == 1) ? 0 : ($index-1)*10 ;
 		$result['data']=$user->take(10)->skip($skip)->get();
 
+		// foreach ($result['data'] as $res) {
+			// dd($res->birth_date);
+			// $res->birth_date = date_format($res->birth_date,"d:m:Y");
+		// }
 		return $result;
 	}
 
