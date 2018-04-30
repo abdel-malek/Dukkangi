@@ -54,11 +54,17 @@
                                     <input type="password" class="form-control input_singup" id="inlineFormInputGroupConfirmPassword" placeholder="Confirm Password" name="password_confirmation">
                                 </div>
                             </div>
+                           <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
+                                <div class="input-group">
+
+                                    <input type="text" class="form-control input_singup" id="inlineFormInputGroupConfirmPassword" placeholder="Gender" name="gender">
+                                </div>
+                            </div>
                            
                             <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
                                 <div class="input-group">
 
-                                    <input type="text" class="form-control input_singup" id="date_of_brith" placeholder="Date of birth" name="dateofbirth">
+                                    <input type="text" class="form-control input_singup datepicker" id="date_of_brith" placeholder="Date of birth" name="dateofbirth">
                                 </div>
                             </div>
                             <div class="col-sm-12 my-1" style="margin-top: 3em !important;float: left;">
@@ -106,7 +112,13 @@
 
     <script>
         $(function () {
-            $("#date_of_brith").datepicker();
+            $("#date_of_brith").datepicker({
+                onSelect: function (date){
+                    // date =date + " 01:00:00";
+                $("#date_of_brith").val(date);
+                }
+
+            });
         });
     </script>
     @endsection

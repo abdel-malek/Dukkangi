@@ -14,10 +14,12 @@ class CouponController extends Controller
 		$this->middleware('isadmin');
 	}
 
-    public function index(){
-    	return view('admin.coupons.index');
-    }
 
+                //Make Coupon
+    public function makeCouponIndex(){
+    	return view('admin.makecoupons.index');
+    }
+    //Loads users to make a coupons for.
     public function loadCoupons(Request $request)
     {
         $filter = $request->input('filter');
@@ -36,6 +38,20 @@ class CouponController extends Controller
     	
 
         Session::flash('success', 'Coupon Created and Sent Successfully!');
-        return redirect(route('coupon.index'));
+        return redirect(route('makecoupon.index'));
+    }
+
+                    //Manage Coupons
+    public function manageIndex(){
+        return view('admin.coupons.index');
+    }
+    //Loads all coupons
+    public function loadAllCoupons(Request $request)
+    {
+        $filter = $request->input('filter');
+        return CouponService::loadAllCoupons($filter);
+    }
+    public function deleteCoupon($CouponId){
+        return CouponService::deleteCoupon($CouponId);
     }
 }

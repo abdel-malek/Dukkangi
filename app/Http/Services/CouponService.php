@@ -18,15 +18,6 @@ class CouponService {
 	public static function loadCoupons($filter){
 		$index = $filter ? $filter['pageIndex'] : 0 ;
 
-		//$coupon = User::select( [ 'id','email'  ]);
-
-		// $points = OrderItem::select(DB::raw('sum(gain_point) as points'),'user_id')
-		// ->with(['user' => function($query){
-		// 	$query->addSelect('id','email');
-		// 	$query->with(['coupon'=>function($query){
-		// 		$query->addSelect('id','code','user_id')->orderBy('created_at')->first();
-		// 	}]);
-		// }])
 		$points = User::select('id','email')
 		->with(['orderItem' => function($query){
 			$query->addSelect(DB::raw('sum(gain_point) as points'),'user_id')
@@ -139,4 +130,78 @@ class CouponService {
 		$coupon->update();
 	}
 
+
+
+
+
+
+
+				//Manage Coupons
+	public static function loadAllCoupons($filter){
+		$index = $filter ? $filter['pageIndex'] : 0 ;
+
+		$coupon = Coupon::select('id','user_email','coupon_status','coupon_type','amount','code');
+		if (!empty($filter['id']))
+		{
+			$coupon->where('id' ,'=' , $filter['id']);
+		}
+
+		if (!empty($filter['user_email']))
+		{
+			//Need a Change !
+			$coupon->where('user_email' ,'=' , $filter['user_email'] );
+		}
+
+		if (!empty($filter['coupon_status']))
+		{
+			$statusFilter= $filter['coupon_status'];
+			$statusFilter = strtolower($statusFilter);
+			if ($statusFilter == 'active'){
+				$coupon->where('coupon_status' ,'=' , 1 );
+			}
+			else if ($statusFilter == 'expired'){
+				$coupon->where('coupon_status' ,'=' , 2 );
+			}
+			else if ($statusFilter == 'consumed'){
+				$coupon->where('coupon_status' ,'=' , 3 );		
+			}
+			
+		}
+
+		if (!empty($filter['coupon_type']))
+		{	
+			$coupon->where('coupon_type' ,'=' , $filter['coupon_type'] );
+		}
+
+		if (!empty($filter['amount']))
+		{	
+			$coupon->where('amount' ,'=' , $filter['amount'] );
+		}
+		if (!empty($filter['code']))
+		{	
+			$coupon->where('code' ,'=' , $filter['code'] );
+		}
+
+		$coupon->orderBy('id','desc');
+		$result['total'] = $coupon->count();
+
+		$skip = ($index == 1) ? 0 : ($index-1)*10 ;
+		$result['data']=$coupon->take(10)->skip($skip)->get();
+		foreach ($result['data'] as $row) {
+			if  (!isset($row)) continue;
+			if ($row->coupon_status == '1')
+				$row->coupon_status = "Active";
+			
+			if ($row->coupon_status == '2'){
+				$row->coupon_status = "Expired";
+			}
+			if ($row->coupon_status == '3'){
+				$row->coupon_status = "Consumed";
+			}
+		}
+			return $result;
+	}
+	public static function deleteCoupon($id){
+		    return Coupon::where('id', '=', $id)->delete();
+	}
 }

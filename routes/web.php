@@ -119,9 +119,12 @@ Route::post('/admin/payment/delete/{id}', ['uses' => 'PaymentController@destroy'
 
     //COUPONS
 
-Route::get('/admin/coupons', 'CouponController@index'  )->name('coupon.index');
-Route::post('/admin/coupons' ,'CouponController@loadCoupons');
+Route::get('/admin/makecoupons', 'CouponController@makeCouponIndex'  )->name('makecoupon.index');
+Route::post('/admin/makecoupons' ,'CouponController@loadCoupons');
 Route::post('/admin/submitcoupons/' , 'CouponController@sendCoupon')->name('submitcoupon');
+Route::get('/admin/coupons' , 'CouponController@manageIndex')->name('coupon.index');
+Route::post('/admin/coupons' , 'CouponController@loadAllCoupons');
+Route::post('/admin/deletecoupon/{id}' , 'CouponController@deleteCoupon');
 
     //DASHBOARD END
 
