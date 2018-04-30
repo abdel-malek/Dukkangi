@@ -116,7 +116,7 @@
 }
 
 .add_to_card_item_details span{
-    margin-top: 10em;
+    margin-top: 217px;
     color: #fff;
 }
 .points_item_details{
@@ -232,7 +232,7 @@
 
 }
 .img_buy_item_details ,.img_add_to_card_item_details{
-    width: 13em;
+    width: 185px;
     height: auto;
     position: absolute;
     right: -2.1em;
