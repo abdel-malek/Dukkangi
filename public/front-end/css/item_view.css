@@ -254,6 +254,8 @@ width: 13em;
     color:#d80001;
     font-family: 'EagarFont';
     font-size: 1.9em;
+    border-top: 1px solid #d80001;
+    margin-top: 127px;
 
 }
 .title_similar_items{

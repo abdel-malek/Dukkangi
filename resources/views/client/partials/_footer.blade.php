@@ -11,7 +11,7 @@
                 </p>
             </div>
             <div class="col-md-7 div_icon_footer" >
-                <a href="https://plus.google.com/discover"><i class="fa fa-google-plus icon_footer"  style="    padding: 0.5em 0.35em;"></i></a>
+                {{-- <a href="https://plus.google.com/discover"><i class="fa fa-google-plus icon_footer"  style="    padding: 0.5em 0.35em;"></i></a> --}}
                 <a href="https://www.instagram.com/"><i class="fa fa-instagram icon_footer"></i></a>
                 <a href="https://twitter.com/"><i class="fa fa-twitter icon_footer" ></i> </a>
                 <a href="https://www.facebook.com/"><i class="fa fa-facebook icon_footer" style="padding: 0.5em 0.7em;"></i></a>

@@ -17,7 +17,7 @@
           <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-      
+
           <style>
             .star{
                 cursor: pointer;
@@ -102,7 +102,7 @@
             .imgslide{
                 width: 30px !important ;
                 height: 3px !important;
-                margin-top:1px !important; 
+                margin-top:1px !important;
                 margin-right: 3px !important;
                 margin-left: 3px !important;
                 text-indent: -999px !important;
@@ -180,7 +180,7 @@
                                 @endif
                                 @if(isset($product->image_id2))
                                   <li data-target="#carouselExampleIndicators" data-slide-to="2" class="imgslide"></li>
-                              
+
                                 @endif
                                 @if(isset($product->image_id2))
                                   <li data-target="#carouselExampleIndicators" data-slide-to="3" class="imgslide"></li>
@@ -190,7 +190,7 @@
                                 <div class="carousel-item active">
                                   <img class=" d-block w-100" style="height: 380px"  src="{{$product->image_id}}" alt="First slide">
                                 </div>
-                            
+
                                 @if(isset($product->image_id2))
                                 <div class="carousel-item">
                                   <img class="img_item_details" style="height: 380px"  src="{{$product->image_id2}}" alt="Second slide">
@@ -207,7 +207,7 @@
                                 </div>
                                 @endif
                               </div>
-                              
+
                             </div>
 
 
@@ -242,27 +242,32 @@
                     <!--<div class="price_tag_item_details">-->
                     @if ($product->qty != 0 )
                     <p class="price_item_details" >
-                        
-                        @if (isset($product->discount)) 
+
+                        @if (isset($product->discount))
                         <span style="left: -16px;width: 5em;">
 
-                           <small><small> {{$product->price}}-{{ $product->discount  }}%  = <b>{{$product->discount_price}} € </b></small></small> 
+                           <small><small> {{$product->price}}-{{ $product->discount  }}%  = <b>{{$product->discount_price}} € </b></small></small>
                         @else
                         <span>
-                            {{$product->price}} $
+                            {{$product->price}} €
                         @endif
                         </span>
                         <img src="/front-end/images/price-tag/price-tag.png" class="img_price_item_details"/>
                     </p>
                     @endif
                     <!--</div>-->
-                    <p class="points_item_details" style="margin-top:1em ;{{ $product->qty == 0 ?"filter: blur(5px)" : '' }}">
-                        <span>{{ sprintf('%0.2f', $product->tax) }} € </span>@lang('Tax')<small><small><i>(included)</i></small></small>
-                    </p>
+                    {{-- <p class="points_item_details" style="margin-top:1em ;{{ $product->qty == 0 ?"filter: blur(5px)" : '' }}">
+                        <span>
+                          {{ sprintf('%0.2f', $product->tax) }} €
+                        </span>
+                        @lang('Tax')<small><small><i>(included)</i></small>
+                      </small>
+                    </p> --}}
                     <p class="points_item_details" style="margin-left:50px;margin-top: 0em; {{ $product->qty == 0 ?"filter: blur(5px)" : '' }}">
-                        <span> {{ $product->gain_points }} @lang('Points') </span> @lang('Bounce')  
+                        <span> {{ $product->gain_points }} @lang('Points') </span> @lang('Bounce')
                     </p>
-                    <p  class="text_item_details" {{ $product->qty == 0 ?"style='filter: blur(5px)'" : '' }}>
+
+                    <p  class="text_item_details" {{ $product->qty == 0 ?"style='filter: blur(5px)'" : '' }} style="margin-top:32px">
                         {{ $product->desc_english}}
 
                     </p>
@@ -275,9 +280,9 @@
                      <p class="add_to_card_item_details" style="cursor: pointer;margin-top: 110px" id="btn_modal_one_item_details" >
                         <span> <small>@lang('Add to cart')</small></span>
 
-                        <img src="/front-end/images/price-tag/add-to-cart.png" class="img_add_to_card_item_details" 
-                        @if(session('lang') == 'de') 
-                            style="height: 7.2em;" 
+                        <img src="/front-end/images/price-tag/add-to-cart.png" class="img_add_to_card_item_details"
+                        @if(session('lang') == 'de')
+                            style="height: 7.2em;"
                         @endif
                         />
                     </p>
@@ -315,7 +320,7 @@
                             {{$product->section3_english}}<br/><br>
                         </p>
                     <a href="{{route('mycart')}}"><img src="/front-end/images/user_actions/view-my-cart.png" class="icon_buy_option_section"></a>
-        
+
                 </div>
 
            <!--     <div class="section" style="width:100%;">
@@ -361,10 +366,6 @@
         </div>
         <div class="col-md-12" style="float:left;margin-top: 170px" >
             <h3 class="title_customer_review">
-
-        <br>
-        <br>
-        <br>
                 @lang("Customer's Reviews")
             </h3>
             <div class="customer_reviews col-md-7">
@@ -487,7 +488,7 @@
               <!-- <img -->
           </div>
       </div>
-      
+
       <p class="price_item_details" style="margin-top: 0em;" data-product-price='{{isset($product->discount_price) ? $product->discount_price: $product->price}}'>
           <span  style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;left: -1em;">@lang('Total') </span>
           <span class="total_qty" style="left:2.2em;width: 6em"> {{isset($product->discount_price) ? $product->discount_price: $product->price}} €</span>
@@ -500,7 +501,7 @@
           <a href="{{route('mycart')}}"><p class="btn_view_my_cart" style="width: 100%;">@lang('View my Cart') </p></a>
         @else
           <a href="{{route('login')}}" class="btn_done" style="background-color: #d80001;color: #fff;cursor: pointer">Login To Add</a>
-        
+
           <a class="btn_cancel" style="margin-left: 9%;cursor: pointer" onclick="hideModal()">@lang('Cancel') </a>
         @endif
       </div>
@@ -582,13 +583,13 @@
                 var ratings = document.getElementsByClassName('ratings4');
                 for (var i = 0; i < ratings.length; i++) {
                     var r = new SimpleStarRating4(ratings[i]);
-                    
+
                 }
 
                 var ratings = document.getElementsByClassName('ratings5');
                 for (var i = 0; i < ratings.length; i++) {
                     var r = new SimpleStarRating5(ratings[i]);
-                    
+
                 }
 
 
