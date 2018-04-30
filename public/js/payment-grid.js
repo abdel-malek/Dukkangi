@@ -35,8 +35,8 @@ function loadPayments(){
             {name: "id"         , title: 'ID'      , type: "text", width: 5},
             {name: "user_id"    , title: 'User'    , type: "text", width: 5},
             {name: "order_id"   , title: 'Order' , type: "text", width: 5},
-            {name: "payment_method_id" , title: 'Payment Method' , type: "text", width: 5},
-            
+            {name: "payment_method.name" , title: 'Payment Method' , type: "text", width: 5},
+
             {
               type: "control", width: 10, editButton: false, modeSwitchButton: false, deleteButton: false,
               itemTemplate: function (value, item) {
@@ -89,4 +89,3 @@ function deletePayment(paymentId){
     }
   });
 }
-
