@@ -377,18 +377,6 @@
                                     @lang('Upvoted')
                                 </p>
                             </div>
-                             <div class="replay_user_actions">
-                                <img src="/front-end/images/user_actions/replay.png" class="img_replay_user_actions">
-                                <p class="text_replay_user_actions" style="color: #999">
-                                    @lang('Reply')
-                                </p>
-                            </div>
-                             <div class="report_user_actions">
-                                <img src="/front-end/images/user_actions/report.png" class="img_report_user_actions">
-                                <p class="text_report_user_actions" style="color: #999">
-                                    @lang('Report')
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </div>

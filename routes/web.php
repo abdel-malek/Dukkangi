@@ -126,6 +126,9 @@ Route::get('/admin/coupons' , 'CouponController@manageIndex')->name('coupon.inde
 Route::post('/admin/coupons' , 'CouponController@loadAllCoupons');
 Route::post('/admin/deletecoupon/{id}' , 'CouponController@deleteCoupon');
 
+
+Route::get('admin/comment-rate-report','CommentController@index')->name('comment.index');
+Route::post('admin/comment-rate-report','CommentController@loadComments');
     //DASHBOARD END
 
 
