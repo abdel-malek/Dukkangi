@@ -147,10 +147,12 @@ class CartService
     public static function checkout($cartId, $products, $paymentMethodId = 1, $userId,$amount)
     {
         $tax = 0;
+        $taxes = [];
         foreach ($products as $product) {
             $orderItem = self::addToCart($product['id'], $product['qty'], $cartId, $userId);
             $taxFees = ProductService::getProductTax($product['id']);
             $tax += self::calculateTaxAmount($orderItem->total_amount, $taxFees);
+            array_push($taxes, $taxFees);
         }
 
         //Calculate Amount
@@ -176,7 +178,8 @@ class CartService
         'username' => $user->name,
         'orderItem' => $products,
         'orderId' => $cartId,
-        'taxes' => $tax ] , 'Order@dukkangi.com' , $user->email, 'order complete');
+        'taxes' = >$taxes;
+        'tax' => $tax ] , 'Order@dukkangi.com' , $user->email, 'order complete');
 
 
 
