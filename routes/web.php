@@ -128,6 +128,10 @@ Route::get('/admin/coupon/new' ,'CouponController@getGroupCouponPage')->name('gr
 Route::post('/admin/coupon/group' , 'CouponController@sendCoupon')->name('makegroupcoupon');
 Route::get('/admin/couponusers/{id}' , 'CouponController@getUsersGrid')->name('coupnusers');
 Route::post('/admin/couponusers/{id}' , 'CouponController@getUsersData');
+
+
+Route::get('admin/comment-rate-report','CommentController@index')->name('comment.index');
+Route::post('admin/comment-rate-report','CommentController@loadComments');
     //DASHBOARD END
 
 

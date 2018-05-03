@@ -48,9 +48,10 @@
                             </a>
                         </li>
                         <li class="sub-item">
-                            <a href="{{route('coupon.index') }}"><span>Coupons</span>
-                                <!--<span class="float-xs-right"><i class="icon_plus"></i></span>-->
-                            </a>
+                            <a href="{{route('coupon.index') }}"><span>Coupons Report</span></a>
+                        </li>
+                        <li class="sub-item">
+                          <a href="{{route('comment.index') }}"><span>Comment & Rate Report</span></a>
                         </li>
                         </ul>
                     </ul>
