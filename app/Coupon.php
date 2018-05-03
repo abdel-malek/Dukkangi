@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\User;
+use App\CouponUser;
 class Coupon extends Model
 {
     protected $table = 'coupon';
@@ -11,6 +11,6 @@ class Coupon extends Model
     //
      public function user()
     {
-    	return $this->belongsTo(User::class,'id','user_id');
+    	return $this->hasMany(CouponUser::class,'id','user_id');
     }
 }

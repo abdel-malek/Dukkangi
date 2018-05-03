@@ -75,6 +75,10 @@
     <div>
       <div id="coupon-grid"></div>
     </div>
+    <div class="col-md-12">
+        <a href="{{route('groupcoupon')}}" class="btn btn-block btn-primary">Make Coupon</a>
+        
+    </div>
 
 <div id="myModal" class="modal" >
 	{!! Form::open(['route'=>'submitcoupon']) !!}

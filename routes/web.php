@@ -12,7 +12,6 @@
 */
 Route::get('/admin', function(){return view('admin.master');})->name('admin.home')->middleware('isadmin');
 Route::get('/', function(){return view('client.pages.home');});
-//Route::get('/sessiontest' , "TestController@test");
 
 //Pages Controller
 Route::get('/test/email' , function(){
@@ -121,11 +120,14 @@ Route::post('/admin/payment/delete/{id}', ['uses' => 'PaymentController@destroy'
 
 Route::get('/admin/makecoupons', 'CouponController@makeCouponIndex'  )->name('makecoupon.index');
 Route::post('/admin/makecoupons' ,'CouponController@loadCoupons');
-Route::post('/admin/submitcoupons/' , 'CouponController@sendCoupon')->name('submitcoupon');
+Route::post('/admin/submitcoupons/' , 'CouponController@sendSingleCoupon')->name('submitcoupon');
 Route::get('/admin/coupons' , 'CouponController@manageIndex')->name('coupon.index');
 Route::post('/admin/coupons' , 'CouponController@loadAllCoupons');
 Route::post('/admin/deletecoupon/{id}' , 'CouponController@deleteCoupon');
-
+Route::get('/admin/coupon/new' ,'CouponController@getGroupCouponPage')->name('groupcoupon');
+Route::post('/admin/coupon/group' , 'CouponController@sendCoupon')->name('makegroupcoupon');
+Route::get('/admin/couponusers/{id}' , 'CouponController@getUsersGrid')->name('coupnusers');
+Route::post('/admin/couponusers/{id}' , 'CouponController@getUsersData');
     //DASHBOARD END
 
 
@@ -159,4 +161,4 @@ Route::post('/paypal','PayPalController@ipn');
 
 //Test
 Route::get('/test/load-cart/{id}','TestController@loadCart');
-Route::get('/test/mail' , 'TestController@mail');
+Route::get('/test' , 'CouponController@test');

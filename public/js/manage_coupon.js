@@ -33,10 +33,17 @@ function loadUsers(){
         },
        fields: [
             {name: "id"         , title: 'Copuon ID'      , type: "text", width: 5},
-            {name: "user_email"    , title: 'User'    , type: "text", width: 5},
             {name: "amount" , title: 'Coupon Amount' , type: "text", width: 5},
             {name: "coupon_type" , title: 'Copuon Type' , type: "text", width: 5},
-            {name: "coupon_status" , title: 'Status' , type: "text", width: 5},
+            {
+                type: "control", width: 10, editButton: false, modeSwitchButton: false, deleteButton: false,
+                itemTemplate: function (value, item) {
+                  var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
+                  var $del = $('<a class="btn btn-block btn-default btn-xs">See Users</a>');
+                  $del.attr('href', `/admin/couponusers/${item.id}`);
+                return $result.add($del);
+              },
+            },
             {
                 type: "control", width: 10, editButton: false, modeSwitchButton: false, deleteButton: false,
                 itemTemplate: function (value, item) {
@@ -80,4 +87,3 @@ function deleteCoupon(CouponId){
     }
   });
 }
-
