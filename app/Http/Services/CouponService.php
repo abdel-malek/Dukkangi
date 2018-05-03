@@ -46,7 +46,6 @@ class CouponService {
 	    for ($i = 0; $i < $length; $i++) {
 	        $key .= $keys[array_rand($keys)];
 	    }
-
 	    return $key;
 	}
 	private static function makeCoupon($userIds , $type, $amount, $code){
@@ -116,7 +115,7 @@ class CouponService {
 	public static function checkCoupon($code){
 		$coupon = Coupon::where('code' , '=', $code )->get()->first();
 		if (!isset($coupon)) return 0;
-		$couponUser = CouponUser::where('coupon_id' , '=' , $coupon->id)->where('coupon_status','=',CouponUser::ACTIVE)->where('user_id','=',Auth::id())->get()->first();
+		$couponUser = CouponUser::where('coupon_id' , '=' , $coupon->id)->where('coupon_status','=',CouponStatus::ACTIVE)->where('user_id','=',Auth::id())->get()->first();
 		if(!isset($couponUser)) return 0;
 		
 
@@ -145,7 +144,7 @@ class CouponService {
 	}
 
 	public static function couponUsed($couponId){
-		$couponUser = CouponUser::where('coupon_id' , '='. $couponId)->where('user_id' , '=' , Auth::id())->get()->first();
+		$couponUser = CouponUser::where('coupon_id' , '=', $couponId)->where('user_id' , '=' , Auth::id())->get()->first();
 		$couponUser->coupon_status = CouponStatus::CONSUMED ; 
 		$coupon->update();
 	}

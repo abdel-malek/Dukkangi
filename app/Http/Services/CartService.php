@@ -117,7 +117,6 @@ class CartService
         if (isset($order->coupon_id)){
             CouponService::couponUsed($order->coupon_id);
         }
-
         //remove cart from Session
         SessionService::clearCartFromSession();
 
