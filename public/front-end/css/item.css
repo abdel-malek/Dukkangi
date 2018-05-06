@@ -113,7 +113,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 }
 .input-search_icon{
     margin-top: 0.7em;
-    right: 0.5em;
+    right: 24px;
     color: #aaa;
     float: right;
     position: absolute;

@@ -140,7 +140,7 @@
 
   <div class="col-md-12" style="padding: 0em 5em;">
             <div class="header_page" style="background-image: url('/front-end/images/items_page/2.png')"/>
-                <p class="header_page_text_div" style="width: 83.0%;padding-left: 29.5em ">
+                <p class="header_page_text_div" style="width: 80.9%;padding-left: 29.5em ">
                     Health Food / Canned Food
                     <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
                     <span class="rating"  style="padding-left: 4em"></span>
@@ -181,8 +181,8 @@
                             <img src="/front-end/images/payment/handler-min.png" onclick="num_min(this);" style="margin-top:-0.8em;" />
                         </div>
                         <p class="total_item_qty">
-                            @lang('Total') 
-                            <span class="findit" >{{ isset($order->product->discount_price) ? $order->product->discount_price *  $order->qty : $order->product->price *  $order->qty }} </span> 
+                            @lang('Total')
+                            <span class="findit" >{{ isset($order->product->discount_price) ? $order->product->discount_price *  $order->qty : $order->product->price *  $order->qty }} </span>
                             <i style="color: #d80001;font-weight: bold;font-family: 'EagarFont';font-size: 1em;">€</i>
                         </p>
                     </div>
@@ -533,7 +533,7 @@
 
         qty = parseInt($(obj).parent().parent().find('.num_item_qty').text()) + 1;
         $(obj).parent().parent().find('h4').text(qty);
-      
+
         $('.stripe-button').attr('data-amount',total);
     }
     function num_min(obj) {
@@ -548,12 +548,12 @@
 
 
         $('#tax').text( parseFloat( parseFloat($('#tax').text() ) - parseFloat( parseFloat($(obj).parent().parent().parent().data('price') ) * 0.19)).toFixed(2) + "€");
-        
+
         if ( parseFloat($('#tax').text()) < 0  )
             $('#tax').text('0');
-        
+
         $(obj).parent().parent().find('h4').text(parseInt($(obj).parent().parent().find('h4').text()) - 1);
-        
+
         total = parseFloat(parseFloat(parseFloat( $('#Total').text() ) - $(obj).parent().parent().parent().data('price')) ).toFixed(2);
         $('#Total').text(total);
 
@@ -564,10 +564,10 @@
 
 
 
-    
 
 
-    
+
+
 
 
     // $('#btn-checkout').on('click',function(){
@@ -611,7 +611,7 @@
 
     code = 0 ;
     function checkCode(val){
-        if (val.length == 12 ){ // validating coupon pattern 
+        if (val.length == 12 ){ // validating coupon pattern
             if (code == 0 ) // fixing insterting coupon multiple times
                 $.ajax({
                      type: "POST",
@@ -629,9 +629,9 @@
                            confirmButtonColor: '#d90f17',
                            confirmButtonText: 'OK'
                          });
-                         if (response[3] == 'fixed') // Changing Total Price 
+                         if (response[3] == 'fixed') // Changing Total Price
                          {
-                            $('#Total').text( $('#Total').text() - response[2]);  
+                            $('#Total').text( $('#Total').text() - response[2]);
                          }
                          if (response[3] == 'percentage'){ // Changing List prices and Details
                             $('#Total').text( $('#Total').text() -( $('#Total').text() * response[2]));
@@ -639,11 +639,11 @@
                                 $(obj).data('price' , parseFloat($(obj).data('price') - ($(obj).data('price') * response[2])).toFixed(2) );
                             });
                             $('.findit').each(function(i,obj){
-                                $(obj).text(parseFloat( parseFloat($(obj).text())  - (parseFloat($(obj).text()) * response[2])).toFixed(2)); 
+                                $(obj).text(parseFloat( parseFloat($(obj).text())  - (parseFloat($(obj).text()) * response[2])).toFixed(2));
                             });
                             $('#tax').text( parseFloat(  parseFloat($('#tax').text()) - ( parseFloat($('#tax').text() )  * response[2] )  ).toFixed(2) + '€');
                          }
-                           code ++; 
+                           code ++;
                         }
                      if(response == 0){
                         swal({
@@ -653,10 +653,10 @@
                             confirmButtonColor: '#d90f17',
                             confirmButtonText: 'OK'
                         });
-                     }         
-                });       
+                     }
+                });
         }
-        else 
+        else
              swal({
                 title:'Fail',
                 text: 'Coupon Code Not Valid',
@@ -665,7 +665,7 @@
                 confirmButtonText: 'OK'
             });
     }
-        
+
 
 </script>
 @endsection

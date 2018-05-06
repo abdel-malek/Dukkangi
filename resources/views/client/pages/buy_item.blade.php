@@ -125,7 +125,7 @@
 
         <div class="col-md-12" style="padding: 0em 5em;">
             <div class="header_page" style="background-image: url('{{$subcategory->image_id}}')">
-                <p class="header_page_text_div" style="padding-left: 26.9em ;width:82%;">
+                <p class="header_page_text_div" style="padding-left: 26.9em ;width:80.9%;">
                     {{ $subcategory->english }}
                     <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
                     <span class="rating subcategory"  style="left: 20.9em;"></span>
@@ -231,11 +231,11 @@
                             @else
                             <div style="width: 60%;float: right;margin-top:25px;">
                                 <p class="option_size active_option_size" style="width: 100%">
- 
-                                 {{ $product->price  }} - {{$product->discount}}% = {{$product->price * ($product->discount / 100)}} € 
+
+                                 {{ $product->price  }} - {{$product->discount}}% = {{$product->price * ($product->discount / 100)}} €
                                 </p>
                             </div>
-                            
+
                             @endif
                             <div style="width: 39%;float: left;margin-top: 0px;">
                                 <big>
@@ -473,7 +473,7 @@
                 $('#totprice').text(parseFloat(
                     parseFloat($('#totprice').data('abstract')) + parseFloat($('#totprice').text())
                     ).toFixed(2) + " €");
-                $('#form-qty').val($(obj).parent().parent().find('p').text());            
+                $('#form-qty').val($(obj).parent().parent().find('p').text());
                 }
                 else if (counter < 1){
                     $(obj).parent().parent().find('p').text($(obj).parent().parent().find('p').text() + "MAX");
@@ -494,13 +494,13 @@
                     $('#tax').text(parseFloat(
                         parseFloat($('#tax').text() ) - parseFloat($('#tax').data('tax'))
                     ).toFixed(2) + " €" );
-                
-                    $('#totprice').text(parseFloat(
-                     parseFloat($('#totprice').text()) - parseFloat($('#totprice').data('abstract')) 
-                    ).toFixed(2) + " €");
-                    $('#form-qty').val($(obj).parent().parent().find('p').text()); 
 
-                    
+                    $('#totprice').text(parseFloat(
+                     parseFloat($('#totprice').text()) - parseFloat($('#totprice').data('abstract'))
+                    ).toFixed(2) + " €");
+                    $('#form-qty').val($(obj).parent().parent().find('p').text());
+
+
                 }
             }
 

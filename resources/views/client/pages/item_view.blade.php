@@ -179,7 +179,7 @@
     @section('main_section')
         <div class="col-md-12" style="padding: 0em 5em;" id="content_page">
             <div class="header_page"  style = "background-image: url('{{$subcategory->image_id}}');background-size:133%">
-                <p class="header_page_text_div" style="width: 83.0%;padding-left: 25.5em " >
+                <p class="header_page_text_div" style="width: 80.9%;padding-left: 25.5em " >
                    {{$subcategory->english}}
                     <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
                     <span class="rating rating-info ratings{{$subcategory->rate}}" data-type="subcategory" data-id="{{$subcategory->id}}" style="margin-left: 40px" ></span>
