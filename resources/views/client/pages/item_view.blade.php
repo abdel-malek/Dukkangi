@@ -616,10 +616,12 @@
                     type: "POST",
                     data: {"comment":comment,"rate": num_star_active , "id": id } ,
                     dataType: 'json',
-                    success: function (response) {
-                        alert(response.status);
-                    }
+                 }).done(response => {
+                    if(response == 1)
+                        swal({title:"Successfully!", text:"Comment Added.",type: "success",timer:2000,showConfirmButton:false});;
+                     location.reload();
                  });
+                 
             });
         </script>
         <script>
@@ -725,5 +727,6 @@
               $('.one_item_details .text_item_details').css('paddingBottom','0em');
           }
           $('.item_out_of_stock').css('height',parseInt($('.one_item_details').height()) - 380);
+    
         </script>
         @endsection

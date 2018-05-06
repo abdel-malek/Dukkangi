@@ -441,7 +441,7 @@ class PageController extends Controller
 
 		$comment->save();
 
-		return Redirect(route('product' , $productId));
+		return 1;
 	}
 	
 
