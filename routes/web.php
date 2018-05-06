@@ -31,6 +31,8 @@ Route::get('/categoryfilter/' , 'PageController@getCategoryFilteredPage')->name(
 Route::post('/categoryfilter/' ,'PageController@loadMoreProducts');
 Route::post('/completebuyitem/{id}' ,'CartController@buyItemComplete' )->name('completebuyitem');
 Route::post('/checkcoupon/', 'CartController@checkCoupon');
+Route::post('/changeqty/' , 'CartController@changeQty');
+Route::post('/getamount' , 'CartController@getAmount');
 //Route::post('/completebuycart/' , 'CartController@checkout')->name('completebuycart');
 
    			                        //DASHBOARD

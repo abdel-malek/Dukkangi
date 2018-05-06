@@ -45,11 +45,15 @@ class CartController extends Controller
         $productsName='';
         foreach ($orders as $orderItem) {
             $productsName = $productsName.$orderItem->product->english."\n";
-
         }
 
         return view('client.pages.view_my_cart')->withOrders($orders)->withGainPoints($gainPoints)->withAmount($amount)
             ->withItemNumber($itemNumber)->withProductsName($productsName);
+    }
+    public function getAmount(){
+        $cart = CartService::loadCart(  session('cartId'));
+        $amount = $cart['amount'];
+        return $amount;
     }
 
     public function checkout(Request $request)
@@ -125,6 +129,13 @@ class CartController extends Controller
 
     public function deleteCart(Request $request){
       return CartService::deleteCart();
+    }
+    public function changeQty(Request $request ){
+        // dd("I'm Here");
+        $qty = $request->input('qty');
+        $productId = $request->input('id');
+
+      return  CartService::changeQty($qty , $productId);
     }
 
 }

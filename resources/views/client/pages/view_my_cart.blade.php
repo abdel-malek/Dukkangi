@@ -427,7 +427,7 @@
                           </form>
 
 
-                        {{-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post"> --}}
+                        {{-- <form id="paypalform" action="https://www.paypal.com/cgi-bin/webscr" method="post"> --}}
                         <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
                             <!-- Identify your business so that you can collect the payments. -->
                             {{-- <input type="hidden" name="business" value="info@dukkangi.com"> --}}
@@ -437,16 +437,20 @@
                             <input type="hidden" name="cmd" value="_xclick">
 
                             <!-- Specify details about the item that buyers will purchase. -->
-                            <input type="hidden" name="item_name" value="{{$productsName}}">
+                            <input type="hidden" name="item_name" value="{{$productsName}}" >
                             <input type="hidden" name="item_number" value="{{$itemNumber}}">
                             <input type="hidden" name="amount" value="{{$amount}}">
+                            <input id="paypalamount" type="hidden" name="amount" value="Nan" >
                             <input type="hidden" name="currency_code" value="EUR">
                             <!-- Display the payment button. -->
-                            <input type="image" name="submit" border="0"
+                            
+                            <img alt="" border="0" style="cursor: pointer" 
+                                 src="/front-end/images/payment/paypal.png" 
+                                 onclick="submitPaypal(this)">
+ 
+                            <input type="image" id="clickpaypal" hidden name="submit" border="0"
                                    src="/front-end/images/payment/paypal.png"
                                    alt="Buy Now">
-                            <img alt="" border="0" width="1" height="1"
-                                 src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
 
                         </form>
 
@@ -569,6 +573,18 @@
         $(obj).parent().parent().find('h4').text(qty);
 
         $('.stripe-button').attr('data-amount',total);
+
+        var qty = parseInt($(obj).parent().parent().find('.num_item_qty').text() );
+        var id = $(obj).parent().parent().parent().attr('data-productId');
+        $.ajax({
+                     type: "POST",
+                     url: `/changeqty/`,
+                     data:{'qty':qty , 'id': id},
+                     headers: {
+                         "x-csrf-token": $("[name=_token]").val()
+                     },
+                 });
+        
     }
     function num_min(obj) {
         if ((parseInt($(obj).parent().parent().text()) > 0)) {
@@ -591,7 +607,20 @@
         total = parseFloat(parseFloat(parseFloat( $('#Total').text() ) - $(obj).parent().parent().parent().data('price')) ).toFixed(2);
         $('#Total').text(total);
 
+        var qty = parseInt($(obj).parent().parent().find('.num_item_qty').text() );
+        var id = $(obj).parent().parent().parent().attr('data-productId');
+        // console.log(id);
+        // console.log(qty);
 
+        $.ajax({
+            type: "POST",
+            url: `/changeqty/`,
+            data:{'qty':qty , 'id': id},
+            headers: {
+                "x-csrf-token": $("[name=_token]").val()
+            },
+        });
+        
         $('.stripe-button').attr('data-amount',total);
         }
     }
@@ -700,6 +729,21 @@
             });
     }
 
-
+    function submitPaypal(){
+        var inp = $('#paypalamount');
+        var amount ;
+        $.ajax({
+             type: "POST",
+             url: `/getamount`,
+             headers: {
+                 "x-csrf-token": $("[name=_token]").val()
+             },
+         }).done(response => {
+            amount = parseInt(response);
+            inp.val(amount);
+           $('#clickpaypal').click();
+     });
+     }
+        
 </script>
 @endsection

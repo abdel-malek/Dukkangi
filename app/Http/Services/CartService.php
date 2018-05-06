@@ -35,7 +35,7 @@ class CartService
         $orderItems = OrderItem::updateOrCreate(
             ['order_id' => $cartId, 'item_id' => $product->id, 'user_id' => $userId],
             ['order_id' => $cartId, 'item_id' => $product->id,
-                'sub_amount' => $product->price, 'qty' => $qty,
+                'sub_amount' =>isset($product->discount_price) ?$product->discount_price :$product->price, 'qty' => $qty,
                 'total_amount' => $product->price * $qty,
                 'gain_point' => ceil($product->point / 5), 'user_id' => $userId, 'status_id' => OrderStatus::CREATED,
                 'currency' => $product->currency]
@@ -66,7 +66,7 @@ class CartService
         return OrderItem::updateOrCreate(
             ['order_id' => $cartId, 'item_id' => $product->id, 'user_id' => $userId],
             ['order_id' => $cartId, 'item_id' => $product->id,
-                'sub_amount' => $product->price, 'qty' => $qty,
+                'sub_amount' => isset($product->discount_price) ?$product->discount_price :$product->price, 'qty' => $qty,
                 'total_amount' => $product->price * $qty,
                 'gain_point' => ceil($product->point / 5), 'user_id' => $userId, 'status_id' => OrderStatus::CREATED,
                 'currency' => $product->currency]
@@ -134,6 +134,7 @@ class CartService
         $orderItems = $result->get();
 
         $amount = $result->sum('total_amount');
+
         $tax = 0;
         foreach ($orderItems as $orderItem) {
             $taxFees = $orderItem->product->tax_fees;
@@ -167,27 +168,33 @@ class CartService
                 $calcAmount = $calcAmount - ($calcAmount * $coupon->amount);
             }
         }
-        // if (sprintf('%0.2f', $calcAmount ) != sprintf('%0.2f', $amount){
-        //     throw new Exception("Payment Doesn't Match !", 1);
-        // }
+        $fake = 0;
+        if(sprintf('%0.2f', $calcAmount ) != sprintf('%0.2f', $amount)){
+            $fake =1;
+        }
+        
+        if (!$fake){  
+            $user = User::find($userId);
 
-        $user = User::find($userId);
-
-        MailService::send('emails.complete_order' , ['total'=>$amount,
-        'subtotal' => $amount - ($amount * 0.19),
-        'username' => $user->name,
-        'orderItem' => $products,
-        'orderId' => $cartId,
-        'taxes' =>$taxes,
-        'tax' => $tax ] , 'Order@dukkangi.com' , $user->email, 'order complete');
+            MailService::send('emails.complete_order' , ['total'=>$amount,
+            'subtotal' => $amount - ($amount * 0.19),
+            'username' => $user->name,
+            'orderItem' => $products,
+            'orderId' => $cartId,
+            'taxes' =>$taxes,
+            'tax' => $tax ] , 'Order@dukkangi.com' , $user->email, 'order complete');
 
 
 
-        //make a payment
-        // TODO: Pass payment method id
-        $payment = PaymentService::createPayment($paymentMethodId, $cartId, $userId, $amount, 'EUR', $tax);
+            //make a payment
+            // TODO: Pass payment method id
+            $payment = PaymentService::createPayment($paymentMethodId, $cartId, $userId, $amount, 'EUR', $tax);
 
-        return self::completeCart($cartId, $payment->id);
+            return self::completeCart($cartId, $payment->id);
+        }
+        else {
+            return self::deleteCart();
+        }
     }
 
     private static function getTotalAmount($cartId)
@@ -263,5 +270,12 @@ class CartService
         Order::where('id','=',$cartId)->update(['status_id'=>OrderStatus::DELETED]);
         OrderItem::where('order_id','=',$cartId)->update(['status_id' => OrderStatus::DELETED]);
         return 'true';
+    }
+    public static function changeQty($qty , $ProductId){
+        $cartId = session('cartId');
+        $orderItem = OrderItem::where('item_id' , '=', $ProductId)->where('order_id' , '=' , $cartId)->get()->first();
+        $orderItem->qty = $qty;
+        $orderItem->total_amount = $orderItem->sub_amount * $qty;
+        $orderItem->update();
     }
 }

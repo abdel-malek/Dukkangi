@@ -8,5 +8,5 @@ class PaymentMethod extends Model
 {
     protected $table = 'payment_method';
     const STRIPE = 2;
-    const PAYAPL = 1;
+    const PAYPAL = 1;
 }

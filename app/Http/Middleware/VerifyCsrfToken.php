@@ -21,6 +21,8 @@ class VerifyCsrfToken extends BaseVerifier
       'stripe',
       'paypal',
       '/admin/coupons',
-      '/admin/coupon'
+      '/admin/coupon',
+      '/changeqty'
+
     ];
 }
