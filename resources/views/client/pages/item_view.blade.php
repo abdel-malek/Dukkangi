@@ -349,7 +349,7 @@
             <div class="customer_reviews col-md-7">
                 @foreach($comments as $comment)
                  <div class="comments_customer_reviews">
-                    <img src="/front-end/images/slider/item1.jpg" class="img_user_comments_customer_reviews" >
+                    <img src="/uploads/user.png" class="img_user_comments_customer_reviews" >
                     <div class="details_comment">
                         <h3 class="username_details_comment" style="width:225px">{{$comment->user_id}}</h3>
                         <p class="rated_details_comment" style="margin-left: 0px">@lang('Rated this product')</p>
