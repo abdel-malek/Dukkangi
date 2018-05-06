@@ -397,7 +397,7 @@
                     {{ Form::text('rate', 0,['hidden' => 'hidden' , 'id'=>'rate'])}}
                     <a class="btn_leave_constructive_review btn-block commentbody"  id="btn-comment" data-id="{{$product->id}}" style="background-color: #d80001;color: #fff">@lang('Post my review')</a>
                     {{ Form::submit('',['hidden' =>'hidden' , 'id' =>'myBtn'])}}
-                    <p class="btn_leave_constructive_review" onclick="document.getElementsByClassName('commentbody').thisext ='' ">@lang('Cancel') </p>
+                    <p class="btn_leave_constructive_review" onclick="document.getElementsByClassName('input_leave_constructive_review').commentbody.value = '';   ">@lang('Cancel') </p>
                 {!! Form::close() !!}
             </div>
         </div>
@@ -571,7 +571,12 @@
 
                 }
 
-
+               // function formRateInitialize(){
+                 //   var ratings = document.getElementsByClassName('form-rate');
+                    //for (var i = 0; i < ratings.length; i++) {
+                    //    ratings.r = new SimpleStarRating(ratings[i]);
+                  //  }
+                //}
         </script>
         <script>
             $('.form-rate').click(function(){
