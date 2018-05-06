@@ -86,7 +86,7 @@
                 @foreach($subcategories as $subcategory)
                 <a href="{{ route('subcategoryfilter',$subcategory->id) }}">
                     <div data-id="{{$subcategory->id}}">
-                        <div style="z-index: 1; width: 120px; height: 110px;overflow: hidden;">
+                        <div style="z-index: 1; width: 120px; height: 88px;overflow: hidden;">
                             <div style="width: 110px; height: 95px; left: 0px; top: 0px; z-index: 1;">
                             <img src="{{$subcategory->image_id}}" style="z-index: 1;" width="110px" height="88px" />
                                 <p class="sub-paragraph" style="z-index: 1;padding: 4.4px 32.5px;">
