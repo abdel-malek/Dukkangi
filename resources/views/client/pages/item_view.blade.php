@@ -415,7 +415,7 @@
                             ?>
                             @endif
                               <div class="col-md-3" style="margin-top: 1em;float: left;margin-bottom: 20px">
-                                <div class="div_item" style="width: 229px">
+                                <div class="div_item" style="width: 229px;height:220px">
                                     <a href="{{ route('product',$simiproduct->id) }}">
                                     <img src="{{$simiproduct->image_id}}" class="img_item"  />
                                     <p class="item_name">{{ $simiproduct->english}}  </p>
