@@ -450,7 +450,7 @@
 
                         </form>
 
-                        <p class="btn_credit_card_details" style="margin-left: 8%;">@lang('Cancel')</p>
+                        <p class="btn_credit_card_details" id="cancel-btn" style="margin-left: 8%;">@lang('Cancel')</p>
                     </div>
                 </div>
             </div>
@@ -512,6 +512,40 @@
 <script>
     $(function () {
         $("#expiration_date").datepicker();
+        //cancel button to delete cart
+        $('#cancel-btn').on('click',function(){
+          swal({
+            title:'Confirmation',
+            text:"Are you sure you want to empty your cart!",
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.value) {
+              // do Ajax and delete the cart
+              $.ajax({
+                    type: "POST",
+                    url: `/cart/delete`,
+                    headers: {
+                        "x-csrf-token": $("[name=_token]").val()
+                    },
+                }).done(response => {
+                  if(response = 'true'){
+                    swal({
+                      title:'Deleted!',
+                      text:'Your file has been deleted.',
+                      type:'success',
+                      showConfirmButton:false
+                    });
+
+                    // redirect to home page
+                    window.location.href='/';
+                  }
+                });
+            }
+          })
+        });
     });
 </script>
 <script>

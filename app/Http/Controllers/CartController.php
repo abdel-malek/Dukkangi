@@ -117,9 +117,14 @@ class CartController extends Controller
             return redirect('home');
         }
     }
+
     public function checkCoupon(Request $request){
         $code = $request->code;
         return CouponService::checkCoupon($code);
+    }
+
+    public function deleteCart(Request $request){
+      return CartService::deleteCart();
     }
 
 }
