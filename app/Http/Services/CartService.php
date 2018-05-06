@@ -178,7 +178,7 @@ class CartService
         'username' => $user->name,
         'orderItem' => $products,
         'orderId' => $cartId,
-        'taxes' = >$taxes;
+        'taxes' =>$taxes,
         'tax' => $tax ] , 'Order@dukkangi.com' , $user->email, 'order complete');
 
 
