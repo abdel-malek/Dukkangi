@@ -9,15 +9,12 @@
 	<div class="col-md-4 " style="margin-left: 35px">
 
 		<div id="#carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-		  <ol class="carousel-indicators">
-		    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-		  </ol>
 		  <div class="carousel-inner">
 		    <div class="carousel-item active">
 		      <img class="d-block w-100" src="{{$product->image_id}}" alt="First slide" style="height: 400px">
 		    </div>
 		  </div>
-		  
+
 		</div>
 
 	</div>
@@ -126,7 +123,7 @@
 </div>
 <div class="row">
 	<div class="col-md-12 jumbotron" style="margin-left: 30px;margin-right: 30px;padding-right: 0px;max-width: 960px;padding-top: 20px">
-		
+
 		<h3 class="text-center"><i> Section 3</i></h3>
 		<div class="col-md-2" style="margin-left: 20px;max-width: 100%;width: 46%">
 			<ul class="list-group">
