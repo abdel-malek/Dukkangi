@@ -257,4 +257,11 @@ class CartService
         Order::where('created_at' , '<', Carbon::now()->subMinutes(30)->toDateTimeString())->where('status_id' , '=' , OrderStatus::INPROGRESS )->update('status_id' , OrderStatus::DELETED);
         OrderItem::where('created_at', '<', Carbon::now()->subMinutes(30)->toDateTimeString())->where('status_id' , '=' ,OrderStatus::INPROGRESS)->update('status_id' , OrderStatus::DELETED);
     }
+
+    public static function deleteCart(){
+        $cartId = session('cartId');
+        Order::where('id','=',$cartId)->update(['status_id'=>OrderStatus::DELETED]);
+        OrderItem::where('order_id','=',$cartId)->update(['status_id' => OrderStatus::DELETED]);
+        return 'true';
+    }
 }

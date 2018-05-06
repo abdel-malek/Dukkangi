@@ -155,6 +155,7 @@ Route::get('/lang/{lang}' , 'PageController@setLanguage');
 	//cart
 Route::post('/cart/add','CartController@addToCart');
 Route::post('/cart/checkout','CartController@checkout');
+Route::post('/cart/delete','CartController@deleteCart');
 
 
 // Stripe

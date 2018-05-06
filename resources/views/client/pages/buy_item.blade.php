@@ -391,7 +391,6 @@
                     {!! Form::open(['route'=> ['completebuyitem', $product->id] , 'id' => 'formcomp']) !!}
                     {{ Form::text('qty', null,['hidden' => 'hidden', 'id' => 'form-qty'])}}
                     <a href="#" class="btn_credit_card_details" style="background-color: #d80001;color: #fff;"  onclick="getElementById('formcomp').submit()">@lang('Make Payment')</a>
-                     <p class="btn_credit_card_details" style="margin-left: 8%;">@lang('Cancel')</p>
                 </div>
          </div>
 
@@ -453,6 +452,8 @@
          <script>
         $(function () {
             $("#expiration_date").datepicker();
+
+            
         });
     </script>
        <script>
