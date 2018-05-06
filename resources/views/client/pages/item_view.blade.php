@@ -667,7 +667,8 @@
                   },
               }).done(response => {
                 if(response.id > 0){
-                  swal("Successfully!", "Item Added.", "success");
+                  swal({title:"Successfully!", text:"Item Added.",type: "success",timer:2000,showConfirmButton:false});
+                  hideModal();
                 }
               });
             });
