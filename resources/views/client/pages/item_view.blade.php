@@ -703,7 +703,7 @@
             }
             function num_min(obj) {
               counter = parseInt($(obj).parent().parent().text());
-                if ((counter > 0)) {
+                if ((counter > 1)) {
                   counter = counter - 1;
                     $(obj).parent().parent().find('p').text(counter);
                 }
