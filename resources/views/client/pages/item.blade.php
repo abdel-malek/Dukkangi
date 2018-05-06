@@ -82,7 +82,7 @@
 
             <script type="text/javascript">jssor_1_slider_init();</script>
 
-            <div class='thumnbail' style="position: absolute;top: 35px;" >
+            <div class='thumnbail' style="position: absolute;top: 0px;bottom: 10px;width: 180px;overflow-y: scroll;height: 500px;" >
                 @foreach($subcategories as $subcategory)
                 <a href="{{ route('subcategoryfilter',$subcategory->id) }}">
                     <div data-id="{{$subcategory->id}}">
