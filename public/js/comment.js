@@ -49,6 +49,12 @@ function loadComments() {
         width: 5
       },
       {
+        name: "description",
+        title: 'Description',
+        type: "text",
+        width: 5
+      },
+      {
         name: "rate",
         title: 'Rate',
         type: "text",

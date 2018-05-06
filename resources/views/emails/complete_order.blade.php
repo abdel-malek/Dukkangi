@@ -200,15 +200,18 @@
 				<th class="tableth text white"><b>Item</b></th>
 				<th class="tableth text white"><b>Price</b></th>
 				<th class="tableth text white"><b>Total Price</b></th>
-
+				<th class="tableth text white"><b>Tax Fees</b></th>
 			</thead>
 			<tbody>
 			<tr class="text insidetable">
+				{!! $counter = 0 !!}
 				@foreach($orderItem as $order)
 				<td>{{$order->qty}}</td>
 				<td><p>{{$order->name}}</p></td>
 				<td>{{$order->price}}€</td>
 				<td>{{$order->price * $order->qty}}€</td>
+				<td>{{ $taxes[counter] }} %</td>
+				{!! $counter++; !!}
 				@endforeach
 			</tr>
 		</tbody>

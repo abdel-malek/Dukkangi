@@ -4,7 +4,9 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Coupon;
+// use App\Coupon;
+use App\CouponUser;
+use App\OrderItem; 
 
 class User extends Authenticatable
 {
@@ -30,7 +32,7 @@ class User extends Authenticatable
     ];
 
     public function coupon(){
-        return $this->hasMany(Coupon::class,'id','user_id');
+        return $this->hasMany(CouponUser::class,'id','user_id');
     }
 
     public function orderItem(){

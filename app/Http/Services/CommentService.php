@@ -9,7 +9,7 @@ class CommentService
     {
         $index = $filter ? $filter['pageIndex'] : 0 ;
 
-        $comments = Comment::select('id', 'user_id', 'rate', 'product_id', 'created_at')
+        $comments = Comment::select('id', 'description','user_id', 'rate', 'product_id', 'created_at')
       ->with(['product' => function ($query) {
           $query->addSelect('id', 'arabic');
       },

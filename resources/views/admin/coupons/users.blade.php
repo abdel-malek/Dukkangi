@@ -4,15 +4,15 @@
 @endsection
 
 @section('title')
-  Manage Users
+  Coupon Users
 @endsection
 
 @section('grid')
     <div>
-      <div id="user-grid">/div>
+      <div id="copuon-users-grid"></div>
     </div>
 @endsection
 
 @section('scripts')
-    <script type="text/javascript" src={{ URL::asset('js/user-grid.js') }}></script>
+    <script type="text/javascript" src={{ URL::asset('js/coupon-users.js') }}></script>
 @endsection
