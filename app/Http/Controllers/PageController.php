@@ -377,7 +377,11 @@ class PageController extends Controller
 			$product->gain_points= ceil($product->discount_price / 5);
 			$product->abstract_price = $product->discount_price - $product->tax;
 		}
-
+		foreach ($simiproducts as $simiproduct) {
+			if (isset($simiproduct->discount_price)) {
+				$simiproduct->discount =  sprintf('%0.0f',100 - (($simiproduct->discount_price * 100) / $simiproduct->price));
+			}
+		}
 		return view('client.pages.item_view')->withProduct($product)->withCategory($category)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments);
 
 	}

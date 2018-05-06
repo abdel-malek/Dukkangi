@@ -394,15 +394,21 @@
                 @lang('Similar item')
             </h3>
 
-            <!-- Just Testing for($i=0 ; $i< 9; $i++) -->
                             @foreach($simiProducts as $simiproduct)
                             @if($simiproduct->id == $product->id)
                             <?php
                             continue;
                             ?>
                             @endif
+
                               <div class="col-md-3" style="margin-top: 1em;float: left;margin-bottom: 20px">
                                 <div class="div_item" style="width: 229px;height:220px">
+                                    @if (isset($simiproduct->discount))
+                                        <div class="discount_item">
+                                            <p class="text_discount"> {{$simiproduct->discount}}% off</p>
+                                            <div class="shadow_div_discount"></div>
+                                        </div>
+                                    @endif
                                     <a href="{{ route('product',$simiproduct->id) }}">
                                     <img src="{{$simiproduct->image_id}}" class="img_item"  />
                                     <p class="item_name">{{ $simiproduct->english}}  </p>
@@ -414,7 +420,6 @@
                             </div>
                             @endforeach
 
-            <!-- Testing  endfor -->
         </div>
     </div>
 @endsection
