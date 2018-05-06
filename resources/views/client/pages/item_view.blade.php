@@ -196,19 +196,6 @@
 
                         <!-- -Slider -->
                             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="height: 380px" >
-                              <ol class="carousel-indicators">
-                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active imgslide" ></li>
-                                @if(isset($product->image_id2))
-                                  <li data-target="#carouselExampleIndicators" data-slide-to="1" class="imgslide"></li>
-                                @endif
-                                @if(isset($product->image_id2))
-                                  <li data-target="#carouselExampleIndicators" data-slide-to="2" class="imgslide"></li>
-
-                                @endif
-                                @if(isset($product->image_id2))
-                                  <li data-target="#carouselExampleIndicators" data-slide-to="3" class="imgslide"></li>
-                                @endif
-                              </ol>
                               <div class="carousel-inner">
                                 <div class="carousel-item active">
                                   <img class=" d-block w-100" style="height: 380px"  src="{{$product->image_id}}" alt="First slide">

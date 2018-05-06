@@ -136,7 +136,7 @@
         $gain=0;
         $taxes=0;
     ?>
-  <div class="col-md-12" style="height: 1200px" id="content_page">
+  <div class="col-md-12" style="height: 740px" id="content_page">
 
   <div class="col-md-12" style="padding: 0em 5em;">
             <div class="header_page" style="background-image: url('/front-end/images/items_page/2.png')"/>
