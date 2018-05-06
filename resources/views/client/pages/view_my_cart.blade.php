@@ -439,7 +439,6 @@
                             <!-- Specify details about the item that buyers will purchase. -->
                             <input type="hidden" name="item_name" value="{{$productsName}}" >
                             <input type="hidden" name="item_number" value="{{$itemNumber}}">
-                            <input type="hidden" name="amount" value="{{$amount}}">
                             <input id="paypalamount" type="hidden" name="amount" value="Nan" >
                             <input type="hidden" name="currency_code" value="EUR">
                             <!-- Display the payment button. -->
