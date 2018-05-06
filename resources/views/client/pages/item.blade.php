@@ -82,7 +82,7 @@
 
             <script type="text/javascript">jssor_1_slider_init();</script>
 
-            <div class='thumnbail' style="position: absolute;margin-left: 150px;top: 35px;" >
+            <div class='thumnbail' style="position: absolute;top: 35px;" >
                 @foreach($subcategories as $subcategory)
                 <a href="{{ route('subcategoryfilter',$subcategory->id) }}">
                     <div data-id="{{$subcategory->id}}">
@@ -314,13 +314,13 @@
                 var ratings = document.getElementsByClassName('ratings4');
                 for (var i = 0; i < ratings.length; i++) {
                     var r = new SimpleStarRating4(ratings[i]);
-                    
+
                 }
 
                 var ratings = document.getElementsByClassName('ratings5');
                 for (var i = 0; i < ratings.length; i++) {
                     var r = new SimpleStarRating5(ratings[i]);
-                    
+
                 }
 
         </script>
