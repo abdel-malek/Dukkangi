@@ -26,7 +26,7 @@ Route::get('/productview/{id}' , 'PageController@getProductView')->name('product
 Route::post('/rate' , 'PageController@rate');
 Route::post('/comment-save' , 'PageController@comment')->name('comment');
 Route::get('/buyitem/{id}' ,  'CartController@getBuyItemPage')->name('buyitem');
-Route::get('/mycart/', 'CartController@getViewMyCartPage')->name('mycart');
+Route::get('/mycart/', 'CartController@getViewMyCartPage')->name('mycart')->middleware('auth');
 Route::get('/categoryfilter/' , 'PageController@getCategoryFilteredPage')->name('fullfiltercategory');
 Route::post('/categoryfilter/' ,'PageController@loadMoreProducts');
 Route::post('/completebuyitem/{id}' ,'CartController@buyItemComplete' )->name('completebuyitem');
