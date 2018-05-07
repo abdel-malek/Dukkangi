@@ -54,8 +54,8 @@ Route::get('/admin/brand/create', ['as' => 'brand.createPage','uses' => 'BrandCo
 Route::post('/admin/brand/create', ['as' => 'brand.create', 'uses' => 'BrandController@createBrandInfo']);
 Route::get('/admin/brand/edit/{id}', 'BrandController@editBrand');
 Route::post('/admin/brand/delete/{id}', 'BrandController@deleteBrand');
-Route::get('/admin/brand/products/{id}' , 'BrandController@BrandProducts');
-Route::post('/admin/brand/products/{id}' , 'BrandController@getbrandProducts');
+Route::get('/admin/brand/{id}/products' , 'BrandController@BrandProducts');
+Route::post('/admin/brand/{id}/products/' , 'BrandController@getbrandProducts');
     //SUBCATEGORIES
 Route::get('/admin/subcategories', ['uses' => 'SubcategoryController@index'             ,'as' => 'subcategory.index'    ]);
 Route::post('/admin/subcategories', ['uses' => 'SubcategoryController@subcategoryData'  ,'as' => 'subcategory.data'     ]);
@@ -101,7 +101,7 @@ Route::get('/admin/subcategoryproducts/edit/{id}', ['uses' =>'ProductController@
 Route::put('/admin/subcategoryproducts/update', ['uses' => 'ProductController@updateBySubcategory'    ,'as' => 'productbysubcategory.update']);
 
     //PRODUCT SINGLE VIEW
-Route::get('/admin/products/single/{id}', ['uses' => 'ProductController@single' ,'as' => 'productbysubcategory.single']);
+Route::get('/admin/products/{id}', ['uses' => 'ProductController@single' ,'as' => 'productbysubcategory.single']);
 
     // USERS
 Route::get('/admin/users', ['uses' => 'UserController@index'           , 'as' => 'user.index' ]);
