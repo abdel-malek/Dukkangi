@@ -182,7 +182,7 @@
                 <p class="header_page_text_div" style="width: 80.9%;padding-left: 25.5em " >
                    {{$subcategory->english}}
                     <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
-                    <span class="rating rating-info ratings{{$subcategory->rate}}" data-type="subcategory" data-id="{{$subcategory->id}}" style="margin-left: 40px" ></span>
+                    <span class="rating  rating-info ratings{{$subcategory->rate}}" data-type="subcategory" data-id="{{$subcategory->id}}" style="margin-left: 40px" ></span>
                 </p>
             </div>
 
@@ -380,7 +380,7 @@
                     <h3 class="text_leave_constructive_review" style="color: #d80001;margin-top: 0em;">@lang('Leave a constructive review')</h3>
                     <p class="text_leave_constructive_review" style="margin-top:0.6em;">@lang('Rate this product') </p>
                    <div class="details_comment" style="margin-bottom: 50px">
-                    <span class="rating form-rate" data-id="{{$product->id }}" style="margin-right: 160px"></span>
+                    <span class="rating2 ratinge rating form-rate" data-id="{{$product->id }}" style="margin-right: 160px"></span>
                     </div>
 
                     <p class="text_leave_constructive_review">@lang('Leave a comment')</p>
