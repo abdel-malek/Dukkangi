@@ -255,6 +255,6 @@ class ProductController extends Controller
         $brand = Brand::find($brandId);
         $categories = [];
         $subcategories = [];
-        return view('client.pages.item')->withProducts($products)->withCategories($categories)->withSubcategories($subcategories);
+        return view('client.pages.item')->withProducts($products)->withCategories($categories)->withSubcategories($subcategories)->withBrandfilter("1");
     }
 }
