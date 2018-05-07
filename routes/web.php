@@ -169,6 +169,6 @@ Route::post('stripe','StripeController@stripePost');
 Route::post('/paypal','PayPalController@ipn');
 
 
-//Test
-Route::get('/test/load-cart/{id}','TestController@loadCart');
-Route::get('/test' , 'CouponController@test');
+// Test
+// Route::get('/test/load-cart/{id}','TestController@loadCart');
+// Route::get('/test' , 'CouponController@test');

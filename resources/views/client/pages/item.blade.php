@@ -142,7 +142,7 @@
 
 
                       </div>
-                      @if(isset($filter))
+                      @if(isset($filter) && count($products) > 12) 
                         <div class="col-sm-3" style="float:left;margin-left: 20em;margin-top: 50px">
                             <p class="btn_filter" id="btn_modal_filter" onclick="scrollload()">
                                 @lang('Load More')
@@ -225,7 +225,7 @@
             <div class="col-sm-12 my-1" style="margin-top: 2em !important;float: left;">
                 <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
                 <div class="input-group">
-                    <input type="submit" class="btn_model_filter" value="Show results" style="border: 0px">
+                    <input type="submit" class="btn_model_filter" value="Show results" style="border: 0px; cursor: pointer">
 
                 </div>
             </div>
@@ -233,7 +233,7 @@
             <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
                 <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
                 <div class="input-group">
-                    <p class="btn_model_filter cancel-modal" style="background-color: #fff;color: #222;">
+                    <p class="btn_model_filter cancel-modal" style="background-color: #fff;color: #222;cursor: pointer">
                         Cancel
                     </p>
                 </div>
