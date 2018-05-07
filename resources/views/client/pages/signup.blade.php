@@ -18,7 +18,7 @@
                     <div class="col align-self-start">
                     </div>
                     <div class="col align-self-center">
-                        <img class="welcome-img" src="/front-end/images/welcome-logo2.png" />
+                        <img class="welcome-img" src="/front-end/images/welcome-logo2.png" style="z-index: 1;" />
                         <div class="col-md-12 col-xs-12 div_singup">
                             {!! Form::open(['route'=>'register']) !!}
                           <div class="col-sm-12 my-1" style="margin-top: 14em !important;float: left;">
@@ -114,7 +114,7 @@
       <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
     <script>
-        $(function () {
+       /* $(function () {
             $("#date_of_brith").datepicker({
                 onSelect: function (date){
                     // date =date + " 01:00:00";
@@ -122,6 +122,13 @@
                 }
 
             });
-        });
+        });*/
+        $( function() {
+    $( "#date_of_brith" ).datepicker({
+       yearRange: "-70:-15",
+      changeMonth: true,
+      changeYear: true
+    });
+  } );
     </script>
     @endsection
