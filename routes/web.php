@@ -136,6 +136,7 @@ Route::post('/admin/couponusers/{id}' , 'CouponController@getUsersData');
 
 Route::get('admin/comment-rate-report','CommentController@index')->name('comment.index');
 Route::post('admin/comment-rate-report','CommentController@loadComments');
+Route::post('/admin/comment/delete/{id}' , 'CommentController@destroy');
     //DASHBOARD END
 
 

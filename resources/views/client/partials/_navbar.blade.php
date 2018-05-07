@@ -15,13 +15,18 @@
             <li class="nav-item">
               <a class="nav-link" href="{{route('register')}}">@lang('Sign up')</a>
             </li>
-
+             <li class="nav-item">
+              <a class="nav-link" href="#">@lang('About')</a>
+            </li>
             @else
 
 
 
             <li class="nav-item">
               <a class="nav-link" href="{{ route('mycart')}}">@lang('My Cart') </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">@lang('My Account')</a>
             </li>
 
             <li class="nav-item">
@@ -31,9 +36,7 @@
               {!! Form::close() !!}
             </li>
             @endif
-            <li class="nav-item">
-              <a class="nav-link" href="#">@lang('Help')</a>
-            </li>
+           
 
 
           </ul>
