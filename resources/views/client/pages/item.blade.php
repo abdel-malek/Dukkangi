@@ -233,7 +233,7 @@
             <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
                 <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
                 <div class="input-group">
-                    <p class="btn_model_filter" style="background-color: #fff;color: #222;">
+                    <p class="btn_model_filter cancel-modal" style="background-color: #fff;color: #222;">
                         Cancel
                     </p>
                 </div>
@@ -351,6 +351,12 @@
                 $('#modal_filter').hide();
                 $('#content_page_item').css('filter', 'blur(0px)');
             });
+             $('.cancel-modal').click(function () {
+                $('.background_modal').hide();
+                $('#modal_filter').hide();
+                $('#content_page_item').css('filter', 'blur(0px)');
+            });
+            
         </script>
         <script>
             $(".validation_just_number").keypress(function (event) {

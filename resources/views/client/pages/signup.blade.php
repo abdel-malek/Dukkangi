@@ -54,12 +54,6 @@
                                     <input type="password" class="form-control input_singup" id="inlineFormInputGroupConfirmPassword" placeholder="Confirm Password" name="password_confirmation">
                                 </div>
                             </div>
-                           <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
-                                <div class="input-group">
-
-                                    <input type="text" class="form-control input_singup" id="inlineFormInputGroupConfirmPassword" placeholder="Gender" name="gender">
-                                </div>
-                            </div>
                            
                             <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
                                 <div class="input-group">
@@ -67,6 +61,15 @@
                                     <input type="text" class="form-control input_singup datepicker" id="date_of_brith" placeholder="Date of birth" name="dateofbirth">
                                 </div>
                             </div>
+                            <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
+                                <div class="input-group">
+                                    <select class="custom-select form-control input_singup" name="gender">
+                                       <option value="male" >Male </option>
+                                       <option value="female" >Female </option>
+                                    </select>
+                                </div>
+                            </div>
+                           
                             <div class="col-sm-12 my-1" style="margin-top: 3em !important;float: left;">
                                 <div class="input-group">
                                     <button type="submit" class="btn_login" style="border :0px">
