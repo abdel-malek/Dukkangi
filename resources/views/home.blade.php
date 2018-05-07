@@ -25,3 +25,6 @@
     </div>
 </div>
 @endsection
+<!--php -r 'file_get_contents("http://packagist.org/p/symfony/debug%248cc5da2b3479cd136997d6a73a5ce7fee0e7126963131b5ddfe6c0e68232d9a8.json")';-->
+
+<!-- $ php -r "file_get_contents('http://packagist.org/p/provider-archived%24795f9e1158fa74844fc0381151acdcf3befcbda8c98f0d8eb633e1e7e734eb8d.json');" -->

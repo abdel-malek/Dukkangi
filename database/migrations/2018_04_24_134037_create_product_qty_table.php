@@ -27,6 +27,6 @@ class CreateProductQtyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_qty');
+//        Schema::dropIfExists('product_qty');
     }
 }

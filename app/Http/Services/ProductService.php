@@ -9,6 +9,7 @@ use App\ProductQty;
 use App\OrderItem;
 use Illuminate\Support\Facades\DB;
 use Session;
+use App\Brand;
 
 class ProductService
 {
@@ -326,4 +327,6 @@ class ProductService
         $productQty->qty = $qty;
         return $productQty->save();
     }
+
+ 
 }

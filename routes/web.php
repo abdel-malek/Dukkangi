@@ -32,7 +32,8 @@ Route::post('/categoryfilter/' ,'PageController@loadMoreProducts');
 Route::post('/completebuyitem/{id}' ,'CartController@buyItemComplete' )->name('completebuyitem');
 Route::post('/checkcoupon/', 'CartController@checkCoupon');
 Route::post('/changeqty/' , 'CartController@changeQty');
-Route::post('/getamount' , 'CartController@getAmount');
+Route::post('/getamount/' , 'CartController@getAmount');
+Route::get('/barndfilter/{id}' , 'ProductController@filterByBrand')->name('brandfilter');
 //Route::post('/completebuycart/' , 'CartController@checkout')->name('completebuycart');
 
    			                        //DASHBOARD
@@ -53,7 +54,8 @@ Route::get('/admin/brand/create', ['as' => 'brand.createPage','uses' => 'BrandCo
 Route::post('/admin/brand/create', ['as' => 'brand.create', 'uses' => 'BrandController@createBrandInfo']);
 Route::get('/admin/brand/edit/{id}', 'BrandController@editBrand');
 Route::post('/admin/brand/delete/{id}', 'BrandController@deleteBrand');
-
+Route::get('/admin/brand/products/{id}' , 'BrandController@BrandProducts');
+Route::post('/admin/brand/products/{id}' , 'BrandController@getbrandProducts');
     //SUBCATEGORIES
 Route::get('/admin/subcategories', ['uses' => 'SubcategoryController@index'             ,'as' => 'subcategory.index'    ]);
 Route::post('/admin/subcategories', ['uses' => 'SubcategoryController@subcategoryData'  ,'as' => 'subcategory.data'     ]);

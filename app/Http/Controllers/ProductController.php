@@ -250,4 +250,11 @@ class ProductController extends Controller
         ProductService::addProductQty($id, $qty);
         return redirect(route('productQty.index'));
     }
+    public function filterByBrand($brandId){
+        $products = Product::where('brand_id' , '=' ,$brandId)->get();
+        $brand = Brand::find($brandId);
+        $categories = [];
+        $subcategories = [];
+        return view('client.pages.item')->withProducts($products)->withCategories($categories)->withSubcategories($subcategories);
+    }
 }

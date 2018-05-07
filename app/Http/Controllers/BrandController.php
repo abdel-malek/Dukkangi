@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Services\BrandService;
 use App\Brand;
+use App\Http\Services\ImageService;
+
 
 class BrandController extends Controller
 {
@@ -37,14 +39,21 @@ class BrandController extends Controller
 
       //save image
       $brand['image_path'] = '';
-      if($request->hasFile('image'))
-          $brand['image_path'] = ImageService::saveImage($request->file('image'));
-
+      if($request->hasFile('image_path'))
+          $brand['image_path'] = ImageService::saveImage($request->file('image_path'));
+        
       BrandService::updateCreateBrand($brand);
       return redirect('/admin/brand');
     }
 
     public function deleteBrand($id){
       return BrandService::deleteBrand($id);
+    }
+    public function BrandProducts($id){
+      return view('admin.brand.products')->withId($id);
+    }
+    public function getBrandProducts(Request $request,$id){
+      $filter = $request->input('filter');
+      return BrandService::brandProducts($filter,$id);
     }
 }
