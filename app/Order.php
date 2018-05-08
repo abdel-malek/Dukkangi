@@ -11,7 +11,11 @@ use App\OrderStatus;
 class Order extends Model
 {
     protected $table = "order";
-    protected $fillable = ['id','payment_id','user_id','status_id'];
+    protected $fillable = ['id','payment_id','user_id','status_id','packed'];
+
+    const PACKED = 'packed';
+    const PART_PACKED = 'part_packed';
+    const UN_PACKED = 'unpacked';
 
     public function user()
     {

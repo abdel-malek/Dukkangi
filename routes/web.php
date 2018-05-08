@@ -110,6 +110,11 @@ Route::post('/admin/users/delete/{id}', ['uses' => 'UserController@destroy'     
 Route::get('/admin/orders', ['uses' => 'OrderController@index'         , 'as' => 'order.index' ]);
 Route::post('/admin/orders', ['uses' => 'OrderController@loadOrder'     , 'as' => 'order.data'  ]);
 
+// check product qty
+Route::get('/admin/orders/{id}/checkproduct-qty',['uses'=>'OrderController@checkProductQtyPage','as' => 'order.checkProduct.index']);
+Route::post('/admin/orders/{id}/checkproduct-qty',['uses'=>'OrderController@checkProductQty','as' => 'order.checkProduct']);
+Route::post('/admin/orders/{id}/check/{barcode}',['uses'=>'OrderController@checkOrderBarcode','as' => 'order.checkOrderBarcode']);
+
 Route::get('/admin/orders/{id}/order-items', ['uses' => 'OrderController@orderItemPage'   , 'as' => 'orderItems.index' ]);
 Route::post('/admin/orders/{id}/order-items', ['uses' => 'OrderController@loadOrderItems'  , 'as' => 'orderItems.data'  ]);
 

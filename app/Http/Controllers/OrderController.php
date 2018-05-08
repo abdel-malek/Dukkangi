@@ -41,4 +41,18 @@ class OrderController extends Controller
       $filter = $request->input('filter');
       return OrderService::loadOrderItemData($filter,$id);
     }
+    public function checkProductQtyPage(Request $request,$id){
+      $orderId = $id;
+
+      return view('admin.orders.checkProductQty',compact('orderId'));
+    }
+
+    public function checkProductQty(Request $request,$id){
+      $filter = $request->input('filter');
+      return OrderService::loadOrderItemData($filter,$id);
+    }
+
+    public function checkOrderBarcode($id,$barcode){
+       return OrderService::checkOrderBarcode($id,$barcode);
+    }
 }

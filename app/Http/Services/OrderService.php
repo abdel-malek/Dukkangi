@@ -19,7 +19,7 @@ class OrderService {
 			$query->addSelect('id','email');
 		},'orderStatus' => function($query){
 			$query->addSelect('id','name');
-		}])->select(['id' , 'user_id', 'payment_id','status_id']);
+		}])->select(['id' , 'user_id', 'payment_id','status_id','packed']);
 
 		if (!empty($filter['id']))
 		{
@@ -75,11 +75,47 @@ class OrderService {
 		$orderItems = OrderItem::with(['product','orderStatus'])
 		->where('order_id','=',$id);
 
+		$result['total'] = $orderItems->count();
 		$skip = ($index == 1) ? 0 : ($index-1)*10 ;
+
 		$result['data']=$orderItems->take(10)->skip($skip)->get();
 		return $result;
 	}
 
+	public static function  checkOrderBarcode($id,$barcode){
+		$result =  OrderItem::select('qty','item_id','id')
+		->where('order_id','=',$id)
+		->with(['product' => function($query){
+			$query->addSelect('id','barcode','arabic');
+		}])->whereHas('product',function($query) use ($barcode){
+			$query->where('barcode','=',$barcode);
+		})->get();
+		if(!empty($result) && count($result) > 0){
+			self::changePacked($result[0]->id);
+		}
+		return $result;
+	}
+
+	private static function changePacked($id){
+		$orderItem =  OrderItem::where('id','=',$id)->update(['packed' => true]);
+		$order = OrderItem::select('order_id')->where('id','=',$id)->get()->first();
+		$orderId = $order->order_id;
+		$orderItems = OrderItem::select('id','packed')->where('order_id','=',$orderId)->get();
+		$orderStatus =Order::PACKED;
+		foreach ($orderItems as $orderItem) {
+			if($orderItem->packed == false)
+			{
+				$orderStatus = Order::PART_PACKED;
+				break;
+			}
+		}
+		self::changeOrderPacked($orderId,$orderStatus);
+		return $orderItem;
+	}
+
+	private static function changeOrderPacked($id,$status){
+		return Order::where('id','=',$id)->update(['packed' => $status]);
+	}
 
 
 }

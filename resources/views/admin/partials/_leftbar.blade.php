@@ -8,18 +8,14 @@
                 <li class="menu-title"><i class="icon_compass_alt"></i><span>Main Menu</span>
                     <ul class="main-menu">
                         <li class="sub-item">
-                            <a href="{{route('category.index')}}"><span>Categories</span>
-                                <!--<span class="float-xs-right"><i class="icon_plus"></i></span>-->
-                            </a>
+                            <a href="{{route('category.index')}}"><span>Categories</span></a>
                         </li>
                         <li class="sub-item">
-                            <a href="{{route('subcategory.index')}}"><span>Sub-Categories</span>
-                            </a>
+                            <a href="{{route('subcategory.index')}}"><span>Sub-Categories</span></a>
                         </li>
 
                         <li class="sub-item">
-                            <a href="{{route('brand.index')}}"><span>Product Brands</span>
-                            </a>
+                            <a href="{{route('brand.index')}}"><span>Product Brands</span></a>
                         </li>
                         <li class="sub-item">
                             <a href="{{route('product.index')}}"><span>Products</span></a>
@@ -28,24 +24,17 @@
                             <a href="{{route('productQty.index')}}"><span>Product Qty</span></a>
                         </li>
                         <li class="sub-item">
-                            <a href="{{route('user.index')}}"><span>Users</span>
-                                <!--<span class="float-xs-right"><i class="icon_plus"></i></span>-->
-                            </a>
+                            <a href="{{route('user.index')}}"><span>Users</span></a>
                         </li>
                         <li class="sub-item">
-                            <a href="{{route('order.index')}}"><span>Orders</span>
-                                <!--<span class="float-xs-right"><i class="icon_plus"></i></span>-->
-                            </a>
+                            <a href="{{route('order.index')}}"><span>Orders</span></a>
+                        </li>
+                        
+                        <li class="sub-item">
+                            <a href="{{route('payment.index')}}"><span>Payments</span></a>
                         </li>
                         <li class="sub-item">
-                            <a href="{{route('payment.index')}}"><span>Payments</span>
-                                <!--<span class="float-xs-right"><i class="icon_plus"></i></span>-->
-                            </a>
-                        </li>
-                        <li class="sub-item">
-                            <a href="{{route('makecoupon.index') }}"><span>Make Coupons</span>
-                                <!--<span class="float-xs-right"><i class="icon_plus"></i></span>-->
-                            </a>
+                            <a href="{{route('makecoupon.index') }}"><span>Make Coupons</span></a>
                         </li>
                         <li class="sub-item">
                             <a href="{{route('coupon.index') }}"><span>Coupons Report</span></a>
