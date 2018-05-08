@@ -18,7 +18,7 @@
                     <div class="col align-self-start">
                     </div>
                     <div class="col align-self-center">
-                        <img class="welcome-img" src="/front-end/images/welcome-logo2.png" />
+                        <img class="welcome-img" src="/front-end/images/welcome-logo2.png" style="z-index: 1;" />
                         <div class="col-md-12 col-xs-12 div_singup">
                             {!! Form::open(['route'=>'register']) !!}
                           <div class="col-sm-12 my-1" style="margin-top: 14em !important;float: left;">
@@ -54,12 +54,6 @@
                                     <input type="password" class="form-control input_singup" id="inlineFormInputGroupConfirmPassword" placeholder="Confirm Password" name="password_confirmation">
                                 </div>
                             </div>
-                           <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
-                                <div class="input-group">
-
-                                    <input type="text" class="form-control input_singup" id="inlineFormInputGroupConfirmPassword" placeholder="Gender" name="gender">
-                                </div>
-                            </div>
                            
                             <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
                                 <div class="input-group">
@@ -67,6 +61,15 @@
                                     <input type="text" class="form-control input_singup datepicker" id="date_of_brith" placeholder="Date of birth" name="dateofbirth">
                                 </div>
                             </div>
+                            <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
+                                <div class="input-group">
+                                    <select class="custom-select form-control input_singup" name="gender">
+                                       <option value="male" >Male </option>
+                                       <option value="female" >Female </option>
+                                    </select>
+                                </div>
+                            </div>
+                           
                             <div class="col-sm-12 my-1" style="margin-top: 3em !important;float: left;">
                                 <div class="input-group">
                                     <button type="submit" class="btn_login" style="border :0px">
@@ -111,7 +114,7 @@
       <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
     <script>
-        $(function () {
+       /* $(function () {
             $("#date_of_brith").datepicker({
                 onSelect: function (date){
                     // date =date + " 01:00:00";
@@ -119,6 +122,13 @@
                 }
 
             });
-        });
+        });*/
+        $( function() {
+    $( "#date_of_brith" ).datepicker({
+       yearRange: "-70:-15",
+      changeMonth: true,
+      changeYear: true
+    });
+  } );
     </script>
     @endsection

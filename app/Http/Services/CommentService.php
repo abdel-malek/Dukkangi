@@ -43,4 +43,9 @@ class CommentService
 
         return $result;
     }
+    public static function deleteComment($id){
+        $comment = Comment::find($id);
+        $comment->delete();
+        return 1;
+    }
 }

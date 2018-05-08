@@ -39,6 +39,6 @@ class CreateSectionsProductTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sections_product');
+    //    Schema::dropIfExists('sections_product');
     }
 }

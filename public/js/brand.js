@@ -36,6 +36,17 @@ function loadBrands(){
         fields: [
             {name: "id", title: 'ID', type: "text", width: 5},
             {name: "arabic", title: 'Name', type: "text", width: 5},
+           
+            {
+              type: "control", width: 10, editButton: false, modeSwitchButton: false, deleteButton: false,
+              itemTemplate: function (value, item) {
+                var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
+                var $edit = $('<a class="btn btn-block btn-default btn-xs">See Products</a>');
+                $edit.attr('href',`/admin/brand/${item.id}/`);
+                $edit.attr('href',`/admin/brand/${item.id}/products/`);
+                return $result.add($edit);
+              },
+            },
             {
               type: "control", width: 10, editButton: false, modeSwitchButton: false, deleteButton: false,
               itemTemplate: function (value, item) {
@@ -45,6 +56,7 @@ function loadBrands(){
                 return $result.add($edit);
               },
             },
+            
             {
                 type: "control", width: 10, editButton: false, modeSwitchButton: false, deleteButton: false,
                 itemTemplate: function (value, item) {

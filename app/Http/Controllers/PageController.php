@@ -17,6 +17,7 @@ use Redirect;
 use Session;
 use App;
 use Auth;
+use App\Brand;
 
 class PageController extends Controller
 {
@@ -315,7 +316,7 @@ class PageController extends Controller
 		$subcategory = Subcategory::find($product->subcategory_id);
 		$skip = Comment::with(['user'])->where('product_id','=',$product->id)->get()->count();
 		$comments = Comment::with(['user'])->where('product_id','=',$product->id)->skip($skip-3)->take(3)->get();
-
+		$logo = Brand::select('image_path' , 'id')->where('id' , '=', $product->brand_id)->get()->first();
 		foreach ($comments as $comment) {
 			$user =  User::find($comment->user_id);
 			if (!isset($user)) 
@@ -382,7 +383,8 @@ class PageController extends Controller
 				$simiproduct->discount =  sprintf('%0.0f',100 - (($simiproduct->discount_price * 100) / $simiproduct->price));
 			}
 		}
-		return view('client.pages.item_view')->withProduct($product)->withCategory($category)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments);
+		//dd($logo->id);
+		return view('client.pages.item_view')->withProduct($product)->withCategory($category)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments)->withBrand($logo);
 
 	}
 

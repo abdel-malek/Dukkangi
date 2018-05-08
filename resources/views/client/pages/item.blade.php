@@ -54,6 +54,7 @@
 
 @section('main_section')
       <div class="col-md-12" style="padding: 0em 5em;" id="content_page" >
+          @if(!isset($brandfilter))
           <div id="content_page_item">
         <div class="col-md-12 col-sm-12 page_content_item">
             <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:-85px;width:1024px;height:200px;overflow:none;visibility:hidden;background-color:#24262e;">
@@ -100,17 +101,20 @@
             </div>
 
         </div>
+@endif
 
         <div class="col-md-9 col-sm-12 section_item" >
+            @if(!isset($brandfilter))
             <div class="col-sm-3" style="float:left;">
                 <img src={{URL::asset('/front-end/images/light_logo.png')}} class="img-resposive logo_text" />
             </div>
+            @endif
             <div class="col-sm-3" style="float:left;margin-left: 2em;">
                 <p class="btn_filter" id="btn_modal_filter">
                     @lang('Filter')
                 </p>
             </div>
-            <div class="col-sm-5 my-1" style="margin-top: 0em !important;float: left;">
+            <div class="col-sm-5 my-1" style="margin-top: 0em !important;float: left; {{isset($brandfilter) ? 'max-width: 70.666667% !important;' : ';'}}">
                 <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
                 <div class="input-gr'oup">
                     <div class="input-search_icon">
@@ -138,7 +142,7 @@
 
 
                       </div>
-                      @if(isset($filter))
+                      @if(isset($filter) && count($products) > 12) 
                         <div class="col-sm-3" style="float:left;margin-left: 20em;margin-top: 50px">
                             <p class="btn_filter" id="btn_modal_filter" onclick="scrollload()">
                                 @lang('Load More')
@@ -150,6 +154,7 @@
 
             </div>
         </div>
+       
     </div>
 </div>
 
@@ -220,7 +225,7 @@
             <div class="col-sm-12 my-1" style="margin-top: 2em !important;float: left;">
                 <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
                 <div class="input-group">
-                    <input type="submit" class="btn_model_filter" value="Show results" style="border: 0px">
+                    <input type="submit" class="btn_model_filter" value="Show results" style="border: 0px; cursor: pointer">
 
                 </div>
             </div>
@@ -228,7 +233,7 @@
             <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
                 <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
                 <div class="input-group">
-                    <p class="btn_model_filter" style="background-color: #fff;color: #222;">
+                    <p class="btn_model_filter cancel-modal" style="background-color: #fff;color: #222;cursor: pointer">
                         Cancel
                     </p>
                 </div>
@@ -346,6 +351,12 @@
                 $('#modal_filter').hide();
                 $('#content_page_item').css('filter', 'blur(0px)');
             });
+             $('.cancel-modal').click(function () {
+                $('.background_modal').hide();
+                $('#modal_filter').hide();
+                $('#content_page_item').css('filter', 'blur(0px)');
+            });
+            
         </script>
         <script>
             $(".validation_just_number").keypress(function (event) {

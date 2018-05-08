@@ -18,4 +18,8 @@ class CommentController extends Controller
         $filter = $request->input('filter');
         return  CommentService::loadComments($filter);
     }
+
+    public function destroy($id){
+    	return CommentService::deleteComment($id);
+    }
 }

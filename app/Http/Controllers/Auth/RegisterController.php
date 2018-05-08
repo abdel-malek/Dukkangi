@@ -85,7 +85,7 @@ class RegisterController extends Controller
                 'password' => bcrypt($data['password']),
                 'user_category_id' => 2,
                 'gender' => $data['gender'],
-                'birth_date' => $data['dateofbirth'],
+                'birth_date' => new DateTime($data['dateofbirth']),
             ]);
         }
         else{

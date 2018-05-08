@@ -26,13 +26,14 @@ Route::get('/productview/{id}' , 'PageController@getProductView')->name('product
 Route::post('/rate' , 'PageController@rate');
 Route::post('/comment-save' , 'PageController@comment')->name('comment');
 Route::get('/buyitem/{id}' ,  'CartController@getBuyItemPage')->name('buyitem');
-Route::get('/mycart/', 'CartController@getViewMyCartPage')->name('mycart');
+Route::get('/mycart/', 'CartController@getViewMyCartPage')->name('mycart')->middleware('auth');
 Route::get('/categoryfilter/' , 'PageController@getCategoryFilteredPage')->name('fullfiltercategory');
 Route::post('/categoryfilter/' ,'PageController@loadMoreProducts');
 Route::post('/completebuyitem/{id}' ,'CartController@buyItemComplete' )->name('completebuyitem');
 Route::post('/checkcoupon/', 'CartController@checkCoupon');
 Route::post('/changeqty/' , 'CartController@changeQty');
-Route::post('/getamount' , 'CartController@getAmount');
+Route::post('/getamount/' , 'CartController@getAmount');
+Route::get('/barndfilter/{id}' , 'ProductController@filterByBrand')->name('brandfilter');
 //Route::post('/completebuycart/' , 'CartController@checkout')->name('completebuycart');
 
    			                        //DASHBOARD
@@ -53,7 +54,8 @@ Route::get('/admin/brand/create', ['as' => 'brand.createPage','uses' => 'BrandCo
 Route::post('/admin/brand/create', ['as' => 'brand.create', 'uses' => 'BrandController@createBrandInfo']);
 Route::get('/admin/brand/edit/{id}', 'BrandController@editBrand');
 Route::post('/admin/brand/delete/{id}', 'BrandController@deleteBrand');
-
+Route::get('/admin/brand/{id}/products' , 'BrandController@BrandProducts');
+Route::post('/admin/brand/{id}/products/' , 'BrandController@getbrandProducts');
     //SUBCATEGORIES
 Route::get('/admin/subcategories', ['uses' => 'SubcategoryController@index'             ,'as' => 'subcategory.index'    ]);
 Route::post('/admin/subcategories', ['uses' => 'SubcategoryController@subcategoryData'  ,'as' => 'subcategory.data'     ]);
@@ -99,7 +101,7 @@ Route::get('/admin/subcategoryproducts/edit/{id}', ['uses' =>'ProductController@
 Route::put('/admin/subcategoryproducts/update', ['uses' => 'ProductController@updateBySubcategory'    ,'as' => 'productbysubcategory.update']);
 
     //PRODUCT SINGLE VIEW
-Route::get('/admin/products/single/{id}', ['uses' => 'ProductController@single' ,'as' => 'productbysubcategory.single']);
+Route::get('/admin/products/{id}', ['uses' => 'ProductController@single' ,'as' => 'productbysubcategory.single']);
 
     // USERS
 Route::get('/admin/users', ['uses' => 'UserController@index'           , 'as' => 'user.index' ]);
@@ -139,6 +141,7 @@ Route::post('/admin/couponusers/{id}' , 'CouponController@getUsersData');
 
 Route::get('admin/comment-rate-report','CommentController@index')->name('comment.index');
 Route::post('admin/comment-rate-report','CommentController@loadComments');
+Route::post('/admin/comment/delete/{id}' , 'CommentController@destroy');
     //DASHBOARD END
 
 
@@ -171,6 +174,6 @@ Route::post('stripe','StripeController@stripePost');
 Route::post('/paypal','PayPalController@ipn');
 
 
-//Test
-Route::get('/test/load-cart/{id}','TestController@loadCart');
-Route::get('/test' , 'CouponController@test');
+// Test
+// Route::get('/test/load-cart/{id}','TestController@loadCart');
+// Route::get('/test' , 'CouponController@test');

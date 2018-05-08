@@ -47,7 +47,7 @@ function loadProduct(){
               itemTemplate: function (value, item) {
                 var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
                 var $edit = $('<a class="btn btn-block btn-default btn-xs">View</a>');
-                $edit.attr('href',`/admin/products/single/`+item.id);
+                $edit.attr('href',`/admin/products/`+item.id);
                 return $result.add($edit);
               },
             }, 

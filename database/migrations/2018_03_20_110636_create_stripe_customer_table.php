@@ -28,6 +28,6 @@ class CreateStripeCustomerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stripe_customer');
+//        Schema::dropIfExists('stripe_customer');
     }
 }
