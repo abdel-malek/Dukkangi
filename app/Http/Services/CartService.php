@@ -172,8 +172,8 @@ class CartService
         if(sprintf('%0.2f', $calcAmount ) != sprintf('%0.2f', $amount)){
             $fake =1;
         }
-        
-        if (!$fake){  
+
+        if (!$fake){
             $user = User::find($userId);
 
             MailService::send('emails.complete_order' , ['total'=>$amount,

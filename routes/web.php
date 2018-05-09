@@ -177,3 +177,4 @@ Route::post('/paypal','PayPalController@ipn');
 // Test
 // Route::get('/test/load-cart/{id}','TestController@loadCart');
 // Route::get('/test' , 'CouponController@test');
+Route::get('/test' , 'TestController@test');

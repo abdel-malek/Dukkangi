@@ -110,7 +110,7 @@
             .btn_qty{
                 cursor: pointer;
             }
-            #ex3{
+            /* #ex3{
               float: right;
 
             }
@@ -132,7 +132,7 @@
               #ex3 .fa-stack-1x, .fa-stack-2x{
                 background-color:#d90000;
                 border-radius: 100px;
-              }
+              } */
         </style>
         <style>
             /* jssor slider loading skin spin css */
@@ -336,15 +336,14 @@
                         </p>
 
                 </div>
-                <a href="{{route('mycart')}}">
-                  {{-- <img src="/front-end/images/user_actions/view-my-cart.png" class="icon_buy_option_section"> --}}
+                {{-- <a href="{{route('mycart')}}">
                   <div id="ex3">
                     <span class="p1 fa-stack fa-2x has-badge" data-count=@if(!empty(Session::get('order_item_count'))) {{ Session::get('order_item_count')}} @endif>
                       <i class="p2 fa fa-circle fa-stack-2x"></i>
                       <i class="p3 fa fa-shopping-cart fa-stack-1x fa-inverse" data-count=@if(!empty(Session::get('order_item_count'))) {{ Session::get('order_item_count')}} @endif></i>
                     </span>
                   </div>
-                </a>
+                </a> --}}
         </div>
 
         <div class="col-md-12" style="float:left;margin-top: 170px" >
@@ -631,7 +630,7 @@
                         swal({title:"Successfully!", text:"Comment Added.",type: "success",timer:2000,showConfirmButton:false});;
                      location.reload();
                  });
-                 
+
             });
         </script>
         <script>
@@ -737,6 +736,6 @@
               $('.one_item_details .text_item_details').css('paddingBottom','0em');
           }
           $('.item_out_of_stock').css('height',parseInt($('.one_item_details').height()) - 380);
-    
+
         </script>
         @endsection
