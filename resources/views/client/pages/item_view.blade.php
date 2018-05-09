@@ -110,29 +110,6 @@
             .btn_qty{
                 cursor: pointer;
             }
-            /* #ex3{
-              float: right;
-
-            }
-            #ex3 .fa-stack[data-count]:after{
-                position:absolute;
-                right:0%;
-                top:1%;
-                content: attr(data-count);
-                font-size:30%;
-                padding:.6em;
-                border-radius:50%;
-                line-height:.8em;
-                color: white;
-                background:rgba(255,0,0,.85);
-                text-align:center;
-                min-width: 1em;
-                font-weight:bold;
-              }
-              #ex3 .fa-stack-1x, .fa-stack-2x{
-                background-color:#d90000;
-                border-radius: 100px;
-              } */
         </style>
         <style>
             /* jssor slider loading skin spin css */
@@ -336,14 +313,6 @@
                         </p>
 
                 </div>
-                {{-- <a href="{{route('mycart')}}">
-                  <div id="ex3">
-                    <span class="p1 fa-stack fa-2x has-badge" data-count=@if(!empty(Session::get('order_item_count'))) {{ Session::get('order_item_count')}} @endif>
-                      <i class="p2 fa fa-circle fa-stack-2x"></i>
-                      <i class="p3 fa fa-shopping-cart fa-stack-1x fa-inverse" data-count=@if(!empty(Session::get('order_item_count'))) {{ Session::get('order_item_count')}} @endif></i>
-                    </span>
-                  </div>
-                </a> --}}
         </div>
 
         <div class="col-md-12" style="float:left;margin-top: 170px" >

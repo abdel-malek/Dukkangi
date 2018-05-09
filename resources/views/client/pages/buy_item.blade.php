@@ -3,13 +3,13 @@
         <link rel="stylesheet" href="/front-end/css/lib/bootstrap.min.css">
         <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="/front-end/css/jquery-pretty-tabs.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
         <link rel="stylesheet" href="/front-end/css/style.css">
         <link rel="stylesheet" href="/front-end/css/login.css">
         <link rel="stylesheet" href="/front-end/css/item.css">
         <link rel="stylesheet" href="/front-end/css/item_view.css">
         <link rel="stylesheet" href="/front-end/css/buy_item.css">
-        <link rel="stylesheet" href="/front-end/css/material_icons.css">
+        {{-- <link rel="stylesheet" href="/front-end/css/material_icons.css"> --}}
         <script type="text/javascript" src="/front-end/js/plugin/jssor.slider.min.js"></script>
         <script type="text/javascript" src="/front-end/js/plugin/slide.js"></script>
         <link rel="stylesheet" href="/front-end/css/SimpleStarRating.css">
@@ -162,59 +162,6 @@
                                 <!-- <img -->
                             </div>
                         </div>
-                        <!-- <div class="col-md-12" style="float: left;">
-                            <div style="width: 39%;float: left;">
-                                <h3 class="title_color" style="margin-top: 0.4em;">
-                                    Option 1
-                                </h3>
-                            </div>
-                            <div style="width: 60%;float: right;">
-                                <div class="option_color" style="background-color: #303030;">
-
-                                </div><div class="option_color" style="background-color: #303030;">
-
-                                </div><div class="option_color" style="background-color: #303030;">
-
-                                </div>
-
-                             </div>
-                        </div>
-                        <div class="col-md-12" style="float: left;margin-top: 20px;">
-                            <div style="width: 39%;float: left;">
-                                <h3 class="title_size" style="margin-top: -0.1em;">
-                                    Option 2
-                                </h3>
-                            </div>
-                            <div style="width: 60%;float: right;">
-                                <p class="option_size active_option_size" style="width: 100%">
-                                    Small
-                                </p>
-
-                            </div>
-                        </div>
-                        <div style="width: 39%;float: left;margin-top: 0px;padding-left: 15px">
-                                <h3 class="title_size" style="margin-top: -0.1em;">
-                                    Option 3
-                                </h3>
-                            </div>
-                            <div style="width: 60%;float: right;margin-top: 0px;">
-                                <p class="option_size active_option_size" style="width: 100%">
-                                    Small
-                                </p>
-
-                            </div>
-
-                        <div style="width: 39%;float: left;margin-top: 0px;">
-                                <h3 class="title_size" style="margin-top: 1.0em;padding-left: 15px">
-                                    Option 4
-                                </h3>
-                            </div>
-                            <div style="width: 60%;float: right;margin-top: 0px;">
-                                <p class="option_size active_option_size" style="width: 100%">
-                                    Small
-                                </p>
-
-                            </div> -->
                              <div style="width: 39%;float: left;margin-top: 0px;">
                                 <big>
                                 <h3 class="title_size" style="margin-top: 1.0em;padding-left: 15px">
@@ -296,41 +243,8 @@
                     <div  class="visa_choose_payment">
                         <label style="float: left;">
   <input type="radio" name="choose_payment" />
-  <div class="circle">
-    <div class="circle--inner circle--inner__1" ></div>
-    <div class="circle--inner circle--inner__2" ></div>
-    <div class="circle--inner circle--inner__3" ></div>
-    <div class="circle--inner circle--inner__4" ></div>
-    <div class="circle--inner circle--inner__5" ></div>
-    <div class="circle--outer" ></div>
-  </div>
-  <svg style="height: 4em;width: 3em;">
-    <defs>
-      <filter id="gooey">
-        <feGaussianBlur
-          in="SourceGraphic"
-          result="blur"
-          stdDeviation="3"
-        />
-        <feColorMatrix
-          in="blur"
-          mode="matrix"
-          values="
-            1 0 0 0 0
-            0 1 0 0 0
-            0 0 1 0 0
-            0 0 0 18 -7
-          "
-          result="gooey"
-        />
-        <feBlend
-          in2="gooey"
-          in="SourceGraphic"
-          result="mix"
-        />
-      </filter>
-    </defs>
-  </svg>
+
+
 </label>
 
                         <img src="/front-end/images/payment/visa.png" class="img_visa_choose_payment">
@@ -453,7 +367,7 @@
         $(function () {
             $("#expiration_date").datepicker();
 
-            
+
         });
     </script>
        <script>
