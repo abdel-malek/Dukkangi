@@ -271,6 +271,8 @@ class CartService
         $cartId = session('cartId');
         Order::where('id','=',$cartId)->update(['status_id'=>OrderStatus::DELETED]);
         OrderItem::where('order_id','=',$cartId)->update(['status_id' => OrderStatus::DELETED]);
+        session(['order_item_count' => 0]);
+        session(['cartId' => 0]);
         return 'true';
     }
     public static function changeQty($qty , $ProductId){
