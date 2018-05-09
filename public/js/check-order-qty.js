@@ -90,7 +90,7 @@ function loadUsers(){
             {name: "id"         , title: 'ID'      , type: "text", width: 5},
             {name: "order_id"    , title: 'Order ID'    , type: "text", width: 5},
             {name: "product.arabic" , title: 'Product' , type: "text", width: 5},
-            {name: "product.barcode" , title: 'Product' , type: "text", width: 5},
+            {name: "product.barcode" , title: 'Barcode' , type: "text", width: 5},
             {name: "qty" , title: 'Qty' , type: "text", width: 5},
             {name: "packed" , title: 'Packed' , type: "checkbox", width: 5},
             {name: "order_status.name" , title: 'Status' , type: "text", width: 5}
