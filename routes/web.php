@@ -178,6 +178,4 @@ Route::post('/paypal','PayPalController@ipn');
 // Route::get('/test/load-cart/{id}','TestController@loadCart');
 // Route::get('/test' , 'CouponController@test');
 Route::get('/test' , 'TestController@test');
-Route::get('/h' ,function(){
-    return view('emails.signup');
-});
+
