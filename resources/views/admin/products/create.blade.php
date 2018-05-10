@@ -46,16 +46,17 @@
 				<br>
 
 
-				{{ Form::label('category_id' , 'Category:')}}
-				<select class="custom-select" name="category_id">
+<!--				{{ Form::label('category_id' , 'Category:')}}
+				<select class="js-example-basic-multiple form-control" required="required" name="category_id[]" multiple="multiple">
 				@foreach($categories as $category)
 					<option value="{{$category->id}}" >{{$category->english}} </option>
 				@endforeach
 				</select>
 				<br/>
 				<br/>
+			-->
 				{{ Form::label('subcategory_id' , 'Subcategory:')}}
-				<select class="custom-select" name="subcategory_id">
+				<select class="js-example-basic-multiple form-control" required="required" name="subcategory_id[]" multiple="multiple">
 				@foreach($subcategories as $subcategory)
 					<option value="{{$subcategory->id}}" >{{$subcategory->english}} </option>
 				@endforeach
@@ -64,7 +65,7 @@
 				<br/>
 				<br/>
 				{{ Form::label('brand_id' , 'Brand:')}}
-				<select class="custom-select" name="brand_id">
+				<select class="custom-select" name="brand_id" required="required">
 				@foreach($brands as $brand)
 					<option value="{{$brand->id}}" >{{$brand->english}} </option>
 				@endforeach
@@ -269,6 +270,11 @@
 			{!! Form::close() !!}
 		</div>
 	</div>
-
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script >
+	$(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+});
+</script>
 
 @endsection

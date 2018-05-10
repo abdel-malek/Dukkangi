@@ -10,7 +10,7 @@ use App\Http\Services\ImageService;
 use App\Subcategory;
 use App\Brand;
 use App\Http\Services\ProductService;
-
+use App\Tags;
 
 class ProductController extends Controller
 {
@@ -143,29 +143,29 @@ class ProductController extends Controller
             'price'  =>'required|between:0,99999.99'
          ]);
 
-        $product->arabic         = $request->arabic;
-        $product->english         = $request->english;
-        $product->german         = $request->german;
-        $product->turky         = $request->turky;
-        $product->kurdi         = $request->kurdi;
+        $product->arabic           = $request->arabic;
+        $product->english          = $request->english;
+        $product->german           = $request->german;
+        $product->turky            = $request->turky;
+        $product->kurdi            = $request->kurdi;
 
-        $product->desc_arabic     = $request->desc_arabic;
+        $product->desc_arabic      = $request->desc_arabic;
         $product->desc_english     = $request->desc_english;
-        $product->desc_german     = $request->desc_german;
-        $product->desc_turky     = $request->desc_turky;
-        $product->desc_kurdi     = $request->desc_kurdi;
+        $product->desc_german      = $request->desc_german;
+        $product->desc_turky       = $request->desc_turky;
+        $product->desc_kurdi       = $request->desc_kurdi;
 
-        $product->qty             = $request->qty;
-        $product->price         = $request->price;
-        $product->category_id    = $request->category_id;
-        $product->subcategory_id = $request->subcategory_id;
-        $product->brand_id = $request->brand_id;
-        // $product->option1        = isset($request->option1) ?$request->option1 : 0;
-        // $product->option2        = isset($request->option2) ?$request->option2 : 0;
-        // $product->option3        = isset($request->option3) ?$request->option3 : 0;
-        // $product->option4        = isset($request->option4) ?$request->option4 : 0;
+        $product->qty              = $request->qty;
+        $product->price            = $request->price;
+        //$product->category_id    = $request->category_id[0];
+        $product->subcategory_id   = $request->subcategory_id[0];
+        $product->brand_id         = $request->brand_id;
+        // $product->option1       = isset($request->option1) ?$request->option1 : 0;
+        // $product->option2       = isset($request->option2) ?$request->option2 : 0;
+        // $product->option3       = isset($request->option3) ?$request->option3 : 0;
+        // $product->option4       = isset($request->option4) ?$request->option4 : 0;
 
-        $product->active        = isset($request->active) ?$request->active : 0;
+        $product->active           = isset($request->active) ?$request->active : 0;
 
 
 
@@ -187,35 +187,48 @@ class ProductController extends Controller
         $product->section3_kurdi   = $request->section3_kurdi;
         $product->section3_turky   = $request->input('section3_turky');
 
-        $product->barcode   = $request->input('barcode');
-        $product->custom_id   = $request->input('custom_id');
-        $product->tax_fees   = $request->input('tax_fees') || 0.19;
+        $product->barcode          = $request->input('barcode');
+        $product->custom_id        = $request->input('custom_id');
+        $product->tax_fees         = $request->input('tax_fees') || 0.19;
+
+
 
 
         if ($request->hasFile('image')) {
-            $product->image_id = ImageService::saveImage($request->file('image'));
+            $product->image_id  = ImageService::saveImage($request->file('image'));
         }
 
         if ($request->hasFile('image_path_2')) {
-            $product->image_id = ImageService::saveImage($request->file('image_path_2'));
+            $product->image_id2 = ImageService::saveImage($request->file('image_path_2'));
         }
 
         if ($request->hasFile('image_path_3')) {
-            $product->image_id = ImageService::saveImage($request->file('image_path_3'));
+            $product->image_id3 = ImageService::saveImage($request->file('image_path_3'));
         }
 
         if ($request->hasFile('image_path_4')) {
-            $product->image_id = ImageService::saveImage($request->file('image_path_4'));
+            $product->image_id4 = ImageService::saveImage($request->file('image_path_4'));
         }
 
         if (isset($request->point)) {
             $product->point     = $request->point;
-        } else {
+        } 
+        else {
             $product->point     = '0';
         }
 
         $product->save();
-        
+
+        foreach ($request->subcategory_id as $singleSubcategeory) {
+            $subcategory = Subcategory::find($singleSubcategeory);
+            $tag = new Tags();
+            $tag->product_id = $product->id;
+            $tag->subcategory_id = $singleSubcategeory;
+            $tag->category_id    = $subcategory->category_id;
+            $tag->save();
+        }
+
+
         ProductService::addProductQty($product->id,$product->qty);
 
         Session::flash('success', 'Added Successfuly!');

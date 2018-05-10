@@ -9,6 +9,7 @@ use App\ProductQty;
 use App\OrderItem;
 use Illuminate\Support\Facades\DB;
 use Session;
+use App\Tags;
 use App\Brand;
 
 class ProductService
@@ -62,8 +63,15 @@ class ProductService
     public static function productDataByCategory($filter, $id)
     {
         $index = $filter ? $filter['pageIndex'] : 0 ;
-        $product = Product::select(['id','arabic','english','qty','category_id','subcategory_id','price','point']);
-        $product->where('category_id', '=', $id);
+        $dd =Tags::select('product_id')->where('category_id', '=' ,$id)->get()->toArray();
+        $array=[];
+        
+        foreach ($dd as $d) {
+             array_push($array, $d['product_id']) ;
+        }
+        $product = Product::select(['id','arabic','english','qty','category_id','subcategory_id','price','point'])
+        ->whereIn('id', $array );
+        
         if (!empty($filter['id'])) {
             $product->where('id', '=', $filter['id']);
         }
@@ -76,12 +84,7 @@ class ProductService
         if (!empty($filter['qty'])) {
             $product->where('qty', '=', $filter['qty']);
         }
-        if (!empty($filter['category_id'])) {
-            $product->where('category_id', '=', $filter[ 'category_id' ]);
-        }
-        if (!empty($filter['subcategory_id'])) {
-            $product->where('subcategory_id', '=', $filter['subcategory_id']);
-        }
+        
 
         $product->orderBy('id', 'desc');
         $result['total'] = $product->count();
@@ -90,7 +93,7 @@ class ProductService
         $result['data']=$product->take(10)->skip($skip)->get();
 
         foreach ($result['data'] as $p) {
-            $temp1 = Category::find($p->category_id);
+            $temp1 = Category::find($id);
             $temp2 = Subcategory::find($p->subcategory_id);
             $p->price = $p->price . " €";
 
@@ -103,11 +106,12 @@ class ProductService
 
             if (isset($temp2)) {
                 $p->subcategory_id = "<b>".$temp2->english."</b>";
-            } else {
+            }
+            else 
+            {
                 $p->subcategory_id = $p->subcategory_id . " <i><small>(Deleted)</small></i>";
             }
         }
-
         return $result;
     }
 
@@ -115,8 +119,16 @@ class ProductService
     public static function productDataBySubcategory($filter, $id)
     {
         $index = $filter ? $filter['pageIndex'] : 0 ;
+        $dd =Tags::select('product_id')->where('subcategory_id', '=' ,$id)->get()->toArray();
+        
+        $array=[];
+        foreach ($dd as $d) {
+             array_push($array, $d['product_id']) ;
+        }
+
         $product = Product::select(['id','arabic','english','qty','category_id','subcategory_id','price','point']);
-        $product->where('subcategory_id', '=', $id);
+        $product->whereIn('subcategory_id',$array);
+        
         if (!empty($filter['id'])) {
             $product->where('id', '=', $filter['id']);
         }
@@ -129,16 +141,7 @@ class ProductService
         if (!empty($filter['qty'])) {
             $product->where('qty', '=', $filter['qty']);
         }
-        if (!empty($filter['category_id'])) {
-            //Need a Change !
-            $product->where('category_id', '=', $filter[ 'category_id' ]);
-        }
-        if (!empty($filter['subcategory_id'])) {
-
-            //Need a Change !
-            $product->where('subcategory_id', '=', $filter['subcategory_id']);
-        }
-
+        
         $product->orderBy('id', 'desc');
         $result['total'] = $product->count();
 
@@ -146,8 +149,9 @@ class ProductService
         $result['data']=$product->take(10)->skip($skip)->get();
 
         foreach ($result['data'] as $p) {
-            $temp1 = Category::find($p->category_id);
-            $temp2 = Subcategory::find($p->subcategory_id);
+            $temp2 = Subcategory::find($id);
+            $temp1 = Category::find($temp2->category_id);
+            
             $p->price = $p->price . " €";
 
             if (isset($temp1)) {
@@ -168,6 +172,7 @@ class ProductService
 
     public static function deleteProduct($id)
     {
+        Tags::where('product_id' ,'=', $id)->delete();
         return Product::where('id', '=', $id)->delete();
     }
 
@@ -188,8 +193,8 @@ class ProductService
 
         $product->qty             = $request->qty;
         $product->price         = $request->price;
-        $product->category_id    = $request->category_id;
-        $product->subcategory_id = $request->subcategory_id;
+        //$product->category_id    = $request->category_id[0];
+        //$product->subcategory_id = $request->subcategory_id[0];
         $product->brand_id = $request->brand_id;
         //
         // $product->option1 	     = isset($request->option1) ?$request->option1 : 0;
@@ -197,7 +202,7 @@ class ProductService
         // $product->option3		 = isset($request->option3) ?$request->option3 : 0;
         // $product->option4		 = isset($request->option4) ?$request->option4 : 0;
 
-        $product->active         = isset($request->active) ?$request->active : 0;
+        $product->active             = isset($request->active) ?$request->active : 0;
 
         $product->section1_english = $request->section1_english;
         $product->section1_german  = $request->section1_german;
@@ -229,21 +234,46 @@ class ProductService
         }
 
         if ($request->hasFile('image_path_2')) {
-            $product->image_id = ImageService::saveImage($request->file('image_path_2'));
+            $product->image_id2 = ImageService::saveImage($request->file('image_path_2'));
         }
 
         if ($request->hasFile('image_path_3')) {
-            $product->image_id = ImageService::saveImage($request->file('image_path_3'));
+            $product->image_id3 = ImageService::saveImage($request->file('image_path_3'));
         }
 
         if ($request->hasFile('image_path_4')) {
-            $product->image_id = ImageService::saveImage($request->file('image_path_4'));
+            $product->image_id4 = ImageService::saveImage($request->file('image_path_4'));
+        }
+        
+                //Sub-Categories
+
+        foreach ($request->subcategory_id as $singleSubcategeory) {
+          $tag = Tags::where('product_id' , '=' , $id)->where('subcategory_id' , $singleSubcategeory)->get()->first();
+          if(!isset($tag)){
+            $subcategory = Subcategory::find($singleSubcategeory);
+            $tag = new Tags();
+            $tag->product_id = $id;
+            $tag->subcategory_id = $singleSubcategeory;
+            $tag->category_id = $subcategory->category_id;
+            $tag->save();
+          }
+        }
+                //Categories 
+        foreach ($request->category_id as $singleCategeory) {
+          $tag = Tags::where('product_id', '=' , $id)->where('category_id', '=' , $singleCategeory)->get()->first();
+          if(!isset($tag)){
+            $tag = new Tags();
+            $tag->product_id = $id;
+            $tag->category_id = $singleCategeory;
+            $tag->save();
+          }
         }
 
 
         if (isset($request->point)) {
             $product->point     = $request->point;
-        } else {
+        } 
+        else {
             $product->point     = '0';
         }
         $product->save();

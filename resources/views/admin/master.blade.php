@@ -2,6 +2,8 @@
 <html>
 <head>
    @include('admin.partials._head')
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+
    <style>
    .footer{
      padding-top:10px;
@@ -18,6 +20,7 @@
       padding-right: 15px;
     }
    </style>
+   
 </head>
 <body>
 <div class="wrapper">
@@ -61,5 +64,5 @@
 </footer> --}}
   @include ('admin.partials._footer')
 </body>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 </html>

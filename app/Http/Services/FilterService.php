@@ -7,6 +7,7 @@ use App\Category;
 use App\Subcategory;
 use App\Product;
 use Session;
+use App\Tags;
 use App;
 
 class FilterService {
@@ -18,18 +19,21 @@ class FilterService {
         $lang = session('lang');
         App::setLocale($lang);
 
-
         $products = Product::select(['id','image_id','english','arabic','german', 'kurdi', 'turky','price' ,'rate'])
         ->where('active','=',true);
-
-
 
         if (isset($request->name) ){
                 $products->where(DB::raw("concat_ws('-',english,arabic,turky,kurdi,german)"),'like','%'.$request->name.'%');
         }
-        if (isset($request->categories) ){
-            $products->whereIn('category_id' ,$request->categories);
+        if(isset($requset->categories) ){
+        
+            $Tags = [];
+            $tags = Tags::select('product_id')->whereIn('category_id' , $requset->categories)->get()->toArray();
+            foreach ($tags as $tag) {
+                array_push($Tags , $tag);
+            }
 
+            $products->whereIn('id' ,$Tags);
         }
         if(isset($request->min) && !isset($request->max) ){
             $products->where('price' ,'>=', $request->min);

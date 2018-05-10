@@ -18,6 +18,7 @@ use Session;
 use App;
 use Auth;
 use App\Brand;
+use App\Tags;
 
 class PageController extends Controller
 {
@@ -57,8 +58,15 @@ class PageController extends Controller
 		App::setLocale($lang);
 		$categories = Category::all();
 		$subcategories = Subcategory::all()->where('category_id','=',$categoryId);
+		$Tags = [];
+		$tags = Tags::select('product_id')->where('category_id' , '=' ,$categoryId)->get()->toArray();
+		foreach ($tags as $tag) {
+			array_push($Tags, $tag['product_id']);
+		}
 		// dd($subcategories);
-		$products = DB::table('product')->where('category_id','=',$categoryId)->orderBy('category_id', 'asc')->get();
+		$products = DB::table('product')
+		->whereIn('id' , $Tags)
+		->orderBy('category_id', 'asc')->get();
 		if ($lang == "ar"){
 			foreach ($categories as $category) {
 				$category->english = $category->arabic;
@@ -177,7 +185,7 @@ class PageController extends Controller
 	}
 
 
-		public function getCategoryFilteredPage(Request $request){
+	public function getCategoryFilteredPage(Request $request){
 
 		$lang = session('lang');
 		App::setLocale($lang);;
@@ -245,7 +253,12 @@ class PageController extends Controller
 		$lang = session('lang');
 		App::setLocale($lang);
 
-		$products = Product::where('subcategory_id','=',$subcategory->id)
+		$Tags = [];
+		$tags = Tags::select('product_id')->where('subcategory_id' , '=' , $subcategory->id)->get()->toArray();
+		foreach ($tags as $tag) {
+			array_push($Tags, $tag);
+		}
+		$products = Product::whereIn('id',$Tags)
 		->where('active','=',true)->get();
 
 		$categories = Category::all();
@@ -312,7 +325,6 @@ class PageController extends Controller
 		App::setLocale((string)$lang);
 
 		$product = Product::find($id);
-		$category = Category::find($product->category_id);
 		$subcategory = Subcategory::find($product->subcategory_id);
 		$skip = Comment::with(['user'])->where('product_id','=',$product->id)->get()->count();
 		$comments = Comment::with(['user'])->where('product_id','=',$product->id)->skip($skip-3)->take(3)->get();
@@ -328,13 +340,24 @@ class PageController extends Controller
 			$comment->rate = round($comment->rate);
 		}
 
-		$simiproducts = Product::select('*')->where('subcategory_id','=',$product->subcategory_id)
+		$Tags = [];
+		$subcategory_ids = [];
+		$subcategories = Tags::select('subcategory_id')->where('product_id' ,'=', $id)->get()->toArray();
+		foreach ($subcategories as $sub) {
+		  	array_push($subcategory_ids, $sub['subcategory_id']);
+		}
+		$tags = Tags::select('product_id')->whereIn('subcategory_id' , $subcategory_ids)->get()->toArray();
+		foreach ($tags as $tag) {
+			array_push($Tags , $tag);
+		}
+
+		$simiproducts = Product::select('*')
+		->whereIn('id' , $Tags)
 		->where('active','=',true)->get();
 
 		if ($lang == "ar"){
 			$product->english = $product->arabic;
 			$product->desc_english = $product->desc_arabic;
-			$category->english = $category->arabic;
 			$subcategory->english = $subcategory->arabic;
 			foreach ($simiproducts as $simi) {
 				$simi->english = $simi->arabic;
@@ -343,7 +366,6 @@ class PageController extends Controller
 		if ($lang == "de"){
 			$product->english = $product->german;
 			$product->desc_english = $product->desc_german;
-			$category->english = $category->german;
 			$subcategory->english = $subcategory->german;
 			foreach ($simiproducts as $simi) {
 				$simi->english = $simi->german;
@@ -352,7 +374,6 @@ class PageController extends Controller
 		if ($lang == "ku"){
 			$product->english = $product->kurdi;
 			$product->desc_english = $product->desc_kurdi;
-			$category->english = $category->kurdi;
 			$subcategory->english = $subcategory->kurdi;
 			foreach ($simiproducts as $simi) {
 				$simi->english = $simi->kurdi;
@@ -362,7 +383,6 @@ class PageController extends Controller
 		if ($lang == "tr"){
 			$product->english = $product->turky;
 			$product->desc_english = $product->desc_turky;
-			$category->english = $category->turky;
 			$subcategory->english = $subcategory->turky;
 			foreach ($simiproducts as $simi) {
 				$simi->english = $simi->turky;
@@ -383,9 +403,7 @@ class PageController extends Controller
 				$simiproduct->discount =  sprintf('%0.0f',100 - (($simiproduct->discount_price * 100) / $simiproduct->price));
 			}
 		}
-		//dd($logo->id);
-		return view('client.pages.item_view')->withProduct($product)->withCategory($category)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments)->withBrand($logo);
-
+		return view('client.pages.item_view')->withProduct($product)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments)->withBrand($logo);
 	}
 
 

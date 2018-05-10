@@ -173,6 +173,14 @@
             .star_1 i:hover{
                 content: "&#xE838;";
             }
+            .carousel-indicators .active {
+                width: 30px !important; 
+                height: 3px !important; 
+                margin-right: 3px !important;
+                margin-left: 3px !important;
+                margin-bottom: 0px !important;
+                margin-top: 1px !important;  
+             }
         </style>
 
     @endsection
@@ -196,24 +204,38 @@
 
                         <!-- -Slider -->
                             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="height: 380px" >
+                              <ol class="carousel-indicators" style="bottom:-10px">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                @if(isset($product->image_id2))
+                                   <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                @endif
+                                @if(isset($product->image_id3))
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                @endif
+                               
+                                @if(isset($product->image_id4))
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                                @endif
+                                
+                            </ol>
                               <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                  <img class=" d-block w-100" style="height: 380px"  src="{{$product->image_id}}" alt="First slide">
+                                  <img class=" d-block w-100" data-target="carouselExampleIndicators" style="height: 380px"  src="{{$product->image_id}}" alt="First slide">
                                 </div>
 
                                 @if(isset($product->image_id2))
                                 <div class="carousel-item">
-                                  <img class="img_item_details" style="height: 380px"  src="{{$product->image_id2}}" alt="Second slide">
+                                  <img class="img_item_details" data-target="carouselExampleIndicators" style="height: 380px"  src="{{$product->image_id2}}" alt="Second slide">
                                 </div>
                                 @endif
                                 @if(isset($product->image_id3))
                                 <div class="carousel-item">
-                                  <img class="img_item_details" style="height: 380px"  src="{{$product->image_id3}}" alt="Third slide">
+                                  <img class="img_item_details" data-target="carouselExampleIndicators" style="height: 380px"  src="{{$product->image_id3}}" alt="Third slide">
                                 </div>
                                 @endif
                                 @if(isset($product->image_id4))
                                 <div class="carousel-item">
-                                  <img class="img_item_details" style="height: 380px"  src="{{$product->image_id4}}" alt="Fourth slide">
+                                  <img class="img_item_details" data-target="carouselExampleIndicators" style="height: 380px"  src="{{$product->image_id4}}" alt="Fourth slide">
                                 </div>
                                 @endif
                               </div>

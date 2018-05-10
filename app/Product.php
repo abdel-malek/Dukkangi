@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Category;
 use App\Subcategory;
 use App\Brand;
+use App\Tags;
 
 class Product extends Model
 {
@@ -35,4 +36,5 @@ class Product extends Model
     public function brand(){
       return $this->belongsTo(Brand::class,'id','brand_id');
     }
+    
 }
