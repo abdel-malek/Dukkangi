@@ -202,7 +202,7 @@
                 <div class="input-group">
                     <div class="input-search_icon">
                         <!--                        <img src="./images/signup/at.png">-->
-                        <i class="material-icons" style="color:#fff;">&#xE227;</i>
+                        <i class="material-icons" style="color:#fff;">€</i>
                     </div>
                     <input type="text" class="form-control input_filter validation_just_number" name="max" id="inlineFormInputGroupUsername" placeholder="Max">
                 </div>
@@ -211,7 +211,7 @@
                 <div class="input-group">
                     <div class="input-search_icon">
                         <!--                        <img src="./images/signup/at.png">-->
-                        <i class="material-icons" style="color:#fff;">&#xE227;</i>
+                        <i class="material-icons" style="color:#fff;">€</i>
                     </div>
                     <input type="text" name = "min"class="form-control input_filter validation_just_number" id="inlineFormInputGroupUsername" placeholder="Min">
                 </div>

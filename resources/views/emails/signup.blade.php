@@ -3,14 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 
-	<href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <link rel="stylesheet" href="{{URL::asset('/front-end/css/item.css')}}" />
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<style>
+		.row{
+			margin-left: -15px;
+    	margin-right: -15px;
+		}
 		@font-face {
 		    font-family: NormalFont;
 		    src: url("/front-end/fonts/HelveticaNeueLight.ttf");
@@ -129,7 +126,7 @@
 		}
 		.insta{
 			margin-left: 60px;
-			margin-top:55px;
+			margin-top:80px;
 
 		}
 		.fb{
@@ -143,10 +140,10 @@
 	</style>
 </head>
 <body>
-<div class="header" >
+<div class="header row" >
 <center>
-<img  src="/emails/logo.png" alt="logo" class='header-img'><br>
-<img src=/emails/email.png alt="@" width="42px" height="42px" >
+<img  src="{{URL::asset('/emails/logo.png')}}" alt="logo" class='header-img'><br>
+<img src="{{URL::asset('/emails/email.png')}}" alt="@" width="42px" height="42px" >
 <span class="glyphicon glyphicon-envelope"></span>
 <p class="text white">Welcome To Dukkangi</p>
 </center>
@@ -167,29 +164,24 @@
 </div>
 
 <footer>
-	<div class="text white footers">
-		<div class="row">
-			<div >
+	<div class="text white footers row">
+		<div >
+			<div>
 				<p class="leftfooter">Contact information</p>
-				<p class="media insta"><span><img src="/emails/instagram.png" alt="logo" width="28px" height="28px"></span>  instagram/dukkangi.com</p>
+				<p class="media insta"><span><img src="{{URL::asset('/emails/instagram.png')}}" alt="logo" width="28px" height="28px"></span>  instagram/dukkangi.com</p>
 			</div>
-			<div >
+			<div style="margin-left: 100px;margin-top: -128px;" >
 				<p class="mid">+49 5609 - 809</p>
 				<p class="mid">+49 5609 - 809</p>
-				<p class="media fb"><span><img src="/emails/facebook.png" alt="logo" width="28px" height="28px"> </span>  facebook/dukkangi.com</p>
+				<p class="media fb"><span><img src="{{URL::asset('/emails/facebook.png')}}" alt="logo" width="28px" height="28px"> </span>  facebook/dukkangi.com</p>
 			</div>
-		<div>
+		<div style="margin-left: 400px;margin-top: -134px;">
 				<p class="rightfooter">info@dukkangi.com</p>
 				<p class="rightfooter">www.dukkangi.com</p>
-				<p class="media twit"><span><img src="/emails/twitter.png" alt="logo" width="28px" height="28px"></span>  twitter/dukkangi.com</p>
+				<p class="media twit"><span><img src="{{URL::asset('/emails/twitter.png')}}" alt="logo" width="28px" height="28px"></span>  twitter/dukkangi.com</p>
 		</div>
 		
 		</div>
 	</div>
-</footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-
-</body>
+</footer></body>
 </html>

@@ -436,12 +436,12 @@ class PageController extends Controller
 			if ($type == 1){
 				$update = Product::find($id);
 				$update->rate = round($lastrate);
-				$update->save();
+				$update->update();
 			}
 			else if ($type == 2){
 				$update = Subcategory::find($id);
 				$update->rate = round($lastrate);
-				$update->save();
+				$update->update();
 			}
 		}
 
