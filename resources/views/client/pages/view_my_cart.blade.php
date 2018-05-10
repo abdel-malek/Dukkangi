@@ -128,6 +128,29 @@
             .star_1 i:hover{
                 content: "&#xE838;";
             }
+            #ex3{
+              float: right;
+
+            }
+            #ex3 .fa-stack[data-count]:after{
+                position:absolute;
+                right:0%;
+                top:1%;
+                content: attr(data-count);
+                font-size:30%;
+                padding:.6em;
+                border-radius:50%;
+                line-height:.8em;
+                color: white;
+                background:rgba(255,0,0,.85);
+                text-align:center;
+                min-width: 1em;
+                font-weight:bold;
+              }
+              #ex3 .fa-stack-1x, .fa-stack-2x{
+                background-color:#d90000;
+                border-radius: 100px;
+              }
         </style>
 @endsection
 @section('main_section')
@@ -216,29 +239,7 @@
                         {{ sprintf('%0.2f', $taxes )}} €
                     </h3>
                     </div>
-           <!--                        DISCOUNTS
-                   <div class="col-md-12" style="float:left;">
-                    <h3 class="title_detail_my_card" style="width:25%;">Discounts</h3>
-                    <hr class="line_title_detail_my_card" style="width:75%;">
-                </div>
-                <div class="total_discount">
-                       <p>
-                        Total before discounts
-                    </p>
-                    <h3 id="total-price">
-                        {{$total }} $
-                    </h3>
-                </div>
 
-                <div class="discount_discount">
-                       <p>
-                        Discount
-                    </p>
-                    <h3>
-                        3 %
-                    </h3>
-                </div>
-               -->
                    <div class="col-md-12" style="float:left;">
                     <h3 class="title_detail_my_card" style="width:35%;">@lang('Voucher Code')</h3>
                     <hr class="line_title_detail_my_card" style="width:65%;">
@@ -266,99 +267,16 @@
                     </h4>
                     <div  class="visa_choose_payment">
                         <label style="float: left;">
-                            {{-- <input type="radio" name="choose_payment" />
-                            <div class="circle">
-                                <div class="circle--inner circle--inner__1" ></div>
-                                <div class="circle--inner circle--inner__2" ></div>
-                                <div class="circle--inner circle--inner__3" ></div>
-                                <div class="circle--inner circle--inner__4" ></div>
-                                <div class="circle--inner circle--inner__5" ></div>
-                                <div class="circle--outer" ></div>
-                            </div> --}}
-                            {{-- <svg style="height: 4em;width: 3em;">
-                            <defs>
-                            <filter id="gooey">
-                                <feGaussianBlur
-                                    in="SourceGraphic"
-                                    result="blur"
-                                    stdDeviation="3"
-                                    />
-                                <feColorMatrix
-                                    in="blur"
-                                    mode="matrix"
-                                    values="
-                                    1 0 0 0 0
-                                    0 1 0 0 0
-                                    0 0 1 0 0
-                                    0 0 0 18 -7
-                                    "
-                                    result="gooey"
-                                    />
-                                <feBlend
-                                    in2="gooey"
-                                    in="SourceGraphic"
-                                    result="mix"
-                                    />
-                            </filter>
-                            </defs>
-                            </svg> --}}
                         </label>
-                        {{-- <img src="/front-end/images/payment/visa.png" class="img_visa_choose_payment"> --}}
                     </div>
                     <div  class="paypal_choose_payment">
                         <label style="float: left;">
-                            {{-- <input type="radio" name="choose_payment" /> --}}
-                            {{-- <div class="circle">
-                                <div class="circle--inner circle--inner__1" ></div>
-                                <div class="circle--inner circle--inner__2" ></div>
-                                <div class="circle--inner circle--inner__3" ></div>
-                                <div class="circle--inner circle--inner__4" ></div>
-                                <div class="circle--inner circle--inner__5" ></div>
-                                <div class="circle--outer" ></div>
-                            </div> --}}
-                            {{-- <svg style="height: 4em;width: 3em;">
-                            <defs>
-                            <filter id="gooey">
-                                <feGaussianBlur
-                                    in="SourceGraphic"
-                                    result="blur"
-                                    stdDeviation="3"
-                                    />
-                                <feColorMatrix
-                                    in="blur"
-                                    mode="matrix"
-                                    values="
-                                    1 0 0 0 0
-                                    0 1 0 0 0
-                                    0 0 1 0 0
-                                    0 0 0 18 -7
-                                    "
-                                    result="gooey"
-                                    />
-                                <feBlend
-                                    in2="gooey"
-                                    in="SourceGraphic"
-                                    result="mix"
-                                    />
-                            </filter>
-                            </defs>
-                            </svg> --}}
                         </label>
-                        {{-- <img src="/front-end/images/payment/paypal.png" class="img_paypal_choose_payment"> --}}
                     </div>
                 </div>
                 <div class="credit_card_details">
-                    {{-- <h4 class="title_credit_card_details">
-                        @lang('Credit Card Details:')
-                    </h4> --}}
+
                     <div class="col-md-12" style="float:left;padding: 0em 2em;">
-                        {{-- <input type="text" class="form-control input_credit_card_details" placeholder="Card number .."> --}}
-                        {{-- <input type="text" class="form-control input_credit_card_details" placeholder="Cardholder name .."> --}}
-                        {{-- <p class="title_input">Expiration Date</p> --}}
-                        {{-- <input type="date" id="expiration_date" class="form-control input_credit_card_details" placeholder="" style="margin-top: 0.2em;"> --}}
-                        {{-- <input type="text" class="form-control input_credit_card_details" placeholder="CVV"> --}}
-                        {{-- <p class="btn_credit_card_details" id='btn-checkout' style="background-color: #d80001;color: #fff;cursor: pointer;">
-                          @lang('Make Payment')</p> --}}
                           <img src="/front-end/images/payment/visa.png" id='btn-checkout' class="img_visa_choose_payment">
                           <form action="/stripe" method="POST" id='stripe-form'>
                             <input type="text" class="form-control products" name='products' hidden value=''>
@@ -442,11 +360,11 @@
                             <input id="paypalamount" type="hidden" name="amount" value="Nan" >
                             <input type="hidden" name="currency_code" value="EUR">
                             <!-- Display the payment button. -->
-                            
-                            <img alt="" border="0" style="cursor: pointer" 
-                                 src="/front-end/images/payment/paypal.png" 
+
+                            <img alt="" border="0" style="cursor: pointer"
+                                 src="/front-end/images/payment/paypal.png"
                                  onclick="submitPaypal(this)">
- 
+
                             <input type="image" id="clickpaypal" hidden name="submit" border="0"
                                    src="/front-end/images/payment/paypal.png"
                                    alt="Buy Now">
@@ -465,12 +383,10 @@
 @section('scripts')
     <script src="http://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
     <script src="/front-end/js/plugin/jquery-pretty-tabs.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="/front-end/js/main.js"></script>
-
     <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
  <script type="text/javascript">
@@ -583,7 +499,7 @@
                          "x-csrf-token": $("[name=_token]").val()
                      },
                  });
-        
+
     }
     function num_min(obj) {
         if ((parseInt($(obj).parent().parent().text()) > 0)) {
@@ -619,55 +535,10 @@
                 "x-csrf-token": $("[name=_token]").val()
             },
         });
-        
+
         $('.stripe-button').attr('data-amount',total);
         }
     }
-
-
-
-
-
-
-
-
-
-    // $('#btn-checkout').on('click',function(){
-    //   //get productIds and qtys
-    //     products = [];
-    //     $('.item_qty_detail_my_card').each(function(i,obj){
-    //         productId = $(obj).attr('data-productId');
-    //         qty = $(obj).find('.num_item_qty').html();
-    //
-    //         var product = {};
-    //         product.id = productId;
-    //         product.qty = qty;
-    //         products.push(product);
-    //     })
-    //     $.ajax({
-    //         type: "POST",
-    //         url: `/cart/checkout`,
-    //         data:{'products':products},
-    //         headers: {
-    //             "x-csrf-token": $("[name=_token]").val()
-    //         },
-    //     }).done(response => {
-    //         swal({
-    //             title: 'Successfully',
-    //             text: "Thank you For purchasing with us!",
-    //             type: 'success',
-    //             confirmButtonColor: '#d90f17',
-    //             confirmButtonText: 'Return To Home!'
-    //           }).then((result) => {
-    //             if (result.value) {
-    //               window.location.href ='/';
-    //             }
-    //           })
-    //
-    //     });
-    // })
-
-
 </script>
 <script>
 
@@ -743,6 +614,6 @@
            $('#clickpaypal').click();
      });
      }
-        
+
 </script>
 @endsection

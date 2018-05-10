@@ -1,3 +1,28 @@
+<style>
+#ex3{
+  float: right;
+
+}
+#ex3 .fa-stack[data-count]:after{
+    position:absolute;
+    right:0%;
+    top:1%;
+    content: attr(data-count);
+    font-size:30%;
+    padding:.6em;
+    border-radius:50%;
+    line-height:.8em;
+    color: white;
+    background:rgba(255,0,0,.85);
+    text-align:center;
+    min-width: 1em;
+    font-weight:bold;
+  }
+  #ex3 .fa-stack-1x, .fa-stack-2x{
+    background-color:#d90000;
+    border-radius: 100px;
+  }
+</style>
 <header id="header">
       <nav class="navbar navbar-expand-lg navbar-light bg-light" id="main-nav-bar">
       <a href="{{route('home')}}"> <img class="logo" src="/front-end/images/logo.png"/></a>
@@ -23,7 +48,15 @@
 
 
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('mycart')}}">@lang('My Cart') </a>
+              {{-- <a class="nav-link" href="{{ route('mycart')}}">@lang('My Cart') </a> --}}
+              <a href="{{route('mycart')}}">
+                <div id="ex3">
+                  <span class="p1 fa-stack fa-1x has-badge" data-count=@if(!empty(Session::get('order_item_count'))) {{ Session::get('order_item_count')}} @else 0 @endif>
+                    <i class="p2 fa fa-circle fa-stack-2x"></i>
+                    <i class="p3 fa fa-shopping-cart fa-stack-2x fa-inverse" data-count=@if(!empty(Session::get('order_item_count'))) {{ Session::get('order_item_count')}} @else 0 @endif></i>
+                  </span>
+                </div>
+              </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">@lang('My Account')</a>
@@ -36,7 +69,7 @@
               {!! Form::close() !!}
             </li>
             @endif
-           
+
 
 
           </ul>

@@ -26,9 +26,8 @@ class TestController extends Controller
     }
     public function test(){
 
-        Order::where('created_at' , '<', Carbon::now()->subMinutes(30)->toDateTimeString())->where('status_id' , '<' , OrderStatus::INPROGRESS )->update(['status_id' => OrderStatus::DELETED]);
-        OrderItem::where('created_at', '<', Carbon::now()->subMinutes(30)->toDateTimeString())->where('status_id' , '<' ,OrderStatus::INPROGRESS)->update(['status_id' => OrderStatus::DELETED]);
-    
+    return Session::get('order_item_count');
     }
-    
+
+
 }
