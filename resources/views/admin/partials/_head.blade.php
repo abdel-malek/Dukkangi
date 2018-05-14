@@ -9,6 +9,12 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <link rel="stylesheet" href={{URL::asset('css/elegant.min.css')}} />
+
+<style >
+    .nav .open>a, .nav .open>a:focus, .nav .open>a:hover{
+        background-color: #333;
+    }
+</style>
     <link rel="stylesheet" href={{URL::asset('css/color-default.min.css')}} />
     <link rel="stylesheet" href={{URL::asset('css/perfect-scrollbar.min.css')}} />
     <!-- START TEMPLATE GLOBAL CSS -->
