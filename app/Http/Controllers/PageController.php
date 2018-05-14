@@ -468,9 +468,6 @@ class PageController extends Controller
 		return 1;
 	}
 	
-
-
-
 	public function setLanguage($lang)
 	{
   		session(['lang' => $lang]);

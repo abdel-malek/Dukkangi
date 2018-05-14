@@ -52,7 +52,17 @@ class ProductController extends Controller
     public function single($id)
     {
         $product = Product::find($id);
-        return view('admin.products.single')->withProduct($product);
+        $categories = [];
+        $subcategories = [];
+        $ar = Tags::where('product_id', '=', $id)->get()->toArray();
+        foreach ($ar as $a) {
+            // dd($a['category_id']);
+            $category = Category::find($a['category_id']);
+            array_push($categories, $category->english);
+            $subcategory = Subcategory::find($a['subcategory_id']);
+            array_push($subcategories, $subcategory->english);
+        }
+        return view('admin.products.single')->withProduct($product)->withCategories($categories)->withSubcategories($subcategories);
     }
 
     //DEFAULT EDIT

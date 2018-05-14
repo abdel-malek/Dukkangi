@@ -28,8 +28,8 @@
 	  		<li class="list-group-item"><b>Price </b>:   <i> {{ $product->price }}</i> €</li>
 	  		<li class="list-group-item"><b>Quantitiy </b>: {{ $product->qty }} </li>
 	  		<li class="list-group-item"><b>Points</b>: {{ $product->point }} </li>
-	  		<li class="list-group-item"><b>Category</b>: {{ $product->category_id }} </li>
-	  		<li class="list-group-item"><b>Sub-Category</b>: {{ $product->subcategory_id }} </li>
+	  		<li class="list-group-item"><b>Category</b>:@foreach($categories as $category) {{ $category}}  @endforeach</li>
+	  		<li class="list-group-item"><b>Sub-Category</b>: @foreach($subcategories as $subcategory) {{ $subcategory}}  @endforeach </li>
 		</ul>
 	</div>
 </div>

@@ -22,110 +22,240 @@
 				{{ Form::text('kurdi' , null, ['class'=> 'form-control' , 'required'=> '']) }}
 				<br>
 				
-				{{ Form::label('turky' , 'Name (Turki):') }}
+				{{ Form::label('turky' , 'Name (Turky):') }}
 				{{ Form::text('turky' , null, ['class'=> 'form-control' , 'required'=> '']) }}
 				<br>
-				<div class="col-md-12">
-					<div class="row">
-
-						<div class="col-md-6">
-						<ul class="list-group">
-	  						<li class="list-group-item">
-							{{ Form::label('option1','Option 1:')}}
-							{{ Form::checkbox('option1', '1') }}
-							</li>
-						</ul>
-						</div>
-						<div class="col-md-6">
-						<ul class="list-group">
-	  						<li class="list-group-item">
-							
-							{{ Form::label('option2','Option 2:')}}
-							{{ Form::checkbox('option2', '1') }}
-							</li>
-						</ul>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<ul class="list-group">
-	  							<li class="list-group-item">
-					
-							{{ Form::label('option3','Option 3:')}}
-							{{ Form::checkbox('option3', '1') }}
-							</li>
-						</ul>
-						</div>
-						<div class="col-md-6">
-							<ul class="list-group">
-	  							<li class="list-group-item">
-					
-							{{ Form::label('option4','Option 4:')}}
-							{{ Form::checkbox('option4', '1') }}
-								</li>
-							</ul>
-						</div>
-					</div>
-					{{ Form::label('image' , 'Image:')}}
- 					{{ Form::file('image') }}
-				</div>
+				
+			<div class="col-md-12">
+				{{ Form::label('active','Active:')}}
+        {!! Form::select('active',array('1'=>'Yes','0'=>'NO'),$product->active,['class'=>'form-control']) !!}
+			</div>
+			<br/>
 	</div>
 	<div class="col-md-5">
 				{{ Form::label('qty', 'Quantity :' ) }}
 				{{ Form::text('qty', null , ['class'=> 'form-control' , 'required'=>'' ]) }}
 				<br>
-				
+
 				{{ Form::label('price', 'Price :' ) }}
 				{{ Form::text('price', null , ['class'=> 'form-control' , 'required'=>'' ]) }}
-				<br>
+
+				<br/>
+				{{ Form::label('discount_price', 'discount price :' ) }}
+				{{ Form::text('discount_price', null , ['class'=> 'form-control' , 'required'=>'' ]) }}
+				<br/>
 
 				{{ Form::label('point', 'Points :' ) }}
-				{{ Form::text('point', '0' , ['class'=> 'form-control' , 'required'=>'' ]) }}
+				{{ Form::text('point', null , ['class'=> 'form-control' , 'required'=>'' ]) }}
 				<br>
-				<br>
-				{{ Form::label('section1', 'Section 1 :' ) }}
-				{{ Form::text('section1', null , ['class'=> 'form-control' , 'required'=>'' ]) }}
-				
-				<br>
-				{{ Form::label('section2', 'Section 2 :' ) }}
-				{{ Form::text('section2', null, ['class'=> 'form-control' , 'required'=>'' ]) }}
-				
-				<br>
-				{{ Form::label('section3', 'Section 3 :' ) }}
-				{{ Form::text('section3', null , ['class'=> 'form-control' , 'required'=>'' ]) }}
-				<br>
-	
+
+
 				<!-- {{ Form::label('category_id' , 'Category:')}}
-				<select class="js-example-basic-multiple form-control" required="required" name="category_id[]" multiple="multiple">
-					@foreach($categories as $category)
-					<option value="{{$category->id}}" {{($category->id == $product->category_id ? 'selected'  : '' )  }} >{{$category->english}} </option>
+				 <select class="js-example-basic-multiple form-control" required="required" name="category_id[]" multiple="multiple">
+				@foreach($categories as $category)
+					<option value="{{$category->id}}" >{{$category->english}} </option>
 				@endforeach
 				</select> -->
-				<br>
-
+				<br/>
+				<br/>
 				{{ Form::label('subcategory_id' , 'Subcategory:')}}
-				<select class="js-example-basic-multiple form-control" name="subcategory_id[]" multiple="multiple">
+				<select class="js-example-basic-multiple form-control"  required="required" name="subcategory_id[]" multiple="multiple">
 				@foreach($subcategories as $subcategory)
-					<option value="{{$subcategory->id}}"  {{($subcategory->id == $product->subcategory_id ? 'selected'  : '' )}} >{{$subcategory->english}} </option>
+					<option value="{{$subcategory->id}}" >{{$subcategory->english}} </option>
 				@endforeach
 				</select>
+
 		</div>
-		<div class="col-md-10 col-md-offset-1"> 
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<p >
+		<h3 class="text-center"><i> Section 1</i></h3>
+		</p>
+		<div class="col-md-2" style="margin-left: 20px;max-width: 100%;width: 46%">
+			<ul class="list-group">
+		  		<li class="list-group-item">
+		  			{{ Form::label('section1_english' , 'Section 1 (EN) :')}}
+		  			{{ Form::text('section1_english' , null,['class' => 'form-control'])}}
+		  		</li>
+		  	</ul>
+		</div>
+		<div class="col-md-2 " style="max-width: 100%;width: 46%">
+			<ul class="list-group">
+		  		<li class="list-group-item">
+		  			{{ Form::label('section1_arabic' , 'Section 1 (AR) :')}}
+		  			{{ Form::text('section1_arabic' , null,['class' => 'form-control'])}}
+		  		</li>
+		  	</ul>
+		</div>
+		<div class="col-md-2 "  style="max-width: 100%;margin-left: 20px;width: 46%">
+			<ul class="list-group">
+		  		<li class="list-group-item">
+		  			{{ Form::label('section1_german' , 'Section 1 (GR) :')}}
+		  			{{ Form::text('section1_german' , null,['class' => 'form-control'])}}
+		  		</li>
+		  	</ul>
+		</div>
+		<div class="col-md-2 "  style="max-width: 100%;width: 46%">
+			<ul class="list-group">
+		  		<li class="list-group-item">
+		  			{{ Form::label('section1_kurdi' , 'Section 1 (KU) :')}}
+		  			{{ Form::text('section1_kurdi' , null,['class' => 'form-control'])}}
+		  		</li>
+		  	</ul>
+		</div>
+		<div class="col-md-2 col-md-offset-4"  style="max-width: 100%;width: 46%;margin-left: 260px">
+			<ul class="list-group">
+		  		<li class="list-group-item">
+		  			{{ Form::label('section1_turky' , 'Section 1 (TR) :')}}
+		  			{{ Form::text('section1_turky' , null,['class' => 'form-control'])}}
+		  		</li>
+		  	</ul>
+		</div>
+	</div>
+</div><div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<p >
+		<h3 class="text-center"><i> Section 2</i></h3>
+		</p>
+		<div class="col-md-2" style="margin-left: 20px;max-width: 100%;width: 46%">
+			<ul class="list-group">
+		  		<li class="list-group-item">
+		  			{{ Form::label('section2_english' , 'Section 2 (EN) :')}}
+		  			{{ Form::text('section2_english' , null,['class' => 'form-control'])}}
+		  		</li>
+		  	</ul>
+		</div>
+		<div class="col-md-2 " style="max-width: 100%;width: 46%">
+			<ul class="list-group">
+		  		<li class="list-group-item">
+		  			{{ Form::label('section2_arabic' , 'Section 2 (AR) :')}}
+		  			{{ Form::text('section2_arabic' , null,['class' => 'form-control'])}}
+		  		</li>
+		  	</ul>
+		</div>
+		<div class="col-md-2 "  style="max-width: 100%;margin-left: 20px;width: 46%">
+			<ul class="list-group">
+		  		<li class="list-group-item">
+		  			{{ Form::label('section2_german' , 'Section 2 (GR) :')}}
+		  			{{ Form::text('section2_german' , null,['class' => 'form-control'])}}
+		  		</li>
+		  	</ul>
+		</div>
+		<div class="col-md-2 "  style="max-width: 100%;width: 46%">
+			<ul class="list-group">
+		  		<li class="list-group-item">
+		  			{{ Form::label('section2_kurdi' , 'Section 2 (KU) :')}}
+		  			{{ Form::text('section2_kurdi' , null,['class' => 'form-control'])}}
+		  		</li>
+		  	</ul>
+		</div>
+		<div class="col-md-2 col-md-offset-4"  style="max-width: 100%;width: 46%;margin-left: 260px">
+			<ul class="list-group">
+		  			{{ Form::label('section2_turky' , 'Section 2 (TR) :')}}
+		  			{{ Form::text('section2_turky' , null,['class' => 'form-control'])}}
+
+		  	</ul>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<p >
+		<h3 class="text-center"><i> Section 3</i></h3>
+		</p>
+		<div class="col-md-2" style="margin-left: 20px;max-width: 100%;width: 46%">
+			<ul class="list-group">
+		  		<li class="list-group-item">
+		  			{{ Form::label('section3_english' , 'Section 3 (EN) :')}}
+		  			{{ Form::text('section3_english' , null,['class' => 'form-control'])}}
+		  		</li>
+		  	</ul>
+		</div>
+		<div class="col-md-2 " style="max-width: 100%;width: 46%">
+			<ul class="list-group">
+		  		<li class="list-group-item">
+		  			{{ Form::label('section3_arabic' , 'Section 3 (AR) :')}}
+		  			{{ Form::text('section3_arabic' , null,['class' => 'form-control'])}}
+		  		</li>
+		  	</ul>
+		</div>
+		<div class="col-md-2 "  style="max-width: 100%;margin-left: 20px;width: 46%">
+			<ul class="list-group">
+		  		<li class="list-group-item">
+		  			{{ Form::label('section3_german' , 'Section 3 (GR) :')}}
+		  			{{ Form::text('section3_german' , null,['class' => 'form-control'])}}
+		  		</li>
+		  	</ul>
+		</div>
+		<div class="col-md-2 "  style="max-width: 100%;width: 46%">
+			<ul class="list-group">
+		  		<li class="list-group-item">
+		  			{{ Form::label('section3_kurdi' , 'Section 3 (KU) :')}}
+		  			{{ Form::text('section3_kurdi' , null,['class' => 'form-control'])}}
+		  		</li>
+		  	</ul>
+		</div>
+		<div class="col-md-2 col-md-offset-4"  style="max-width: 100%;width: 46%;margin-left: 260px">
+			<ul class="list-group">
+		  			{{ Form::label('section3_turky' , 'Section 3 (TR) :')}}
+		  			{{ Form::text('section3_turky' , null,['class' => 'form-control'])}}
+
+		  	</ul>
+		</div>
+	</div>
+</div>
+		<div class="col-md-10 col-md-offset-1">
 				{{ Form::label('desc_arabic' ,'Description in Arabic:')}}
-				{{ Form::textarea('desc_arabic', 'Type Here!' , ['class' => 'form-control', 'required' =>'']) }}
+				{{ Form::textarea('desc_arabic', null , ['class' => 'form-control', 'required' =>'']) }}
 				<br>
 				{{ Form::label('desc_english' ,'Description in English:')}}
-				{{ Form::textarea('desc_english', 'Type Here!' , ['class' => 'form-control', 'required' =>'']) }}
+				{{ Form::textarea('desc_english', null , ['class' => 'form-control', 'required' =>'']) }}
 				<br>
 				{{ Form::label('desc_german' ,'Description in German:')}}
-				{{ Form::textarea('desc_german', 'Type Here!' , ['class' => 'form-control' ]) }}
+				{{ Form::textarea('desc_german', null , ['class' => 'form-control' ]) }}
 				<br>
 				{{ Form::label('desc_turky' ,'Description in Turky:')}}
-				{{ Form::textarea('desc_turky', 'Type Here!' , ['class' => 'form-control' ]) }}
+				{{ Form::textarea('desc_turky', null , ['class' => 'form-control' ]) }}
 				<br>
 				{{ Form::label('desc_kurdi' ,'Description in Kurdi:')}}
-				{{ Form::textarea('desc_kurdi', 'Type Here!' , ['class' => 'form-control' ]) }}
+				{{ Form::textarea('desc_kurdi', null , ['class' => 'form-control' ]) }}
 
+				<div class="row">
+					<div class="col-md-3">
+						{{ Form::label('image' , 'Image:')}}
+						{{ Form::file('image') }}
+					</div>
+
+					<div class="col-md-3">
+						{{ Form::label('image_path_2' , 'Image 2:')}}
+						{{ Form::file('image_path_2') }}
+					</div>
+
+					<div class="col-md-3">
+						{{ Form::label('image_path_3' , 'Image 3:')}}
+						{{ Form::file('image_path_3') }}
+					</div>
+
+					<div class="col-md-3">
+						{{ Form::label('image_path_3' , 'Image 4:')}}
+						{{ Form::file('image_path_4') }}
+					</div>
+				</div>
+				<div class='row'>
+					<div class='col-md-4'>
+						{{ Form::label('barcode' , 'Barcode') }}
+						{{ Form::text('barcode' , null, ['class'=> 'form-control' , 'required'=> '']) }}
+					</div>
+					<div class='col-md-4'>
+						{{ Form::label('custom_id' , 'Custom ID:') }}
+						{{ Form::text('custom_id' , null, ['class'=> 'form-control' , 'required'=> '']) }}
+					</div>
+					<div class='col-md-4'>
+						{{ Form::label('tax_fees' , 'Tax Fees:') }}
+						{{ Form::text('tax_fees' , null, ['class'=> 'form-control' , 'required'=> 'false']) }}
+					</div>
+				</div>
 				{{ Form::submit('Update Product' , [ 'class' => 'btn btn-block btn-success' ,'style'=>'margin-top:7px' ])}}
 				<a href="{{ route('category.index')}}" class="btn btn-block btn-primary" style="margin-top: 7px"> Cancel</a>
 			{!! Form::close() !!}
@@ -139,3 +269,4 @@
 </script>
 
 @endsection
+

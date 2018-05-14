@@ -265,7 +265,7 @@
 							</div>
 							<div class='col-md-4'>
 								{{ Form::label('tax_fees' , 'Tax Fees:') }}
-								{{ Form::text('tax_fees' , null, ['class'=> 'form-control' , 'required'=> '']) }}
+								{{ Form::text('tax_fees' , null, ['class'=> 'form-control' ]) }}
 							</div>
 				</div>
 
