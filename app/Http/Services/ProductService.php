@@ -93,25 +93,25 @@ class ProductService
         $skip = ($index == 1) ? 0 : ($index-1)*10 ;
         $result['data']=$product->take(10)->skip($skip)->get();
 
+
         foreach ($result['data'] as $p) {
-            $temp1 = Category::find($id);
-            $temp2 = Subcategory::find($p->subcategory_id);
+            $categories = Tags::where('product_id' ,'=',$p->id)->get()->toArray();
+            // $catarray = [];
+            // $subcatarrray = [];
+            $p->subcategory_id = '';
+            $p->category_id = '';
+
+            foreach ($categories as $category) {
+                $category['category_id'] = Category::find($category['category_id'])->english;
+                // array_push($catarray, $category['category_id']);
+                $p->category_id .=  $category['category_id']. '<br>';
+                $category['subcategory_id'] = Subcategory::find($category['subcategory_id'])->english;
+                // array_push($subcatarrray, $category['subcategory_id'])
+                $p->subcategory_id .= $category['subcategory_id'] .'<br>'; 
+            }
+
             $p->price = $p->price . " €";
 
-            if (isset($temp1)) {
-                $p->category_id = "<b>".$temp1->english."</b>";
-            } else {
-                $p->category_id = $p->category_id . " <i><small>(Deleted)</small></i>";
-            }
-
-
-            if (isset($temp2)) {
-                $p->subcategory_id = "<b>".$temp2->english."</b>";
-            }
-            else
-            {
-                $p->subcategory_id = $p->subcategory_id . " <i><small>(Deleted)</small></i>";
-            }
         }
         return $result;
     }
@@ -128,7 +128,7 @@ class ProductService
         }
 
         $product = Product::select(['id','arabic','english','qty','category_id','subcategory_id','price','point']);
-        $product->whereIn('subcategory_id',$array);
+        $product->whereIn('id',$array);
 
         if (!empty($filter['id'])) {
             $product->where('id', '=', $filter['id']);
@@ -150,23 +150,22 @@ class ProductService
         $result['data']=$product->take(10)->skip($skip)->get();
 
         foreach ($result['data'] as $p) {
-            $temp2 = Subcategory::find($id);
-            $temp1 = Category::find($temp2->category_id);
+                  $categories = Tags::where('product_id' ,'=',$p->id)->get()->toArray();
+            // $catarray = [];
+            // $subcatarrray = [];
+            $p->subcategory_id = '';
+            $p->category_id = '';
+
+            foreach ($categories as $category) {
+                $category['category_id'] = Category::find($category['category_id'])->english;
+                // array_push($catarray, $category['category_id']);
+                $p->category_id .=  $category['category_id']. '<br>';
+                $category['subcategory_id'] = Subcategory::find($category['subcategory_id'])->english;
+                // array_push($subcatarrray, $category['subcategory_id'])
+                $p->subcategory_id .= $category['subcategory_id'] .'<br>'; 
+            }
 
             $p->price = $p->price . " €";
-
-            if (isset($temp1)) {
-                $p->category_id = "<b>".$temp1->english."</b>";
-            } else {
-                $p->category_id = $p->category_id . " <i><small>(Deleted)</small></i>";
-            }
-
-
-            if (isset($temp2)) {
-                $p->subcategory_id = "<b>".$temp2->english."</b>";
-            } else {
-                $p->subcategory_id = $p->subcategory_id . " <i><small>(Deleted)</small></i>";
-            }
         }
         return $result;
     }
