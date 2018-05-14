@@ -113,12 +113,12 @@
             <div class='thumnbail' style="position: absolute;top: 0px;bottom: 10px;width: 180px;height: 500px;margin-left: 75px" >
                
                  
-            
+
             <div id="spinner"> 
               Loading...
             </div>
             <div id="carousel">
-               @foreach($subcategories as $subcategory)
+                 @foreach($subcategories as $subcategory)
                 <img src="{{$subcategories[0]->image_id}}" style="z-index: 1;" width="110px" height="88px">
                 <a href="{{ route('subcategoryfilter',$subcategory->id) }}">
                     <p class="sub-paragraph" style="z-index: 1;padding: 4.4px 32.5px;">

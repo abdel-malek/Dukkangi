@@ -57,7 +57,7 @@ class PageController extends Controller
 		$lang = session('lang');
 		App::setLocale($lang);
 		$categories = Category::all();
-		$subcategories = Subcategory::all()->where('category_id','=',$categoryId);
+		$subcategories = Subcategory::where('category_id','=',$categoryId)->get();
 		$Tags = [];
 		$tags = Tags::select('product_id')->where('category_id' , '=' ,$categoryId)->get()->toArray();
 		foreach ($tags as $tag) {
@@ -116,6 +116,7 @@ class PageController extends Controller
 				$product->discount =  sprintf('%0.0f',100 - (($product->discount_price * 100) / $product->price));
 			}
 		}
+		
 		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withCategoryId($categoryId);
 	}
 
