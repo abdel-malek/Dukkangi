@@ -42,7 +42,35 @@
     font-size: 0.9em;
     color: #fff;
     }
-
+    .buttons {
+      margin: 5px 0;
+    }
+    button {
+      font-size: 14px;
+      display: inline;
+      padding: 3px 6px;
+      border: 2px solid #d80f16;
+      background: #fff;
+      border-radius: 5px;
+      outline: none;
+    }
+    button:hover {
+      border: 2px solid #888;
+      background: #ffe;
+      cursor: pointer;
+    }
+    #carouselWrapper {
+      position: relative;
+      overflow: hidden;
+      height: 350px !important;  
+    }
+    #carousel {
+      position: absolute;
+      visibility: hidden;
+    }
+    .pictureFrame{
+            height: 86px !important;
+    }
     </style>
 
 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
@@ -80,29 +108,35 @@
                 </div>
 
             </div>
-
-            <script type="text/javascript">jssor_1_slider_init();</script>
-
-            <div class='thumnbail' style="position: absolute;top: 0px;bottom: 10px;width: 180px;overflow-y: scroll;height: 500px;" >
-                @foreach($subcategories as $subcategory)
+ <script type="text/javascript">jssor_1_slider_init();</script>
+            
+            <div class='thumnbail' style="position: absolute;top: 0px;bottom: 10px;width: 180px;height: 500px;margin-left: 75px" >
+               
+                 
+            
+            <div id="spinner"> 
+              Loading...
+            </div>
+            <div id="carousel">
+               @foreach($subcategories as $subcategory)
+                <img src="{{$subcategories[0]->image_id}}" style="z-index: 1;" width="110px" height="88px">
                 <a href="{{ route('subcategoryfilter',$subcategory->id) }}">
-                    <div data-id="{{$subcategory->id}}">
-                        <div style="z-index: 1; width: 120px; height: 88px;overflow: hidden;">
-                            <div style="width: 110px; height: 95px; left: 0px; top: 0px; z-index: 1;">
-                            <img src="{{$subcategory->image_id}}" style="z-index: 1;" width="110px" height="88px" />
-                                <p class="sub-paragraph" style="z-index: 1;padding: 4.4px 32.5px;">
+                    <p class="sub-paragraph" style="z-index: 1;padding: 4.4px 32.5px;">
                                     {{$subcategory->english}}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    </p>   
                 </a>
                 @endforeach
             </div>
 
-        </div>
-@endif
+            <div class="buttons" style="z-index: 1000;">
+              <button id="next">&darr; Next</button>
+              <button id="prev">&uarr; Prev</button>
+            </div>
 
+            </div>
+             </div>
+        @endif
+         
         <div class="col-md-9 col-sm-12 section_item" >
             @if(!isset($brandfilter))
             <div class="col-sm-3" style="float:left;">
@@ -124,6 +158,7 @@
                     {!! Form::open(['route' => 'categoryfilter' , 'method' =>'GET']) !!}
                         <input type="text" class="form-control input_search" id="search" name="search" placeholder="{{ (isset($lastSearch) ? $lastSearch : __('Search' .'..')) }}">
                         <input type="text" hidden="hidden"  id = "category_id" name="categoryId" value="{{isset($categoryId) ? $categoryId : ''}}">
+                
                         <button type="submit" id="myBtn" hidden="hidden">
                     {!! Form::close() !!}
                     Button</button>
@@ -244,7 +279,7 @@
         @section('scripts')
 
         <script src = "/front-end/js/plugin/multe_select.js"></script>
-
+        <script src="/front-end/js/plugin/vertical-slider.js"></script>
         <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
 
         <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
@@ -386,6 +421,61 @@
                  }).done((response) => $('#filteredproducts').append(response));
 
             }
+
+
+window.onload = function () {
+  document.getElementById('spinner').style.display = 'none';
+  var carousel = Carousel.carousel = document.getElementById('carousel'),
+      images = carousel.getElementsByTagName('img'),
+      numImages = images.length,
+      imageWidth = Carousel.width,
+      aspectRatio = images[0].width / images[0].height,
+      imageHeight = imageWidth / aspectRatio,
+      padding = Carousel.padding,
+      rowHeight = Carousel.rowHeight = imageHeight + 2 * padding;
+  carousel.style.width = imageWidth + 'px';
+  for (var i = 0; i < numImages; ++i) {
+    var image = images[i],
+        frame = document.createElement('div');
+    frame.className = 'pictureFrame';
+    var aspectRatio = image.offsetWidth / image.offsetHeight;
+    image.style.width = frame.style.width = imageWidth + 'px';
+    image.style.height = imageHeight + 'px';
+    image.style.paddingTop = padding + 'px';
+    image.style.paddingBottom = padding + 'px';
+    frame.style.height = rowHeight + 'px';
+    carousel.insertBefore(frame, image);
+    frame.appendChild(image);
+  }
+  Carousel.rowHeight = carousel.getElementsByTagName('div')[0].offsetHeight;
+  carousel.style.height = Carousel.numVisible * Carousel.rowHeight + 'px';
+  carousel.style.visibility = 'visible';
+  var wrapper = Carousel.wrapper = document.createElement('div');
+  wrapper.id = 'carouselWrapper';
+  wrapper.style.width = carousel.offsetWidth + 'px';
+  wrapper.style.height = carousel.offsetHeight + 'px';
+  carousel.parentNode.insertBefore(wrapper, carousel);
+  wrapper.appendChild(carousel);
+  var prevButton = document.getElementById('prev'),
+      nextButton = document.getElementById('next');
+  prevButton.onclick = function () {
+    prevButton.disabled = nextButton.disabled = true;
+    rotateForward();
+    animate(-Carousel.rowHeight, 0, function () {
+      carousel.style.top = '0';
+      prevButton.disabled = nextButton.disabled = false;
+    });
+  };
+  nextButton.onclick = function () {
+    console.log("i'm here again");
+    prevButton.disabled = nextButton.disabled = true;
+    animate(0, -Carousel.rowHeight, function () {
+      rotateBackward();
+      carousel.style.top = '0';
+      prevButton.disabled = nextButton.disabled = false;
+    });
+  };
+};
 
         </script>
         @endsection
