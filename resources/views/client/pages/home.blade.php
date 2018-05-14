@@ -24,7 +24,7 @@
 }
 .bottom_left_background_block img{
     position: absolute;
-    margin-top: 3.4em;
+    margin-top: 4.4em;
     margin-left: 3.4em;
 }
 .bottom_left_background_block .text_item_block {
@@ -152,7 +152,7 @@
             @lang('Choose your category')
           </p>
         @for($counter ; $counter < $col2+$col1 ; $counter++ )
-       <div class="landing-items-block  {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}}" style="margin-top: 100px">
+       <div class="landing-items-block  {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}}" style="margin-top: 100px;margin-bottom: 40px;">
          
           <p class="house-tools">{{$categories[$counter]->english}}</p>
           <a href="{{route('category' , $categories[$counter]->id) }}"><img class="" src="{{$categories[$counter]->image_id}}"/></a>

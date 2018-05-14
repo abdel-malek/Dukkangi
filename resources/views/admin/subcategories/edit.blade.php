@@ -8,7 +8,7 @@
 @section('grid')
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-			{!! Form::model($subcategory ,  ['route' => 'subcategory.update', 'method' => 'PUT' ]) !!}
+			{!! Form::model($subcategory ,  ['route' => 'subcategory.update', 'method' => 'PUT','files'=>true ]) !!}
 				{{ Form::text('id' , null , ['hidden' => 'hidden']) }}
 
 
@@ -33,6 +33,11 @@
 					<option value="{{$category->id}}" >{{$category->english}} </option>
 				@endforeach
 				</select>
+				<br>
+				<br>
+				{{ Form::label('image' , 'Image:')}}
+ 				{{ Form::file('image') }}
+				<br>
 
 				{{ Form::submit('Edit Subcategory' , ['class' => 'btn btn-block btn-success' , 'style' =>'margin-top:7px']) }}
 				<a href="{{route('subcategory.index')}}" class="btn btn-default btn-block" style="margin-top: 7px">Cancel</a>

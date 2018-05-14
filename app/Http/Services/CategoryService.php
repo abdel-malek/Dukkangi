@@ -65,7 +65,11 @@ class CategoryService {
 		$category->german = $categoryRequest->german;
 		$category->turky  = $categoryRequest->turky;
 		$category->kurdi  = $categoryRequest->kurdi;
+        if ($categoryRequest->hasFile('image')) {
+            $category->image_id = ImageService::saveImage($categoryRequest->file('image'));
+        }
 		$category->save();
+
 		Session::flash('success', 'Updated Successfuly!');
 
 		return redirect(route('category.index'));	

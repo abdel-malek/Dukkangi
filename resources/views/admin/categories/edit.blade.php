@@ -2,7 +2,7 @@
 
 @section('grid')
 	<div>
-		{!! Form::model($category , ['route' => ['category.update',$category->id] , 'method' => 'PUT' ] ) !!}
+		{!! Form::model($category , ['route' => ['category.update',$category->id] , 'method' => 'PUT' ,'files'=>true] ) !!}
 			{{ Form::label('arabic', 'Name (AR): ') }}
 			{{ Form::text('arabic' ,null,['class'=>'form-control'] ) }}
 			<br>
@@ -17,6 +17,10 @@
 			<br>
 			{{ Form::label('german', 'Name (GR): ') }}
 			{{ Form::text('german' ,null,['class'=>'form-control'] ) }}
+
+			{{ Form::label('image' , 'Image:')}}
+ 			{{ Form::file('image') }}
+
 
 			{{Form::submit('Edit Category' , [ 'class'=>'btn btn-success btn-block' ,'style'=>'margin-top:7px']) }}
 

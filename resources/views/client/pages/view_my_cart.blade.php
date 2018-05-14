@@ -610,7 +610,6 @@
              },
          }).done(response => {
             amount = parseFloat(response);
-            // console.log(amount);
             inp.val(amount);
            $('#clickpaypal').click();
      });

@@ -82,6 +82,11 @@ class SubcategoryService {
 		$subcategory->turky   = $categoryRequest->turky;
 		$subcategory->kurdi   = $categoryRequest->kurdi;
 
+		$subcategory->category_id= $categoryRequest->category_id;
+        if ($categoryRequest->hasFile('image')) {
+            $subcategory->image_id = ImageService::saveImage($categoryRequest->file('image'));
+        }
+
 		$subcategory->save();
 	
 		Session::flash('success', 'Updated Successfuly!');
