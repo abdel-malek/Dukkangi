@@ -151,12 +151,12 @@
                 content: "&#xE838;";
             }
             .carousel-indicators .active {
-                width: 30px !important; 
-                height: 3px !important; 
+                width: 30px !important;
+                height: 3px !important;
                 margin-right: 3px !important;
                 margin-left: 3px !important;
                 margin-bottom: 0px !important;
-                margin-top: 1px !important;  
+                margin-top: 1px !important;
              }
         </style>
 
@@ -189,11 +189,11 @@
                                 @if(isset($product->image_id3))
                                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                                 @endif
-                               
+
                                 @if(isset($product->image_id4))
                                     <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                                 @endif
-                                
+
                             </ol>
                               <div class="carousel-inner">
                                 <div class="carousel-item active">
@@ -348,7 +348,7 @@
                     <div class="details_comment">
                         <h3 class="username_details_comment" style="width:225px">{{$comment->user_id}}</h3>
                         <p class="rated_details_comment" style="margin-left: 0px"><?php if($comment->rate != 0){ ?>
-                            @lang('Rated this product') 
+                            @lang('Rated this product')
                             <?php } ?>
                         </p>
                         <span class="rating ratings{{$comment->rate}}"  ></span>
@@ -601,6 +601,11 @@
                   }
                });
            });
+
+           $('#myBtn').on('click',function(e){
+             e.preventDefault();
+             return false;
+           })
 
             $('#btn-comment').on("click",function(e){
                 e.preventDefault();
