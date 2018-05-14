@@ -194,7 +194,11 @@ class CouponService {
 		$users = [];
 		$couponUsers = CouponUser::where('coupon_id' , '=' , $couponId)->get();
 		foreach ($couponUsers as $user) {
-			$user->user->status = $user->coupon_status == 1 ? 'Active': $user->coupon_status == 2 ? 'Expired' : 'Consumed' ; 
+			if($user->coupon_status == 1){$user->user->status  = 'Active';}
+			else if ($user->coupon_status == 2) {$user->user->status = 'Expired'; }
+			else {
+				$user->user->status = 'Consumed';
+			}
 			array_push($users, $user->user);
 		}
 		$result['data'] = $users;

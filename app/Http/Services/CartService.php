@@ -134,7 +134,19 @@ class CartService
         $orderItems = $result->get();
 
         $amount = $result->sum('total_amount');
-
+        
+        // $coupon = Order::find(session('cartId'))->coupon_id;
+        // if(isset($coupon)){
+        //     $coupon = Coupon::find($coupon);
+        //     if ($coupon->coupon_type == 'fixed'){
+        //         $amount -= $coupon->amount;
+        //         if ($amount < 0 ) $amount =0;
+        //     }
+        //     else if ($coupon->coupon_type = 'percentage'){
+        //         $amount -= $amount * $coupon->amount; 
+        //     }
+        // }
+        
         $tax = 0;
         foreach ($orderItems as $orderItem) {
             $taxFees = $orderItem->product->tax_fees;
@@ -143,6 +155,27 @@ class CartService
         }
 
         return ['orderItems' => $orderItems, 'gainPoints' => $gainPoints, 'taxes' => $tax, 'amount' => $amount];
+    }
+
+    public static  function getAmount($cartId){
+        $result = OrderItem::with('product')
+            ->where('order_id', '=', $cartId)
+            ->where('status_id', '=', OrderStatus::CREATED);
+        $amount = $result->sum('total_amount');
+        
+        $coupon = Order::find(session('cartId'))->coupon_id;
+        if(isset($coupon)){
+            $coupon = Coupon::find($coupon);
+            if ($coupon->coupon_type == 'fixed'){
+                $amount -= $coupon->amount;
+                if ($amount < 0 ) $amount =0;
+            }
+            else if ($coupon->coupon_type = 'percentage'){
+                $amount -= $amount * $coupon->amount; 
+            }
+        }
+    
+        return ['amount' => $amount];        
     }
 
     public static function checkout($cartId, $products, $paymentMethodId = 1, $userId,$amount)
@@ -169,7 +202,7 @@ class CartService
             }
         }
         $fake = 0;
-        if(sprintf('%0.2f', $calcAmount ) != sprintf('%0.2f', $amount)){
+        if(sprintf('%0.2f', $calcAmount ) - sprintf('%0.2f', $amount)  > 0.1 ){
             $fake =1;
         }
 

@@ -51,7 +51,7 @@ class CartController extends Controller
             ->withItemNumber($itemNumber)->withProductsName($productsName);
     }
     public function getAmount(){
-        $cart = CartService::loadCart(  session('cartId'));
+        $cart = CartService::getAmount(session('cartId'));
         $amount = $cart['amount'];
         return $amount;
     }
