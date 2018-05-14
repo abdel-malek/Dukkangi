@@ -120,22 +120,18 @@
 		.media{
 			font-size: 18px;
 			padding-left: 5px;
-		}
-		.media span{
-			margin-right:5px;
+			color: #FFF;}.insta{
 		}
 		.insta{
-			margin-left: 60px;
-			margin-top:55px;
-
 		}
 		.fb{
-			margin-left: 271px;
-			margin-top:28px;
 		}
 		.twit{
-			margin-left: 267px;
-			margin-top:29px;
+			margin-top:10px;
+		}
+		.td{
+			width: 310px;
+			color: #FFF;
 		}
 	</style>
 </head>
@@ -241,25 +237,22 @@
 	</div>
 
 
-<footer>
-	<div class="text white footers row">
-		<div >
-			<div>
-				<p class="leftfooter">Contact information</p>
-				<p class="media insta"><span><img src="{{URL::asset('/emails/instagram.png')}}" alt="logo" width="28px" height="28px"></span>  instagram/dukkangi.com</p>
-			</div>
-			<div style="margin-left: 100px;margin-top: -128px;" >
-				<p class="mid">+49 5609 - 809</p>
-				<p class="mid">+49 5609 - 809</p>
-				<p class="media fb"><span><img src="{{URL::asset('/emails/facebook.png')}}" alt="logo" width="28px" height="28px"> </span>  facebook/dukkangi.com</p>
-			</div>
-		<div style="margin-left: 400px;margin-top: -134px;">
-				<p class="rightfooter">info@dukkangi.com</p>
-				<p class="rightfooter">www.dukkangi.com</p>
-				<p class="media twit"><span><img src="{{URL::asset('/emails/twitter.png')}}" alt="logo" width="28px" height="28px"></span>  twitter/dukkangi.com</p>
-		</div>
-		
-		</div>
-	</div>
-</footer></body>
+<table style="background-color:#d80000 ;margin-top: 10px">
+	<tr>
+		<td class="td"><big><big> Contact Information</big> </big></td>
+		<td class="td"> +49 5609 394</td>
+		<td class="td"> info@dukkangi.com</td>
+	</tr>
+	<tr>
+		<td class="td"></td>
+		<td class="td"> +49 5609 394</td>
+		<td class="td"> www.dukkangi.com</td>
+	</tr>
+	<tr>
+		<td class="td"><p class="media insta"><span><img src="{{URL::asset('/emails/instagram.png')}}" alt="logo" width="28px" height="28px"></span>  instagram/dukkangi.com</p></td>
+		<td class="td">	<p class="media fb"><span><img src="{{URL::asset('/emails/facebook.png')}}" alt="logo" width="28px" height="28px"> </span>  facebook/dukkangi.com</p></td>
+		<td class="td"><p class="media twit"><span><img src="{{URL::asset('/emails/twitter.png')}}" alt="logo" width="28px" height="28px"></span>  twitter/dukkangi.com</p></td>
+	</tr>
+</table>
+</body>
 </html>

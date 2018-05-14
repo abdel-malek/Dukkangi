@@ -22,7 +22,8 @@ class TestController extends Controller
     }
     public function mail()
     {
-        return MailService::send('emails.test',[], 'info@dukkangi.com', 'aimankabbani@gmail.com', 'payment successed');
+//        return MailService::send('emails.test',[], 'info@dukkangi.com', 'aimankabbani@gmail.com', 'payment successed');
+        return view('emails.signup');
     }
     public function test(){
 
