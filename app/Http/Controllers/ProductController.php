@@ -157,6 +157,7 @@ class ProductController extends Controller
 
         $product->qty              = $request->qty;
         $product->price            = $request->price;
+        $product->discount_price            = $request->discount_price;
         //$product->category_id    = $request->category_id[0];
         $product->subcategory_id   = $request->subcategory_id[0];
         $product->brand_id         = $request->brand_id;
@@ -212,7 +213,7 @@ class ProductController extends Controller
 
         if (isset($request->point)) {
             $product->point     = $request->point;
-        } 
+        }
         else {
             $product->point     = '0';
         }

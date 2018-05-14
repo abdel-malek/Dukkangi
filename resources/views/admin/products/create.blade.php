@@ -39,6 +39,10 @@
 				{{ Form::label('price', 'Price :' ) }}
 				{{ Form::text('price', null , ['class'=> 'form-control' , 'required'=>'' ]) }}
 				<br>
+				{{ Form::label('discount_price', 'discount price :' ) }}
+				{{ Form::text('discount_price', null , ['class'=> 'form-control' , 'required'=>'' ]) }}
+				<br>
+
 
 				{{ Form::label('point', 'Points :' ) }}
 				{{ Form::text('point', '0' , ['class'=> 'form-control' , 'required'=>'' ]) }}

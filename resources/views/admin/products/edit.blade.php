@@ -39,13 +39,17 @@
 
 				{{ Form::label('price', 'Price :' ) }}
 				{{ Form::text('price', null , ['class'=> 'form-control' , 'required'=>'' ]) }}
-				<br>
+
+				<br/>
+				{{ Form::label('discount_price', 'discount price :' ) }}
+				{{ Form::text('discount_price', null , ['class'=> 'form-control' , 'required'=>'' ]) }}
+				<br/>
 
 				{{ Form::label('point', 'Points :' ) }}
 				{{ Form::text('point', null , ['class'=> 'form-control' , 'required'=>'' ]) }}
 				<br>
 
-				
+
 				<!-- {{ Form::label('category_id' , 'Category:')}}
 				 <select class="js-example-basic-multiple form-control" required="required" name="category_id[]" multiple="multiple">
 				@foreach($categories as $category)

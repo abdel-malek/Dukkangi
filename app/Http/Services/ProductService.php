@@ -65,13 +65,13 @@ class ProductService
         $index = $filter ? $filter['pageIndex'] : 0 ;
         $dd =Tags::select('product_id')->where('category_id', '=' ,$id)->get()->toArray();
         $array=[];
-        
+
         foreach ($dd as $d) {
              array_push($array, $d['product_id']) ;
         }
         $product = Product::select(['id','arabic','english','qty','category_id','subcategory_id','price','point'])
         ->whereIn('id', $array );
-        
+
         if (!empty($filter['id'])) {
             $product->where('id', '=', $filter['id']);
         }
@@ -84,7 +84,7 @@ class ProductService
         if (!empty($filter['qty'])) {
             $product->where('qty', '=', $filter['qty']);
         }
-        
+
 
         $product->orderBy('id', 'desc');
         $result['total'] = $product->count();
@@ -107,7 +107,7 @@ class ProductService
             if (isset($temp2)) {
                 $p->subcategory_id = "<b>".$temp2->english."</b>";
             }
-            else 
+            else
             {
                 $p->subcategory_id = $p->subcategory_id . " <i><small>(Deleted)</small></i>";
             }
@@ -120,7 +120,7 @@ class ProductService
     {
         $index = $filter ? $filter['pageIndex'] : 0 ;
         $dd =Tags::select('product_id')->where('subcategory_id', '=' ,$id)->get()->toArray();
-        
+
         $array=[];
         foreach ($dd as $d) {
              array_push($array, $d['product_id']) ;
@@ -128,7 +128,7 @@ class ProductService
 
         $product = Product::select(['id','arabic','english','qty','category_id','subcategory_id','price','point']);
         $product->whereIn('subcategory_id',$array);
-        
+
         if (!empty($filter['id'])) {
             $product->where('id', '=', $filter['id']);
         }
@@ -141,7 +141,7 @@ class ProductService
         if (!empty($filter['qty'])) {
             $product->where('qty', '=', $filter['qty']);
         }
-        
+
         $product->orderBy('id', 'desc');
         $result['total'] = $product->count();
 
@@ -151,7 +151,7 @@ class ProductService
         foreach ($result['data'] as $p) {
             $temp2 = Subcategory::find($id);
             $temp1 = Category::find($temp2->category_id);
-            
+
             $p->price = $p->price . " €";
 
             if (isset($temp1)) {
@@ -193,6 +193,7 @@ class ProductService
 
         $product->qty             = $request->qty;
         $product->price         = $request->price;
+        $product->discount_price = $request->discount_price;
         //$product->category_id    = $request->category_id[0];
         //$product->subcategory_id = $request->subcategory_id[0];
         $product->brand_id = $request->brand_id;
@@ -244,7 +245,7 @@ class ProductService
         if ($request->hasFile('image_path_4')) {
             $product->image_id4 = ImageService::saveImage($request->file('image_path_4'));
         }
-        
+
                 //Sub-Categories
 
         foreach ($request->subcategory_id as $singleSubcategeory) {
@@ -258,21 +259,23 @@ class ProductService
             $tag->save();
           }
         }
-                //Categories 
-        foreach ($request->category_id as $singleCategeory) {
-          $tag = Tags::where('product_id', '=' , $id)->where('category_id', '=' , $singleCategeory)->get()->first();
-          if(!isset($tag)){
-            $tag = new Tags();
-            $tag->product_id = $id;
-            $tag->category_id = $singleCategeory;
-            $tag->save();
+        //Categories
+        if(!empty($singleCategeory)){
+          foreach ($request->category_id as $singleCategeory) {
+            $tag = Tags::where('product_id', '=' , $id)->where('category_id', '=' , $singleCategeory)->get()->first();
+            if(!isset($tag)){
+              $tag = new Tags();
+              $tag->product_id = $id;
+              $tag->category_id = $singleCategeory;
+              $tag->save();
+            }
           }
         }
 
 
         if (isset($request->point)) {
             $product->point     = $request->point;
-        } 
+        }
         else {
             $product->point     = '0';
         }
@@ -358,5 +361,5 @@ class ProductService
         return $productQty->save();
     }
 
- 
+
 }
