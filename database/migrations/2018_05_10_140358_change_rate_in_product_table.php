@@ -15,9 +15,9 @@ class ChangeRateInProductTable extends Migration
     {
         Schema::table('product', function($table)
         {
-            $table->integer('rate')->nullable()->change();
-            
-        }); 
+            $table->integer('rate')->default(5)->nullable()->change();
+
+        });
     }
 
     /**
