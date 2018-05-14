@@ -347,7 +347,10 @@
                     <img src="/uploads/user.png" class="img_user_comments_customer_reviews" >
                     <div class="details_comment">
                         <h3 class="username_details_comment" style="width:225px">{{$comment->user_id}}</h3>
-                        <p class="rated_details_comment" style="margin-left: 0px">@lang('Rated this product')</p>
+                        <p class="rated_details_comment" style="margin-left: 0px"><?php if($comment->rate != 0){ ?>
+                            @lang('Rated this product') 
+                            <?php } ?>
+                        </p>
                         <span class="rating ratings{{$comment->rate}}"  ></span>
                         <p class="text_details_comment">
                             {{$comment->description}}
