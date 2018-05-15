@@ -42,6 +42,10 @@
                         <li class="sub-item">
                           <a href="{{route('comment.index') }}"><span>Comment & Rate Report</span></a>
                         </li>
+                        <li class="sub-item">
+                          <a href="{{route('dhl.index') }}"><span>DHL Delivery</span></a>
+                        </li>
+                        
                         </ul>
                     </ul>
 

@@ -55,4 +55,18 @@ class OrderController extends Controller
     public function checkOrderBarcode($id,$barcode){
        return OrderService::checkOrderBarcode($id,$barcode);
     }
+    public function getDHLPage(){
+      return view('admin.dhl.index');
+    }
+    public function loadPackedOrders(Request $request){
+      $filter = $request->input('filter');
+      return OrderService::loadPackedOrders($filter);
+    }
+    public function onDeleviryOrder(Request $request){
+      $orderId = $request->id ;
+      // dd($request);
+      $code = $request->code; 
+      OrderService::changeDHLState($orderId, $code);
+      return redirect(route('dhl.index'));
+    }
 }

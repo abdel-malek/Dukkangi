@@ -29,13 +29,11 @@ Route::get('/buyitem/{id}' ,  'CartController@getBuyItemPage')->name('buyitem');
 Route::get('/mycart/', 'CartController@getViewMyCartPage')->name('mycart')->middleware('auth');
 Route::get('/categoryfilter/' , 'PageController@getCategoryFilteredPage')->name('fullfiltercategory');
 Route::post('/categoryfilter/' ,'PageController@loadMoreProducts');
-// Route::post('/completebuyitem/{id}' ,'CartController@buyItemComplete' )->name('completebuyitem');
 Route::post('/checkcoupon/', 'CartController@checkCoupon');
 Route::post('/changeqty/' , 'CartController@changeQty');
 Route::post('/getamount/' , 'CartController@getAmount');
 Route::get('/barndfilter/{id}' , 'ProductController@filterByBrand')->name('brandfilter');
 Route::post('productview/notify' , 'ProductController@addNotification');
-//Route::post('/completebuycart/' , 'CartController@checkout')->name('completebuycart');
 
    			                        //DASHBOARD
     //CATEGORIES
@@ -143,6 +141,12 @@ Route::post('/admin/couponusers/{id}' , 'CouponController@getUsersData');
 Route::get('admin/comment-rate-report','CommentController@index')->name('comment.index');
 Route::post('admin/comment-rate-report','CommentController@loadComments');
 Route::post('/admin/comment/delete/{id}' , 'CommentController@destroy');
+
+    //DHL TRACKER
+Route::get('/admin/dhltracker' , 'OrderController@getDHLPage')->name('dhl.index');
+Route::post('/admin/dhltracker' , 'OrderController@loadPackedOrders')->name('dhl.state');
+Route::post('/admin/dhldelivery' , 'OrderController@onDeleviryOrder')->name('submit.dhl');
+
     //DASHBOARD END
 
 

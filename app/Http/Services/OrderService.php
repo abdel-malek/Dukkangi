@@ -7,6 +7,7 @@ use App\User;
 use App\Product;
 use App\OrderItem;
 use Session;
+use App\DHLStatus;
 
 class OrderService {
 	public static function loadOrderData($filter)
@@ -117,5 +118,37 @@ class OrderService {
 		return Order::where('id','=',$id)->update(['packed' => $status]);
 	}
 
+	public static function loadPackedOrders($filter){
+		$index = $filter ? $filter['pageIndex'] : 0 ;
 
+		$orderItems = Order::with(['orderStatus'])
+		->where('packed', 'like', 'packed');
+
+		$result['total'] = $orderItems->count();
+		$skip = ($index == 1) ? 0 : ($index-1)*10 ;
+
+		$result['data']=$orderItems->take(10)->skip($skip)->get();
+		foreach ($result['data'] as $value) {
+			$user = User::find($value->user_id);
+			$value->user_id = $user->email;
+			if ($value->dhl_status == 2 ){
+				$value->dhl_status = "Not Delivered";
+			}
+			else {
+				$value->dhl_status = "On Delivery";
+			}
+			$value->packed = 'Packed';
+		}
+		return $result;
+	}
+	public static function changeDHLState($orderId , $code){
+		$order = Order::find($orderId);
+
+		$order->dhl_status = DHLStatus::ONDELIVERY;
+		$order->dhl_code = $code;
+		$order->update();
+
+		$user = User::find($order->user_id);
+		return MailService::send('emails.dhl' , ['code'=> $code, 'username' => $user->name ] , 'Order@dukkangi.com' , $user->email, 'order complete');
+	}
 }
