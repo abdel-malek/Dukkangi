@@ -9,7 +9,7 @@ use App\Http\Services\CouponService;
 use Auth;
 use App;
 use App\Product;
-use Mail;
+
 use App\Subcategory;
 
 class CartController extends Controller

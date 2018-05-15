@@ -199,7 +199,7 @@
 			<tbody>
 			<tr class="text insidetable">
 				{!! $counter = 0 !!}
-				@foreach($order['orderItem'] as $order)
+				@foreach($order['orderItems'] as $order)
 				<td>{{$order->qty}}</td>
 				<td><p>{{$order->name}}</p></td>
 				<td>{{$order->price}}€</td>
