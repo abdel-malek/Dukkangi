@@ -23,7 +23,7 @@ class NotificationService
 				$product = Product::find($notify->product_id);
 				if (ProductService::checkProductQty($product->id , 1)){
 					$user = User::find($notify->user_id);
-					MailService::send('emails.notify_user' ,[/* Need to Pass Variables */], 'Notification@dukkangi.com' , $user->email, 'product available');
+					MailService::send('emails.notify' ,['product'=> $product , 'qty' => ProductService::getProductQty($product->id)], 'Notification@dukkangi.com' , $user->email, 'product available');
 					$notify->staus_id = ProductNotificationStatus::NOTIFIED;
 				}
 			}

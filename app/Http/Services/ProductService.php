@@ -352,6 +352,16 @@ class ProductService
 					->sum('qty');
 		return ($productQty - $orderQty) > $qty;
     }
+    public static function getProductQty($productId){
+        $productQty = ProducyQty::where('product_id','=',$productId)
+        ->groupBy('productId')
+        ->sum('qty');
+        $orderQty =  OrderItem::select()
+                    ->where('item_id', '=', $productId)
+                    ->groupBy('item_id')
+                    ->sum('qty');
+        return $productQty - $orderQty;
+    }
 
     public static function addProductQty($productId, $qty)
     {
