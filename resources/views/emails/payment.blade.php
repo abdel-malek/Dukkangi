@@ -147,11 +147,11 @@
 
 <div class="border">
 		<div class="text first">
-			<p >Dear {{$username}}</p><br>
+			<p >Dear {{$Auth::user()->name}}</p><br>
 			<p>Thank you,we have received your order.Once your items have been shipped,we'll send you the DHL tracking information.</p><br>
 			<br><br>
 
-			<p>Your order Costed you {{$cost}} € 
+			<p>Your order Costed you {{$totalPrice}} € 
 				<br>
 				See the Order Email for more details.  
 		</div>

@@ -133,7 +133,7 @@ class CartService
 
         $orderItems = $result->get();
 
-        $amount = $result->sum('total_amount');
+        $amount = self::getAmount($cartId);
         
         // $coupon = Order::find(session('cartId'))->coupon_id;
         // if(isset($coupon)){

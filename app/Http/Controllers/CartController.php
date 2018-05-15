@@ -114,7 +114,7 @@ class CartController extends Controller
         $orders = CartService::loadCart($cartId);
 
         MailService::send('emails.payment', ['totalPrice' => $TotalPrice], 'payment@dukkangi.com', Auth::user()->email, 'payment successed');
-        MailService::send('emails.complete_order', ['orders' => $orders['orderItems']], 'info@dukkangi.com', Auth::user()->email, 'order successed');
+        MailService::send('emails.complete_order', ['orders' => $orders['orderItems'] , 'taxes' =>$orders['taxes']], 'info@dukkangi.com', Auth::user()->email, 'order successed');
         $status = CartService::closeCart($cartId, $payment);
 
         if ($status) {
