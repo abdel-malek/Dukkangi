@@ -404,7 +404,7 @@ class PageController extends Controller
 				$simiproduct->discount =  sprintf('%0.0f',100 - (($simiproduct->discount_price * 100) / $simiproduct->price));
 			}
 		}
-		$product->qty = 0;
+		// $product->qty = 0;
 		return view('client.pages.item_view')->withProduct($product)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments)->withBrand($logo);
 	}
 
