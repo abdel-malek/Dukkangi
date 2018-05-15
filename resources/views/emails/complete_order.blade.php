@@ -138,8 +138,8 @@
 <body>
 <div class="header" >
 <center>
-<img  src="{{URL::asset('/emails/logo.png')}}" alt="logo" class='header-img'><br>
-<img src="{{URL::asset('/emails/email.png')}}" alt="@" width="42px" height="42px" >
+<img  src="http://ec2-34-223-221-255.us-west-2.compute.amazonaws.com/emails/logo.png" alt="logo" class='header-img'><br>
+<img src="http://ec2-34-223-221-255.us-west-2.compute.amazonaws.com/emails/email.png" alt="@" width="42px" height="42px" >
 <span class="glyphicon glyphicon-envelope"></span>
 <p class="text white">Order Completed</p>
 </center>
@@ -249,9 +249,9 @@
 		<td class="td"> www.dukkangi.com</td>
 	</tr>
 	<tr>
-		<td class="td"><p class="media insta"><span><img src="{{URL::asset('/emails/instagram.png')}}" alt="logo" width="28px" height="28px"></span>  instagram/dukkangi.com</p></td>
-		<td class="td">	<p class="media fb"><span><img src="{{URL::asset('/emails/facebook.png')}}" alt="logo" width="28px" height="28px"> </span>  facebook/dukkangi.com</p></td>
-		<td class="td"><p class="media twit"><span><img src="{{URL::asset('/emails/twitter.png')}}" alt="logo" width="28px" height="28px"></span>  twitter/dukkangi.com</p></td>
+		<td class="td"><p class="media insta"><span><img src="http://ec2-34-223-221-255.us-west-2.compute.amazonaws.com/emails/instagram.png" alt="logo" width="28px" height="28px"></span>  instagram/dukkangi.com</p></td>
+		<td class="td">	<p class="media fb"><span><img src="http://ec2-34-223-221-255.us-west-2.compute.amazonaws.com/emails/facebook.png" alt="logo" width="28px" height="28px"> </span>  facebook/dukkangi.com</p></td>
+		<td class="td"><p class="media twit"><span><img src="http://ec2-34-223-221-255.us-west-2.compute.amazonaws.com//emails/twitter.png" alt="logo" width="28px" height="28px"></span>  twitter/dukkangi.com</p></td>
 	</tr>
 </table>
 </body>
