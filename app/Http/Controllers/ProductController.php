@@ -11,6 +11,9 @@ use App\Subcategory;
 use App\Brand;
 use App\Http\Services\ProductService;
 use App\Tags;
+use App\ProductNotificationStatus;
+use App\ProductNotification;
+use Auth;
 
 class ProductController extends Controller
 {
@@ -280,5 +283,17 @@ class ProductController extends Controller
         $categories = [];
         $subcategories = [];
         return view('client.pages.item')->withProducts($products)->withCategories($categories)->withSubcategories($subcategories)->withBrandfilter("1");
+    }
+    public function addNotification(  Request $request){
+            $notify = new ProductNotification();
+            $check = ProductNotification::where('user_id','=',Auth::id())->where('product_id' , '=', $request->id)->where('status_id' , '=',ProductNotificationStatus::CREATED)->get()->first();
+            if(isset($check)){
+                return 'ok';
+            } 
+            $notify->user_id = Auth::id();
+            $notify->product_id = $request->id;
+            $notify->status_id = ProductNotificationStatus::CREATED;
+            $notify->save();
+            return 'ok';
     }
 }

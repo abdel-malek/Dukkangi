@@ -237,13 +237,13 @@
                         <h3 class="title_item_out_of_stock">
                             Sorry!
                         </h3>
-                        <p class="text_item_out_of_stock" style="font-family: 'EagarFont';">
+                        <p class="text_item_out_of_stock" style="font-family: 'EagarFont';padding: 0em 0em !important;">
                             item is out of stock
                         </p>
                         <div class="circle_check" onclick="circle_check(this);" style="cursor: pointer;">
-                            <img src="/front-end/images/user_actions/check.png" class="icon_item_out_of_stock">
+                            <img src="/front-end/images/user_actions/check.png" class="icon_item_out_of_stock" style="display: none;">
                         </div>
-                        <p class="text_item_out_of_stock" style="font-size: 1.3em;" >
+                        <p class="text_item_out_of_stock" style="font-size: 1.3em;padding: 0em 0em !important;" >
                             Notify me by email when this item becomes available
                         </p>
                     </div>
@@ -725,8 +725,20 @@
                     $(obj).find('.icon_item_out_of_stock').css('display', 'none');
                 } else {
                     $(obj).find('.icon_item_out_of_stock').css('display', 'block');
+                    $.ajax({
+                      type: "POST",
+                      url: `notify`,
+                      data:{'id':{{$product->id}}},
+                      headers: {
+                          "x-csrf-token": $("[name=_token]").val()
+                      },
+                    }).done(response => {
+                      swal({title:"Successfully!", text:"We will notify you when this product is availabe",type: "success",timer:2000,showConfirmButton:false});
+                    
+                  });     
                 }
             }
+            
         </script>
         <script>
           if(parseInt($('.one_item_details').height()) < 730){

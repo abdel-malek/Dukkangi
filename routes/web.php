@@ -34,6 +34,7 @@ Route::post('/checkcoupon/', 'CartController@checkCoupon');
 Route::post('/changeqty/' , 'CartController@changeQty');
 Route::post('/getamount/' , 'CartController@getAmount');
 Route::get('/barndfilter/{id}' , 'ProductController@filterByBrand')->name('brandfilter');
+Route::post('productview/notify' , 'ProductController@addNotification');
 //Route::post('/completebuycart/' , 'CartController@checkout')->name('completebuycart');
 
    			                        //DASHBOARD
