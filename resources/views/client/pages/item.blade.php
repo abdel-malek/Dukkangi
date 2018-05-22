@@ -108,6 +108,22 @@
         float: right;
     }
 
+    .block_thum,
+    .pictureFrame {
+        width: 115px !important;
+        height: 92px !important;
+    }
+
+    #carouselWrapper,
+    #carousel {
+        width: 110px !important;
+    }
+    .header_slider{
+            width: 900px !important;
+        }
+        .input-search_icon i {
+    margin-right: 1em;
+}
     @media (min-width: 768px) and (max-width: 1030px) {
         .div_item .rating {
             bottom: 1.2em;
@@ -120,7 +136,9 @@
             width: 76%;
             margin-top: 1em;
         }
-
+        #carouselWrapper {
+            height: 38em !important;
+        }
         .select-menu .select-label {
             height: 63px;
         }
@@ -162,9 +180,22 @@
         .image_slider {
             height: 17em !important;
         }
-        .block_thum {
-            width: 188px;
-            height: 175px;
+        .block_thum,
+        .pictureFrame {
+            width: 174px !important;
+            height: 151px !important;
+        }
+        .sub-paragraph {
+            bottom: 41px;
+            font-size: 1.4em;
+            padding: 4.4px 19.5px !important;
+        }
+        .thumnbail {
+            margin-left: 55px !important;
+        }
+        #carouselWrapper,
+        #carousel {
+            width: 174px !important;
         }
         .block_text_footer {
             margin-left: 20%;
@@ -209,6 +240,14 @@
             height: 3em;
             font-size: 1.5em;
         }
+        .header_slider{
+            width: 730px !important;
+        }
+        #jssor_1{
+            width:920px !important;
+        }
+        
+
     }
 
     @media (min-width: 1024px) and (max-width: 1100px) {
@@ -226,7 +265,7 @@
 
 <link rel="stylesheet" href="/front-end/css/multe_select.css">
 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css"> @endsection @section('main_section')
-<div class="col-md-12 page_content_item"  id="content_page">
+<div class="col-md-12 page_content_item" id="content_page">
     @if(!isset($brandfilter))
     <div id="content_page_item">
         <div class="col-md-12 col-sm-12 page_content_item">
@@ -236,8 +275,8 @@
 
                 <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
                 </div>
-                <div data-u="slides" style="       
-                        cursor:default;position:relative;top:0px;left:230px;width:750px;height:200px;overflow:hidden;
+                <div data-u="slides" class="header_slider" style="       
+                        cursor:default;position:relative;top:0px;left:230px;height:200px;overflow:hidden;
                 ">
 
                     @foreach($subcategories as $subcategory)
@@ -266,7 +305,7 @@
                 </div>
                 <div id="carousel">
                     @foreach($subcategories as $subcategory)
-                    <img src="{{$subcategories[0]->image_id}}" style="z-index: 1;" width="110px" height="88px">
+                    <img src="{{$subcategory->image_id}}" class="block_thum" style="z-index: 1;">
                     <a href="{{ route('subcategoryfilter',$subcategory->id) }}">
                         <p class="sub-paragraph" style="z-index: 1;padding: 4.4px 32.5px;">
                             {{$subcategory->english}}
