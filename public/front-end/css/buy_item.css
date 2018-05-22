@@ -50,7 +50,6 @@ height: auto;
 .choose_payment,.credit_card_details{
 	float:left;
 	width:100%;
-	margin-left: 20%;
 }
 .title_choose_payment,.title_credit_card_details{
  font-size: 1.2em;
@@ -67,11 +66,10 @@ float: left;
 }
 .img_visa_choose_payment,.img_paypal_choose_payment{
 	float:right;
-	width: 20%;
-	/* height: auto; */
-	margin-right: 45%;
-	/* margin-top: 0.7em; */
-	cursor: pointer;
+	width: 40%;
+	height: auto;
+	margin-right: 20%;
+	margin-top: 0.7em
 }
 .input_credit_card_details{
     padding-left: 0.5em;

@@ -27,6 +27,10 @@
                 z-index: 33;
                 width: 100%;
             }
+            .icon-flag {
+    width: 16px;
+    height: 16px;
+}
             .rating{
                 font-size: 1.3em;
                 color: #fff;
@@ -85,9 +89,34 @@
             .navbar {
                 padding: .5rem 7rem;
             }
+
             .btn_qty{
                 cursor: pointer;
             }
+            @media (min-width: 768px) and (max-width: 1023px) {
+                #navbarSupportedContent ul li {
+                    font-size: 21px;
+                } 
+                .landing-items-block .title {
+                    margin-left: 7px;
+                    top: 7em;
+                }
+                .icon-flag {
+                    float: right;
+                    margin-top: 0.5em;
+                    margin-left: 0.3em;
+                }
+                .item_in_lg{
+                    display: none !important;
+                }    
+                .rate-us{
+                    display: none;
+                }
+            }
+            .star_1 i:hover{
+                content: "&#xE838;";
+            }
+        
         </style>
         <style>
             /* jssor slider loading skin spin css */
@@ -125,9 +154,30 @@
             .jssort101 .pav .t, .jssort101 .p:hover .t{opacity:1;}
         </style>
         <style>
-            .star_1 i:hover{
-                content: "&#xE838;";
-            }
+        #ex3{
+          float: right;
+        }
+        #ex3 .fa-stack[data-count]:after{
+            position:absolute;
+            right:0%;
+            top:1%;
+            content: attr(data-count);
+            font-size:30%;
+            padding:.6em;
+            border-radius:50%;
+            line-height:.8em;
+            color: white;
+            background:rgba(255,0,0,.85);
+            text-align:center;
+            min-width: 1em;
+            font-weight:bold;
+        }
+        #ex3 .fa-stack-1x, .fa-stack-2x{
+            background-color:#d90000;
+            border-radius: 100px;
+        }
+        .top_nav{
+            max-width: 80%;
+        }
         </style>
-
       @yield('styles')

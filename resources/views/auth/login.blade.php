@@ -1,8 +1,80 @@
 @extends('client.main')
+@section('styles')
+    <style>
+          .first_input{
+                    margin-top: 19em !important;
+                }
+                .block_icon{
+                    margin-top: 0em !important;
+                    float: left;
+                    padding-left: 2.6em;
+                }
+                .long-div{
+                    height: 45em;
+                }
+                .div_login{
+                    height:45em ;
+                }
+            @media (min-width: 768px) and (max-width: 1023px) {
+                .main-container {
+                    height: 86.7em;
+                    background-position-x: -16em;
+                }
+                
+                .long-div{
+                    height: 86.7em;
+                }
+                .input_login, .input_singup{
+                    font-size: 2rem;
+                    padding: .675rem .75rem;
+                    padding-left: 3em;
+                    
+                }
+                .input-group-prepend img {
+                    height: 2.3em;
+                }
+                .input-group-prepend {
+                   margin-left: 1.2em;
+                   margin-top: 1em;
+                }
+                .welcome-img {
+                    margin-left: 22%;
+                }
+                .div_login, .div_singup {
+                    height: 86.7em;
+                    width: 36em;
+                }
+                .btn_login, .btn_cancel {
+                    font-size: 2em;
+                    padding: 0.6em 1em;
+                }
+                .singup_text {
+                    font-size: 2.3em;
+                }
+                .icon_social_media {
+                    height: 5.7em;
+                    margin-left: 4.9em;
+                }
+                .first_input{
+                    margin-top: 24em !important;
+                    margin-bottom: 1.6em !important;
+                }
+                .block_icon{
+                    margin-top: 1em !important;
+                    float: left;
+                    padding-left: 2.6em;
+                }
+                   .nav-link{
+                    font-size: 1.5em;
+                }
+            }
+    </style>
+
+@endsection
 @section('main_section')
       
       <div class="col-md-12" style="padding-left:0px;padding-right: 0px  " id="content_page">
-        <div  id="main-container" class="main-container">
+        <div  id="main-container" class="main-container long-div">
             <div class="container">
                 <div class="row">
                     <div class="col align-self-start">

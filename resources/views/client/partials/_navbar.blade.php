@@ -1,33 +1,9 @@
-<style>
-#ex3{
-  float: right;
 
-}
-#ex3 .fa-stack[data-count]:after{
-    position:absolute;
-    right:0%;
-    top:1%;
-    content: attr(data-count);
-    font-size:30%;
-    padding:.6em;
-    border-radius:50%;
-    line-height:.8em;
-    color: white;
-    background:rgba(255,0,0,.85);
-    text-align:center;
-    min-width: 1em;
-    font-weight:bold;
-  }
-  #ex3 .fa-stack-1x, .fa-stack-2x{
-    background-color:#d90000;
-    border-radius: 100px;
-  }
-</style>
 <header id="header">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light" id="main-nav-bar">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light " id="main-nav-bar">
       <a href="{{route('home')}}"> <img class="logo" src="/front-end/images/logo.png"/></a>
-        <div class="collapse navbar-collapse" id="main-navbar-items">
-          <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+        <div class="collapse navbar-collapse top_nav" id="main-navbar-items" style="display: block;text-align: right;">
+          <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex" style="text-align: right;direction: ltr;float: right;">
             <li class="nav-item active">
               <a class="nav-link" href="{{ route('home') }}">@lang('Home')</a>
             </li>
@@ -79,8 +55,8 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-light" id="lang-nav-bar">
         <a class="navbar-brand rate-us" href="#">@lang('Rate us?')</a>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+        <div class="collapse navbar-collapse" style="display:block;;text-align: right;" id="navbarSupportedContent">
+          <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex" style="text-align: right;direction: ltr;float: right;">
             <li class="nav-item {{ App::isLocale('en')  ? 'active':'' }}">
               <a class="nav-link" href="/lang/en">
                 <img src='/front-end/images/usa-flag.png' class='icon-flag'>

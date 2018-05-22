@@ -163,8 +163,9 @@ class CartService
             ->where('status_id', '=', OrderStatus::CREATED);
         $amount = $result->sum('total_amount');
         
-        $coupon = Order::find(session('cartId'))->coupon_id;
+        $coupon = Order::find(session('cartId'));
         if(isset($coupon)){
+            $coupon = $coupon->coupon_id;
             $coupon = Coupon::find($coupon);
             if ($coupon->coupon_type == 'fixed'){
                 $amount -= $coupon->amount;

@@ -7,7 +7,72 @@
         <link rel="stylesheet" href="{{URL::asset('/front-end/css/login.css')}}">
         <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
         <style type="text/css">
+                    .first_input{
+                margin-top: 19em !important;
+            }
+            .block_icon{
+                margin-top: 0em !important;
+                float: left;
+                padding-left: 2.6em;
+            }
+            .block_input_singup{
+                margin-top: 0.5em !important;
+            }
+            @media (min-width: 768px) and (max-width: 1023px) {
+                .rate-us{
+                    display: none;
+                }
+                .main-container {
+                    height: 86.7em;
+                    background-position-x: -16em;
+                }
+                .input_login, .input_singup{
+                    font-size: 2rem;
+                    padding: .675rem .75rem;
+                }
+                .input-group-prepend img {
+                    height: 2.3em;
+                }
+                .input-group-prepend {
+                    margin-left: 1.2em;
+                    margin-top: 1em;
+                }
+                .welcome-img {
+                    margin-left: 22%;
+                }
+                .div_login, .div_singup {
+                    height: 86.7em;
+                    width: 37em;
+                }
+                .btn_login, .btn_cancel {
+                    font-size: 2em;
+                    padding: 0.6em 1em;
+                }
+                .singup_text {
+                    font-size: 2.3em;
+                }
+                .icon_social_media {
+                    height: 5.7em;
+                    margin-left: 4.9em;
+                }
+                .first_input{
+                    margin-top: 24em !important;
+                    margin-bottom: 1.6em !important;
+                }
+                .block_icon{
+                    margin-top: 1em !important;
+                    float: left;
+                    padding-left: 2.6em;
+                }
+                .nav-link{
+                    font-size: 1.5em;
+                }
+                .block_input_singup{
+                    margin-top: 1em !important;
+                }
+            }
         </style>
+
 @endsection    
 
 @section('main_section')
@@ -114,16 +179,7 @@
       <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
     <script>
-       /* $(function () {
-            $("#date_of_brith").datepicker({
-                onSelect: function (date){
-                    // date =date + " 01:00:00";
-                $("#date_of_brith").val(date);
-                }
-
-            });
-        });*/
-        $( function() {
+    $( function() {
     $( "#date_of_brith" ).datepicker({
        yearRange: "-70:-15",
       changeMonth: true,
