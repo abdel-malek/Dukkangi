@@ -61,7 +61,7 @@
 </div>
 {{-- <footer id="footer" style="top:50%;">
     Copyright &copy; 2018, All Rights Reserved.
-</footer> --}}
+</footer>  --}}
   @include ('admin.partials._footer')
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>

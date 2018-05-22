@@ -531,12 +531,12 @@
     //Initial Rate Comments
 
     var ratings = document.getElementsByClassName('ratings3');
-                <? php $counter = 0 ?>
+                <?php $counter = 0 ?>
 
                 for (var i = 0; i < ratings.length; i++) {
 
         var r = new SimpleStarRating3(ratings[i]);
-                    <? php $counter++ ?>
+                    <?php $counter++ ?>
                 }
     //Initial Rate Simiproducts
 
@@ -592,11 +592,11 @@
     });
 </script>
 <script type="text/javascript">
-    $(function () {
-        $('.multiselect-ui').multiselect({
-            includeSelectAllOption: true
-        });
-    });
+    // $(function () {
+    //     $('.multiselect-ui').multiselect({
+    //         includeSelectAllOption: true
+    //     });
+    // });
 </script>
 <script>
     var counter = 1;

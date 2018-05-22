@@ -41,8 +41,14 @@ function loadUsers(){
               type: "control", width: 10, editButton: false, modeSwitchButton: false, deleteButton: false,
               itemTemplate: function (value, item) {
                 var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
-                var $orderItems = $('<a class="btn btn-block btn-success btn-xs">On Delivery</a>');
-                  $orderItems.attr('onclick',`viewModal(${item.id})`);
+                
+                if (item.dhl_status == "On Delivery" ){
+                    var $orderItems = $('<a class="btn btn-block btn-default btn-xs">Change Code</a>');
+                }
+                else {
+                    var $orderItems = $('<a class="btn btn-block btn-success btn-xs">On Delivery</a>');
+                }  
+                $orderItems.attr('onclick',`viewModal(${item.id})`);
                 return $result.add($orderItems);
               },
             },

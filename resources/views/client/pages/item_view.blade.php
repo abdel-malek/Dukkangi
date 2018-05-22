@@ -136,8 +136,8 @@
 
     .header_page_text_div {
         padding: 0.8em 2em;
-        top: 11.1em;
-        width: 80.9%;
+        top: 10.9em;
+        width: 81.1%;
         padding-left: 25.5em
     }
 
@@ -194,11 +194,13 @@
         .header_page {
             width: 100%;
             margin-left: 0%;
+            height: 16.4em;
         }
         .header_page_text_div {
             width: 100%;
             padding: 0.8em 2em;
-            top: 10.5em;
+            
+            top: 10.3em;
             padding-left: 25.5em
         }
         .one_item_details,
