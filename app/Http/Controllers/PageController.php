@@ -354,7 +354,7 @@ class PageController extends Controller
 
 		$simiproducts = Product::select('*')
 		->whereIn('id' , $Tags)
-		->where('active','=',true)->get();
+		->where('active','=',true)->take(4)->skip(0)->get();
 
 		if ($lang == "ar"){
 			$product->english = $product->arabic;
