@@ -774,7 +774,7 @@
             </a>
             <p class="item_price" style="margin-bottom: 0em;">{{$simiproduct->price}} €</p>
             <span class="rating ratings{{$simiproduct->rate}}" style="width: 0.75em;height: 1.7em; left: 1em;bottom: 0.2em;"></span>
-
+            <img src="\front-end\images\user_actions\view-my-cart.png" class="icon_view_my_card">
         </div>
     </div>
     @endforeach
