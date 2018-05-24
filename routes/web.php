@@ -13,7 +13,7 @@
 Route::get('/admin', function(){return view('admin.master');})->name('admin.home')->middleware('isadmin');
 Route::get('/', function(){return view('client.pages.home');});
 
-//Pages Controller
+            //Client Pages
 Route::get('/test/email' , function(){
     return view('emails.signup');
 });
@@ -34,6 +34,8 @@ Route::post('/changeqty/' , 'CartController@changeQty');
 Route::post('/getamount/' , 'CartController@getAmount');
 Route::get('/barndfilter/{id}' , 'ProductController@filterByBrand')->name('brandfilter');
 Route::post('productview/notify' , 'ProductController@addNotification');
+Route::get('/myaccount' , 'PageController@getProfile')->name('profile');
+Route::get('/aboutus' , 'PageController@getAboutUs')->name('about-us');
 
    			                        //DASHBOARD
     //CATEGORIES
@@ -180,6 +182,6 @@ Route::post('/paypal','PayPalController@ipn');
 
 
 // Test
-Route::get('/mail' , 'TestController@mail');
-Route::get('/test' , 'TestController@test');
+//Route::get('/mail' , 'TestController@mail');
+//Route::get('/test/{id}' , 'PageController@loadOrder');
 

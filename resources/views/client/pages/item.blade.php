@@ -43,7 +43,7 @@
     .sub-paragraph {
         background-color: #00000044;
         position: relative;
-        bottom: 29px;
+        bottom: 32px;
         font-size: 0.9em;
         color: #fff;
     }
@@ -264,7 +264,9 @@
 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 
 <link rel="stylesheet" href="/front-end/css/multe_select.css">
-<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css"> @endsection @section('main_section')
+<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css"> 
+@endsection 
+@section('main_section')
 <div class="col-md-12 page_content_item" id="content_page">
     @if(!isset($brandfilter))
     <div id="content_page_item">
@@ -280,7 +282,6 @@
                 ">
 
                     @foreach($subcategories as $subcategory)
-
                     <div>
                         <img data-u="image" src="{{$subcategory->image_id}}" style="height:15em;width: 45em;    border: 0.04em solid #8a8a8a" />
                         <img data-u="thumb" src="{{$subcategory->image_id}}" />

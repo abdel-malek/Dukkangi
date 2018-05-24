@@ -1,8 +1,8 @@
 
 <header id="header">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light " id="main-nav-bar">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light " id="main-nav-bar" style="width: 102%;">
       <a href="{{route('home')}}"> <img class="logo" src="/front-end/images/logo.png"/></a>
-        <div class="collapse navbar-collapse top_nav" id="main-navbar-items" style="display: block;text-align: right;">
+        <div class="collapse navbar-collapse top_nav" id="main-navbar-items" style="display: block;text-align: right;margin-left: 55px;">
           <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex" style="text-align: right;direction: ltr;float: right;">
             <li class="nav-item active">
               <a class="nav-link" href="{{ route('home') }}">@lang('Home')</a>
@@ -11,13 +11,13 @@
             @if(!Auth::check() )
 
             <li class="nav-item">
-              <a class="nav-link" href="{{route('login')}}">@lang('Login')</a>
+              <a class="nav-link" href="{{ route('login') }}">@lang('Login')</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{route('register')}}">@lang('Sign up')</a>
+              <a class="nav-link" href="{{ route('register') }}">@lang('Sign up')</a>
             </li>
              <li class="nav-item">
-              <a class="nav-link" href="#">@lang('About')</a>
+              <a class="nav-link" href="{{ route('about-us') }}">@lang('About')</a>
             </li>
             @else
 
@@ -35,7 +35,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">@lang('My Account')</a>
+              <a class="nav-link" href="{{route('profile')}}">@lang('My Account')</a>
             </li>
 
             <li class="nav-item">

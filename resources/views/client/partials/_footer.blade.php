@@ -11,9 +11,9 @@
                 </p>
             </div>
             <div class="col-md-7 div_icon_footer" >
-                <a href="https://www.instagram.com/"><i class="fa fa-instagram icon_footer"></i></a>
-                <a href="https://twitter.com/"><i class="fa fa-twitter icon_footer" ></i> </a>
-                <a href="https://www.facebook.com/"><i class="fa fa-facebook icon_footer" style="padding: 0.5em 0.7em;"></i></a>
+                <a href="https://www.instagram.com/"><i class="fa fa-instagram icon_footer icon_inst" ></i></a>
+                <a href="https://twitter.com/"><i class="fa fa-twitter icon_footer"></i> </a>
+                <a href="https://www.facebook.com/"><i class="fa fa-facebook icon_footer icon_face"></i></a>
             </div>
 </footer>
 <script src={{url("static/sweetalert/sweetalert2.all.js")}}></script>

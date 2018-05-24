@@ -46,7 +46,10 @@
         color: inherit;
         text-decoration: none;
     }
-
+  .simi {
+            max-width: 16% !important;
+        }
+        
     .rating {
         font-size: 1.3em;
         color: #fff;
@@ -85,8 +88,9 @@
 
     .div_item {
         width: 229px;
-        height: 220px
+        height: 255px
     }
+
 
 
     .details_comment .rating {
@@ -148,8 +152,8 @@
     .block_similar {
         float: left;
         margin-left: 0px;
-        padding-right: 0px;
-        overflow: auto;
+        padding-right: 0px; 
+        overflow: hidden;
     }
 
     .all_page_item_view {
@@ -173,6 +177,10 @@
     .logo_prodect {
         margin-left: 210px;
         width: 13%;
+    }
+    .img_item
+    {
+        height: 10.4em;
     }
     .button_modal_one_item_details {
             margin-top: 3em;
@@ -335,6 +343,7 @@
             margin-right: 2em;
             margin-top: -3em;
         }
+      
         .logo_prodect img {
             width: 55%;
         }
@@ -515,7 +524,7 @@
 
     <div class="one_item_details" data-id="{{$product->id}}">
         <div class="header_item_details">
-            @if(isset($product->discount))
+            @if(isset($product->discount) && $product->discount != 0)
             <div class="discount_item_details" style="z-index: 20">
                 <p class="text_discount_details">
                     <small>{{$product->discount}}</small> % @lang('off')</p>
@@ -743,7 +752,7 @@
 </div>
 <div class="col-md-12 block_similar">
     <h3 class="title_similar_items">
-        @lang('Similar item')
+        @lang('Similar items')
     </h3>
 
     @foreach($simiProducts as $simiproduct) @if($simiproduct->id == $product->id)
@@ -751,7 +760,7 @@
                             continue;
                             ?> @endif
 
-    <div class=" col-lg-3 col-md-6" style="margin-top: 1em;float: left;margin-bottom: 20px">
+    <div class=" col-lg-3 col-md-6 simi" style="margin-top: 1em;float: left;margin-bottom: 20px;margin-left: 6%;">
         <div class="div_item">
             @if (isset($simiproduct->discount))
             <div class="discount_item">
@@ -764,7 +773,7 @@
                 <p class="item_name">{{ $simiproduct->english}} </p>
             </a>
             <p class="item_price" style="margin-bottom: 0em;">{{$simiproduct->price}} €</p>
-            <span class="rating ratings{{$simiproduct->rate}}" style="width: 0.75em;height: 1.7em;"></span>
+            <span class="rating ratings{{$simiproduct->rate}}" style="width: 0.75em;height: 1.7em; left: 1em;bottom: 0.2em;"></span>
 
         </div>
     </div>
@@ -891,12 +900,12 @@
     //Initial Rate Comments
 
     var ratings = document.getElementsByClassName('ratings3');
-                <? php $counter = 0 ?>
+                <?php $counter = 0 ?>
 
                 for (var i = 0; i < ratings.length; i++) {
 
         var r = new SimpleStarRating3(ratings[i]);
-                    <? php $counter++ ?>
+                    <?php $counter++ ?>
                 }
     //Initial Rate Simiproducts
 
@@ -1046,7 +1055,7 @@
 <script>
     function num_plus(obj) {
         counter = parseInt($(obj).parent().parent().find('p').text());
-        if (counter < <? php echo $product -> qty - 1 ?> ) {
+        if (counter < <?php echo $product -> qty - 1 ?> ) {
             counter = counter + 1
             $(obj).parent().parent().find('p').text(counter);
         }

@@ -139,16 +139,15 @@ input:-moz-placeholder, textarea:-moz-placeholder {
     padding-right: 1.5em;
 }
 
-.title_footer{
+.title_footer {
     width: 100%;
     text-align: center;
-    color:#fff;
-    margin-top: 2.5em;
+    color: #fff;
+    margin-top: 1.5em;
     font-size: 1.7em;
-    margin-bottom: 1em;
+    margin-bottom: 0em;
     font-family: 'HeadlinesFont';
     font-weight: bold;
-
 }
 .text_footer{
     width: 100%;
@@ -164,9 +163,15 @@ input:-moz-placeholder, textarea:-moz-placeholder {
     background-color: #d80f17;
     width: 100%;
 }
+.icon_inst{
+    margin-left: 3em !important;
+}
+.icon_face{
+   padding: 0.3em 0.5em !important;
+}
 .icon_footer{
     float: left;
-    padding: 0.5em 0.5em;
+    padding: 0.3em 0.3em;
     background-color: #fff;
     color: #d80f17;
     margin-left: 2em;

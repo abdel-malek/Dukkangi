@@ -13,12 +13,14 @@ use App\Rate;
 use App\OrderItem;
 use App\Comment;
 use App\Http\Services\FilterService;
+use App\Http\Services\CartService;
 use Redirect;
 use Session;
 use App;
 use Auth;
 use App\Brand;
 use App\Tags;
+use App\Order;
 
 class PageController extends Controller
 {
@@ -315,6 +317,20 @@ class PageController extends Controller
 				$product->discount =  sprintf('%0.0f',100 - (($product->discount_price * 100) / $product->price));
 			}
 		}
+		$temp = [];
+		$count = 1;
+		foreach ($subcategories as $subcatego) {
+			if ($subcatego->id == $subcategory->id){
+				$temp[0]=  $subcatego;
+			}
+			else {
+				$temp[$count] = $subcatego;
+				$count++;
+			}
+		}
+		ksort($temp);
+		$subcategories = $temp;
+		
 		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withLastSearch($subcategory->category_id);
 	}
 
@@ -476,4 +492,20 @@ class PageController extends Controller
   		return Redirect::back();
 	}
 
+	public function getAboutUs(){
+		return view('client.pages.about_us');
+	}
+
+	public function getProfile(){
+		$user = Auth::user();
+		$orders = Order::where('user_id' , '=' , $user->id)->get();
+		return view('client.pages.profile')->withOrders($orders);
+	}
+	public function changeUsername(Request $request){
+        $username = $request->username;
+        return UserService::changeUsername($username);
+    }
+    public function loadOrder($id){
+        return CartService::loadCart($id);
+    }
 }
