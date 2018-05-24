@@ -773,7 +773,7 @@
 
     <div class=" col-lg-3 col-md-6 simi" style="margin-top: 1em;float: left;margin-bottom: 20px;">
         <div class="div_item">
-            @if (isset($simiproduct->discount))
+            @if (isset($simiproduct->discount) && $simiproduct->discount != 0)
             <div class="discount_item">
                 <p class="text_discount"> {{$simiproduct->discount}}% off</p>
                 <div class="shadow_div_discount"></div>
