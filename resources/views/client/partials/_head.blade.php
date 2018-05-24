@@ -99,9 +99,16 @@
             .btn_qty{
                 cursor: pointer;
             }
+            .top_nav {
+                margin-left: 55px;
+            }
             @media (min-width: 768px) and (max-width: 1023px) {
                 #navbarSupportedContent ul li {
                     font-size: 21px;
+                }
+
+                .top_nav {
+                    margin-left: 12px;
                 } 
                 .landing-items-block .title {
                     margin-left: 7px;

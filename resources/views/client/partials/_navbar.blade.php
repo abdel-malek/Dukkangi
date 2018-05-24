@@ -2,7 +2,7 @@
 <header id="header">
       <nav class="navbar navbar-expand-lg navbar-light bg-light " id="main-nav-bar" style="width: 102%;">
       <a href="{{route('home')}}"> <img class="logo" src="/front-end/images/logo.png"/></a>
-        <div class="collapse navbar-collapse top_nav" id="main-navbar-items" style="display: block;text-align: right;margin-left: 55px;">
+        <div class="collapse navbar-collapse top_nav" id="main-navbar-items" style="display: block;text-align: right;">
           <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex" style="text-align: right;direction: ltr;float: right;">
             <li class="nav-item active">
               <a class="nav-link" href="{{ route('home') }}">@lang('Home')</a>

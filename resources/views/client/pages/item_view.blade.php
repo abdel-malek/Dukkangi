@@ -46,8 +46,9 @@
         color: inherit;
         text-decoration: none;
     }
-  .simi {
+    .simi {
             max-width: 16% !important;
+            margin-left: 6%;
         }
         
     .rating {
@@ -195,6 +196,16 @@
         .all_page_item_view {
             padding: 0em 0em;
         }
+        .details_comment .rating {
+            margin-top: 0.8em !important;
+            font-size: 1.7em !important;   
+            margin-right: 92px !important;
+        }
+        .simi {
+            max-width: 50% !important;
+            margin-left: 0px !important;
+        }
+  
         .div_item {
             width: 100%;
             height: auto;
@@ -760,7 +771,7 @@
                             continue;
                             ?> @endif
 
-    <div class=" col-lg-3 col-md-6 simi" style="margin-top: 1em;float: left;margin-bottom: 20px;margin-left: 6%;">
+    <div class=" col-lg-3 col-md-6 simi" style="margin-top: 1em;float: left;margin-bottom: 20px;">
         <div class="div_item">
             @if (isset($simiproduct->discount))
             <div class="discount_item">
