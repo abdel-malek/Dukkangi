@@ -151,4 +151,53 @@ class OrderService {
 		$user = User::find($order->user_id);
 		return MailService::send('emails.dhl' , ['code'=> $code, 'username' => $user->name ] , 'Order@dukkangi.com' , $user->email, 'order complete');
 	}
+
+	public static function loadUserOrders($id,$filter){
+
+		$index = $filter ? $filter['pageIndex'] : 0 ;
+
+		$orders  = Order::where('user_id', '=', $id);
+		if (!empty($filter['id']))
+		{
+			$orders->where('id' ,'=' , $filter['id']);
+		}
+		if (!empty($filter['product_id']))
+		{
+			$orders->where('product_id' ,'=' , $filter['product_id'] );
+		}
+
+		if (!empty($filter['payment_id']))
+		{
+			$orders->where('payment_id' ,'=' , $filter['payment_id'] );
+		}
+		$orders->orderBy('id','desc');
+		$result['total'] = $orders->count();
+
+		$skip = ($index == 1) ? 0 : ($index-1)*10 ;
+		$result['data']=$orders->take(10)->skip($skip)->get();
+		foreach ($result['data'] as $value) {
+			$email = User::find($value->user_id);
+			if (isset($email))
+				$value->user_id = $email->email;
+			else
+				$value->user_id =$value->user_id . "<small><i>(Deleted)</small></i>";
+
+			if ($value->dhl_status == 2){
+				$value->dhl_status = "Not Yet";
+			}
+			else {
+				$value->dhl_status = "<i>Delevered or On the way</i>";
+			}
+		}
+		foreach ($result['data'] as $value) {
+				$name = Product::find($value->product_id);
+				if (isset($name))
+					$value->product_id = $name->english;
+				else
+					$value->product_id =$value->product_id . "<small><i>(Deleted)</small></i>";
+			}
+
+		return $result;
+			
+	}
 }

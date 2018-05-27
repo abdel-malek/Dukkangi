@@ -29,7 +29,7 @@
     <link rel="stylesheet" href={{URL::asset('css/select2.min.css')}} />
     <script type="text/javascript" src={{ URL::asset('js/select2.min.js') }}></script>
     <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-      
+ 
     <!-- END TEMPLATE GLOBAL CSS -->
     <!-- START LAYOUT CSS -->
     <link rel="stylesheet" href={{URL::asset('css/layout.css')}} />

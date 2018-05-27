@@ -3,7 +3,7 @@
             <input id="left-menu-search" type="search" class="form-control input-sm" placeholder="Search...">
             <a href="javascript:void(0)"><i class="search-close icon_search"></i></a>
         </div>
-        <div class="sidebar-menu">
+        <div class="sidebar-menu" style="height: calc(100% - 45px);">
             <ul class="nav site-menu live-search-list" id="site-menu" data-plugin="custom-scroll" data-suppress-scroll-x="true" data-height="100%">
                 <li class="menu-title"><i class="icon_compass_alt"></i><span>Main Menu</span>
                     <ul class="main-menu">
@@ -52,10 +52,10 @@
                 </li>
 
             </ul>
-        </div>
+        </div><!-- 
         <div class="sidebar-extra">
             <a href="#"><i class="icon_lock-open_alt"></i></a>
             <a href="#"><i class="icon_key_alt"></i></a>
             <a href="#"><i class="icon_lock_alt"></i></a>
-        </div>
+        </div> -->
     </aside>

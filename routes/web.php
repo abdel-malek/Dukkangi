@@ -112,6 +112,10 @@ Route::post('/admin/users/delete/{id}', ['uses' => 'UserController@destroy'     
     //ORDERS
 Route::get('/admin/orders', ['uses' => 'OrderController@index'         , 'as' => 'order.index' ]);
 Route::post('/admin/orders', ['uses' => 'OrderController@loadOrder'     , 'as' => 'order.data'  ]);
+    //USER ORDERS
+Route::get('/admin/orders/user/{id}' , 'OrderController@getUserOrders')->name('getUserOrders');
+Route::post('/admin/orders/user/{id}', 'OrderController@loadUserOrders');
+
 
 // check product qty
 Route::get('/admin/orders/{id}/checkproduct-qty',['uses'=>'OrderController@checkProductQtyPage','as' => 'order.checkProduct.index']);
