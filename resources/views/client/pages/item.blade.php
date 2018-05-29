@@ -162,7 +162,8 @@
 
         }
         .img_item {
-            height: 18.4em;
+            height: auto;
+            width:100%;
         }
         .text_footer {
             font-size: 1.3em;

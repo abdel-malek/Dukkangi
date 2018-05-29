@@ -290,10 +290,10 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 }
 .img_item{
     width: auto;
+    height: 8.4em;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    height: 8.4em;
 }
 .text_discount{
     font-family: 'EagarFont';
