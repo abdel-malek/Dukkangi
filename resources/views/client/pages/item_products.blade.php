@@ -3,7 +3,10 @@
     <div class="div_item">
         @if (isset($product->discount) && $product->discount != 0 )
         <div class="discount_item">
-            <p class="text_discount"> {{$product->discount}}% off</p>
+            <p class="text_discount"> 
+                <span style="text-decoration: line-through;" > {{$product->price}} €</span> <br>
+                <span style="font-family: unset;font-weight: bolder;font-size: 22px;"> {{ $product->discount_price}} €</span>
+            </p>
             <div class="shadow_div_discount"></div>
         </div>
         @endif

@@ -299,21 +299,24 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 .text_discount{
     font-family: 'EagarFont';
     position: absolute;
-    top: -5em;
-    width: 3em;
-    left:0.2em;
+    top: -6.5em;
+    transform: rotate(-54deg);
+    width: 4em;
+    left: 0em;
     z-index: 5;
     color: #fff;
     font-size: 1em;
+    padding-left: 0.5em;
 }
 .discount_item{
     width: 0;
     height: 0;
-    border-top: 5em solid #d80001;
-    border-right: 4em solid transparent;
+    border-top: 6em solid #d80001;
+    border-right: 5em solid transparent;
     position: absolute;
-    top:0em;
+    top: 0em;
     left: 0.9em;
+
 }
 .rating{
     width: auto;

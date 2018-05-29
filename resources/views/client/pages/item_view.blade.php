@@ -775,7 +775,10 @@
         <div class="div_item">
             @if (isset($simiproduct->discount) && $simiproduct->discount != 0)
             <div class="discount_item">
-                <p class="text_discount"> {{$simiproduct->discount}}% off</p>
+                <p class="text_discount"> 
+                <span style="text-decoration: line-through;" >{{$simiproduct->price}} €</span> <br>
+                <span style="font-family: unset;font-weight: bolder;font-size: 22px;"> {{ $simiproduct->discount_price}} €</span>
+            </p>
                 <div class="shadow_div_discount"></div>
             </div>
             @endif
