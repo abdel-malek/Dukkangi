@@ -205,7 +205,10 @@
             max-width: 50% !important;
             margin-left: 0px !important;
         }
-  
+        .text_discount{
+                width: 5em;
+                left: -0.5em;
+        }
         .div_item {
             width: 100%;
             height: auto;

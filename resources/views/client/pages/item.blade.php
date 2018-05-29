@@ -132,6 +132,10 @@
         .text_price {
             width: 24%;
         }
+        .text_discount{
+            width: 6em;
+            left: -1em;
+        }
         .line_price {
             width: 76%;
             margin-top: 1em;

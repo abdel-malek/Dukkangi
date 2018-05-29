@@ -145,12 +145,14 @@
 }
 
 .landing-items-block .shisha{
-  position: absolute;
-  left: 57px;
-  font-size: 38px;
-  top: 95px;
-  transform: rotate(-10deg);
+  /*.shisha {*/
+    position: absolute;
+    left: 8px;
+    font-size: 38px;
+    top: 3px;
+    transform: rotate(10deg);
 }
+
 
 .landing-items-block .fashion{
   position: absolute;
