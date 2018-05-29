@@ -289,7 +289,10 @@ input:-moz-placeholder, textarea:-moz-placeholder {
     z-index: 9;
 }
 .img_item{
-    width: 100%;
+    width: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     height: 8.4em;
 }
 .text_discount{
