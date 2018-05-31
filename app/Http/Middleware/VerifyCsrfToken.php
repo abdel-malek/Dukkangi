@@ -22,7 +22,7 @@ class VerifyCsrfToken extends BaseVerifier
       'paypal',
       '/admin/coupons',
       '/admin/coupon',
-      '/changeqty'
-
+      '/changeqty',
+      '/getreview'
     ];
 }

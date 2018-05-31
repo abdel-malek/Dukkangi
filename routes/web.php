@@ -14,9 +14,9 @@ Route::get('/admin', function(){return view('admin.master');})->name('admin.home
 Route::get('/', function(){return view('client.pages.home');});
 
             //Client Pages
-Route::get('/test/email' , function(){
-    return view('emails.signup');
-});
+// Route::get('/test/email' , function(){
+//     return view('emails.signup');
+// });
 Route::get('/', 'PageController@index')->name('home');
 Route::get('/home', 'PageController@index');
 Route::get('/category/{id}', 'PageController@getCategoryPage')->name('category');
@@ -36,7 +36,8 @@ Route::get('/barndfilter/{id}' , 'ProductController@filterByBrand')->name('brand
 Route::post('productview/notify' , 'ProductController@addNotification');
 Route::get('/myaccount' , 'PageController@getProfile')->name('profile');
 Route::get('/aboutus' , 'PageController@getAboutUs')->name('about-us');
-
+Route::post('/getreview' , 'PageController@getReview');
+Route::post('/review','PageController@setReview')->name('review');
    			                        //DASHBOARD
     //CATEGORIES
 Route::get('/admin/categories', ['uses' => 'CategoryController@index'                 ,'as' => 'category.index'       ]);

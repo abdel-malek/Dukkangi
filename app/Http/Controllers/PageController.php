@@ -21,6 +21,7 @@ use Auth;
 use App\Brand;
 use App\Tags;
 use App\Order;
+use App\Review;
 
 class PageController extends Controller
 {
@@ -493,7 +494,17 @@ class PageController extends Controller
 	}
 
 	public function getAboutUs(){
-		return view('client.pages.about_us');
+		$review =Review::get()->first();
+		return view('client.pages.about_us')->withReview($review);
+	}
+	public function getReview(Request $request)
+	{
+		$index = $request->index;
+		return Review::take(1)->skip($index-1)->get();
+	}
+	public function setReview(Request $request){
+
+		///////////////////
 	}
 
 	public function getProfile(){

@@ -53,8 +53,12 @@
       </nav>
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light" id="lang-nav-bar">
-        <a class="navbar-brand rate-us" href="#">@lang('Rate us?')</a>
-
+        @if(Auth::check())
+            <a class="navbar-brand rate-us" onclick="showratemodal();" style="cursor: pointer;" >@lang('Rate us?')</a>
+          
+        @else
+          <a class="navbar-brand rate-us" href="{{route('login')}}">@lang('Rate us?')</a>
+        @endif
         <div class="collapse navbar-collapse" style="display:block;;text-align: right;" id="navbarSupportedContent">
           <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex" style="text-align: right;direction: ltr;float: right;">
             <li class="nav-item {{ App::isLocale('en')  ? 'active':'' }}">
@@ -91,3 +95,22 @@
         </div>
       </nav>
     </header>
+
+
+    <div class="modal_one_item_details" id="rate-us-modal" style="top:10em;float: left;height: 36 em;display: none" >
+      <div class="col-md-12" >
+        <h1>Rate Us</h1>
+        {!! Form::open(['route' =>'review']) !!}
+          
+          {{ Form::label('rate','Rate:') }}
+          {{ Form::number('rate',0,['class'=>'form-control','max'=>'5'])}}         
+          <hr>
+          {{ Form::label('desc', 'Description:')}}
+          {{ Form::textarea('desc', null, ['class'=>'form-control'] ) }}
+          <hr>
+          {{Form::submit('Submit' , ['class' => 'btn btn-block btn-success' , 'style' => 'margin-bottom:30x'])}}
+
+          <a class="btn btn-block btn-default" onclick="$('#rate-us-modal').css({'display':'none'});" >Cancel</a>
+        {!! Form::close() !!}
+      </div>
+    </div>

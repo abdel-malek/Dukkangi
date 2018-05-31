@@ -695,7 +695,7 @@
             <p class="text_section">
                 <span>{{$product->section2_english}}</span>
                 <p>
-                    <span class="point_text_section">{{$product->point}} points</span>
+                    <span class="point_text_section">{{$product->point}} @lang('points')</span>
                     <small>@lang('This will be given to you !') </small>
                 </p>
             </p>

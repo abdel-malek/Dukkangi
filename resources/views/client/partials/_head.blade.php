@@ -20,6 +20,20 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
        <style>
+           .modal_one_item_details{
+             top: 10em;
+                top: 2em;
+                left:30%;
+                z-index: 26;
+                margin-top: 0em;  
+                width: 26%;
+                background-color: #fff;
+                margin-left: 4em;
+                float: left;
+                position: absolute;
+                z-index: 15;
+                box-shadow: 1px 1px 16px #000000b0;
+            }
             .star{
                 cursor: pointer;
                 color: #fff;
