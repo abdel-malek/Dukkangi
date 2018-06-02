@@ -14,6 +14,7 @@ use App\OrderItem;
 use App\Comment;
 use App\Http\Services\FilterService;
 use App\Http\Services\CartService;
+use App\Http\Services\ImageService;
 use Redirect;
 use Session;
 use App;
@@ -499,17 +500,34 @@ class PageController extends Controller
 	}
 	public function getReview(Request $request)
 	{
-		$index = $request->index;
+		$index = $request->index;	
 		return Review::take(1)->skip($index-1)->get();
 	}
-	public function setReview(Request $request){
+	public function setReview(Request $request)
+	{
+		$review = new Review();
+		
+		if($$request->input('rate') != 0){
+			$review->desc = $request->input('desc');
+			$review->rate = $request->input('rate');
+			$review->user_id = Auth::id();
 
-		///////////////////
+			$review->save();	
+		}
+		return back();
 	}
 
 	public function getProfile(){
 		$user = Auth::user();
-		$orders = Order::where('user_id' , '=' , $user->id)->get();
+		$orders = Order::where('user_id' , '=' , $user->id)->where('status_id', '!=',4)->get();
+		foreach ($orders as $order) {
+			$order->orderItems = OrderItem::where('order_id', '=', $order->id)->get();
+			foreach ($order->orderItems as $orderitem) 
+			{
+				$orderitem->item_id = Product::find($orderitem->item_id);		
+			}
+		}
+
 		return view('client.pages.profile')->withOrders($orders);
 	}
 	public function changeUsername(Request $request){
@@ -519,4 +537,41 @@ class PageController extends Controller
     public function loadOrder($id){
         return CartService::loadCart($id);
     }
+    public function changeDetails(Request $request){
+    	$address = $request->input('address');
+    
+    	$birthdate = $request->birthdate;
+    	$user = User::find(Auth::id()); // to change form the database not from session "Auth::user()"
+    	if(isset($address))
+    		$user->address= $address;
+    	if(isset($birthdate))
+    		$user->birthdate = $birthdate ;
+
+    	$user->update();
+    	return 1;
+    }
+
+    public function deleteOrder(Request $request){
+    	$id = $request->id; 
+
+    	// $orders= OrderItem::where('order_id','=',$id)->get();
+    	// foreach ($orders as $order) {
+    	
+    	// $order->delete();
+    	// }
+    	$order = Order::find($id);
+    	$order->status_id=  4;
+    	$order->save();
+    	return 1;
+    }
+
+    public function uploadPictue(Request $request){
+    	$user = User::find(Auth::id());
+    	if ($request->hasFile('image')){
+			$user->image_id = ImageService::saveImage($request->file('image'));
+    	}
+    	$user->save();
+    	return back();
+    }
 }
+

@@ -97,13 +97,13 @@
     </header>
 
 
-    <div class="modal_one_item_details" id="rate-us-modal" style="top:10em;float: left;height: 36 em;display: none" >
+    <div class="modal_one_item_details" id="rate-us-modal" style="top:7em;float: left;height: 36 em;display: none" >
       <div class="col-md-12" >
         <h1>Rate Us</h1>
         {!! Form::open(['route' =>'review']) !!}
           
           {{ Form::label('rate','Rate:') }}
-          {{ Form::number('rate',0,['class'=>'form-control','max'=>'5'])}}         
+          {{ Form::number('rate',0,['class'=>'form-control','max'=>'5' , 'required' => 'required'])}}         
           <hr>
           {{ Form::label('desc', 'Description:')}}
           {{ Form::textarea('desc', null, ['class'=>'form-control'] ) }}

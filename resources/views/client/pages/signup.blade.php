@@ -180,7 +180,7 @@
         @section('scripts')
             <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
             <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
             <script src="/front-end/js/main.js"></script>
 
     <script>

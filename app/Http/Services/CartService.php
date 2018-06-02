@@ -167,12 +167,14 @@ class CartService
         if(isset($coupon)){
             $coupon = $coupon->coupon_id;
             $coupon = Coupon::find($coupon);
-            if ($coupon->coupon_type == 'fixed'){
-                $amount -= $coupon->amount;
-                if ($amount < 0 ) $amount =0;
-            }
-            else if ($coupon->coupon_type = 'percentage'){
-                $amount -= $amount * $coupon->amount; 
+            if (isset($coupon)){
+                if ($coupon->coupon_type == 'fixed'){
+                    $amount -= $coupon->amount;
+                    if ($amount < 0 ) $amount =0;
+                }
+                else if ($coupon->coupon_type = 'percentage'){
+                    $amount -= $amount * $coupon->amount; 
+                }
             }
         }
     

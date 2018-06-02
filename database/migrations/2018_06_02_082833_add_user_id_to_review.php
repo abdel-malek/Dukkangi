@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddReviewTable extends Migration
+class AddUserIdToReview extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class AddReviewTable extends Migration
      */
     public function up()
     {
-       Schema::create('review', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('desc')->nullable;
-            $table->integer('rate');
-            $table->timestamps();
-       });
+        Schema::table('review', function($table)
+        {
+            $table->unsignedInteger('user_id')->after('id');
+            $table->foreign('user_id')->references('id')->on('users');
+        });
     }
 
     /**
