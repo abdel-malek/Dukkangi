@@ -15,15 +15,13 @@ class IsAdmin
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {
-      if(Auth::Guest()){
-          abort(403, 'Unauthorized action.');
-      }else{
-          // Check if Admin
-          if(Auth::user()->user_category_id != 1){
-              abort(403, 'Unauthorized action.');
-          }
-      }
-      return $next($request);
+    {// Check if Admin
+        if (Auth::user() == null) {
+            return redirect('login');
+        }
+        if (Auth::Guest() || Auth::user()->user_category_id != 1) {
+            abort(403, 'Unauthorized action.');
+        }
+        return $next($request);
     }
 }
