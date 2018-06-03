@@ -23,6 +23,7 @@ class VerifyCsrfToken extends BaseVerifier
       '/admin/coupons',
       '/admin/coupon',
       '/changeqty',
-      '/getreview'
+      '/getreview',
+      '/admin-login'
     ];
 }

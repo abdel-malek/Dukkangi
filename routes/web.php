@@ -12,6 +12,8 @@
 */
 Route::get('/admin', function(){return view('admin.master');})->name('admin.home')->middleware('isadmin');
 Route::get('/', function(){return view('client.pages.home');});
+Route::get('/admin-login', 'AdminController@login');
+Route::post('/admin-login', 'AdminController@adminLogin');
 
             //Client Pages
 // Route::get('/test/email' , function(){
@@ -192,4 +194,3 @@ Route::post('/paypal','PayPalController@ipn');
 // Test
 //Route::get('/mail' , 'TestController@mail');
 //Route::get('/test/{id}' , 'PageController@loadOrder');
-

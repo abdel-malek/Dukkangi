@@ -19,9 +19,11 @@ class IsAdmin
         if (Auth::user() == null) {
             return redirect('login');
         }
+
         if (Auth::Guest() || Auth::user()->user_category_id != 1) {
             abort(403, 'Unauthorized action.');
         }
+
         return $next($request);
     }
 }
