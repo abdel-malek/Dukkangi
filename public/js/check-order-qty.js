@@ -6,6 +6,7 @@
         // Do Ajax and check the Barcode
         orderId = $('#orderId').val();
         checkBarcode($(this).val(),orderId);
+        $(this).val('');
     }
 })
 })(jQuery);
