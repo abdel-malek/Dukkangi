@@ -3,7 +3,7 @@
 })(jQuery);
 
 function loadUsers(){
-  $("#dhl-grid").jsGrid({
+  $("#order-grid").jsGrid({
         filtering: true,
         width: '100%',
         height: 'auto',
@@ -32,23 +32,32 @@ function loadUsers(){
             },
         },
        fields: [
-            {name: "id"    , title: 'Order ID'    , type: "text", width: 5},
-            {name: "user_id"    , title: 'User Email'    , type: "text", width: 5},
-            {name: "packed"    , title: 'Packed'    , type: "text", width: 5},
-            {name: "dhl_status" , title: 'Status' , type: "text", width: 5},
-            {name: "dhl_code" , title: ' DHL Code' , type: "text", width: 5},
+            {name: "id"         , title: 'ID'      , type: "text", width: 5},
+            {name: "dhl_status" , title: 'Delevered', type:"text", width: 5},
+            {name: "packed" , title: 'Packed' , type: "text",
+              itemTemplate: function(value,item){
+                $packed = '';
+
+                switch (value) {
+                  case "packed":
+                    $packed += '<b style="background-color:#6ea713;color:white">PACKED</b>';
+                    break;
+                  case "part_packed":
+                    $packed += '<b style="background-color:#b32323;color:white">PARTIAL PACKED</b>';
+                    break;
+                  case "unpacked":
+                    $packed += '<b>UN PACKED</b>';
+                    break;
+                  default:
+                }
+                return $packed;
+            }, width: 5},
             {
               type: "control", width: 10, editButton: false, modeSwitchButton: false, deleteButton: false,
               itemTemplate: function (value, item) {
                 var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
-                
-                if (item.dhl_status == "On Delivery" ){
-                    var $orderItems = $('<a class="btn btn-block btn-default btn-xs">Change Code</a>');
-                }
-                else {
-                    var $orderItems = $('<a class="btn btn-block btn-success btn-xs">On Delivery</a>');
-                }  
-                $orderItems.attr('onclick',`viewModal(${item.id})`);
+                var $orderItems = $('<a class="btn btn-block btn-success btn-xs">Order Item</a>');
+                $orderItems.attr('href',`../${item.id}/order-items`);
                 return $result.add($orderItems);
               },
             },

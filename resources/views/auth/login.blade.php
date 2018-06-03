@@ -1,8 +1,85 @@
 @extends('client.main')
+@section('styles')
+    <style>
+          .first_input{
+                    margin-top: 19em !important;
+                }
+                .block_icon{
+                    margin-top: 0em !important;
+                    float: left;
+                    padding-left: 2.6em;
+                }
+                .long-div{
+                    height: 45em;
+                }
+                .div_login{
+                    height:45em ;
+                }
+            @media (min-width: 768px) and (max-width: 1023px) {
+                .main-container {
+                    height: 86.7em;
+                    background-position-x: -16em;
+                }
+                .checkbox{    
+                    margin-left: 0px;
+                    margin-top: 18px;
+                    width: 1em;
+                    height: 1em;
+                }
+                .long-div{
+                    height: 86.7em;
+                }
+                .input_login, .input_singup{
+                    font-size: 2rem;
+                    padding: .675rem .75rem;
+                    padding-left: 3em;
+                    
+                }
+                .input-group-prepend img {
+                    height: 2.3em;
+                }
+                .input-group-prepend {
+                   margin-left: 1.2em;
+                   margin-top: 1em;
+                }
+                .welcome-img {
+                    margin-left: 22%;
+                }
+                .div_login, .div_singup {
+                    height: 86.7em;
+                    width: 36em;
+                }
+                .btn_login, .btn_cancel {
+                    font-size: 2em;
+                    padding: 0.6em 1em;
+                }
+                .singup_text {
+                    font-size: 2.3em;
+                }
+                .icon_social_media {
+                    height: 5.7em;
+                    margin-left: 4.9em;
+                }
+                .first_input{
+                    margin-top: 24em !important;
+                    margin-bottom: 1.6em !important;
+                }
+                .block_icon{
+                    margin-top: 1em !important;
+                    float: left;
+                    padding-left: 2.6em;
+                }
+                   .nav-link{
+                    font-size: 1.5em;
+                }
+            }
+    </style>
+
+@endsection
 @section('main_section')
       
       <div class="col-md-12" style="padding-left:0px;padding-right: 0px  " id="content_page">
-        <div  id="main-container" class="main-container">
+        <div  id="main-container" class="main-container long-div">
             <div class="container">
                 <div class="row">
                     <div class="col align-self-start">
@@ -39,11 +116,11 @@
                                 </div>
                             </div>
                             <p class="singup_text">
-                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} style="margin-left: 0px;"> @lang('Remember Me')
+                                <input type="checkbox" class="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} style="margin-left: 0px;"> @lang('Remember Me')
                             </p> 
                             <div class="col-sm-12 my-1" style="margin-top: 3em !important;float: left;">
                                 <div class="input-group">
-                                   <button type="submit" class="btn_login" style="border : 0px">
+                                   <button type="submit" class="btn_login" style="border : 0px;    cursor: pointer;">
                                         @lang('LOGIN')
                                     </button>
                                 </div>
@@ -66,7 +143,7 @@
                             </div>
                              </form>
                                <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;padding-left: 2.6em;">
-                                    <a href="https://www.facebook.com/" target="_blank"><img src="/front-end/images/signup/facebook copy.png" class="icon_social_media" /></a>
+                                    <a href="https://www.facebook.com/" target="_blank"><img src="/front-end/images/signup/facebook copy.png" class="icon_social_media"  style="margin-left: 2em;" /></a>
                                     <a href="https://www.instagram.com/" target="_blank"><img src="/front-end/images/signup/insta.png" class="icon_social_media" /></a>
                                     <a href="https://twitter.com/" target="_blank"><img src="/front-end/images/signup/twitter.png" class="icon_social_media" /></a>
                                 </div>
@@ -84,12 +161,7 @@
 @endsection
 @section('scripts')
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="{{URL::asset('/front-end/js/main.js')}}"></script>
-    <script>
+      <script>
 
         $("input::-webkit-input-placeholder").css({"color": "#fff"});
     </script>

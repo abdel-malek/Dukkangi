@@ -13,10 +13,10 @@
 Route::get('/admin', function(){return view('admin.master');})->name('admin.home')->middleware('isadmin');
 Route::get('/', function(){return view('client.pages.home');});
 
-//Pages Controller
-Route::get('/test/email' , function(){
-    return view('emails.signup');
-});
+            //Client Pages
+// Route::get('/test/email' , function(){
+//     return view('emails.signup');
+// });
 Route::get('/', 'PageController@index')->name('home');
 Route::get('/home', 'PageController@index');
 Route::get('/category/{id}', 'PageController@getCategoryPage')->name('category');
@@ -34,7 +34,13 @@ Route::post('/changeqty/' , 'CartController@changeQty');
 Route::post('/getamount/' , 'CartController@getAmount');
 Route::get('/barndfilter/{id}' , 'ProductController@filterByBrand')->name('brandfilter');
 Route::post('productview/notify' , 'ProductController@addNotification');
-
+Route::get('/myaccount' , 'PageController@getProfile')->name('profile');
+Route::get('/aboutus' , 'PageController@getAboutUs')->name('about-us');
+Route::post('/getreview' , 'PageController@getReview');
+Route::post('/review','PageController@setReview')->name('review');
+Route::post('/changedetails' , 'PageController@changeDetails')->middleware('auth');
+Route::post('/delteorder' , 'PageController@deleteOrder')->middleware('auth');
+Route::post('/uploadpic' ,'PageController@uploadPictue')->name('upload-pic')->middleware('auth');
    			                        //DASHBOARD
     //CATEGORIES
 Route::get('/admin/categories', ['uses' => 'CategoryController@index'                 ,'as' => 'category.index'       ]);
@@ -110,6 +116,10 @@ Route::post('/admin/users/delete/{id}', ['uses' => 'UserController@destroy'     
     //ORDERS
 Route::get('/admin/orders', ['uses' => 'OrderController@index'         , 'as' => 'order.index' ]);
 Route::post('/admin/orders', ['uses' => 'OrderController@loadOrder'     , 'as' => 'order.data'  ]);
+    //USER ORDERS
+Route::get('/admin/orders/user/{id}' , 'OrderController@getUserOrders')->name('getUserOrders');
+Route::post('/admin/orders/user/{id}', 'OrderController@loadUserOrders');
+
 
 // check product qty
 Route::get('/admin/orders/{id}/checkproduct-qty',['uses'=>'OrderController@checkProductQtyPage','as' => 'order.checkProduct.index']);
@@ -180,6 +190,6 @@ Route::post('/paypal','PayPalController@ipn');
 
 
 // Test
-Route::get('/mail' , 'TestController@mail');
-Route::get('/test' , 'TestController@test');
+//Route::get('/mail' , 'TestController@mail');
+//Route::get('/test/{id}' , 'PageController@loadOrder');
 

@@ -1,33 +1,9 @@
-<style>
-#ex3{
-  float: right;
 
-}
-#ex3 .fa-stack[data-count]:after{
-    position:absolute;
-    right:0%;
-    top:1%;
-    content: attr(data-count);
-    font-size:30%;
-    padding:.6em;
-    border-radius:50%;
-    line-height:.8em;
-    color: white;
-    background:rgba(255,0,0,.85);
-    text-align:center;
-    min-width: 1em;
-    font-weight:bold;
-  }
-  #ex3 .fa-stack-1x, .fa-stack-2x{
-    background-color:#d90000;
-    border-radius: 100px;
-  }
-</style>
 <header id="header">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light" id="main-nav-bar">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light " id="main-nav-bar" style="width: 102%;">
       <a href="{{route('home')}}"> <img class="logo" src="/front-end/images/logo.png"/></a>
-        <div class="collapse navbar-collapse" id="main-navbar-items">
-          <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+        <div class="collapse navbar-collapse top_nav" id="main-navbar-items" style="display: block;text-align: right;">
+          <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex" style="text-align: right;direction: ltr;float: right;">
             <li class="nav-item active">
               <a class="nav-link" href="{{ route('home') }}">@lang('Home')</a>
             </li>
@@ -35,13 +11,13 @@
             @if(!Auth::check() )
 
             <li class="nav-item">
-              <a class="nav-link" href="{{route('login')}}">@lang('Login')</a>
+              <a class="nav-link" href="{{ route('login') }}">@lang('Login')</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{route('register')}}">@lang('Sign up')</a>
+              <a class="nav-link" href="{{ route('register') }}">@lang('Sign up')</a>
             </li>
              <li class="nav-item">
-              <a class="nav-link" href="#">@lang('About')</a>
+              <a class="nav-link" href="{{ route('about-us') }}">@lang('About')</a>
             </li>
             @else
 
@@ -59,7 +35,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">@lang('My Account')</a>
+              <a class="nav-link" href="{{route('profile')}}">@lang('My Account')</a>
             </li>
 
             <li class="nav-item">
@@ -77,10 +53,14 @@
       </nav>
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light" id="lang-nav-bar">
-        <a class="navbar-brand rate-us" href="#">@lang('Rate us?')</a>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+        @if(Auth::check())
+            <a class="navbar-brand rate-us" onclick="showratemodal();" style="cursor: pointer;" >@lang('Rate us?')</a>
+          
+        @else
+          <a class="navbar-brand rate-us" href="{{route('login')}}">@lang('Rate us?')</a>
+        @endif
+        <div class="collapse navbar-collapse" style="display:block;;text-align: right;" id="navbarSupportedContent">
+          <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex" style="text-align: right;direction: ltr;float: right;">
             <li class="nav-item {{ App::isLocale('en')  ? 'active':'' }}">
               <a class="nav-link" href="/lang/en">
                 <img src='/front-end/images/usa-flag.png' class='icon-flag'>
@@ -115,3 +95,22 @@
         </div>
       </nav>
     </header>
+
+
+    <div class="modal_one_item_details" id="rate-us-modal" style="top:7em;float: left;height: 36 em;display: none" >
+      <div class="col-md-12" >
+        <h1>Rate Us</h1>
+        {!! Form::open(['route' =>'review']) !!}
+          
+          {{ Form::label('rate','Rate:') }}
+          {{ Form::number('rate',0,['class'=>'form-control','max'=>'5' , 'required' => 'required'])}}         
+          <hr>
+          {{ Form::label('desc', 'Description:')}}
+          {{ Form::textarea('desc', null, ['class'=>'form-control'] ) }}
+          <hr>
+          {{Form::submit('Submit' , ['class' => 'btn btn-block btn-success' , 'style' => 'margin-bottom:30x'])}}
+
+          <a class="btn btn-block btn-default" onclick="$('#rate-us-modal').css({'display':'none'});" >Cancel</a>
+        {!! Form::close() !!}
+      </div>
+    </div>

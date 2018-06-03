@@ -4,7 +4,7 @@
 	position: absolute;
 	z-index: 22;
 	    margin-top: 0em;
-    height: 50.5%;
+    height: 55.2%;
 }
 .title_item_out_of_stock{
 	width: 100%;
@@ -12,7 +12,7 @@
 	color: #d80001;
 	font-family: 'EagarFont';
 	font-size: 2em;
-	margin-top: 2em; 
+	margin-top: 2em;
 }
 .text_item_out_of_stock{
 	width: 100%;

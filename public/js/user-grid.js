@@ -42,7 +42,7 @@ function loadUsers(){
               itemTemplate: function (value, item) {
                 var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
                 var $edit = $('<a class="btn btn-block btn-default btn-xs">See Orders</a>');
-                $edit.attr('href',`#`);
+                $edit.attr('href',`/admin/orders/user/${item.id}`);
                 return $result.add($edit);
               },
             },

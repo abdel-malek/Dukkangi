@@ -113,10 +113,13 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 }
 .input-search_icon{
     margin-top: 0.7em;
-    right: 24px;
+    right: 0.5em;
     color: #aaa;
     float: right;
     position: absolute;
+}
+.input-search_icon i {
+    font-size: 24px;
 }
 .tabs__item{
     border: 0em !important;
@@ -136,16 +139,15 @@ input:-moz-placeholder, textarea:-moz-placeholder {
     padding-right: 1.5em;
 }
 
-.title_footer{
+.title_footer {
     width: 100%;
     text-align: center;
-    color:#fff;
-    margin-top: 2.5em;
+    color: #fff;
+    margin-top: 1.5em;
     font-size: 1.7em;
-    margin-bottom: 1em;
+    margin-bottom: 0em;
     font-family: 'HeadlinesFont';
     font-weight: bold;
-
 }
 .text_footer{
     width: 100%;
@@ -153,7 +155,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
     color:#fff;
     margin-top: 0.5em;
     font-size: 1em;
-    margin-bottom: 1em;
+    margin-bottom: 1em; 
 }
 .footer{
     float: left;
@@ -161,9 +163,15 @@ input:-moz-placeholder, textarea:-moz-placeholder {
     background-color: #d80f17;
     width: 100%;
 }
+.icon_inst{
+    margin-left: 3em !important;
+}
+.icon_face{
+   padding: 0.3em 0.5em !important;
+}
 .icon_footer{
     float: left;
-    padding: 0.5em 0.5em;
+    padding: 0.3em 0.3em;
     background-color: #fff;
     color: #d80f17;
     margin-left: 2em;
@@ -210,7 +218,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 }
 .jssort101 .t{
     left: -22em !important;
-    width: auto ;
+    width: auto !important;
     height: 7em !important;
 }
 .jssort101 .p .cv{
@@ -261,7 +269,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 }
 .jssort101{
     background-color: #ffffff00 !important;
-    top :14.4em !important
+    top :16em !important
 }
 .jssort101 .t{
     opacity: 0.8 !important;
@@ -281,27 +289,33 @@ input:-moz-placeholder, textarea:-moz-placeholder {
     z-index: 9;
 }
 .img_item{
-    width: 100%;
+    width: auto;
     height: 8.4em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
 }
 .text_discount{
     font-family: 'EagarFont';
     position: absolute;
-    top: -5em;
-    width: 3em;
-    left:0.2em;
+    top: -6.5em;
+    transform: rotate(-54deg);
+    width: 4em;
+    left: 0em;
     z-index: 5;
     color: #fff;
     font-size: 1em;
+    padding-left: 0.5em;
 }
 .discount_item{
     width: 0;
     height: 0;
-    border-top: 5em solid #d80001;
-    border-right: 4em solid transparent;
+    border-top: 6em solid #d80001;
+    border-right: 5em solid transparent;
     position: absolute;
-    top:0em;
-    left:1.4em;
+    top: 0em;
+    left: 0.9em;
 
 }
 .rating{
@@ -317,7 +331,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
     background-color: #D80F16 ;
     padding: 0.3em 1em;
     color: #fff;
-    text-align: center;
+    text-align: center; 
     cursor: pointer;
 }
 .rating i{
@@ -382,7 +396,153 @@ option{
     background-color: #d80001;
     margin-top: 2.5em;
 }
-.icon-flag{
-  width: 16px;
-  height: 16px;
+
+.header_slider{
+    cursor:default;
+    position:relative;
+    top:0px;
+    left:240px;
+    width:850px;
+    height:200px;
+    overflow:hidden;
+}
+.block_item{
+    margin-right: 0.2em;
+    margin-left: 0.2em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+.block_tab{
+    margin-top: 6em;
+    padding-right: 0em;
+    padding-left: 0em;
+    margin-bottom:20px;
+}
+
+@media (min-width: 768px) and (max-width: 1030px) {
+
+    #jssor_1 .jssort101 {
+        left: 124.14844px !important;
+    }
+    .section_item {
+        margin-right: 0em;
+        padding-right: 0.3em;
+    }
+    .text_big_image_slider {
+    font-size: 1.2em;
+}
+.input-search_icon i {
+    font-size: 35px;
+}
+.btn_filter {
+    font-size: 1.7em;
+}
+.input_search {
+    padding: 1em 1em;
+}
+.title_footer {
+    font-size: 2em;
+}
+    .text_big_image_slider {
+    padding: 0.9em 1em;
+}
+    .header_slider{
+        cursor:default;
+        position:relative;
+        top:0px;
+        left:90px;
+        width:1025px;
+        height:260px;
+        overflow:hidden;
+    }
+    .navbar {
+        padding: .5rem 6rem;
+    }
+    .logo_text {
+        height: 3em;
+            margin-left: 3em;
+    }
+    .block_item{
+        margin-right: 1.5em;
+        margin-left: 4.5em;
+        padding-left: 0em;
+        padding-right: 0em;
+    }
+    .jssort101 {
+        top: 23em !important;
+    }
+    .discount_item {
+        left: 0.8em;
+    }
+    .icon_footer {
+        margin-left: 1em;
+    }
+    .text_small_image_slider {
+        bottom: -1.5vw;
+        font-size: 1.1em;
+    }
+    .block_tab{
+        margin-top: 4em;
+        padding-right: 0em;
+        padding-left: 0em;
+    }
+    .div_item .rating {
+        bottom: 0.6em;
+        left: 0.3em ;
+    }
+    .item_name {
+        font-size: 1.6em;
+    }
+    .nav-item a{
+        font-size: 1.4em;
+    }
+    .img_item {
+        height: 19.4em;
+    }
+    .section_item {
+        margin-top: 2em;
+    }
+    .jssort101 .t{
+        left: -23em !important;
+        width: auto !important;
+        height: 11em !important;
+    }
+    /*.div_item .rating {
+        bottom: 1em;
+    }*/
+    .div_item{
+        padding-bottom: 2em;
+    }
+    .tabs__item {
+        font-size: 1.4em;
+    }
+    .item_price {
+        font-size: 2.4em;
+    }
+    .icon_view_my_card {
+        height: 4.5em;
+        margin-top: 1em;
+    }
+    .discount_item {
+        border-top: 10em solid #d80001;
+        border-right: 8em solid transparent;
+    }
+    .text_discount {
+        font-size: 2em;
+    }
+}
+@media (min-width: 960px) and (max-width: 1030px)
+{
+    #jssor_1 .jssort101 {
+        left: 66.14844px !important;
+    }
+    .jssort101 {
+        top: 24.5em !important;
+    }
+    .block_item {
+        margin-right: 0.2em;
+        margin-left: 0.2em;
+        padding-left: 1em;
+        padding-right: 1em;
+    }
 }

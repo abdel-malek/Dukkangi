@@ -2,12 +2,87 @@
 @section('styles')
         <meta charset="UTF-8">
         <title>Dukkangi</title>
-        <link rel="stylesheet" href="{{URL::asset('/front-end/css/lib/bootstrap.min.css')}}">
         <link rel="stylesheet" href="{{URL::asset('/front-end/css/style.css')}}">
         <link rel="stylesheet" href="{{URL::asset('/front-end/css/login.css')}}">
-        <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      
         <style type="text/css">
+                    .first_input{
+                margin-top: 19em !important;
+            }
+          
+    a:hover {
+        color: inherit;
+        text-decoration: none;
+    }
+    a {
+        color: inherit;
+        text-decoration: none;
+
+    }
+            .block_icon{
+                margin-top: 0em !important;
+                float: left;
+                padding-left: 2.6em;
+            }
+            .block_input_singup{
+                margin-top: 0.5em !important;
+            }
+            @media (min-width: 768px) and (max-width: 1023px) {
+                .rate-us{
+                    display: none;
+                }
+                .main-container {
+                    height: 86.7em;
+                    background-position-x: -16em;
+                }
+                .input_login, .input_singup{
+                    font-size: 2rem;
+                    padding: .675rem .75rem;
+                }
+                .input-group-prepend img {
+                    height: 2.3em;
+                }
+                .input-group-prepend {
+                    margin-left: 1.2em;
+                    margin-top: 1em;
+                }
+                .welcome-img {
+                    margin-left: 22%;
+                }
+                .div_login, .div_singup {
+                    height: 86.7em;
+                    width: 37em;
+                }
+                .btn_login, .btn_cancel {
+                    font-size: 2em;
+                    padding: 0.6em 1em;
+                }
+                .singup_text {
+                    font-size: 2.3em;
+                }
+                .icon_social_media {
+                    height: 5.7em;
+                    margin-left: 4.9em;
+                }
+                .first_input{
+                    margin-top: 24em !important;
+                    margin-bottom: 1.6em !important;
+                }
+                .block_icon{
+                    margin-top: 1em !important;
+                    float: left;
+                    padding-left: 2.6em;
+                }
+                .nav-link{
+                    font-size: 1.5em;
+                }
+                .block_input_singup{
+                    margin-top: 1em !important;
+                }
+            }
         </style>
+
 @endsection    
 
 @section('main_section')
@@ -72,7 +147,7 @@
                            
                             <div class="col-sm-12 my-1" style="margin-top: 3em !important;float: left;">
                                 <div class="input-group">
-                                    <button type="submit" class="btn_login" style="border :0px">
+                                    <button type="submit" class="btn_login" style="border :0px;cursor: pointer;">
                                         Sign up
                                     </button>
                                 </div>
@@ -87,7 +162,7 @@
                         </form>
                             <br>
                             <div class="col-sm-12 my-1" style="margin-top: 3em !important;float: left;padding-left: 1.6em;">
-                                <a href="https://www.facebook.com/" target="_blank"><img src="/front-end/images/signup/facebook copy.png" class="icon_social_media" /></a>
+                                <a href="https://www.facebook.com/" target="_blank"><img src="/front-end/images/signup/facebook copy.png" class="icon_social_media" style="margin-left: 2em;" /></a>
                                 <a href="https://www.instagram.com/" target="_blank"><img src="/front-end/images/signup/insta.png" class="icon_social_media" /></a>
                                 <a href="https://twitter.com/" target="_blank"><img src="/front-end/images/signup/twitter.png" class="icon_social_media" /></a>
                             </div>
@@ -104,31 +179,17 @@
 
         @section('scripts')
             <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-           <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-             <!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+            <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
             <script src="/front-end/js/main.js"></script>
 
-      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
-      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-
     <script>
-       /* $(function () {
-            $("#date_of_brith").datepicker({
-                onSelect: function (date){
-                    // date =date + " 01:00:00";
-                $("#date_of_brith").val(date);
-                }
-
-            });
-        });*/
-        $( function() {
-    $( "#date_of_brith" ).datepicker({
+    $( function() {
+    $("#date_of_brith").datepicker({
        yearRange: "-70:-15",
       changeMonth: true,
       changeYear: true
     });
-  } );
+  });
     </script>
     @endsection

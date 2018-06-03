@@ -1,7 +1,8 @@
 
       <meta charset="UTF-8">
       <link rel="stylesheet" href="{{URL::asset('/css/bootstrap.min.css')}}">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"><link rel="stylesheet" href="{{url('/front-end/css/style.css')}}">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+      <link rel="stylesheet" href="{{url('/front-end/css/style.css')}}">
 
       <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
       <link rel="stylesheet" href="{{url('/front-end/css/jquery-pretty-tabs.css')}}">
@@ -13,7 +14,26 @@
       <script type="text/javascript" src="{{url('/front-end/js/plugin/slide.js')}}"></script>
       <link rel="stylesheet" href="{{url('/front-end/css/SimpleStarRating.css')}}">
       <link rel="stylesheet" type="text/css" href="{{url('static/sweetalert/sweetalert2.min.css')}}">
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
        <style>
+           .modal_one_item_details{
+             top: 10em;
+                top: 2em;
+                left:30%;
+                z-index: 26;
+                margin-top: 0em;  
+                width: 26%;
+                background-color: #fff;
+                margin-left: 4em;
+                float: left;
+                position: absolute;
+                z-index: 15;
+                box-shadow: 1px 1px 16px #000000b0;
+            }
             .star{
                 cursor: pointer;
                 color: #fff;
@@ -27,6 +47,10 @@
                 z-index: 33;
                 width: 100%;
             }
+            .icon-flag {
+    width: 16px;
+    height: 16px;
+}
             .rating{
                 font-size: 1.3em;
                 color: #fff;
@@ -85,9 +109,41 @@
             .navbar {
                 padding: .5rem 7rem;
             }
+
             .btn_qty{
                 cursor: pointer;
             }
+            .top_nav {
+                margin-left: 55px;
+            }
+            @media (min-width: 768px) and (max-width: 1023px) {
+                #navbarSupportedContent ul li {
+                    font-size: 21px;
+                }
+
+                .top_nav {
+                    margin-left: 12px;
+                } 
+                .landing-items-block .title {
+                    margin-left: 7px;
+                    top: 7em;
+                }
+                .icon-flag {
+                    float: right;
+                    margin-top: 0.5em;
+                    margin-left: 0.3em;
+                }
+                .item_in_lg{
+                    display: none !important;
+                }    
+                .rate-us{
+                    display: none;
+                }
+            }
+            .star_1 i:hover{
+                content: "&#xE838;";
+            }
+        
         </style>
         <style>
             /* jssor slider loading skin spin css */
@@ -125,9 +181,30 @@
             .jssort101 .pav .t, .jssort101 .p:hover .t{opacity:1;}
         </style>
         <style>
-            .star_1 i:hover{
-                content: "&#xE838;";
-            }
+        #ex3{
+          float: right;
+        }
+        #ex3 .fa-stack[data-count]:after{
+            position:absolute;
+            right:0%;
+            top:1%;
+            content: attr(data-count);
+            font-size:30%;
+            padding:.6em;
+            border-radius:50%;
+            line-height:.8em;
+            color: white;
+            background:rgba(255,0,0,.85);
+            text-align:center;
+            min-width: 1em;
+            font-weight:bold;
+        }
+        #ex3 .fa-stack-1x, .fa-stack-2x{
+            background-color:#d90000;
+            border-radius: 100px;
+        }
+        .top_nav{
+            max-width: 80%;
+        }
         </style>
-
       @yield('styles')

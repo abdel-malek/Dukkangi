@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Services\CartService;
 use Session;
 
 
@@ -32,4 +33,6 @@ class UserController extends Controller
     {
         return UserService::deleteUser($id);
     }
+
+    
 }

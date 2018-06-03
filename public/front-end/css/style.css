@@ -67,7 +67,7 @@
 /*landing page styles   --BEGIN--*/
 
 #main-container{
-  background-image: url("../images/landing_page/long_background.png");
+  background-image: url("/front-end/images/landing_page/long_background.png");
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -145,12 +145,13 @@
 }
 
 .landing-items-block .shisha{
-  position: absolute;
-  left: 57px;
-  font-size: 38px;
-  top: 14px;
-  transform: rotate(-10deg);
+    position: absolute;
+    left: 8px;
+    font-size: 38px;
+    top: 3px;
+    transform: rotate(10deg);
 }
+
 
 .landing-items-block .fashion{
   position: absolute;

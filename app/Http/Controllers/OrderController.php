@@ -69,4 +69,11 @@ class OrderController extends Controller
       OrderService::changeDHLState($orderId, $code);
       return redirect(route('dhl.index'));
     }
+    public function getUserOrders($id){
+      return view('admin.orders.userOrders');
+    }
+    public function loadUserOrders($id,Request $request){
+        $filter = $request->filter;
+        return OrderService::loadUserOrders($id,$filter);
+    }
 }

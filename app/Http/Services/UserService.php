@@ -52,6 +52,10 @@ class UserService {
 		return User::where('id','=',$id)->delete();
 	}
 	
-
-
+	public static function changeUsername($username){
+		$user = Auth::user();
+		$user->name = $username;
+		return $user->update();
+	}
+	
 }

@@ -13,12 +13,16 @@ use App\Rate;
 use App\OrderItem;
 use App\Comment;
 use App\Http\Services\FilterService;
+use App\Http\Services\CartService;
+use App\Http\Services\ImageService;
 use Redirect;
 use Session;
 use App;
 use Auth;
 use App\Brand;
 use App\Tags;
+use App\Order;
+use App\Review;
 
 class PageController extends Controller
 {
@@ -315,6 +319,20 @@ class PageController extends Controller
 				$product->discount =  sprintf('%0.0f',100 - (($product->discount_price * 100) / $product->price));
 			}
 		}
+		$temp = [];
+		$count = 1;
+		foreach ($subcategories as $subcatego) {
+			if ($subcatego->id == $subcategory->id){
+				$temp[0]=  $subcatego;
+			}
+			else {
+				$temp[$count] = $subcatego;
+				$count++;
+			}
+		}
+		ksort($temp);
+		$subcategories = $temp;
+		
 		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withLastSearch($subcategory->category_id);
 	}
 
@@ -354,7 +372,7 @@ class PageController extends Controller
 
 		$simiproducts = Product::select('*')
 		->whereIn('id' , $Tags)
-		->where('active','=',true)->get();
+		->where('active','=',true)->take(4)->skip(0)->get();
 
 		if ($lang == "ar"){
 			$product->english = $product->arabic;
@@ -476,4 +494,84 @@ class PageController extends Controller
   		return Redirect::back();
 	}
 
+	public function getAboutUs(){
+		$review =Review::get()->first();
+		return view('client.pages.about_us')->withReview($review);
+	}
+	public function getReview(Request $request)
+	{
+		$index = $request->index;	
+		return Review::take(1)->skip($index-1)->get();
+	}
+	public function setReview(Request $request)
+	{
+		$review = new Review();
+		
+		if($$request->input('rate') != 0){
+			$review->desc = $request->input('desc');
+			$review->rate = $request->input('rate');
+			$review->user_id = Auth::id();
+
+			$review->save();	
+		}
+		return back();
+	}
+
+	public function getProfile(){
+		$user = Auth::user();
+		$orders = Order::where('user_id' , '=' , $user->id)->where('status_id', '!=',4)->get();
+		foreach ($orders as $order) {
+			$order->orderItems = OrderItem::where('order_id', '=', $order->id)->get();
+			foreach ($order->orderItems as $orderitem) 
+			{
+				$orderitem->item_id = Product::find($orderitem->item_id);		
+			}
+		}
+
+		return view('client.pages.profile')->withOrders($orders);
+	}
+	public function changeUsername(Request $request){
+        $username = $request->username;
+        return UserService::changeUsername($username);
+    }
+    public function loadOrder($id){
+        return CartService::loadCart($id);
+    }
+    public function changeDetails(Request $request){
+    	$address = $request->input('address');
+    
+    	$birthdate = $request->birthdate;
+    	$user = User::find(Auth::id()); // to change form the database not from session "Auth::user()"
+    	if(isset($address))
+    		$user->address= $address;
+    	if(isset($birthdate))
+    		$user->birthdate = $birthdate ;
+
+    	$user->update();
+    	return 1;
+    }
+
+    public function deleteOrder(Request $request){
+    	$id = $request->id; 
+
+    	// $orders= OrderItem::where('order_id','=',$id)->get();
+    	// foreach ($orders as $order) {
+    	
+    	// $order->delete();
+    	// }
+    	$order = Order::find($id);
+    	$order->status_id=  4;
+    	$order->save();
+    	return 1;
+    }
+
+    public function uploadPictue(Request $request){
+    	$user = User::find(Auth::id());
+    	if ($request->hasFile('image')){
+			$user->image_id = ImageService::saveImage($request->file('image'));
+    	}
+    	$user->save();
+    	return back();
+    }
 }
+

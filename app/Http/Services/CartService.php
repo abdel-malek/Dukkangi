@@ -163,15 +163,18 @@ class CartService
             ->where('status_id', '=', OrderStatus::CREATED);
         $amount = $result->sum('total_amount');
         
-        $coupon = Order::find(session('cartId'))->coupon_id;
+        $coupon = Order::find(session('cartId'));
         if(isset($coupon)){
+            $coupon = $coupon->coupon_id;
             $coupon = Coupon::find($coupon);
-            if ($coupon->coupon_type == 'fixed'){
-                $amount -= $coupon->amount;
-                if ($amount < 0 ) $amount =0;
-            }
-            else if ($coupon->coupon_type = 'percentage'){
-                $amount -= $amount * $coupon->amount; 
+            if (isset($coupon)){
+                if ($coupon->coupon_type == 'fixed'){
+                    $amount -= $coupon->amount;
+                    if ($amount < 0 ) $amount =0;
+                }
+                else if ($coupon->coupon_type = 'percentage'){
+                    $amount -= $amount * $coupon->amount; 
+                }
             }
         }
     
