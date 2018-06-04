@@ -1,7 +1,7 @@
 <footer class="footer" style="margin-top: 0px" >
             <div class="col-md-12" style="float:left">
                 <h2 class="title_footer">
-                    @lang('About Dukkangi')
+                    <a href="{{route('about-us')}}" style="color: #fff;text-decoration: none; ">@lang('About Dukkangi')</a>
                 </h2>
             </div>
             <div class="col-md-6 " style="float:left;margin-left: 26%;">

@@ -15,7 +15,7 @@
 	.right-arrow
 	{    
 		cursor: pointer;
-		left: 21.5em;
+		left: 24.5em;
     	top: 10.5em;
 		background-color: #d80001;
 		border-radius: 1.5em;
@@ -27,7 +27,7 @@
    		font-size: 12px;    	
 	}
 	.left-arrow
-	{
+	{    
 		cursor: pointer;
 		top: 10.5em;
     	left: -1em;
@@ -113,6 +113,9 @@
 	}
 	.glyphicon{
 		top:140px !important;
+	}
+	.sth{
+		margin-top: 103px;
 	}
 	@media (min-width: 768px) and (max-width: 1030px) {
 		.sth 
