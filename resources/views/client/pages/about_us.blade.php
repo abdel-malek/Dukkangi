@@ -100,7 +100,8 @@
 	    left: 1.5em;
 	    font-size: 19px;
 	}
-	.mail{
+	.mail
+	{
 		position: relative;
 	    top: 1.4em;
 	    left: 1.7em;
@@ -113,6 +114,19 @@
 	.glyphicon{
 		top:140px !important;
 	}
+	@media (min-width: 768px) and (max-width: 1030px) {
+		.sth 
+		{
+			left: 46em !important;
+    		max-width: 30% !important;
+		}
+		.right-arrow
+		{
+			left: 15em;
+		}
+		.img-logo{
+			width: 80%;
+		}
 	}
 </style>
 @section ('styles')
@@ -163,7 +177,7 @@
 		</div>
 
 	</div> 
-	<div class="contact-us-div col-md-6">
+	<div class="contact-us-div col-md-6 sth" >
 			<h2>Contact Us</h2>
 			<span class="mail">@</span>
 			<p class="contact-par">

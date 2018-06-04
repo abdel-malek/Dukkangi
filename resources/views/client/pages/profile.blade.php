@@ -208,6 +208,17 @@
 		border-right: 0px solid #A9A9A9;		
 	}
 
+	@media (min-width: 768px) and (max-width: 1030px) {
+		.sections{
+			width: 60%;
+		}
+		.one_item_details, .modal_one_item_details
+		{
+      		left: -1em !important;
+    		width: 38% !important;
+		}
+	]
+
 
 
 </style>
