@@ -508,9 +508,12 @@ class PageController extends Controller
 	{
 		$review = new Review();
 		
-		if($$request->input('rate') != 0){
+		if($request->input('rate') != 0){
 			$review->desc = $request->input('desc');
 			$review->rate = $request->input('rate');
+			if ($review->desc == null && $review->rate == 0  ) return back();
+			if ($review->desc == null ) 
+				$review->desc = " ";
 			$review->user_id = Auth::id();
 
 			$review->save();	
