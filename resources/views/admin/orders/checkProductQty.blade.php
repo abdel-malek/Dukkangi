@@ -14,7 +14,7 @@
 @endsection
 
 @section('title')
-  Check Product Qty
+  Packing Products
 @endsection
 
 @section('grid')

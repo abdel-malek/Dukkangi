@@ -36,7 +36,7 @@ Route::post('/changeqty/' , 'CartController@changeQty');
 Route::post('/getamount/' , 'CartController@getAmount');
 Route::get('/barndfilter/{id}' , 'ProductController@filterByBrand')->name('brandfilter');
 Route::post('productview/notify' , 'ProductController@addNotification');
-Route::get('/myaccount' , 'PageController@getProfile')->name('profile');
+Route::get('/myaccount' , 'PageController@getProfile')->name('profile')->middleware('auth');
 Route::get('/aboutus' , 'PageController@getAboutUs')->name('about-us');
 Route::post('/getreview' , 'PageController@getReview');
 Route::post('/review','PageController@setReview')->name('review');

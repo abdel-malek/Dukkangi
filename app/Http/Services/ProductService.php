@@ -193,7 +193,8 @@ class ProductService
 
         $product->qty             = $request->qty;
         $product->price         = $request->price;
-        $product->discount_price = $request->discount_price;
+        if (isset($request->discount_price))   
+            $product->discount_price = $request->discount_price;
         //$product->category_id    = $request->category_id[0];
         //$product->subcategory_id = $request->subcategory_id[0];
         $product->brand_id = $request->brand_id;
@@ -249,7 +250,9 @@ class ProductService
                 //Sub-Categories
 
         foreach ($request->subcategory_id as $singleSubcategeory) {
+          
           $tag = Tags::where('product_id' , '=' , $id)->where('subcategory_id' , $singleSubcategeory)->get()->first();
+          Tags::where('product_id' , '=', $id)->delete();
           if(!isset($tag)){
             $subcategory = Subcategory::find($singleSubcategeory);
             $tag = new Tags();

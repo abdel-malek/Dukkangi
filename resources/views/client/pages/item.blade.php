@@ -46,6 +46,7 @@
         bottom: 32px;
         font-size: 0.9em;
         color: #fff;
+        max-height: 2em;
     }
 
     .buttons {

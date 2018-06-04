@@ -617,12 +617,13 @@
         <p class="price_item_details">
 
             @if (isset($product->discount))
-            <span style="left: -16px;width: 5em;">
+            <span style="left: 30px;width: 5em;">
 
                 <small>
-                    <small> {{$product->price}}-{{ $product->discount }}% =
-                        <b>{{$product->discount_price}} € </b>
-                    </small>
+                    <span style="text-decoration: line-through;left: -2.5em;top: -6px; font-size:33px"><small> {{$product->price}}</small></span>
+                    <span style="font-size: 19px;top: 0.6em;">Saled To</span>
+                    <b> {{$product->discount_price}} €</b> 
+                    
                 </small>
                 @else
                 <span>
@@ -721,9 +722,9 @@
         <div class="customer_reviews col-md-7">
             @foreach($comments as $comment)
             <div class="comments_customer_reviews">
-                <img src="/uploads/user.png" class="img_user_comments_customer_reviews">
+                <img src="{{isset($comment->user->image_id)? $comment->user->image_id : '/uploads/user.png'}}" style="min-height: 4em;" class="img_user_comments_customer_reviews">
                 <div class="details_comment">
-                    <h3 class="username_details_comment" style="width:225px">{{$comment->user_id}}</h3>
+                    <h3 class="username_details_comment" style="width:225px">{{$comment->user->name}}</h3>
                     <p class="rated_details_comment" style="margin-left: 0px">
                         <?php if($comment->rate != 0){ ?> @lang('Rated this product')
                         <?php } ?>
@@ -806,7 +807,7 @@
 <div class="modal_one_item_details" id="modal_one_item_details" style="display: none;" data-productId="{{$product->id}}"
     data-qty='1'>
     <div class="header_item_details">
-        <img src="/front-end/images/slider/slider1.jpg" class="img_item_details" style="height: 380px" />
+        <img src="{{$product->image_id}}" class="img_item_details" style="height: 300px" />
         <div class="div_title_item_details">
             <p class="title_item_details">
                 {{$product->english}}

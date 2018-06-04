@@ -348,16 +348,16 @@ class PageController extends Controller
 		$skip = Comment::with(['user'])->where('product_id','=',$product->id)->get()->count();
 		$comments = Comment::with(['user'])->where('product_id','=',$product->id)->skip($skip-3)->take(3)->get();
 		$logo = Brand::select('image_path' , 'id')->where('id' , '=', $product->brand_id)->get()->first();
-		foreach ($comments as $comment) {
-			$user =  User::find($comment->user_id);
-			if (!isset($user)) 
-				$name = "Anonymous";
-			else 
-				$name = $user->name;
+		// foreach ($comments as $comment) {
+		// 	$user =  User::find($comment->user_id);
+		// 	if (!isset($user)) 
+		// 		$name = "Anonymous";
+		// 	else 
+		// 		$name = $user->name;
 			
-			$comment->user_id = $name;
-			$comment->rate = round($comment->rate);
-		}
+		// 	$comment->user_id = $name;
+		// 	$comment->rate = round($comment->rate);
+		// }
 
 		$Tags = [];
 		$subcategory_ids = [];
@@ -423,6 +423,7 @@ class PageController extends Controller
 			}
 		}
 		// $product->qty = 0;
+		// dd($comments);
 		return view('client.pages.item_view')->withProduct($product)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments)->withBrand($logo);
 	}
 

@@ -215,7 +215,7 @@
 
 @section ('main_section')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<div class="col-md-12 all_page_item_view" id="content_page" style="margin-bottom: 14em;">
+<div class="col-md-12 all_page_item_view" id="content_page" style="margin-bottom: 14em;top: 3em;">
     <div class="header_page" style="background-image: url('/front-end/images/items_page/1.png');background-size:133%">
         <p class="header_page_text_div" style="width: 90.3%; padding-left: 30.5em">
             {{Auth::user()->name }}
