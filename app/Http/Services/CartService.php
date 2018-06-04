@@ -5,6 +5,7 @@ use App\Order;
 use App\OrderItem;
 use App\OrderStatus;
 use Session;
+use App\Product;
 use App\Http\Services\PaymentService;
 use App\Http\Services\CouponService;
 use App\Http\Services\ProductService;
@@ -158,7 +159,7 @@ class CartService
     }
 
     public static  function getAmount($cartId){
-        $result = OrderItem::with('product')
+     /*   $result = OrderItem::with('product')
             ->where('order_id', '=', $cartId)
             ->where('status_id', '=', OrderStatus::CREATED);
         $amount = $result->sum('total_amount');
@@ -177,7 +178,14 @@ class CartService
                 }
             }
         }
-    
+    */
+        $amount =0;
+        $orders = OrderItem::where('order_id', '=', $cartId)->get();
+        foreach ($orders as $order) {
+            $product= Product::find($order->item_id);
+            $amount += isset($product->discount_price) ? $product->discount_price : $product->price ;
+        }
+
         return ['amount' => $amount];        
     }
 
@@ -205,8 +213,9 @@ class CartService
             }
         }
         $fake = 0;
-        if(sprintf('%0.2f', $calcAmount ) - sprintf('%0.2f', $amount)  > 0.1 ){
+        if(abs(sprintf('%0.2f', $calcAmount ) - sprintf('%0.2f', $amount))  > 0.01 ){
             $fake =1;
+
         }
 
         if (!$fake){
@@ -274,7 +283,6 @@ class CartService
 
     public static function prepareCartAndReturnTotalAmount($products, $cartId, $userId)
     {
-        //forloop
         $description = '';
         foreach ($products as $product) {
             $mProduct = ProductService::loadById($product['id']);
