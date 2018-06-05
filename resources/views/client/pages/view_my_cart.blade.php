@@ -413,7 +413,7 @@
             font-size: 1.7em;
         }
         .btn_credit_card_details {
-            width: 44%;
+            width: 85%;
             font-size: 1.3em;
             padding: 0.6em 1em;
         }

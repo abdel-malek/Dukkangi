@@ -98,7 +98,8 @@ float: left;
 }
 
 .btn_credit_card_details{
-	width: 30%;
+	width: 78%;
+  cursor: pointer;
 	border-radius: 1.5em;
 	background-color: #fff;
 	color: #111;

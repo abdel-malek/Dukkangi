@@ -392,7 +392,7 @@
 <div class="background_modal" style="display: none">
 </div>
 {!! Form::open(['route'=> 'fullfiltercategory' , 'method'=>'GET' ]) !!}
-<div class="modal_filter" id="modal_filter" style="display: none;overflow: auto;max-height: 100%;">
+<div class="modal_filter" id="modal_filter" style="display: none;   overflow: hidden;;max-height: 100%;">
     <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
         <div class="input-group">
             <input type="text" class="form-control input_filter input_search_in_modal" id="inlineFormInputGroupUsername" name="name"

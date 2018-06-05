@@ -115,7 +115,7 @@
 		top:140px !important;
 	}
 	.sth{
-		margin-top: 103px;
+		margin-top: 0px;
 	}
 	@media (min-width: 768px) and (max-width: 1030px) {
 		.sth 

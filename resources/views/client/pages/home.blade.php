@@ -161,7 +161,7 @@
          }
          .bottom_left_background_block .text_item_block {
              right: 22px;
-             font-size: 72px;
+             font-size: 62px;
              bottom: 137px;
          }
          .bottom_right_background_block .text_item_block {
