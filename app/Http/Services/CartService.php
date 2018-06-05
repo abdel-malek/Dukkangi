@@ -268,23 +268,6 @@ class CartService
             ->sum('total_amount');
     }
 
-
-    public static function buyItemCheckout($cartId, $product, $paymentMethodId = 1, $userId)
-    {
-        $tax = 0;
-
-        $orderItem = self::BuyThisItem($product['id'], $product['qty'], $userId);
-        $taxFees = ProductService::getProductTax($product['id']);
-        $tax += self::calculateTaxAmount($orderItem->total_amount, $taxFees);
-
-        //Calculate Amount
-        $amount = self::getTotalAmount($cartId);
-        //make a payment
-        // TODO: Pass payment method id
-        $payment = PaymentService::createPayment($paymentMethodId, $cartId, $userId, $amount, 'EUR', $tax);
-        return $payment->id;
-    }
-
     public static function closeCart($cartId, $payment)
     {
         return self::completeCart($cartId, $payment);

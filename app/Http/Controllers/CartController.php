@@ -99,29 +99,6 @@ class CartController extends Controller
         return view('client.pages.buy_item')->withProduct($product)->withSubcategory($subcategory);
     }
 
-    public function buyItemComplete(Request $request)
-    {
-
-        if (Auth::id() <= 0) {
-            return redirect('login');
-        }
-        $product = Product::find($request->id);
-        $userId = Auth::id();
-        $cartId = session('cartIdBuyItem');
-        $payment = CartService::buyItemCheckout($cartId, $product, 1, $userId);
-
-        $TotalPrice = CartService::getTotalPrice($cartId);
-        $orders = CartService::loadCart($cartId);
-
-        MailService::send('emails.payment', ['totalPrice' => $TotalPrice], 'payment@dukkangi.com', Auth::user()->email, 'payment successed');
-        MailService::send('emails.complete_order', ['orders' => $orders['orderItems'] , 'taxes' =>$orders['taxes']], 'info@dukkangi.com', Auth::user()->email, 'order successed');
-        $status = CartService::closeCart($cartId, $payment);
-
-        if ($status) {
-            return redirect('home');
-        }
-    }
-
     public function checkCoupon(Request $request){
         $code = $request->code;
         return CouponService::checkCoupon($code);
