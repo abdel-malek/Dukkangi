@@ -665,7 +665,7 @@
     <div class="col-md-12 all_page_item_view">
         <div class="header_page" style="background-image: url('/front-end/images/items_page/2.png')" />
         <p class="header_page_text_div">
-            Health Food / Canned Food
+            Dukkangi Store
             <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
             <span class="rating start_header"></span>
         </p>

@@ -43,12 +43,11 @@
     .sub-paragraph {
         background-color: #00000044;
         position: relative;
-        bottom: 32px;
+        bottom: 31px;
         font-size: 0.9em;
         color: #fff;
         max-height: 2em;
     }
-
     .buttons {
         margin: 5px 0;
     }

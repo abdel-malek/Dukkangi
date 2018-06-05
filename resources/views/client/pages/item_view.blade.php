@@ -616,13 +616,13 @@
         @if ($product->qty != 0 )
         <p class="price_item_details">
 
-            @if (isset($product->discount))
+            @if (isset($product->discount) && $product->discount_price != $product->price) 
             <span style="left: 30px;width: 5em;">
 
                 <small>
                     <span style="text-decoration: line-through;left: -2.5em;top: -6px; font-size:33px"><small> {{$product->price}}</small></span>
-                    <span style="font-size: 19px;top: 0.6em;">Saled To</span>
-                    <b> {{$product->discount_price}} €</b> 
+                    <span style="font-size: 15px;top: 1em;">Saled To</span>
+                    <b style="font-family: 'EagarFont';"> {{$product->discount_price}} €</b> 
                     
                 </small>
                 @else

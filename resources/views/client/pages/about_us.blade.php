@@ -15,7 +15,7 @@
 	.right-arrow
 	{    
 		cursor: pointer;
-		left: 24.5em;
+		left: 21.5em;
     	top: 10.5em;
 		background-color: #d80001;
 		border-radius: 1.5em;
@@ -115,13 +115,19 @@
 		top:140px !important;
 	}
 	.sth{
-		margin-top: 0px;
+		margin-top: 20px;
+	}
+	.top{
+		margin-bottom: 13%;
 	}
 	@media (min-width: 768px) and (max-width: 1030px) {
 		.sth 
 		{
 			left: 46em !important;
     		max-width: 30% !important;
+		}
+		.top{
+			margin-bottom: 15%;
 		}
 		.right-arrow
 		{
@@ -174,9 +180,9 @@
 			<span  class="glyphicon glyphicon-chevron-left left-arrow" onclick="left();"></span>
 			<div class="inner-review">
 				{{$review->desc}}
-					<span class='rating ratings{{$review->rate}}'></span>
+					<span class='rating ratings{{$review->rate}} top'></span>
 			</div>
-			
+			<br><br>
 		</div>
 
 	</div> 
