@@ -187,9 +187,9 @@ class CartService
         }
         $cart= Order::find($cartId);
         if(isset($cart->coupon_id)){
-            $copuon = Coupon::find($cart->coupon_id);
+            $coupon = Coupon::find($cart->coupon_id);
             if ($coupon->coupon_type == 'percentage'){
-                $amount -= ($amount * $coupon->amount / 100);
+                $amount -= $amount * $coupon->amount ;
             }
             else{
                 $amount -= $coupon->amount;
