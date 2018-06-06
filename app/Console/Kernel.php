@@ -6,7 +6,9 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\Http\Services\CartService;
 use App\Http\Services\SessoinService;
+
 use App\Http\Services\MailService;
+use App\Http\Services\NotificationService;
 use App\User;
 use App\Order;
 use App\OrderStatus;
