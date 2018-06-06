@@ -16,6 +16,7 @@ class PayPalController extends Controller
 
     public function ipn()
     {
+
         // Reply with an empty 200 response to indicate to paypal the IPN was received correctly.
         header("HTTP/1.1 200 OK");
         $data = $raw_post_data = file_get_contents('php://input');
@@ -62,7 +63,6 @@ class PayPalController extends Controller
 
                     //load the product for specfic cartId
                     $products = CartService::loadProductCartAllData($cartId);
-                    
                     CartService::checkout($cartId, $products, PaymentMethod::PAYPAL, $userId,$amount);
                 }
             }
