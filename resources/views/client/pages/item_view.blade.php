@@ -50,7 +50,7 @@
             max-width: 16% !important;
             margin-left: 6%;
         }
-        
+
     .rating {
         font-size: 1.3em;
         color: #fff;
@@ -153,7 +153,7 @@
     .block_similar {
         float: left;
         margin-left: 0px;
-        padding-right: 0px; 
+        padding-right: 0px;
         overflow: hidden;
     }
 
@@ -198,7 +198,7 @@
         }
         .details_comment .rating {
             margin-top: 0.8em !important;
-            font-size: 1.7em !important;   
+            font-size: 1.7em !important;
             margin-right: 92px !important;
         }
         .simi {
@@ -221,7 +221,7 @@
         .header_page_text_div {
             width: 100%;
             padding: 0.8em 2em;
-            
+
             top: 10.3em;
             padding-left: 25.5em
         }
@@ -357,7 +357,7 @@
             margin-right: 2em;
             margin-top: -3em;
         }
-      
+
         .logo_prodect img {
             width: 55%;
         }
@@ -616,14 +616,14 @@
         @if ($product->qty != 0 )
         <p class="price_item_details">
 
-            @if (isset($product->discount) && $product->discount_price != $product->price) 
+            @if (isset($product->discount) && $product->discount_price != $product->price)
             <span style="left: 30px;width: 5em;">
 
                 <small>
                     <span style="text-decoration: line-through;left: -2.5em;top: -6px; font-size:33px"><small> {{$product->price}}</small></span>
                     <span style="font-size: 15px;top: 1em;">Saled To</span>
-                    <b style="font-family: 'EagarFont';"> {{$product->discount_price}} €</b> 
-                    
+                    <b style="font-family: 'EagarFont';"> {{$product->discount_price}} €</b>
+
                 </small>
                 @else
                 <span>
@@ -684,11 +684,12 @@
                 </big>
             </p>
         </div>
-        <div class="logo_prodect">
+        
+        {{-- <div class="logo_prodect">
             <a href="{{ route('brandfilter', $brand->id ) }}">
                 <img style="width:32px" src="{{ $brand->image_path }}" />
             </a>
-        </div>
+        </div> --}}
         <div class="section">
             <h4 class="title_section">
                 @lang('Section') 2
@@ -722,7 +723,7 @@
         <div class="customer_reviews col-md-7">
             @foreach($comments as $comment)
             <div class="comments_customer_reviews">
-                <img src="{{isset($comment->user->image_id)? $comment->user->image_id : '/uploads/user.png'}}" style="min-height: 4em;" class="img_user_comments_customer_reviews">
+                <img src="{{isset($comment->user->image_id) ? $comment->user->image_id : '/uploads/user.png'}}" style="min-height: 4em;" class="img_user_comments_customer_reviews">
                 <div class="details_comment">
                     <h3 class="username_details_comment" style="width:225px">{{$comment->user->name}}</h3>
                     <p class="rated_details_comment" style="margin-left: 0px">
@@ -779,7 +780,7 @@
         <div class="div_item">
             @if (isset($simiproduct->discount) && $simiproduct->discount != 0)
             <div class="discount_item">
-                <p class="text_discount"> 
+                <p class="text_discount">
                 <span style="text-decoration: line-through;" >{{$simiproduct->price}} €</span> <br>
                 <span style="font-family: unset;font-weight: bolder;font-size: 22px;"> {{ $simiproduct->discount_price}} €</span>
             </p>
@@ -1115,7 +1116,7 @@
                     }).done(response => {
         swal({ title: "Successfully!", text: "We will notify you when this product is availabe", type: "success", timer: 2000, showConfirmButton: false });
 
-    });     
+    });
                 }
             }
 
