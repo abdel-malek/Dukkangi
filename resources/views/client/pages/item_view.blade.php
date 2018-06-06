@@ -529,6 +529,7 @@
 @endsection @section('main_section')
 <div class="col-md-12 all_page_item_view" id="content_page">
     <div class="header_page" style="background-image: url('{{$subcategory->image_id}}');background-size:133%">
+
         <p class="header_page_text_div">
             {{$subcategory->english}}
             <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
@@ -690,6 +691,7 @@
                 <img style="width:32px" src="{{ $brand->image_path }}" />
             </a>
         </div>
+
         <div class="section">
             <h4 class="title_section">
                 @lang('Section') 2
