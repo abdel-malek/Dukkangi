@@ -33,11 +33,13 @@ class CartService
     private static function createOrderItem($product, $qty, $cartId, $userId)
     {
         $cartId = self::createCart($cartId, $userId, null);
+        $price = isset($product->discount_price) ?$product->discount_price :$product->price;
         $orderItems = OrderItem::updateOrCreate(
             ['order_id' => $cartId, 'item_id' => $product->id, 'user_id' => $userId],
             ['order_id' => $cartId, 'item_id' => $product->id,
-                'sub_amount' =>isset($product->discount_price) ?$product->discount_price :$product->price, 'qty' => $qty,
-                'total_amount' => $product->price * $qty,
+                'sub_amount' => $price,
+                'qty' => $qty,
+                'total_amount' => $price * $qty,
                 'gain_point' => ceil($product->point / 5), 'user_id' => $userId, 'status_id' => OrderStatus::CREATED,
                 'currency' => $product->currency]
         );
@@ -179,22 +181,23 @@ class CartService
             }
         }
     */
-        $amount =0;
-        $orders = OrderItem::where('order_id', '=', $cartId)->get();
-        foreach ($orders as $order) {
-            $product= Product::find($order->item_id);
-            $amount += (isset($product->discount_price) ? $product->discount_price : $product->price    )* $order->qty;
-        }
-        $cart= Order::find($cartId);
-        if(isset($cart->coupon_id)){
-            $coupon = Coupon::find($cart->coupon_id);
-            if ($coupon->coupon_type == 'percentage'){
-                $amount -= $amount * $coupon->amount ;
-            }
-            else{
-                $amount -= $coupon->amount;
-            }
-        }
+        // $amount =0;
+        // $orders = OrderItem::where('order_id', '=', $cartId)->get();
+        // foreach ($orders as $order) {
+        //     $product= Product::find($order->item_id);
+        //     $amount += (isset($product->discount_price) ? $product->discount_price : $product->price    )* $order->qty;
+        // }
+        // $cart= Order::find($cartId);
+        // if(isset($cart->coupon_id)){
+        //     $coupon = Coupon::find($cart->coupon_id);
+        //     if ($coupon->coupon_type == 'percentage'){
+        //         $amount -= $amount * $coupon->amount ;
+        //     }
+        //     else{
+        //         $amount -= $coupon->amount;
+        //     }
+        // }
+        $amount = OrderItem::where('order_id','=',$cartId)->sum('total_amount');
         return ['amount' => $amount];
     }
 
