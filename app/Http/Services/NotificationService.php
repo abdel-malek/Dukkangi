@@ -17,7 +17,7 @@ use App\Http\Services\MailService;
 class NotificationService
 {
 	public static function notifyUser(){
-		$notifications = ProductNotification::select('user_id', 'product_id', 'status_id')->where('id_status' , '=' , ProductNotificationStatus::CREATED)->get();
+		$notifications = ProductNotification::select('user_id', 'product_id', 'status_id')->where('status_id' , '=' , ProductNotificationStatus::CREATED)->get();
 		if(isset($notifications)){
 			foreach ($notifications as $notify) {
 				$product = Product::find($notify->product_id);
