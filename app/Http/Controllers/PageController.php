@@ -120,7 +120,7 @@ class PageController extends Controller
 				$product->discount =  sprintf('%0.0f',100 - (($product->discount_price * 100) / $product->price));
 			}
 		}
-		
+
 		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withCategoryId($categoryId);
 	}
 
@@ -332,7 +332,7 @@ class PageController extends Controller
 		}
 		ksort($temp);
 		$subcategories = $temp;
-		
+
 		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withLastSearch($subcategory->category_id);
 	}
 
@@ -350,11 +350,11 @@ class PageController extends Controller
 		$logo = Brand::select('image_path' , 'id')->where('id' , '=', $product->brand_id)->get()->first();
 		// foreach ($comments as $comment) {
 		// 	$user =  User::find($comment->user_id);
-		// 	if (!isset($user)) 
+		// 	if (!isset($user))
 		// 		$name = "Anonymous";
-		// 	else 
+		// 	else
 		// 		$name = $user->name;
-			
+
 		// 	$comment->user_id = $name;
 		// 	$comment->rate = round($comment->rate);
 		// }
@@ -372,6 +372,7 @@ class PageController extends Controller
 
 		$simiproducts = Product::select('*')
 		->whereIn('id' , $Tags)
+		->where('id','!=',$id)
 		->where('active','=',true)->take(4)->skip(0)->get();
 
 		if ($lang == "ar"){
@@ -412,7 +413,7 @@ class PageController extends Controller
 			$product->abstract_price = $product->price - $product->tax;
 		if (isset($product->discount_price)) {
 			$product->discount =  sprintf('%0.1f',100 - (($product->discount_price * 100) / $product->price));
-			
+
 			$product->tax = sprintf('%0.2f',$product->discount_price *0.19);
 			$product->gain_points= ceil($product->discount_price / 5);
 			$product->abstract_price = $product->discount_price - $product->tax;
@@ -488,7 +489,7 @@ class PageController extends Controller
 
 		return 1;
 	}
-	
+
 	public function setLanguage($lang)
 	{
   		session(['lang' => $lang]);
@@ -501,22 +502,22 @@ class PageController extends Controller
 	}
 	public function getReview(Request $request)
 	{
-		$index = $request->index;	
+		$index = $request->index;
 		return Review::take(1)->skip($index-1)->get();
 	}
 	public function setReview(Request $request)
 	{
 		$review = new Review();
-		
+
 		if($request->input('rate') != 0){
 			$review->desc = $request->input('desc');
 			$review->rate = $request->input('rate');
 			if ($review->desc == null && $review->rate == 0  ) return back();
-			if ($review->desc == null ) 
+			if ($review->desc == null )
 				$review->desc = " ";
 			$review->user_id = Auth::id();
 
-			$review->save();	
+			$review->save();
 		}
 		return back();
 	}
@@ -526,9 +527,9 @@ class PageController extends Controller
 		$orders = Order::where('user_id' , '=' , $user->id)->where('status_id', '!=',4)->get();
 		foreach ($orders as $order) {
 			$order->orderItems = OrderItem::where('order_id', '=', $order->id)->get();
-			foreach ($order->orderItems as $orderitem) 
+			foreach ($order->orderItems as $orderitem)
 			{
-				$orderitem->item_id = Product::find($orderitem->item_id);		
+				$orderitem->item_id = Product::find($orderitem->item_id);
 			}
 		}
 
@@ -543,7 +544,7 @@ class PageController extends Controller
     }
     public function changeDetails(Request $request){
     	$address = $request->input('address');
-    
+
     	$birthdate = $request->birthdate;
     	$user = User::find(Auth::id()); // to change form the database not from session "Auth::user()"
     	if(isset($address))
@@ -556,11 +557,11 @@ class PageController extends Controller
     }
 
     public function deleteOrder(Request $request){
-    	$id = $request->id; 
+    	$id = $request->id;
 
     	// $orders= OrderItem::where('order_id','=',$id)->get();
     	// foreach ($orders as $order) {
-    	
+
     	// $order->delete();
     	// }
     	$order = Order::find($id);
@@ -578,4 +579,3 @@ class PageController extends Controller
     	return back();
     }
 }
-
