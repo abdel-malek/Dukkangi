@@ -199,14 +199,14 @@
 			<tbody>
 			<tr class="text insidetable">
 				{!! $counter = 0 !!}
-				{{-- @foreach($order['orderItems'] as $order)
+				 @foreach($orderItems as $order)
 				<td>{{$order->qty}}</td>
 				<td><p>{{$order->name}}</p></td>
 				<td>{{$order->price}}€</td>
 				<td>{{$order->price * $order->qty}}€</td>
 				<td>{{ $taxes[counter] }} %</td>
 				{!! $counter++; !!}
-				@endforeach --}}
+				@endforeach
 			</tr>
 		</tbody>
 
@@ -216,7 +216,7 @@
 
 				<div class="borderline">
 								<span class="text white marginleft">Sub-Total</span>
-								{{-- <span class="text white marginright">{{$orders['amount'] - $taxes}}€</span> --}}
+								{{-- <span class="text white marginright">{{$total - $tax}}€</span> --}}
 				</div>
 
 				<div class="borderline">
@@ -231,7 +231,7 @@
 
 				<div class="order">
 					<span class="text white marginleft">Total</span>
-					<span class="text white marginright">{{orders['amount']}}€</span>
+					<span class="text white marginright">{{$total}}€</span>
 				</div>
 			</div>
 	</div>

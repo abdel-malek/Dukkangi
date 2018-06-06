@@ -234,13 +234,13 @@ class CartService
         if (!$fake){
             $user = User::find($userId);
 
-            // MailService::send('emails.complete_order' , ['total'=>$amount,
-            // 'subtotal' => $amount - ($amount * 0.19),
-            // 'username' => $user->name,
-            // 'orderItem' => $products,
-            // 'orderId' => $cartId,
-            // 'taxes' =>$taxes,
-            // 'tax' => $tax ] , 'Order@dukkangi.com' , $user->email, 'order complete');
+            MailService::send('emails.complete_order' , ['total'=>$amount,
+            'subtotal' => $amount - ($amount * 0.19),
+            'username' => $user->name,
+            'orderItems' => $products,
+            'orderId' => $cartId,
+            'taxes' =>$taxes,
+            'tax' => $tax ] , 'Order@dukkangi.com' , $user->email, 'order complete');
 
 
 
