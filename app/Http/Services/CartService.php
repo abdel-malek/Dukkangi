@@ -294,9 +294,8 @@ class CartService
       ->select('item_id as id', 'qty')->get()->toArray();
     }
     public static function loadProductCartAllData($cartId){
-        return OrderItem::where('order_id', '=', $cartId)
-      ->select('*')->get()->toArray();
 
+        return OrderItem::select('item_id as id','qty')->where('order_id', '=', $cartId)->get()->toArray();
     }
     public static function clearCart(){
         // $session =Session::all();
