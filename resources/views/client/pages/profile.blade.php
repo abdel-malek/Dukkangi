@@ -200,7 +200,7 @@
 	}
 	.state 
 	{
-		width: 10em;
+		width: 8em;
 	}
 	.rate
 	{
@@ -265,10 +265,13 @@
 					Date
 				</td>
 				<td class="state">
-					State
+					Order State
+				</td>
+				<td class="state">
+					Packed
 				</td>
 				<td class="rate">
-					Delete
+					DHL-Code
 				</td>
 			</thead>
 			<tbody>
@@ -288,11 +291,16 @@
 							In Progress
 						@elseif ($order->status_id == 3)
 							Completed
-						@else
+						@elseif ($order->status_id == 4)
 							Deleted
 						@endif
 					</td>
-					<td class="rate" ><span class="glyphicon glyphicon-trash" data-id="{{$order->id}}" data style="cursor: pointer" onclick="Delete(this);"></span></td>
+					<td>
+						{{$order->packed}}
+					</td>
+					<td class="rate" >
+						{{isset($order->dhl_code) ? $order->dhl_code : 'Not Yet'}}
+					</td>
 				</tr>		
 				@endforeach
 			</tbody>
@@ -341,75 +349,7 @@
         }).done(response => {
         	 swal({ title: "Successfully!", text: "Changed Successfully.", type: "success", timer: 2000, showConfirmButton: false });
         });
-	}
-	function Delete(obj){
-		$.ajax({
-            url: '/delteorder',
-            type: "POST",
-            data: { "id": $(obj).data('id')},
-            dataType: 'json',
-            headers: {
-        		"x-csrf-token": $("[name=_token]").val()
-    		},
-        }).done(response => {
-        	 swal({ title: "Successfully!", text: "Changed Successfully.", type: "success", timer: 2000, showConfirmButton: false });
- 			location.reload();
-        });
-	}
-	rerate();
-
-	function rerate(){
-
-		var ratings = document.getElementsByClassName('ratings');
-
-	    for (var i = 0; i < ratings.length; i++) {
-
-	        var r = new SimpleStarRating0(ratings[i]);
-
-	    }
-	    //5 functions for 1, 2, 3, 4, 5 Stars for anything
-	    //one more function for those which don't have any rate
-	    //Initial Rate Subcategory
-	    var ratings = document.getElementsByClassName('ratings1');
-
-	    for (var i = 0; i < ratings.length; i++) {
-
-	        var r = new SimpleStarRating1(ratings[i]);
-
-	    }
-
-	 	var ratings = document.getElementsByClassName('ratings2');
-		     for (var i = 0; i < ratings.length; i++) {
-	        var r = new SimpleStarRating2(ratings[i]);
-
-	    }
-
-	    //Initial Rate Comments
-
-	    var ratings = document.getElementsByClassName('ratings3');
-	                
-
-	                for (var i = 0; i < ratings.length; i++) {
-
-	        		var r = new SimpleStarRating3(ratings[i]);
-	                }
-	    //Initial Rate Simiproducts
-
-
-	    var ratings = document.getElementsByClassName('ratings4');
-	    for (var i = 0; i < ratings.length; i++) {
-	        var r = new SimpleStarRating4(ratings[i]);
-
-	    }
-
-	    var ratings = document.getElementsByClassName('ratings5');
-	    for (var i = 0; i < ratings.length; i++) {
-	        var r = new SimpleStarRating5(ratings[i]);
-
-	    }
-	}
-
-	</script>
+	}	</script>
 	
 	
 
