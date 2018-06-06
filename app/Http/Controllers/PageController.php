@@ -527,7 +527,7 @@ class PageController extends Controller
 
 	public function getProfile(){
 		$user = Auth::user();
-		$orders = Order::where('user_id' , '=' , $user->id)->where('status_id', '!=',4)->get();
+		$orders = Order::where('user_id' , '=' , $user->id)->where('status_id', '>',2)->get();
 		foreach ($orders as $order) {
 			$order->orderItems = OrderItem::where('order_id', '=', $order->id)->get();
 			foreach ($order->orderItems as $orderitem)
@@ -559,19 +559,6 @@ class PageController extends Controller
     	return 1;
     }
 
-    public function deleteOrder(Request $request){
-    	$id = $request->id;
-
-    	// $orders= OrderItem::where('order_id','=',$id)->get();
-    	// foreach ($orders as $order) {
-
-    	// $order->delete();
-    	// }
-    	$order = Order::find($id);
-    	$order->status_id=  4;
-    	$order->save();
-    	return 1;
-    }
 
     public function uploadPictue(Request $request){
     	$user = User::find(Auth::id());

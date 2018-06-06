@@ -41,7 +41,7 @@ Route::get('/aboutus' , 'PageController@getAboutUs')->name('about-us');
 Route::post('/getreview' , 'PageController@getReview');
 Route::post('/review','PageController@setReview')->name('review');
 Route::post('/changedetails' , 'PageController@changeDetails')->middleware('auth');
-Route::post('/delteorder' , 'PageController@deleteOrder')->middleware('auth');
+// Route::post('/delteorder' , 'PageController@deleteOrder')->middleware('auth');
 Route::post('/uploadpic' ,'PageController@uploadPictue')->name('upload-pic')->middleware('auth');
    			                        //DASHBOARD
     //CATEGORIES
