@@ -17,7 +17,7 @@ use App\Order;
 use Illuminate\Console\Scheduling\Schedule;
 class SessionService {
 
-	public function clearCartFromSession(){
+	public static function clearCartFromSession(){
     	session()->forget('cartId');
 	}
 
