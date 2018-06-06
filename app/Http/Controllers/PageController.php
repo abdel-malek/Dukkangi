@@ -347,7 +347,9 @@ class PageController extends Controller
 		$subcategory = Subcategory::find($product->subcategory_id);
 		$skip = Comment::with(['user'])->where('product_id','=',$product->id)->get()->count();
 		$comments = Comment::with(['user'])->where('product_id','=',$product->id)->skip($skip-3)->take(3)->get();
-		$logo = Brand::select('image_path' , 'id')->where('id' , '=', $product->brand_id)->get()->first();
+		$logo = Brand::select('image_path' , 'id')
+		->where('id' , '=', $product->brand_id)
+		->get()->first();
 		// foreach ($comments as $comment) {
 		// 	$user =  User::find($comment->user_id);
 		// 	if (!isset($user))
@@ -425,7 +427,7 @@ class PageController extends Controller
 		}
 		// $product->qty = 0;
 		// dd($comments);
-		dd($logo);
+		
 		return view('client.pages.item_view')->withProduct($product)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments)->withBrand($logo);
 	}
 
