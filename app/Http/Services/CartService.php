@@ -187,17 +187,18 @@ class CartService
         //     $product= Product::find($order->item_id);
         //     $amount += (isset($product->discount_price) ? $product->discount_price : $product->price    )* $order->qty;
         // }
-        // $cart= Order::find($cartId);
-        // if(isset($cart->coupon_id)){
-        //     $coupon = Coupon::find($cart->coupon_id);
-        //     if ($coupon->coupon_type == 'percentage'){
-        //         $amount -= $amount * $coupon->amount ;
-        //     }
-        //     else{
-        //         $amount -= $coupon->amount;
-        //     }
-        // }
         $amount = OrderItem::where('order_id','=',$cartId)->sum('total_amount');
+        $cart= Order::find($cartId);
+        if(isset($cart->coupon_id)){
+            $coupon = Coupon::find($cart->coupon_id);
+            if ($coupon->coupon_type == 'percentage'){
+                $amount -= $amount * $coupon->amount ;
+            }
+            else{
+                $amount -= $coupon->amount;
+            }
+        }
+
         return ['amount' => $amount];
     }
 
