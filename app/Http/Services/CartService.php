@@ -135,7 +135,7 @@ class CartService
         $orderItems = $result->get();
 
         $amount = self::getAmount($cartId);
-        
+
         // $coupon = Order::find(session('cartId'))->coupon_id;
         // if(isset($coupon)){
         //     $coupon = Coupon::find($coupon);
@@ -144,10 +144,10 @@ class CartService
         //         if ($amount < 0 ) $amount =0;
         //     }
         //     else if ($coupon->coupon_type = 'percentage'){
-        //         $amount -= $amount * $coupon->amount; 
+        //         $amount -= $amount * $coupon->amount;
         //     }
         // }
-        
+
         $tax = 0;
         foreach ($orderItems as $orderItem) {
             $taxFees = $orderItem->product->tax_fees;
@@ -163,7 +163,7 @@ class CartService
             ->where('order_id', '=', $cartId)
             ->where('status_id', '=', OrderStatus::CREATED);
         $amount = $result->sum('total_amount');
-        
+
         $coupon = Order::find(session('cartId'));
         if(isset($coupon)){
             $coupon = $coupon->coupon_id;
@@ -174,7 +174,7 @@ class CartService
                     if ($amount < 0 ) $amount =0;
                 }
                 else if ($coupon->coupon_type = 'percentage'){
-                    $amount -= $amount * $coupon->amount; 
+                    $amount -= $amount * $coupon->amount;
                 }
             }
         }
@@ -195,7 +195,7 @@ class CartService
                 $amount -= $coupon->amount;
             }
         }
-        return ['amount' => $amount];        
+        return ['amount' => $amount];
     }
 
     public static function checkout($cartId, $products, $paymentMethodId = 1, $userId,$amount)
@@ -230,13 +230,13 @@ class CartService
         if (!$fake){
             $user = User::find($userId);
 
-            MailService::send('emails.complete_order' , ['total'=>$amount,
-            'subtotal' => $amount - ($amount * 0.19),
-            'username' => $user->name,
-            'orderItem' => $products,
-            'orderId' => $cartId,
-            'taxes' =>$taxes,
-            'tax' => $tax ] , 'Order@dukkangi.com' , $user->email, 'order complete');
+            // MailService::send('emails.complete_order' , ['total'=>$amount,
+            // 'subtotal' => $amount - ($amount * 0.19),
+            // 'username' => $user->name,
+            // 'orderItem' => $products,
+            // 'orderId' => $cartId,
+            // 'taxes' =>$taxes,
+            // 'tax' => $tax ] , 'Order@dukkangi.com' , $user->email, 'order complete');
 
 
 
