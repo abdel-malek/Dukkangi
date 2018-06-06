@@ -685,11 +685,11 @@
             </p>
         </div>
 
-        <div class="logo_prodect">
+        {{-- <div class="logo_prodect">
             <a href="{{ route('brandfilter', $brand->id ) }}">
                 <img style="width:32px" src="{{ $brand->image_path }}" />
             </a>
-        </div>
+        </div> --}}
         <div class="section">
             <h4 class="title_section">
                 @lang('Section') 2

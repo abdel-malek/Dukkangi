@@ -425,6 +425,7 @@ class PageController extends Controller
 		}
 		// $product->qty = 0;
 		// dd($comments);
+		dd($logo);
 		return view('client.pages.item_view')->withProduct($product)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments)->withBrand($logo);
 	}
 
