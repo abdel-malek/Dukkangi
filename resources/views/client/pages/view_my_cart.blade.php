@@ -861,7 +861,9 @@
                         <!-- Identify your business so that you can collect the payments. -->
                         {{--
                         <input type="hidden" name="business" value="info@dukkangi.com"> --}}
-                        <input type="hidden" name="business" value="info-facilitator@dukkangi.com">
+
+
+                        <input type="hidden" name="business" value="paypal@dukkangi.com">
 
                         <!-- Specify a Buy Now button. -->
                         <input type="hidden" name="cmd" value="_xclick">
