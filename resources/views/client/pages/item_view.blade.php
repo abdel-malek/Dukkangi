@@ -188,8 +188,8 @@
         }
 
         .text_item_details{
-            height: 16em;
-            margin-bottom: 5em;
+            height: 10em;
+            margin-bottom: -3em;
             padding-bottom: 0em;
         }
     @media (min-width: 768px) and (max-width: 1030px) {
@@ -547,7 +547,7 @@
             @endif
 
             <!-- -Slider -->
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="height: 380px">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="height: 350px">
                 <ol class="carousel-indicators" style="bottom:-10px">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                     @if(isset($product->image_id2))
@@ -561,22 +561,22 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class=" d-block w-100" data-target="carouselExampleIndicators" style="height: 380px" src="{{$product->image_id}}" alt="First slide">
+                        <img class=" d-block w-100" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id}}" alt="First slide">
                     </div>
 
                     @if(isset($product->image_id2))
                     <div class="carousel-item">
-                        <img class="img_item_details" data-target="carouselExampleIndicators" style="height: 380px" src="{{$product->image_id2}}"
+                        <img class="img_item_details" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id2}}"
                             alt="Second slide">
                     </div>
                     @endif @if(isset($product->image_id3))
                     <div class="carousel-item">
-                        <img class="img_item_details" data-target="carouselExampleIndicators" style="height: 380px" src="{{$product->image_id3}}"
+                        <img class="img_item_details" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id3}}"
                             alt="Third slide">
                     </div>
                     @endif @if(isset($product->image_id4))
                     <div class="carousel-item">
-                        <img class="img_item_details" data-target="carouselExampleIndicators" style="height: 380px" src="{{$product->image_id4}}"
+                        <img class="img_item_details" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id4}}"
                             alt="Fourth slide">
                     </div>
                     @endif
@@ -587,13 +587,10 @@
 
             <!-- /Slider -->
             <!-- <img src="{{$product->image_id}}" /> -->
-            <div class="div_title_item_details">
-                <p class="title_item_details">
-                    {{$product->english}}
-                </p>
-                <span class="rating rating-info ratings{{$product->rate}}" data-type="product" data-id="{{$product->id}}" style="float:left;"></span>
-                <i class="material-icons icon_item_details">&#xE838;</i>
-                <i class="material-icons icon_item_details">error_outline</i>
+            <div class="div_title_item_details" style="height: 6em;" id="product-name" >
+                <p class="title_item_details product-name" style="text-align: center">{{$product->english}}</p>
+                <span class="rating rating-info ratings{{$product->rate}} product-rate" data-type="product" data-id="{{$product->id}}" style="left: 5.5em;"></span>
+               
             </div>
         </div>
         @if ($product->qty == 0)
@@ -651,7 +648,7 @@
             <span> {{ $product->gain_points }} @lang('Points') </span> @lang('Bounce')
         </p>
 
-        <p class="text_item_details" {{ $product->qty == 0 ?"style='filter: blur(5px)'" : '' }} style="margin-top:32px"> {{ $product->desc_english}}
+        <p class="text_item_details" {{ $product->qty == 0 ?"style='filter: blur(5px)'" : '' }} style="margin-top:32px;    font-size: 20px;"> {{ $product->desc_english}}
 
         </p>
         @if ($product->qty != 0 ) {{--
@@ -677,7 +674,7 @@
     <div class="sections">
         <div class="section">
             <h4 class="title_section">
-                @lang('Section') 1
+                @lang('Description') 
             </h4>
             <p class="text_section">
                 <big>
@@ -694,31 +691,18 @@
 
         <div class="section">
             <h4 class="title_section">
-                @lang('Section') 2
+                @lang('barcode') 
             </h4>
             <p class="text_section">
-                <span>{{$product->section2_english}}</span>
-                <p>
-                    <span class="point_text_section">{{$product->point}} @lang('points')</span>
-                    <small>@lang('This will be given to you !') </small>
-                </p>
+                <span>{{$product->barcode}}</span>
+               
             </p>
         </div>
 
-        <div class="section">
-            <h4 class="title_section">
-                @lang('Section') 3
-            </h4>
-            <p class="text_section">
-                {{$product->section3_english}}
-                <br/>
-                <br>
-            </p>
-
-        </div>
+        
     </div>
 
-    <div class="col-md-12 title_reviews">
+    <div class="col-md-12 title_reviews" style="top: 51px;">
         <h3 class="title_customer_review">
             @lang("Customer's Reviews")
         </h3>
@@ -811,7 +795,7 @@
     data-qty='1'>
     <div class="header_item_details">
         <img src="{{$product->image_id}}" class="img_item_details" style="height: 300px" />
-        <div class="div_title_item_details">
+        <div class="div_title_item_details" >
             <p class="title_item_details">
                 {{$product->english}}
             </p>
@@ -1131,4 +1115,14 @@
     }
     $('.item_out_of_stock').css('height', parseInt($('.one_item_details').height()) - 380);
 
-</script> @endsection
+
+    str = $('.product-name').text();
+    if (str.length < 10)
+    {
+        console.log(str.length  );
+        $('.product-name').css('text-align',  'left');
+        $('.product-rate').css('left','10.5em').css("bottom" , "0.8em");
+        $('#product-name').css('height','4em');
+    }   
+</script> 
+@endsection

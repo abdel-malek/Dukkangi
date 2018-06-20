@@ -125,7 +125,7 @@
   position: absolute;
   left: 50px;
   font-size: 38px;
-  transform: rotate(-10deg);
+  /*transform: rotate(-10deg);*/
 }
 
 .landing-items-block .health-beauty{
@@ -149,7 +149,7 @@
     left: 8px;
     font-size: 38px;
     top: 3px;
-    transform: rotate(10deg);
+    /*transform: rotate(10deg);*/
 }
 
 

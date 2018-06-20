@@ -30,6 +30,10 @@
  				{{ Form::file('image') }}
  				<br>
 
+ 				{{ Form::label('image_id2' , 'Thumbnail:')}}
+ 				{{ Form::file('image_id2e') }}
+ 				<br>
+
 				{{ Form::label('category_id' , 'Category:')}}
 				<select class="custom-select" name="category_id">
 				@foreach($categories as $category)

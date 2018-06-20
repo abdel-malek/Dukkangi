@@ -93,9 +93,7 @@
                 width: 0.75em;
                 height: 0.7em;
             }
-            .div_item .rating{
-                left: 2em;
-            }
+           ]
             .details_comment .rating{
                 bottom: unset;
                 right: 1.4em;

@@ -38,6 +38,10 @@
 				{{ Form::label('image' , 'Image:')}}
  				{{ Form::file('image') }}
 				<br>
+				{{ Form::label('image_id2' , 'Thumbnail:')}}
+ 				{{ Form::file('image_id2') }}
+				<br>
+
 
 				{{ Form::submit('Edit Subcategory' , ['class' => 'btn btn-block btn-success' , 'style' =>'margin-top:7px']) }}
 				<a href="{{route('subcategory.index')}}" class="btn btn-default btn-block" style="margin-top: 7px">Cancel</a>

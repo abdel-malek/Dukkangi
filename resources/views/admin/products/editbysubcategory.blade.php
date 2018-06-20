@@ -28,7 +28,7 @@
 				
 			<div class="col-md-12">
 				{{ Form::label('active','Active:')}}
-        {!! Form::select('active',array('1'=>'Yes','0'=>'NO'),$product->active,['class'=>'form-control']) !!}
+        	{!! Form::select('active',array('1'=>'Yes','0'=>'NO'),$product->active,['class'=>'form-control']) !!}
 			</div>
 			<br/>
 	</div>

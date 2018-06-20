@@ -75,6 +75,9 @@ class CategoryToSubController extends Controller
         if($request->hasFile('image'))
             $category->image_id = ImageService::saveImage($request->file('image'));
 
+        if($request->hasFile('image_id2'))
+            $category->image_id2 = ImageService::saveImage($request->file('image_id2'));
+
         $category->save();
 
         Session::flash('success', 'Added Successfuly!');

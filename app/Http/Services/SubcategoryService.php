@@ -83,9 +83,16 @@ class SubcategoryService {
 		$subcategory->kurdi   = $categoryRequest->kurdi;
 
 		$subcategory->category_id= $categoryRequest->category_id;
+        
+
         if ($categoryRequest->hasFile('image')) {
             $subcategory->image_id = ImageService::saveImage($categoryRequest->file('image'));
         }
+
+
+        if($categoryRequest->hasFile('image_id2'))
+            $subcategory->image_id2 = ImageService::saveImage($categoryRequest->file('image_id2'));
+
 
 		$subcategory->save();
 	

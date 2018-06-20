@@ -302,29 +302,19 @@
             </div>
             <script type="text/javascript">jssor_1_slider_init();</script>
 
-            <div class='thumnbail' style="position: absolute;top: 0px;bottom: 10px;width: 180px;height: 500px;margin-left: 75px">
+            <div class='thumnbail' style="position: absolute;top: 0px;bottom: 10px;width: 180px;height: 633px;margin-left: 50px;overflow: auto">
+                @foreach($subcategories as $subcategory)
 
-
-
-                <div id="spinner">
-                    Loading...
-                </div>
-                <div id="carousel">
-                    @foreach($subcategories as $subcategory)
-                    <img src="{{$subcategory->image_id}}" class="block_thum" style="z-index: 1;">
+                <div class="pictureFrame" style="width: 110px; height: 92px;">
+                    <img src="{{$subcategory->image_id2}}" class="block_thum" style="z-index: 1; width: 110px; height: 88px; padding-top: 2px; padding-bottom: 2px;">
                     <a href="{{ route('subcategoryfilter',$subcategory->id) }}">
                         <p class="sub-paragraph" style="z-index: 1;padding: 4.4px 32.5px;">
                             {{$subcategory->english}}
                         </p>
                     </a>
-                    @endforeach
                 </div>
 
-                <div class="buttons" style="z-index: 1000;">
-                    <button id="next">&darr; Next</button>
-                    <button id="prev">&uarr; Prev</button>
-                </div>
-
+                @endforeach
             </div>
         </div>
         @endif
@@ -612,64 +602,8 @@
             url: '',
             type: "POST",
             data: { "loads": counter },
-            //dataType: 'json'
         }).done((response) => $('#filteredproducts').append(response));
 
     }
-
-
-    window.onload = function () {
-        document.getElementById('spinner').style.display = 'none';
-        var carousel = Carousel.carousel = document.getElementById('carousel'),
-            images = carousel.getElementsByTagName('img'),
-            numImages = images.length,
-            imageWidth = Carousel.width,
-            aspectRatio = images[0].width / images[0].height,
-            imageHeight = imageWidth / aspectRatio,
-            padding = Carousel.padding,
-            rowHeight = Carousel.rowHeight = imageHeight + 2 * padding;
-        carousel.style.width = imageWidth + 'px';
-        for (var i = 0; i < numImages; ++i) {
-            var image = images[i],
-                frame = document.createElement('div');
-            frame.className = 'pictureFrame';
-            var aspectRatio = image.offsetWidth / image.offsetHeight;
-            image.style.width = frame.style.width = imageWidth + 'px';
-            image.style.height = imageHeight + 'px';
-            image.style.paddingTop = padding + 'px';
-            image.style.paddingBottom = padding + 'px';
-            frame.style.height = rowHeight + 'px';
-            carousel.insertBefore(frame, image);
-            frame.appendChild(image);
-        }
-        Carousel.rowHeight = carousel.getElementsByTagName('div')[0].offsetHeight;
-        carousel.style.height = Carousel.numVisible * Carousel.rowHeight + 'px';
-        carousel.style.visibility = 'visible';
-        var wrapper = Carousel.wrapper = document.createElement('div');
-        wrapper.id = 'carouselWrapper';
-        wrapper.style.width = carousel.offsetWidth + 'px';
-        wrapper.style.height = carousel.offsetHeight + 'px';
-        carousel.parentNode.insertBefore(wrapper, carousel);
-        wrapper.appendChild(carousel);
-        var prevButton = document.getElementById('prev'),
-            nextButton = document.getElementById('next');
-        prevButton.onclick = function () {
-            prevButton.disabled = nextButton.disabled = true;
-            rotateForward();
-            animate(-Carousel.rowHeight, 0, function () {
-                carousel.style.top = '0';
-                prevButton.disabled = nextButton.disabled = false;
-            });
-        };
-        nextButton.onclick = function () {
-            console.log("i'm here again");
-            prevButton.disabled = nextButton.disabled = true;
-            animate(0, -Carousel.rowHeight, function () {
-                rotateBackward();
-                carousel.style.top = '0';
-                prevButton.disabled = nextButton.disabled = false;
-            });
-        };
-    };
 
 </script> @endsection

@@ -16,7 +16,7 @@
     border-radius: 23em;
 }
 .bottom_left_background_block{
-    background-image: url('/front-end/images/main/bottom_left.png');
+    background-image: url('/front-end/images/main/rec_cat.png');
       height: 163px;
     width: 270px;
     background-size: cover;
@@ -25,7 +25,7 @@
 .bottom_left_background_block img{
     position: absolute;
     margin-top: 4.4em;
-    margin-left: 3.4em;
+    margin-left: 4em;
 }
 .bottom_left_background_block .text_item_block {
     position: absolute;
@@ -36,7 +36,7 @@
 }
 
 .bottom_right_background_block{
-    background-image: url('/front-end/images/main/bottom_right.png');
+    background-image: url('/front-end/images/main/rec_cat.png');
       height: 163px;
     width: 270px;
     background-size: cover;
@@ -45,20 +45,20 @@
 .bottom_right_background_block img{
     position: absolute;
     margin-top: 3.4em;
-    margin-left: 6.4em;
+    margin-left: 4.4em;
 }
 .bottom_right_background_block .text_item_block {
        position: absolute;
-    left: 25px;
+    /*left: 25px;*/
     font-size: 31px;
-    transform: rotate(8deg);
+    /*transform: rotate(8deg);*/
     top: 12px;
     bottom: unset;
     right: unset;
 }
 
 .top_left_background_block{
-    background-image: url('/front-end/images/main/top_left.png');
+    background-image: url('/front-end/images/main/rec_cat.png');
       height: 175px;
     width: 270px;
     background-size: cover;
@@ -80,7 +80,7 @@
 }
 
 .top_right_background_block{
-    background-image: url('/front-end/images/main/top_right.png');
+    background-image: url('/front-end/images/main/rec_cat.png');
       height: 175px;
     width: 270px;
     background-size: cover;
@@ -153,7 +153,7 @@
          }
          .bottom_right_background_block img {
              margin-top: 7.4em;
-             margin-left: 10.4em;
+             margin-left: 4.4em;
          }
          .landing-items-block img {
              height: 12em;
@@ -241,8 +241,9 @@
         <div class="items-col first-col">
         </div>
       @for($counter ; $counter < $col1;  $counter++)
-        <div class="landing-items-block {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}} " style="margin-top: {{($firstflag)? '8':'14'}}em;margin-left: 41px;">
-          <p class="text_item_block">{{$categories[$counter]->english}}</p>
+        <div class="landing-items-block {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}} " style="margin-top: {{($firstflag)? '8':'14'}}em;margin-left: 56px;">
+          <p class="text_item_block" style="width: 100%;
+    text-align: center;">{{$categories[$counter]->english}}</p>
           <a href="{{route('category' , $categories[$counter]->id) }}"><img class="" src="{{$categories[$counter]->image_id }}" /></a>
         </div>
         <?php $firstflag =1 ; ?> 
@@ -254,15 +255,14 @@
         </div>
         <img class="welcome-img" src="front-end/images/welcome-logo.png" />
          <div class="landing-items-block ">
-          <p class="title " style="margin-top: 160px;text-align: center;    left: -1em;margin-left: 0px">
-            @lang('Choose your category')
-          </p>
+          
         @for($counter ; $counter < $col2+$col1 ; $counter++ )
-       <div class="landing-items-block  {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}}" style="margin-top: 100px;margin-bottom: 40px;margin-left: 41px;">
+       <div class="landing-items-block  {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}}" style="margin-top: {{$midflag == 0 ?'260px' : '100px'}};margin-bottom: 40px;margin-left: 56px;">
          
-          <p class="house-tools">{{$categories[$counter]->english}}</p>
+          <p class="house-tools" style="" >{{$categories[$counter]->english}}</p>
           <a href="{{route('category' , $categories[$counter]->id) }}"><img class="" src="{{$categories[$counter]->image_id}}"/></a>
         </div>
+        <?php $midflag++ ?>
         @endfor
       </div>
     </div>
@@ -272,8 +272,9 @@
         <div class="items-col third-col ">
         </div>
         @for($counter ; $counter < $col1+$col2+$col3 ; $counter++ )
-        <div class="landing-items-block  {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}}"  style="margin-top: {{($lastflag)? '8': '16'}}em;    left: 3em;">
-          <p class="shisha">{{$categories[$counter]->english}}</p>
+        <div class="landing-items-block  {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}}"  style="margin-top: {{($lastflag)? '8': '16'}}em;    left: 55px;">
+          <p class="shisha" style="width: 100%;
+    text-align: center;">{{$categories[$counter]->english}}</p>
           <a href="{{route('category' , $categories[$counter]->id) }}"><img class="" src="{{$categories[$counter]->image_id}}"/></a>
         </div>
           <?php $lastflag = 1; ?>

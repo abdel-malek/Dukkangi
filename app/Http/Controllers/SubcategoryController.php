@@ -64,7 +64,7 @@ class SubcategoryController extends Controller
             'german' =>'max:255|min:2',
             'english'=>'max:255|min:2'
         ]);
-
+        // dd($request);
         $category->arabic  = $request->arabic;
         $category->kurdi   = $request->kurdi;
         $category->turky   = $request->turky;
@@ -74,6 +74,8 @@ class SubcategoryController extends Controller
         if ($request->hasFile('image')) {
             $category->image_id = ImageService::saveImage($request->file('image'));
         }
+        if($request->hasFile('image_id2'))
+            $category->image_id2 = ImageService::saveImage($request->file('image_id2'));
 
         $category->save();
 
