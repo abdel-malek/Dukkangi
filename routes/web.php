@@ -74,7 +74,9 @@ Route::post('/admin/subcategories/store', ['uses' => 'SubcategoryController@stor
     //SUBCATEGORIES FROM CATEGORIES
 Route::get('/admin/categorytosub/{id}', ['uses' => 'CategoryToSubController@index'             ,'as' => 'categorytosub.index'  ]);
 Route::post('/admin/categorytosub/{id}', ['uses' => 'CategoryToSubController@subcategoryData','as' => 'categorytosub.data'   ]);
-Route::get('/admin/categorytosub/edit/{id}', ['uses' => 'CategoryToSubController@edit'             ,'as' => 'categorytosub.edit'   ]);
+
+Route::get('/admin/categorytosub/edit/{id}', ['uses' => 'CategoryToSubController@edit'             ,'as' => 'categorytosub.edit']);
+
 Route::put('/admin/categorytosub/update/{id}', ['uses' => 'CategoryToSubController@update'         ,'as' => 'categorytosub.update' ]);
 Route::post('/admin/categorytosub/delete/{id}', ['uses' => 'CategoryToSubController@destroy'         ,'as' => 'categorytosub.destroy']);
 Route::get('/admin/categorytosub/create/{id}', ['uses' => 'CategoryToSubController@create'         ,'as' => 'categorytosub.create' ]);

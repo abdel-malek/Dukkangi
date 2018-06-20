@@ -2,7 +2,7 @@
 @section ('styles')
 
  <style>
-          .trapezoid {
+.trapezoid {
     border-bottom: 100px solid red;
     border-left: 50px solid transparent;
     border-right: 50px solid transparent;
@@ -215,9 +215,6 @@
 @section ('main_section')
 <?php 
 // echo App::getLocale();
- 
-
-
   $count = $categories->count();
   $fullrows = (int)($count / 3);
   $col1 = $fullrows;
@@ -241,11 +238,14 @@
         <div class="items-col first-col">
         </div>
       @for($counter ; $counter < $col1;  $counter++)
-        <div class="landing-items-block {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}} " style="margin-top: {{($firstflag)? '8':'14'}}em;margin-left: 56px;">
+      <a href="{{route('category' , $categories[$counter]->id) }}">
+        <div class="landing-items-block {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}} " style="margin-top: {{($firstflag)? '8':'14'}}em;margin-left: 50px;
+    width: 62.2%;">
           <p class="text_item_block" style="width: 100%;
     text-align: center;">{{$categories[$counter]->english}}</p>
-          <a href="{{route('category' , $categories[$counter]->id) }}"><img class="" src="{{$categories[$counter]->image_id }}" /></a>
+          <img class="" src="{{$categories[$counter]->image_id }}" />
         </div>
+        </a>
         <?php $firstflag =1 ; ?> 
       @endfor
       </div>
@@ -257,11 +257,12 @@
          <div class="landing-items-block ">
           
         @for($counter ; $counter < $col2+$col1 ; $counter++ )
-       <div class="landing-items-block  {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}}" style="margin-top: {{$midflag == 0 ?'260px' : '100px'}};margin-bottom: 40px;margin-left: 56px;">
-         
+          <a href="{{route('category' , $categories[$counter]->id) }}">
+       <div class="landing-items-block  {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}}" style="margin-top: {{$midflag == 0 ?'260px' : '100px'}};margin-bottom: 40px;margin-left: 50px;width: 62.2%;">
+         <img class="" src="{{$categories[$counter]->image_id}}"/> 
           <p class="house-tools" style="" >{{$categories[$counter]->english}}</p>
-          <a href="{{route('category' , $categories[$counter]->id) }}"><img class="" src="{{$categories[$counter]->image_id}}"/></a>
         </div>
+        </a>
         <?php $midflag++ ?>
         @endfor
       </div>
@@ -272,11 +273,12 @@
         <div class="items-col third-col ">
         </div>
         @for($counter ; $counter < $col1+$col2+$col3 ; $counter++ )
-        <div class="landing-items-block  {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}}"  style="margin-top: {{($lastflag)? '8': '16'}}em;    left: 55px;">
-          <p class="shisha" style="width: 100%;
-    text-align: center;">{{$categories[$counter]->english}}</p>
-          <a href="{{route('category' , $categories[$counter]->id) }}"><img class="" src="{{$categories[$counter]->image_id}}"/></a>
-        </div>
+        <a href="{{route('category' , $categories[$counter]->id) }}">
+          <div class="landing-items-block  {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}}"  style="margin-top: {{($lastflag)? '8': '16'}}em;left: 50px;width: 62%;">
+          <p class="shisha" style="width: 100%;text-align: center;">{{$categories[$counter]->english}}</p>
+          <img class="" src="{{$categories[$counter]->image_id}}"/>
+         </div>
+        </a>
           <?php $lastflag = 1; ?>
         @endfor
    
@@ -294,9 +296,6 @@
                </div>
                <img class="welcome-img" src="/front-end/images/welcome-logo.png" />
                <div class="landing-items-block" style="margin-top: 160px;">
-                   <p class="title">
-                       Choose your category
-                   </p>
                </div>
                <div class="col-12 cloum_in_mobile" style="float:left;">
                 <?php $counter = 0 ?>

@@ -35,6 +35,7 @@ class CategoryToSubController extends Controller
     {
         $category = Category::all();
         $subcategory = Subcategory::find($id);
+        
         return view('admin.categorytosub.edit')->withSubcategory($subcategory)->withCategories($category);
     }
 

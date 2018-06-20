@@ -151,7 +151,7 @@
                     display: none !important;
                 }    
                 .rate-us{
-                    display: none;
+                    display: none !important;
                 }
             }
             .star_1 i:hover{

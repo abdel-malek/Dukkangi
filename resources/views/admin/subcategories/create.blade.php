@@ -31,7 +31,7 @@
  				<br>
 
  				{{ Form::label('image_id2' , 'Thumbnail:')}}
- 				{{ Form::file('image_id2e') }}
+ 				{{ Form::file('image_id2') }}
  				<br>
 
 				{{ Form::label('category_id' , 'Category:')}}

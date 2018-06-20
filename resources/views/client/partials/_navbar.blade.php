@@ -57,7 +57,7 @@
             <a class="navbar-brand rate-us" onclick="showratemodal();" style="cursor: pointer;" >@lang('Rate us?')</a>
           
         @else
-          <a class="navbar-brand rate-us" href="{{route('login')}}">@lang('Rate us?')</a>
+          <a class="navbar-brand rate-us" id="#rateus" href="{{route('login')}}">@lang('Rate us?')</a>
         @endif
         <div class="collapse navbar-collapse" style="display:block;;text-align: right;" id="navbarSupportedContent">
           <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex" style="text-align: right;direction: ltr;float: right;">
