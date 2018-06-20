@@ -26,6 +26,7 @@
 	  		<li class="list-group-item"><b>Name </b>(TR): {{ $product->turky  }} </li>
 	  		<li class="list-group-item"><b>Name </b>(KR): {{ $product->kurdi  }} </li>
 	  		<li class="list-group-item"><b>Price </b>:   <i> {{ $product->price }}</i> €</li>
+	  		<li class="list-group-item"><b>Discounted Price </b>:   <i> {{ $product->discount_price }} </i> €</li>
 	  		<li class="list-group-item"><b>Quantitiy </b>: {{ $product->qty }} </li>
 	  		<li class="list-group-item"><b>Points</b>: {{ $product->point }} </li>
 	  		<li class="list-group-item"><b>Category</b>:@foreach($categories as $category) {{ $category}}  @endforeach</li>

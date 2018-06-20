@@ -17,8 +17,8 @@ class AddForeignsToOrders extends Migration
             $table->unsignedInteger('item_id')->change();
             $table->unsignedInteger('order_id')->change();
 
-            $table->foreign('item_id')->references('id')->on('product');
-            $table->foreign('order_id')->references('id')->on('order'); 
+            // $table->foreign('item_id')->references('id')->on('product');
+            // $table->foreign('order_id')->references('id')->on('order'); 
         });
     }
 
