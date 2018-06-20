@@ -67,7 +67,7 @@
 @endsection
 
 @section('title')
-  Manage Order
+    Order Delivery
 @endsection
 
 @section('grid')

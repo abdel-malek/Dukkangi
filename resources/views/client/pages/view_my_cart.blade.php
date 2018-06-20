@@ -787,7 +787,11 @@
         <div class="credit_card_details">
 
             <div class="col-md-12" style="float:left;padding: 0em 2em;">
-                <img src="/front-end/images/payment/visa.png" id='btn-checkout' class="img_visa_choose_payment">
+                <img src="/front-end/images/payment/visa.png" id='btn-checkout' style="cursor: pointer;
+    box-shadow: 1px 1px 6px #999;
+    border-radius: 1em;
+    width: 26%;
+    padding: 0.3em;" class="img_visa_choose_payment">
                 <form action="/stripe" method="POST" id='stripe-form'>
                     <input type="text" class="form-control products" name='products' hidden value=''>
                     <input type="text" class="form-control" name='token' hidden value=''>
@@ -874,9 +878,13 @@
                         <input id="paypalamount" type="hidden" name="amount" value="Nan">
                         <input type="hidden" name="currency_code" value="EUR">
                         <!-- Display the payment button. -->
-
+                        <div style="cursor: pointer;
+    box-shadow: 1px 1px 6px #999;
+    border-radius: 1em;
+    width: 26%;
+    padding: 0.3em;">
                         <img alt="" border="0" style="cursor: pointer" src="/front-end/images/payment/paypal.png" onclick="submitPaypal(this)">
-
+                        </div>
                         <input type="image" id="clickpaypal" hidden name="submit" border="0" src="/front-end/images/payment/paypal.png" alt="Buy Now">
 
                     </form>

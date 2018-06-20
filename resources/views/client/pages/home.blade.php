@@ -241,7 +241,7 @@
         <div class="items-col first-col">
         </div>
       @for($counter ; $counter < $col1;  $counter++)
-        <div class="landing-items-block {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}} " style="margin-top: {{($firstflag)? '8':'14'}}em;">
+        <div class="landing-items-block {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}} " style="margin-top: {{($firstflag)? '8':'14'}}em;margin-left: 41px;">
           <p class="text_item_block">{{$categories[$counter]->english}}</p>
           <a href="{{route('category' , $categories[$counter]->id) }}"><img class="" src="{{$categories[$counter]->image_id }}" /></a>
         </div>
@@ -254,11 +254,11 @@
         </div>
         <img class="welcome-img" src="front-end/images/welcome-logo.png" />
          <div class="landing-items-block ">
-          <p class="title " style="margin-top: 160px">
+          <p class="title " style="margin-top: 160px;text-align: center;    left: -1em;margin-left: 0px">
             @lang('Choose your category')
           </p>
         @for($counter ; $counter < $col2+$col1 ; $counter++ )
-       <div class="landing-items-block  {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}}" style="margin-top: 100px;margin-bottom: 40px;">
+       <div class="landing-items-block  {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}}" style="margin-top: 100px;margin-bottom: 40px;margin-left: 41px;">
          
           <p class="house-tools">{{$categories[$counter]->english}}</p>
           <a href="{{route('category' , $categories[$counter]->id) }}"><img class="" src="{{$categories[$counter]->image_id}}"/></a>
@@ -272,7 +272,7 @@
         <div class="items-col third-col ">
         </div>
         @for($counter ; $counter < $col1+$col2+$col3 ; $counter++ )
-        <div class="landing-items-block  {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}}"  style="margin-top: {{($lastflag)? '8': '16'}}em;">
+        <div class="landing-items-block  {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}}"  style="margin-top: {{($lastflag)? '8': '16'}}em;    left: 3em;">
           <p class="shisha">{{$categories[$counter]->english}}</p>
           <a href="{{route('category' , $categories[$counter]->id) }}"><img class="" src="{{$categories[$counter]->image_id}}"/></a>
         </div>
@@ -297,11 +297,11 @@
                        Choose your category
                    </p>
                </div>
-               <div class="col-12 cloum_in_mobile" style="float:left">
+               <div class="col-12 cloum_in_mobile" style="float:left;">
                 <?php $counter = 0 ?>
                 @foreach($categories as $category)
                  @if($counter % 2 == 0)
-                   <div class="landing-items-block bottom_left_background_block  ">
+                   <div class="landing-items-block bottom_left_background_block  " style="">
                        <p class="text_item_block">{{$category->english}}</p>
                         <a href="{{route('category' , $category->id)}}"><img class="" src="{{$category->image_id}}"/></a>
                    </div>

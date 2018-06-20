@@ -20,6 +20,22 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
        <style>
+           .rating .star::after {
+                color: #d80001;
+                width: 0.75em;
+                height: 1.7em;
+
+            }
+            .rating .star::before{
+                color: #d80001;
+                width: 0.75em;
+                height: 0.7em;
+            }
+           .modal_one_item_details .rating .star::before {
+                color: #d80001;
+                width: 0.75em;
+                height: 0.7em;
+            }
            .modal_one_item_details{
              top: 10em;
                 top: 2em;

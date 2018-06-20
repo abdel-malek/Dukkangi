@@ -15,8 +15,8 @@
 	.right-arrow
 	{    
 		cursor: pointer;
-		left: 21.5em;
-    	top: 10.5em;
+		left: 21.5em !important;
+    	top: 10.5em !important;
 		background-color: #d80001;
 		border-radius: 1.5em;
 		border-color: #d80001;
@@ -29,7 +29,7 @@
 	.left-arrow
 	{    
 		cursor: pointer;
-		top: 10.5em;
+		top: 10.5em !important;
     	left: -1em;
     	background-color: #d80001;
 		border-radius: 1.5em;
@@ -91,7 +91,7 @@
    		color: #d80001 !important;
 	}
 	.contact-par{
-		margin-left: 42px;
+		    margin-left: 2px;
 	}	
 	.phone {
 	    position: absolute;
@@ -104,7 +104,7 @@
 	{
 		position: relative;
 	    top: 1.4em;
-	    left: 1.7em;
+	    left:-0.3em;
 		color: #d80001;
 	    font-size: 20px;
 	    margin-left: -20px;
@@ -112,13 +112,28 @@
 	    font-family: fantasy;
 	}
 	.glyphicon{
-		top:140px !important;
+		/*top:140px !important;*/
+	}
+	.glyphicon {
+    /* position: relative; */
+    left: -1.5em;
+    top: 19px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 	}
 	.sth{
 		margin-top: 20px;
 	}
 	.top{
 		margin-bottom: 13%;
+	}
+	.about{
+		padding-left: 13em !important;
 	}
 	@media (min-width: 768px) and (max-width: 1030px) {
 		.sth 
@@ -137,6 +152,11 @@
 			width: 80%;
 		}
 	}
+	@if(session('lang') == 'ar')
+		.rtl{
+			float: right;
+		}
+	@endif
 </style>
 @section ('styles')
 
@@ -146,24 +166,24 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <div class="row"> 
 	<div class="col-5 about-div">
-		<h1> About Dukkangi</h1>
-		<p>
+		<h1 class="rtl"> About Dukkangi</h1>
+		<p class="rtl">
 			Lorem ipsum dolor sit amet, has et saepe bonorum meliore, eum ex case eros splendide. Mei vide autem at, duo noster patrioque assentior in. Graeci consulatu iracundia in sed, cum autem inermis ut. Has quis quas incorrupte id, cu usu suas eleifend. Eum id ignota everti voluptatum.
-		</p>
-		<p>
+		</p >
+		<p class="rtl">
 			Mei placerat phaedrum molestiae ut, te velit debet recusabo cum. Falli choro no vim. Commodo quaerendum ad has. Omnis aperiam alterum his an, eos no minim ignota commune. No pro enim ignota, eirmod omnesque qui an, ei sea augue accusamus efficiendi.
 		</p>
-		<p>
+		<p class="rtl">
 			Mei placerat phaedrum molestiae ut, te velit debet recusabo cum. Falli choro no vim. Commodo quaerendum ad has. Omnis aperiam alterum his an, eos no minim ignota commune. No pro enim ignota, eirmod omnesque qui an, ei sea augue accusamus efficiendi.
 		</p>
-		<hr>
-		<h3>Section 2</h3>
-		<p>
+		<hr class="rtl">
+		<h3 class="rtl">Section 2</h3>
+		<p class="rtl">
 			Mei placerat phaedrum molestiae ut, te velit debet recusabo cum. Falli choro no vim. Commodo quaerendum ad has. Omnis aperiam alterum his an, eos no minim ignota commune. No pro enim ignota, eirmod omnesque qui an, ei sea augue accusamus efficiendi.
 		</p>
-		<hr>
-		<h3> Section 3</h3>
-		<p>
+		<hr class="rtl">
+		<h3 class="rtl"> Section 3</h3>
+		<p class="rtl">
 			Mei placerat phaedrum molestiae ut, te velit debet recusabo cum. Falli choro no vim. Commodo quaerendum ad has. Omnis aperiam alterum his an, eos no minim ignota commune. No pro enim ignota, eirmod omnesque qui an, ei sea augue accusamus efficiendi.
 		</p>
 		
@@ -172,10 +192,13 @@
 		<img class="img-logo" src="front-end/images/welcome-logo.png" width="500" height="180">
 
 		<div class="review-div col-md-6">
-			<h4>
+			<h4 style="@if(session('lang') == 'ar' )
+				float: right;
+				@endif
+			  ">
 				REVIEWS
 			</h4>
-			<hr class="hr-review">
+			<hr class="hr-review" style="margin-top: 40px;">
 			<span  class="glyphicon glyphicon-chevron-right right-arrow" onclick="right();"></span>
 			<span  class="glyphicon glyphicon-chevron-left left-arrow" onclick="left();"></span>
 			<div class="inner-review">
@@ -186,10 +209,10 @@
 		</div>
 
 	</div> 
-	<div class="contact-us-div col-md-6 sth" >
+	<div class="contact-us-div col-md-6 sth"  style="margin-top: 5em;">
 			<h2>Contact Us</h2>
 			<span class="mail">@</span>
-			<p class="contact-par">
+			<p class="" ="contact-par">
 			
 				info@dukkangi.com
 				<br>

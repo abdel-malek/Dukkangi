@@ -248,11 +248,11 @@ class ProductService
         }
 
                 //Sub-Categories
-
+          Tags::where('product_id' , '=', $id)->delete();
+                
         foreach ($request->subcategory_id as $singleSubcategeory) {
           
           $tag = Tags::where('product_id' , '=' , $id)->where('subcategory_id' , $singleSubcategeory)->get()->first();
-          Tags::where('product_id' , '=', $id)->delete();
           if(!isset($tag)){
             $subcategory = Subcategory::find($singleSubcategeory);
             $tag = new Tags();

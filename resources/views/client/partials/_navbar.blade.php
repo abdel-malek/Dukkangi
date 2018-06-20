@@ -103,7 +103,8 @@
         {!! Form::open(['route' =>'review']) !!}
           
           {{ Form::label('rate','Rate:') }}
-          {{ Form::number('rate',0,['class'=>'form-control','max'=>'5' , 'required' => 'required'])}}         
+          <span class="rating star rate-us ratinge " style="bottom: 19.8em;"></span>     
+          <input id="rate-us" type="number" name="rate" hidden="hidden">
           <hr>
           {{ Form::label('desc', 'Description:')}}
           {{ Form::textarea('desc', null, ['class'=>'form-control'] ) }}

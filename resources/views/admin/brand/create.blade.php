@@ -15,27 +15,27 @@
 	                    {!! Form::input('id','id', $brand->id ?$brand->id : 0  , ['class' => 'form-control','class' => 'hidden']) !!}
 	                    <div class="form-group">
 	                        {!! Form::label('english', 'English') !!}
-	                        {!! Form::text('english', $brand->english , ['class' => 'form-control','placeholder'=>'Code']) !!}
+	                        {!! Form::text('english', $brand->english , ['class' => 'form-control','placeholder'=>'English']) !!}
 	                    </div>
 
 											<div class="form-group">
 	                        {!! Form::label('arabic', 'Arabic') !!}
-	                        {!! Form::text('arabic', $brand->arabic , ['class' => 'form-control','placeholder'=>'Code']) !!}
+	                        {!! Form::text('arabic', $brand->arabic , ['class' => 'form-control','placeholder'=>'Arabic']) !!}
 	                    </div>
 
 											<div class="form-group">
 	                        {!! Form::label('german', 'German') !!}
-	                        {!! Form::text('german', $brand->german , ['class' => 'form-control','placeholder'=>'Code']) !!}
+	                        {!! Form::text('german', $brand->german , ['class' => 'form-control','placeholder'=>'German']) !!}
 	                    </div>
 
 											<div class="form-group">
 	                        {!! Form::label('kurdi', 'Kurdi') !!}
-	                        {!! Form::text('kurdi', $brand->kurdi , ['class' => 'form-control','placeholder'=>'Code']) !!}
+	                        {!! Form::text('kurdi', $brand->kurdi , ['class' => 'form-control','placeholder'=>'Kurdi']) !!}
 	                    </div>
 
 											<div class="form-group">
-	                        {!! Form::label('turky', 'Turky') !!}
-	                        {!! Form::text('turky', $brand->turky , ['class' => 'form-control','placeholder'=>'Code']) !!}
+	                        {!! Form::label('turky', 'Turkish') !!}
+	                        {!! Form::text('turky', $brand->turky , ['class' => 'form-control','placeholder'=>'Turkish']) !!}
 	                    </div>
 
 											<div class="form-group">

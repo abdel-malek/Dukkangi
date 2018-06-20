@@ -42,7 +42,7 @@ function loadProduct(){
                 console.log(item);
                 var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
                 var $edit = $('<a class="btn btn-block btn-info btn-xs">Add</a>');
-                $edit.attr('href',`/admin/products/qty/`+item.id+`/create`);
+                $edit.attr('href',`/admin/products/qty/`+item.product.id+`/create`);
                 return $result.add($edit);
               },
             },

@@ -36,16 +36,6 @@ function loadPayments(){
             {name: "user_id"    , title: 'User'    , type: "text", width: 5},
             {name: "order_id"   , title: 'Order' , type: "text", width: 5},
             {name: "payment_method.name" , title: 'Payment Method' , type: "text", width: 5},
-
-            {
-              type: "control", width: 10, editButton: false, modeSwitchButton: false, deleteButton: false,
-              itemTemplate: function (value, item) {
-                var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
-                var $edit = $('<a class="btn btn-block btn-default btn-xs">See Something</a>');
-                $edit.attr('href',`#`);
-                return $result.add($edit);
-              },
-            },
             {
                 type: "control", width: 10, editButton: false, modeSwitchButton: false, deleteButton: false,
                 itemTemplate: function (value, item) {

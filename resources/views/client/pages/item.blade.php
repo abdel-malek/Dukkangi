@@ -497,7 +497,6 @@
         s.parentNode.insertBefore(ga, s);
     })();
 </script>
-<script src="/front-end/js/plugin/SimpleStarRating.js"></script>
 <script>
     var ratings = document.getElementsByClassName('ratings');
 

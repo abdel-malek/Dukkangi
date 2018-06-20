@@ -18,7 +18,7 @@
             <div class="col-md-6">
             {!! Form::open(['route'=>'makegroupcoupon'] ) !!}
  
-              {{ Form::label('from' , 'Form:')  }}
+              {{ Form::label('from' , 'From:')  }}
               {{ Form::number('from' , null , ['class'=> 'form-control']) }}
             </div>
             <div class="col-md-6">
