@@ -42,6 +42,30 @@ function loadProduct(){
             {name: "qty"           , title: 'Quantity'   , type: "text", width: 5},
             {name: "price"         , title: 'Price'      , type: "text", width: 5},
             {name: "point"         , title: 'Points'     , type: "text", width: 5},
+            {name: "top"         , title: 'Top'     , type: "checkbox" , width: 3,
+                itemTemplate: function(value, item) {
+                    return $("<input>").attr("type", "checkbox")
+                        .attr("checked", item.top || item.Checked)
+                        .on("change", function() {
+                          $.ajax({
+                                type: "POST",
+                                url: `/admin/products/top/${item.id}`,
+                                headers: {
+                                    "x-csrf-token": $("[name=_token]").val()
+                                },
+                            }).done(response => {
+                                if(response == 'ok'){
+                                  swal("Added!", "This Product added to top products successfully.", "success");
+                                  // $('#product-grid').jsGrid('render');
+                                }
+                                else {
+                                 swal("Removed!", "This Product removed from top products successfully.", "success");
+                                   
+                                }
+                              });
+                        });
+              },
+            },
             {
               type: "control", width: 10, editButton: false, modeSwitchButton: false, deleteButton: false,
               itemTemplate: function (value, item) {

@@ -296,4 +296,18 @@ class ProductController extends Controller
             $notify->save();
             return 'ok';
     }
+    public function topProduct($id){
+        $product = Product::find($id);
+        if($product->top == 1){
+            $product->top = 0;
+            $product->update();
+            return 'removed';
+        }
+        else {
+            $product->top = 1;   
+            $product->update();
+            return 'ok';
+        }
+        
+    }
 }

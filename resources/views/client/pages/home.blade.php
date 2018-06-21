@@ -234,12 +234,14 @@
 ?>
  <div class="col-md-12" style="padding-right: 0px;padding-left: 0px" id="content_page">
     <div  id="main-container" class="item_in_lg" >
+       
+
       <div class="col-4">
         <div class="items-col first-col">
         </div>
       @for($counter ; $counter < $col1;  $counter++)
       <a href="{{route('category' , $categories[$counter]->id) }}">
-        <div class="landing-items-block {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}} " style="margin-top: {{($firstflag)? '8':'14'}}em;margin-left: 50px;
+        <div class="landing-items-block {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}} " style="margin-top: {{($firstflag)? '8':'34'}}em;margin-left: 50px;
     width: 62.2%;">
           <p class="text_item_block" style="width: 100%;
     text-align: center;">{{$categories[$counter]->english}}</p>
@@ -254,11 +256,29 @@
         <div class="items-col second-col">
         </div>
         <img class="welcome-img" src="front-end/images/welcome-logo.png" />
-         <div class="landing-items-block ">
+       
+      <div class="flexslider carousel" style="left: -122%;width: 337%;height: 14em;top: 14em;background-color: rgba(239, 239, 239,0.5);    border-color: rgba(239, 239, 239,-0.5);    z-index: 1;">
+        <ul class="slides">
+          @foreach($topProducts as $product)
+          <li>
+              <div class="col-md-11 col-lg-3" style="margin-top: 1em;float: left;max-width: 100%;margin-bottom: 1em">
+                  <div class="div_item" style="height: 12em;width: 10em;margin-left: 47px;">
+                     <a href="{{route('product',(string)$product->id)}}"> <img src="{{$product->image_id}}" class="img_item" />
+                      <p class="item_name">{{$product->english}}</p>
+                      <p class="item_price" style="margin-bottom: 0em;">{{isset($product->discounted_price) ? $product->discount_price : $product->price}}€</p>
+                     </a>
+                  </div>
+              </div>
+          </li>
+          @endforeach
+          <!-- items mirrored twice, total of 12 -->
+        </ul>
+      </div>
+       <div class="landing-items-block ">
           
         @for($counter ; $counter < $col2+$col1 ; $counter++ )
           <a href="{{route('category' , $categories[$counter]->id) }}">
-       <div class="landing-items-block  {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}}" style="margin-top: {{$midflag == 0 ?'260px' : '100px'}};margin-bottom: 40px;margin-left: 50px;width: 62.2%;">
+       <div class="landing-items-block  {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}}" style="margin-top: {{$midflag == 0 ?'23em' : '100px'}};margin-bottom: 40px;margin-left: 50px;width: 62.2%;">
          <img class="" src="{{$categories[$counter]->image_id}}"/> 
           <p class="house-tools" style="" >{{$categories[$counter]->english}}</p>
         </div>
@@ -274,7 +294,7 @@
         </div>
         @for($counter ; $counter < $col1+$col2+$col3 ; $counter++ )
         <a href="{{route('category' , $categories[$counter]->id) }}">
-          <div class="landing-items-block  {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}}"  style="margin-top: {{($lastflag)? '8': '16'}}em;left: 50px;width: 62%;">
+          <div class="landing-items-block  {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}}"  style="margin-top: {{($lastflag)? '8': '34'}}em;left: 50px;width: 62%;">
           <p class="shisha" style="width: 100%;text-align: center;">{{$categories[$counter]->english}}</p>
           <img class="" src="{{$categories[$counter]->image_id}}"/>
          </div>

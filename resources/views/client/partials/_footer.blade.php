@@ -1,3 +1,4 @@
+
 <footer class="footer" style="margin-top: 0px" >
             <div class="col-md-12" style="float:left">
                 <h2 class="title_footer">
@@ -41,5 +42,23 @@
         });
         $('#rate-us').val(num_star_active);
     });
+</script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+<script defer src="/js/jquery.flexslider.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+  $('.flexslider').flexslider({
+    animation: "slide",
+    animationLoop: true,
+    itemWidth: 210,
+    directionNav: false,  
+    itemMargin: 5,
+    minItems: 2,
+    maxItems: 5,
+    controlNav : false
+  });
+});
 </script>
       @yield('scripts')

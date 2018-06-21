@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 use App\Category;
 use App\Subcategory;
+use App\Tags;
 use Session;
 use Illuminate\Support\Facades\DB;
 class CategoryToSubService {
@@ -66,7 +67,8 @@ class CategoryToSubService {
 	}
 
 	public static function deleteSubcategory($id){
-		return Subcategory::where('id','=',$id)->delete();
+		Tags::where('subcategory_id' , '=', $id)->delete();
+		Subcategory::where('id','=',$id)->delete();
 	}
 
 	public static function updateSubategory($categoryRequest, $id)

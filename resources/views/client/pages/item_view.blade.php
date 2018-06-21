@@ -5,8 +5,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{{URL::asset('/front-end/css/style.css')}}">
 <link rel="stylesheet" href="{{URL::asset('/front-end/css/login.css')}}">
-<link rel="stylesheet" href="{{URL::asset('/front-end/css/item.css')}}">
+
 <link rel="stylesheet" href="{{URL::asset('/front-end/css/item_view.css')}}">
+<link rel="stylesheet" href="{{URL::asset('/front-end/css/item.css')}}">
 <link rel="stylesheet" href="{{URL::asset('/front-end/css/buy_item.css')}}">
 <link rel="stylesheet" href="{{URL::asset('/front-end/css/out_of_stock.css')}}">
 <link rel="stylesheet" href="{{URL::asset('/front-end/css/material_icons.css')}}">
@@ -619,7 +620,7 @@
 
                 <small>
                     <span style="text-decoration: line-through;left: -2.5em;top: -6px; font-size:33px"><small> {{$product->price}}</small></span>
-                    <span style="font-size: 15px;top: 1em;">Saled To</span>
+                    <!-- <span style="font-size: 15px;top: 1em;">Saled To</span> -->
                     <b style="font-family: 'EagarFont';"> {{$product->discount_price}} €</b>
 
                 </small>

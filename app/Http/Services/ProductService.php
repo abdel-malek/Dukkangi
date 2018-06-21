@@ -17,7 +17,7 @@ class ProductService
     public static function loadProduct($filter)
     {
         $index = $filter ? $filter['pageIndex'] : 0 ;
-        $product = Product::select(['id','arabic','english','qty','category_id','subcategory_id','price','point']);
+        $product = Product::select(['id','arabic','english','qty','category_id','subcategory_id','price','point','top']);
 
         if (!empty($filter['id'])) {
             $product->where('id', '=', $filter['id']);
@@ -70,7 +70,7 @@ class ProductService
         foreach ($dd as $d) {
              array_push($array, $d['product_id']) ;
         }
-        $product = Product::select(['id','arabic','english','qty','category_id','subcategory_id','price','point'])
+        $product = Product::select(['id','arabic','english','qty','category_id','subcategory_id','price','point','top'])
         ->whereIn('id', $array );
 
         if (!empty($filter['id'])) {
@@ -127,7 +127,7 @@ class ProductService
              array_push($array, $d['product_id']) ;
         }
 
-        $product = Product::select(['id','arabic','english','qty','category_id','subcategory_id','price','point']);
+        $product = Product::select(['id','arabic','english','qty','category_id','subcategory_id','price','point','top']);
         $product->whereIn('id',$array);
 
         if (!empty($filter['id'])) {

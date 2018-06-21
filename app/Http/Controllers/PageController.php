@@ -54,7 +54,8 @@ class PageController extends Controller
 				$category->english = $category->german;
 			}
 		}
-		return view('client.pages.home')->withCategories($categories);
+		$topProducts = Product::where('top', '=' , 1)->limit(20)->get();
+		return view('client.pages.home')->withCategories($categories)->withTopProducts($topProducts);
 	}
 	public function getCategoryPage($categoryId){
 

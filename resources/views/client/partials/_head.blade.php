@@ -18,6 +18,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="screen" />
 
        <style>
            .rating .star::after {
@@ -50,6 +51,10 @@
                 z-index: 15;
                 box-shadow: 1px 1px 16px #000000b0;
             }
+            .title_similar_items {
+                margin-top: 1em;
+                margin-left: 3em;
+            }
             .star{
                 cursor: pointer;
                 color: #fff;
@@ -64,9 +69,9 @@
                 width: 100%;
             }
             .icon-flag {
-    width: 16px;
-    height: 16px;
-}
+                width: 16px;
+                height: 16px;
+            }
             .rating{
                 font-size: 1.3em;
                 color: #fff;
@@ -93,7 +98,9 @@
                 width: 0.75em;
                 height: 0.7em;
             }
-           ]
+            .flex-direction-nav a {
+                 height: 50px;
+            }
             .details_comment .rating{
                 bottom: unset;
                 right: 1.4em;
