@@ -112,7 +112,7 @@
    height: 16px;
 }
 
-     @media (min-width: 768px) and (max-width: 1023px) {
+     @media (min-width: 20px) and (max-width: 1023px) {
          .item_in_lg{
              display: none !important;
          }    

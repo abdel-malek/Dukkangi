@@ -37,6 +37,7 @@
                 width: 0.75em;
                 height: 0.7em;
             }
+            
            .modal_one_item_details{
              top: 10em;
                 top: 2em;

@@ -34,7 +34,11 @@
 
 				<br>
 				{{ Form::label('category_id' , 'Category:')}}
-				{{ Form::text ('category_id' , $id , ['class' => 'form-control' , 'readonly' => 'readonly'] ) }}
+				<select class="custom-select" name="category_id">
+				@foreach($categories as $category)
+					<option value="{{$category->id}}" >{{$category->english}} </option>
+				@endforeach
+				</select>
 
 				{{ Form::submit('Add Subcategory' , ['class' => 'btn btn-block btn-success' , 'style' =>'margin-top:7px']) }}
 				<a href="{{ route('categorytosub.index',$id) }}" class="btn btn-default btn-block" style="margin-top: 7px">Cancel</a>

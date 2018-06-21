@@ -55,7 +55,8 @@ class PageController extends Controller
 			}
 		}
 		$topProducts = Product::where('top', '=' , 1)->limit(20)->get();
-		return view('client.pages.home')->withCategories($categories)->withTopProducts($topProducts);
+		$brands = Brand::get();
+		return view('client.pages.home')->withCategories($categories)->withTopProducts($topProducts)->withBrands($brands);
 	}
 	public function getCategoryPage($categoryId){
 

@@ -53,7 +53,8 @@ class CategoryToSubController extends Controller
 
     public function create($id)
     {
-        return view('admin.categorytosub.create')->withid($id);
+        $category = Category::all();
+        return view('admin.categorytosub.create')->withid($id)->withCategories($category);
     }
 
     public function store(Request $request)
