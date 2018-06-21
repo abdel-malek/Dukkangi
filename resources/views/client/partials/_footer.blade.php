@@ -1,7 +1,8 @@
 <style type="text/css">
-    .flex-control-paging li a { 
-        background-color: #fff;
-    }
+   .flex-control-paging li a.flex-active{
+        background-color: #fff ;
+   }
+
 </style>
 <footer class="footer" style="margin-top: 0px" >
 @if(isset($brands))

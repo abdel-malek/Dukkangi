@@ -796,8 +796,8 @@
     data-qty='1'>
     <div class="header_item_details">
         <img src="{{$product->image_id}}" class="img_item_details" style="height: 300px" />
-        <div class="div_title_item_details" >
-            <p class="title_item_details">
+        <div class="div_title_item_details"  style="top: 12.7em;">
+            <p class="title_item_details" style="">
                 {{$product->english}}
             </p>
             <span class="rating ratings{{$product->rate}}" style="float:left;"></span>

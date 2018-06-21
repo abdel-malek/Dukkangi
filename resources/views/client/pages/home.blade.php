@@ -31,7 +31,7 @@
     position: absolute;
     right: 19px;
     font-size: 31px;
-    transform: rotate(-9deg);
+    /*transform: rotate(-9deg);*/
     bottom: 91px;
 }
 
@@ -242,7 +242,7 @@
       @for($counter ; $counter < $col1;  $counter++)
       <a href="{{route('category' , $categories[$counter]->id) }}">
         <div class="landing-items-block {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}} " style="margin-top: {{($firstflag)? '8':'34'}}em;margin-left: 50px;
-    width: 62.2%;">
+    width: 62.2%; margin-bottom: 5em">
           <p class="text_item_block" style="width: 100%;
     text-align: center;">{{$categories[$counter]->english}}</p>
           <img class="" src="{{$categories[$counter]->image_id }}" />
