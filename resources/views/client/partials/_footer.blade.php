@@ -98,4 +98,24 @@
   });
 });
 </script>
+<script >
+  inp = $('#nav-bar-search');
+  inp.keypress(function() {
+    // console.log(inp.val());
+    text= inp.val();
+     $.ajax({
+            type: "POST",
+            url: `/search-auto`,
+            data: { 'text': text },
+            headers: {
+                "x-csrf-token": $("[name=_token]").val()
+            },
+        }).done(response => {
+            if (response !=  null) {
+               console.log(response[0]['english']);
+            }
+        });
+  });
+
+</script>
       @yield('scripts')

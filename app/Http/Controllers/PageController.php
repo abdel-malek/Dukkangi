@@ -570,4 +570,8 @@ class PageController extends Controller
     	$user->save();
     	return back();
     }
+    public function autoComplete(Request $request){
+    	$products = Product::select('id','english','arabic','german' , 'kurdi' , 'turky')->where(DB::raw("concat_ws('-',english,arabic,turky,kurdi,german)") , 'like' , '%'.$request->text.'%')->get();
+    	return $products;
+    }
 }

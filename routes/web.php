@@ -43,6 +43,7 @@ Route::post('/review','PageController@setReview')->name('review');
 Route::post('/changedetails' , 'PageController@changeDetails')->middleware('auth');
 // Route::post('/delteorder' , 'PageController@deleteOrder')->middleware('auth');
 Route::post('/uploadpic' ,'PageController@uploadPictue')->name('upload-pic')->middleware('auth');
+Route::post('/search-auto' , 'PageController@autoComplete'); // Auto Complete Search
    			                        //DASHBOARD
     //CATEGORIES
 Route::get('/admin/categories', ['uses' => 'CategoryController@index'                 ,'as' => 'category.index'       ]);

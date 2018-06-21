@@ -264,7 +264,7 @@
               <div class="col-md-11 col-lg-3" style="margin-top: 1em;float: left;max-width: 100%;margin-bottom: 1em">
                   <div class="div_item" style="height: 12em;width: 10em;margin-left: 47px;">
                      <a href="{{route('product',(string)$product->id)}}"> <img src="{{$product->image_id}}" class="img_item" />
-                      <p class="item_name">{{$product->english}}</p>
+                      <p class="item_name" style="font-size: 0.7em">{{$product->english}}</p>
                       <p class="item_price" style="margin-bottom: 0em;">{{isset($product->discounted_price) ? $product->discount_price : $product->price}}€</p>
                      </a>
                   </div>
@@ -278,7 +278,7 @@
           
         @for($counter ; $counter < $col2+$col1 ; $counter++ )
           <a href="{{route('category' , $categories[$counter]->id) }}">
-       <div class="landing-items-block  {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}}" style="margin-top: {{$midflag == 0 ?'23em' : '100px'}};margin-bottom: 40px;margin-left: 50px;width: 62.2%;">
+       <div class="landing-items-block  {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}}" style="margin-top: {{$midflag == 0 ?'20em' : '8em'}};margin-bottom: 40px;margin-left: 50px;width: 62.2%;">
          <img class="" src="{{$categories[$counter]->image_id}}"/> 
           <p class="house-tools" style="" >{{$categories[$counter]->english}}</p>
         </div>

@@ -13,9 +13,9 @@ class AddTopToProducts2 extends Migration
      */
     public function up()
     {
-        Schema::table('product' , function(Blueprint $table){
-            $table->boolean('top')->default('0');
-        });
+        // Schema::table('product' , function(Blueprint $table){
+        //     $table->boolean('top')->default('0');
+        // });
     }
 
     /**
