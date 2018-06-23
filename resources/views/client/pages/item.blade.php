@@ -124,7 +124,7 @@
         .input-search_icon i {
     margin-right: 1em;
 }
-    @media (min-width: 768px) and (max-width: 1030px) {
+    @media (min-width: 768px) and (max-width: 1100px) {
         .div_item .rating {
             bottom: 1.2em;
             left: 0.6em;
@@ -286,17 +286,30 @@
                         cursor:default;position:relative;top:0px;left:230px;height:200px;overflow:hidden;
                 ">
 
-                    @foreach($subcategories as $subcategory)
+                    @if(isset($category))
                     <div>
-                        <img data-u="image" src="{{$subcategory->image_id}}" style="height:15em;width: 45em;    border: 0.04em solid #8a8a8a" />
-                        <img data-u="thumb" src="{{$subcategory->image_id}}" />
+                        <img data-u="image" src="{{$category->image_id2}}" style="height:15em;width: 45em;    border: 0.04em solid #8a8a8a" />
+                        <img data-u="thumb" src="{{$category->image_id}}" />
                         <p class="text_big_image_slider">
-                            {{ $subcategory->english }}
+                            {{ $category->english }}
                             <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
-                            <span class="rating ratings{{$subcategory->rate}}" style="bottom: 0.1em;left: 0.9em;"></span>
                         </p>
                     </div>
-                    @endforeach
+
+                    @else
+
+                        @foreach($subcategories as $subcategory)
+                        <div>
+                            <img data-u="image" src="{{$subcategory->image_id}}" style="height:15em;width: 45em;    border: 0.04em solid #8a8a8a" />
+                            <img data-u="thumb" src="{{$subcategory->image_id}}" />
+                            <p class="text_big_image_slider">
+                                {{ $subcategory->english }}
+                                <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
+                                <span class="rating ratings{{$subcategory->rate}}" style="bottom: 0.1em;left: 0.9em;"></span>
+                            </p>
+                        </div>
+                        @endforeach
+                    @endif
                 </div>
 
             </div>
@@ -605,7 +618,7 @@
         }).done((response) => $('#filteredproducts').append(response));
 
     }
-    
+
     function addToCart(obj){
         id = $(obj).data('id');
         $.ajax({

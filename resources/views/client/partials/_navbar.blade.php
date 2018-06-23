@@ -107,6 +107,7 @@
           {{ Form::label('rate','Rate:') }}
           <span class="rating star rate-us ratinge " style="bottom: 19.8em;"></span>     
           <input id="rate-us" type="number" name="rate" hidden="hidden">
+          <img src="/front-end/images/logo.png" style="width: 150px;margin-left: 112px;">
           <hr>
           {{ Form::label('desc', 'Description:')}}
           {{ Form::textarea('desc', null, ['class'=>'form-control'] ) }}

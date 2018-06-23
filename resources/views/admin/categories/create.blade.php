@@ -19,8 +19,12 @@
 				{{ Form::label('turky' , 'Name (Turky):') }}
 				{{ Form::text('turky' , null, ['class'=> 'form-control' ,]) }}
 				<br>
- 				{{ Form::label('image' , 'Image:')}}
+ 				{{ Form::label('image' , 'Home Image:')}}
  				{{ Form::file('image') }}
+ 				<br>
+
+ 				{{ Form::label('image2' , 'Slider Image:')}}
+ 				{{ Form::file('image2') }}
  				<br>
 
 				{{ Form::submit('Confirm Category' , [ 'class' => 'btn btn-block btn-success' ,'style'=>'margin-top:7px' ])}}

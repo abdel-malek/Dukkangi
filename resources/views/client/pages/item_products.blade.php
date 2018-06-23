@@ -12,7 +12,7 @@
         @endif
        <a href="{{route('product',(string)$product->id)}}"> <img src="{{$product->image_id}}" class="img_item" />
         <p class="item_name">{{ $product->english }}</p>
-        <p class="item_price" style="margin-bottom: 0em;">{{ $product->price }}€</p>
+        <p class="item_price" style="margin-bottom: 0em;">{{ isset($product->discount_price) ?$product->discount_price : $product->price }}€</p>
         <span class="rating ratings{{$product->rate}}" ></span></a>
         <img onclick="addToCart(this)" data-id="{{$product->id}}" src="\front-end\images\user_actions\view-my-cart.png" class="icon_view_my_card"  style="cursor: pointer" />
     </div>

@@ -65,6 +65,8 @@ class CategoryController extends Controller
 		$category->english = $request->english;
 		if($request->hasFile('image'))
 			$category->image_id = ImageService::saveImage($request->file('image'));
+		if($request->hasFile('image2'))
+			$category->image_id2 = ImageService::saveImage($request->file('image2'));
 		$category->save();
 		Session::flash('success', 'Added Successfuly!');
 

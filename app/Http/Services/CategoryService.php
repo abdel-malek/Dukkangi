@@ -68,6 +68,9 @@ class CategoryService {
         if ($categoryRequest->hasFile('image')) {
             $category->image_id = ImageService::saveImage($categoryRequest->file('image'));
         }
+        if ($categoryRequest->hasFile('image2')) {
+            $category->image_id2 = ImageService::saveImage($categoryRequest->file('image2'));
+        }
 		$category->save();
 
 		Session::flash('success', 'Updated Successfuly!');

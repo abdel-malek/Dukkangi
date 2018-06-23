@@ -18,8 +18,12 @@
 			{{ Form::label('german', 'Name (GR): ') }}
 			{{ Form::text('german' ,null,['class'=>'form-control'] ) }}
 
-			{{ Form::label('image' , 'Image:')}}
+			{{ Form::label('image' , 'Home Image:')}}
  			{{ Form::file('image') }}
+ 			<br>`
+			{{ Form::label('image2' , 'Slider Image:')}}
+			{{ Form::file('image2') }}
+			<br>
 
 
 			{{Form::submit('Edit Category' , [ 'class'=>'btn btn-success btn-block' ,'style'=>'margin-top:7px']) }}

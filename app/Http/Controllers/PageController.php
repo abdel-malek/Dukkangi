@@ -127,8 +127,8 @@ class PageController extends Controller
 				$product->discount =  sprintf('%0.0f',100 - (($product->discount_price * 100) / $product->price));
 			}
 		}
-
-		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withCategoryId($categoryId);
+		$category = Category::find($categoryId);
+		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withCategoryId($categoryId)->withCategory($category);
 	}
 
 
@@ -556,7 +556,7 @@ class PageController extends Controller
     	$address = $request->input('address');
 
     	$birthdate = $request->birthdate;
-    	$user = User::find(Auth::id()); // to change form the database not from session "Auth::user()"
+    	$user = User::find(Auth::id()); // to change from the database not from session "Auth::user()"
     	if(isset($address))
     		$user->address= $address;
     	if(isset($birthdate))
@@ -599,7 +599,7 @@ class PageController extends Controller
 		foreach ($brands as $br) {
 			$result->push($br);
 		}
-		
+
     	return $result;
     }
 
