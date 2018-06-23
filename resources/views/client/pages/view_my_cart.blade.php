@@ -642,7 +642,7 @@
         border-radius: 50%;
         line-height: .8em;
         color: white;
-        background: rgba(255, 0, 0, .85);
+        background: rgba(0, 0, 0, .85);
         text-align: center;
         min-width: 1em;
         font-weight: bold;
@@ -1134,5 +1134,7 @@
             $('#clickpaypal').click();
         });
     }
+
+    $('footer').css('margin-top' ,$('.one_item_details').height() -500);
 
 </script> @endsection

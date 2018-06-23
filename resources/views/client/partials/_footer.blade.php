@@ -71,33 +71,6 @@
 
 <script defer src="/js/jquery.flexslider.js"></script>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-  $('.flexslider').flexslider({
-    animation: "slide",
-    animationLoop: true,
-    itemWidth: 210,
-    directionNav: false,  
-    itemMargin: 5,
-    minItems: 2,
-    maxItems: 5,
-    controlNav : false
-  });
-  $('.flexslider2').flexslider({
-    animation: "slide",
-    animationLoop: true,
-    itemWidth: 210, 
-    itemMargin: 5,
-    minItems: 2,
-    maxItems: 4,
-    slideshow : false,
-    controlNav : true,
-    directionNav: true,    
-    animationSpeed: 100, 
-    slideshowSpeed: 10000,     
-  });
-});
-</script>
 <script >
   inp = $('#nav-bar-search');
   inp.keypress(function() {

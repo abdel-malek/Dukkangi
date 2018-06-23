@@ -257,7 +257,7 @@
         </div>
         <img class="welcome-img" src="front-end/images/welcome-logo.png" />
        
-      <div class="flexslider carousel" style="left: -122%;width: 337%;height: 14em;top: 14em;background-color: rgba(239, 239, 239,0.5);    border-color: rgba(239, 239, 239,-0.5);    z-index: 1;">
+      <div class="flexslider carousel" style="left: -112%;width: 323%;;height: 14em;top: 14em;background-color: rgba(239, 239, 239,0.5);    border-color: rgba(239, 239, 239,-0.5);    z-index: 1;">
         <ul class="slides">
           @foreach($topProducts as $product)
           <li>
@@ -337,3 +337,35 @@
            </div>
        </div>
 @endsection
+
+@section('scripts')
+ <script type="text/javascript">
+  $(document).ready(function() {
+  $('.flexslider').flexslider({
+    animation: "slide",
+    animationLoop: true,
+    itemWidth: 210,
+    directionNav: true,  
+    itemMargin: 5,
+    minItems: 2,
+    maxItems: 5,
+    controlNav : false, 
+    animationSpeed: 2000, 
+    slideshowSpeed: 5000, 
+  });
+  $('.flexslider2').flexslider({
+    animation: "slide",
+    animationLoop: true,
+    itemWidth: 210, 
+    itemMargin: 5,
+    minItems: 2,
+    maxItems: 4,
+    slideshow : false,
+    controlNav : true,
+    directionNav: true,    
+    animationSpeed: 100, 
+    slideshowSpeed: 10000,     
+  });
+});
+</script>
+@endsection 

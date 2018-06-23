@@ -37,7 +37,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{route('profile')}}">@lang('My Account')</a>
+              <a class="nav-link" href="{{route('profile')}}" style="text-align: center;">@lang('My Account')</a>
             </li>
 
             <li class="nav-item">

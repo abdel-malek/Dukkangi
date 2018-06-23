@@ -63,11 +63,9 @@
         bottom: 0.2em;
         left: 18em;
     }
-
     .rating .star::after {
-        color: #d80001;
+        color: #fff;
     }
-
     .rating .star::before {
         color: #fff;
     }
@@ -193,7 +191,7 @@
             margin-bottom: -3em;
             padding-bottom: 0em;
         }
-    @media (min-width: 768px) and (max-width: 1030px) {
+    @media (min-width: 768px) and (max-width: 1200px) {
         .all_page_item_view {
             padding: 0em 0em;
         }
@@ -780,7 +778,7 @@
             </a>
             <p class="item_price" style="margin-bottom: 0em;">{{$simiproduct->price}} €</p>
             <span class="rating ratings{{$simiproduct->rate}}" style="width: 0.75em;height: 1.7em; left: 1em;bottom: 0.2em;"></span>
-            <img src="\front-end\images\user_actions\view-my-cart.png" class="icon_view_my_card">
+            <img onclick="addToCart(this)" data-id="{{$simiproduct->id}}" src="\front-end\images\user_actions\view-my-cart.png" class="icon_view_my_card" style="cursor: pointer;">
         </div>
     </div>
     @endforeach
@@ -1126,4 +1124,23 @@
         $('#product-name').css('height','4em');
     }   
 </script> 
+
+<script >
+    function addToCart(obj){
+        id = $(obj).data('id');
+        $.ajax({
+            type: "POST",
+            url: `/cart/add`,
+            data: { 'productId': id, 'qty': 1 },
+            headers: {
+                "x-csrf-token": $("[name=_token]").val()
+            },
+        }).done(response => {
+            if (response.id > 0) {
+                swal({ title: "Successfully!", text: "Item Added.", type: "success", timer: 2000, showConfirmButton: false });
+                hideModal();
+            }
+        });
+    }
+</script>
 @endsection

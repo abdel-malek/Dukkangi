@@ -605,5 +605,21 @@
         }).done((response) => $('#filteredproducts').append(response));
 
     }
-
+    
+    function addToCart(obj){
+        id = $(obj).data('id');
+        $.ajax({
+            type: "POST",
+            url: `/cart/add`,
+            data: { 'productId': id, 'qty': 1 },
+            headers: {
+                "x-csrf-token": $("[name=_token]").val()
+            },
+        }).done(response => {
+            if (response.id > 0) {
+                swal({ title: "Successfully!", text: "Item Added.", type: "success", timer: 2000, showConfirmButton: false });
+                hideModal();
+            }
+        });
+    }
 </script> @endsection

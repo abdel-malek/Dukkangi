@@ -96,7 +96,7 @@
                   border-top: none;
                   z-index: 99;
                   top: 88%;
-                  left: 23.8%;
+                  left: 25%;
                   right: 0;
                   width: 16em;
             }
@@ -110,7 +110,7 @@
                 text-align: left;
                 float: left;
                 font-weight: bolder;
-                
+
               background-color: #fff; 
                 font-size: 15px; 
                 width: 100%;
