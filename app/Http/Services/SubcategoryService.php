@@ -101,6 +101,46 @@ class SubcategoryService {
 		return redirect(route('subcategory.index' ));	
 	}
 
+  public static function autoComplete($request){
+        $subcategories = Subcategory::select('id','english')->where('english' , 'like' , '%'.$request->text.'%')->limit(6)->get();
+            //Arabic
+        $comp = Subcategory::select('id','arabic','english')->where('arabic' , 'like' , '%'.$request->text.'%')->limit(6)->get();
+        foreach ($comp as $c) {
+            $c->english = $c->arabic;
+            self::addNoRedundancy($subcategories,$c);
+        }   
+            //German
+        $comp = Subcategory::select('id','german','english')->where('german' , 'like' , '%'.$request->text.'%')->limit(6)->get();
+        foreach ($comp as $c) {
+            $c->english = $c->german;
+            self::addNoRedundancy($subcategories,$c);
+        }       
+    
+            //Turkish
+        $comp = Subcategory::select('id','turky','english')->where('turky' , 'like' , '%'.$request->text.'%')->limit(6)->get();
+        foreach ($comp as $c) {
+            $c->english = $c->turky;
+            self::addNoRedundancy($subcategories,$c);
+        }
+            //Kurdi
+        $comp = Subcategory::select('id','kurdi','english')->where('kurdi' , 'like' , '%'.$request->text.'%')->limit(6)->get();
+        foreach ($comp as $c) {
+            $c->english = $c->kurdi;
+            self::addNoRedundancy($subcategories,$c);        
+        }
+        foreach ($subcategories as $p) {
+                $p->type = 'sub';
+        }   
+        return $subcategories;
+    }
+    private static function addNoRedundancy($arr , $obj){
+        foreach ($arr as $a) {
+            if($a->id == $obj->id )
+                return ;
+        }
+        $arr->push($obj);
+        return ;
+    }
 }
 
 

@@ -15,6 +15,11 @@ use App\Comment;
 use App\Http\Services\FilterService;
 use App\Http\Services\CartService;
 use App\Http\Services\ImageService;
+use App\Http\Services\ProductService;
+use App\Http\Services\BrandService;
+use App\Http\Services\SubcategoryService;
+use App\Http\Services\CategoryService;
+
 use Redirect;
 use Session;
 use App;
@@ -570,8 +575,40 @@ class PageController extends Controller
     	$user->save();
     	return back();
     }
+
+
     public function autoComplete(Request $request){
-    	$products = Product::select('id','english','arabic','german' , 'kurdi' , 'turky')->where(DB::raw("concat_ws('-',english,arabic,turky,kurdi,german)") , 'like' , '%'.$request->text.'%')->get();
-    	return $products;
+    	$products = ProductService::autoComplete($request);
+
+    	$categories = CategoryService::autoComplete($request);
+
+    	$subcategories = SubcategoryService::autoComplete($request);
+
+    	$brands = BrandService::autoComplete($request);
+    	
+    	$result = Product::where('id', '=', 0)->get();
+    	if(isset($products))
+    		$result = $products;
+
+		foreach ($categories as $c) {
+			$result->push($c);
+		}
+		foreach ($subcategories as $sub) {
+			$result->push($sub);
+		}
+		foreach ($brands as $br) {
+			$result->push($br);
+		}
+		
+    	return $result;
+    }
+
+    private function addNoRedundancy($arr , $obj){
+    	foreach ($arr as $a) {
+    		if($a->id == $obj->id )
+    			return ;
+    	}
+    	$arr->push($obj);
+    	return ;
     }
 }

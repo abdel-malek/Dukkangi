@@ -4,7 +4,7 @@
       <a href="{{route('home')}}"> <img class="logo" src="/front-end/images/logo.png"/></a>
         <div class="collapse navbar-collapse top_nav" id="main-navbar-items" style="display: block;text-align: right;">
           <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex" style="text-align: right;direction: ltr;float: right;">
-            <li style="margin-right: 138px;width: 321px;"> 
+            <li > 
               <input type="text" class="form-control input_search" style="float: left;" id="nav-bar-search" name="search" placeholder="{{ (isset($lastSearch) ? $lastSearch : __('Search' .'..')) }}"></li>
             <li class="nav-item active">
               <a class="nav-link" href="{{ route('home') }}">@lang('Home')</a>

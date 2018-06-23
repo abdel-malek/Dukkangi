@@ -43,6 +43,48 @@ class BrandService{
     $result['data'] = $products->take(10)->skip($skip)->get();
     return $result; 
   }
+
+
+  public static function autoComplete($request){
+        $brands = Brand::select('id','english')->where('english' , 'like' , '%'.$request->text.'%')->limit(6)->get();
+            //Arabic
+        $comp = Brand::select('id','arabic','english')->where('arabic' , 'like' , '%'.$request->text.'%')->limit(6)->get();
+        foreach ($comp as $c) {
+            $c->english = $c->arabic;
+            self::addNoRedundancy($brands,$c);
+        }   
+            //German
+        $comp = Brand::select('id','german','english')->where('german' , 'like' , '%'.$request->text.'%')->limit(6)->get();
+        foreach ($comp as $c) {
+            $c->english = $c->german;
+            self::addNoRedundancy($brands,$c);
+        }       
+    
+            //Turkish
+        $comp = Brand::select('id','turky','english')->where('turky' , 'like' , '%'.$request->text.'%')->limit(6)->get();
+        foreach ($comp as $c) {
+            $c->english = $c->turky;
+            self::addNoRedundancy($brands,$c);
+        }
+            //Kurdi
+        $comp = Brand::select('id','kurdi','english')->where('kurdi' , 'like' , '%'.$request->text.'%')->limit(6)->get();
+        foreach ($comp as $c) {
+            $c->english = $c->kurdi;
+            self::addNoRedundancy($brands,$c);        
+        }
+        foreach ($brands as $p) {
+                $p->type = 'br';
+        }   
+        return $brands;
+    }
+    private static function addNoRedundancy($arr , $obj){
+        foreach ($arr as $a) {
+            if($a->id == $obj->id )
+                return ;
+        }
+        $arr->push($obj);
+        return ;
+    }
 }
 
 ?>

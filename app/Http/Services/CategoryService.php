@@ -75,6 +75,48 @@ class CategoryService {
 		return redirect(route('category.index'));	
 	}
 
+
+	public static function autoComplete($request){
+        $categories = Category::select('id','english')->where('english' , 'like' , '%'.$request->text.'%')->limit(6)->get();
+            //Arabic
+        $comp = Category::select('id','arabic','english')->where('arabic' , 'like' , '%'.$request->text.'%')->limit(6)->get();
+        foreach ($comp as $c) {
+            $c->english = $c->arabic;
+            self::addNoRedundancy($categories,$c);
+        }   
+            //German
+        $comp = Category::select('id','german','english')->where('german' , 'like' , '%'.$request->text.'%')->limit(6)->get();
+        foreach ($comp as $c) {
+            $c->english = $c->german;
+            self::addNoRedundancy($categories,$c);
+        }       
+    
+            //Turkish
+        $comp = Category::select('id','turky','english')->where('turky' , 'like' , '%'.$request->text.'%')->limit(6)->get();
+        foreach ($comp as $c) {
+            $c->english = $c->turky;
+            self::addNoRedundancy($categories,$c);
+        }
+            //Kurdi
+        $comp = Category::select('id','kurdi','english')->where('kurdi' , 'like' , '%'.$request->text.'%')->limit(6)->get();
+        foreach ($comp as $c) {
+            $c->english = $c->kurdi;
+            self::addNoRedundancy($categories,$c);        
+        }
+        foreach ($categories as $p) {
+                $p->type = 'ca';
+        }   
+        return $categories;
+    }
+    private static function addNoRedundancy($arr , $obj){
+        foreach ($arr as $a) {
+            if($a->id == $obj->id )
+                return ;
+        }
+        $arr->push($obj);
+        return ;
+    }
+
 }
 
 

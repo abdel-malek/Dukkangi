@@ -373,6 +373,46 @@ class ProductService
         $productQty->qty = $qty;
         return $productQty->save();
     }
+    public static function autoComplete($request){
+        $products = Product::select('id','english')->where('english' , 'like' , '%'.$request->text.'%')->limit(6)->get();
+            //Arabic
+        $comp = Product::select('id','arabic','english')->where('arabic' , 'like' , '%'.$request->text.'%')->limit(6)->get();
+        foreach ($comp as $c) {
+            $c->english = $c->arabic;
+            self::addNoRedundancy($products,$c);
+        }   
+            //German
+        $comp = Product::select('id','german','english')->where('german' , 'like' , '%'.$request->text.'%')->limit(6)->get();
+        foreach ($comp as $c) {
+            $c->english = $c->german;
+            self::addNoRedundancy($products,$c);
+        }       
+    
+            //Turkish
+        $comp = Product::select('id','turky','english')->where('turky' , 'like' , '%'.$request->text.'%')->limit(6)->get();
+        foreach ($comp as $c) {
+            $c->english = $c->turky;
+            self::addNoRedundancy($products,$c);
+        }
+            //Kurdi
+        $comp = Product::select('id','kurdi','english')->where('kurdi' , 'like' , '%'.$request->text.'%')->limit(6)->get();
+        foreach ($comp as $c) {
+            $c->english = $c->kurdi;
+            self::addNoRedundancy($products,$c);        
+        }
+        foreach ($products as $p) {
+                $p->type = 'pr';
+        }   
 
+        return $products;
+    }
+    private static function addNoRedundancy($arr , $obj){
+        foreach ($arr as $a) {
+            if($a->id == $obj->id )
+                return ;
+        }
+        $arr->push($obj);
+        return ;
+    }
 
 }

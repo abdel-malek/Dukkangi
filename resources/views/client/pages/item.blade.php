@@ -308,7 +308,7 @@
                 <div class="pictureFrame" style="width: 110px; height: 92px;">
                     <img src="{{$subcategory->image_id2}}" class="block_thum" style="z-index: 1; width: 110px; height: 88px; padding-top: 2px; padding-bottom: 2px;">
                     <a href="{{ route('subcategoryfilter',$subcategory->id) }}">
-                        <p class="sub-paragraph" style="z-index: 1;padding: 4.4px 32.5px;">
+                        <p class="sub-paragraph" style="z-index: 1;padding: 4.4px 0px;text-align: center;">
                             {{$subcategory->english}}
                         </p>
                     </a>

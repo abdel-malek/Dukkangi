@@ -79,8 +79,8 @@
                 bottom: 0.6em;
                 left: 1.4em;
             }
-                .header_page  .rating{
-                bottom: 0.2em;
+            .header_page  .rating{          
+               bottom: 0.2em;
                 left: 18em;
             }
             .rating .star::after{
@@ -88,6 +88,43 @@
             }
             .rating .star::before{
                 color: #fff;
+            }
+            .autocomplete-items {
+                  position: absolute;
+                  border: 1px solid #d4d4d4;
+                  border-bottom: none;
+                  border-top: none;
+                  z-index: 99;
+                  top: 88%;
+                  left: 23.8%;
+                  right: 0;
+                  width: 16em;
+            }
+            .autocomplete-items div {
+              cursor: pointer;
+              background-color: #fff; 
+              border-bottom: 1px solid #d4d4d4; 
+              text-align: center;
+            }
+            .autocomplete-items div label{ 
+                text-align: left;
+                float: left;
+                font-weight: bolder;
+                
+              background-color: #fff; 
+                font-size: 15px; 
+                width: 100%;
+                color: gray;
+                font-family: -webkit-body;       
+            }
+            .autocomplete-items div:hover {
+              /*when hovering an item:*/
+              background-color: #e9e9e9; 
+            }
+            .autocomplete-active {
+              /*when navigating through the items using the arrow keys:*/
+              background-color: DodgerBlue !important; 
+              color: #ffffff; 
             }
             .div_item  .rating .star::after{
                 color: #d80001;
@@ -138,7 +175,15 @@
             .top_nav {
                 margin-left: 55px;
             }
-            @media (min-width: 768px) and (max-width: 1023px) {
+            #nav-bar-search
+            {
+                margin-right: 138px;
+                width: 321px;
+            }
+            .navbar-divider, .navbar-nav .nav-item+.nav-item, .navbar-nav .nav-link+.nav-link {
+                margin-left: 0rem;
+            }
+            @media (min-width: 0px) and (max-width: 1023px) {
                 #navbarSupportedContent ul li {
                     font-size: 21px;
                 }
@@ -149,6 +194,10 @@
                 .landing-items-block .title {
                     margin-left: 7px;
                     top: 7em;
+                }
+                #nav-bar-search
+                {
+                    display: none;
                 }
                 .icon-flag {
                     float: right;
@@ -216,7 +265,7 @@
             border-radius:50%;
             line-height:.8em;
             color: white;
-            background:rgba(255,0,0,.85);
+            background:rgba(0,0,0,.85);
             text-align:center;
             min-width: 1em;
             font-weight:bold;
