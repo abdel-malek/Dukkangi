@@ -750,12 +750,12 @@
         </div>
 
         <div class="col-md-12" style="float:left;">
-            <h3 class="title_detail_my_card text_voucher">@lang('Voucher Code')</h3>
+            <h3 class="title_detail_my_card text_voucher" style="font-size:1.3em">@lang('Voucher Code')</h3>
             <hr class="line_title_detail_my_card line_voucher">
         </div>
         <div class="code_voucher_code">
-            <p class="text_enter_code">
-                @lang('Enter Code')
+            <p class="text_enter_code" style="font-size: 13px;">
+                @lang('Enter Code') <small>(optional)</small>
             </p>
             <input class="form-group one_code_voucher_code" value="" id="couponcode" placeholder="Enter Code" type="text" onchange="checkCode(this.value)">
         </div>
