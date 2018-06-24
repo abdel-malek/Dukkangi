@@ -252,7 +252,7 @@
 			<span class="glyphicon glyphicon-pencil glyph" aria-hidden="true" onclick="changeDetials()" ></span>
 		</div>
 	</div>
-	<div class="sections" style="overflow: auto;height: 25em;">
+	<div class="sections" style="overflow: auto;height: 33em;">
 		<table border="0">
 			<thead style="border-top: 0px solid #A9A9A9;">
 				<td class="number">
