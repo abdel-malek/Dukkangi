@@ -130,6 +130,7 @@ class OrderService {
 		$result['data']=$orderItems->take(10)->skip($skip)->get();
 		foreach ($result['data'] as $value) {
 			$user = User::find($value->user_id);
+			if(!isset($user)) continue;
 			$value->user_id = $user->email;
 			if ($value->dhl_status == 2 ){
 				$value->dhl_status = "Not Delivered";
