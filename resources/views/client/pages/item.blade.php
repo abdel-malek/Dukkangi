@@ -1,4 +1,8 @@
- @extends('client.main') @section('styles')
+ @extends('client.main') 
+
+ @section('styles')
+
+<link rel="stylesheet" href="{{URL::asset('/front-end/css/buy_item.css')}}">
 <style>
     .image_slider {
         height: 13em !important;
@@ -475,7 +479,53 @@
         </div>
     </div>
 </div>
-@endsection @section('scripts')
+
+
+
+
+<!-- Add To Cart -->
+
+<div class="background_modal" style="display: none;"></div>
+<div class="modal_one_item_details" id="modal_one_item_details" style="display: none;z-index: 100;" data-productId=""
+    data-qty='1'>
+    <div class="header_item_details">
+        <img src="" id="modal-img" class="img_item_details" style="height: 300px" />
+        
+    </div>
+    <div class="col-md-12" style="margin-top: 0.6em;float: left;">
+        <div style="width: 30%;float: left;">
+            <h3 class="title_qty">
+                @lang('Quantity')
+            </h3>
+        </div>
+        <div style="width: 70%;float: right;">
+            <p class="num_qty">
+                1
+            </p>
+            <div style="width:30%;float: right;">
+                <img src="/front-end/images/payment/handler-plus.png" onclick="num_plus(this)" class="btn_qty">
+                <img src="/front-end/images/payment/handler-min.png" onclick="num_min(this)" class="btn_qty" style="margin-top: -0.9em">
+            </div>
+            <!-- <img -->
+        </div>
+    </div>
+
+    <div class="button_modal_one_item_details">
+        @if( Auth::check())
+        <p class="btn_done" style="background-color: #d80001;color: #fff;cursor: pointer">@lang('Done')</p>
+        <p class="btn_cancel" style="margin-left: 9%;cursor: pointer">@lang('Cancel') </p>
+        <a href="{{route('mycart')}}">
+            <p class="btn_view_my_cart" style="width: 100%;">@lang('View my Cart') </p>
+        </a>
+        @else
+        <a href="{{route('login')}}" class="btn_done" style="background-color: #d80001;color: #fff;cursor: pointer">Login To Add</a>
+
+        <a class="btn_cancel" style="margin-left: 9%;cursor: pointer" onclick="hideModal()">@lang('Cancel') </a>
+        @endif
+    </div>
+</div>
+@endsection 
+@section('scripts')
 
 <script src="/front-end/js/plugin/multe_select.js"></script>
 <script src="/front-end/js/plugin/vertical-slider.js"></script>
@@ -499,6 +549,27 @@
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(ga, s);
     })();
+</script>
+<script>
+    function num_plus(obj) {
+        counter = parseInt($(obj).parent().parent().find('p').text());
+            if (counter < 1) {
+                counter = 1;
+                $(obj).parent().parent().find('p').text(counter);
+            }
+            else {
+                 counter = counter + 1
+                $(obj).parent().parent().find('p').text(counter);
+            }
+    }
+    function num_min(obj) {
+        counter = parseInt($(obj).parent().parent().text());
+        if ((counter > 1)) {
+            counter = counter - 1;
+            $(obj).parent().parent().find('p').text(counter);
+        }
+
+    }
 </script>
 <script>
     var ratings = document.getElementsByClassName('ratings');
@@ -619,12 +690,12 @@
 
     }
 
-    function addToCart(obj){
-        id = $(obj).data('id');
+    function addToCart(id ,qty){
+        // id = $(obj).data('id');
         $.ajax({
             type: "POST",
             url: `/cart/add`,
-            data: { 'productId': id, 'qty': 1 },
+            data: { 'productId': id, 'qty': qty },
             headers: {
                 "x-csrf-token": $("[name=_token]").val()
             },
@@ -635,4 +706,23 @@
             }
         });
     }
+
+     $('#btn_modal_one_item_details').click(function () {
+        showModal();
+    });
+    $('.background_modal').click(function () {
+        hideModal();
+    });
+    $('#modal_one_item_details .btn_cancel').on('click', function () {
+        hideModal();
+    });
+
+    $('#modal_one_item_details .btn_done').on('click', function () {
+        //get productId,Qty
+        productId = $('#modal_one_item_details').attr('data-productId');
+        qty = $('#modal_one_item_details').attr('data-qty');
+        //submit add to cart ajax.
+        addToCart(productId, qty);
+    });
+
 </script> @endsection

@@ -785,12 +785,12 @@
             </div>
             @endif
             <a href="{{ route('product',$simiproduct->id) }}">
-                <img src="{{$simiproduct->image_id}}" class="img_item" />
+                <img src="{{$simiproduct->image_id}}" class="img_item product-img" />
                 <p class="item_name">{{ $simiproduct->english}} </p>
             </a>
             <p class="item_price" style="margin-bottom: 0em;">{{$simiproduct->price}} €</p>
             <span class="rating ratings{{$simiproduct->rate}}" style="width: 0.75em;height: 1.7em; left: 1em;bottom: 0.2em;"></span>
-            <img onclick="addToCart($(this).data('id'))" data-id="{{$simiproduct->id}}" src="\front-end\images\user_actions\view-my-cart.png" class="icon_view_my_card" style="cursor: pointer;">
+            <img onclick="addCartModal($(this).parent().find('.product-img').attr('src') , $(this).data('id') )" data-id="{{$simiproduct->id}}" src="\front-end\images\user_actions\view-my-cart.png" class="icon_view_my_card" style="cursor: pointer;">
         </div>
     </div>
     @endforeach
@@ -805,7 +805,7 @@
 <div class="modal_one_item_details" id="modal_one_item_details" style="display: none;" data-productId="{{$product->id}}"
     data-qty='1'>
     <div class="header_item_details">
-        <img src="{{$product->image_id}}" class="img_item_details" style="height: 300px" />
+        <img src="{{$product->image_id}}" id="modal-img" class="img_item_details" style="height: 300px" />
         <div class="div_title_item_details"  style="top: 12.7em;">
             <p class="title_item_details" style="">
                 {{$product->english}}
@@ -1040,21 +1040,7 @@
         addToCart(productId, qty);
     });
 
-    function showModal() {
-        $('#modal_one_item_details').show();
-        $('.background_modal').show();
-        $('#header').css('filter', 'blur(5px)');
-        $('#content_page').css('filter', 'blur(5px)');
-        $('.footer').css('filter', 'blur(5px)');
-    }
-
-    function hideModal() {
-        $('#modal_one_item_details').hide();
-        $('.background_modal').hide();
-        $('#header').css('filter', 'blur(0px)');
-        $('#content_page').css('filter', 'blur(0px)');
-        $('.footer').css('filter', 'blur(0px)');
-    }
+  
 </script>
 <script>
     function num_plus(obj) {

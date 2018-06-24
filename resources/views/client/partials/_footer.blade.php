@@ -282,4 +282,29 @@
     }
   }
 </script>
+<script >
+  function addCartModal(src,id){
+    console.log(id);
+    $('#modal_one_item_details').attr('data-productId', id);
+    $('#modal_one_item_details').data('data-qty', 1);
+    $('#modal-img').attr('src' , src );
+    console.log(src);
+    showModal();
+  }
+    function showModal() {
+        $('#modal_one_item_details').show();
+        $('.background_modal').show();
+        $('#header').css('filter', 'blur(5px)');
+        $('#content_page').css('filter', 'blur(5px)');
+        $('.footer').css('filter', 'blur(5px)');
+    }
+
+    function hideModal() {
+        $('#modal_one_item_details').hide();
+        $('.background_modal').hide();
+        $('#header').css('filter', 'blur(0px)');
+        $('#content_page').css('filter', 'blur(0px)');
+        $('.footer').css('filter', 'blur(0px)');
+    }
+</script>
       @yield('scripts')
