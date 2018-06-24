@@ -60,7 +60,40 @@ class PageController extends Controller
 			}
 		}
 		$topProducts = Product::where('top', '=' , 1)->limit(20)->get();
+
 		$brands = Brand::get();
+		if ($lang == "de"){
+			foreach ($topProducts as $p) {
+				$p->english = $p->german;
+			}
+			foreach ($brands as $b) {
+				$b->english = $b->german;
+			}
+		}
+		if ($lang == "ar"){
+			foreach ($topProducts as $p) {
+				$p->english = $p->arabic;
+			}
+			foreach ($brands as $b) {
+				$b->english = $b->arabic;
+			}
+		}
+		if ($lang == "tr"){
+			foreach ($topProducts as $p) {
+				$p->english = $p->turky;
+			}
+			foreach ($brands as $b) {
+				$b->english = $b->turky;
+			}
+		}
+		if ($lang == "ku"){
+			foreach ($topProducts as $p) {
+				$p->english = $p->kurdi;
+			}
+			foreach ($brands as $b) {
+				$b->english = $b->kurdi;
+			}
+		}
 		return view('client.pages.home')->withCategories($categories)->withTopProducts($topProducts)->withBrands($brands);
 	}
 	public function getCategoryPage($categoryId){

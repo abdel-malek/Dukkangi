@@ -29,7 +29,7 @@
 }
 .bottom_left_background_block .text_item_block {
     position: absolute;
-    right: 19px;
+    /*right: 19px;*/
     font-size: 31px;
     /*transform: rotate(-9deg);*/
     bottom: 91px;
@@ -280,7 +280,7 @@
           <a href="{{route('category' , $categories[$counter]->id) }}">
        <div class="landing-items-block  {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}}" style="margin-top: {{$midflag == 0 ?'20em' : '8em'}};margin-bottom: 40px;margin-left: 50px;width: 62.2%;">
          <img class="" src="{{$categories[$counter]->image_id}}"/> 
-          <p class="house-tools" style="" >{{$categories[$counter]->english}}</p>
+          <p class="house-tools" style="text-align: center;width: 100%;left: 0px" >{{$categories[$counter]->english}}</p>
         </div>
         </a>
         <?php $midflag++ ?>
@@ -295,7 +295,7 @@
         @for($counter ; $counter < $col1+$col2+$col3 ; $counter++ )
         <a href="{{route('category' , $categories[$counter]->id) }}">
           <div class="landing-items-block  {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}}"  style="margin-top: {{($lastflag)? '8': '34'}}em;left: 50px;width: 62%;">
-          <p class="shisha" style="width: 100%;text-align: center;">{{$categories[$counter]->english}}</p>
+          <p class="shisha" style="width: 100%;text-align: center;left: 0px">{{$categories[$counter]->english}}</p>
           <img class="" src="{{$categories[$counter]->image_id}}"/>
          </div>
         </a>

@@ -110,7 +110,7 @@
           <img src="/front-end/images/logo.png" style="width: 150px;margin-left: 112px;">
           <hr>
           {{ Form::label('desc', 'Description:')}}
-          {{ Form::textarea('desc', null, ['class'=>'form-control'] ) }}
+          {{ Form::textarea('desc', null, ['class'=>'form-control' , 'style' => 'max-height:116px'] ) }}
           <hr>
           {{Form::submit('Submit' , ['class' => 'btn btn-block btn-success' , 'style' => 'margin-bottom:30x'])}}
 

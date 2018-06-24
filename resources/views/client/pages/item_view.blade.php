@@ -182,6 +182,16 @@
     {
         height: 10.4em;
     }
+    .rate-logo {
+
+        width: 102px;
+        margin-left: 12em;
+        margin-top: -1em;
+
+    }
+    .modal_one_item_details .rating .star::before {
+        color: #fff;
+    }
     .button_modal_one_item_details {
             margin-top: 3em;
         }
@@ -194,6 +204,9 @@
     @media (min-width: 768px) and (max-width: 1200px) {
         .all_page_item_view {
             padding: 0em 0em;
+        }
+        .rate-logo {
+            margin-left: 9em;
         }
         .details_comment .rating {
             margin-top: 0.8em !important;
@@ -362,7 +375,7 @@
         }
         .title_reviews {
             float: left;
-            margin-top: 310px
+            margin-top: 419px;
         }
         .block_similar {
             float: left;
@@ -586,7 +599,7 @@
 
             <!-- /Slider -->
             <!-- <img src="{{$product->image_id}}" /> -->
-            <div class="div_title_item_details" style="height: 6em;" id="product-name" >
+            <div class="div_title_item_details" style="height: 7.5em;" id="product-name" >
                 <p class="title_item_details product-name" style="text-align: center">{{$product->english}}</p>
                 <span class="rating rating-info ratings{{$product->rate}} product-rate" data-type="product" data-id="{{$product->id}}" style="left: 5.5em;"></span>
                
@@ -735,7 +748,8 @@
             <h3 class="text_leave_constructive_review" style="color: #d80001;margin-top: 0em;">@lang('Leave a constructive review')</h3>
             <p class="text_leave_constructive_review" style="margin-top:0.6em;">@lang('Rate this product') </p>
             <div class="details_comment" style="margin-bottom: 50px">
-                <span class="rating2 ratinge rating form-rate" data-id="{{$product->id }}" style="margin-right: 160px"></span>
+                <span class="rating2 ratinge rating form-rate" data-id="{{$product->id }}" style="margin-right: 160px;right: 2em;"></span>
+                <img src="/front-end/images/logo.png" class="rate-logo" >
             </div>
 
             <p class="text_leave_constructive_review">@lang('Leave a comment')</p>
@@ -776,7 +790,7 @@
             </a>
             <p class="item_price" style="margin-bottom: 0em;">{{$simiproduct->price}} €</p>
             <span class="rating ratings{{$simiproduct->rate}}" style="width: 0.75em;height: 1.7em; left: 1em;bottom: 0.2em;"></span>
-            <img onclick="addToCart(this)" data-id="{{$simiproduct->id}}" src="\front-end\images\user_actions\view-my-cart.png" class="icon_view_my_card" style="cursor: pointer;">
+            <img onclick="addToCart($(this).data('id'))" data-id="{{$simiproduct->id}}" src="\front-end\images\user_actions\view-my-cart.png" class="icon_view_my_card" style="cursor: pointer;">
         </div>
     </div>
     @endforeach
@@ -1023,19 +1037,7 @@
         productId = $('#modal_one_item_details').attr('data-productId');
         qty = $('#modal_one_item_details').attr('data-qty');
         //submit add to cart ajax.
-        $.ajax({
-            type: "POST",
-            url: `/cart/add`,
-            data: { 'productId': productId, 'qty': qty },
-            headers: {
-                "x-csrf-token": $("[name=_token]").val()
-            },
-        }).done(response => {
-            if (response.id > 0) {
-                swal({ title: "Successfully!", text: "Item Added.", type: "success", timer: 2000, showConfirmButton: false });
-                hideModal();
-            }
-        });
+        addToCart(productId, qty);
     });
 
     function showModal() {
@@ -1116,7 +1118,6 @@
     str = $('.product-name').text();
     if (str.length < 10)
     {
-        console.log(str.length  );
         $('.product-name').css('text-align',  'left');
         $('.product-rate').css('left','10.5em').css("bottom" , "0.8em");
         $('#product-name').css('height','4em');
@@ -1124,12 +1125,11 @@
 </script> 
 
 <script >
-    function addToCart(obj){
-        id = $(obj).data('id');
+    function addToCart(productId , qty  = 1){
         $.ajax({
             type: "POST",
             url: `/cart/add`,
-            data: { 'productId': id, 'qty': 1 },
+            data: { 'productId': productId, 'qty': qty },
             headers: {
                 "x-csrf-token": $("[name=_token]").val()
             },
