@@ -24,10 +24,12 @@
     </div>
     @endforeach
 @else 
-    <div class="col-12"  style="text-align: center">
-        <h5 style="text-align: center">
-        There's No Products Here !
+    <div class="col-12"  style="text-align: center;height: 200px">
+        <center>
+        <h5 style="text-align: center;margin-top: 10%;">
+        @lang("There's No Products Here !")
         </h5>
+        </center>
     </div>
 
 

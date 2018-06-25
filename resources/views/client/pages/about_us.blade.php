@@ -166,7 +166,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <div class="row"> 
 	<div class="col-5 about-div">
-		<h1 class="rtl"> About Dukkangi</h1>
+		<h1 class="rtl"> @lang('About Dukkangi')</h1>
 		<p class="rtl">
 			Lorem ipsum dolor sit amet, has et saepe bonorum meliore, eum ex case eros splendide. Mei vide autem at, duo noster patrioque assentior in. Graeci consulatu iracundia in sed, cum autem inermis ut. Has quis quas incorrupte id, cu usu suas eleifend. Eum id ignota everti voluptatum.
 		</p >
@@ -196,7 +196,7 @@
 				float: right;
 				@endif
 			  ">
-				REVIEWS
+				@lang('REVIEWS')
 			</h4>
 			<hr class="hr-review" style="margin-top: 40px;">
 			<span  class="glyphicon glyphicon-chevron-right right-arrow" onclick="right();"></span>
@@ -210,7 +210,7 @@
 
 	</div> 
 	<div class="contact-us-div col-md-6 sth"  style="margin-top: 5em;">
-			<h2>Contact Us</h2>
+			<h2>@lang('Contact Us')</h2>
 			<span class="mail">@</span>
 			<p class="" ="contact-par">
 			

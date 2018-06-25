@@ -229,7 +229,7 @@
 <div class="col-md-12 all_page_item_view" id="content_page" style="margin-bottom: 14em;top: 3em;">
     <div class="header_page" style="background-image: url('/front-end/images/items_page/1.png');background-size:133%">
         <p class="header_page_text_div" style="width: 90.3%; padding-left: 30.5em">
-            <b>{{Auth::user()->name }}</b>'s Profile
+            <b>{{Auth::user()->name }}</b> @lang('Profile')
             <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
             
         </p>
@@ -259,19 +259,19 @@
 					#	
 				</td>
 				<td class="order">
-					My Orders
+					@lang('My Orders')
 				</td>
 				<td class="date">
-					Date
+					@lang('Date')
 				</td>
 				<td class="state">
-					Order State
+					@lang('Order State')
 				</td>
 				<td class="state">
-					Packed
+					@lang('Packed')
 				</td>
 				<td class="rate">
-					DHL-Code
+					@lang('DHL-Code')
 				</td>
 			</thead>
 			<tbody>

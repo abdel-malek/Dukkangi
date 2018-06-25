@@ -540,6 +540,9 @@ class PageController extends Controller
 	}
 
 	public function getAboutUs(){
+		$lang = session('lang');
+		App::setLocale($lang);
+
 		$review =Review::get()->first();
 		return view('client.pages.about_us')->withReview($review);
 	}
@@ -566,6 +569,9 @@ class PageController extends Controller
 	}
 
 	public function getProfile(){
+		$lang = session('lang');
+		App::setLocale($lang);
+
 		$user = Auth::user();
 		$orders = Order::where('user_id' , '=' , $user->id)->where('status_id', '>',2)->get();
 		foreach ($orders as $order) {

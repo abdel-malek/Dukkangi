@@ -11,6 +11,7 @@ use Illuminate\Auth\Events\Registered;
 use App\Http\Services\MailService;
 use Illuminate\Http\Request;
 use \Datetime;
+use App;
 class RegisterController extends Controller
 {
     /*
@@ -72,6 +73,8 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
+            $lang = session('lang');
+        App::setLocale($lang);
         return view('client.pages.signup');
     }
     protected function create(array $data)

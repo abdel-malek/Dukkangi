@@ -108,39 +108,39 @@
                 
                                 <div class="input-group">
 
-                                    <input type="text" class="form-control input_singup" id="inlineFormInputGroupUsername" placeholder="Username" name="name">
+                                    <input type="text" class="form-control input_singup" id="inlineFormInputGroupUsername" placeholder="@lang('Username')" name="name">
                                 </div>
                             </div>
                             <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
                                 <div class="input-group">
 
-                                    <input type="email" class="form-control input_singup" id="inlineFormInputGroupEmail" placeholder="Email or Phone number" name="email">
+                                    <input type="email" class="form-control input_singup" id="inlineFormInputGroupEmail" placeholder="@lang('Email')" name="email">
                                 </div>
                             </div>
                             <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
                                 <div class="input-group">
 
-                                    <input name="password" type="password" class="form-control input_singup" id="inlineFormInputGroupPassword" placeholder="Password">
+                                    <input name="password" type="password" class="form-control input_singup" id="inlineFormInputGroupPassword" placeholder="@lang('Password')">
                                 </div>
                             </div>
                             <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
                                 <div class="input-group">
 
-                                    <input type="password" class="form-control input_singup" id="inlineFormInputGroupConfirmPassword" placeholder="Confirm Password" name="password_confirmation">
+                                    <input type="password" class="form-control input_singup" id="inlineFormInputGroupConfirmPassword" placeholder="@lang('Confirm Password')" name="password_confirmation">
                                 </div>
                             </div>
                            
                             <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
                                 <div class="input-group">
 
-                                    <input type="text" class="form-control input_singup datepicker" id="date_of_brith" placeholder="Date of birth" name="dateofbirth">
+                                    <input type="text" class="form-control input_singup datepicker" id="date_of_brith" placeholder="@lang('Date of birth')" name="dateofbirth">
                                 </div>
                             </div>
                             <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
                                 <div class="input-group">
                                     <select class="custom-select form-control input_singup" name="gender">
-                                       <option value="male" >Male </option>
-                                       <option value="female" >Female </option>
+                                       <option value="male" >@lang('Male') </option>
+                                       <option value="female" >@lang('Female') </option>
                                     </select>
                                 </div>
                             </div>
@@ -148,14 +148,14 @@
                             <div class="col-sm-12 my-1" style="margin-top: 3em !important;float: left;">
                                 <div class="input-group">
                                     <button type="submit" class="btn_login" style="border :0px;cursor: pointer;">
-                                        Sign up
+                                        @lang('Sign up')
                                     </button>
                                 </div>
                             </div>
                             <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
                                 <div class="input-group">
                                     <a href="{{ route('home') }}" class="btn_cancel"> 
-                                        Cancel
+                                        @lang('Cancel')
                                     </a>    
                                 </div>
                             </div>

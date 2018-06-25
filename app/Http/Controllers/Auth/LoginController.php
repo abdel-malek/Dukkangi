@@ -40,18 +40,23 @@ class LoginController extends Controller
      *
      * @return void
      */
+    public function showLoginForm()
+    {
+        $lang = session('lang');
+        App::setLocale((string)$lang);
+       
+        return view('auth.login');
+    }
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+
     }
 
 
     public function login(Request $request)
     {
-        $lang = session('lang');
-
-        App::setLocale((string)$lang);
-        
+ 
         $this->validateLogin($request);
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and

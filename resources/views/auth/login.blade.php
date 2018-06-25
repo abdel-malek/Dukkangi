@@ -127,7 +127,7 @@
                             </div>
                             
                                    <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
-                                <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+                                <label class="sr-only" for="inlineFormInputGroupUsername">@lang('Username')</label>
                                 <div class="input-group">
                                   <div class="checkbox">
                                       

@@ -14,6 +14,7 @@ use App\Tags;
 use App\ProductNotificationStatus;
 use App\ProductNotification;
 use Auth;
+use App;
 
 class ProductController extends Controller
 {
@@ -278,6 +279,9 @@ class ProductController extends Controller
         return redirect(route('productQty.index'));
     }
     public function filterByBrand($brandId){
+        $lang = session('lang');
+        App::setLocale($lang);
+
         $products = Product::where('brand_id' , '=' ,$brandId)->get();
         $brand = Brand::find($brandId);
         $categories = [];

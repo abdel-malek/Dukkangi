@@ -355,7 +355,7 @@
                         <i class="material-icons">&#xE8B6;</i>
                     </div>
                     {!! Form::open(['route' => 'categoryfilter' , 'method' =>'GET']) !!}
-                    <input type="text" class="form-control input_search" id="search" name="search" placeholder="{{ (isset($lastSearch) ? $lastSearch : __('Search' .'..')) }}">
+                    <input type="text" class="form-control input_search" id="search" name="search" placeholder="@lang('Search') ">
                     <input type="text" hidden="hidden" id="category_id" name="categoryId" value="{{isset($categoryId) ? $categoryId : ''}}">
 
                     <button type="submit" id="myBtn" hidden="hidden">
@@ -402,11 +402,11 @@
     <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
         <div class="input-group">
             <input type="text" class="form-control input_filter input_search_in_modal" id="inlineFormInputGroupUsername" name="name"
-                placeholder="Search ...">
+                placeholder="@lang('Search') ...">
         </div>
     </div>
     <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
-        <p class="lable_input_filter">Category</p>
+        <p class="lable_input_filter">@lang('Category')</p>
         <div class="input-group line_category">
             <hr class="line_title_input_modal">
 
@@ -415,7 +415,7 @@
     <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
         <div class="select-menu js-select-menu" id="unique-id">
             <input class="menu-state js-menu-state" id="unique-id-menu-state" type="checkbox" />
-            <label class="select-label js-select-label" data-default-label="Category" data-label="Category" name="categories[]" for="unique-id-menu-state">
+            <label class="select-label js-select-label" data-default-label="Category" data-label="@lang('Category')" name="categories[]" for="unique-id-menu-state">
             </label>
             <ul class="menu js-select-options">
                 @foreach($categories as $category)
@@ -431,7 +431,7 @@
         </div>
     </div>
     <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
-        <p class="lable_input_filter text_price">Price</p>
+        <p class="lable_input_filter text_price">@lang('Price')</p>
         <div class="input-group line_price">
             <hr class="line_title_input_modal">
         </div>
@@ -443,7 +443,7 @@
                 <i class="material-icons" style="color:#fff;">€</i>
             </div>
             <input type="text" class="form-control input_filter validation_just_number max_input" name="max" id="inlineFormInputGroupUsername"
-                placeholder="Max">
+                placeholder="@lang('Max')">
         </div>
     </div>
     <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
@@ -453,7 +453,7 @@
                 <i class="material-icons" style="color:#fff;">€</i>
             </div>
             <input type="text" name="min" class="form-control input_filter validation_just_number min_input" id="inlineFormInputGroupUsername"
-                placeholder="Min">
+                placeholder="@lang('Min')">
         </div>
     </div>
     <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
@@ -465,7 +465,7 @@
     <div class="col-sm-12 my-1" style="margin-top: 2em !important;float: left;">
         <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
         <div class="input-group">
-            <input type="submit" class="btn_model_filter" value="Show results" style="border: 0px; cursor: pointer">
+            <input type="submit" class="btn_model_filter" value="@lang('Show results')" style="border: 0px; cursor: pointer">
 
         </div>
     </div>
@@ -474,7 +474,7 @@
         <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
         <div class="input-group">
             <p class="btn_model_filter cancel-modal" style="background-color: #fff;color: #222;cursor: pointer">
-                Cancel
+                @lang('Cancel')
             </p>
         </div>
     </div>

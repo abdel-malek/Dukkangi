@@ -755,7 +755,7 @@
         </div>
         <div class="code_voucher_code">
             <p class="text_enter_code" style="font-size: 13px;">
-                @lang('Enter Code') <small>(optional)</small>
+                @lang('Enter Code') <small>(@lang('optional') )</small>
             </p>
             <input class="form-group one_code_voucher_code" value="" id="couponcode" placeholder="Enter Code" type="text" onchange="checkCode(this.value)">
         </div>
