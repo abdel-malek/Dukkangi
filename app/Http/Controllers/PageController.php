@@ -161,6 +161,11 @@ class PageController extends Controller
 			}
 		}
 		$category = Category::find($categoryId);
+		if ($lang == 'ar') $category->english = $category->arabic;
+		if ($lang == 'ku') $category->english = $category->kurdi;
+		if ($lang == 'de') $category->english = $category->german;
+		if ($lang == 'tr') $category->english = $category->turky;
+
 		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withCategoryId($categoryId)->withCategory($category);
 	}
 
