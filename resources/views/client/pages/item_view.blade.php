@@ -846,7 +846,7 @@
             <p class="btn_view_my_cart" style="width: 100%;">@lang('View my Cart') </p>
         </a>
         @else
-        <a href="{{route('login')}}" class="btn_done" style="background-color: #d80001;color: #fff;cursor: pointer">Login To Add</a>
+        <a href="{{route('login')}}" class="btn_done" style="background-color: #d80001;color: #fff;cursor: pointer">@lang('Login To Add')</a>
 
         <a class="btn_cancel" style="margin-left: 9%;cursor: pointer" onclick="hideModal()">@lang('Cancel') </a>
         @endif
