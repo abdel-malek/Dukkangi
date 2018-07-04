@@ -553,7 +553,7 @@
         <div class="header_item_details">
             @if(isset($product->discount) && $product->discount != 0)
             <div class="discount_item_details" style="z-index: 20">
-                <p class="text_discount_details">
+                <p class="text_discount_details" style="font-size:22px">
                     <small>{{$product->discount}}</small> % @lang('off')</p>
             </div>
             @endif
