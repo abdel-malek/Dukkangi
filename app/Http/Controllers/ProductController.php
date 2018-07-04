@@ -74,8 +74,17 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $subcategories = Subcategory::all();
+
         $brands = Brand::all();
         $product = Product::find($id);
+        $tags = Tags::where('product_id', '=', $id)->get();
+        foreach ($subcategories as $sub) {
+            foreach ($tags as $tag) {
+                if ($sub->id  == $tag->subcategory_id){
+                    $sub->selected = 1 ;
+                }
+            }
+        }
         return view('admin.products.edit')->withProduct($product)->withCategories($categories)->withSubcategories($subcategories)->withBrands($brands);
     }
 
@@ -99,6 +108,14 @@ class ProductController extends Controller
         $subcategories = Subcategory::all();
         $brands = Brand::all();
         $product = Product::find($id);
+        $tags = Tags::where('product_id', '=', $id)->get();
+        foreach ($subcategories as $sub) {
+            foreach ($tags as $tag) {
+                if ($sub->id  == $tag->subcategory_id){
+                    $sub->selected = 1 ;
+                }
+            }
+        }
         return view('admin.products.editbycategory')->withBrands($brands)->withProduct($product)->withCategories($categories)->withSubcategories($subcategories);
     }
 
@@ -121,6 +138,14 @@ class ProductController extends Controller
         $subcategories = Subcategory::all();
         $brands = Brand::all();
         $product = Product::find($id);
+        $tags = Tags::where('product_id', '=', $id)->get();
+        foreach ($subcategories as $sub) {
+            foreach ($tags as $tag) {
+                if ($sub->id  == $tag->subcategory_id){
+                    $sub->selected = 1 ;
+                }
+            }
+        }
         return view('admin.products.editbysubcategory')->withBrands($brands)->withProduct($product)->withCategories($categories)->withSubcategories($subcategories);
     }
 

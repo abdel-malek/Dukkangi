@@ -61,7 +61,7 @@
 				{{ Form::label('subcategory_id' , 'Subcategory:')}}
 				<select class="js-example-basic-multiple form-control"   name="subcategory_id[]" multiple="multiple">
 				@foreach($subcategories as $subcategory)
-					<option value="{{$subcategory->id}}" >{{$subcategory->english}} </option>
+					<option value="{{$subcategory->id}}" {{$subcategory->selected ==1 ? 'selected' : '' }} >{{$subcategory->english}} </option>
 				@endforeach
 				</select>
 				<br>
