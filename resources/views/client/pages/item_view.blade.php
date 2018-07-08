@@ -69,7 +69,6 @@
     .rating .star::before {
         color: #fff;
     }
-
     .div_item .rating .star::after {
         color: #d80001;
         width: 0.75em;
@@ -191,6 +190,14 @@
     }
     .modal_one_item_details .rating .star::before {
         color: #fff;
+    }
+    .image-modal{
+        position: absolute;
+        left: 25%;
+        top: 25%;
+    }
+    .d-none{
+        display: none;
     }
     .button_modal_one_item_details {
             margin-top: 3em;
@@ -573,22 +580,22 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class=" d-block w-100" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id}}" alt="First slide">
+                        <img class=" d-block w-100" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id}}" alt="First slide">
                     </div>
 
                     @if(isset($product->image_id2))
                     <div class="carousel-item">
-                        <img class="img_item_details" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id2}}"
+                        <img class="img_item_details"  onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id2}}"
                             alt="Second slide">
                     </div>
                     @endif @if(isset($product->image_id3))
                     <div class="carousel-item">
-                        <img class="img_item_details" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id3}}"
+                        <img class="img_item_details" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id3}}"
                             alt="Third slide">
                     </div>
                     @endif @if(isset($product->image_id4))
                     <div class="carousel-item">
-                        <img class="img_item_details" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id4}}"
+                        <img class="img_item_details" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id4}}"
                             alt="Fourth slide">
                     </div>
                     @endif
@@ -806,13 +813,12 @@
     data-qty='1'>
     <div class="header_item_details">
         <img src="{{$product->image_id}}" id="modal-img" class="img_item_details" style="height: 300px" />
-        <div class="div_title_item_details"  style="top: 12.7em;">
+        <div class="div_title_item_details"  style="top: 12.7em;  height: 97px">
             <p class="title_item_details" style="">
                 {{$product->english}}
             </p>
             <span class="rating ratings{{$product->rate}}" style="float:left;"></span>
-            <i class="material-icons icon_item_details">&#xE838;</i>
-            <i class="material-icons icon_item_details">error_outline</i>
+            
         </div>
     </div>
     <div class="col-md-12" style="margin-top: 0.6em;float: left;">
@@ -852,6 +858,14 @@
         @endif
     </div>
 </div>
+<!-- 
+
+<div class="image-modal" style="display: none" id="image-modal">
+    <img id="modal-img"  src="/">
+    src src src srcs
+</div>
+
+ -->
 <script src="{{URL::asset('js/jquery.min.js')}}"></script>
 <script src="{{URL::asset('/front-end/js/plugin/jquery-pretty-tabs.js')}}"></script>
 
@@ -1125,6 +1139,24 @@
                 hideModal();
             }
         });
-    }
+    };
+
+    // function imageModal(e){
+    //     src = $(e).attr('src');
+    //     // Change The Source
+    //     $('#modal-img').attr('src' , 'http://ec2-52-32-228-164.us-west-2.compute.amazonaws.com' + src);
+    //     $('#image-modals').show();
+    //     $('.background_modal').show();
+    //     $('#header').css('filter', 'blur(5px)');
+    //     $('#content_page').css('filter', 'blur(5px)');
+    //     $('.footer').css('filter', 'blur(5px)');
+    // };
+    // $('.background_modal').click(function () {
+    //     $('#image-modals').hide();
+    //     $('.background_modal').hide();
+    //     $('#header').css('filter', 'blur(0px)');
+    //     $('#content_page').css('filter', 'blur(0px)');
+    //     $('.footer').css('filter', 'blur(0px)');
+    // });
 </script>
 @endsection
