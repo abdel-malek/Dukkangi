@@ -173,10 +173,9 @@ class PageController extends Controller
 	public function getCategoryNameFilteredPage(Request $request){
 		$lang = session('lang');
 		App::setLocale($lang);
-//		dd($request->categoryId);
-		$products = Product::where('category_id','=',$request->categoryId)
-		->where(DB::raw("concat_ws('-',english,arabic,turky,kurdi,german)"),'like','%'.$request->search.'%')
-		->where('active','=',true)->get();
+		// dd($request->categoryId); 
+		$products = Product::where(DB::raw("concat_ws('-',english,arabic,turky,kurdi,german)"),'like','%'.$request->search.'%')
+		->where('active','=',1)->get();
 
 		$categories = Category::all();
 		$subcategories = DB::table('subcategory')->where('category_id','=',$request->categoryId)->orderBy('category_id','asc')->get();
