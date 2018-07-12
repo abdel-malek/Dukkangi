@@ -319,7 +319,7 @@
             </div>
             <script type="text/javascript">jssor_1_slider_init();</script>
 
-            <div class='thumnbail' style="position: absolute;top: 0px;bottom: 10px;width: 180px;height: 633px;margin-left: 50px;overflow: auto">
+            <div class='thumnbail' style="position: absolute;top: 0px;bottom: 10px;width: 180px;height: 633px;margin-left: 50px;overflow: auto;    padding-left: 3em;">
                 @foreach($subcategories as $subcategory)
 
                 <div class="pictureFrame" style="width: 110px; height: 92px;">
@@ -365,7 +365,7 @@
             </div>
             <div class="container" style="margin-top: 6em;padding-right: 0em;padding-left: 0em;margin-bottom:20px">
                 <div class="tabs">
-                    <ul class="tabs__items">
+                    <ul class="tabs__items" >
                         @foreach($categories as $category)
                         <a href="{{route('category',$category->id)}}">
                             <li class="tabs__item {{ isset($subcategories[0]) ?($subcategories[0]->category_id == $category->id ? 'tabs_active':'' ) : ''}} ">{{ $category->english }}</li>
