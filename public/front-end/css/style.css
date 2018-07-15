@@ -78,6 +78,7 @@
 .landing-items-block{
   position: relative;
     margin-top: 130px;
+    /*width: 280px !important;*/
 }
 
 .landing-items-block img{
@@ -86,7 +87,7 @@
 
 .landing-items-block p{
   font-family: EagarFont;
-  color: #D80F16;
+  color: #fff;
 }
 .landing-items-block .title{
   font-family: NormalFont;
@@ -124,7 +125,8 @@
   bottom: 75px;
   position: absolute;
   left: 50px;
-  font-size: 38px;
+  font-size: 16px;
+  z-index: 11;
   /*transform: rotate(-10deg);*/
 }
 
@@ -147,8 +149,9 @@
 .landing-items-block .shisha{
     position: absolute;
     left: 8px;
-    font-size: 38px;
+    font-size: 16px;
     top: 3px;
+    z-index: 11;
     /*transform: rotate(10deg);*/
 }
 

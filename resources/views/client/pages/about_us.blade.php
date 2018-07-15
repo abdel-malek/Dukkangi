@@ -41,14 +41,14 @@
    		font-size: 12px;
 	}
 	.contact-us-div{
-		max-width: 30%;
+		max-width: 30% !important;
 	    margin-top: 1em;
 	        left: 61em;
     top: 0em;
 	   	padding: 10px;
     }
 	.review-div{
-	    max-width: 30%;
+	    max-width: 48%;
 	    margin-top: 1em;
 	    left:14em;
 	   	border: 1px solid #c0c0c0;
@@ -135,6 +135,62 @@
 	.about{
 		padding-left: 13em !important;
 	}
+        
+             /*For mobile iphone s6+ (5 inch)*/  
+         
+        .container_mobile{
+            width: 100% !important;
+                max-width: 100% !important;
+                margin: 0px;
+                padding: 0px !important;
+        }
+        .all_page_item_view_mobile{
+            max-width: 100% !important;
+            width: 100% !important;
+        }
+        .block_similar_mobile{
+            max-width: 100% !important;
+            width: 100% !important;
+        }
+        .rating_mobile{
+            margin-top: 1rem;
+        }
+        .title_reviews_mobile{
+            margin-top: 29rem;
+        }
+        .header_rating_mobile{
+            left : 14.4em !important;
+        }
+        .block_similar_mobile{
+            margin-top: 3rem;
+        }
+        .ratings4_mobile{
+            margin-top: 0rem !important;
+        }
+        .main-nav-bar_mobile{
+            width: 90px !important;
+        }
+        .top_nav_mobile{
+            max-width: 80% !important;
+        }
+        .sections_mobile{
+            width: 59.8%;
+        }
+        .col_item_mobile{
+             width: 90%;
+        max-width: 90%;
+        }
+        
+        .body_mobile{
+            overflow-x: hidden;
+        }
+        
+        .img-logo_mobile {
+            margin-left: 10px;
+        }
+        .div_icon_footer_mobile {
+    margin-left: 15% !important;
+        }
 	@media (min-width: 768px) and (max-width: 1030px) {
 		.sth 
 		{
@@ -165,7 +221,7 @@
 @section ('main_section')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <div class="row"> 
-	<div class="col-5 about-div">
+	<div class="col-lg-5 col-sm-4  about-div">
 		<h1 class="rtl"> @lang('About Dukkangi')</h1>
 		<p class="rtl">
 			Lorem ipsum dolor sit amet, has et saepe bonorum meliore, eum ex case eros splendide. Mei vide autem at, duo noster patrioque assentior in. Graeci consulatu iracundia in sed, cum autem inermis ut. Has quis quas incorrupte id, cu usu suas eleifend. Eum id ignota everti voluptatum.
@@ -188,10 +244,10 @@
 		</p>
 		
 	</div>
-	<div class="col-6 about-div">
+	<div class="col-lg-6 col-sm-8 about-div">
 		<img class="img-logo" src="front-end/images/welcome-logo.png" width="500" height="180">
 
-		<div class="review-div col-md-6">
+		<div class="review-div col-xs-6">
 			<h4 style="@if(session('lang') == 'ar' )
 				float: right;
 				@endif
@@ -314,6 +370,25 @@
 
 	    }
 	}
+        
+                  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+
+$('.container').addClass('container_mobile');
+$('.all_page_item_view').addClass('all_page_item_view_mobile');
+$('.block_similar').addClass('block_similar_mobile');
+$('.details_comment .rating').addClass('rating_mobile');
+$('.title_reviews').addClass('title_reviews_mobile');
+$('.header_page .rating').addClass('header_rating_mobile');
+$('.block_similar').addClass('block_similar_mobile');
+$('.ratings4').addClass('ratings4_mobile');
+$('#main-nav-bar a').addClass('main-nav-bar_mobile');
+$('.top_nav').addClass('top_nav_mobile');
+$('.sections').addClass('sections_mobile');
+$('.col_item').addClass('col_item_mobile');
+$('body').addClass('body_mobile');
+$('.img-logo').addClass('img-logo_mobile');
+$('.div_icon_footer').addClass('div_icon_footer_mobile');
+}
 
 	</script>
 	

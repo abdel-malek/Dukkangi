@@ -130,7 +130,7 @@
 }
     @media (min-width: 768px) and (max-width: 1100px) {
         .div_item .rating {
-            bottom: 1.2em;
+            bottom: 0.2em;
             left: 0.6em;
         }
         .text_price {
@@ -336,7 +336,7 @@
         </div>
         @endif
 
-        <div class="col-md-9 col-sm-12 section_item">
+        <div class="col-md-9 col-sm-12 section_item section_item_select">
             @if(!isset($brandfilter))
             <div class="col-sm-3" style="float:left;">
                 <img src={{URL::asset( '/front-end/images/light_logo.png')}} class="img-resposive logo_text" />
@@ -363,7 +363,7 @@
                     </button>
                 </div>
             </div>
-            <div class="container" style="margin-top: 6em;padding-right: 0em;padding-left: 0em;margin-bottom:20px">
+            <div class="container container_item" style="margin-top: 6em;padding-right: 0em;padding-left: 0em;margin-bottom:20px">
                 <div class="tabs">
                     <ul class="tabs__items">
                         @foreach($categories as $category)

@@ -1,3 +1,4 @@
+
 @extends('client.main')
 @section('styles')
     <style>

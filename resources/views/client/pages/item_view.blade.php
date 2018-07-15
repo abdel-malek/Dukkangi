@@ -28,7 +28,7 @@
     }
 
     #content_page {
-        margin-top: 6.6em;
+        margin-top: 0em;
         float: left;
     }
 
@@ -61,7 +61,7 @@
 
     .header_page .rating {
         bottom: 0.2em;
-        left: 18em;
+        left: 33%;
     }
     .rating .star::after {
         color: #fff;
@@ -74,7 +74,9 @@
         width: 0.75em;
         height: 1.7em;
     }
-
+    .modal_one_item_details{
+        width: 350px;
+    }
     .div_item .rating .star::before {
         color: #d80001;
         width: 0.75em;
@@ -94,7 +96,7 @@
 
     .details_comment .rating {
         bottom: unset;
-        right: 1.4em;
+        right: 0em;
         left: unset;
     }
 
@@ -140,8 +142,8 @@
     .header_page_text_div {
         padding: 0.8em 2em;
         top: 10.9em;
-        width: 81.1%;
-        padding-left: 25.5em
+        width: 80%;
+        padding-left: 30%;
     }
 
     .btn_qty {
@@ -157,6 +159,9 @@
 
     .all_page_item_view {
         padding: 0em 5em;
+        max-width: 1200px;
+        width: 1200px;
+        
     }
 
     .title_reviews {
@@ -184,8 +189,8 @@
     .rate-logo {
 
         width: 102px;
-        margin-left: 12em;
-        margin-top: -1em;
+    margin-left: -2px;
+    margin-top: -1%;
 
     }
     .modal_one_item_details .rating .star::before {
@@ -208,17 +213,63 @@
             margin-bottom: -3em;
             padding-bottom: 0em;
         }
+
+                .block_similar {
+            width: 1200px;
+            max-width: 1200px;
+            /*overflow: auto;*/
+        }
+            body{
+            overflow-y: auto;
+            overflow-x: auto;
+            position: fixed;
+            height: 100%;
+            width: 100%;
+    }
+    .footer {
+    width:100%;
+}
+
+#slider_preview{
+    width: 623px;
+    max-height: 600px;
+    position: fixed;
+    top: 21px;
+    left: 25%;
+    z-index: 99;
+}
+.background_slide{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 97;
+    height: 100%;
+    width: 100%;
+    background-color: #00000050;
+    display: none;
+}
+
+#slider_preview .carousel-control-prev-icon {
+    background-image: url(data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' f…3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E);
+}
+
     @media (min-width: 768px) and (max-width: 1200px) {
         .all_page_item_view {
             padding: 0em 0em;
         }
+        
+        .details_comment .rating {
+        bottom: unset;
+        right: -1.6em;
+        left: unset;
+    }
         .rate-logo {
-            margin-left: 9em;
+            margin-left: 0em;
         }
         .details_comment .rating {
-            margin-top: 0.8em !important;
+            margin-top: 1.8em !important;
             font-size: 1.7em !important;
-            margin-right: 92px !important;
+            margin-right: 82px !important;
         }
         .simi {
             max-width: 50% !important;
@@ -242,11 +293,11 @@
             padding: 0.8em 2em;
 
             top: 10.3em;
-            padding-left: 25.5em
+            padding-left: 30%;
         }
         .one_item_details,
         .modal_one_item_details {
-            width: 42%;
+            width: 39%;
             margin-left: 2em;
         }
         .sections {
@@ -260,7 +311,7 @@
             font-size: 1.7em;
         }
         .header_page_text_div {
-            padding-left: 26.8em;
+            padding-left: 43%;
         }
         .header_page .rating {
             left: 17.7em;
@@ -388,7 +439,8 @@
             float: left;
             margin-left: 0px;
             padding-right: 0px;
-            overflow: auto;
+            
+            /*overflow: auto;*/
         }
         .rate-us {
             display: none;
@@ -400,6 +452,207 @@
     box-shadow: 1px 1px 25px #000000b0;
 }
     }
+    
+    @media (max-width: 950px){
+        #slider_preview{
+    width: 500px;
+}
+    }
+    @media (max-width: 650px){
+        .modal_one_item_details{
+                left: 12%;
+        }
+        #slider_preview{
+    left: 15%;
+}
+    }
+    @media (min-width: 300px) and (max-width: 600px) {
+       .header_page_text_div {
+    padding-left: 30% !important;
+} 
+    }
+    @media (min-width: 1050px) and (max-width: 1110px) {
+       .rating2 {
+    right: 3em !important;
+} 
+    }
+    
+     @media (min-width: 990px) and (max-width: 1049px) {
+       .rating2 {
+    right: 2.1em !important;
+} 
+    }
+    
+         @media (min-width: 930px) and (max-width: 989px) {
+       .rating2 {
+    right: 1.5em !important;
+} 
+#content_page {
+    margin-top: 0em;
+}
+    }
+    
+        @media (min-width: 880px) and (max-width: 929px) {
+       .rating2 {
+    right: 1em !important;
+} 
+#content_page {
+    margin-top: 0em;
+}
+    }
+    
+           @media (min-width: 840px) and (max-width: 879px) {
+       .rating2 {
+    right: 0.5em !important;
+} 
+#content_page {
+    margin-top: 0em;
+}
+    }
+    
+    @media (min-width: 767px) and (max-width: 839px) {
+        .rating2 {
+            right: -0.2em !important;
+        } 
+        #content_page {
+    margin-top: 0em;
+}
+    }
+    
+    @media (min-width: 300px) and (max-width: 766px) {
+/*        .leave_constructive_review {
+            width: 100%;
+        }*/
+        #content_page {
+    margin-top: 0em;
+}
+    }
+
+    
+          @media (min-width: 700px) and (max-width: 770px) {
+       .rating2 {
+    right: -0.8em !important;
+} 
+    }
+            
+         @media (min-width: 1311px) and (max-width: 1339px) {
+            .header_page_text_div {
+                width: 81.3%;
+            }
+            .rating2{
+                right: 3.3em !important;
+            }
+        }
+        @media (min-width: 1280px) and (max-width: 1310px) {
+            .header_page_text_div {
+                width: 81%;
+            }
+              .rating2{
+                right: 2.6em !important;
+            }
+        }
+          @media (min-width: 1250px) and (max-width: 1279px) {
+            .header_page_text_div {
+                width: 80.7%;
+            }
+              .rating2{
+                right: 2em !important;
+            }
+            .header_page_text_div {
+    padding-left: 30%;
+        }
+          }
+           @media (min-width: 1212px) and (max-width: 1249px) {
+            .header_page_text_div {
+                width: 80.4%;
+            }
+              .rating2{
+                right: 1.7em !important;
+            }
+                  .header_page_text_div {
+    padding-left: 30%;
+        }
+        }
+         @media (min-width: 1201px) and (max-width: 1211px) {
+            .header_page_text_div {
+                width: 80.2%;
+            }
+             .rating2{
+                right: 1.4em !important;
+            }
+        }
+        
+        
+        
+        
+        @media (min-width: 1100px) and (max-width: 1199px) {
+            .header_page_text_div {
+                padding-left: 30% !important;
+            }
+        }
+          @media (min-width: 1050px) and (max-width: 1099px) {
+            .header_page_text_div {
+                padding-left: 30% !important;
+            }
+        }
+           @media (min-width: 1000px) and (max-width: 1049px) {
+            .header_page_text_div {
+                padding-left: 30% !important;
+            }
+        }
+        
+        
+        
+         /*For mobile iphone s6+ (5 inch)*/  
+         
+        .container_mobile{
+            width: 100% !important;
+                max-width: 100% !important;
+                margin: 0px;
+                padding: 0px;
+        }
+        .all_page_item_view_mobile{
+            max-width: 100% !important;
+            width: 100% !important;
+        }
+        .block_similar_mobile{
+            max-width: 100% !important;
+            width: 100% !important;
+        }
+        .rating_mobile{
+            margin-top: 1rem;
+        }
+        .title_reviews_mobile{
+            margin-top: 29rem;
+        }
+        .header_rating_mobile{
+            left : 14.4em !important;
+        }
+        .block_similar_mobile{
+            margin-top: 3rem;
+        }
+        .ratings4_mobile{
+            margin-top: 0rem !important;
+        }
+        .main-nav-bar_mobile{
+            width: 90px !important;
+        }
+        .top_nav_mobile{
+            max-width: 80% !important;
+        }
+        .sections_mobile{
+            width: 59.8%;
+        }
+        .modal_one_item_details_mobile {
+            width: 39%;
+            margin-left: 2em;
+        }
+/*.all_page_item_view{
+    width: 1180px;
+}*/
+/*html , body{
+    overflow: auto;*/
+/*}*/
 </style>
 <style>
     /* jssor slider loading skin spin css */
@@ -546,7 +799,8 @@
 </style>
 
 @endsection @section('main_section')
-<div class="col-md-12 all_page_item_view" id="content_page">
+
+<div class="col-md-12 all_page_item_view" id="content_page" >
     <div class="header_page" style="background-image: url('{{$subcategory->image_id}}');background-size:133%">
 
         <p class="header_page_text_div">
@@ -602,8 +856,41 @@
                 </div>
 
             </div>
+            
 
-
+            <div class="background_slide" onclick="closeImageModal()"> </div>
+                <div id="slider_preview" class="carousel slide" data-ride="carousel" style="display: none;">
+                    <div class="carousel-inner">
+                        @if(isset($product->image_id))
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src="{{$product->image_id}}" alt="First slide">
+                        </div>
+                        @endif @if(isset($product->image_id2))
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src="{{$product->image_id2}}" alt="First slide">
+                        </div>
+                        @endif @if(isset($product->image_id3))
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="{{$product->image_id3}}" alt="Second slide">
+                        </div>
+                        @endif @if(isset($product->image_id4))
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="{{$product->image_id4}}" alt="Third slide">
+                        </div>
+                        @endif
+                    </div>
+                    <a class="carousel-control-prev" href="#slider_preview" role="button" data-slide="prev">
+                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+   <i class="fa fa-arrow-left carousel-control-prev-icon" style="color:#000;font-size: 3rem;background-image: none;" aria-hidden="true"></i>
+                        <!--<span class="sr-only">Previous</span>-->
+                    </a>
+                    <a class="carousel-control-next" href="#slider_preview" role="button" data-slide="next">
+                       <!--<span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+                        <i class="fa fa-arrow-right carousel-control-next-icon" style="color:#000;font-size: 3rem;background-image: none;" aria-hidden="true"></i>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+           
             <!-- /Slider -->
             <!-- <img src="{{$product->image_id}}" /> -->
             <div class="div_title_item_details" style="height: 7.5em;" id="product-name" >
@@ -755,7 +1042,7 @@
             <h3 class="text_leave_constructive_review" style="color: #d80001;margin-top: 0em;">@lang('Leave a constructive review')</h3>
             <p class="text_leave_constructive_review" style="margin-top:0.6em;">@lang('Rate this product') </p>
             <div class="details_comment" style="margin-bottom: 50px">
-                <span class="rating2 ratinge rating form-rate" data-id="{{$product->id }}" style="margin-right: 160px;right: 2em;"></span>
+                <span class="rating2 ratinge rating form-rate" data-id="{{$product->id }}" style="margin-right: 160px;right: 9%;margin-top: 11%;"></span>
                 <img src="/front-end/images/logo.png" class="rate-logo" >
             </div>
 
@@ -993,10 +1280,10 @@
         });
     });
 
-    $('#myBtn').on('click', function (e) {
+<!--    $('#myBtn').on('click', function (e) {
         e.preventDefault();
         return false;
-    })
+    })-->
 
     $('#btn-comment').on("click", function (e) {
         e.preventDefault();
@@ -1140,8 +1427,83 @@
             }
         });
     };
+    
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+//document.write("<style>"+
+//     "@media (min-height: 667px) and (min-width: 300px) {"+
+//            ".container{"+
+//                "width: 100% !important;"+
+//                "max-width: 100% !important;"+
+//                "margin: 0px;"+
+//                "padding: 0px;"+
+//            "}"+
+//            ".all_page_item_view, .block_similar{"+
+//                 "width: 100% !important;"+
+//                "max-width: 100% !important;"+
+//            "}"+
+//            ".details_comment .rating {"+
+//    "margin-top: 1em ;"+
+//            "}"+
+//            ".title_reviews {"+
+//    "margin-top: 29rem;"+
+//            "}"+
+//            ".header_page .rating {"+
+//                "left: 14.4em;"+
+//            "}"+
+//            ".block_similar{"+
+//                "margin-top: 3rem;"+
+//            "}"+
+//            ".ratings4{"+
+//                "margin-top: 0rem !important;"+
+//            "}"+
+//        "}"+
+//        "#main-nav-bar a {"+
+//            "width: 19%;"+
+//        "}"+
+//        ".top_nav {"+
+//            "max-width: 70% !important;"+
+//        "}"+
+//        "#main-nav-bar a {"+
+//            "width: 102px;"+
+//        "}"+
+//        ".sections {"
+//            "width: 59.8%;"+
+//        "}"+
+//        "</style>");
+$('.container').addClass('container_mobile');
+$('.all_page_item_view').addClass('all_page_item_view_mobile');
+$('.block_similar').addClass('block_similar_mobile');
+$('.details_comment .rating').addClass('rating_mobile');
+$('.title_reviews').addClass('title_reviews_mobile');
+$('.header_page .rating').addClass('header_rating_mobile');
+$('.block_similar').addClass('block_similar_mobile');
+$('.ratings4').addClass('ratings4_mobile');
+$('#main-nav-bar a').addClass('main-nav-bar_mobile');
+$('.top_nav').addClass('top_nav_mobile');
+$('.sections').addClass('sections_mobile');
+$('.modal_one_item_details').addClass('.modal_one_item_details_mobile');
 
-    // function imageModal(e){
+}
+
+    function imageModal(obj){
+        $('#slider_preview').css('display','block');
+        $('.background_slide').css('display','block');
+        $('#slider_preview .carousel-item').removeClass('active');
+        $('#slider_preview .carousel-item').each(function(){
+           if($(this).find('img').attr('src') == $(obj).attr('src')){
+               $(this).addClass('active');
+           }
+        });
+        
+        
+    }
+    
+    function closeImageModal(){
+        $('#slider_preview').css('display','none');
+        $('.background_slide').css('display','none');
+    }
+
+    <!--// function imageModal(e){-->
     //     src = $(e).attr('src');
     //     // Change The Source
     //     $('#modal-img').attr('src' , 'http://ec2-52-32-228-164.us-west-2.compute.amazonaws.com' + src);

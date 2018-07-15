@@ -11,9 +11,10 @@
     float: left;
 }
 .landing-items-block img{
-    height: 8em;
-    width: 8em;
-    border-radius: 23em;
+    height: 10.3em;
+    width: 16.3em;
+    border-radius: 0em;
+   
 }
 .bottom_left_background_block{
     background-image: url('/front-end/images/main/rec_cat.png');
@@ -24,13 +25,15 @@
 }
 .bottom_left_background_block img{
     position: absolute;
-    margin-top: 4.4em;
-    margin-left: 4em;
+    margin-top: 1.4em;
+        margin-left: -2em;
+            box-shadow: 0px -4px 5px #555;
 }
 .bottom_left_background_block .text_item_block {
     position: absolute;
+    z-index: 11;
     /*right: 19px;*/
-    font-size: 31px;
+    font-size: 16px;
     /*transform: rotate(-9deg);*/
     bottom: 91px;
 }
@@ -44,19 +47,28 @@
 }
 .bottom_right_background_block img{
     position: absolute;
-    margin-top: 3.4em;
-    margin-left: 4.4em;
+    margin-top: 1.4em;
+    margin-left: 1.4em;
+        box-shadow: 0px -4px 5px #555;
 }
 .bottom_right_background_block .text_item_block {
        position: absolute;
     /*left: 25px;*/
-    font-size: 31px;
+    z-index: 11;
+    font-size: 16px;
     /*transform: rotate(8deg);*/
     top: 12px;
     bottom: unset;
     right: unset;
 }
-
+.bottom_left_background_block p{
+    left: 120px !important;
+    top: 32px !important;
+}
+.bottom_right_background_block p{
+        left: 41px !important;
+    top: 31px !important;
+}
 .top_left_background_block{
     background-image: url('/front-end/images/main/rec_cat.png');
       height: 175px;
@@ -111,13 +123,67 @@
    width: 16px;
    height: 16px;
 }
+.col_item{
+    width: 30%;
+}
+.container_item{
+    width: 1000px;
+    max-width: 1000px;
+}
+.bottom_left_background_block  .img_cloud_right{
+     width: 9rem !important;
+    height: auto !important;
+    z-index: 8;
+    top: -1.7rem;
+    right: -0.3rem;
+    box-shadow: none;
+}
 
+.bottom_right_background_block  .img_cloud_right{
+     width: 9rem !important;
+    height: auto !important;
+    z-index: 8;
+    top: -1.7rem;
+    left: -1.9rem;
+    box-shadow: none;
+}
+.hint_title{
+    display: none;
+    width: auto;
+    border-radius: 6px;
+    background-color: #fff;
+    position: absolute;
+    z-index: 13;
+    padding: 0.4rem 1rem;
+    box-shadow: 0px 0px 9px #000000ab;
+    opacity: 0;
+    font-family: EagarFont !important;
+    font-weight: 600;
+    color: #d81219;
+    transition: .7s;
+}
+.hint_title span{
+      font-family: EagarFont !important;
+}
+.bottom_right_background_block .hint_title{
+    left:7rem;
+}
+.bottom_left_background_block .hint_title{
+        left: 2rem;
+    top: -0.5rem;
+}
+.block_tite_section_home:hover  .hint_title{
+    opacity: 1;
+}
      @media (min-width: 20px) and (max-width: 1023px) {
          .item_in_lg{
              display: none !important;
          }    
          .rate-us{
              display: none;
+         }
+         .bottom_left_background_block .hint_title {
+    left: 12rem;
          }
          .item_in_sm{
                 display: inline-block !important;
@@ -148,27 +214,41 @@
              width: 440px;
          }
          .bottom_left_background_block img {
-             margin-top: 7.4em;
-             margin-left: 4.4em;
+             margin-top: 1.4em;
+             margin-left: 1.4em;
+         }
+         .bottom_left_background_block .img_cloud_right {
+    width: 16rem !important;
+         }
+         .bottom_right_background_block .img_cloud_right {
+    width: 16rem !important;
          }
          .bottom_right_background_block img {
-             margin-top: 7.4em;
-             margin-left: 4.4em;
+             margin-top: 1.4em;
+             margin-left: 1.4em;
          }
          .landing-items-block img {
-             height: 12em;
-             width: 12em;
+             height: 17em;
+             width: 27em;
          }
          .bottom_left_background_block .text_item_block {
              right: 22px;
-             font-size: 62px;
+             font-size: 30px;
              bottom: 137px;
          }
+         .bottom_left_background_block p {
+    left: 213px !important;
+    top: 53px !important;
+}
          .bottom_right_background_block .text_item_block {
              left: 28px;
-             font-size: 67px;
+             font-size: 30px;
              top: 16px;
          }
+         .bottom_right_background_block p {
+    left: 87px !important;
+    top: 52px !important;
+}
          .top_left_background_block {
              height: 283px;
              width: 437px;
@@ -243,9 +323,13 @@
       <a href="{{route('category' , $categories[$counter]->id) }}">
         <div class="landing-items-block {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}} " style="margin-top: {{($firstflag)? '8':'34'}}em;margin-left: 50px;
     width: 62.2%; margin-bottom: 5em">
-          <p class="text_item_block" style="width: 100%;
+            <div class="block_tite_section_home">
+          <p class="text_item_block" style="width: 35%;
     text-align: center;">{{$categories[$counter]->english}}</p>
-          <img class="" src="{{$categories[$counter]->image_id }}" />
+          <div class="hint_title"><span>{{$categories[$counter]->english}}</span></div>
+            </div>
+          <!--<img class="" src="{{$categories[$counter]->image_id }}" />-->
+          <img class="" src="uploads/maxresdefault.jpg" />
         </div>
         </a>
         <?php $firstflag =1 ; ?> 
@@ -279,8 +363,12 @@
         @for($counter ; $counter < $col2+$col1 ; $counter++ )
           <a href="{{route('category' , $categories[$counter]->id) }}">
        <div class="landing-items-block  {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}}" style="margin-top: {{$midflag == 0 ?'20em' : '8em'}};margin-bottom: 40px;margin-left: 50px;width: 62.2%;">
-         <img class="" src="{{$categories[$counter]->image_id}}"/> 
-          <p class="house-tools" style="text-align: center;width: 100%;left: 0px" >{{$categories[$counter]->english}}</p>
+         <!--<img class="" src="{{$categories[$counter]->image_id}}"/>--> 
+           <img class="" src="uploads/maxresdefault.jpg" />
+           <div class="block_tite_section_home">
+          <p class="house-tools text_item_block" style="text-align: center;width: 35%;left: 0px" >{{$categories[$counter]->english}}</p>
+          <div class="hint_title"><span>{{$categories[$counter]->english}}</span></div>
+           </div>
         </div>
         </a>
         <?php $midflag++ ?>
@@ -295,8 +383,12 @@
         @for($counter ; $counter < $col1+$col2+$col3 ; $counter++ )
         <a href="{{route('category' , $categories[$counter]->id) }}">
           <div class="landing-items-block  {{ $counter %2 == 0 ? 'bottom_right_background_block':'bottom_left_background_block'}}"  style="margin-top: {{($lastflag)? '8': '34'}}em;left: 50px;width: 62%;">
-          <p class="shisha" style="width: 100%;text-align: center;left: 0px">{{$categories[$counter]->english}}</p>
-          <img class="" src="{{$categories[$counter]->image_id}}"/>
+        <div class="block_tite_section_home">
+              <p class="shisha" style="width: 35%;text-align: center;left: 0px">{{$categories[$counter]->english}}</p>
+           <div class="hint_title"><span>{{$categories[$counter]->english}}</span></div>
+        </div>
+          <!--<img class="" src="{{$categories[$counter]->image_id}}"/>-->
+          <img class="" src="uploads/maxresdefault.jpg" />
          </div>
         </a>
           <?php $lastflag = 1; ?>
@@ -322,13 +414,19 @@
                 @foreach($categories as $category)
                  @if($counter % 2 == 0)
                    <div class="landing-items-block bottom_left_background_block  " style="">
+                      <div class="block_tite_section_home">
                        <p class="text_item_block">{{$category->english}}</p>
-                        <a href="{{route('category' , $category->id)}}"><img class="" src="{{$category->image_id}}"/></a>
+                       <div class="hint_title"><span>{{$category->english}}</span></div>
+                      </div>
+                        <a href="{{route('category' , $category->id)}}"><img class="" src="uploads/maxresdefault.jpg" /></a>
                    </div>
                    @else 
                    <div class="landing-items-block bottom_right_background_block  ">
+                    <div class="block_tite_section_home">
                        <p class="text_item_block">{{$category->english}}</p>
-                       <a href="{{route('category' , $category->id)}}"><img class="" src="{{$category->image_id}}"/></a>
+                       <div class="hint_title"><span>{{$category->english}}</span></div>
+                    </div>
+                       <a href="{{route('category' , $category->id)}}"><img class="" src="uploads/maxresdefault.jpg" /></a>
                    </div>
                    @endif
                    <?php $counter++ ?>
@@ -368,4 +466,23 @@
   });
 });
 </script>
+<script>
+              if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+$('.item_in_sm').css('display','block');
+$('.item_in_lg').css('display','none');
+
+}
+$('.text_item_block').each(function(){
+    if($(this).text().length >= 10){
+        $(this).text($(this).text().slice(0,10)+'..');
+        $(this).parent().find('.hint_title').css('display','block');
+    }else{
+        $(this).parent().find('.hint_title').css('display','none');
+        $(this).text($(this).text().slice(0,10));
+    }
+});
+
+    $('.bottom_right_background_block').append('<img src="images/left.svg" class="img_cloud_right" />');
+    $('.bottom_left_background_block').append('<img src="images/right.svg" class="img_cloud_right" />');
+    </script>
 @endsection 
