@@ -8,7 +8,12 @@
 <div class="container container_footer">
 <footer class=" footer" style="margin-top: 0px" >
 @if(isset($brands))
+<<<<<<< HEAD
 <div class=" flexslider2 carousel" style="left: 12%;width: 76%; height: 11em;top: 2em;background-color: #ffa7aa87;border-color: #d80f17   ;z-index: 1;margin-bottom: 5em">
+=======
+<div style="background-color: rgba(239, 239, 239,0.5);border-color: rgba(239, 239, 239,-0.5);margin-top: 2em;">
+<div class=" flexslider2 carousel" style="left: 12%;width: 76%; height: 11em;z-index: 1;margin-bottom: 5em">
+>>>>>>> e0ea1dae4f2e8f593a59848bcfcb13998f80c658
         <ul class="slides">
           @foreach($brands as $brand)
           <li>
@@ -24,7 +29,9 @@
           <!-- items mirrored twice, total of 12 -->
         </ul>
       </div>
+</div>
       @endif
+
 
             <div class="col-md-12" style="float:left">
                 <h2 class="title_footer">
@@ -90,7 +97,33 @@
                 "x-csrf-token": $("[name=_token]").val()
             },
         }).done(response => {
-            if (response !=  null) {
+            if (response == 0){
+               var currentFocus;
+                /*execute a function when someone writes in the text field:*/
+                // inp.addEventListener("input", function(e) {
+                var a, b, i, val = this.value;
+                /*close any already open lists of autocompleted values*/
+                closeAllLists();
+                if (!val) { return false;}
+                currentFocus = -1;
+                /*create a DIV element that will contain the items (values):*/
+                a = document.createElement("DIV");
+                a.setAttribute("id", this.id + "autocomplete-list");
+                a.setAttribute("class", "autocomplete-items");
+
+                /*append the DIV element as a child of the autocomplete container:*/
+                this.parentNode.appendChild(a);
+                /*for each item in the array...*/
+                 b = document.createElement("DIV");
+                    
+                    b.innerHTML =  "No Matches" ;
+                    // b.innerHTML += response[i]['english'].substr(val.length);
+                    /*insert a input field that will hold the current array item's value:*/
+                    // b.innerHTML += "<input type='hidden' data-type='" + response[i]['type'] +"'  value='" + response[i]['id'] + "'>";
+                    /*execute a function when someone clicks on the item value (DIV element):*/
+                    a.appendChild(b);
+            }
+            else if (response !=  null) {
                // console.log(response);
                  
                 var currentFocus;
@@ -134,7 +167,7 @@
                     a.appendChild(b);
                     counter = i+1;
                 }
-                console.log(response[counter]);
+                // console.log(response[counter]);
                 x = 0;
                 type = 'ca';
                 // Categoeries
@@ -230,7 +263,9 @@
                     if (x) x[currentFocus].click();
                   }
                 }
-            });
+            }
+
+            );
                
             }
 

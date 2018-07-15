@@ -97,7 +97,7 @@
                   border-top: none;
                   z-index: 99;
                   top: 88%;
-                  left: 25%;
+                  left: 27.5%;
                   right: 0;
                   width: 16em;
             }

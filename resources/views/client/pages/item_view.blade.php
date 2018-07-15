@@ -257,14 +257,23 @@
         .all_page_item_view {
             padding: 0em 0em;
         }
+<<<<<<< HEAD
         
         .details_comment .rating {
         bottom: unset;
         right: -1.6em;
         left: unset;
     }
+=======
+        .margin-right {
+            margin-right :31px !important;
+        }
+>>>>>>> e0ea1dae4f2e8f593a59848bcfcb13998f80c658
         .rate-logo {
             margin-left: 0em;
+        }
+        .rated_details_comment {
+            display: none;
         }
         .details_comment .rating {
             margin-top: 1.8em !important;
@@ -438,6 +447,7 @@
         .block_similar {
             float: left;
             margin-left: 0px;
+            margin-top: 20px;
             padding-right: 0px;
             
             /*overflow: auto;*/
@@ -1020,7 +1030,7 @@
                         <?php if($comment->rate != 0){ ?> @lang('Rated this product')
                         <?php } ?>
                     </p>
-                    <span class="rating ratings{{$comment->rate}}"></span>
+                    <span class="rating ratings{{$comment->rate}} margin-right"></span>
                     <p class="text_details_comment">
                         {{$comment->description}}
                     </p>
