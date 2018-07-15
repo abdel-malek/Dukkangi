@@ -8,12 +8,8 @@
 <div class="container container_footer">
 <footer class=" footer" style="margin-top: 0px" >
 @if(isset($brands))
-<<<<<<< HEAD
 <div class=" flexslider2 carousel" style="left: 12%;width: 76%; height: 11em;top: 2em;background-color: #ffa7aa87;border-color: #d80f17   ;z-index: 1;margin-bottom: 5em">
-=======
 <div style="background-color: rgba(239, 239, 239,0.5);border-color: rgba(239, 239, 239,-0.5);margin-top: 2em;">
-<div class=" flexslider2 carousel" style="left: 12%;width: 76%; height: 11em;z-index: 1;margin-bottom: 5em">
->>>>>>> e0ea1dae4f2e8f593a59848bcfcb13998f80c658
         <ul class="slides">
           @foreach($brands as $brand)
           <li>
