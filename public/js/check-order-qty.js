@@ -11,7 +11,7 @@
 })
 })(jQuery);
 
-function checkBarcode(barcode,orderId){
+function checkBarcode (barcode,orderId){
   $.ajax({
         type: "POST",
         url: `/admin/orders/${orderId}/check/${barcode}`,
@@ -76,13 +76,16 @@ function loadUsers(){
             packet = 'TRUE';
           }
           var test = '<tr class="jsgrid-row ' + classStr + ' style="background:red">' +
-            '<td class="jsgrid-cell" style="width: 50px;">' + item.id + '</td>' +
-            '<td class="jsgrid-cell" style="width: 50px;">' + item.order_id + '</td>' +
-            '<td class="jsgrid-cell" style="width: 50px;">' + item.product.arabic + '</td>' +
-            '<td class="jsgrid-cell" style="width: 50px;">' + item.product.barcode + '</td>' +
-            '<td class="jsgrid-cell" style="width: 50px;">' + item.qty + '</td>' +
-            '<td class="jsgrid-cell" style="width: 50px;">' + packet + '</td>' +
-            '<td class="jsgrid-cell" style="width: 50px;">' + status + '</td>' +
+            '<td class="jsgrid-cell" style="width: 60px;">' + item.id + '</td>' +
+            '<td class="jsgrid-cell" style="width: 60px;">' + item.order_id + '</td>' +
+            '<td class="jsgrid-cell" style="width: 60px;">' + item.product.arabic + '</td>' +
+            '<td class="jsgrid-cell barcode" style="width: 60px;">' + item.product.barcode + '</td>' +
+            '<td class="jsgrid-cell" style="width: 60px;">' + item.qty + '</td>' +
+            '<td class="jsgrid-cell" style="width: 60px;">' + packet + '</td>' +
+            '<td class="jsgrid-cell" style="width: 60px;">' + status + '</td>' +
+            '<td class="jsgrid-cell" style="width: 60px;">'+
+                '<a class="btn btn-block btn-default btn-xs" onclick ="addManually(this)" >Add Manually</a>' +
+            '</td>' +
             '</tr>';
 
           return $(test)
@@ -94,7 +97,21 @@ function loadUsers(){
             {name: "product.barcode" , title: 'Barcode' , type: "text", width: 5},
             {name: "qty" , title: 'Qty' , type: "text", width: 5},
             {name: "packed" , title: 'Packed' , type: "checkbox", width: 5},
-            {name: "order_status.name" , title: 'Status' , type: "text", width: 5}
+            {name: "order_status.name" , title: 'Status' , type: "text", width: 5},
+            {
+              type: "control", width: 10, editButton: false, modeSwitchButton: false, deleteButton: false,
+              itemTemplate: function (value, item) {
+                var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
+                var $edit = $('<a class="btn btn-block btn-default btn-xs">Add Manually</a>');
+                $edit.attr('onclick','addManually(item.product.barcode)');
+                return $result.add($edit);
+              },
+            }, 
         ]
     });
+}
+function addManually(item){
+    barcode = $(item).parent().parent().find('.barcode').text() 
+    
+    checkBarcode(barcode ,$('#orderId').val());
 }
