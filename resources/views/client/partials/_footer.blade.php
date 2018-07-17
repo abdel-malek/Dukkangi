@@ -5,7 +5,6 @@
 
 </style>
 
-<div class="container container_footer">
 <footer class=" footer" style="margin-top: 0px" >
 @if(isset($brands))
 <div class=" flexslider2 carousel" style="left: 12%;width: 76%; height: 11em;top: 2em;background-color: #ffa7aa87;border-color: #d80f17   ;z-index: 1;margin-bottom: 5em">
@@ -41,14 +40,18 @@
                 </p>
             </div>
             <div class="col-md-7 div_icon_footer about" >
-                <a href="https://www.instagram.com/"><i class="fa fa-instagram icon_footer icon_inst" ></i></a>
-                <a href="https://twitter.com/"><i class="fa fa-twitter icon_footer"></i> </a>
-                <a href="https://www.facebook.com/"><i class="fa fa-facebook icon_footer icon_face"></i></a>
+                <a href="https://www.instagram.com/">
+                    <i class="fa fa-instagram icon_footer icon_inst" aria-hidden="true"></i>
+                    <!--<img src="images/instagram-logo.svg" class="icon_footer icon_inst" style="    height: 2.6rem;"/>-->
+                </a>
+                <a href="https://twitter.com/"><i class="fa fa-twitter icon_footer" aria-hidden="true"></i> </a>
+                <a href="https://www.facebook.com/"><i class="fa fa-facebook icon_footer icon_face" aria-hidden="true"></i></a>
             </div>
 </footer>
- </div>
+
 <script src="/front-end/js/plugin/SimpleStarRating.js"></script>
 <script src={{url("static/sweetalert/sweetalert2.all.js")}}></script>
+
 <script >
    function showratemodal(){
     $('#rate-us-modal').css({'display':'block'});

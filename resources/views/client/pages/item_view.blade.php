@@ -844,22 +844,22 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class=" d-block w-100" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id}}" alt="First slide">
+                        <img class=" d-block w-100" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: auto;width: 100% !important;" src="{{$product->image_id}}" alt="First slide">
                     </div>
 
                     @if(isset($product->image_id2))
                     <div class="carousel-item">
-                        <img class="img_item_details"  onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id2}}"
+                        <img class="img_item_details"  onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: auto;width: 100% !important;" src="{{$product->image_id2}}"
                             alt="Second slide">
                     </div>
                     @endif @if(isset($product->image_id3))
                     <div class="carousel-item">
-                        <img class="img_item_details" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id3}}"
+                        <img class="img_item_details" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: auto;width: 100% !important;" src="{{$product->image_id3}}"
                             alt="Third slide">
                     </div>
                     @endif @if(isset($product->image_id4))
                     <div class="carousel-item">
-                        <img class="img_item_details" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id4}}"
+                        <img class="img_item_details" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: auto;width: 100% !important;" src="{{$product->image_id4}}"
                             alt="Fourth slide">
                     </div>
                     @endif

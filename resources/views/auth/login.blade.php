@@ -16,10 +16,21 @@
                 .div_login{
                     height:45em ;
                 }
+                .alert{
+                    color: #fff;
+                    padding: 1rem 1rem;
+                    top: 29rem;
+                    z-index: 6;
+                    background-color: #d80f1687;
+                }
             @media (min-width: 768px) and (max-width: 1023px) {
                 .main-container {
                     height: 86.7em;
                     background-position-x: -16em;
+                }
+                .alert {
+                    top: 17.5rem;
+                        left: 20%;
                 }
                 .checkbox{    
                     margin-left: 0px;
@@ -82,7 +93,7 @@
       <div class="col-md-12" style="padding-left:0px;padding-right: 0px  " id="content_page">
         <div  id="main-container" class="main-container long-div">
             <div class="container">
-                <div class="row">
+                <div class="row" style="width: 100%;">
                     <div class="col align-self-start">
                     </div>
                     <div class="col align-self-center">
@@ -100,7 +111,7 @@
                                     <div class="input-group-prepend">
                                         <img src="/front-end/images/signup/at.png" />
                                     </div>
-                                    <input type="text" class="form-control input_login" id="inlineFormInputGroupUsername" name="email" placeholder="@lang('Username')">
+                                    <input type="text" required class="form-control input_login" id="inlineFormInputGroupUsername" name="email" placeholder="@lang('Username')">
                                 </div>
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -113,7 +124,7 @@
                                     <div class="input-group-prepend">
                                         <img src="/front-end/images/signup/locked-padlock.png" />
                                     </div>
-                                    <input type="password" class="form-control input_login" id="inlineFormInputGroupPassword" name="password" placeholder="@lang('Password')">
+                                    <input type="password" required class="form-control input_login" id="inlineFormInputGroupPassword" name="password" placeholder="@lang('Password')">
                                 </div>
                             </div>
                             <p class="singup_text">
@@ -161,7 +172,7 @@
 </div>
 @endsection
 @section('scripts')
-    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <!--<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>-->
       <script>
 
         $("input::-webkit-input-placeholder").css({"color": "#fff"});

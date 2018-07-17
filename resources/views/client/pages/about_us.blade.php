@@ -180,7 +180,9 @@
              width: 90%;
         max-width: 90%;
         }
-        
+        .icon-flag{
+            margin-top: 0rem !important;
+        }
         .body_mobile{
             overflow-x: hidden;
         }
@@ -191,12 +193,19 @@
         .div_icon_footer_mobile {
     margin-left: 15% !important;
         }
+        .input_search_sm {
+    display: none !important;
+}
+  .input_search_sm{
+                    width: 60% !important;
+                }
 	@media (min-width: 768px) and (max-width: 1030px) {
 		.sth 
 		{
 			left: 46em !important;
     		max-width: 30% !important;
 		}
+              
 		.top{
 			margin-bottom: 15%;
 		}
@@ -207,6 +216,15 @@
 		.img-logo{
 			width: 80%;
 		}
+                .logo {
+    width: 13rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+                    .top_nav_mobile{
+            max-width: 60% !important;
+        }
 	}
 	@if(session('lang') == 'ar')
 		.rtl{
