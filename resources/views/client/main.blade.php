@@ -23,8 +23,10 @@
     width: 72%;
 }
 .col_item{
+/*
     width: 32%;
         max-width: 32%;
+*/
 }
 #content_page{
     margin-top: 0rem;
