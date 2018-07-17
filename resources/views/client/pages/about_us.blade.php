@@ -180,7 +180,9 @@
              width: 90%;
         max-width: 90%;
         }
-        
+        .icon-flag{
+            margin-top: 0rem !important;
+        }
         .body_mobile{
             overflow-x: hidden;
         }
@@ -191,12 +193,19 @@
         .div_icon_footer_mobile {
     margin-left: 15% !important;
         }
+        .input_search_sm {
+    display: none !important;
+}
+  .input_search_sm{
+                    width: 60% !important;
+                }
 	@media (min-width: 768px) and (max-width: 1030px) {
 		.sth 
 		{
 			left: 46em !important;
     		max-width: 30% !important;
 		}
+              
 		.top{
 			margin-bottom: 15%;
 		}
@@ -207,7 +216,36 @@
 		.img-logo{
 			width: 80%;
 		}
+                .logo {
+    width: 13rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+                    .top_nav_mobile{
+            max-width: 60% !important;
+        }
+      
 	}
+        
+        @media (min-width: 1000px) and (max-width: 1030px) {
+              .contact-us-div{
+                margin-top: -2em !important;
+        }
+            
+        }
+          @media (min-width: 900px) and (max-width: 1000px) {
+              .contact-us-div{
+                margin-top: -4em !important;
+        }
+            
+        }
+         @media (min-width: 400px) and (max-width: 900px) {
+              .contact-us-div{
+                margin-top: -9em !important;
+        }
+            
+        }
 	@if(session('lang') == 'ar')
 		.rtl{
 			float: right;
@@ -263,23 +301,20 @@
 			</div>
 			<br><br>
 		</div>
-
 	</div> 
-	<div class="contact-us-div col-md-6 sth"  style="margin-top: 5em;">
-			<h2>@lang('Contact Us')</h2>
-			<span class="mail">@</span>
-			<p class="" ="contact-par">
-			
-				info@dukkangi.com
-				<br>
-				support@dukkangi.com
-			</p><span class="glyphicon glyphicon-earphone phone"></span>
-			<p class="contact-par">
-				
-				+49 5609-809<br>
-				+49 5609-808
-			</p>
-		</div>
+    <div class="contact-us-div col-md-6  sth"  style="margin-top: 5em;">
+        <h2>@lang('Contact Us')</h2>
+        <span class="mail">@</span>
+        <p class="" ="contact-par">
+            info@dukkangi.com
+            <br>
+            support@dukkangi.com
+        </p><span class="glyphicon glyphicon-earphone phone"></span>
+        <p class="contact-par">
+            +49 5609-809<br>
+            +49 5609-808
+        </p>
+    </div>
 </div>
 
 @endsection

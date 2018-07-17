@@ -28,7 +28,26 @@
             .block_input_singup{
                 margin-top: 0.5em !important;
             }
+            
+             .alert {
+                    color: #fff;
+                    padding: 1rem 1rem;
+                    width: 18rem;
+                    /*margin-top:  -1rem;*/
+                    z-index: 6;
+                    background-color: #d80f1687;
+                }
+                .alert strong{
+                    width: 100%;
+                    text-align: center;
+                }
+/*                 .input_select{
+                    height: 5rem !important;
+                }*/
             @media (min-width: 768px) and (max-width: 1023px) {
+                .input_select{
+                    height: 5rem !important;
+                }
                 .rate-us{
                     display: none;
                 }
@@ -89,7 +108,7 @@
  <div class="col-md-12" style="padding-left:0px;padding-right: 0px  " id="content_page">
         <div  id="main-container" class="main-container main-container_singup">
             <div class="container">
-                <div class="row">
+                <div class="row" style="width: 100%;">
                     <div class="col align-self-start">
                     </div>
                     <div class="col align-self-center">
@@ -98,48 +117,48 @@
                             {!! Form::open(['route'=>'register']) !!}
                           <div class="col-sm-12 my-1" style="margin-top: 14em !important;float: left;">
                                 @if ($errors->has('password') || $errors->has('email') ||$errors->has('name'))
-                                <span style="text-align: center;color: #ff0000;">
-                                   <u><big><strong>{{ $errors->first('password') }}</strong></big></u>
-                                   <u><big><strong>{{ $errors->first('email') }}</strong></big></u>
-                                   <u><big><strong>{{ $errors->first('name') }}</strong></big></u>
-                                </span>
+                                <p class="alert" style="text-align: center;">
+                                   <strong>{{ $errors->first('password') }}</strong>
+                                   <strong>{{ $errors->first('email') }}</strong>
+                                   <strong>{{ $errors->first('name') }}</strong>
+                                </p>
                                 <br>
                                 @endif
                 
                                 <div class="input-group">
 
-                                    <input type="text" class="form-control input_singup" id="inlineFormInputGroupUsername" placeholder="@lang('Username')" name="name">
+                                    <input type="text" required class="form-control input_singup" id="inlineFormInputGroupUsername" placeholder="@lang('Username')" name="name">
                                 </div>
                             </div>
                             <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
                                 <div class="input-group">
 
-                                    <input type="email" class="form-control input_singup" id="inlineFormInputGroupEmail" placeholder="@lang('Email')" name="email">
+                                    <input type="email" required class="form-control input_singup" id="inlineFormInputGroupEmail" placeholder="@lang('Email')" name="email">
                                 </div>
                             </div>
                             <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
                                 <div class="input-group">
 
-                                    <input name="password" type="password" class="form-control input_singup" id="inlineFormInputGroupPassword" placeholder="@lang('Password')">
+                                    <input name="password" required type="password" class="form-control input_singup" id="inlineFormInputGroupPassword" placeholder="@lang('Password')">
                                 </div>
                             </div>
                             <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
                                 <div class="input-group">
 
-                                    <input type="password" class="form-control input_singup" id="inlineFormInputGroupConfirmPassword" placeholder="@lang('Confirm Password')" name="password_confirmation">
+                                    <input type="password" required class="form-control input_singup" id="inlineFormInputGroupConfirmPassword" placeholder="@lang('Confirm Password')" name="password_confirmation">
                                 </div>
                             </div>
                            
                             <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
                                 <div class="input-group">
 
-                                    <input type="text" class="form-control input_singup datepicker" id="date_of_brith" placeholder="@lang('Date of birth')" name="dateofbirth">
+                                    <input type="text" required class="form-control input_singup datepicker" id="date_of_brith" placeholder="@lang('Date of birth')" name="dateofbirth">
                                 </div>
                             </div>
-                            <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
+                            <div class="col-sm-12 my-1" style="margin-top: 0.6em !important;float: left;">
                                 <div class="input-group">
-                                    <select class="custom-select form-control input_singup" name="gender">
-                                       <option value="male" >@lang('Male') </option>
+                                    <select class="custom-select form-control input_singup input_select" name="gender">
+                                       <option value="male"  >@lang('Male') </option>
                                        <option value="female" >@lang('Female') </option>
                                     </select>
                                 </div>
@@ -178,7 +197,7 @@
         @endsection
 
         @section('scripts')
-            <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+            <!--<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>-->
             <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
             <script src="/front-end/js/main.js"></script>

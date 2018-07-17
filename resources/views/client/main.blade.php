@@ -7,7 +7,7 @@
       @include('client.partials._head')
 
       <style>
-             body{
+/*             body{
             overflow-y: auto;
             overflow-x: auto;
             position: fixed;
@@ -18,7 +18,7 @@
     width: 1000px;
     max-width: 1000px;
     float: right;
-}
+}*/
 .section_item_select{
     width: 72%;
 }
@@ -62,10 +62,10 @@
             margin-top: 0rem !important;
         }
         .main-nav-bar_mobile{
-            width: 90px !important;
+            width: 5rem !important;
         }
         .top_nav_mobile{
-            max-width: 80% !important;
+            max-width: 100% ;
         }
         .sections_mobile{
             width: 59.8%;
@@ -75,15 +75,30 @@
         max-width: 90%;
         }
         
+        .icon-flag {
+    width: 25px;
+    height: 25px;
+}
+        
         @media (max-width: 767px)and (min-width:577px){
         .div_login, .div_singup {
     width: 300px;
         }
         }
+        
+          @media (min-width: 991px) and (max-width: 1023px) {
+ 
+         .input_search_lg{
+             display: block !important;
+         }
+         .input_search_sm{
+             display: none !important;
+         }
+        }
       </style>
   </head>
   <body>
-      <div class="container container_page">
+
     @include('client.partials._navbar')
     
       @yield('main_section')
