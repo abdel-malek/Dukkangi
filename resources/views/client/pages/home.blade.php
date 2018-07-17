@@ -369,11 +369,11 @@
 .bottom_left_background_block p {
     left: 6.1em !important;
 }
-         .bottom_right_background_block {
+.bottom_right_background_block {
     height: 14.5em;
     width: 25em;
 }
-         .landing-items-block img {
+.landing-items-block img {
     height: auto;
     width: 25em;
 }

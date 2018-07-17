@@ -51,7 +51,7 @@
 
 
           </ul>
-        </div><input type="text" class="form-control input_search input_search_sm" style="margin-left: auto;margin-right: auto;float: left;" id="nav-bar-search2" name="search2" placeholder=" @lang('Search')...">
+        </div><input type="text" class="form-control input_search input_search_sm" style="margin-left: auto;margin-right: auto;float: left;" id="search-mobile" name="search2" placeholder=" @lang('Search')...">
       </nav>
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light" id="lang-nav-bar">
