@@ -48,8 +48,10 @@
         text-decoration: none;
     }
     .simi {
+/*
             max-width: 16% !important;
             margin-left: 6%;
+*/
         }
 
     .rating {
@@ -160,13 +162,14 @@
     .all_page_item_view {
         padding: 0em 5em;
         max-width: 1200px;
-        width: 1200px;
+/*        width: 1200px;*/
         
     }
 
     .title_reviews {
         float: left;
-        margin-top: 290px
+/*        margin-top: 290px*/
+        margin-top: 330px
     }
 
     .add_to_card_item_details span {
@@ -210,21 +213,28 @@
 
         .text_item_details{
             height: 10em;
-            margin-bottom: -3em;
+/*            margin-bottom: -3em;*/
+			margin-bottom: 0;
             padding-bottom: 0em;
+			overflow-y: auto;
+			overflow-x: hidden
         }
 
                 .block_similar {
+/*
             width: 1200px;
             max-width: 1200px;
+*/
             /*overflow: auto;*/
         }
             body{
+/*
             overflow-y: auto;
             overflow-x: auto;
             position: fixed;
             height: 100%;
             width: 100%;
+*/
     }
     .footer {
     width:100%;
@@ -238,6 +248,7 @@
     left: 25%;
     z-index: 99;
 }
+	
 .background_slide{
     position: fixed;
     top: 0px;
@@ -281,8 +292,10 @@
             margin-right: 82px !important;
         }
         .simi {
+/*
             max-width: 50% !important;
             margin-left: 0px !important;
+*/
         }
         .text_discount{
                 width: 5em;
@@ -555,7 +568,7 @@
         }
         @media (min-width: 1280px) and (max-width: 1310px) {
             .header_page_text_div {
-                width: 81%;
+                width: 80%;
             }
               .rating2{
                 right: 2.6em !important;
@@ -806,6 +819,121 @@
         margin-bottom: 0px !important;
         margin-top: 1px !important;
     }
+	.one_item_details{
+		width: 29%;
+		margin-left: 1.7em
+		}
+	.price_item_details, .points_item_details{
+		margin-top: 5em
+	}
+	.header_item_details .slide-bg{
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+		cursor: pointer
+	}
+	@media(min-width: 992px) and (max-width: 1199px){
+		.one_item_details{
+		width: 44%;
+		margin-left: 1.7em
+		}
+		.header_page_text_div{
+			padding-left: 54% !important;
+		}
+		.title_reviews{
+			margin-top: 450px
+		}
+		.leave_constructive_review .details_comment .rating{
+			right: auto !important;
+			left: 1em;
+/*			margin-top: 25% !important*/
+		}
+	}
+	@media(max-width: 991px){
+		.one_item_details{
+			position: relative;
+			width: 100%;
+			margin: 0;
+			margin-top: 20px
+		}
+		.sections{
+			width: 100%
+		}
+		.title_reviews{
+			margin-top: 0
+		}
+		.customer_reviews{
+			float: none
+		}
+		.comments_customer_reviews .details_comment .rating{
+			top: 45px
+		}
+		.all_page_item_view{
+			padding: 0
+		}
+		.leave_constructive_review{
+			float: none;
+			width: 100%
+		}
+		.header_page{
+			position: relative;
+			height: 10em;
+			background-size: cover !important;
+			width: 100%;
+			margin-left: 0
+		}
+		.header_page_text_div{
+			top: auto;
+			bottom: 0;
+			width: 100%;
+			padding-left: 2em !important;
+			margin: 0
+		}
+		.header_page .rating{
+			left: 0
+		}
+		.leave_constructive_review .details_comment .rating{
+			right: auto !important;
+			left: 1em;
+/*			margin-top: 25% !important*/
+		}
+		.leave_constructive_review{
+			margin-bottom: 40px;
+			background-image: url()
+		}
+	}
+	.price_item_details .old-price{
+		font-family: inherit;
+		font-size: 1.4rem;
+		padding-right: 10px
+	}
+	.price_item_details .new-price{
+		font-family: inherit;
+		font-size: 1.9rem;
+	}
+	
+	
+	#slider_preview .carousel-item img{
+width: auto !important;
+		margin: auto
+	}
+	@media(max-width: 767px){
+		#slider_preview{
+    width:100%;
+    max-height: 95vh;
+    position: fixed;
+    top: 21px;
+    left: 0;
+}
+		#slider_preview .carousel-inner,
+		#slider_preview .carousel-item,
+		#slider_preview img{
+			max-height: inherit
+		}
+	}
+	.zoomContainer{
+		z-index: 1000
+	}
 </style>
 
 @endsection @section('main_section')
@@ -844,23 +972,33 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class=" d-block w-100" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id}}" alt="First slide">
+<!--                        <img class=" d-block w-100" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id}}" alt="First slide">-->
+                        <div class="slide-bg" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px; background-image: url({{$product->image_id}})"></div>
                     </div>
 
                     @if(isset($product->image_id2))
                     <div class="carousel-item">
+<!--
                         <img class="img_item_details"  onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id2}}"
                             alt="Second slide">
+-->
+                            <div class="slide-bg" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px; background-image: url({{$product->image_id2}})"></div>
                     </div>
                     @endif @if(isset($product->image_id3))
                     <div class="carousel-item">
+<!--
                         <img class="img_item_details" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id3}}"
                             alt="Third slide">
+-->
+                            <div class="slide-bg" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px; background-image: url({{$product->image_id3}})"></div>
                     </div>
                     @endif @if(isset($product->image_id4))
                     <div class="carousel-item">
+<!--
                         <img class="img_item_details" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id4}}"
                             alt="Fourth slide">
+-->
+                            <div class="slide-bg" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px; background-image: url({{$product->image_id4}})"></div>
                     </div>
                     @endif
                 </div>
@@ -890,7 +1028,7 @@
                         @endif
                     </div>
                     <a class="carousel-control-prev" href="#slider_preview" role="button" data-slide="prev">
-                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+<!--                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
    <i class="fa fa-arrow-left carousel-control-prev-icon" style="color:#000;font-size: 3rem;background-image: none;" aria-hidden="true"></i>
                         <!--<span class="sr-only">Previous</span>-->
                     </a>
@@ -931,10 +1069,10 @@
         <p class="price_item_details">
 
             @if (isset($product->discount) && $product->discount_price != $product->price)
-            <span style="width: 5em;">
+            <span class="price-wrapper" style="width: 5em;">
 
                 <small>
-                    <b style="font-family: 'EagarFont';"><i style="text-decoration: line-through;">{{$product->price}}</i>/ {{$product->discount_price}} €</b>
+                    <b style="font-family: 'EagarFont';"><i class="old-price" style="text-decoration: line-through;">{{$product->price}}</i>/ <span class="new-price">{{$product->discount_price}}</span> €</b>
 
                 </small>
                 @else
@@ -1020,10 +1158,10 @@
         <h3 class="title_customer_review">
             @lang("Customer's Reviews")
         </h3>
-        <div class="customer_reviews col-md-7">
+        <div class="customer_reviews col-lg-7">
             @foreach($comments as $comment)
             <div class="comments_customer_reviews">
-                <img src="{{isset($comment->user->image_id) ? $comment->user->image_id : '/uploads/user.png'}}" style="min-height: 4em;" class="img_user_comments_customer_reviews">
+                <img src="{{isset($comment->user->image_id) ? $comment->user->image_id : '/uploads/user.png'}}" style="min-height: 0em;" class="img_user_comments_customer_reviews">
                 <div class="details_comment">
                     <h3 class="username_details_comment" style="width:225px">{{$comment->user->name}}</h3>
                     <p class="rated_details_comment" style="margin-left: 0px">
@@ -1047,12 +1185,12 @@
             @endforeach
 
         </div>
-        <div class="leave_constructive_review col-md-4">
+        <div class="leave_constructive_review col-lg-4">
             {!! Form::open(['route' => ['comment',$product->id ]]) !!}
             <h3 class="text_leave_constructive_review" style="color: #d80001;margin-top: 0em;">@lang('Leave a constructive review')</h3>
             <p class="text_leave_constructive_review" style="margin-top:0.6em;">@lang('Rate this product') </p>
             <div class="details_comment" style="margin-bottom: 50px">
-                <span class="rating2 ratinge rating form-rate" data-id="{{$product->id }}" style="margin-right: 160px;right: 9%;margin-top: 11%;"></span>
+                <span class="rating2 ratinge rating form-rate" data-id="{{$product->id }}" style="margin-right: 130px;right: 9%;margin-top: 11%;"></span>
                 <img src="/front-end/images/logo.png" class="rate-logo" >
             </div>
 
@@ -1071,13 +1209,13 @@
     <h3 class="title_similar_items">
         @lang('Similar items')
     </h3>
-
+<div class="container">
     @foreach($simiProducts as $simiproduct) @if($simiproduct->id == $product->id)
     <?php
                             continue;
                             ?> @endif
 
-    <div class=" col-lg-3 col-md-6 simi" style="margin-top: 1em;float: left;margin-bottom: 20px;">
+    <div class=" col-lg-4 col-md-6 col-xl-3 simi" style="margin-top: 1em;float: left;margin-bottom: 20px;">
         <div class="div_item">
             @if (isset($simiproduct->discount) && $simiproduct->discount != 0)
             <div class="discount_item">
@@ -1097,8 +1235,9 @@
             <img onclick="addCartModal($(this).parent().find('.product-img').attr('src') , $(this).data('id') )" data-id="{{$simiproduct->id}}" src="\front-end\images\user_actions\view-my-cart.png" class="icon_view_my_card" style="cursor: pointer;">
         </div>
     </div>
+    
     @endforeach
-
+</div>
 </div>
 </div>
 @endsection @section('cart')
@@ -1416,7 +1555,7 @@
     if (str.length < 10)
     {
         $('.product-name').css('text-align',  'left');
-        $('.product-rate').css('left','10.5em').css("bottom" , "0.8em");
+        $('.product-rate').css('left','9.5em').css("bottom" , "0.8em");
         $('#product-name').css('height','4em');
     }   
 </script> 
@@ -1499,12 +1638,22 @@ $('.modal_one_item_details').addClass('.modal_one_item_details_mobile');
         $('#slider_preview').css('display','block');
         $('.background_slide').css('display','block');
         $('#slider_preview .carousel-item').removeClass('active');
-        $('#slider_preview .carousel-item').each(function(){
-           if($(this).find('img').attr('src') == $(obj).attr('src')){
+//        $('#slider_preview .carousel-item').each(function(){
+//           if($(this).find('img').attr('src') == $(obj).attr('src')){
+//			   console.log($(this).find('img').attr('src'));
+//               $(this).addClass('active');
+//           }
+//        });
+		
+		var objImg = $(obj).css('background-image');
+		objImg = objImg.replace('url(', '').replace(')', '');
+		$('#slider_preview .carousel-item').each(function(){
+//           if($(this).find('img').attr('src') == objImg){
+           if(objImg.indexOf($(this).find('img').attr('src')) >=0){
+			   
                $(this).addClass('active');
            }
         });
-        
         
     }
     
@@ -1530,5 +1679,19 @@ $('.modal_one_item_details').addClass('.modal_one_item_details_mobile');
     //     $('#content_page').css('filter', 'blur(0px)');
     //     $('.footer').css('filter', 'blur(0px)');
     // });
+		
+</script>
+<script type="text/javascript" src="{{url('/front-end/js/plugin/jquery.elevateZoom-3.0.8.min.js')}}"></script>
+
+<script>
+	$(function () {
+    $('#slider_preview img').elevateZoom({
+		zoomWindowWidth:300,
+		zoomWindowHeight:300,
+		responsive: true
+		
+	});
+		
+	});
 </script>
 @endsection

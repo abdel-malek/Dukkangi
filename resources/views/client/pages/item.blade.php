@@ -337,6 +337,7 @@
         @endif
 
         <div class="col-md-9 col-sm-12 section_item section_item_select">
+           <div class="row">
             @if(!isset($brandfilter))
             <div class="col-sm-3" style="float:left;">
                 <img src={{URL::asset( '/front-end/images/light_logo.png')}} class="img-resposive logo_text" />
@@ -388,6 +389,7 @@
                     </div>
                 </div>
 
+            </div>
             </div>
       
           </div>

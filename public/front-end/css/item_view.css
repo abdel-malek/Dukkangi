@@ -95,7 +95,7 @@
     color: #fff;
     text-align: center;
 }
-.price_item_details span,.buy_item_details span,.add_to_card_item_details span{
+.price_item_details .price-wrapper,.buy_item_details span,.add_to_card_item_details span{
        font-size: 1.5em;
     font-family: 'EagarFont';
     margin-top: 0.2em;
@@ -124,7 +124,7 @@
     font-weight: bold;
     font-family: 'HeadlinesFont';
     float: right;
-    width: 49%;
+    width: 45%;
     font-size: 1.1em;
     margin-top: 4em;
 }
