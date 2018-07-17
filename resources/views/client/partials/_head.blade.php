@@ -97,9 +97,9 @@
                   border-top: none;
                   z-index: 99;
                   top: 88%;
-                  left: 33.5%;
-                  right: 0;
-                  width: 16em;
+                  left: unset;
+                  right: unset;
+                  width: 17em;
             }
             .autocomplete-items div {
               cursor: pointer;
@@ -381,7 +381,7 @@
             .star_1 i:hover{
                 content: "&#xE838;";
             }
-        @media (min-width: 991px) and (max-width: 1023px) {
+        @media (min-width: 991px) and (max-width: 1026px) {
  
          .input_search_lg{
              display: block !important;
