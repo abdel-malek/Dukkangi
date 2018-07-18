@@ -19,7 +19,7 @@ class PaypalIPN extends Model
     /** Production Postback URL */
     const VERIFY_URI = 'https://ipnpb.paypal.com/cgi-bin/webscr';
     /** Sandbox Postback URL */
-    const SANDBOX_VERIFY_URI = 'https://ipnpb.sandbox.paypal.com/cgi-bin/webscr';
+    // const SANDBOX_VERIFY_URI = 'https://ipnpb.sandbox.paypal.com/cgi-bin/webscr'; 
     /** Response from PayPal indicating validation was successful */
     const VALID = 'VERIFIED';
     /** Response from PayPal indicating validation failed */
@@ -31,7 +31,7 @@ class PaypalIPN extends Model
      */
     public function useSandbox()
     {
-        $this->use_sandbox = true;
+        $this->use_sandbox = false; // Here
     }
     /**
      * Sets curl to use php curl's built in certs (may be required in some

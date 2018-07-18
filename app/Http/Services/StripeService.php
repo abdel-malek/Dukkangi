@@ -10,9 +10,9 @@ use App\StripeCustomer;
 class StripeService
 {
     // //TEST
-    const STRIPE_KEY = 'sk_test_vgJUisaoeRUWJpgXdc9mE8uV';
+    // const STRIPE_KEY = 'sk_test_vgJUisaoeRUWJpgXdc9mE8uV';
     // LIVE
-    // const STRIPE_KEY = 'sk_live_QWB7ziOyJU50Vy9gQOQOGaO4';
+    const STRIPE_KEY = 'sk_live_ITlS8gv15QqQFGzs8LSB5FxI';
     const VERSION =  '2017-08-15';
 
     public static function chargeCard($amount, $currency, $description, $email,$stripeToken)
