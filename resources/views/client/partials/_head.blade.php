@@ -38,14 +38,16 @@
                 width: 0.75em;
                 height: 0.7em;
             }
-            
+            #lang-nav-bar{
+                padding: .5rem 3rem;
+            }
            .modal_one_item_details{
              top: 10em;
                 top: 2em;
                 left:30%;
                 z-index: 26;
                 margin-top: 0em;  
-                width: 26%;
+                width: 31%;
                 background-color: #fff;
                 margin-left: 4em;
                 float: left;
@@ -283,12 +285,18 @@
                 #main-navbar-items ul li {
                     font-size: 0.9rem;
                 }
+                #lang-nav-bar .nav-item a {
+                    font-size: 1.4em !important;
+                }
                 #main-nav-bar a
                 {
                         width: auto;
                 }
                 .ul_navbar{
-                    width: 23rem;
+                    width: 27rem;
+                }
+                .nav-item a{
+                    font-size: 1.8em !important;
                 }
                 #main-nav-bar a{
                     width:5rem ;
@@ -308,10 +316,10 @@
                     max-height: 12.8em !important;
                 }
                 .top_nav {
-                    max-width: 41% !important;
+                    max-width:60% !important;
                 }
                 .navbar {
-    padding: .5rem 6rem;
+    padding: .5rem 3rem;
                 }
                 #main-navbar-items ul li {
     margin-right: 1.5rem !important;
@@ -400,6 +408,32 @@
     width: auto;
 }
  }
+ 
+ @media (min-width: 300px) and (max-width: 690px) {
+ .div_icon_footer {
+    float: left;
+    margin-left: 0%;
+    padding-left: 17%;
+    
+ }
+ }
+  @media (min-width: 690px) and (max-width: 776px) {
+ .div_icon_footer {
+    float: left;
+    margin-left: 0%;
+    padding-left: 23%;
+ }
+ }
+ 
+         .input_search ::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #aaa !important;
+    font-weight: bold !important;
+}
+.input_search :-moz-placeholder, textarea:-moz-placeholder {
+    color: #aaa !important;
+    font-weight: bold !important;
+}
+
         </style>
         <style>
             /* jssor slider loading skin spin css */

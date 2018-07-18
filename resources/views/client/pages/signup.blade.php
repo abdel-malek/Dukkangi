@@ -100,6 +100,15 @@
                     margin-top: 1em !important;
                 }
             }
+            
+             #nav-bar-search::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #aaa !important;
+    font-weight: bold !important;
+}
+#nav-bar-search::-moz-placeholder, textarea:-moz-placeholder {
+    color: #aaa !important;
+    font-weight: bold !important;
+}
         </style>
 
 @endsection    
@@ -180,7 +189,7 @@
                             </div>
                         </form>
                             <br>
-                            <div class="col-sm-12 my-1" style="margin-top: 3em !important;float: left;padding-left: 1.6em;">
+                            <div class="col-sm-12 my-1" style="margin-top: 3em !important;float: left;padding-left: 1.6em;display: none;">
                                 <a href="https://www.facebook.com/" target="_blank"><img src="/front-end/images/signup/facebook copy.png" class="icon_social_media" style="margin-left: 2em;" /></a>
                                 <a href="https://www.instagram.com/" target="_blank"><img src="/front-end/images/signup/insta.png" class="icon_social_media" /></a>
                                 <a href="https://twitter.com/" target="_blank"><img src="/front-end/images/signup/twitter.png" class="icon_social_media" /></a>

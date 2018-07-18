@@ -63,7 +63,10 @@
 
     .header_page .rating {
         bottom: 0.2em;
-        left: 33%;
+        left: 29.7%;
+    }
+    .input_search_sm{
+        display: none !important;
     }
     .rating .star::after {
         color: #fff;
@@ -144,7 +147,7 @@
     .header_page_text_div {
         padding: 0.8em 2em;
         top: 10.9em;
-        width: 80%;
+        width: 90.3%;
         padding-left: 30%;
     }
 
@@ -159,12 +162,7 @@
         overflow: hidden;
     }
 
-    .all_page_item_view {
-        padding: 0em 5em;
-        max-width: 1200px;
-/*        width: 1200px;*/
-        
-    }
+
 
     .title_reviews {
         float: left;
@@ -264,22 +262,39 @@
     background-image: url(data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' f…3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E);
 }
 
+@media (min-width: 768px) and (max-width: 1000px) {
+    .modal_one_item_details {
+    width: 60% !important;
+    margin-left: -10% !important;
+}
+#modal-img{
+    width: 100%;
+    height: auto !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.modal_one_item_details  .div_title_item_details{
+    top: unset !important;
+    bottom: unset !important;
+    height: 97px;
+    margin-top: -6rem;
+}
+}
+
     @media (min-width: 768px) and (max-width: 1200px) {
         .all_page_item_view {
             padding: 0em 0em;
         }
-<<<<<<< HEAD
-        
         .details_comment .rating {
         bottom: unset;
         right: -1.6em;
         left: unset;
     }
-=======
+
         .margin-right {
             margin-right :31px !important;
         }
->>>>>>> e0ea1dae4f2e8f593a59848bcfcb13998f80c658
         .rate-logo {
             margin-left: 0em;
         }
@@ -323,7 +338,7 @@
             margin-left: 2em;
         }
         .sections {
-            width: 54.8%;
+            width: 69%;
         }
         .discount_item_details {
             border-top: 9em solid #d80001;
@@ -333,10 +348,10 @@
             font-size: 1.7em;
         }
         .header_page_text_div {
-            padding-left: 43%;
+            padding-left: 33%;
         }
         .header_page .rating {
-            left: 17.7em;
+            left: 29.6%;
             font-size: 1.5em;
         }
         .text_section {
@@ -473,6 +488,7 @@
         }
         .one_item_details, .modal_one_item_details {
     box-shadow: 1px 1px 25px #000000b0;
+    
 }
     }
     
@@ -560,7 +576,7 @@
             
          @media (min-width: 1311px) and (max-width: 1339px) {
             .header_page_text_div {
-                width: 81.3%;
+                width: 90.3%;
             }
             .rating2{
                 right: 3.3em !important;
@@ -568,7 +584,7 @@
         }
         @media (min-width: 1280px) and (max-width: 1310px) {
             .header_page_text_div {
-                width: 80%;
+                width: 90.3%;
             }
               .rating2{
                 right: 2.6em !important;
@@ -576,7 +592,7 @@
         }
           @media (min-width: 1250px) and (max-width: 1279px) {
             .header_page_text_div {
-                width: 80.7%;
+                width: 90.2%;
             }
               .rating2{
                 right: 2em !important;
@@ -587,7 +603,7 @@
           }
            @media (min-width: 1212px) and (max-width: 1249px) {
             .header_page_text_div {
-                width: 80.4%;
+                width: 90.2%;
             }
               .rating2{
                 right: 1.7em !important;
@@ -598,7 +614,7 @@
         }
          @media (min-width: 1201px) and (max-width: 1211px) {
             .header_page_text_div {
-                width: 80.2%;
+                width: 90.1%;
             }
              .rating2{
                 right: 1.4em !important;
@@ -670,12 +686,85 @@
             width: 39%;
             margin-left: 2em;
         }
-/*.all_page_item_view{
-    width: 1180px;
+        
+        
+            @media (min-width: 300px) and (max-width: 990px) {
+   .input_search_sm {
+    display: block !important;
+        margin-top: 1rem;
+}
+   .input_search_lg {
+    display: none !important;
+}
+.nav-item a {
+    font-size: 1.7em !important;
+}
+            }
+            
+            
+                     @media (min-width: 992px) and (max-width: 1030px) {
+/*   .input_search_sm {
+    display: block !important;
+        margin-top: 1rem;
+}
+   .input_search_lg {
+    display: none !important;
 }*/
-/*html , body{
-    overflow: auto;*/
-/*}*/
+.top_nav {
+    max-width: 83% !important;
+}
+#nav-bar-search {
+    margin-right: 0rem;
+    width: 179px;
+}
+.ul_navbar {
+    width: 42rem;
+}
+.nav-item a {
+    font-size: 0.9em !important;
+}
+     }
+                  @media (min-width: 750px) and (max-width: 817px) {
+               .ul_navbar {
+    width: 23rem;
+        display: flex!important;
+}
+
+   .ul_navbar_mobile {
+    width: 31rem;
+}
+.ul_navbar .nav-item a {
+    font-size: 1.4em !important;
+}
+.ul_navbar_mobile .nav-item a {
+    font-size: 1.8em !important;
+}
+
+     }
+            
+                      @media (min-width: 300px) and (max-width: 766px) {
+               .ul_navbar {
+    width: 22rem;
+        display: flex!important;
+}
+.logo {
+    width: 9rem;
+}
+.navbar {
+    padding: .5rem 1rem;
+}
+   .ul_navbar_mobile {
+    width: 31rem;
+}
+.ul_navbar .nav-item a {
+    font-size: 1.3em !important;
+}
+.ul_navbar_mobile .nav-item a {
+    font-size: 1.8em !important;
+}
+
+     }
+     
 </style>
 <style>
     /* jssor slider loading skin spin css */
@@ -827,18 +916,18 @@
 		margin-top: 5em
 	}
 	.header_item_details .slide-bg{
-		background-size: cover;
+		background-size: contain;
 		background-repeat: no-repeat;
 		background-position: center;
 		cursor: pointer
 	}
 	@media(min-width: 992px) and (max-width: 1199px){
 		.one_item_details{
-		width: 44%;
+		width: 30%;
 		margin-left: 1.7em
 		}
 		.header_page_text_div{
-			padding-left: 54% !important;
+			padding-left: 34% !important;
 		}
 		.title_reviews{
 			margin-top: 450px
@@ -856,6 +945,10 @@
 			margin: 0;
 			margin-top: 20px
 		}
+                .all_page_item_view{
+                    padding-left: 3rem !important;
+                    padding-right: 3rem !important;
+                }
 		.sections{
 			width: 100%
 		}
@@ -886,7 +979,7 @@
 			top: auto;
 			bottom: 0;
 			width: 100%;
-			padding-left: 2em !important;
+			padding-left: 2.5em !important;
 			margin: 0
 		}
 		.header_page .rating{
@@ -1276,8 +1369,8 @@ width: auto !important;
     </div>
 
     <p class="price_item_details" style="margin-top: 0em;" data-product-price='{{isset($product->discount_price) ? $product->discount_price: $product->price}}'>
-        <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;left: -1em;">@lang('Total') </span>
-        <span class="total_qty" style="left:2.2em;width: 6em"> {{isset($product->discount_price) ? $product->discount_price: $product->price}} €</span>
+        <span style="    position: absolute;font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;left: 0em;z-index:22;">@lang('Total') </span>
+        <span class="total_qty" style="    position: absolute;left:2.2em;width: 6em;margin-top:1rem;z-index:22;"> {{isset($product->discount_price) ? $product->discount_price: $product->price}} €</span>
         <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details" />
     </p>
     <div class="button_modal_one_item_details">

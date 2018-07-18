@@ -74,7 +74,7 @@
         }
         .col_item_mobile{
              width: 90%;
-        max-width: 90%;
+        /*max-width: 90%;*/
         }
         
         .icon-flag {
@@ -87,7 +87,9 @@
     width: 300px;
         }
         }
-        
+        .input_search_sm{
+        display: none !important;
+    }
           @media (min-width: 991px) and (max-width: 1023px) {
  
          .input_search_lg{
@@ -97,6 +99,92 @@
              display: none !important;
          }
         }
+        @media (min-width: 300px) and (max-width: 690px) {
+ .div_icon_footer {
+    float: left;
+    margin-left: 0%;
+    padding-left: 17%;
+    
+ }
+ }
+  @media (min-width: 690px) and (max-width: 776px) {
+ .div_icon_footer {
+    float: left;
+    margin-left: 0%;
+    padding-left: 23%;
+ }
+ }
+ 
+      @media (min-width: 992px) and (max-width: 1025px) {
+/*   .input_search_sm {
+    display: block !important;
+        margin-top: 1rem;
+}
+   .input_search_lg {
+    display: none !important;
+}*/
+.top_nav {
+    max-width: 83% !important;
+}
+#nav-bar-search {
+    margin-right: 0rem;
+    width: 179px;
+}
+.ul_navbar {
+    width: 42rem;
+}
+.nav-item a {
+    font-size: 1.5em !important;
+}
+     }
+                   @media (min-width: 750px) and (max-width: 817px) {
+               .ul_navbar {
+    width: 23rem;
+        display: flex!important;
+}
+
+   .ul_navbar_mobile {
+    width: 31rem;
+}
+.ul_navbar .nav-item a {
+    font-size: 1.4em !important;
+}
+.ul_navbar_mobile .nav-item a {
+    font-size: 1.8em !important;
+}
+
+     }
+            
+                      @media (min-width: 300px) and (max-width: 766px) {
+               .ul_navbar {
+    width: 22rem;
+        display: flex!important;
+}
+.logo {
+    width: 9rem;
+}
+.navbar {
+    padding: .5rem 1rem;
+}
+   .ul_navbar_mobile {
+    width: 31rem;
+}
+.ul_navbar .nav-item a {
+    font-size: 1.3em !important;
+}
+.ul_navbar_mobile .nav-item a {
+    font-size: 1.8em !important;
+}
+
+     }
+           .input_search ::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #aaa !important;
+    font-weight: bold !important;
+}
+.input_search :-moz-placeholder, textarea:-moz-placeholder {
+    color: #aaa !important;
+    font-weight: bold !important;
+}
       </style>
   </head>
   <body>
@@ -112,47 +200,7 @@
   </body>
   <script>
           if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-//document.write("<style>"+
-//     "@media (min-height: 667px) and (min-width: 300px) {"+
-//            ".container{"+
-//                "width: 100% !important;"+
-//                "max-width: 100% !important;"+
-//                "margin: 0px;"+
-//                "padding: 0px;"+
-//            "}"+
-//            ".all_page_item_view, .block_similar{"+
-//                 "width: 100% !important;"+
-//                "max-width: 100% !important;"+
-//            "}"+
-//            ".details_comment .rating {"+
-//    "margin-top: 1em ;"+
-//            "}"+
-//            ".title_reviews {"+
-//    "margin-top: 29rem;"+
-//            "}"+
-//            ".header_page .rating {"+
-//                "left: 14.4em;"+
-//            "}"+
-//            ".block_similar{"+
-//                "margin-top: 3rem;"+
-//            "}"+
-//            ".ratings4{"+
-//                "margin-top: 0rem !important;"+
-//            "}"+
-//        "}"+
-//        "#main-nav-bar a {"+
-//            "width: 19%;"+
-//        "}"+
-//        ".top_nav {"+
-//            "max-width: 70% !important;"+
-//        "}"+
-//        "#main-nav-bar a {"+
-//            "width: 102px;"+
-//        "}"+
-//        ".sections {"
-//            "width: 59.8%;"+
-//        "}"+
-//        "</style>");
+
 $('.container').addClass('container_mobile');
 $('.all_page_item_view').addClass('all_page_item_view_mobile');
 $('.block_similar').addClass('block_similar_mobile');
@@ -165,6 +213,8 @@ $('#main-nav-bar a').addClass('main-nav-bar_mobile');
 $('.top_nav').addClass('top_nav_mobile');
 $('.sections').addClass('sections_mobile');
 $('.col_item').addClass('col_item_mobile');
+$('.ul_navbar').addClass('.ul_navbar_mobile');
+
 }
   </script>
 </html>

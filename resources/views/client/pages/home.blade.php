@@ -62,7 +62,7 @@
     right: unset;
 }
 .bottom_left_background_block p{
-    left: 46% !important;
+    left: 10.3rem !important;
     top: 32px !important;
 }
 .bottom_right_background_block p{
@@ -210,7 +210,7 @@
     width: 70% !important;
 }
 .bottom_left_background_block p {
-    left: 48% !important;
+    left: 10.8rem !important;
 }
 .bottom_right_background_block p {
     left: 11% !important;
@@ -218,7 +218,7 @@
 }
 @media (min-width: 1025px) and (max-width: 1150px){
     .bottom_left_background_block p{
-        left: 47% !important;
+        left: 10rem !important;
         top: 32px !important;
     }
     .bottom_right_background_block p{
@@ -394,7 +394,7 @@
     left: 3em !important;
 }
 .bottom_left_background_block p {
-    left: 6.1em !important;
+    left: 15.1rem !important;
 }
          .bottom_right_background_block {
     height: 14.5em;
@@ -477,15 +477,18 @@
         <div class="items-col first-col">
         </div>
       @for($counter ; $counter < $col1;  $counter++)
-      <a href="{{route('category' , $categories[$counter]->id) }}">
+     
         <div class="landing-items-block landing-items-block_parent {{ $counter %2 == 0 ? 'bottom_left_background_block':'bottom_right_background_block'}} " style="margin-top: {{($firstflag)? '8':'34'}}em;margin-left: 50px;
     width: 62.2%; margin-bottom: 5em">
-            <div class="block_tite_section_home">
-             <p class="text_item_block text_item_block_lg" style="width: 35%;text-align: center;">{{$categories[$counter]->english}}</p>
-     
-          <div class="hint_title"><span>{{$categories[$counter]->english}}</span></div>
-            </div>
-          <img class="" src="{{$categories[$counter]->image_id }}" />
+            <a href="{{route('category' , $categories[$counter]->id) }}">
+                <div class="block_tite_section_home">
+                    <p class="text_item_block text_item_block_lg" style="width: 35%;text-align: center;">{{$categories[$counter]->english}}</p>
+                    <div class="hint_title"><span>{{$categories[$counter]->english}}</span></div>
+                </div>
+            </a>
+            <a href="{{route('category' , $categories[$counter]->id) }}"> 
+                <img class="" src="{{$categories[$counter]->image_id }}" />
+            </a>
           <!--<img class="" src="uploads/maxresdefault.jpg" />-->
         </div>
         </a>
@@ -498,7 +501,7 @@
         </div>
         <img class="welcome-img" src="front-end/images/welcome-logo.png" />
        
-      <div class="flexslider carousel" style="left: -112%;    width: 323%;height: 14em;top: 14em;background-color: rgba(239, 239, 239,0.5);    border-color: rgba(239, 239, 239,-0.5);    z-index: 1;">
+      <div class="flexslider carousel" style="position: absolute;left: -100%;width: 300%;height: 14em;top: 14em;background-color: rgba(239, 239, 239,0.5);    border-color: rgba(239, 239, 239,-0.5);    z-index: 1;">
         <ul class="slides">
           @foreach($topProducts as $product)
           <li>
@@ -520,13 +523,13 @@
         @for($counter ; $counter < $col2+$col1 ; $counter++ )
           <a href="{{route('category' , $categories[$counter]->id) }}">
        <div class="landing-items-block landing-items-block_parent {{ $counter %2 == 0 ? 'bottom_left_background_block':'bottom_right_background_block'}}" style="margin-top: {{$midflag == 0 ?'20em' : '8em'}};margin-bottom: 40px;margin-left: 50px;width: 62.2%;">
-         <img class="" src="{{$categories[$counter]->image_id}}"/> 
+           <a href="{{route('category' , $categories[$counter]->id) }}"> <img class="" src="{{$categories[$counter]->image_id}}"/> </a>
            <!--<img class="" src="uploads/maxresdefault.jpg" />-->
-           <div class="block_tite_section_home">
+          <a href="{{route('category' , $categories[$counter]->id) }}">  <div class="block_tite_section_home">
           <p class="house-tools text_item_block text_item_block_lg" style="text-align: center;width: 35%;left: 0px" >{{$categories[$counter]->english}}</p>
               
           <div class="hint_title"><span>{{$categories[$counter]->english}}</span></div>
-           </div>
+              </div></a>
         </div>
         </a>
         <?php $midflag++ ?>
@@ -539,16 +542,20 @@
         <div class="items-col third-col">
         </div>
         @for($counter ; $counter < $col1+$col2+$col3 ; $counter++ )
-        <a href="{{route('category' , $categories[$counter]->id) }}">
-          <div class="landing-items-block landing-items-block_parent  {{ $counter %2 == 0 ? 'bottom_left_background_block':'bottom_right_background_block'}}"  style="margin-top: {{($lastflag)? '8': '34'}}em;left: 50px;width: 62%;">
-        <div class="block_tite_section_home">
-              <p class="shisha text_item_block text_item_block_lg" style="width: 41%;text-align: center;left: 0px">{{$categories[$counter]->english}}</p>
-            
-           <div class="hint_title"><span>{{$categories[$counter]->english}}</span></div>
+        
+        <div class="landing-items-block landing-items-block_parent  {{ $counter %2 == 0 ? 'bottom_left_background_block':'bottom_right_background_block'}}"  style="margin-top: {{($lastflag)? '8': '34'}}em;left: 50px;width: 62%;">
+            <a href="{{route('category' , $categories[$counter]->id) }}">
+                <div class="block_tite_section_home">
+                    <p class="shisha text_item_block text_item_block_lg" style="width: 41%;text-align: center;left: 0px">{{$categories[$counter]->english}}</p>
+
+                    <div class="hint_title"><span>{{$categories[$counter]->english}}</span></div>
+                </div>
+            </a>
+            <a href="{{route('category' , $categories[$counter]->id) }}">
+                <img class="" src="{{$categories[$counter]->image_id}}"/>
+            </a>
+        <!--<img class="" src="uploads/maxresdefault.jpg" />-->
         </div>
-          <img class="" src="{{$categories[$counter]->image_id}}"/>
-          <!--<img class="" src="uploads/maxresdefault.jpg" />-->
-         </div>
         </a>
           <?php $lastflag = 1; ?>
         @endfor
@@ -619,6 +626,7 @@
 @section('scripts')
  <script type="text/javascript">
   $(document).ready(function() {
+       if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
   $('.flexslider').flexslider({
     animation: "slide",
     animationLoop: true,
@@ -631,6 +639,20 @@
     animationSpeed: 2000, 
     slideshowSpeed: 5000, 
   });
+       }else{
+         $('.flexslider').flexslider({
+    animation: "slide",
+    animationLoop: true,
+    itemWidth: 260,
+    directionNav: true,  
+    itemMargin: 5,
+    minItems: 1,
+    maxItems: 5,
+    controlNav : false, 
+    animationSpeed: 2000, 
+    slideshowSpeed: 5000, 
+  });   
+       }
   $('.flexslider2').flexslider({
     animation: "slide",
     animationLoop: true,
@@ -681,10 +703,13 @@ $('.text_item_block').each(function(){
     }
     }
 });
-//    $('.bottom_right_background_block').each(function(){
-//       $(this).append('<a href="'+$(this).find('a').attr('href')+'" ><img src="images/left.svg" class="img_cloud_right" /></a>'); 
-//    });
-     $('.bottom_right_background_block').append('<a href="" ><img src="images/left.svg" class="img_cloud_right" /></a>');
-    $('.bottom_left_background_block').append('<a href="" ><img src="images/right.svg" class="img_cloud_right" /></a>');
+    $('.bottom_right_background_block').each(function(){
+       $(this).append('<a href="'+$(this).find('a').attr('href')+'" ><img src="images/left.svg" class="img_cloud_right" /></a>'); 
+    });
+      $('.bottom_left_background_block').each(function(){
+       $(this).append('<a href="'+$(this).find('a').attr('href')+'" ><img src="images/left.svg" class="img_cloud_right" /></a>'); 
+    });
+//     $('.bottom_right_background_block').append('<a href="" ><img src="images/left.svg" class="img_cloud_right" /></a>');
+//    $('.bottom_left_background_block').append('<a href="" ><img src="images/right.svg" class="img_cloud_right" /></a>');
     </script>
 @endsection 

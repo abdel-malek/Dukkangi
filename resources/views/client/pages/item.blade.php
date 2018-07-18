@@ -15,7 +15,9 @@
         width: auto !important;
         height: 4.1em !important;
     }
-
+.header_page .rating {
+    left: 29.8%;
+}
     a:hover {
         color: inherit;
         text-decoration: none;
@@ -95,6 +97,7 @@
 
     .pictureFrame {
         height: 86px !important;
+        margin-bottom: 1rem;
     }
 
     .line_category {
@@ -128,17 +131,52 @@
         .input-search_icon i {
     margin-right: 1em;
 }
-    @media (min-width: 768px) and (max-width: 1100px) {
+
+@media (min-width: 768px) and (max-width: 1000px) {
+    .modal_one_item_details {
+    width: 60% !important;
+    margin-left: -10% !important;
+}
+#modal-img{
+    width: 100%;
+    height: auto !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.modal_one_item_details  .div_title_item_details{
+    top: unset !important;
+    bottom: unset !important;
+    height: 97px;
+    margin-top: -6rem;
+}
+}
+    @media (min-width: 300px) and (max-width: 1100px) {
         .div_item .rating {
             bottom: 0.2em;
             left: 0.6em;
+        }
+        
+         .thumnbail{
+            margin-top: -13rem !important;
+            width: 12.6rem !important;
+            padding-left: 0rem !important;
+        }
+        .thumnbail_mobile{
+            margin-top: -12rem !important;
+            width: 13.6rem !important;
+            padding-left: 0rem !important;
+        }
+        .text_discount span{
+            font-size: 2rem !important;
         }
         .text_price {
             width: 24%;
         }
         .text_discount{
-            width: 6em;
-            left: -1em;
+            width: 4em;
+            left: -0.4em;
+            top: -5em ;
         }
         .line_price {
             width: 76%;
@@ -189,18 +227,23 @@
         .image_slider {
             height: 17em !important;
         }
-        .block_thum,
+        .thumnbail_mobile .block_thum,
         .pictureFrame {
-            width: 174px !important;
-            height: 151px !important;
+               width: 13rem!important;
+    height: 12rem !important;
+        }
+         .thumnbail .block_thum,
+        .pictureFrame {
+               width: 13rem!important;
+    height: 12rem !important;
         }
         .sub-paragraph {
-            bottom: 41px;
+            bottom: 3rem;
             font-size: 1.4em;
             padding: 4.4px 19.5px !important;
         }
         .thumnbail {
-            margin-left: 55px !important;
+            margin-left: 0px !important;
         }
         #carouselWrapper,
         #carousel {
@@ -218,7 +261,11 @@
             top: 80px !important;
         }
 
-        #jssor_1 {
+       
+        .jssor_1 {
+            left: -102px !important;
+        }
+         .jssor_1_mobile {
             left: 25px !important;
         }
         #carouselWrapper {
@@ -252,13 +299,178 @@
         .header_slider{
             width: 730px !important;
         }
-        #jssor_1{
+        .jssor_1{
             width:920px !important;
         }
         
 
     }
+    
+     @media (min-width: 300px) and (max-width: 1060px) {
+    .jssor_1 {
+            left: 0px !important;
+        }
+        
+     }
+      @media (min-width: 992px) and (max-width: 1025px) {
+/*   .input_search_sm {
+    display: block !important;
+        margin-top: 1rem;
+}
+   .input_search_lg {
+    display: none !important;
+}*/
+.top_nav {
+    max-width: 83% !important;
+}
+#nav-bar-search {
+    margin-right: 0rem;
+    width: 179px;
+}
+.ul_navbar {
+    width: 42rem;
+}
+.nav-item a {
+    font-size: 1.7em !important;
+}
+     }
+     
+           @media (min-width: 817px) and (max-width: 890px) {
+               .ul_navbar {
+    width: 27rem;
+}
+   .ul_navbar_mobile {
+    width: 31rem;
+}
 
+     }
+     
+          @media (min-width: 750px) and (max-width: 817px) {
+               .ul_navbar {
+    width: 23rem;
+        display: flex!important;
+}
+
+   .ul_navbar_mobile {
+    width: 31rem;
+}
+.ul_navbar .nav-item a {
+    font-size: 1.4em !important;
+}
+.ul_navbar_mobile .nav-item a {
+    font-size: 1.8em !important;
+}
+
+     }
+     
+            @media (min-width: 300px) and (max-width: 750px) {
+               .ul_navbar {
+    width: 22rem;
+        display: flex!important;
+}
+.logo {
+    width: 9rem;
+}
+.navbar {
+    padding: .5rem 1rem;
+}
+   .ul_navbar_mobile {
+    width: 31rem;
+}
+.ul_navbar .nav-item a {
+    font-size: 1.3em !important;
+}
+.ul_navbar_mobile .nav-item a {
+    font-size: 1.8em !important;
+}
+
+     }
+  
+@media (min-width: 915px) and (max-width: 1000px) {
+     .thumnbail {
+    margin-top: -12rem !important;
+     }
+}
+@media (min-width: 830px) and (max-width: 915px) {
+     .thumnbail {
+    margin-top: -11rem !important;
+     }
+     .jssor_1 {
+    width: 795px !important;
+     }
+}
+@media (min-width: 770px) and (max-width: 830px) {
+     .thumnbail {
+    margin-top: -10rem !important;
+     }
+     .jssor_1 {
+    width: 700px !important;
+     }
+}
+@media (min-width: 300px) and (max-width: 770px) {
+     .thumnbail {
+    margin-top: -9.4rem !important;
+        width: 11.6rem !important;
+     }
+    .thumnbail .block_thum, .pictureFrame {
+    width: 12rem!important;
+    height: 10rem !important;
+}
+     .jssor_1 {
+    width: 670px !important;
+     }
+     .section_item{
+             padding-right: 0.7em;
+    margin-right: 0em;
+     }
+     .text_discount {
+         top: -5.4em;
+     }
+     .text_discount span {
+         font-size: 1rem !important;
+     }
+}
+
+@media (min-width: 300px) and (max-width: 727px) {
+     .thumnbail {
+    margin-top: -8.7rem !important;
+        width: 9.6rem !important;
+     }
+     .thumnbail .sub-paragraph {
+         bottom: 2rem;
+         font-size: 0.9em;
+         padding: 4.4px 0px !important;
+     }
+     .thumnbail_mobile .sub-paragraph {
+         bottom: 3rem;
+         font-size: 1.4em;
+     }
+    .thumnbail .block_thum, .pictureFrame {
+    width: 8rem!important;
+    height: 5rem !important;
+}
+     .jssor_1 {
+    width: 670px !important;
+     }
+     .section_item{
+             padding-right: 0.7em;
+    margin-right: 0em;
+     }
+}
+
+@media (min-width: 626px) and (max-width: 700px) {
+     .thumnbail {
+    margin-top: -8rem !important;
+        width: 9.6rem !important;
+     }
+}
+
+@media (min-width: 300px) and (max-width: 626px) {
+     .thumnbail {
+    margin-top: -7rem !important;
+        width: 9.6rem !important;
+     }
+}
     @media (min-width: 1024px) and (max-width: 1100px) {
         .item_price {
             font-size: 2.1em;
@@ -268,6 +480,21 @@
             top: 100px !important;
         }
     }
+    
+        @media (min-width: 1024px) and (max-width: 1281px) {
+    .col_item_mobile {
+        max-width: 48%;
+    }
+    .col_item_mobile .img_item {
+    height: 13.4em;
+    }
+        }
+        @media (min-width: 1100px) and (max-width: 1201px) {
+        .thumnbail{
+            padding-left: 0rem !important;
+            margin-left: 10px !important;
+        }
+        }
 </style>
 
 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
@@ -280,7 +507,7 @@
     @if(!isset($brandfilter))
     <div id="content_page_item">
         <div class="col-md-12 col-sm-12 page_content_item">
-            <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:-85px;width:1024px;height:200px;overflow:none;visibility:hidden;background-color:#24262e;">
+            <div id="jssor_1" class="jssor_1" style="position:relative;margin:0 auto;top:0px;left:-85px;width:1024px;height:200px;overflow:none;visibility:hidden;background-color:#24262e;">
 
 
 
@@ -319,7 +546,10 @@
             </div>
             <script type="text/javascript">jssor_1_slider_init();</script>
 
-            <div class='thumnbail' style="position: absolute;top: 0px;bottom: 10px;width: 180px;height: 633px;margin-left: 50px;overflow: auto;    padding-left: 3em;">
+      
+        </div>
+        
+              <div class='thumnbail' style="float: left;position: inherit;margin-top: -13.3rem;bottom: 10px;width: 180px;height: auto;margin-left: 50px;overflow: hidden;    padding-left: 3em;">
                 @foreach($subcategories as $subcategory)
 
                 <div class="pictureFrame" style="width: 110px; height: 92px;">
@@ -333,22 +563,21 @@
 
                 @endforeach
             </div>
-        </div>
         @endif
 
         <div class="col-md-9 col-sm-12 section_item section_item_select">
-           <div class="row">
+            <div class="row" style="width: 100%;">
             @if(!isset($brandfilter))
             <div class="col-sm-3" style="float:left;">
                 <img src={{URL::asset( '/front-end/images/light_logo.png')}} class="img-resposive logo_text" />
             </div>
             @endif
-            <div class="col-sm-3" style="float:left;margin-left: 2em;">
+            <div class="col-xl-3 col-lg-5  col-md-5 col-sm-5 col-xs-10" style="float:left;margin-left: 2em;">
                 <p class="btn_filter" id="btn_modal_filter">
                     @lang('Filter')
                 </p>
             </div>
-            <div class="col-sm-5 my-1" style="margin-top: 0em !important;float: left; {{isset($brandfilter) ? 'max-width: 70.666667% !important;' : ';'}}">
+            <div class="col-lg-5 col-md-7 col-sm-7 my-1" style="margin-top: 0em !important;float: left; {{isset($brandfilter) ? 'max-width: 70.666667% !important;' : ';'}}">
                 <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
                 <div class="input-gr'oup">
                     <div class="input-search_icon">
@@ -727,4 +956,11 @@
         addToCart(productId, qty);
     });
 
+
+          if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+
+$('.thumnbail').addClass('thumnbail_mobile');
+$('#jssor_1').addClass('jssor_1_mobile');
+$('.ul_navbar').addClass('.ul_navbar_mobile');
+}
 </script> @endsection

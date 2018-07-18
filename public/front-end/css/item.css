@@ -90,11 +90,11 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 }
 
 .input_filter::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
-    color: #fff !important;
+    color: #aaa !important;
     font-weight: bold !important;
 }
 .input_filter:-moz-placeholder, textarea:-moz-placeholder {
-    color: #fff !important;
+    color: #aaa !important;
     font-weight: bold !important;
 }
 .input_search{
@@ -299,8 +299,8 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 .text_discount{
     font-family: 'EagarFont';
     position: absolute;
-    top: -6.5em;
-    transform: rotate(-54deg);
+    top: -6em;
+    transform: rotate(0deg);
     width: 4em;
     left: 0em;
     z-index: 5;
@@ -418,7 +418,11 @@ option{
     padding-left: 0em;
     margin-bottom:20px;
 }
-
+@media (min-width: 1030px) and (max-width: 1060px) {
+ .section_item {
+        margin-right: 0em;
+ }
+}
 @media (min-width: 768px) and (max-width: 1030px) {
 
     #jssor_1 .jssort101 {

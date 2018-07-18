@@ -60,7 +60,10 @@
     background-size: auto;
 }
 .img_item_details{
-    width: 100%;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
     height: auto;
 }
 .div_title_item_details{
@@ -142,7 +145,7 @@
    margin-top: 0em;
 }
 .sections{
-    width:64.8%;
+    width:68.8%;
     float: right;
     padding: 1.5em 1em;
 }

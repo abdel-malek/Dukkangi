@@ -85,6 +85,78 @@
                     font-size: 1.5em;
                 }
             }
+            
+                   @media (min-width: 992px) and (max-width: 1030px) {
+/*   .input_search_sm {
+    display: block !important;
+        margin-top: 1rem;
+}
+   .input_search_lg {
+    display: none !important;
+}*/
+.top_nav {
+    max-width: 83% !important;
+}
+#nav-bar-search {
+    margin-right: 0rem;
+    width: 179px;
+}
+.ul_navbar {
+    width: 42rem;
+}
+.nav-item a {
+    font-size: 0.9em !important;
+}
+     }
+                  @media (min-width: 750px) and (max-width: 817px) {
+               .ul_navbar {
+    width: 23rem;
+        display: flex!important;
+}
+
+   .ul_navbar_mobile {
+    width: 24rem;
+}
+.ul_navbar .nav-item a {
+    font-size: 1.4em !important;
+}
+.ul_navbar_mobile .nav-item a {
+    font-size: 1.8em !important;
+}
+
+     }
+ 
+                             @media (min-width: 300px) and (max-width: 766px) {
+               .ul_navbar {
+    width: 22rem;
+        display: flex!important;
+}
+.logo {
+    width: 9rem;
+}
+.navbar {
+    padding: .5rem 1rem;
+}
+   .ul_navbar_mobile {
+    width: 31rem;
+}
+.ul_navbar .nav-item a {
+    font-size: 1.3em !important;
+}
+.ul_navbar_mobile .nav-item a {
+    font-size: 1.8em !important;
+}
+
+     }
+     
+              .input_login::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #fff !important;
+    font-weight: bold !important;
+}
+.input_login:-moz-placeholder, textarea:-moz-placeholder {
+    color: #fff !important;
+    font-weight: bold !important;
+}
     </style>
 
 @endsection
@@ -154,7 +226,7 @@
                                 </div>
                             </div>
                              </form>
-                               <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;padding-left: 2.6em;">
+                               <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;padding-left: 2.6em;display: none;">
                                     <a href="https://www.facebook.com/" target="_blank"><img src="/front-end/images/signup/facebook copy.png" class="icon_social_media"  style="margin-left: 2em;" /></a>
                                     <a href="https://www.instagram.com/" target="_blank"><img src="/front-end/images/signup/insta.png" class="icon_social_media" /></a>
                                     <a href="https://twitter.com/" target="_blank"><img src="/front-end/images/signup/twitter.png" class="icon_social_media" /></a>

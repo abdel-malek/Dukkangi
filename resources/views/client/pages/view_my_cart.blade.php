@@ -131,7 +131,9 @@
     .rating .star::before {
         color: #fff;
     }
-
+    .input_search_sm{
+        display: none !important;
+    }
     .div_item .rating .star::after {
         color: #d80001;
     }
@@ -761,10 +763,10 @@
         </div>
 
         <p class="price_item_details">
-            <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;">@lang('Total')</span>
+            <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;position: absolute;z-index: 22;">@lang('Total')</span>
 
-            <span style="left:3em;" id="Total"> {{$total }} </span>
-            <i style="color: #fff;    font-size: 1.5em;font-family: 'EagarFont';margin-top: 0.2em;width: 4em;margin-left: 94px;text-align: center;position: absolute;z-index: 18;">
+            <span style="left:2em;position: absolute;z-index: 22;    margin-top: 1rem;" id="Total"> {{$total }} </span>
+            <i style="color: #fff;position: absolute;z-index: 22;    font-size: 1.5em;font-family: 'EagarFont';margin-top: 0.2em;width: 4em;    left: -3rem;text-align: center;position: absolute;z-index: 18;">
                 €</i>
             <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details" />
         </p>
@@ -798,8 +800,7 @@
                     <script src="https://checkout.stripe.com/checkout.js"></script>
                     <script>
                         var handler = StripeCheckout.configure({
-                            // key: 'pk_test_fHrlUIH5LLkAQpihvDVDH7Di',
-                            key :'pk_live_WoljcFDSVA5NYelmYUHncQLL', // Here
+                            key: 'pk_test_fHrlUIH5LLkAQpihvDVDH7Di',
                             image: '/front-end/images/dukkangi_man.png',
                             locale: 'auto',
                             token: function (token) {
@@ -860,11 +861,14 @@
                 </form>
 
 
-                <form id="paypalform" action="https://www.paypal.com/cgi-bin/webscr" method="post"> 
-                    <!-- <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">  Here --> -->
+                {{--
+                <form id="paypalform" action="https://www.paypal.com/cgi-bin/webscr" method="post"> --}}
+                    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
                         <!-- Identify your business so that you can collect the payments. -->
-                        
-                        <!-- <input type="hidden" name="business" value="info@dukkangi.com"> -->
+                        {{--
+                        <input type="hidden" name="business" value="info@dukkangi.com"> --}}
+
+
                         <input type="hidden" name="business" value="paypal@dukkangi.com">
 
                         <!-- Specify a Buy Now button. -->

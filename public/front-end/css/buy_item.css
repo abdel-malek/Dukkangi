@@ -113,12 +113,12 @@ float: left;
 }
 
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
-    color: #555 !important;
+    color: #aaa !important;
     font-weight: bold !important;
     font-family: 'headlinesFont';
 }
 input:-moz-placeholder, textarea:-moz-placeholder {
-    color: #555 !important;
+    color: #aaa !important;
     font-weight: bold !important;
     font-family: 'headlinesFont';
 }
