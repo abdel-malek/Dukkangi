@@ -1546,7 +1546,18 @@ width: auto !important;
             dataType: 'json',
         }).done(response => {
             if (response == 1)
-                swal({ title: "Successfully!", text: "Comment Added.", type: "success", timer: 2000, showConfirmButton: false });;
+                swal({ title:  <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'نجاح!'";
+                                else 
+                                    echo "'Successful!'";
+                             ?>, text: <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'تمت اضافة المراجعة'";
+                                else 
+                                    echo "'Comment Added'";
+                             ?>,
+                              type: "success", timer: 2000, showConfirmButton: false });;
             location.reload();
         });
 
@@ -1628,7 +1639,17 @@ width: auto !important;
         "x-csrf-token": $("[name=_token]").val()
     },
                     }).done(response => {
-        swal({ title: "Successfully!", text: "We will notify you when this product is availabe", type: "success", timer: 2000, showConfirmButton: false });
+        swal({ title:  <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'نجاح!'";
+                                else 
+                                    echo "'Successful!'";
+                             ?>, text: <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'سيتم اعلامك بحن يصبح هذا المنتج موجود'";
+                                else 
+                                    echo "'We will notify you when this product is available'";
+                             ?>, type: "success", timer: 2000, showConfirmButton: false });
 
     });
                 }
@@ -1664,7 +1685,18 @@ width: auto !important;
             },
         }).done(response => {
             if (response.id > 0) {
-                swal({ title: "Successfully!", text: "Item Added.", type: "success", timer: 2000, showConfirmButton: false });
+                swal({ title:  <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'نجاح!'";
+                                else 
+                                    echo "'Successful!'";
+                             ?>,
+                            text: <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'تمت اضافة امنتج'";
+                                else 
+                                    echo "'Item Added'";
+                             ?>, type: "success", timer: 2000, showConfirmButton: false });
                 hideModal();
             }
         });

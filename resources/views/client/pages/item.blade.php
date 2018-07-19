@@ -932,7 +932,19 @@
             },
         }).done(response => {
             if (response.id > 0) {
-                swal({ title: "Successfully!", text: "Item Added.", type: "success", timer: 2000, showConfirmButton: false });
+                swal({ title:  <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'نجاح!'";
+                                else 
+                                    echo "'Successful!'";
+                             ?>,
+                    text: <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'تم اضافة العنصر'";
+                                else 
+                                    echo "'Item Added'";
+                             ?>,
+                    type: "success", timer: 2000, showConfirmButton: false });
                 hideModal();
             }
         });

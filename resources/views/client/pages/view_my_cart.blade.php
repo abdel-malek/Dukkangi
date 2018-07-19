@@ -826,11 +826,26 @@
                                     },
                                 }).done(response => {
                                     swal({
-                                        title: 'Successfully',
-                                        text: "Thank you For purchasing with us!",
+                                        title:  <?php
+                                                if (session('lang') == 'ar') 
+                                                    echo "'نجاح!'";
+                                                else 
+                                                    echo "'Successful!'";
+                                            ?>,
+                                        text:  <?php
+                                                if (session('lang') == 'ar') 
+                                                    echo "'شكراً لشرائكم عن طريقنا'";
+                                                else 
+                                                    echo "'Thank you for purchase with us!'";
+                                             ?>,
                                         type: 'success',
                                         confirmButtonColor: '#d90f17',
-                                        confirmButtonText: 'Return To Home!'
+                                        confirmButtonText: <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'الرجوع الى الصفحة الرئيسية'";
+                                else 
+                                    echo "'Return to home'";
+                             ?>
                                     }).then((result) => {
                                         if (result.value) {
                                             window.location.href = '/';
@@ -958,12 +973,33 @@
         //cancel button to delete cart
         $('#cancel-btn').on('click', function () {
             swal({
-                title: 'Confirmation',
-                text: "Are you sure you want to empty your cart!",
+                title: <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'تأكيد'";
+                                else 
+                                    echo "'Confirmation!'";
+                             ?>,
+                text: <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'هل انت متأكد من افراغ السلة'";
+                                else 
+                                    echo "'Are you sure about delete you cart?'";
+                             ?>,
                 showCancelButton: true,
+                cancelButtonText:  <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'الغاء'";
+                                else 
+                                    echo "'Cancel'";
+                             ?>,      
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'نعم'";
+                                else 
+                                    echo "'Yes, Delete it'";
+                             ?>
             }).then((result) => {
                 if (result.value) {
                     // do Ajax and delete the cart
@@ -976,8 +1012,18 @@
                     }).done(response => {
                         if (response = 'true') {
                             swal({
-                                title: 'Deleted!',
-                                text: 'Your file has been deleted.',
+                                title: <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'نجاح'";
+                                else 
+                                    echo "'Deleted!'";
+                                ?>,
+                                text: <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'تم افراغ السلة'";
+                                else 
+                                    echo "'Your Cart has been deleted!'";
+                             ?>,
                                 type: 'success',
                                 showConfirmButton: false
                             });
@@ -1080,11 +1126,26 @@
                 }).done(response => {
                     if (Array.isArray(response)) {
                         swal({
-                            title: 'Successfully',
-                            text: "Coupon Check Successfully",
+                            title: <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'نجاح!'";
+                                else 
+                                    echo "'Successful!'";
+                             ?>,
+                            text: <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'تم تأكيد الكوبون'";
+                                else 
+                                    echo "'Coupon Checkded Successfully!'";
+                             ?>,
                             type: 'success',
                             confirmButtonColor: '#d90f17',
-                            confirmButtonText: 'OK'
+                            confirmButtonText: <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'تم'";
+                                else 
+                                    echo "'Ok'";
+                             ?>
                         });
                         if (response[3] == 'fixed') // Changing Total Price
                         {
@@ -1104,22 +1165,52 @@
                     }
                     if (response == 0) {
                         swal({
-                            title: 'Fail',
-                            text: 'Coupon Code Not Valid',
+                            title: <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'خطأ'";
+                                else 
+                                    echo "'Fail!'";
+                             ?>,
+                            text: <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'هذا الكوبون غير صالح'";
+                                else 
+                                    echo "'Coupon Code is Not Valid'";
+                             ?>,
                             type: 'error',
                             confirmButtonColor: '#d90f17',
-                            confirmButtonText: 'OK'
+                            confirmButtonText: <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'تم'";
+                                else 
+                                    echo "'Ok'";
+                             ?>
                         });
                     }
                 });
         }
         else
             swal({
-                title: 'Fail',
-                text: 'Coupon Code Not Valid',
+                title: <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'خطأ'";
+                                else 
+                                    echo "'Fail!'";
+                             ?>,
+                text: <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'هذا الكوبون غير صالح'";
+                                else 
+                                    echo "'Coupon Code is Not Valid'";
+                             ?>,
                 type: 'error',
                 confirmButtonColor: '#d90f17',
-                confirmButtonText: 'OK'
+                confirmButtonText: <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'تم'";
+                                else 
+                                    echo "'Ok'";
+                             ?>
             });
     }
 

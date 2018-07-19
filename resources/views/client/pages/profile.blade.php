@@ -347,7 +347,18 @@
         		"x-csrf-token": $("[name=_token]").val()
     		},
         }).done(response => {
-        	 swal({ title: "Successfully!", text: "Changed Successfully.", type: "success", timer: 2000, showConfirmButton: false });
+        	 swal({ title:  <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'نجاح!'";
+                                else 
+                                    echo "'Successful!'";
+                             ?>,
+        	  text: <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'تم التعديل بنجاح'";
+                                else 
+                                    echo "'Changed Successfully'";
+                             ?>, type: "success", timer: 2000, showConfirmButton: false });
         });
 	}	</script>
 	
