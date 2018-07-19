@@ -434,7 +434,7 @@ class PageController extends Controller
 		$skip = Comment::with(['user'])->where('product_id','=',$product->id)->get()->count();
 		
 		$comments = Comment::with(['user'])->where('product_id','=',$product->id)
-		->where('description','!=','')->orWhere('description','!=',null)
+		->where('description','!=','')->orWhere('description','!=',null)->orderBy('id')
 		->skip($skip-3)->take(3)->get();
 		
 		$logo = Brand::select('image_path' , 'id')
