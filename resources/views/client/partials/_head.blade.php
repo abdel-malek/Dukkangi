@@ -281,6 +281,14 @@
              #main-nav-bar a{
                     width:auto !important;
                 }
+                @media (min-width: 1024px) and (max-width: 1288px) {
+                 .nav-item a{
+                    font-size: 0.8em !important;
+                }
+                .ul_navbar_mobile .nav-item a {
+    font-size: 1.8em !important;
+}
+                }
             @media (min-width: 400px) and (max-width: 1024px) {
                 #main-navbar-items ul li {
                     font-size: 0.9rem;
@@ -288,6 +296,9 @@
                 #lang-nav-bar .nav-item a {
                     font-size: 1.4em !important;
                 }
+                .ul_navbar_mobile .nav-item a {
+    font-size: 1.8em !important;
+}
                 #main-nav-bar a
                 {
                         width: auto;
@@ -296,7 +307,7 @@
                     width: 27rem;
                 }
                 .nav-item a{
-                    font-size: 1.8em !important;
+                    font-size: 1.3em !important;
                 }
                 #main-nav-bar a{
                     width:5rem ;
@@ -326,7 +337,14 @@
     font-size: 0.7rem !important;
 }
             }
-           
+             @media (min-width: 300px) and (max-width: 775px) {
+                    .nav-item a{
+                    font-size: 1em !important;
+                }
+                    .nav-item_mobile a{
+                    font-size: 1em !important;
+                }
+             }
             @media (min-width: 400px) and (max-width: 991px) {
                 #main-nav-bar a
                 {
