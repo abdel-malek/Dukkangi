@@ -800,7 +800,9 @@
                     <script src="https://checkout.stripe.com/checkout.js"></script>
                     <script>
                         var handler = StripeCheckout.configure({
-                            key: 'pk_test_fHrlUIH5LLkAQpihvDVDH7Di',
+                             // key: 'pk_test_fHrlUIH5LLkAQpihvDVDH7Di',
+                            key :'pk_live_WoljcFDSVA5NYelmYUHncQLL', // Here
+                            // key: 'pk_test_fHrlUIH5LLkAQpihvDVDH7Di',
                             image: '/front-end/images/dukkangi_man.png',
                             locale: 'auto',
                             token: function (token) {
@@ -861,12 +863,12 @@
                 </form>
 
 
-                {{--
-                <form id="paypalform" action="https://www.paypal.com/cgi-bin/webscr" method="post"> --}}
-                    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+                
+                <form id="paypalform" action="https://www.paypal.com/cgi-bin/webscr" method="post"> 
+                    <!-- <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post"> -->
                         <!-- Identify your business so that you can collect the payments. -->
-                        {{--
-                        <input type="hidden" name="business" value="info@dukkangi.com"> --}}
+                        
+                        <!-- <input type="hidden" name="business" value="info@dukkangi.com">  -->
 
 
                         <input type="hidden" name="business" value="paypal@dukkangi.com">
