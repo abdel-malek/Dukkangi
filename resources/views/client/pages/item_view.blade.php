@@ -1634,7 +1634,8 @@ width: auto !important;
             data: { "comment": comment, "rate": num_star_active, "id": id },
             dataType: 'json',
         }).done(response => {
-            if (response == 1)
+
+            if (response == 1){
                 swal({ title:  <?php
                                 if (session('lang') == 'ar') 
                                     echo "'نجاح'";
@@ -1647,7 +1648,11 @@ width: auto !important;
                                     echo "'Comment Added'";
                              ?>,
                               type: "success", timer: 2000, showConfirmButton: false });;
-            location.reload();
+                                location.reload();
+                }
+        }).error(error=> {
+            if (error[0] = 'h')
+                window.location.href = error.responseText;
         });
 
     });

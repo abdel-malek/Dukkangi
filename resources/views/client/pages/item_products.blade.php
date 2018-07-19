@@ -25,14 +25,13 @@
         </div>
     </div>
     @endforeach
-@else 
+@else
+`
     <div class="col-12"  style="text-align: center;height: 200px">
         <center>
-        <h5 style="text-align: center;margin-top: 10%;">
-        @lang("There's No Products Here !")
-        </h5>
+            <h5 style="text-align: center;margin-top: 10%;">
+                @lang("There's No More Products Here !")
+            </h5>
         </center>
     </div>
-
-
 @endif

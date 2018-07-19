@@ -645,7 +645,14 @@
                                 @lang('Load More')
                             </p>
                         </div>
+                        @elseif (count($products) >= 15)
+                        <div id="loadm" class="col-sm-3" style="float:left;margin-left: 20em;margin-top: 50px">
+                            <p class="btn_filter" id="btn_modal_filter" onclick="loadmore()">
+                                @lang('Load More')
+                            </p>
+                        </div>
                         @endif
+
                     </div>
                 </div>
 
@@ -1000,10 +1007,38 @@
     });
 
 
-          if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            $('.thumnbail').addClass('thumnbail_mobile');
+            $('#jssor_1').addClass('jssor_1_mobile');
+            $('.ul_navbar').addClass('.ul_navbar_mobile');
+        }
 
-$('.thumnbail').addClass('thumnbail_mobile');
-$('#jssor_1').addClass('jssor_1_mobile');
-$('.ul_navbar').addClass('.ul_navbar_mobile');
+link = window.location.href;
+
+idarr=link.split('/');
+id =idarr[idarr.length-1];
+
+skip = 15;
+function loadmore(){
+      $.ajax({
+            type: "POST",
+            url: `/loadmore`,
+            data: { 'skip' : skip  , 'category_id' : id },
+            headers: {
+                "x-csrf-token": $("[name=_token]").val()
+            }
+        }).done(response => {
+            $('#filteredproducts').append(response);
+            console.log(response);
+            if (response[0] == '`' )
+            {
+                hideBtn();
+            }
+        });
+    skip+= 15;
+}
+
+function hideBtn(){
+    $('#loadm').css('display','none');
 }
 </script> @endsection
