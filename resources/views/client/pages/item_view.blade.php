@@ -69,9 +69,9 @@
         bottom: 0.2em;
         left: 29.7%;
     }
-    .input_search_sm{
+/*    .input_search_sm{
         display: none !important;
-    }
+    }*/
     .rating .star::after {
         color: #fff;
     }
@@ -680,9 +680,9 @@
         .rating_mobile{
             margin-top: 1rem;
         }
-        .title_reviews_mobile{
+/*        .title_reviews_mobile{
             margin-top: 29rem;
-        }
+        }*/
         .header_rating_mobile{
             left : 14.4em !important;
         }
@@ -716,7 +716,7 @@
     display: none !important;
 }
 .nav-item a {
-    font-size: 1.7em !important;
+    font-size: 1.2em !important;
 }
             }
             @media (min-width: 766px) and (max-width: 1030px) {
@@ -770,7 +770,7 @@
     width: 31rem;
 }
 .ul_navbar .nav-item a {
-    font-size: 1.4em !important;
+    font-size: 1.2em !important;
 }
 .ul_navbar_mobile .nav-item a {
     font-size: 1.8em !important;
@@ -792,9 +792,9 @@
    .ul_navbar_mobile {
     width: 31rem;
 }
-.ul_navbar .nav-item a {
+/*.ul_navbar .nav-item a {
     font-size: 1.3em !important;
-}
+}*/
 .ul_navbar_mobile .nav-item a {
     font-size: 1.8em !important;
 }
@@ -981,6 +981,12 @@
 			margin: 0;
 			margin-top: 20px
 		}
+                        .title_reviews_mobile{
+            margin-top: -3rem;
+        }
+           .input_search_sm{
+        display: block !important;
+    }
                  .div_title_item_details .product-rate{
         left: 42% !important;
     }
@@ -1634,7 +1640,7 @@ width: auto !important;
             data: { "comment": comment, "rate": num_star_active, "id": id },
             dataType: 'json',
         }).done(response => {
-
+        	
             if (response == 1){
                 swal({ title:  <?php
                                 if (session('lang') == 'ar') 
@@ -1648,7 +1654,7 @@ width: auto !important;
                                     echo "'Comment Added'";
                              ?>,
                               type: "success", timer: 2000, showConfirmButton: false });;
-                                location.reload();
+            				location.reload();
                 }
         }).error(error=> {
             if (error[0] = 'h')
