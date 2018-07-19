@@ -97,7 +97,7 @@ class PageController extends Controller
 		return view('client.pages.home')->withCategories($categories)->withTopProducts($topProducts)->withBrands($brands);
 	}
 	public function getCategoryPage($categoryId){
-
+	
 		$lang = session('lang');
 		App::setLocale($lang);
 		$categories = Category::all();
@@ -110,7 +110,7 @@ class PageController extends Controller
 		// dd($subcategories);
 		$products = DB::table('product')
 		->whereIn('id' , $Tags)
-		->orderBy('category_id', 'asc')->get();
+		->orderBy('category_id', 'asc')->take(15)->get();
 		if ($lang == "ar"){
 			foreach ($categories as $category) {
 				$category->english = $category->arabic;
@@ -165,9 +165,54 @@ class PageController extends Controller
 		if ($lang == 'ku') $category->english = $category->kurdi;
 		if ($lang == 'de') $category->english = $category->german;
 		if ($lang == 'tr') $category->english = $category->turky;
-
 		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withCategoryId($categoryId)->withCategory($category);
 	}
+
+
+	public function loadMoreCategoryProduct(Request $request){
+		$categoryId = $request->category_id;
+		$lang = session('lang');
+		App::setLocale($lang);
+		
+		$Tags = [];
+		$tags = Tags::select('product_id')->where('category_id' , '=' ,$categoryId)->get()->toArray();
+		// dd($tags);
+		foreach ($tags as $tag) {
+			array_push($Tags, $tag['product_id']);
+		}
+		// dd($Tags);
+		$products = DB::table('product')
+		->whereIn('id' , $Tags)
+		->orderBy('category_id', 'asc')->skip($request->skip)->take(10)->get();
+		// dd($products);
+		if ($lang == "ar"){
+			foreach ($products as $product) {
+				$product->english = $product->arabic;
+			}
+		}
+		if ($lang == "de"){
+			foreach ($products as $product) {
+				$product->english = $product->german;
+			}
+		}
+		if ($lang == "tr"){
+			foreach ($products as $product) {
+				$product->english = $product->turky;
+			}
+		}
+		if ($lang == "ku"){
+			foreach ($products as $product) {
+				$product->english = $product->kurdi;
+			}
+		}
+		foreach ($products as $product) {
+			if (isset($product->discount_price)) {
+				$product->discount =  sprintf('%0.0f',100 - (($product->discount_price * 100) / $product->price));
+			}
+		}
+
+		return view('client.pages.item_products')->withProducts($products);
+	} 
 
 
 	public function getCategoryNameFilteredPage(Request $request){
@@ -289,13 +334,10 @@ class PageController extends Controller
 	}
 
 	public function loadMoreProducts(Request $request){
-
-
 		$products =  FilterService::loadProducts($request,$request->loads);
-
 		return view('client.pages.item_products')->withProducts($products);
-
 	}
+
 	public function getCategorySubcategoryFilteredPage($subcategory){
 		$subcategory = Subcategory::find($subcategory);
 
@@ -392,7 +434,7 @@ class PageController extends Controller
 		$skip = Comment::with(['user'])->where('product_id','=',$product->id)->get()->count();
 		
 		$comments = Comment::with(['user'])->where('product_id','=',$product->id)
-		->where('description','!=','')->orWhere('description','!=',null)
+		->where('description','!=','')->orWhere('description','!=',null)->orderBy('id')
 		->skip($skip-3)->take(3)->get();
 		
 		$logo = Brand::select('image_path' , 'id')
@@ -533,6 +575,8 @@ class PageController extends Controller
 	}
 
 	public function comment(Request $request){
+		if (!Auth::check())
+			return route('login');
 		$rate =$request->input('rate') ;
 		$description =$request->input('comment');
 		$user_id = Auth::id();
