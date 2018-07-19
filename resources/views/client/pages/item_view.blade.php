@@ -181,7 +181,7 @@
 
     .logo_prodect {
         margin-left: 210px;
-        width: 13%;
+        width: 7rem;
     }
     .img_item
     {
@@ -263,6 +263,12 @@
 }
 
 @media (min-width: 768px) and (max-width: 1000px) {
+    .zoomWindowContainer div{
+     display: none !important;   
+    }
+    .zoomLens{
+        display: none !important;
+    }
     .modal_one_item_details {
     width: 60% !important;
     margin-left: -10% !important;
@@ -997,14 +1003,13 @@
 	}
 	.price_item_details .old-price{
 		font-family: inherit;
-		font-size: 1.4rem;
-		padding-right: 10px
+		font-size: 0.9rem;
+		padding-right: 5px
 	}
 	.price_item_details .new-price{
 		font-family: inherit;
-		font-size: 1.9rem;
+		font-size: 1.3rem;
 	}
-	
 	
 	#slider_preview .carousel-item img{
 width: auto !important;
@@ -1027,6 +1032,8 @@ width: auto !important;
 	.zoomContainer{
 		z-index: 1000
 	}
+        
+  
 </style>
 
 @endsection @section('main_section')
@@ -1037,7 +1044,7 @@ width: auto !important;
         <p class="header_page_text_div">
             {{$subcategory->english}}
             <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
-            <span class="rating  rating-info ratings{{$subcategory->rate}}" data-type="subcategory" data-id="{{$subcategory->id}}" style="margin-left: 40px"></span>
+            <!--<span class="rating  rating-info ratings{{$subcategory->rate}}" data-type="subcategory" data-id="{{$subcategory->id}}" style="margin-left: 40px;display:none;"></span>-->
         </p>
     </div>
 
@@ -1046,7 +1053,7 @@ width: auto !important;
             @if(isset($product->discount) && $product->discount != 0)
             <div class="discount_item_details" style="z-index: 20">
                 <p class="text_discount_details" >
-                    <small>{{sprintf('%0.0f',$product->discount)}}</small> % @lang('off')</p>
+                    <small style="font-family: 'EagarFont';">{{sprintf('%0.0f',$product->discount)}}</small> % @lang('off')</p>
             </div>
             @endif
 
@@ -1095,16 +1102,27 @@ width: auto !important;
                     </div>
                     @endif
                 </div>
+                
+                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+<!--                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+   <i class="fa fa-arrow-left carousel-control-prev-icon" style="color:#000;font-size: 2rem;background-image: none;" aria-hidden="true"></i>
+                        <!--<span class="sr-only">Previous</span>-->
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                       <!--<span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+                        <i class="fa fa-arrow-right carousel-control-next-icon" style="color:#000;font-size: 2rem;background-image: none;" aria-hidden="true"></i>
+                        <span class="sr-only">Next</span>
+                    </a>
 
             </div>
             
 
             <div class="background_slide" onclick="closeImageModal()"> </div>
-                <div id="slider_preview" class="carousel slide" data-ride="carousel" style="display: none;">
+                <div id="slider_preview" class="carousel slide" data-pause="hover" data-ride="false" style="display: none;">
                     <div class="carousel-inner">
                         @if(isset($product->image_id))
                         <div class="carousel-item active">
-                            <img class="d-block w-100" src="{{$product->image_id}}" alt="First slide">
+                            <img class="d-block w-100" src="{{$product->image_id}}" alt="First slide" >
                         </div>
                         @endif @if(isset($product->image_id2))
                         <div class="carousel-item active">
@@ -1120,14 +1138,14 @@ width: auto !important;
                         </div>
                         @endif
                     </div>
-                    <a class="carousel-control-prev" href="#slider_preview" role="button" data-slide="prev">
+                    <a class="carousel-control-prev" style="left: -5.5rem;opacity: 1;" href="#slider_preview" role="button" data-slide="prev">
 <!--                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-   <i class="fa fa-arrow-left carousel-control-prev-icon" style="color:#000;font-size: 3rem;background-image: none;" aria-hidden="true"></i>
+   <i class="fa fa-arrow-left carousel-control-prev-icon" style="color:#fff;font-size: 3rem;background-image: none;" aria-hidden="true"></i>
                         <!--<span class="sr-only">Previous</span>-->
                     </a>
-                    <a class="carousel-control-next" href="#slider_preview" role="button" data-slide="next">
+                    <a class="carousel-control-next" style="right: -4rem;opacity: 1;" href="#slider_preview" role="button" data-slide="next">
                        <!--<span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-                        <i class="fa fa-arrow-right carousel-control-next-icon" style="color:#000;font-size: 3rem;background-image: none;" aria-hidden="true"></i>
+                        <i class="fa fa-arrow-right carousel-control-next-icon" style="color:#fff;font-size: 3rem;background-image: none;" aria-hidden="true"></i>
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
@@ -1137,7 +1155,6 @@ width: auto !important;
             <div class="div_title_item_details" style="height: 7.5em;" id="product-name" >
                 <p class="title_item_details product-name" style="text-align: center">{{$product->english}}</p>
                 <span class="rating rating-info ratings{{$product->rate}} product-rate" data-type="product" data-id="{{$product->id}}" style="left: 5.5em;"></span>
-               
             </div>
         </div>
         @if ($product->qty == 0)
@@ -1164,8 +1181,8 @@ width: auto !important;
             @if (isset($product->discount) && $product->discount_price != $product->price)
             <span class="price-wrapper" style="width: 5em;">
 
-                <small>
-                    <b style="font-family: 'EagarFont';"><i class="old-price" style="text-decoration: line-through;">{{$product->price}}</i>/ <span class="new-price">{{$product->discount_price}}</span> €</b>
+                <small style="font-size: 50%;">
+                    <b style="font-family: 'EagarFont';"><span style="font-size: 0.8rem;float: left;margin-top: 1.4rem;margin-left: -1rem;font-weight: 500;"> متضمن الضريبة </span>  <i class="old-price" style="text-decoration: line-through;">{{$product->price}}€</i>/ <span class="new-price">{{$product->discount_price}}</span> €</b>
 
                 </small>
                 @else
@@ -1196,35 +1213,23 @@ width: auto !important;
         <p class="text_item_details" {{ $product->qty == 0 ?"style='filter: blur(5px)'" : '' }} style="margin-top:32px;    font-size: 20px;"> {{ $product->desc_english}}
 
         </p>
-        @if ($product->qty != 0 ) 
-        <!-- 
+        @if ($product->qty != 0 ) {{--
         <p class="buy_item_details" style="margin-top: 100px">
-            <a href="{route('buyitem' , $product->id)}}">
+            <a href="{{route('buyitem' , $product->id)}}">
                 <span style="cursor: pointer;">
                     <small> @lang('Buy This Item')</small>
                 </span>
             </a>
             <img src="/front-end/images/price-tag/buy-this-item.png" class="img_buy_item_details" />
-        </p> --> 
-            @if ($existedInCart == 0)
-            <p class="add_to_card_item_details" style="cursor: pointer;margin-top: 100px" id="btn_modal_one_item_details">
-                    <span>
-                        <small>@lang('Add to cart')</small>
-                    </span>
-                
-                <img src="/front-end/images/price-tag/buy-this-item.png" class="img_add_to_card_item_details" @if(session( 'lang')=='de'
-                    ) style="height: 7.2em;" @endif />
-            </p>
-            @else
-            <p class="add_to_card_item_details" style="margin-top: 100px">
-                    <span>
-                        <small>@lang('Already In Cart')</small>
-                    </span>
-                
-                <img src="/front-end/images/price-tag/buy-this-item.png" class="img_add_to_card_item_details" @if(session( 'lang')=='de'
-                    ) style="height: 7.2em;" @endif />
-            </p>
-            @endif
+        </p> --}}
+        <p class="add_to_card_item_details" style="cursor: pointer;margin-top: 100px" id="btn_modal_one_item_details">
+            <span>
+                <small>@lang('Add to cart')</small>
+            </span>
+
+            <img src="/front-end/images/price-tag/buy-this-item.png" class="img_add_to_card_item_details" @if(session( 'lang')=='de'
+                ) style="height: 7.2em;" @endif />
+        </p>
         @endif
     </div>
 
@@ -1242,7 +1247,7 @@ width: auto !important;
 
         <div class="logo_prodect">
             <a href="{{ route('brandfilter', $brand->id ) }}">
-                <img style="width:32px" src="{{ $brand->image_path }}" />
+                <img style="width:75%" src="{{ $brand->image_path }}" />
             </a>
         </div>
 
@@ -1325,8 +1330,8 @@ width: auto !important;
             @if (isset($simiproduct->discount) && $simiproduct->discount != 0)
             <div class="discount_item">
                 <p class="text_discount">
-                <span style="text-decoration: line-through;" >{{$simiproduct->price}} €</span> <br>
-                <span style="font-family: unset;font-weight: bolder;font-size: 22px;"> {{ $simiproduct->discount_price}} €</span>
+                    <span style="font-family: 'EagarFont';" >{{$simiproduct->discount}} % <br/>@lang('off')</span> <br>
+<!--                <span style="font-family: unset;font-weight: bolder;font-size: 17px;"> {{ $simiproduct->discount_price}} €</span>-->
             </p>
                 <div class="shadow_div_discount"></div>
             </div>
@@ -1407,10 +1412,21 @@ width: auto !important;
 </div>
 
  -->
+
+ 
 <script src="{{URL::asset('js/jquery.min.js')}}"></script>
 <script src="{{URL::asset('/front-end/js/plugin/jquery-pretty-tabs.js')}}"></script>
-
+<script>
+////    $(document).ready(function(){    
+////    $("#slider_preview").carousel({interval: 500, pause: "hover"});
+//});
+//$('.carousel').carousel({
+//  interval: 2000,
+//  pause: false
+//});
+</script>
 <script type="text/javascript">
+        
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-36251023-1']);
     _gaq.push(['_setDomainName', 'jqueryscript.net']);
@@ -1427,7 +1443,8 @@ width: auto !important;
 </script>
 <script src="{{URL::asset('/front-end/js/plugin/SimpleStarRating.js')}}"></script>
 
-
+ 
+    
 
 <script>
     var ratings = document.getElementsByClassName('rating');
@@ -1534,9 +1551,9 @@ width: auto !important;
         });
     });
 
-   $('#myBtn').on('click', function (e) {
+  $('#myBtn').on('click', function (e) {
         e.preventDefault();
-        return false;
+       return false;
     })
 
     $('#btn-comment').on("click", function (e) {
@@ -1549,7 +1566,7 @@ width: auto !important;
             }
         });
         var comment = $('input[name=commentbody]').val();
-        if (comment.length < 2){
+         if (comment.length < 2){
             swal({
                 title:<?php
                                 if (session('lang') == 'ar') 
@@ -1583,18 +1600,7 @@ width: auto !important;
             dataType: 'json',
         }).done(response => {
             if (response == 1)
-                swal({ title:  <?php
-                                if (session('lang') == 'ar') 
-                                    echo "'نجاح!'";
-                                else 
-                                    echo "'Successful!'";
-                             ?>, text: <?php
-                                if (session('lang') == 'ar') 
-                                    echo "'تمت اضافة المراجعة'";
-                                else 
-                                    echo "'Comment Added'";
-                             ?>,
-                              type: "success", timer: 2000, showConfirmButton: false });;
+                swal({ title: "Successfully!", text: "Comment Added.", type: "success", timer: 2000, showConfirmButton: false });;
             location.reload();
         });
 
@@ -1676,17 +1682,7 @@ width: auto !important;
         "x-csrf-token": $("[name=_token]").val()
     },
                     }).done(response => {
-        swal({ title:  <?php
-                                if (session('lang') == 'ar') 
-                                    echo "'نجاح!'";
-                                else 
-                                    echo "'Successful!'";
-                             ?>, text: <?php
-                                if (session('lang') == 'ar') 
-                                    echo "'سيتم اعلامك بحن يصبح هذا المنتج موجود'";
-                                else 
-                                    echo "'We will notify you when this product is available'";
-                             ?>, type: "success", timer: 2000, showConfirmButton: false });
+        swal({ title: "Successfully!", text: "We will notify you when this product is availabe", type: "success", timer: 2000, showConfirmButton: false });
 
     });
                 }
@@ -1712,6 +1708,7 @@ width: auto !important;
 </script> 
 
 <script >
+     
     function addToCart(productId , qty  = 1){
         $.ajax({
             type: "POST",
@@ -1722,65 +1719,13 @@ width: auto !important;
             },
         }).done(response => {
             if (response.id > 0) {
-                swal({ title:  <?php
-                                if (session('lang') == 'ar') 
-                                    echo "'نجاح!'";
-                                else 
-                                    echo "'Successful!'";
-                             ?>,
-                            text: <?php
-                                if (session('lang') == 'ar') 
-                                    echo "'تمت اضافة امنتج'";
-                                else 
-                                    echo "'Item Added'";
-                             ?>, type: "success", timer: 2000, showConfirmButton: false });
+                swal({ title: "Successfully!", text: "Item Added.", type: "success", timer: 2000, showConfirmButton: false });
                 hideModal();
             }
         });
     };
     
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-//document.write("<style>"+
-//     "@media (min-height: 667px) and (min-width: 300px) {"+
-//            ".container{"+
-//                "width: 100% !important;"+
-//                "max-width: 100% !important;"+
-//                "margin: 0px;"+
-//                "padding: 0px;"+
-//            "}"+
-//            ".all_page_item_view, .block_similar{"+
-//                 "width: 100% !important;"+
-//                "max-width: 100% !important;"+
-//            "}"+
-//            ".details_comment .rating {"+
-//    "margin-top: 1em ;"+
-//            "}"+
-//            ".title_reviews {"+
-//    "margin-top: 29rem;"+
-//            "}"+
-//            ".header_page .rating {"+
-//                "left: 14.4em;"+
-//            "}"+
-//            ".block_similar{"+
-//                "margin-top: 3rem;"+
-//            "}"+
-//            ".ratings4{"+
-//                "margin-top: 0rem !important;"+
-//            "}"+
-//        "}"+
-//        "#main-nav-bar a {"+
-//            "width: 19%;"+
-//        "}"+
-//        ".top_nav {"+
-//            "max-width: 70% !important;"+
-//        "}"+
-//        "#main-nav-bar a {"+
-//            "width: 102px;"+
-//        "}"+
-//        ".sections {"
-//            "width: 59.8%;"+
-//        "}"+
-//        "</style>");
 $('.container').addClass('container_mobile');
 $('.all_page_item_view').addClass('all_page_item_view_mobile');
 $('.block_similar').addClass('block_similar_mobile');
@@ -1841,19 +1786,34 @@ $('.modal_one_item_details').addClass('.modal_one_item_details_mobile');
     //     $('#content_page').css('filter', 'blur(0px)');
     //     $('.footer').css('filter', 'blur(0px)');
     // });
+    
+    
+  
 		
 </script>
 <script type="text/javascript" src="{{url('/front-end/js/plugin/jquery.elevateZoom-3.0.8.min.js')}}"></script>
 
 <script>
-	$(function () {
+//	$('#slider_preview').mouseout(function(){
+//     var style_zoom  = $('.zoomLens').attr('style'); 
+//        style_zoom += ";display:none !important;";
+//        $('.zoomLens').attr('style',style_zoom);
+//        
+//    });
+
+   
+    $(function () {
     $('#slider_preview img').elevateZoom({
-		zoomWindowWidth:300,
+		zoomWindowFadeIn: 400,
+			zoomWindowFadeOut: 400,
+			lensFadeIn: 400,
+			lensFadeOut: 400,
+        zoomWindowWidth:300,
 		zoomWindowHeight:300,
-		responsive: true
-		
+		responsive: true,
+//		zoomType: "lens"
 	});
-		
+       
 	});
 </script>
 @endsection

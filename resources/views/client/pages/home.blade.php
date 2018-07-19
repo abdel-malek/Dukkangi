@@ -37,7 +37,10 @@
     /*transform: rotate(-9deg);*/
     bottom: 91px;
 }
-
+.img_item {
+    width: auto;
+    height: 8.4em;
+}
 .bottom_right_background_block{
     background-image: url('/front-end/images/main/rec_cat.png');
       height: 153px;

@@ -168,14 +168,21 @@
             padding-left: 0rem !important;
         }
         .text_discount span{
-            font-size: 2rem !important;
+            font-size: 1.8rem !important;
         }
         .text_price {
             width: 24%;
         }
+        .item_name {
+    margin-bottom: 0rem;
+    width: 100%;
+}
+.item_price {
+    width: 100%;
+}
         .text_discount{
             width: 4em;
-            left: -0.4em;
+            left: -0.19em;
             top: -5em ;
         }
         .line_price {
@@ -305,7 +312,19 @@
         
 
     }
-    
+        @media (min-width: 1022px) and (max-width: 1100px) {
+    .discount_item {
+        border-top: 8em solid #d80001;
+        border-right: 7em solid transparent;
+    }
+    .text_discount span {
+        font-size: 1.5rem !important;
+    }
+    .text_discount {
+    left: 0em;
+    top: -8em;
+    }
+}
      @media (min-width: 300px) and (max-width: 1060px) {
     .jssor_1 {
             left: 0px !important;

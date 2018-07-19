@@ -160,7 +160,7 @@
 .logo_prodect img{
    width: 38%;
     height: auto;
-    margin-left: 21%;
+    margin-left: 12%;
 }
 
 .similar_item .col-md-3{
@@ -390,4 +390,5 @@ float: left;
     z-index: 5;
     color: #fff;
     font-size: 1.5em;
+    line-height: 1.3;
 }
