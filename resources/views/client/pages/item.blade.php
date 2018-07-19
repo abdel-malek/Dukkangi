@@ -131,7 +131,13 @@
         .input-search_icon i {
     margin-right: 1em;
 }
-
+.item_name {
+    width: 100%;
+    margin-bottom: 0rem;
+}
+.item_price {
+    width: 100%;
+}
 @media (min-width: 768px) and (max-width: 1000px) {
     .modal_one_item_details {
     width: 60% !important;
@@ -156,7 +162,9 @@
             bottom: 0.2em;
             left: 0.6em;
         }
-        
+        .tax_include{
+            margin-top: 1.4rem !important;
+        }
          .thumnbail{
             margin-top: -13rem !important;
             width: 12.6rem !important;
@@ -381,7 +389,11 @@
 }
 
      }
-     
+       @media (min-width: 300px) and (max-width: 766px) {
+     .tax_include {
+    margin-top: 0.6rem !important;
+}
+       }
             @media (min-width: 300px) and (max-width: 750px) {
                .ul_navbar {
     width: 22rem;

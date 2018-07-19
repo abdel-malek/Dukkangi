@@ -17,7 +17,8 @@
             <img src="{{$product->image_id}}"  class="img_item product-img" />
             <p class="item_name">{{ $product->english }}</p>
             <!--<p class="item_price" style="margin-bottom: 0em;">{{ isset($product->discount_price) ?$product->discount_price : $product->price }}€</p>-->
-            <p class="item_price" style="margin-bottom: 0em;">{!! isset($product->discount_price) ?"<span style='text-decoration: line-through;font-family: EagarFont;color: #8e8d8d;'>".$product->price.' €</span>  / '. $product->discount_price : $product->price !!}€</p>
+           
+            <p class="item_price" style="margin-bottom: 0em;"> <span class="tax_include" style="font-size: 0.8rem;margin-top: 0.7rem;    position: absolute;margin-left: -4.1rem;float: left;font-weight: 500;">@lang('tax included')</span> &nbsp;{!! isset($product->discount_price) ?"<span style='text-decoration: line-through;font-family: EagarFont;color: #8e8d8d;font-size: 0.9rem;'>".$product->price.' €</span>  / '. $product->discount_price : $product->price !!}€</p>
             <span class="rating ratings{{$product->rate}}" ></span>
            </a>
             <img  data-id="{{$product->id}}" onclick="addCartModal($(this).parent().find('.product-img').attr('src') , $(this).parent().data('id') )" src="\front-end\images\user_actions\view-my-cart.png" class="icon_view_my_card"  style="cursor: pointer" />

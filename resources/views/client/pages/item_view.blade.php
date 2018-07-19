@@ -53,6 +53,10 @@
             margin-left: 6%;
 */
         }
+        
+        .div_title_item_details {
+    padding: 0.5em 2em;
+        }
 
     .rating {
         font-size: 1.3em;
@@ -94,7 +98,7 @@
 
     .div_item {
         width: 229px;
-        height: 255px
+        height: 283px
     }
 
 
@@ -162,7 +166,13 @@
         overflow: hidden;
     }
 
-
+.item_name {
+    width: 100%;
+    margin-bottom: 0rem;
+}
+.item_price {
+    width: 100%;
+}
 
     .title_reviews {
         float: left;
@@ -193,6 +203,9 @@
     margin-left: -2px;
     margin-top: -1%;
 
+    }
+    .div_title_item_details .product-rate{
+        left: 36% !important;
     }
     .modal_one_item_details .rating .star::before {
         color: #fff;
@@ -320,7 +333,7 @@
         }
         .text_discount{
                 width: 5em;
-                left: -0.5em;
+                left: -0.1em;
         }
         .div_item {
             width: 100%;
@@ -706,8 +719,25 @@
     font-size: 1.7em !important;
 }
             }
+            @media (min-width: 766px) and (max-width: 1030px) {
+            .text_discount {
+                left: -0.1em;
+                top: -4.8em;
+            }
+            .tax_include{
+                margin-top:1.4rem !important;
+            }
+                
+            }
+             @media (min-width: 300px) and (max-width: 767px) {
+            .text_discount {
+                left: -0.1em;
+                 top: -5.3em;
+            }
+                
+            }
             
-            
+           
                      @media (min-width: 992px) and (max-width: 1030px) {
 /*   .input_search_sm {
     display: block !important;
@@ -951,6 +981,9 @@
 			margin: 0;
 			margin-top: 20px
 		}
+                 .div_title_item_details .product-rate{
+        left: 42% !important;
+    }
                 .all_page_item_view{
                     padding-left: 3rem !important;
                     padding-right: 3rem !important;
@@ -1001,6 +1034,13 @@
 			background-image: url()
 		}
 	}
+        @media(min-width: 750px) and (max-width: 991px){
+            .all_page_item_view {
+    padding-left: 10rem !important;
+    padding-right: 10rem !important;
+}
+            
+        }
 	.price_item_details .old-price{
 		font-family: inherit;
 		font-size: 0.9rem;
@@ -1151,7 +1191,7 @@ width: auto !important;
            
             <!-- /Slider -->
             <!-- <img src="{{$product->image_id}}" /> -->
-            <div class="div_title_item_details" style="height: 7.5em;" id="product-name" >
+            <div class="div_title_item_details" style="height: 5.5em;" id="product-name" >
                 <p class="title_item_details product-name" style="text-align: center">{{$product->english}}</p>
                 <span class="rating rating-info ratings{{$product->rate}} product-rate" data-type="product" data-id="{{$product->id}}" style="left: 5.5em;"></span>
                
@@ -1182,7 +1222,7 @@ width: auto !important;
             <span class="price-wrapper" style="width: 5em;">
 
                 <small style="font-size: 50%;">
-                   <b style="font-family: 'EagarFont';"><span style="font-size: 0.8rem;float: left;margin-top: 1.4rem;margin-left: -1rem;font-weight: 500;">@lang('tax included')</span>  <i class="old-price" style="text-decoration: line-through;">{{$product->price}}€</i>/ <span class="new-price">{{$product->discount_price}}</span> €</b>
+                   <b style="font-family: 'EagarFont';"><span style="font-size: 0.8rem;float: left;margin-top: 1.4rem;margin-left: -1rem;font-weight: 500;">@lang('tax included')</span>  <i class="old-price" style="text-decoration: line-through;color:#8e8d8d;">{{$product->price}}€</i>/ <span class="new-price">{{$product->discount_price}}</span> €</b>
 
                 </small>
                 @else
@@ -1222,16 +1262,16 @@ width: auto !important;
                         <small>@lang('Add to cart')</small>
                     </span>
                 
-                <img src="/front-end/images/price-tag/buy-this-item.png" class="img_add_to_card_item_details" @if(session( 'lang')=='de'
+                <img src="/front-end/images/price-tag/buy-this-item.png" id="img_add_to_card_item_details" class="img_add_to_card_item_details" @if(session( 'lang')=='de'
                     ) style="height: 7.2em;" @endif />
             </p>
             @else
             <p class="add_to_card_item_details" style="margin-top: 100px">
                     <span>
-                        <small>@lang('Already In Cart')</small>
+                        <small style="color:#d80000;">@lang('Already in cart') </small>
                     </span>
                 
-                <img src="/front-end/images/price-tag/buy-this-item.png" class="img_add_to_card_item_details" @if(session( 'lang')=='de'
+                <img src="/front-end/images/price-tag/add-to-cart.png" class="img_add_to_card_item_details" @if(session( 'lang')=='de'
                     ) style="height: 7.2em;" @endif />
             </p>
             @endif
@@ -1347,7 +1387,7 @@ width: auto !important;
                 <img src="{{$simiproduct->image_id}}" class="img_item product-img" />
                 <p class="item_name">{{ $simiproduct->english}} </p>
             </a>
-            <p class="item_price" style="margin-bottom: 0em;">{{$simiproduct->price}} €</p>
+          <p class="item_price" style="margin-bottom: 0em;"> <span class="tax_include" style="font-size: 0.8rem;margin-top: 0.7rem;    position: absolute;margin-left: -4.1rem;float: left;font-weight: 500;">@lang('tax included')</span> &nbsp;{!! isset($simiproduct->discount_price) ?"<span style='text-decoration: line-through;font-family: EagarFont;color: #8e8d8d;font-size: 0.9rem;'>".$simiproduct->price.' €</span>  / '. $simiproduct->discount_price : $simiproduct->price !!}€</p>
             <span class="rating ratings{{$simiproduct->rate}}" style="width: 0.75em;height: 1.7em; left: 1em;bottom: 0.2em;"></span>
             <img onclick="addCartModal($(this).parent().find('.product-img').attr('src') , $(this).data('id') )" data-id="{{$simiproduct->id}}" src="\front-end\images\user_actions\view-my-cart.png" class="icon_view_my_card" style="cursor: pointer;">
         </div>
@@ -1597,12 +1637,12 @@ width: auto !important;
             if (response == 1)
                 swal({ title:  <?php
                                 if (session('lang') == 'ar') 
-                                    echo "'نجاح!'";
+                                    echo "'نجاح'";
                                 else 
                                     echo "'Successful!'";
                              ?>, text: <?php
                                 if (session('lang') == 'ar') 
-                                    echo "'تمت اضافة المراجعة'";
+                                    echo "'تمت اضافة التعليق'";
                                 else 
                                     echo "'Comment Added'";
                              ?>,
@@ -1747,6 +1787,8 @@ width: auto !important;
                                     echo "'Item Added'";
                              ?>, type: "success", timer: 2000, showConfirmButton: false });
                 hideModal();
+                location.reload();
+                <!--$('#btn_modal_one_item_details span small').css('color','#d80000');-->
             }
         });
     };
