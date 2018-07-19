@@ -1196,23 +1196,35 @@ width: auto !important;
         <p class="text_item_details" {{ $product->qty == 0 ?"style='filter: blur(5px)'" : '' }} style="margin-top:32px;    font-size: 20px;"> {{ $product->desc_english}}
 
         </p>
-        @if ($product->qty != 0 ) {{--
+        @if ($product->qty != 0 ) 
+        <!-- 
         <p class="buy_item_details" style="margin-top: 100px">
-            <a href="{{route('buyitem' , $product->id)}}">
+            <a href="{route('buyitem' , $product->id)}}">
                 <span style="cursor: pointer;">
                     <small> @lang('Buy This Item')</small>
                 </span>
             </a>
             <img src="/front-end/images/price-tag/buy-this-item.png" class="img_buy_item_details" />
-        </p> --}}
-        <p class="add_to_card_item_details" style="cursor: pointer;margin-top: 100px" id="btn_modal_one_item_details">
-            <span>
-                <small>@lang('Add to cart')</small>
-            </span>
-
-            <img src="/front-end/images/price-tag/buy-this-item.png" class="img_add_to_card_item_details" @if(session( 'lang')=='de'
-                ) style="height: 7.2em;" @endif />
-        </p>
+        </p> --> 
+            @if ($existedInCart == 0)
+            <p class="add_to_card_item_details" style="cursor: pointer;margin-top: 100px" id="btn_modal_one_item_details">
+                    <span>
+                        <small>@lang('Add to cart')</small>
+                    </span>
+                
+                <img src="/front-end/images/price-tag/buy-this-item.png" class="img_add_to_card_item_details" @if(session( 'lang')=='de'
+                    ) style="height: 7.2em;" @endif />
+            </p>
+            @else
+            <p class="add_to_card_item_details" style="margin-top: 100px">
+                    <span>
+                        <small>@lang('Already In Cart')</small>
+                    </span>
+                
+                <img src="/front-end/images/price-tag/buy-this-item.png" class="img_add_to_card_item_details" @if(session( 'lang')=='de'
+                    ) style="height: 7.2em;" @endif />
+            </p>
+            @endif
         @endif
     </div>
 

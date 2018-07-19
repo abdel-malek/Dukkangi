@@ -471,8 +471,16 @@ class PageController extends Controller
 		}
 		// $product->qty = 0;
 		// dd($comments);
+		$cartId = session('cartId');
+		$orderItems = OrderItem::where('order_id' , '=', $cartId)->get();
+		$existedInCart = 0;
+		foreach ($orderItems as $item) 
+			if ($item->item_id == $id ){
+				$existedInCart =1;
+				break;
+			}
 		
-		return view('client.pages.item_view')->withProduct($product)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments)->withBrand($logo);
+		return view('client.pages.item_view')->withProduct($product)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments)->withBrand($logo)->withExistedInCart($existedInCart);
 	}
 
 
