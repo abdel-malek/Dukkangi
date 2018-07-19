@@ -390,7 +390,11 @@ class PageController extends Controller
 		$product = Product::find($id);
 		$subcategory = Subcategory::find($product->subcategory_id);
 		$skip = Comment::with(['user'])->where('product_id','=',$product->id)->get()->count();
-		$comments = Comment::with(['user'])->where('product_id','=',$product->id)->skip($skip-3)->take(3)->get();
+		
+		$comments = Comment::with(['user'])->where('product_id','=',$product->id)
+		->where('description','!=','')->orWhere('description','!=',null)
+		->skip($skip-3)->take(3)->get();
+		
 		$logo = Brand::select('image_path' , 'id')
 		->where('id' , '=', $product->brand_id)
 		->get()->first();

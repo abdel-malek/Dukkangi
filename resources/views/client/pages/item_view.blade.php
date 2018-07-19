@@ -1534,10 +1534,10 @@ width: auto !important;
         });
     });
 
-<!--    $('#myBtn').on('click', function (e) {
+   $('#myBtn').on('click', function (e) {
         e.preventDefault();
         return false;
-    })-->
+    })
 
     $('#btn-comment').on("click", function (e) {
         e.preventDefault();
@@ -1549,6 +1549,31 @@ width: auto !important;
             }
         });
         var comment = $('input[name=commentbody]').val();
+        if (comment.length < 2){
+            swal({
+                title:<?php
+                                if (session('lang') == 'ar') 
+                                    echo "'فشل'";
+                                else 
+                                    echo "'Fail'";
+                             ?>, 
+                text : <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'يرجى كتابة تعليق'";
+                                else 
+                                    echo "'Please leave a comment'";
+                             ?>,
+                             type: "error",
+                             confirmButtonText: <?php
+                                if (session('lang') == 'ar') 
+                                    echo "'تم'";
+                                else 
+                                    echo "'Ok'";
+                             ?>
+ 
+            });
+            return ;
+        }
         var id = $(this).data('id');
 
         $.ajax({
