@@ -1182,7 +1182,7 @@ width: auto !important;
             <span class="price-wrapper" style="width: 5em;">
 
                 <small style="font-size: 50%;">
-                   <b style="font-family: 'EagarFont';"><span style="font-size: 0.8rem;float: left;margin-top: 1.4rem;margin-left: -1rem;font-weight: 500;"> متضمن الضريبة </span>  <i class="old-price" style="text-decoration: line-through;">{{$product->price}}€</i>/ <span class="new-price">{{$product->discount_price}}</span> €</b>
+                   <b style="font-family: 'EagarFont';"><span style="font-size: 0.8rem;float: left;margin-top: 1.4rem;margin-left: -1rem;font-weight: 500;">@lang('tax included')</span>  <i class="old-price" style="text-decoration: line-through;">{{$product->price}}€</i>/ <span class="new-price">{{$product->discount_price}}</span> €</b>
 
                 </small>
                 @else
