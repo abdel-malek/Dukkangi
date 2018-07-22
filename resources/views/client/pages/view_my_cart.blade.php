@@ -1,8 +1,7 @@
 @extends('client.main') @section('styles')
 <link rel="stylesheet" href="/front-end/css/lib/bootstrap.min.css">
 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="/front-end/css/jquery-pretty-tabs.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/front-end/css/jquery-pretty-tabs.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 <link rel="stylesheet" href="/front-end/css/style.css">
 <link rel="stylesheet" href="/front-end/css/login.css">
 <link rel="stylesheet" href="/front-end/css/item.css">
@@ -633,6 +632,9 @@
         float: right;
 
     }
+    .fa-trash-alt{
+        cursor: pointer;
+    }
 
     #ex3 .fa-stack[data-count]:after {
         position: absolute;
@@ -683,6 +685,9 @@
         </div>
 
         @foreach($orders as $order)
+        @if($order->qty == 0)
+        <?php continue; ?>
+        @endif
         <?php
                     $total += (isset($order->product->discount_price) ? $order->product->discount_price : $order->product->price) * $order->qty ;
                     $gain  += (isset($order->product->discount_price) ? ceil($order->product->discount_price/5) : ceil($order->product->price/5)) * $order->qty;
@@ -706,7 +711,7 @@
                 <div class="btn_control_item_qty">
                     <img src="/front-end/images/payment/handler-plus.png" onclick="num_plus(this);" id="this" />
                     <img src="/front-end/images/payment/handler-min.png" onclick="num_min(this);" style="margin-top:-0.8em;" />
-                    <i class="fas fa-trash-alt"></i>
+                    <i class="fas fa-trash-alt" onclick="deleteItem(this)"></i>
                 </div>
                 <p class="total_item_qty">
                     @lang('Total')
@@ -1214,7 +1219,20 @@
                              ?>
             });
     }
-
+    function deleteItem(obj){
+        var id = $(obj).parent().parent().parent().attr('data-productId');
+        var qty = 0;
+        console.log(id);   
+        $.ajax({
+            type: "POST",
+            url: `/changeqty/`,
+            data: { 'qty': qty, 'id': id },
+            headers: {
+                "x-csrf-token": $("[name=_token]").val()
+            },
+        });
+        $(obj).parent().parent().parent().css('display','none');
+    }
     function submitPaypal() {
         var inp = $('#paypalamount');
         var amount;
