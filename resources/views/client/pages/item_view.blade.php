@@ -37,7 +37,10 @@
         z-index: 33;
         width: 100%;
     }
-
+.title_item_details {
+    margin-bottom: 1.6em;
+    font-size: 1.1em;
+}
     a:hover {
         color: inherit;
         text-decoration: none;
@@ -287,8 +290,9 @@
     margin-left: -10% !important;
 }
 #modal-img{
-    width: 100%;
+	width: auto;
     height: auto !important;
+    max-height: 22rem;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -297,7 +301,7 @@
     top: unset !important;
     bottom: unset !important;
     height: 97px;
-    margin-top: -6rem;
+    margin-top: -4rem;
 }
 }
 
@@ -478,7 +482,7 @@
             padding-left: 1em;
         }
         .logo_prodect {
-            width: 19%;
+            /*width: 19%;*/
             float: right;
             margin-right: 2em;
             margin-top: -3em;
@@ -975,6 +979,9 @@
 		}
 	}
 	@media(max-width: 991px){
+              .sections_mobile{
+            width: 100%;
+        }
 		.one_item_details{
 			position: relative;
 			width: 100%;
@@ -1103,22 +1110,22 @@ width: auto !important;
             @endif
 
             <!-- -Slider -->
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="height: 350px">
+            <div id="slider_image_item" class="carousel slide" data-ride="carousel" style="height: 350px">
                 <ol class="carousel-indicators" style="bottom:-10px">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#slider_image_item" data-slide-to="0" class="active"></li>
                     @if(isset($product->image_id2))
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#slider_image_item" data-slide-to="1"></li>
                     @endif @if(isset($product->image_id3))
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    <li data-target="#slider_image_item" data-slide-to="2"></li>
                     @endif @if(isset($product->image_id4))
-                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                    <li data-target="#slider_image_item" data-slide-to="3"></li>
                     @endif
 
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
 <!--                        <img class=" d-block w-100" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id}}" alt="First slide">-->
-                        <div class="slide-bg" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px; background-image: url({{$product->image_id}})"></div>
+                        <div class="slide-bg" id="slide-bg" onclick="imageModal(this);" data-target="slider_image_item" style="height: 350px; background-image: url({{$product->image_id}})" data-zoom-image="{{$product->image_id}}"></div>
                     </div>
 
                     @if(isset($product->image_id2))
@@ -1127,7 +1134,7 @@ width: auto !important;
                         <img class="img_item_details"  onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id2}}"
                             alt="Second slide">
 -->
-                            <div class="slide-bg" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px; background-image: url({{$product->image_id2}})"></div>
+                            <div class="slide-bg" onclick="imageModal(this);" data-target="slider_image_item" style="height: 350px; background-image: url({{$product->image_id2}})"></div>
                     </div>
                     @endif @if(isset($product->image_id3))
                     <div class="carousel-item">
@@ -1135,7 +1142,7 @@ width: auto !important;
                         <img class="img_item_details" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id3}}"
                             alt="Third slide">
 -->
-                            <div class="slide-bg" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px; background-image: url({{$product->image_id3}})"></div>
+                            <div class="slide-bg" onclick="imageModal(this);" data-target="slider_image_item" style="height: 350px; background-image: url({{$product->image_id3}})"></div>
                     </div>
                     @endif @if(isset($product->image_id4))
                     <div class="carousel-item">
@@ -1143,16 +1150,16 @@ width: auto !important;
                         <img class="img_item_details" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id4}}"
                             alt="Fourth slide">
 -->
-                            <div class="slide-bg" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px; background-image: url({{$product->image_id4}})"></div>
+                            <div class="slide-bg" onclick="imageModal(this);" data-target="slider_image_item" style="height: 350px; background-image: url({{$product->image_id4}})"></div>
                     </div>
                     @endif
                     
-                                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                            <a class="carousel-control-prev" href="#slider_image_item" role="button" data-slide="prev">
 <!--                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
    <i class="fa fa-arrow-left carousel-control-prev-icon" style="color:#000;font-size: 2rem;background-image: none;" aria-hidden="true"></i>
                         <!--<span class="sr-only">Previous</span>-->
                     </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <a class="carousel-control-next" href="#slider_image_item" role="button" data-slide="next">
                        <!--<span class="carousel-control-next-icon" aria-hidden="true"></span>-->
                         <i class="fa fa-arrow-right carousel-control-next-icon" style="color:#000;font-size: 2rem;background-image: none;" aria-hidden="true"></i>
                         <span class="sr-only">Next</span>
@@ -1197,7 +1204,7 @@ width: auto !important;
            
             <!-- /Slider -->
             <!-- <img src="{{$product->image_id}}" /> -->
-            <div class="div_title_item_details" style="height: 5.5em;" id="product-name" >
+            <div class="div_title_item_details" style="height: auto;" id="product-name" >
                 <p class="title_item_details product-name" style="text-align: center">{{$product->english}}</p>
                 <span class="rating rating-info ratings{{$product->rate}} product-rate" data-type="product" data-id="{{$product->id}}" style="left: 5.5em;"></span>
                
@@ -1412,7 +1419,7 @@ width: auto !important;
     data-qty='1'>
     <div class="header_item_details">
         <img src="{{$product->image_id}}" id="modal-img" class="img_item_details" style="height: 300px" />
-        <div class="div_title_item_details"  style="top: 12.7em;  height: 97px">
+        <div class="div_title_item_details"  style="top: 14.7em;  height: auto;">
             <p class="title_item_details" style="">
                 {{$product->english}}
             </p>
@@ -1923,7 +1930,12 @@ $('.modal_one_item_details').addClass('.modal_one_item_details_mobile');
 		responsive: true
 		
 	});
-		
+//$("#slide-bg").elevateZoom({
+//  zoomType: "inner",
+ // cursor: "crosshair",
+ // zoomWindowFadeIn: 500,
+//zoomWindowFadeOut: 750
+//});
 	});
 </script>
 @endsection

@@ -65,7 +65,7 @@
     right: unset;
 }
 .bottom_left_background_block p{
-    left: 10.3rem !important;
+    left: 7.6rem !important;
     top: 32px !important;
 }
 .bottom_right_background_block p{
@@ -213,7 +213,7 @@
     width: 70% !important;
 }
 .bottom_left_background_block p {
-    left: 10.8rem !important;
+    left: 8.3rem !important;
 }
 .bottom_right_background_block p {
     left: 11% !important;
@@ -221,13 +221,13 @@
 }
 @media (min-width: 1025px) and (max-width: 1150px){
     .bottom_left_background_block p{
-        left: 10rem !important;
+        left: 7rem !important;
         top: 32px !important;
     }
     .bottom_right_background_block p{
            left: 16% !important;
     top: 31px !important;
-    width: 32% !important;
+    width: 36% !important;
     }
 }
 
@@ -249,9 +249,16 @@
            
            @media (min-width: 1024px) and (max-width: 1200px) {
            .flexslider{
-                       width: 312% !important;
+                       width: 300% !important;
+                       left: -100% !important;
                      
                }
+           }
+           
+                @media (min-width: 1066px) and (max-width: 1150px) {
+      .bottom_left_background_block p {
+    left: 8.7rem !important;
+	}
            }
      @media (min-width: 20px) and (max-width: 1023px) {
          .item_in_lg{
@@ -397,7 +404,7 @@
     left: 3em !important;
 }
 .bottom_left_background_block p {
-    left: 15.1rem !important;
+    left: 11.1rem !important;
 }
          .bottom_right_background_block {
     height: 14.5em;
@@ -710,7 +717,7 @@ $('.text_item_block').each(function(){
        $(this).append('<a href="'+$(this).find('a').attr('href')+'" ><img src="images/left.svg" class="img_cloud_right" /></a>'); 
     });
       $('.bottom_left_background_block').each(function(){
-       $(this).append('<a href="'+$(this).find('a').attr('href')+'" ><img src="images/left.svg" class="img_cloud_right" /></a>'); 
+       $(this).append('<a href="'+$(this).find('a').attr('href')+'" ><img src="images/right.svg" class="img_cloud_right" /></a>'); 
     });
 //     $('.bottom_right_background_block').append('<a href="" ><img src="images/left.svg" class="img_cloud_right" /></a>');
 //    $('.bottom_left_background_block').append('<a href="" ><img src="images/right.svg" class="img_cloud_right" /></a>');
