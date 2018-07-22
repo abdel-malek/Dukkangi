@@ -432,9 +432,8 @@ class PageController extends Controller
 		$product = Product::find($id);
 		$subcategory = Subcategory::find($product->subcategory_id);
 		$skip = Comment::with(['user'])->where('product_id','=',$product->id)->get()->count();
-		
-		$comments = Comment::with(['user'])->where('product_id','=',$product->id)
-		->where('description','!=','')->orWhere('description','!=',null)->orderBy('id')
+	
+		$comments = Comment::with(['user'])->where('product_id','=',$product->id)->orderBy('id', 'desc')
 		->skip($skip-3)->take(3)->get();
 		
 		$logo = Brand::select('image_path' , 'id')
@@ -582,12 +581,13 @@ class PageController extends Controller
 		$user_id = Auth::id();
 		$productId = $request->input('id');
 
+
 		$comment = new Comment;
 		$comment->rate= $rate;
 		$comment->description = $description;
 		$comment->user_id = $user_id;
 		$comment->product_id = $productId;
-
+		
 		$comment->save();
 
 		return 1;

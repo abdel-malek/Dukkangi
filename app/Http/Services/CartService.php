@@ -86,6 +86,8 @@ class CartService
         $product = ProductService::loadById($productId);
         $orderItem = self::createOrderItem($product, $qty, $cartId, $userId);
         self::getOrderItemCount($cartId);
+        // Session::set('order_item_count' , session('order_item_count') + 1);
+        session(['order_item_count' => session('order_item_count') + 1]);
         return $orderItem;
     }
 
