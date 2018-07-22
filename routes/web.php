@@ -86,25 +86,25 @@ Route::post('/admin/subcategory/store', ['uses' => 'CategoryToSubController@stor
 
 
     //PRODUCTS
-Route::get('/admin/products', ['uses' => 'ProductController@index'                 ,'as' => 'product.index'         ]);
-Route::post('/admin/products', ['uses' => 'ProductController@productData'             ,'as' => 'product.data'         ]);
-Route::get('/admin/products/create', ['uses' => 'ProductController@create'                 ,'as' => 'product.create'     ]);
-Route::post('/admin/products/store', ['uses' => 'ProductController@store'                 ,'as' => 'product.store'         ]);
-Route::post('/admin/products/delete/{id}', ['uses' => 'ProductController@destroy'         ,'as' => 'product.delete'         ]);
-Route::get('/admin/products/edit/{id}', ['uses' => 'ProductController@edit'                 ,'as' => 'product.edit'         ]);
-Route::put('/admin/products/update', ['uses' => 'ProductController@update'                 ,'as' => 'product.update'         ]);
-Route::post('/admin/products/top/{id}', 'ProductController@topProduct');
+Route::get('/admin/products', ['uses' => 'ProductController@index'                 ,'as' => 'product.index'         ])->middleware('isadmin');
+Route::post('/admin/products', ['uses' => 'ProductController@productData'             ,'as' => 'product.data'         ])->middleware('isadmin');
+Route::get('/admin/products/create', ['uses' => 'ProductController@create'                 ,'as' => 'product.create'     ])->middleware('isadmin');
+Route::post('/admin/products/store', ['uses' => 'ProductController@store'                 ,'as' => 'product.store'         ])->middleware('isadmin');
+Route::post('/admin/products/delete/{id}', ['uses' => 'ProductController@destroy'         ,'as' => 'product.delete'         ])->middleware('isadmin');
+Route::get('/admin/products/edit/{id}', ['uses' => 'ProductController@edit'                 ,'as' => 'product.edit'         ])->middleware('isadmin');
+Route::put('/admin/products/update', ['uses' => 'ProductController@update'                 ,'as' => 'product.update'         ])->middleware('isadmin');
+Route::post('/admin/products/top/{id}', 'ProductController@topProduct')->middleware('isadmin');
 //PRODUCTS QTY
-Route::get('/admin/products/qty', ['uses' => 'ProductController@productQtyIndex','as' => 'productQty.index']);
-Route::post('/admin/products/qty', ['uses' => 'ProductController@productQtyData','as' => 'productQty.data']);
-Route::get('/admin/products/qty/{id}/create', ['uses' => 'ProductController@productQtyCreate','as' => 'productQty.create']);
-Route::post('/admin/products/qty/{id}/store', ['uses' => 'ProductController@productQtyStore','as' => 'productQty.store']);
+Route::get('/admin/products/qty', ['uses' => 'ProductController@productQtyIndex','as' => 'productQty.index'])->middleware('isadmin');
+Route::post('/admin/products/qty', ['uses' => 'ProductController@productQtyData','as' => 'productQty.data'])->middleware('isadmin');
+Route::get('/admin/products/qty/{id}/create', ['uses' => 'ProductController@productQtyCreate','as' => 'productQty.create'])->middleware('isadmin');
+Route::post('/admin/products/qty/{id}/store', ['uses' => 'ProductController@productQtyStore','as' => 'productQty.store'])->middleware('isadmin');
 
     //PRODUCTS FROM CATEGORIES
-Route::get('/admin/categoryproducts/{id}', ['uses' => 'ProductController@indexByCategory'     ,'as' => 'productbycategory.index' ]);
-Route::post('/admin/categoryproducts/{id}', ['uses' => 'ProductController@productDataByCategory','as' => 'productbycategory.data'  ]);
-Route::get('/admin/categoryproducts/edit/{id}', ['uses' => 'ProductController@editByCategory'         ,'as' => 'productbycategory.edit'  ]);
-Route::put('/admin/categoryproducts/update', ['uses' => 'ProductController@updateByCategory'     ,'as' => 'productbycategory.update']);
+Route::get('/admin/categoryproducts/{id}', ['uses' => 'ProductController@indexByCategory'     ,'as' => 'productbycategory.index' ])->middleware('isadmin');
+Route::post('/admin/categoryproducts/{id}', ['uses' => 'ProductController@productDataByCategory','as' => 'productbycategory.data'  ])->middleware('isadmin');
+Route::get('/admin/categoryproducts/edit/{id}', ['uses' => 'ProductController@editByCategory'         ,'as' => 'productbycategory.edit'  ])->middleware('isadmin');
+Route::put('/admin/categoryproducts/update', ['uses' => 'ProductController@updateByCategory'     ,'as' => 'productbycategory.update'])->middleware('isadmin');
     //PRODUCTS FROM SUBCATEGORIES
 Route::get('/admin/subcategoryproducts/{id}', ['uses'=> 'ProductController@indexBySubcategory'       ,'as' => 'productbysubcategory.index' ]);
 Route::post('/admin/subcategoryproducts/{id}', ['uses'=> 'ProductController@productDataBySubcategory','as' => 'productbysubcategory.data'  ]);
@@ -154,9 +154,9 @@ Route::get('/admin/couponusers/{id}' , 'CouponController@getUsersGrid')->name('c
 Route::post('/admin/couponusers/{id}' , 'CouponController@getUsersData');
 
 
-Route::get('admin/comment-rate-report','CommentController@index')->name('comment.index');
-Route::post('admin/comment-rate-report','CommentController@loadComments');
-Route::post('/admin/comment/delete/{id}' , 'CommentController@destroy');
+Route::get('admin/comment-rate-report','CommentController@index')->name('comment.index')->middleware('isadmin');
+Route::post('admin/comment-rate-report','CommentController@loadComments')->middleware('isadmin');
+Route::post('/admin/comment/delete/{id}' , 'CommentController@destroy')->middleware('isadmin');
 
     //DHL TRACKER
 Route::get('/admin/dhltracker' , 'OrderController@getDHLPage')->name('dhl.index');

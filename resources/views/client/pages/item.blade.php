@@ -639,7 +639,7 @@
 
 
                         </div>
-                        @if(isset($filter) && count($products) > 12)
+                        @if(isset($filter) && count($products) >= 15)
                         <div class="col-sm-3" style="float:left;margin-left: 20em;margin-top: 50px">
                             <p class="btn_filter" id="btn_modal_filter" onclick="scrollload()">
                                 @lang('Load More')
