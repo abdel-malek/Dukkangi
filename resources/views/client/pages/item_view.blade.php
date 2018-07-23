@@ -1291,7 +1291,7 @@ width: auto !important;
             @else
            
                     <span>
-                        <small style="color:#d80000;">@lang('Already in cart') </small>
+                        <small style="color:#d80000;">@lang('You have ordered') {{$itemQty}} </small>
                     </span>
                 
                 <img src="/front-end/images/price-tag/add-to-cart.png" class="img_add_to_card_item_details" @if(session( 'lang')=='de'
