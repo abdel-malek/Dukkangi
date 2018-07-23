@@ -1,7 +1,9 @@
 @extends('client.main') @section('styles')
 <link rel="stylesheet" href="/front-end/css/lib/bootstrap.min.css">
 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="/front-end/css/jquery-pretty-tabs.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+<link rel="stylesheet" href="/front-end/css/jquery-pretty-tabs.css">
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 <link rel="stylesheet" href="/front-end/css/style.css">
 <link rel="stylesheet" href="/front-end/css/login.css">
 <link rel="stylesheet" href="/front-end/css/item.css">
@@ -26,7 +28,7 @@
     }
 
     .footer {
-        margin-top: 13em;
+        margin-top: 13em !important;
     }
 
     .sections {
@@ -36,7 +38,7 @@
     .header_page_text_div {
         padding-left: 25em;
         width: 80.9%;
-        padding-left: 29.5em
+        padding-left: 32.7%;
     }
 
     .rating {
@@ -231,6 +233,9 @@
         height: 5em;
     }
 
+    .price_item_details{
+     width: 78%;
+    }
     .start_header {
         padding-left: 4em;
     }
@@ -242,7 +247,41 @@
     .img_visa_choose_payment, .img_paypal_choose_payment {
     width: 20%;
     margin-top: 0em;
+    width: 90%;
+    margin-left: 5%;
 }
+ .block_btn_pay{
+        float: left;
+        margin-right: 17%;
+ }
+@media (min-width: 1030px) and (max-width: 1278px) {
+    .all_page_item_view{
+        padding: 0rem;
+    }
+    #content_page{
+        padding: 0rem;
+    }
+    .one_item_details {
+    width: 31%;
+}
+.header_page_text_div {
+    padding-left: 36.7%;
+    width: 92.4%;
+}
+}
+@media (min-width: 1030px) and (max-width: 1194px) {
+.sections {
+    width: 58.8%;
+}
+.header_page_text_div {
+    padding-left: 40.2%;
+}
+   .one_item_details {
+    width: 36%;
+}
+}
+
+
     @media (min-width: 768px) and (max-width: 1030px) {
         
         #content_page {
@@ -270,12 +309,15 @@
         }
         .one_item_details,
         .modal_one_item_details {
-            width: 42%;
+            width: 44%;
             margin-left: 2em;
         }
         .sections {
-            width: 54.8%;
+            width: 50.8%;
         }
+        .sections_mobile {
+    width: 51.8% !important;
+}
         .discount_item_details {
             border-top: 9em solid #d80001;
             border-right: 7.8em solid transparent;
@@ -429,7 +471,7 @@
             font-size: 1.6em;
         }
         .text_item_qty h3 {
-            font-size: 1.6em;
+            font-size: 1.2em;
         }
         .text_item_qty p {
             font-size: 1.2em;
@@ -492,7 +534,101 @@
         .text_enter_code {
             width: 40%;
         }
+        .block_btn_pay{
+            width: 35% !important;
+                    margin-right: 8%;
+        }
+        footer{
+                margin-top: 0px !important;
+        }
     }
+    @media (min-width: 787px) and (max-width: 890px) {
+.one_item_details, .modal_one_item_details {
+    width: 50%;
+    margin-left: 0em;
+}
+.header_page_text_div {
+    padding-left: 52%;
+}
+}
+
+@media (min-width: 200px) and (max-width: 787px) {
+    .one_item_details, .modal_one_item_details {
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 2.2em;
+        position: initial;
+    }
+    .footer {
+        margin-top: 1em !important;
+    }
+    #content_page{
+        height: auto !important;
+        margin-bottom: 0rem !important;
+        padding: 0rem;
+    }
+        .all_page_item_view{
+        padding: 0rem;
+    }
+
+    .img_price_item_details {
+    left: 2.5rem;
+    }
+    .price_item_details {
+    width: 55%;
+}
+.one_item_details, .modal_one_item_details {
+    width: 80%;
+    margin-left: 10%;
+}
+#Total{
+    left: unset !important;
+    margin-left: -9rem;
+}
+.price_item_details i{
+    left: 0rem !important;
+}
+.sections {
+    width: 93.8%;
+}
+.header_page_text_div {
+    width: 92.4%;
+    padding-left: 3.7%;
+}
+}
+@media  (max-width: 700px) {
+.img_price_item_details {
+    left: 2.2rem;
+}
+#Total {
+    margin-left: -7.8rem;
+}
+
+}
+@media  (max-width: 650px) {
+.img_price_item_details {
+    left: 1.9rem;
+}
+#Total {
+    margin-left: -6.8rem;
+}
+}
+@media  (max-width: 600px) {
+.img_price_item_details {
+    left: 1.6rem;
+}
+#Total {
+    margin-left: -5.8rem;
+}
+}
+@media  (max-width: 550px) {
+.img_price_item_details {
+    left: 1.3rem;
+}
+#Total {
+    margin-left: -4.8rem;
+}
+}
 </style>
 <style>
     /* jssor slider loading skin spin css */
@@ -632,10 +768,9 @@
         float: right;
 
     }
-    .fa-trash-alt{
+ .fa-trash-alt{
         cursor: pointer;
     }
-
     #ex3 .fa-stack[data-count]:after {
         position: absolute;
         right: 0%;
@@ -664,7 +799,7 @@
         $gain=0;
         $taxes=0;
     ?>
-<div class="col-md-12" style="height: 740px" id="content_page">
+<div class="col-md-12" style="height: 22rem" id="content_page">
 
     <div class="col-md-12 all_page_item_view">
         <div class="header_page" style="background-image: url('/front-end/images/items_page/2.png')" />
@@ -795,7 +930,7 @@
         <div class="credit_card_details">
 
             <div class="col-md-12" style="float:left;padding: 0em 2em;">
-                <img src="/front-end/images/payment/visa.png" id='btn-checkout' style="cursor: pointer;
+                <img src="/front-end/images/payment/visa.png" id='btn-checkout' class="block_btn_pay" style="cursor: pointer;
     box-shadow: 1px 1px 6px #999;
     border-radius: 1em;
     width: 26%;
@@ -903,12 +1038,12 @@
                         <input id="paypalamount" type="hidden" name="amount" value="Nan">
                         <input type="hidden" name="currency_code" value="EUR">
                         <!-- Display the payment button. -->
-                        <div style="cursor: pointer;
+                        <div class="block_btn_pay" style="cursor: pointer;
     box-shadow: 1px 1px 6px #999;
     border-radius: 1em;
     width: 26%;
     padding: 0.3em;">
-                        <img alt="" border="0" style="cursor: pointer" src="/front-end/images/payment/paypal.png" onclick="submitPaypal(this)">
+                        <img alt="" border="0" style="cursor: pointer;width: 90%;margin-left: 5%;" src="/front-end/images/payment/paypal.png" onclick="submitPaypal(this)">
                         </div>
                         <input type="image" id="clickpaypal" hidden name="submit" border="0" src="/front-end/images/payment/paypal.png" alt="Buy Now">
 
@@ -935,6 +1070,15 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript">
+     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+         $('.sections').addClass('sections_mobile');
+         
+     }
+     var height_block_mycard = 22; 
+     $('.item_qty_detail_my_card').each(function(){
+         height_block_mycard = height_block_mycard + 6;
+         $('#content_page').css('height',height_block_mycard + 'rem');
+     });
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-36251023-1']);
     _gaq.push(['_setDomainName', 'jqueryscript.net']);

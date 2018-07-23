@@ -59,6 +59,7 @@
         
         .div_title_item_details {
     padding: 0.5em 2em;
+    margin-top: 3rem;
         }
 
     .rating {
@@ -161,6 +162,8 @@
     .btn_qty {
         cursor: pointer;
     }
+    
+  
 
     .block_similar {
         float: left;
@@ -262,7 +265,9 @@
     left: 25%;
     z-index: 99;
 }
-	
+.off_item_prodect{
+        font-family: 'EagarFont';
+}	
 .background_slide{
     position: fixed;
     top: 0px;
@@ -941,13 +946,15 @@
     }
 
     .carousel-indicators .active {
-        width: 30px !important;
-        height: 3px !important;
-        margin-right: 3px !important;
+        width: auto !important;
+        height: 2rem !important;
+        border: 1px solid #D80F16 !important;
+/*        margin-right: 3px !important;
         margin-left: 3px !important;
         margin-bottom: 0px !important;
-        margin-top: 1px !important;
+        margin-top: 1px !important;*/
     }
+   
 	.one_item_details{
 		width: 29%;
 		margin-left: 1.7em
@@ -1105,27 +1112,31 @@ width: auto !important;
             @if(isset($product->discount) && $product->discount != 0)
             <div class="discount_item_details" style="z-index: 20">
                 <p class="text_discount_details" >
-                    <small style="font-family: 'EagarFont';">{{sprintf('%0.0f',$product->discount)}}</small> % @lang('off')</p>
+                    <small style="font-family: 'EagarFont';">{{sprintf('%0.0f',$product->discount)}}</small> %<span value="@lang('off')" class="off_item"> @lang('off')</span></p>
             </div>
             @endif
 
             <!-- -Slider -->
-            <div id="slider_image_item" class="carousel slide" data-ride="carousel" style="height: 350px">
-                <ol class="carousel-indicators" style="bottom:-10px">
-                    <li data-target="#slider_image_item" data-slide-to="0" class="active"></li>
+            <div id="slider_image_item" class="carousel slide" data-pause="hover" data-ride="false" style="height: 350px">
+                <ol class="carousel-indicators" onchange="refresh_zoom()" style="bottom:-57px">
+                    <!--<li data-target="#slider_image_item" data-slide-to="0" class="active"></li>-->
+                    <img src="{{$product->image_id}}" data-target="#slider_image_item" data-slide-to="0" class="active" style="height:2rem;width:auto;margin: 0rem 0.2rem;border: 1px solid #aaa;" />
                     @if(isset($product->image_id2))
-                    <li data-target="#slider_image_item" data-slide-to="1"></li>
+                    <!--<li data-target="#slider_image_item" data-slide-to="1"></li>-->
+                    <img src="{{$product->image_id2}}" data-target="#slider_image_item" data-slide-to="1" style="height:2rem;width:auto;margin: 0rem 0.2rem;border: 1px solid #aaa;" />
                     @endif @if(isset($product->image_id3))
-                    <li data-target="#slider_image_item" data-slide-to="2"></li>
+                    <!--<li data-target="#slider_image_item" data-slide-to="2"></li>-->
+                    <img src="{{$product->image_id3}}" data-target="#slider_image_item" data-slide-to="2" style="height:2rem;width:auto;margin: 0rem 0.2rem;border: 1px solid #aaa;" />
                     @endif @if(isset($product->image_id4))
-                    <li data-target="#slider_image_item" data-slide-to="3"></li>
+                    <!--<li data-target="#slider_image_item" data-slide-to="3"></li>-->
+                    <img src="{{$product->image_id4}}" data-target="#slider_image_item" data-slide-to="3" style="height:2rem;width:auto;margin: 0rem 0.2rem;border: 1px solid #aaa;" />
                     @endif
 
                 </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
+                <div class="carousel-inner" id="carousel-inner">
+                    <div class="carousel-item active" >
 <!--                        <img class=" d-block w-100" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id}}" alt="First slide">-->
-                        <div class="slide-bg" id="slide-bg" onclick="imageModal(this);" data-target="slider_image_item" style="height: 350px; background-image: url({{$product->image_id}})" data-zoom-image="{{$product->image_id}}"></div>
+                        <div class="slide-bg slider_zoom_item"  onclick="imageModal(this);" data-target="slider_image_item" style="height: 350px; background-image: url({{$product->image_id}})" data-zoom-image="{{$product->image_id}}"></div>
                     </div>
 
                     @if(isset($product->image_id2))
@@ -1134,7 +1145,7 @@ width: auto !important;
                         <img class="img_item_details"  onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id2}}"
                             alt="Second slide">
 -->
-                            <div class="slide-bg" onclick="imageModal(this);" data-target="slider_image_item" style="height: 350px; background-image: url({{$product->image_id2}})"></div>
+                            <div class="slide-bg slider_zoom_item" onclick="imageModal(this);" data-target="slider_image_item" style="height: 350px; background-image: url({{$product->image_id2}})" data-zoom-image="{{$product->image_id2}}"></div>
                     </div>
                     @endif @if(isset($product->image_id3))
                     <div class="carousel-item">
@@ -1142,7 +1153,7 @@ width: auto !important;
                         <img class="img_item_details" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id3}}"
                             alt="Third slide">
 -->
-                            <div class="slide-bg" onclick="imageModal(this);" data-target="slider_image_item" style="height: 350px; background-image: url({{$product->image_id3}})"></div>
+                            <div class="slide-bg slider_zoom_item2" onclick="imageModal(this);" data-target="slider_image_item" style="height: 350px; background-image: url({{$product->image_id3}})" data-zoom-image="{{$product->image_id3}}"></div>
                     </div>
                     @endif @if(isset($product->image_id4))
                     <div class="carousel-item">
@@ -1150,20 +1161,20 @@ width: auto !important;
                         <img class="img_item_details" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id4}}"
                             alt="Fourth slide">
 -->
-                            <div class="slide-bg" onclick="imageModal(this);" data-target="slider_image_item" style="height: 350px; background-image: url({{$product->image_id4}})"></div>
+                            <div class="slide-bg slider_zoom_item" onclick="imageModal(this);" data-target="slider_image_item" style="height: 350px; background-image: url({{$product->image_id4}})" data-zoom-image="{{$product->image_id4}}"></div>
                     </div>
                     @endif
                     
-                                            <a class="carousel-control-prev" href="#slider_image_item" role="button" data-slide="prev">
-<!--                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+<!--                                            <a class="carousel-control-prev" href="#slider_image_item" role="button" data-slide="prev">
+                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
    <i class="fa fa-arrow-left carousel-control-prev-icon" style="color:#000;font-size: 2rem;background-image: none;" aria-hidden="true"></i>
-                        <!--<span class="sr-only">Previous</span>-->
+                        <span class="sr-only">Previous</span>
                     </a>
                     <a class="carousel-control-next" href="#slider_image_item" role="button" data-slide="next">
-                       <!--<span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <i class="fa fa-arrow-right carousel-control-next-icon" style="color:#000;font-size: 2rem;background-image: none;" aria-hidden="true"></i>
                         <span class="sr-only">Next</span>
-                    </a>
+                    </a>-->
                 </div>
 
             </div>
@@ -1390,7 +1401,7 @@ width: auto !important;
             @if (isset($simiproduct->discount) && $simiproduct->discount != 0)
             <div class="discount_item">
                 <p class="text_discount">
-              <span style="font-family: 'EagarFont';" >{{$simiproduct->discount}} % <br/>@lang('off')</span> <br>
+                    <span style="font-family: 'EagarFont';" >{{$simiproduct->discount}} % <br/><span value="@lang('off')" class="off_item_prodect">@lang('off')</span></span> <br>
 <!--                <span style="font-family: unset;font-weight: bolder;font-size: 17px;"> {{ $simiproduct->discount_price}} €</span>-->
             </p>
                 <div class="shadow_div_discount"></div>
@@ -1419,7 +1430,7 @@ width: auto !important;
     data-qty='1'>
     <div class="header_item_details">
         <img src="{{$product->image_id}}" id="modal-img" class="img_item_details" style="height: 300px" />
-        <div class="div_title_item_details"  style="top: 14.7em;  height: auto;">
+        <div class="div_title_item_details"  style="top: 14.7em;  height: auto;margin-top: 0rem;">
             <p class="title_item_details" style="">
                 {{$product->english}}
             </p>
@@ -1474,6 +1485,17 @@ width: auto !important;
  -->
 <script src="{{URL::asset('js/jquery.min.js')}}"></script>
 <script src="{{URL::asset('/front-end/js/plugin/jquery-pretty-tabs.js')}}"></script>
+<script>
+   if($('.off_item').attr('value').length > 6){
+    $('.off_item').css('fontSize','0.9rem');
+    $('.off_item').css('marginLeft','-0.2rem');
+    }
+    
+    if($('.off_item_prodect').attr('value').length > 6){
+    $('.off_item_prodect').css('fontSize','0.6rem');
+    $('.off_item_prodect').css('marginLeft','-0.2rem');
+    }
+</script>
 
 <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -1919,7 +1941,13 @@ $('.modal_one_item_details').addClass('.modal_one_item_details_mobile');
 
 <script>
 	$(function () {
-    $('#slider_preview img').elevateZoom({
+            $("#carousel-inner .carousel-item .slider_zoom_item").elevateZoom({
+ constrainType:"height", constrainSize:274, zoomType: "lens", containLensZoom: true,  cursor: 'pointer'
+});
+           $("#carousel-inner .carousel-item .slider_zoom_item2").elevateZoom({
+ constrainType:"height", constrainSize:274, zoomType: "lens", containLensZoom: true,  cursor: 'pointer'
+});
+$('#slider_preview img').elevateZoom({
         zoomWindowFadeIn: 400,
 			zoomWindowFadeOut: 400,
 			lensFadeIn: 400,
@@ -1930,12 +1958,7 @@ $('.modal_one_item_details').addClass('.modal_one_item_details_mobile');
 		responsive: true
 		
 	});
-//$("#slide-bg").elevateZoom({
-//  zoomType: "inner",
- // cursor: "crosshair",
- // zoomWindowFadeIn: 500,
-//zoomWindowFadeOut: 750
-//});
+
 	});
 </script>
 @endsection

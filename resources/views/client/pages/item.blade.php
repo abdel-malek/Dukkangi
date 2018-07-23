@@ -34,7 +34,9 @@
         width: 0.75em;
         height: 1.7em;
     }
-
+    .total_qty{
+        font-family: 'EagarFont';
+    }
     .div_item .rating .star::before {
         color: #d80001;
         width: 0.75em;
@@ -137,6 +139,9 @@
 }
 .item_price {
     width: 100%;
+}
+.price_discount{
+        font-family: 'EagarFont';
 }
 @media (min-width: 768px) and (max-width: 1000px) {
     .modal_one_item_details {
@@ -582,16 +587,15 @@
         
               <div class='thumnbail' style="float: left;position: inherit;margin-top: -13.3rem;bottom: 10px;width: 180px;height: auto;margin-left: 50px;overflow: hidden;    padding-left: 3em;">
                 @foreach($subcategories as $subcategory)
+                <a href="{{ route('subcategoryfilter',$subcategory->id) }}">
+                    <div class="pictureFrame" style="width: 110px; height: 92px;">
+                        <img src="{{$subcategory->image_id2}}" class="block_thum" style="z-index: 1; width: 110px; height: 88px; padding-top: 2px; padding-bottom: 2px;">
 
-                <div class="pictureFrame" style="width: 110px; height: 92px;">
-                    <img src="{{$subcategory->image_id2}}" class="block_thum" style="z-index: 1; width: 110px; height: 88px; padding-top: 2px; padding-bottom: 2px;">
-                    <a href="{{ route('subcategoryfilter',$subcategory->id) }}">
                         <p class="sub-paragraph" style="z-index: 1;padding: 4.4px 0px;text-align: center;">
                             {{$subcategory->english}}
                         </p>
-                    </a>
-                </div>
-
+                    </div>
+                </a>
                 @endforeach
             </div>
         @endif
@@ -778,7 +782,13 @@
             <!-- <img -->
         </div>
     </div>
-
+    <div class="col-md-12" style="margin-top: 0.6em;float: left;">
+        <p class="price_item_details" style="margin-top: 0em;" data-product-price='23423'>
+            <span style="    position: absolute;font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;left: 0em;z-index:22;">@lang('Total') </span>
+            <span class="total_qty" style="    position: absolute;left:2.2em;width: 6em;margin-top:1rem;z-index:22;"></span>
+            <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details" />
+        </p>
+    </div>
     <div class="button_modal_one_item_details">
         @if( Auth::check())
         <p class="btn_done" style="background-color: #d80001;color: #fff;cursor: pointer">@lang('Done')</p>
@@ -804,6 +814,15 @@
 
 <script src="/front-end/js/plugin/jquery-pretty-tabs.js"></script>
 
+<script>
+    if($('.tax_include').attr('value').length > 14){
+    $('.tax_include').css('marginLeft','-5.9rem');
+    }
+      if($('.off_item').attr('value').length > 5){
+    $('.off_item').css('fontSize','0.6rem');
+    }
+    
+    </script>
 <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-36251023-1']);
@@ -821,7 +840,7 @@
 </script>
 <script>
     function num_plus(obj) {
-        counter = parseInt($(obj).parent().parent().find('p').text());
+    
             if (counter < 1) {
                 counter = 1;
                 $(obj).parent().parent().find('p').text(counter);
@@ -830,6 +849,8 @@
                  counter = counter + 1
                 $(obj).parent().parent().find('p').text(counter);
             }
+                counter = parseInt($('.num_qty').text());
+        $('.total_qty').text((counter * parseInt($('.total_qty').attr('value')))+' €');
     }
     function num_min(obj) {
         counter = parseInt($(obj).parent().parent().text());
@@ -837,7 +858,8 @@
             counter = counter - 1;
             $(obj).parent().parent().find('p').text(counter);
         }
-
+    counter = parseInt($('.num_qty').text());
+        $('.total_qty').text((counter * parseInt($('.total_qty').attr('value')))+' €');
     }
 </script>
 <script>

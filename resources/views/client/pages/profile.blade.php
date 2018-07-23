@@ -207,20 +207,198 @@
 		width :8em;
 		border-right: 0px solid #A9A9A9;		
 	}
+        #lang-nav-bar {
+            margin-top: -20px;
+        }
+        #content_page {
+            margin-top: -6rem !important;
+        }
+        .sections {
+    width: 65.8%;
+        }
+        .glyph{
+            left: 80%;
+        }
+        .div_icon_footer {
+            padding-left: 14% !important;
+        }
+        @media (min-width: 1030px) and (max-width: 1270px) {
+            .one_item_details, .modal_one_item_details
+            {
+                left: 2em !important;
+                width: 34% !important;
+            }
+            .sections {
+                width: 63.8%;
+            }
+        }
+        @media (min-width: 768px) and (max-width: 1030px) {
+            .sections{
+                width: 60%;
+            }
+            .div_icon_footer{
+                    margin-left: 20%;
+            }
+            .ul_navbar {
+                width: 50rem !important;
+            }
+            .ul_navbar_mobile{
+                width: 27rem !important;
+            }
+            .nav-item a {
+                font-size: 1.8em !important;
+            }
+            .one_item_details, .modal_one_item_details
+            {
+                left: -1em !important;
+                width: 41% !important;
+            }
+            #content_page{
+                padding-left: 0rem;
+                padding-right: 0rem;
+            }
+            .header_page_text_div{
+                width: 92.3% !important;
+                padding-left: 46% !important;
+            }
+            .icon-flag {
+    margin-top: 0em;
+            }
+        }
+        @media (max-width: 950px){
+            .header_page{
+                background-size: 140% !important;
+            }
+        }
+        @media (max-width: 910px){
+            .header_page{
+                background-size: 147% !important;
+            }
+            .ul_navbar {
+                width: 27rem !important;
+            }
+            .nav-item a {
+                font-size: 2em !important;
+            }
+        }
+           @media (max-width: 870px){
+            .header_page{
+                background-size: 154% !important;
+            }
+        }
+        @media (max-width: 830px){
+            .header_page{
+                background-size: 161% !important;
+                width: 100%;
+                height: 17em;
+                margin-left: 0%;
+            }
+            .div_icon_footer {
+                margin-left: 16% !important;
+            }
+            .header_page_text_div {
+                width: 100% !important;
+                padding-left: 23em !important;
+            }
+            .one_item_details{
+                left: -4em !important;
+            }
+            .sections {
+                width: 64%;
+            }
+            .icon-flag {
+    width: 20px !important;
+    height: 20px !important;
+}
+#lang-nav-bar .nav-item a {
+    font-size: 1.3em !important;
+}
+        }
+        @media (min-width: 700px) and (max-width: 767px){
+            .one_item_details{
+                width: 37% !important;
+            }
+            .div_icon_footer {
+                margin-left: 16% !important;
+                width: 60%;
+                padding-left: 9% !important;
+            }
+            .sections {
+                width: 70%;
+            }
+            .header_page_text_div {
+    padding-left: 38% !important;
+            }
+            #content_page {
+    padding: 0rem;
+            }
+            .glyph{
+                font-size: 14px !important;
+            }
+            .navbar-nav{
+                display: flex !important;
+            }
+            #lang-nav-bar .nav-item a {
+    font-size: 1em !important;
+            }
+            .icon-flag {
+    margin-top: 0em;
+            }
+        }
+        
+        @media (max-width: 700px){
+            #content_page {
+                padding: 0rem;
+            }
+              .div_icon_footer {
+                margin-left: 18% !important;
+                width: 60%;
+                padding-left: 4% !important;
+            }
+            #lang-nav-bar .nav-item a {
+    font-size:0.9em !important;
+            }
+               .icon-flag {
+    margin-top: 0em;
+        width: 18px !important;
+    height: 18px !important;;
+            }
+               .navbar-nav{
+                display: flex !important;
+            }
+            .header_page {
+                  background-size: 170% !important;
+    background-position: center;
+                height: 14.8em;
+            }
+            .header_page_text_div {
+                top: 9.8em;
+                padding-left: 4em !important;
+            }
+            .one_item_details{
+                position: initial; 
+                margin-top: 1.2em;
+                    width: 70% !important;
+                    margin-left: 15%;
+            }
+            .sections {
+    width: 106%;
+}
+        }
 
-	@media (min-width: 768px) and (max-width: 1030px) {
-		.sections{
-			width: 60%;
-		}
-		.one_item_details, .modal_one_item_details
-		{
-      		left: -1em !important;
-    		width: 38% !important;
-		}
-	]
-
-
-
+        @media (max-width: 582px){
+            .header_page {
+                background-size: 190% !important;
+            }
+               .div_icon_footer {
+                margin-left: 10% !important;
+                width: 80%;
+                padding-left: 4% !important;
+            }
+               #lang-nav-bar .nav-item a {
+    font-size: 0.7em !important;
+            }
+        }
 </style>
 @endsection
 
@@ -236,8 +414,8 @@
 	</div>     
 	<div class="one_item_details" style="left:5em;width: 28%;">
 		<div class="header_item_details" style="    margin-bottom: -6em;">
-			<img src="{{isset(Auth::user()->image_id) ?Auth::user()->image_id : '/uploads/user.png'}}" style="height: 400px;width: 100%">
-			<span class="glyphicon glyphicon-cloud-upload glyph" onclick="upload();"  style="font-size: 20px;left: 15em;top: -3em;    width: 12%%;" > </span>
+			<img src="{{isset(Auth::user()->image_id) ?Auth::user()->image_id : '/uploads/user.png'}}" style="height: auto;margin-left: 8%;margin-top: 2rem;width: 84%;">
+			<span class="glyphicon glyphicon-cloud-upload glyph" onclick="upload();"  style="font-size: 20px;top: -3em;    width: 12%%;" > </span>
 			{!! Form::open(['route'=>'upload-pic' , 'files'=>'true' , 'id'=>'upload']) !!}
 				{{ Form::file('image', ['id'=>'file' , 'hidden'=>'hidden' ]) }}
 			{!! Form::close() !!}
@@ -249,7 +427,7 @@
 			
 			<input type="text" id="address" class="input_singup" placeholder ="{{ isset(Auth::user()->address) ? Auth::user()->address :'Address'}}     (Changable)">
 			<input type="text" id="date_of_brith" class="input_singup" placeholder ="{{isset(Auth::user()->birth_date) ?Auth::user()->birth_date : Birthdate }} (Changable)" style="margin-bottom: 1em" >
-			<span class="glyphicon glyphicon-pencil glyph" aria-hidden="true" onclick="changeDetials()" ></span>
+                        <span class="glyphicon glyphicon-pencil glyph" aria-hidden="true"  onclick="changeDetials()" ></span>
 		</div>
 	</div>
 	<div class="sections" style="overflow: auto;height: 33em;">

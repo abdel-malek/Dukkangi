@@ -76,7 +76,9 @@
              width: 90%;
         /*max-width: 90%;*/
         }
-        
+        .off_item{
+                font-family: 'EagarFont';
+        }
         .icon-flag {
     width: 25px;
     height: 25px;
@@ -85,7 +87,13 @@
              display: none !important;
          }
 
-        
+        #ex3 .fa-stack[data-count]:after {
+    right: -8%;
+    top: -3%;
+      font-size: 50%;
+    font-family: cursive;
+    padding: .5em;
+        }
         @media (max-width: 767px)and (min-width:577px){
         .div_login, .div_singup {
     width: 300px;
@@ -229,7 +237,7 @@ $('#main-nav-bar a').addClass('main-nav-bar_mobile');
 $('.top_nav').addClass('top_nav_mobile');
 $('.sections').addClass('sections_mobile');
 $('.col_item').addClass('col_item_mobile');
-$('.ul_navbar').addClass('.ul_navbar_mobile');
+$('.ul_navbar').addClass('ul_navbar_mobile');
 
 }
   </script>

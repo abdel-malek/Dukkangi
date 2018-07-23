@@ -232,7 +232,9 @@
               .contact-us-div{
                 margin-top: -2em !important;
         }
-            
+        .contact-us-div_mobile{
+             margin-top: 2em !important; 
+        }
         }
           @media (min-width: 900px) and (max-width: 1000px) {
               .contact-us-div{
@@ -423,6 +425,7 @@ $('.col_item').addClass('col_item_mobile');
 $('body').addClass('body_mobile');
 $('.img-logo').addClass('img-logo_mobile');
 $('.div_icon_footer').addClass('div_icon_footer_mobile');
+$('.contact-us-div').addClass('contact-us-div_mobile');
 }
 
 	</script>

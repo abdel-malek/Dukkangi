@@ -56,6 +56,10 @@
    function showratemodal(){
     $('#rate-us-modal').css({'display':'block'});
    }
+      if($('.off_item').attr('value').length > 6){
+    $('.off_item').css('fontSize','0.6rem');
+    $('.off_item').css('marginLeft','-0.2rem');
+    }
 </script>
 <script >
     var ratings = document.getElementsByClassName('rate-us');
@@ -548,10 +552,12 @@
   }
 </script>
 <script >
-  function addCartModal(src,id){
+  function addCartModal(src,id,total){
     console.log(id);
     $('#modal_one_item_details').attr('data-productId', id);
     $('#modal_one_item_details').data('data-qty', 1);
+    $('#modal_one_item_details .total_qty').text(total+' €');
+    $('#modal_one_item_details .total_qty').attr('value',total);
     $('#modal-img').attr('src' , src );
     console.log(src);
     showModal();
