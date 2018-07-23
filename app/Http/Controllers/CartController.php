@@ -29,7 +29,7 @@ class CartController extends Controller
 
     public function getViewMyCartPage()
     {
-
+        
         $lang = session('lang');
         App::setLocale($lang);
 

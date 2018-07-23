@@ -1280,25 +1280,25 @@ width: auto !important;
         
 
         @if ($product->qty != 0 ) 
-            @if ($existedInCart == 0)
             <p class="add_to_card_item_details" style="cursor: pointer;margin-top: 100px" id="btn_modal_one_item_details">
+            @if ($existedInCart == 0)
                     <span>
                         <small>@lang('Add to cart')</small>
                     </span>
                 
                 <img src="/front-end/images/price-tag/buy-this-item.png" id="img_add_to_card_item_details" class="img_add_to_card_item_details" @if(session( 'lang')=='de'
                     ) style="height: 7.2em;" @endif />
-            </p>
             @else
-            <p class="add_to_card_item_details" style="margin-top: 100px">
+           
                     <span>
                         <small style="color:#d80000;">@lang('Already in cart') </small>
                     </span>
                 
                 <img src="/front-end/images/price-tag/add-to-cart.png" class="img_add_to_card_item_details" @if(session( 'lang')=='de'
                     ) style="height: 7.2em;" @endif />
-            </p>
             @endif
+             </p>
+           
         @endif
     </div>
 
@@ -1446,7 +1446,7 @@ width: auto !important;
         </div>
         <div style="width: 70%;float: right;">
             <p class="num_qty">
-                1
+                {{ $itemQty != 0 ? $itemQty : '1' }}
             </p>
             <div style="width:30%;float: right;">
                 <img src="/front-end/images/payment/handler-plus.png" onclick="num_plus(this)" class="btn_qty">

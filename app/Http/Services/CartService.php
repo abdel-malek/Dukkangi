@@ -49,7 +49,11 @@ class CartService
       $count = OrderItem::where('order_id','=',$cartId)
       ->where('status_id','=',OrderStatus::CREATED)
       ->count();
-      session(['order_item_count' => $count]);
+      if ($count != 0)
+          session(['order_item_count' => $count]);
+      else 
+        session(['order_item_count' => 1]);
+    session()->save();
     }
 
     private static function buyItemCart($userId, $paymentId = null)
@@ -68,7 +72,7 @@ class CartService
         $cartId = self::buyItemCart($userId, null);
         return OrderItem::updateOrCreate(
             ['order_id' => $cartId, 'item_id' => $product->id, 'user_id' => $userId],
-            ['order_id' => $cartId, 'item_id' => $product->id,
+            [   'order_id' => $cartId, 'item_id' => $product->id,
                 'sub_amount' => isset($product->discount_price) ?$product->discount_price :$product->price, 'qty' => $qty,
                 'total_amount' => $product->price * $qty,
                 'gain_point' => ceil($product->point / 5), 'user_id' => $userId, 'status_id' => OrderStatus::CREATED,
@@ -78,16 +82,21 @@ class CartService
 
     public static function removeOrderItem($id)
     {
-        return OrderItem::where('id', '=', $id)->delete();
+        OrderItem::where('id', '=', $id)->delete();
+        $count = OrderItem::where('order_id','=',session('cartId'))
+            ->where('status_id','=',OrderStatus::CREATED)
+            ->count();
+        session(['order_item_count' => $count]);
+        session()->save();
     }
-
+    
     public static function addToCart($productId, $qty, $cartId, $userId)
     {
         $product = ProductService::loadById($productId);
         $orderItem = self::createOrderItem($product, $qty, $cartId, $userId);
+
         self::getOrderItemCount($cartId);
-        // Session::set('order_item_count' , session('order_item_count') + 1);
-        session(['order_item_count' => session('order_item_count') + 1]);
+        // session(['order_item_count' => session('order_item_count') + 1]);
         return $orderItem;
     }
 

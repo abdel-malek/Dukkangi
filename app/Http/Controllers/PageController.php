@@ -439,16 +439,6 @@ class PageController extends Controller
 		$logo = Brand::select('image_path' , 'id')
 		->where('id' , '=', $product->brand_id)
 		->get()->first();
-		// foreach ($comments as $comment) {
-		// 	$user =  User::find($comment->user_id);
-		// 	if (!isset($user))
-		// 		$name = "Anonymous";
-		// 	else
-		// 		$name = $user->name;
-
-		// 	$comment->user_id = $name;
-		// 	$comment->rate = round($comment->rate);
-		// }
 
 		$Tags = [];
 		$subcategory_ids = [];
@@ -525,7 +515,11 @@ class PageController extends Controller
 				break;
 			}
 		
-		return view('client.pages.item_view')->withProduct($product)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments)->withBrand($logo)->withExistedInCart($existedInCart);
+		$ordercount = 0;
+		if ((session('order_item_count'))!== null )  
+			$ordercount = OrderItem::where('order_id' , '=', session('cartId')) ->where('item_id', '=' , $id)->where('user_id', '=', Auth::id() )->get()->first();
+
+		return view('client.pages.item_view')->withProduct($product)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments)->withBrand($logo)->withExistedInCart($existedInCart)->withItemQty($ordercount->qty);
 	}
 
 
@@ -709,5 +703,11 @@ class PageController extends Controller
     	}
     	$arr->push($obj);
     	return ;
+    }
+    public function deleteFromCart(Request $request){
+    	$id =$request->id; 
+    	$order = OrderItem::where('order_id', '=', session('cartId'))->where('item_id' , '=', $id)->get()->first();
+    	// dd($order);
+     	return CartService::removeOrderItem($order->id);
     }
 }

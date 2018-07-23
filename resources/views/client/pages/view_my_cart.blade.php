@@ -1365,12 +1365,12 @@
     }
     function deleteItem(obj){
         var id = $(obj).parent().parent().parent().attr('data-productId');
-        var qty = 0;
-        console.log(id);   
+
+        // console.log(id);   
         $.ajax({
             type: "POST",
-            url: `/changeqty/`,
-            data: { 'qty': qty, 'id': id },
+            url: `/deletefromcart`,
+            data: { 'id': id },
             headers: {
                 "x-csrf-token": $("[name=_token]").val()
             },

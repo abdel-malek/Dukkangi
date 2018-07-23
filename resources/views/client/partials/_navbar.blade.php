@@ -29,7 +29,7 @@
               {{-- <a class="nav-link" href="{{ route('mycart')}}">@lang('My Cart') </a> --}}
               <a href="{{route('mycart')}}">
                 <div id="ex3">
-                  <span class="p1 fa-stack fa-1x has-badge" data-count=@if(!empty(Session::get('order_item_count'))) {{ Session::get('order_item_count')}} @else 0 @endif>
+                  <span class="p1 fa-stack fa-1x has-badge" data-count=@if(!empty(Session::get('order_item_count'))) {{ session('order_item_count')}} @else 0 @endif>
                     <i class="p2 fa fa-circle fa-stack-2x"></i>
                     <i class="p3 fa fa-shopping-cart fa-stack-2x fa-inverse" data-count=@if(!empty(Session::get('order_item_count'))) {{ Session::get('order_item_count')}} @else 0 @endif></i>
                   </span>
