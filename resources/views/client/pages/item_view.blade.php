@@ -282,7 +282,9 @@
 #slider_preview .carousel-control-prev-icon {
     background-image: url(data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' f…3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E);
 }
-
+.product-rate span{
+    cursor: initial !important;
+}
 @media (min-width: 768px) and (max-width: 1000px) {
     .zoomWindowContainer div{
      display: none !important;   
@@ -1133,48 +1135,12 @@ width: auto !important;
                     @endif
 
                 </ol>
-                <div class="carousel-inner" id="carousel-inner">
+                 <div class="carousel-inner" id="carousel-inner">
                     <div class="carousel-item active" >
 <!--                        <img class=" d-block w-100" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id}}" alt="First slide">-->
-                        <div class="slide-bg slider_zoom_item"  onclick="imageModal(this);" data-target="slider_image_item" style="height: 350px; background-image: url({{$product->image_id}})" data-zoom-image="{{$product->image_id}}"></div>
+                        <div class="slide-bg slider_zoom_item"  onclick="imageModal(this);" data-target="slider_image_item" id="thum1_slider" style="height: 350px; background-image: url({{$product->image_id}})" data-zoom-image="{{$product->image_id}}"></div>
                     </div>
 
-                    @if(isset($product->image_id2))
-                    <div class="carousel-item">
-<!--
-                        <img class="img_item_details"  onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id2}}"
-                            alt="Second slide">
--->
-                            <div class="slide-bg slider_zoom_item" onclick="imageModal(this);" data-target="slider_image_item" style="height: 350px; background-image: url({{$product->image_id2}})" data-zoom-image="{{$product->image_id2}}"></div>
-                    </div>
-                    @endif @if(isset($product->image_id3))
-                    <div class="carousel-item">
-<!--
-                        <img class="img_item_details" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id3}}"
-                            alt="Third slide">
--->
-                            <div class="slide-bg slider_zoom_item2" onclick="imageModal(this);" data-target="slider_image_item" style="height: 350px; background-image: url({{$product->image_id3}})" data-zoom-image="{{$product->image_id3}}"></div>
-                    </div>
-                    @endif @if(isset($product->image_id4))
-                    <div class="carousel-item">
-<!--
-                        <img class="img_item_details" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id4}}"
-                            alt="Fourth slide">
--->
-                            <div class="slide-bg slider_zoom_item" onclick="imageModal(this);" data-target="slider_image_item" style="height: 350px; background-image: url({{$product->image_id4}})" data-zoom-image="{{$product->image_id4}}"></div>
-                    </div>
-                    @endif
-                    
-<!--                                            <a class="carousel-control-prev" href="#slider_image_item" role="button" data-slide="prev">
-                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-   <i class="fa fa-arrow-left carousel-control-prev-icon" style="color:#000;font-size: 2rem;background-image: none;" aria-hidden="true"></i>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#slider_image_item" role="button" data-slide="next">
-                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <i class="fa fa-arrow-right carousel-control-next-icon" style="color:#000;font-size: 2rem;background-image: none;" aria-hidden="true"></i>
-                        <span class="sr-only">Next</span>
-                    </a>-->
                 </div>
 
             </div>
@@ -1217,7 +1183,7 @@ width: auto !important;
             <!-- <img src="{{$product->image_id}}" /> -->
             <div class="div_title_item_details" style="height: auto;" id="product-name" >
                 <p class="title_item_details product-name" style="text-align: center">{{$product->english}}</p>
-                <span class="rating rating-info ratings{{$product->rate}} product-rate" data-type="product" data-id="{{$product->id}}" style="left: 5.5em;"></span>
+                <span class="rating rating-info ratings{{$product->rate}} product-rate" data-type="product" data-id="{{$product->id}}" style="left: 5.5em; cursor: none;"></span>
                
             </div>
         </div>
@@ -1940,12 +1906,17 @@ $('.modal_one_item_details').addClass('.modal_one_item_details_mobile');
 <script type="text/javascript" src="{{url('/front-end/js/plugin/jquery.elevateZoom-3.0.8.min.js')}}"></script>
 
 <script>
+                 function show_image_slider(link,obj){
+           $('#thum1_slider').css('backgroundImage',"url('"+link+"')");
+           $('.zoomLens').css('backgroundImage',"url('"+link+"')");
+           $('#slider_image_item .carousel-indicators img').removeClass('active');
+           $(obj).addClass('active');
+       }
+                                                                                                                            
 	$(function () {
+     
             $("#carousel-inner .carousel-item .slider_zoom_item").elevateZoom({
- constrainType:"height", constrainSize:274, zoomType: "lens", containLensZoom: true,  cursor: 'pointer'
-});
-           $("#carousel-inner .carousel-item .slider_zoom_item2").elevateZoom({
- constrainType:"height", constrainSize:274, zoomType: "lens", containLensZoom: true,  cursor: 'pointer'
+ constrainType:"height", constrainSize:274, zoomType: "lens", containLensZoom: true,  cursor: 'pointer',scrollZoom : true
 });
 $('#slider_preview img').elevateZoom({
         zoomWindowFadeIn: 400,
