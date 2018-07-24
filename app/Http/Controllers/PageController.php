@@ -516,10 +516,12 @@ class PageController extends Controller
 			}
 		
 		$ordercount = 0;
-		if ((session('order_item_count'))!== null )  
-			$ordercount = OrderItem::where('order_id' , '=', session('cartId')) ->where('item_id', '=' , $id)->where('user_id', '=', Auth::id() )->get()->first();
+		if ((session('order_item_count')) !== null )  {
+			$order = OrderItem::where('order_id' , '=', session('cartId')) ->where('item_id', '=' , $id)->where('user_id', '=', Auth::id() )->get()->first();
+			$ordercount = $order->qty; 
+		}
 
-		return view('client.pages.item_view')->withProduct($product)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments)->withBrand($logo)->withExistedInCart($existedInCart)->withItemQty($ordercount->qty);
+		return view('client.pages.item_view')->withProduct($product)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments)->withBrand($logo)->withExistedInCart($existedInCart)->withItemQty($ordercount);
 	}
 
 
