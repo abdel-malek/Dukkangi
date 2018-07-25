@@ -107,7 +107,7 @@ class PageController extends Controller
 		foreach ($tags as $tag) {
 			array_push($Tags, $tag['product_id']);
 		}
-		// dd($subcategories);
+
 		$products = DB::table('product')
 		->whereIn('id' , $Tags)
 		->orderBy('category_id', 'asc')->take(15)->get();
@@ -159,7 +159,15 @@ class PageController extends Controller
 			if (isset($product->discount_price)) {
 				$product->discount =  sprintf('%0.0f',100 - (($product->discount_price * 100) / $product->price));
 			}
+			$product->order = 1;
+			if (session('cartId') != null){
+				$temp = OrderItem::where('order_id', '=', session('cartId'))->where('item_id', '=', $product->id)->get()->first();
+				if ($temp != null ){
+					$product->order = $temp->qty;
+				}
+			}
 		}
+		// dd($products);
 		$category = Category::find($categoryId);
 		if ($lang == 'ar') $category->english = $category->arabic;
 		if ($lang == 'ku') $category->english = $category->kurdi;

@@ -772,7 +772,7 @@
             </h3>
         </div>
         <div style="width: 70%;float: right;">
-            <p class="num_qty">
+            <p class="num_qty" id="num_qty">
                 1
             </p>
             <div style="width:30%;float: right;">
@@ -1023,7 +1023,9 @@
     $('#modal_one_item_details .btn_done').on('click', function () {
         //get productId,Qty
         productId = $('#modal_one_item_details').attr('data-productId');
-        qty = $('#modal_one_item_details').attr('data-qty');
+        // qty = $('#modal_one_item_details').attr('data-qty');
+        qty = $('.num_qty').text();
+        // console.log(qty);
         //submit add to cart ajax.
         addToCart(productId, qty);
     });

@@ -20,7 +20,8 @@ class CartController extends Controller
             return redirect('login');
         }
         $productId = $request->input('productId');
-        $qty = $request->input('qty');
+        $qty = $request->qty;
+        // dd($qty);
         $userId = Auth::id();
         $cartId = session('cartId');
         return CartService::addToCart($productId, $qty, $cartId, $userId);

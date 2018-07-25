@@ -1372,8 +1372,10 @@
     }
     function deleteItem(obj){
         var id = $(obj).parent().parent().parent().attr('data-productId');
-
-        // console.log(id);   
+        var count = $(obj).parent().parent().find('#total').text();
+        for (i=0; i<count ; i ++ ){
+            num_min(obj);
+        }
         $.ajax({
             type: "POST",
             url: `/deletefromcart`,
