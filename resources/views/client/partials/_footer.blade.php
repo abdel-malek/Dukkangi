@@ -121,7 +121,7 @@
                 /*for each item in the array...*/
                  b = document.createElement("DIV");
                     
-                    b.innerHTML =  "No Matches" ;
+                    b.innerHTML =  "@lang('No Matches')" ;
                     // b.innerHTML += response[i]['english'].substr(val.length);
                     /*insert a input field that will hold the current array item's value:*/
                     // b.innerHTML += "<input type='hidden' data-type='" + response[i]['type'] +"'  value='" + response[i]['id'] + "'>";
@@ -348,7 +348,7 @@
                 /*for each item in the array...*/
                  b = document.createElement("DIV");
                     
-                    b.innerHTML =  "No Matches" ;
+                    b.innerHTML =  "@lang('No Matches')" ;
                     // b.innerHTML += response[i]['english'].substr(val.length);
                     /*insert a input field that will hold the current array item's value:*/
                     // b.innerHTML += "<input type='hidden' data-type='" + response[i]['type'] +"'  value='" + response[i]['id'] + "'>";
