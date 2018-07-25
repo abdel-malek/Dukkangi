@@ -970,6 +970,7 @@
 		background-position: center;
 		cursor: pointer
 	}
+      
 	@media(min-width: 992px) and (max-width: 1199px){
 		.one_item_details{
 		width: 30%;
@@ -1122,16 +1123,16 @@ width: auto !important;
             <div id="slider_image_item" class="carousel slide" data-pause="hover" data-ride="false" style="height: 350px">
                 <ol class="carousel-indicators" onchange="refresh_zoom()" style="bottom:-57px">
                     <!--<li data-target="#slider_image_item" data-slide-to="0" class="active"></li>-->
-                    <img src="{{$product->image_id}}" data-target="#slider_image_item" data-slide-to="0" class="active" style="height:2rem;width:auto;margin: 0rem 0.2rem;border: 1px solid #aaa;" />
+                    <img src="{{$product->image_id}}" data-target="#slider_image_item" onclick='show_image_slider("{{$product->image_id}}",this)' data-slide-to="0" class="active" style="height:2rem;width:auto;margin: 0rem 0.2rem;border: 1px solid #aaa;cursor: pointer;" />
                     @if(isset($product->image_id2))
                     <!--<li data-target="#slider_image_item" data-slide-to="1"></li>-->
-                    <img src="{{$product->image_id2}}" data-target="#slider_image_item" data-slide-to="1" style="height:2rem;width:auto;margin: 0rem 0.2rem;border: 1px solid #aaa;" />
+                    <img src="{{$product->image_id2}}" data-target="#slider_image_item" onclick='show_image_slider("{{$product->image_id2}}",this)' data-slide-to="1" style="height:2rem;width:auto;margin: 0rem 0.2rem;border: 1px solid #aaa;cursor: pointer;" />
                     @endif @if(isset($product->image_id3))
                     <!--<li data-target="#slider_image_item" data-slide-to="2"></li>-->
-                    <img src="{{$product->image_id3}}" data-target="#slider_image_item" data-slide-to="2" style="height:2rem;width:auto;margin: 0rem 0.2rem;border: 1px solid #aaa;" />
+                    <img src="{{$product->image_id3}}" data-target="#slider_image_item" onclick='show_image_slider("{{$product->image_id3}}",this)' data-slide-to="2" style="height:2rem;width:auto;margin: 0rem 0.2rem;border: 1px solid #aaa;cursor: pointer;" />
                     @endif @if(isset($product->image_id4))
                     <!--<li data-target="#slider_image_item" data-slide-to="3"></li>-->
-                    <img src="{{$product->image_id4}}" data-target="#slider_image_item" data-slide-to="3" style="height:2rem;width:auto;margin: 0rem 0.2rem;border: 1px solid #aaa;" />
+                    <img src="{{$product->image_id4}}" data-target="#slider_image_item" onclick='show_image_slider("{{$product->image_id4}}",this)' data-slide-to="3" style="height:2rem;width:auto;margin: 0rem 0.2rem;border: 1px solid #aaa;cursor: pointer;" />
                     @endif
 
                 </ol>
@@ -1424,7 +1425,7 @@ width: auto !important;
 
     <p class="price_item_details" style="margin-top: 0em;" data-product-price='{{isset($product->discount_price) ? $product->discount_price: $product->price}}'>
         <span style="    position: absolute;font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;left: 0em;z-index:22;">@lang('Total') </span>
-        <span class="total_qty" style="    position: absolute;left:2.2em;width: 6em;margin-top:1rem;z-index:22;"> {{isset($product->discount_price) ? $product->discount_price: $product->price}} €</span>
+        <span class="total_qty" style="    position: absolute;left:4.2em;width: 6em;margin-top:1rem;z-index:22;"> {{isset($product->discount_price) ? $product->discount_price: $product->price}} €</span>
         <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details" />
     </p>
     <div class="button_modal_one_item_details">

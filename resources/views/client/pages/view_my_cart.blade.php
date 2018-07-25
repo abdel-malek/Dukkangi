@@ -254,6 +254,13 @@
         float: left;
         margin-right: 17%;
  }
+   @media(min-width: 1600px){
+            
+        .price_item_details {
+            width: 60% !important;
+        }
+            
+        }
 @media (min-width: 1030px) and (max-width: 1278px) {
     .all_page_item_view{
         padding: 0rem;

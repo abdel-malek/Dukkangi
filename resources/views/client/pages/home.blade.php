@@ -556,7 +556,7 @@
         <div class="landing-items-block landing-items-block_parent  {{ $counter %2 == 0 ? 'bottom_left_background_block':'bottom_right_background_block'}}"  style="margin-top: {{($lastflag)? '8': '34'}}em;left: 50px;width: 62%;">
             <a href="{{route('category' , $categories[$counter]->id) }}">
                 <div class="block_tite_section_home">
-                    <p class="shisha text_item_block text_item_block_lg" style="width: 41%;text-align: center;left: 0px">{{$categories[$counter]->english}}</p>
+                    <p class="shisha text_item_block text_item_block_lg" style="width: 37%;text-align: center;left: 0px">{{$categories[$counter]->english}}</p>
 
                     <div class="hint_title"><span>{{$categories[$counter]->english}}</span></div>
                 </div>
@@ -692,7 +692,7 @@ $('.item_in_lg').css('display','none');
 
 }
 $('.text_item_block').each(function(){
-    if($(this).text().length >= 17){
+    if($(this).text().length >= 16){
         $(this).text($(this).text().slice(0,10)+'..');
         $(this).parent().find('.hint_title').css('display','block');
     }else{
@@ -705,6 +705,10 @@ $('.text_item_block').each(function(){
         $(this).attr('style',styles);
 //    }
     }
+
+    
+    
+   
      if($(this).text().length <= 8){
         var styles = $(this).attr('style');
         styles += ";top:16% !important;font-size:25px;";
