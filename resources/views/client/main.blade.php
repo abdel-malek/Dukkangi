@@ -130,6 +130,9 @@
          .input_search_sm{
              display: block !important;
          }
+         .autocomplete-items {
+    width: 76%;
+         }
 }
   @media (min-width: 690px) and (max-width: 776px) {
  .div_icon_footer {

@@ -429,6 +429,13 @@
     margin-top: -1rem !important;
 }
      }
+     
+      @media(max-width: 991px){
+         .autocomplete-items {
+    width: 38% !important;
+    left: 19rem;
+         }
+}
       @media (min-width: 200px) and (max-width: 860px) {
 .div_icon_footer {
     margin-left: 14%;

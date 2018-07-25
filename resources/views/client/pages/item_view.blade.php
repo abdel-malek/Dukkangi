@@ -96,6 +96,12 @@
         height: 0.7em;
     }
 
+  .rating_navbar .star::after {
+        color: #d80001 !important;
+    }
+    .rating_navbar .star::before {
+        color: #d80001 !important;
+    }
     .div_item .rating {
         left: 2em;
     }
