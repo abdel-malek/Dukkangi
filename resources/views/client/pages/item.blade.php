@@ -9,7 +9,15 @@
         border: 0.04em solid #8a8a8a;
         width: 100% !important;
     }
-
+.shadow_div_discount {
+    width: 6.7em;
+    -moz-box-shadow: 6px -5px 5px rgba(0,0,0,.8);
+    -o-box-shadow: 6px -5px 5px rgba(0,0,0,.8);
+    -webkit-box-shadow: 6px -5px 5px rgba(0,0,0,.8);
+    box-shadow: 6px -5px 5px rgba(0,0,0,.8);
+    top: -3.5em;
+    left: -0.85em;
+}
     .image_thum {
         left: -4em !important;
         width: auto !important;
@@ -49,7 +57,7 @@
     }
 
     .sub-paragraph {
-        background-color: #00000044;
+        background-color: rgba(0,0,0,.4);
         position: relative;
         bottom: 31px;
         font-size: 0.9em;
@@ -143,10 +151,26 @@
 .price_discount{
         font-family: 'EagarFont';
 }
+.img_item {
+    height: 14.4em;
+}
+@media (min-width: 1200px) and (max-width: 1300px) {
+    
+    .img_item {
+    height: 12.4em;
+}
+}
 @media (min-width: 768px) and (max-width: 1000px) {
     .modal_one_item_details {
     width: 60% !important;
     margin-left: -10% !important;
+}
+.title_qty, .num_qty{
+        font-size: 1.8em;
+}
+.button_modal_one_item_details .btn_done, .button_modal_one_item_details .btn_cancel, .button_modal_one_item_details .btn_view_my_cart {
+    font-size: 1.4em;
+    
 }
 #modal-img{
     width: 100%;
@@ -160,6 +184,18 @@
     bottom: unset !important;
     height: 97px;
     margin-top: -6rem;
+}
+.div_item .old-price_mobile{
+     font-size: 1.4rem !important;
+}
+.div_item .tax_include_item_mobile{
+    margin-left: -9.2rem !important;
+    margin-top: 0.8rem !important;
+}
+.tax_include_item_mobile{
+    font-size: 1.3rem !important;
+    margin-top: 1rem !important;
+        /*margin-left: -1.3rem !important;*/
 }
 }
     @media (min-width: 300px) and (max-width: 1100px) {
@@ -791,8 +827,8 @@
     </div>
     <div class="button_modal_one_item_details">
         @if( Auth::check())
-        <p class="btn_done" style="background-color: #d80001;color: #fff;cursor: pointer">@lang('Done')</p>
-        <p class="btn_cancel" style="margin-left: 9%;cursor: pointer">@lang('Cancel') </p>
+        <p class="btn_done" onclick="reset_value()" style="background-color: #d80001;color: #fff;cursor: pointer">@lang('Done')</p>
+        <p class="btn_cancel" onclick="reset_value()" style="margin-left: 9%;cursor: pointer">@lang('Cancel') </p>
         <a href="{{route('mycart')}}">
             <p class="btn_view_my_cart" style="width: 100%;">@lang('View my Cart') </p>
         </a>
@@ -841,25 +877,28 @@
 <script>
     function num_plus(obj) {
     
-            if (counter < 1) {
-                counter = 1;
-                $(obj).parent().parent().find('p').text(counter);
+            if (counter_qty < 1) {
+                counter_qty = 1;
+                $(obj).parent().parent().find('p').text(counter_qty);
             }
             else {
-                 counter = counter + 1
-                $(obj).parent().parent().find('p').text(counter);
+                 counter_qty = counter_qty + 1
+                $(obj).parent().parent().find('p').text(counter_qty);
             }
-                counter = parseInt($('.num_qty').text());
-        $('.total_qty').text((counter * parseInt($('.total_qty').attr('value')))+' €');
+                counter_qty = parseInt($('.num_qty').text());
+        $('.total_qty').text((counter_qty * parseInt($('.total_qty').attr('value')))+' €');
     }
     function num_min(obj) {
-        counter = parseInt($(obj).parent().parent().text());
-        if ((counter > 1)) {
-            counter = counter - 1;
-            $(obj).parent().parent().find('p').text(counter);
+        counter_qty = parseInt($(obj).parent().parent().text());
+        if ((counter_qty > 1)) {
+            counter_qty = counter_qty - 1;
+            $(obj).parent().parent().find('p').text(counter_qty);
         }
-    counter = parseInt($('.num_qty').text());
-        $('.total_qty').text((counter * parseInt($('.total_qty').attr('value')))+' €');
+    counter_qty = parseInt($('.num_qty').text());
+        $('.total_qty').text((counter_qty * parseInt($('.total_qty').attr('value')))+' €');
+    }
+    function reset_value(){
+        counter_qty = 1;
     }
 </script>
 <script>
@@ -970,6 +1009,7 @@
 </script>
 <script>
     var counter = 1;
+     var counter_qty = 1;
     function scrollload() {
         counter++;
         console.log(counter);
@@ -1035,6 +1075,8 @@
             $('.thumnbail').addClass('thumnbail_mobile');
             $('#jssor_1').addClass('jssor_1_mobile');
             $('.ul_navbar').addClass('.ul_navbar_mobile');
+            $('.old-price').addClass('old-price_mobile');
+            $('.tax_include').addClass('tax_include_item_mobile');
         }
 
 link = window.location.href;

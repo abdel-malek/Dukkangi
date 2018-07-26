@@ -199,6 +199,9 @@
   .input_search_sm{
                     width: 60% !important;
                 }
+                .section_about{
+                    font-size: 1.8rem;
+                }
 	@media (min-width: 768px) and (max-width: 1030px) {
 		.sth 
 		{
@@ -227,7 +230,29 @@
         }
       
 	}
-        
+          @media (min-width: 400px) and (max-width: 1024px) {
+                #main-navbar-items ul li {
+                    font-size: 0.9rem;
+                }
+                #lang-nav-bar .nav-item a {
+                    font-size: 1.4em !important;
+                }
+                .ul_navbar_mobile .nav-item a {
+    font-size: 3em !important;
+}
+                .ul_navbar_mobile{
+                    width: 37em !important;
+                }
+                .nav-item a{
+                    font-size: 1.3em !important;
+                }
+
+                  #nav-bar-search
+            {
+                margin-right: 4rem;
+                width: 300px;
+            }
+            }
         @media (min-width: 1000px) and (max-width: 1030px) {
               .contact-us-div{
                 margin-top: -2em !important;
@@ -240,7 +265,11 @@
               .contact-us-div{
                 margin-top: -4em !important;
         }
-            
+            .contact-us-div_mobile{
+              margin-top: -25em !important;
+    padding-bottom: 23rem;
+        }
+              
         }
          @media (min-width: 400px) and (max-width: 900px) {
               .contact-us-div{
@@ -259,27 +288,79 @@
 @endsection
 
 @section ('main_section')
+<style>
+              @media (min-width: 400px) and (max-width: 1024px) {
+                #main-navbar-items ul li {
+                    font-size: 0.9rem;
+                }
+                #lang-nav-bar .nav-item a {
+                    font-size: 1.4em !important;
+                }
+                #main-navbar-items ul li {
+    margin-right: 2rem !important;
+                }
+                .input_search_sm{
+                    margin-top:2rem !important;
+                }
+                .ul_navbar_mobile .nav-item a {
+    font-size: 3em !important;
+}
+                .ul_navbar_mobile{
+                    width: 39em !important;
+                }
+                .nav-item a{
+                    font-size: 1.7vw !important;
+                }
+
+                  #nav-bar-search
+            {
+                margin-right: 4rem;
+                width: 300px;
+            }
+            #main-navbar-items ul li {
+    margin-top: 9px;
+}
+            }
+            @media (max-width: 1025px) and (min-width: 992px){
+.ul_navbar {
+    width: 75rem;
+}
+.nav-item a{
+                    font-size: 1.8em !important;
+                }
+}
+                    @media (min-width: 1024px) and (max-width: 1288px) {
+                .ul_navbar_mobile .nav-item a {
+    font-size: 1em !important;
+}
+                }
+                @media (max-width: 817px) and (min-width: 750px){
+.ul_navbar {
+    width: 43rem;
+}
+}
+</style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <div class="row"> 
 	<div class="col-lg-5 col-sm-4  about-div">
 		<h1 class="rtl"> @lang('About Dukkangi')</h1>
-		<p class="rtl">
+		<p class="rtl section_about">
 			Lorem ipsum dolor sit amet, has et saepe bonorum meliore, eum ex case eros splendide. Mei vide autem at, duo noster patrioque assentior in. Graeci consulatu iracundia in sed, cum autem inermis ut. Has quis quas incorrupte id, cu usu suas eleifend. Eum id ignota everti voluptatum.
 		</p >
-		<p class="rtl">
+		<p class="rtl section_about">
 			Mei placerat phaedrum molestiae ut, te velit debet recusabo cum. Falli choro no vim. Commodo quaerendum ad has. Omnis aperiam alterum his an, eos no minim ignota commune. No pro enim ignota, eirmod omnesque qui an, ei sea augue accusamus efficiendi.
 		</p>
-		<p class="rtl">
+		<p class="rtl section_about">
+			Mei placerat phaedrum molestiae ut, te velit debet recusabo cum. Falli choro no vim. Commodo quaerendum ad has. Omnis aperiam alterum his an, eos no minim ignota commune. No pro enim ignota, eirmod omnesque qui an, ei sea augue accusamus efficiendi.
+		</p>
+		<hr class="rtl ">
+		<h3 class="rtl section_title">Section 2</h3>
+		<p class="rtl section_about">
 			Mei placerat phaedrum molestiae ut, te velit debet recusabo cum. Falli choro no vim. Commodo quaerendum ad has. Omnis aperiam alterum his an, eos no minim ignota commune. No pro enim ignota, eirmod omnesque qui an, ei sea augue accusamus efficiendi.
 		</p>
 		<hr class="rtl">
-		<h3 class="rtl">Section 2</h3>
-		<p class="rtl">
-			Mei placerat phaedrum molestiae ut, te velit debet recusabo cum. Falli choro no vim. Commodo quaerendum ad has. Omnis aperiam alterum his an, eos no minim ignota commune. No pro enim ignota, eirmod omnesque qui an, ei sea augue accusamus efficiendi.
-		</p>
-		<hr class="rtl">
-		<h3 class="rtl"> Section 3</h3>
-		<p class="rtl">
+		<h3 class="rtl section_title"> Section 3</h3>
+		<p class="rtl section_about">
 			Mei placerat phaedrum molestiae ut, te velit debet recusabo cum. Falli choro no vim. Commodo quaerendum ad has. Omnis aperiam alterum his an, eos no minim ignota commune. No pro enim ignota, eirmod omnesque qui an, ei sea augue accusamus efficiendi.
 		</p>
 		

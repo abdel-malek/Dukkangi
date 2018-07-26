@@ -15,7 +15,7 @@
     height: 49em;
 }
 .input_login,.input_singup{
-    background-color: #ffffff26;
+    background-color: rgba(255, 255, 255, .4);
     border-radius: 1.5em !important;
     border: 0em;
     color: #fff;
@@ -26,12 +26,12 @@
 .input_singup,.input_singup{
     padding-left: 0.5em;
     border-bottom: 0.07em solid #f9f9f9;
-    background-color: #ffffff00;
+    background-color:  rgba(255, 255, 255, .4);
     border-radius: 0em !important;
     cursor: pointer;
 }
 .input_login:focus{
-    background-color: #ffffff26;
+    background-color:  rgba(255, 255, 255, .4);
     border-radius: 1.5em !important;
     box-shadow:  0px 0px 0px #777;
     color: #fff;
@@ -65,7 +65,7 @@
 }
 
 .input_singup:focus{
-      background-color: #ffffff26;
+      background-color:  rgba(255, 255, 255, .4);
     box-shadow:  0px 0px 0px #777;
     color: #fff;
      border-color: #d80001;

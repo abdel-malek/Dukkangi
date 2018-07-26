@@ -19,7 +19,11 @@
 /*nav bar styles   --BEGIN--*/
 #main-nav-bar {
   background-color: #D80F16 !important;
+   -moz-box-shadow: 1px 2px 5px #888888;
+    -o-box-shadow: 1px 2px 5px #888888;
+     -wekit-box-shadow: 1px 2px 5px #888888;
   box-shadow: 1px 2px 5px #888888;
+  
 }
 
 #lang-nav-bar{
@@ -27,6 +31,9 @@
   padding-top: 0px;
   padding-bottom: 0px;
   background-color: white !important;
+   -moz-box-shadow: 0px 2px 16px rgba(50,50,50,.6);
+    -o-box-shadow: 0px 2px 16px rgba(50,50,50,.6);
+     -webkit-box-shadow: 0px 2px 16px rgba(50,50,50,.6);
   box-shadow: 0px 2px 16px #7777778c;
 }
 

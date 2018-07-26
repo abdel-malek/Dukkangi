@@ -79,6 +79,7 @@
         .off_item{
                 font-family: 'EagarFont';
         }
+        
         .icon-flag {
     width: 25px;
     height: 25px;
@@ -94,6 +95,7 @@
     font-family: cursive;
     padding: .5em;
         }
+       
         @media (max-width: 767px)and (min-width:577px){
         .div_login, .div_singup {
     width: 300px;
@@ -129,9 +131,13 @@
          }
          .input_search_sm{
              display: block !important;
+             margin-top: 1rem;
          }
          .autocomplete-items {
     width: 76%;
+         }
+          .text_footer {
+    font-size: 1.3em;
          }
 }
   @media (min-width: 690px) and (max-width: 776px) {
@@ -143,13 +149,7 @@
  }
  
       @media (min-width: 992px) and (max-width: 1025px) {
-/*   .input_search_sm {
-    display: block !important;
-        margin-top: 1rem;
-}
-   .input_search_lg {
-    display: none !important;
-}*/
+
 .top_nav {
     max-width: 83% !important;
 }
@@ -200,7 +200,7 @@
     font-size: 1.3em !important;
 }*/
 .ul_navbar_mobile .nav-item a {
-    font-size: 1.8em !important;
+    font-size: 2em !important;
 }
 
      }

@@ -31,7 +31,7 @@
                 <div id="ex3">
                   <span class="p1 fa-stack fa-1x has-badge" data-count=@if(!empty(Session::get('order_item_count'))) {{ session('order_item_count')}} @else 0 @endif>
                     <i class="p2 fa fa-circle fa-stack-2x"></i>
-                    <i class="p3 fa fa-shopping-cart fa-stack-2x fa-inverse" data-count=@if(!empty(Session::get('order_item_count'))) {{ Session::get('order_item_count')}} @else 0 @endif></i>
+                    <i class="p3 fa fa-shopping-cart fa-stack-2x fa-inverse icon_shopping_cart" data-count=@if(!empty(Session::get('order_item_count'))) {{ Session::get('order_item_count')}} @else 0 @endif></i>
                   </span>
                 </div>
               </a>
@@ -39,7 +39,9 @@
             <li class="nav-item">
               <a class="nav-link" href="{{route('profile')}}" style="text-align: center;margin-right: -5px;;">@lang('My Account')</a>
             </li>
-
+   <li class="nav-item">
+              <a class="nav-link" href="{{ route('about-us') }}">@lang('About')</a>
+            </li>
             <li class="nav-item">
               {!! Form::open(['route' => 'logout' , 'id' => 'logout-form']) !!}
                 <a class="nav-link" href="javascript:{}" onclick="document.getElementById('logout-form').submit();" >@lang('Logout') </a>

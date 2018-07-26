@@ -265,6 +265,9 @@
              right: 18px;
          }
         #lang-nav-bar{
+             -moz-box-shadow: 1px 2px 5px #888888;
+    -o-box-shadow:1px 2px 5px #888888;
+     -wekit-box-shadow: 0px 0px 0px #7777778c;
              box-shadow: 0px 0px 0px #7777778c;
           }
          .cloum_in_mobile{

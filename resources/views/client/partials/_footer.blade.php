@@ -557,9 +557,13 @@
     $('#modal_one_item_details').attr('data-productId', id);
     $('#modal_one_item_details').data('data-qty', qty);
     $('#num_qty').text(qty);
+
+    counter_qty =  parseInt(qty);
     $('#modal_one_item_details .total_qty').text(total+' €');
     $('#modal_one_item_details .total_qty').attr('value',total);
     $('#modal-img').attr('src' , src );
+        $('.total_qty').text(parseInt($('.total_qty').attr('value')) * qty + ' €');
+//    $('.total_qty').attr('value',parseInt($('.total_qty').attr('value')) * qty);
     showModal();
   }
     function showModal() {

@@ -16,6 +16,9 @@
     border-radius: 0em;
    
 }
+/* .icon_shopping_cart{
+            font-size: 2.2em !important;
+        }*/
 .bottom_left_background_block{
     background-image: url('/front-end/images/main/rec_cat.png');
       height: 153px;
@@ -361,6 +364,9 @@
              right: 18px;
          }
         #lang-nav-bar{
+                  -moz-box-shadow: 0px 0px 0px #7777778c
+    -o-box-shadow: 0px 0px 0px #7777778c;
+     -wekit-box-shadow: 0px 0px 0px #7777778c;
              box-shadow: 0px 0px 0px #7777778c;
           }
          .cloum_in_mobile{
@@ -416,6 +422,7 @@
 }
 .flexslider2{
     width: 69% !important;
+    height: 14em !important;
 }
 /*.navbar-nav .nav-link{
     width: 3rem !important;
@@ -434,6 +441,22 @@
          .autocomplete-items {
     width: 38% !important;
     left: 19rem;
+         }
+         .div_item .item_name{
+             font-size: 1.2rem !important;
+         }
+         .div_item{
+             height: 16em !important;
+             width: 14em !important;
+         }
+         .flexslider{
+             height: 19em !important;
+         }
+         .img_item {
+    height: 9.4em !important;
+         }
+         .text_footer {
+    font-size: 1.3em;
          }
 }
       @media (min-width: 200px) and (max-width: 860px) {

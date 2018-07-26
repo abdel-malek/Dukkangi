@@ -222,6 +222,9 @@
         .div_icon_footer {
             padding-left: 14% !important;
         }
+         .input_search_sm{
+             width: 78% !important;   
+            }
         @media (min-width: 1030px) and (max-width: 1270px) {
             .one_item_details, .modal_one_item_details
             {
@@ -243,7 +246,7 @@
                 width: 50rem !important;
             }
             .ul_navbar_mobile{
-                width: 27rem !important;
+                width: 41rem !important;
             }
             .nav-item a {
                 font-size: 1.8em !important;
@@ -265,11 +268,7 @@
     margin-top: 0em;
             }
         }
-        @media (max-width: 950px){
-            .header_page{
-                background-size: 140% !important;
-            }
-        }
+
         @media (max-width: 910px){
             .header_page{
                 background-size: 147% !important;
@@ -403,6 +402,37 @@
 @endsection
 
 @section ('main_section')
+<style>
+            @media (max-width: 950px){
+            .header_page{
+                background-size: 140% !important;
+            }
+.ul_navbar_mobile .nav-item a {
+    font-size: 2.9em !important;
+}
+           
+        }
+        @media (max-width: 1024px) and (min-width: 400px){
+.ul_navbar_mobile .nav-item a {
+    font-size: 2.9em !important;
+}
+#main-navbar-items ul li {
+    margin-top: 13px;
+}
+.ul_navbar_mobile {
+    width: 55rem !important;
+}
+.input_search_sm{
+    margin-top: 2rem !important;
+}
+.main-nav-bar_mobile{
+    margin-right: 1.5rem;
+}
+#ex3{
+    margin-right: 1rem;
+}
+}
+</style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <div class="col-md-12 all_page_item_view" id="content_page" style="margin-bottom: 14em;top: 3em;">
     <div class="header_page" style="background-image: url('/front-end/images/items_page/1.png');background-size:133%">

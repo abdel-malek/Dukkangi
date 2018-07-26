@@ -41,6 +41,9 @@
     margin-bottom: 1.6em;
     font-size: 1.1em;
 }
+.title_item_details_mobile{
+     font-size: 1.8em;
+}
     a:hover {
         color: inherit;
         text-decoration: none;
@@ -203,7 +206,7 @@
 
     .logo_prodect {
         margin-left: 210px;
-        width: 7rem;
+        width: 9rem;
     }
     .img_item
     {
@@ -228,7 +231,7 @@
         top: 25%;
     }
     .d-none{
-        display: none;
+        display: flex !important;
     }
     .button_modal_one_item_details {
             margin-top: 3em;
@@ -316,12 +319,68 @@
     height: 97px;
     margin-top: -4rem;
 }
+.modal_one_item_details .div_title_item_details_mobile{
+    margin-top: -6rem !important;
+}
+.img_price_item_details_mobile{
+    width: 16em;
+    left: -2.49em;
+}
+.modal_one_item_details .img_price_item_details_mobile{
+    width: 13em;
+    left: -1.4em;
+}
+.tax_include_item_mobile{
+    font-size: 1.3rem !important;
+    margin-top: 1rem !important;
+        /*margin-left: -1.3rem !important;*/
+}
+.price_item_details .old-price_mobile{
+        font-size: 1.4rem !important;
+}
+.div_item .old-price_mobile{
+     font-size: 1.4rem !important;
+}
+.price_item_details_mobile .price-wrapper{
+    width:9em !important;
+    margin-top: 1.4rem;
+        left: -0.2em;
+}
+.price_item_details_mobile .new-price{
+    font-size: 1.7rem !important;
+}
+.price_item_details_mobile b{
+    font-size: 1.5rem ;
+}
+.modal_one_item_details .div_title_item_details_mobile .rating{
+    font-size: 1.5em !important;
+}
+.modal_one_item_details_mobile .rating .star::before{
+    width: 0.95em !important;
+}
+.div_item .tax_include_item_mobile{
+    margin-left: -9.2rem !important;
+    margin-top: 0.8rem !important;
+}
+.text_item_details_mobile{
+    margin-top: 53px !important;
+}
+.price_item_details_mobile .total_qty{
+        font-family: 'HeadlinesFont';
+}
+.modal_one_item_details_mobile .button_modal_one_item_details a{
+    font-size: 1.2em;
+    font-family: 'HeadlinesFont';
+}
 }
 
     @media (min-width: 768px) and (max-width: 1200px) {
         .all_page_item_view {
             padding: 0em 0em;
         }
+        .text_item_details_mobile{
+    font-size: 1.5rem !important;
+}
         .details_comment .rating {
         bottom: unset;
         right: -1.6em;
@@ -443,7 +502,7 @@
             bottom: 1em !important;
         }
         .img_item {
-            height: 21.4em;
+            height: 15.4em;
         }
         .point_text_section {
             font-size: 1.2em;
@@ -527,10 +586,24 @@
     
 }
     }
-    
+    .zoomContainer {
+    z-index: 2 !important;
+}
     @media (max-width: 950px){
         #slider_preview{
     width: 500px;
+}
+
+.modal_one_item_details .div_title_item_details{
+    margin-top: -4rem !important;
+}
+#lang-nav-bar .nav-item a {
+    font-size: 1.1em !important;
+}
+.icon-flag {
+    width: 20px !important;
+    height: 20px !important;
+    margin-top: 0.2rem !important;
 }
     }
     @media (max-width: 650px){
@@ -716,7 +789,7 @@
             max-width: 80% !important;
         }
         .sections_mobile{
-            width: 59.8%;
+            width: 103.8% !important;
         }
         .modal_one_item_details_mobile {
             width: 39%;
@@ -970,6 +1043,10 @@
 	.price_item_details, .points_item_details{
 		margin-top: 5em
 	}
+        
+        .price_item_details_mobile{
+            margin-top: 11rem;
+        }
 	.header_item_details .slide-bg{
 		background-size: contain;
 		background-repeat: no-repeat;
@@ -1219,7 +1296,7 @@ width: auto !important;
             <span class="price-wrapper" style="width: 5em;">
 
                 <small style="font-size: 50%;">
-                   <b style="font-family: 'EagarFont';"><span style="font-size: 0.8rem;float: left;margin-top: 1.4rem;margin-left: -1rem;font-weight: 500;">@lang('tax included')</span>  <i class="old-price" style="text-decoration: line-through;color:#8e8d8d;">{{$product->price}}€</i>/ <span class="new-price">{{$product->discount_price}}</span> €</b>
+                    <b style="font-family: 'EagarFont';"><span class="tax_include_item" style="font-size: 0.8rem;float: left;margin-top: 1.4rem;margin-left: -1rem;font-weight: 500;">@lang('tax included')</span>  <i class="old-price" style="text-decoration: line-through;color:#8e8d8d;">{{$product->price}}€</i>/ <span class="new-price">{{$product->discount_price}}</span> €</b>
 
                 </small>
                 @else
@@ -1384,7 +1461,7 @@ width: auto !important;
                 <img src="{{$simiproduct->image_id}}" class="img_item product-img" />
                 <p class="item_name">{{ $simiproduct->english}} </p>
             </a>
-          <p class="item_price" style="margin-bottom: 0em;"> <span class="tax_include" style="font-size: 0.8rem;margin-top: 0.7rem;    position: absolute;margin-left: -4.1rem;float: left;font-weight: 500;">@lang('tax included')</span> &nbsp;{!! isset($simiproduct->discount_price) ?"<span style='text-decoration: line-through;font-family: EagarFont;color: #8e8d8d;font-size: 0.9rem;'>".$simiproduct->price.' €</span>  / '. $simiproduct->discount_price : $simiproduct->price !!}€</p>
+            <p class="item_price" style="margin-bottom: 0em;"> <span class="tax_include" style="font-size: 0.8rem;margin-top: 0.7rem;    position: absolute;margin-left: -4.1rem;float: left;font-weight: 500;">@lang('tax included')</span> &nbsp;{!! isset($simiproduct->discount_price) ?"<span class='old-price' style='text-decoration: line-through;font-family: EagarFont;color: #8e8d8d;font-size: 0.9rem;'>".$simiproduct->price.' €</span>  / '. $simiproduct->discount_price : $simiproduct->price !!}€</p>
             <span class="rating ratings{{$simiproduct->rate}}" style="width: 0.75em;height: 1.7em; left: 1em;bottom: 0.2em;"></span>
             <img onclick="addCartModal($(this).parent().find('.product-img').attr('src') , $(this).data('id') )" data-id="{{$simiproduct->id}}" src="\front-end\images\user_actions\view-my-cart.png" class="icon_view_my_card" style="cursor: pointer;">
         </div>
@@ -1431,7 +1508,7 @@ width: auto !important;
 
     <p class="price_item_details" style="margin-top: 0em;" data-product-price='{{isset($product->discount_price) ? $product->discount_price: $product->price}}'>
         <span style="    position: absolute;font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;left: 0em;z-index:22;">@lang('Total') </span>
-        <span class="total_qty" style="    position: absolute;left:4.2em;width: 6em;margin-top:1rem;z-index:22;"> {{isset($product->discount_price) ? $product->discount_price: $product->price}} €</span>
+        <span class="total_qty" style="    position: absolute;left:4.2em;width: 6em;margin-top:1rem;z-index:22;" value="{{isset($product->discount_price) ? $product->discount_price: $product->price}}"> {{isset($product->discount_price) ? $product->discount_price: $product->price}} €</span>
         <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details" />
     </p>
     <div class="button_modal_one_item_details">
@@ -1467,6 +1544,9 @@ width: auto !important;
     if($('.off_item_prodect').attr('value').length > 6){
     $('.off_item_prodect').css('fontSize','0.6rem');
     $('.off_item_prodect').css('marginLeft','-0.2rem');
+    }
+      function reset_value(){
+        counter_qty = 1;
     }
 </script>
 
@@ -1679,13 +1759,18 @@ width: auto !important;
 </script>
 <script>
     $('#btn_modal_one_item_details').click(function () {
+    
         showModal();
+        $('.total_qty').text(parseInt($('.new-price').text()) + ' €');
+        $('#modal-img').attr('src' , $('#thum1_slider').attr('data-zoom-image'));
     });
     $('.background_modal').click(function () {
         hideModal();
+        reset_value();
     });
     $('#modal_one_item_details .btn_cancel').on('click', function () {
         hideModal();
+        reset_value();
     });
 
     $('#modal_one_item_details .btn_done').on('click', function () {
@@ -1801,53 +1886,11 @@ width: auto !important;
                              ?>, type: "success", timer: 2000, showConfirmButton: false });
                 hideModal();
                 location.reload();
-                <!--$('#btn_modal_one_item_details span small').css('color','#d80000');-->
             }
         });
     };
     
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-//document.write("<style>"+
-//     "@media (min-height: 667px) and (min-width: 300px) {"+
-//            ".container{"+
-//                "width: 100% !important;"+
-//                "max-width: 100% !important;"+
-//                "margin: 0px;"+
-//                "padding: 0px;"+
-//            "}"+
-//            ".all_page_item_view, .block_similar{"+
-//                 "width: 100% !important;"+
-//                "max-width: 100% !important;"+
-//            "}"+
-//            ".details_comment .rating {"+
-//    "margin-top: 1em ;"+
-//            "}"+
-//            ".title_reviews {"+
-//    "margin-top: 29rem;"+
-//            "}"+
-//            ".header_page .rating {"+
-//                "left: 14.4em;"+
-//            "}"+
-//            ".block_similar{"+
-//                "margin-top: 3rem;"+
-//            "}"+
-//            ".ratings4{"+
-//                "margin-top: 0rem !important;"+
-//            "}"+
-//        "}"+
-//        "#main-nav-bar a {"+
-//            "width: 19%;"+
-//        "}"+
-//        ".top_nav {"+
-//            "max-width: 70% !important;"+
-//        "}"+
-//        "#main-nav-bar a {"+
-//            "width: 102px;"+
-//        "}"+
-//        ".sections {"
-//            "width: 59.8%;"+
-//        "}"+
-//        "</style>");
 $('.container').addClass('container_mobile');
 $('.all_page_item_view').addClass('all_page_item_view_mobile');
 $('.block_similar').addClass('block_similar_mobile');
@@ -1859,25 +1902,24 @@ $('.ratings4').addClass('ratings4_mobile');
 $('#main-nav-bar a').addClass('main-nav-bar_mobile');
 $('.top_nav').addClass('top_nav_mobile');
 $('.sections').addClass('sections_mobile');
-$('.modal_one_item_details').addClass('.modal_one_item_details_mobile');
-
+$('.modal_one_item_details').addClass('modal_one_item_details_mobile');
+$('.title_item_details').addClass('title_item_details_mobile');
+$('.price_item_details').addClass('price_item_details_mobile');
+$('.div_title_item_details').addClass('div_title_item_details_mobile');
+$('.img_price_item_details').addClass('img_price_item_details_mobile');
+$('.tax_include_item').addClass('tax_include_item_mobile');
+$('.tax_include').addClass('tax_include_item_mobile');
+$('.old-price').addClass('old-price_mobile');
+$('.text_item_details').addClass('text_item_details_mobile');
 }
 
     function imageModal(obj){
         $('#slider_preview').css('display','block');
         $('.background_slide').css('display','block');
         $('#slider_preview .carousel-item').removeClass('active');
-//        $('#slider_preview .carousel-item').each(function(){
-//           if($(this).find('img').attr('src') == $(obj).attr('src')){
-//			   console.log($(this).find('img').attr('src'));
-//               $(this).addClass('active');
-//           }
-//        });
-		
 		var objImg = $(obj).css('background-image');
 		objImg = objImg.replace('url(', '').replace(')', '');
 		$('#slider_preview .carousel-item').each(function(){
-//           if($(this).find('img').attr('src') == objImg){
            if(objImg.indexOf($(this).find('img').attr('src')) >=0){
 			   
                $(this).addClass('active');
@@ -1889,26 +1931,7 @@ $('.modal_one_item_details').addClass('.modal_one_item_details_mobile');
     function closeImageModal(){
         $('#slider_preview').css('display','none');
         $('.background_slide').css('display','none');
-    }
-
-    <!--// function imageModal(e){-->
-    //     src = $(e).attr('src');
-    //     // Change The Source
-    //     $('#modal-img').attr('src' , 'http://ec2-52-32-228-164.us-west-2.compute.amazonaws.com' + src);
-    //     $('#image-modals').show();
-    //     $('.background_modal').show();
-    //     $('#header').css('filter', 'blur(5px)');
-    //     $('#content_page').css('filter', 'blur(5px)');
-    //     $('.footer').css('filter', 'blur(5px)');
-    // };
-    // $('.background_modal').click(function () {
-    //     $('#image-modals').hide();
-    //     $('.background_modal').hide();
-    //     $('#header').css('filter', 'blur(0px)');
-    //     $('#content_page').css('filter', 'blur(0px)');
-    //     $('.footer').css('filter', 'blur(0px)');
-    // });
-		
+    }	
 </script>
 <script type="text/javascript" src="{{url('/front-end/js/plugin/jquery.elevateZoom-3.0.8.min.js')}}"></script>
 

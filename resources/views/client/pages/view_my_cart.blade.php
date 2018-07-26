@@ -3,7 +3,7 @@
 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="/front-end/css/jquery-pretty-tabs.css">
 <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 <link rel="stylesheet" href="/front-end/css/style.css">
 <link rel="stylesheet" href="/front-end/css/login.css">
 <link rel="stylesheet" href="/front-end/css/item.css">
@@ -132,8 +132,17 @@
     .rating .star::before {
         color: #fff;
     }
+    .main-nav-bar_mobile{
+        color: #d90000;
+    }
+    @media (max-width: 1105px){
+.icon_shopping_cart {
+    font-size: 2.5em !important;
+}
+}
     .input_search_sm{
         display: none !important;
+        margin-top: 1rem !important;
     }
     .div_item .rating .star::after {
         color: #d80001;
@@ -254,6 +263,13 @@
         float: left;
         margin-right: 17%;
  }
+ .total_item_qty span{
+     float: right;
+     margin-right: 0.2rem;
+ }
+ .total_item_qty i{
+     float: right;
+ }
    @media(min-width: 1600px){
             
         .price_item_details {
@@ -290,7 +306,15 @@
 
 
     @media (min-width: 768px) and (max-width: 1030px) {
-        
+        .swal2-popup .swal2-content {
+    font-size: 1.8rem !important;
+        }
+        .swal2-popup .swal2-styled{
+            font-size: 1.8rem !important;
+        }
+        .swal2-popup .swal2-title{
+            font-size: 2.8rem !important;
+        }
         #content_page {
          margin-bottom: 12em;   
         }
@@ -843,7 +867,7 @@
                 <h3>{{$order->product->english}}</h3>
                 <p style="margin-bottom: 0.01em;">{{$order->product->section1_english}}</p>
                 <span>
-                    <p> @lang('Tax') :{{ isset($order->product->discount_price)?sprintf('%0.2f', $order->product->discount_price
+                    <p><span style="float: left;    margin-right: 1rem;"> @lang('Tax') :</span> {{ isset($order->product->discount_price)?sprintf('%0.2f', $order->product->discount_price
                         *0.19) : sprintf('%0.2f', $order->product->price *0.19) }} €</p>
 
                 </span>
@@ -857,9 +881,10 @@
                 </div>
                 <p class="total_item_qty">
                     @lang('Total')
+                      <i style="color: #d80001;font-weight: bold;font-family: 'EagarFont';font-size: 1em;">€</i>
                     <span class="findit">{{ isset($order->product->discount_price) ? $order->product->discount_price * $order->qty : $order->product->price
                         * $order->qty }} </span>
-                    <i style="color: #d80001;font-weight: bold;font-family: 'EagarFont';font-size: 1em;">€</i>
+                  
                 </p>
             </div>
         </div>
@@ -1385,6 +1410,7 @@
             },
         });
         $(obj).parent().parent().parent().css('display','none');
+        location.reload();
     }
     function submitPaypal() {
         var inp = $('#paypalamount');

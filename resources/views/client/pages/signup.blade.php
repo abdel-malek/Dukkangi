@@ -41,6 +41,9 @@
                     width: 100%;
                     text-align: center;
                 }
+                .input_singup, .input_singup {
+/*    border-radius: 1.5em !important;*/
+}
 /*                 .input_select{
                     height: 5rem !important;
                 }*/
