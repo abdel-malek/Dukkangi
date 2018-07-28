@@ -821,7 +821,7 @@
     <div class="col-md-12" style="margin-top: 0.6em;float: left;">
         <p class="price_item_details" style="margin-top: 0em;" data-product-price='23423'>
             <span style="    position: absolute;font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;left: 0em;z-index:22;">@lang('Total') </span>
-            <span class="total_qty" style="    position: absolute;left:5.2em;width: 6em;margin-top:1rem;z-index:22;"></span>
+            <span class="total_qty" id="total_qty" style="    position: absolute;left:5.2em;width: 6em;margin-top:1rem;z-index:22;"></span>
             <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details" />
         </p>
     </div>
@@ -1046,6 +1046,7 @@
                              ?>,
                     type: "success", timer: 2000, showConfirmButton: false });
                 hideModal();
+                location.reload();
             }
         });
     }

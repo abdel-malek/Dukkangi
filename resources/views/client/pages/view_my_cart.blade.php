@@ -877,7 +877,7 @@
                 <div class="btn_control_item_qty">
                     <img src="/front-end/images/payment/handler-plus.png" onclick="num_plus(this);" id="this" />
                     <img src="/front-end/images/payment/handler-min.png" onclick="num_min(this);" style="margin-top:-0.8em;" />
-                    <i class="fas fa-trash-alt" onclick="deleteItem(this)"></i>
+                    <i class="fa fa-trash-o" onclick="deleteItem(this)" style="cursor: pointer;"></i>
                 </div>
                 <p class="total_item_qty">
                     @lang('Total')

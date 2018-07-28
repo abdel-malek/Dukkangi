@@ -10,7 +10,9 @@
                     .first_input{
                 margin-top: 19em !important;
             }
-          
+          .input_singup, .input_singup {
+    background-color: rgba(255, 255, 255, 0);
+}
     a:hover {
         color: inherit;
         text-decoration: none;

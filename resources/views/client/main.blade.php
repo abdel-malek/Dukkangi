@@ -89,13 +89,15 @@
          }
 
         #ex3 .fa-stack[data-count]:after {
-    right: -8%;
-    top: -3%;
-      font-size: 50%;
-    font-family: cursive;
+    right: -30%;
+    top: -2%;
+      font-size: 60%;
+    font-family: sans-serif;
     padding: .5em;
         }
-       
+         .icon_shopping_cart {
+             font-size: 2.6em !important;
+         }
         @media (max-width: 767px)and (min-width:577px){
         .div_login, .div_singup {
     width: 300px;
@@ -164,6 +166,28 @@
     font-size: 1.3em !important;
 }
      }
+      @media (min-width: 1288px) and (max-width: 1390px) {
+                .icon_shopping_cart {
+             font-size: 2.3em !important;
+         }
+         #ex3 .fa-stack[data-count]:after {
+    right: -12% !important;
+    font-size: 52% !important;
+        padding: .6em;
+      /*font-family: sans-serif;*/
+         }
+          
+      }
+     @media (min-width: 1108px) and (max-width: 1288px) {
+         .icon_shopping_cart {
+             font-size: 2.7em !important;
+         }
+         #ex3 .fa-stack[data-count]:after {
+    right: -30% !important;
+    font-size: 60% !important;
+         }
+     }
+
                    @media (min-width: 750px) and (max-width: 817px) {
                .ul_navbar {
     width: 23rem;

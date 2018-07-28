@@ -1,6 +1,7 @@
 
 @if($products->count() != 0)
     @foreach($products as $product)
+
     <div class="col-lg-6 col-sm-11 col-xs-12 col-xl-4 col_item" style="margin-top: 1em;float: left;">
         <div class="div_item"  data-id="{{$product->id}}">
             @if (isset($product->discount_price) && $product->discount != 0)
@@ -20,7 +21,14 @@
             <p class="item_price" style="margin-bottom: 0em;"> <span class="tax_include" style="font-size: 0.8rem;margin-top: 0.7rem;    position: absolute;margin-left: -4.5rem;float: left;font-weight: 500;" value="@lang('tax included')">@lang('tax included')</span> &nbsp;{!! isset($product->discount_price) ?"<span class='old-price' style='text-decoration: line-through;font-family: EagarFont;color: #8e8d8d;font-size: 0.9rem;'>".$product->price.' €</span>  / '.'<span class="price_discount" value='.$product->discount_price.' >'.$product->discount_price.'</span>':'<span class="price_discount"  value='.$product->discount_price.'> '.$product->price .'</span>' !!}€</p>
             <span class="rating ratings{{$product->rate}}" ></span>
            </a>
-            <img  data-id="{{$product->id}}" onclick="addCartModal($(this).parent().find('.product-img').attr('src') , $(this).parent().data('id') , $(this).parent().find('.price_discount').attr('value') , {{$product->order}})" src="\front-end\images\user_actions\view-my-cart.png" class="icon_view_my_card"  style="cursor: pointer" />
+            <img   data-id="{{$product->id}}" onclick="addCartModal($(this).parent().find('.product-img').attr('src') , $(this).parent().data('id') , $(this).parent().find('.price_discount').attr('value') , {{$product->order}})" 
+                  @if (isset($product->order) && $product->order != 0)
+                  src="\front-end\images\user_actions\view-my-cart_after_add.png"
+                  @else
+                  src="\front-end\images\user_actions\view-my-cart.png"
+                  @endif
+                  class="icon_view_my_card"  style="cursor: pointer" />
+                   
         </div>
     </div>
     @endforeach

@@ -137,6 +137,9 @@
         padding: 50px;
         text-align: center;
     }
+.customer_reviews {
+    overflow: hidden;
+}
 
     .golden {
         color: #ee0;
@@ -587,7 +590,7 @@
 }
     }
     .zoomContainer {
-    z-index: 2 !important;
+    z-index: 12 !important;
 }
     @media (max-width: 950px){
         #slider_preview{
