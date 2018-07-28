@@ -31,6 +31,9 @@ use App\Review;
 
 class PageController extends Controller
 {
+	function __construct() {
+		session('lang', 'ar');
+	}
 
 	public function index(){
 		$lang = session('lang');
@@ -721,4 +724,15 @@ class PageController extends Controller
     	// dd($order);
      	return CartService::removeOrderItem($order->id);
     }
+    public function  getOrder(Request $request){
+    	$items =OrderItem::select('item_id' , 'qty', 'sub_amount','total_amount','packed')->where('order_id', '=' , $request->id)->get();
+
+    	foreach ($items as $item) {
+    		if ($item->packed == 0)
+    			return 'Not all items packed';
+    		$item->item_name = Product::find($item->item_id)->english;
+    	}
+    	return $items;
+    } 
+
 }

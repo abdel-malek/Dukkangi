@@ -200,3 +200,4 @@ Route::post('/paypal','PayPalController@ipn');
 // Test
 Route::get('/mail' , 'TestController@mail');
 //Route::get('/test/{id}' , 'PageController@loadOrder');
+Route::post('/getOrder' , 'PageController@getOrder');
