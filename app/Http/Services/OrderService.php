@@ -7,20 +7,22 @@ use App\User;
 use App\Product;
 use App\OrderItem;
 use Session;
+use App\OrderStatus;
 use App\DHLStatus;
 
 class OrderService {
 	public static function loadOrderData($filter)
 	{
-		$index = $filter ? $filter['pageIndex'] : 0 ;
 
+		$index = $filter ? $filter['pageIndex'] : 0 ;
+		// dd($filter);
 		$order = Order::with(['payment' => function($query){
 			$query->addSelect('id','sub_amount','amount');
 		},'user'=> function($query){
 			$query->addSelect('id','email');
 		},'orderStatus' => function($query){
 			$query->addSelect('id','name');
-		}])->select(['id' , 'user_id', 'payment_id','status_id','packed']);
+		}])->select(['id' , 'user_id', 'payment_id','status_id','packed','created_at']);
 
 		if (!empty($filter['id']))
 		{
@@ -42,12 +44,29 @@ class OrderService {
 		{
 			$order->where('payment_id' ,'=' , $filter['payment_id'] );
 		}
+		if (!empty($filter['order_status']['name'])){
+			// dd($filter['order_status.name']);
+			if ( strtolower($filter['order_status']['name'])  == 'created'){
+				$order->where('status_id' , '=' , OrderStatus::CREATED);
+			}
 
+			else if ( strtolower($filter['order_status']['name'])  == 'deleted'){
+				$order->where('status_id' , '=' , OrderStatus::DELETED);
+			}
+
+			else if ( strtolower($filter['order_status']['name'])  == 'completed'){
+				$order->where('status_id' , '=' , OrderStatus::COMPLETED);
+			}
+		}
+		if (!empty($filter['packed'])){
+			$order->where('packed', 'like', $filter['packed']);
+		}
 		$order->orderBy('id','desc');
 		$result['total'] = $order->count();
 
 		$skip = ($index == 1) ? 0 : ($index-1)*10 ;
 		$result['data']=$order->take(10)->skip($skip)->get();
+
 		foreach ($result['data'] as $value) {
 			$email = User::find($value->user_id);
 			if (isset($email))

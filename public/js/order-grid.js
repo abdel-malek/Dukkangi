@@ -35,7 +35,7 @@ function loadUsers(){
             {name: "id"         , title: 'ID'      , type: "text", width: 5},
             {name: "user.email"    , title: 'User'    , type: "text", width: 5},
             {name: "payment.amount" , title: 'Amount' , type: "text", width: 5},
-            {name: "payment.sub_amount" , title: 'Sub Amount' , type: "text", width: 5},
+            {name: "created_at" , title: 'Date' , type: "text", width: 5},
             {name: "order_status.name" , title: 'Status' , type: "text", width: 5},
             {name: "packed" , title: 'Packed' , type: "text",
               itemTemplate: function(value,item){
@@ -49,7 +49,7 @@ function loadUsers(){
                     $packed += '<b style="background-color:#b32323;color:white">PARTIAL PACKED</b>';
                     break;
                   case "unpacked":
-                    $packed += '<b>UN PACKED</b>';
+                    $packed += '<b>UNPACKED</b>';
                     break;
                   default:
                 }
