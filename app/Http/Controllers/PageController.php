@@ -159,7 +159,7 @@ class PageController extends Controller
 			if (isset($product->discount_price)) {
 				$product->discount =  sprintf('%0.0f',100 - (($product->discount_price * 100) / $product->price));
 			}
-			$product->order = 1;
+			$product->order = 0;
 			if (session('cartId') != null){
 				$temp = OrderItem::where('order_id', '=', session('cartId'))->where('item_id', '=', $product->id)->get()->first();
 				if ($temp != null ){
