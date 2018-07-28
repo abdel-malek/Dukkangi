@@ -553,12 +553,15 @@
 </script>
 <script >
   function addCartModal(src,id,total, qty){
-    // console.log(id);
+    console.log(total);
+    console.log(qty);
+
     $('#modal_one_item_details').attr('data-productId', id);
     $('#modal_one_item_details').data('data-qty', qty);
     $('#num_qty').text(qty);
 
     counter_qty =  parseInt(qty);
+    $('#modal_one_item_details .price_item_details').attr('data-product-price' , total);
     $('#modal_one_item_details .total_qty').text(total+' €');
     $('#modal_one_item_details .total_qty').attr('value',total);
     $('#modal-img').attr('src' , src );

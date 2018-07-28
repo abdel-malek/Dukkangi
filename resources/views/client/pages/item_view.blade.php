@@ -1463,7 +1463,7 @@ width: auto !important;
             </a>
             <p class="item_price" style="margin-bottom: 0em;"> <span class="tax_include" style="font-size: 0.8rem;margin-top: 0.7rem;    position: absolute;margin-left: -4.1rem;float: left;font-weight: 500;">@lang('tax included')</span> &nbsp;{!! isset($simiproduct->discount_price) ?"<span class='old-price' style='text-decoration: line-through;font-family: EagarFont;color: #8e8d8d;font-size: 0.9rem;'>".$simiproduct->price.' €</span>  / '. $simiproduct->discount_price : $simiproduct->price !!}€</p>
             <span class="rating ratings{{$simiproduct->rate}}" style="width: 0.75em;height: 1.7em; left: 1em;bottom: 0.2em;"></span>
-            <img onclick="addCartModal($(this).parent().find('.product-img').attr('src') , $(this).data('id') )" data-id="{{$simiproduct->id}}" src="\front-end\images\user_actions\view-my-cart.png" class="icon_view_my_card" style="cursor: pointer;">
+            <img onclick="addCartModal($(this).parent().find('.product-img').attr('src') , $(this).data('id'),{{isset($simiproduct->discount_price) ?$simiproduct->discount_price : $simiproduct->price }} ,1 )" data-id="{{$simiproduct->id}}" src="\front-end\images\user_actions\view-my-cart.png" class="icon_view_my_card" style="cursor: pointer;">
         </div>
     </div>
     
@@ -1495,7 +1495,7 @@ width: auto !important;
             </h3>
         </div>
         <div style="width: 70%;float: right;">
-            <p class="num_qty">
+            <p class="num_qty" id="num_qty">
                 {{ $itemQty != 0 ? $itemQty : '1' }}
             </p>
             <div style="width:30%;float: right;">
