@@ -74,7 +74,7 @@ class CartService
             ['order_id' => $cartId, 'item_id' => $product->id, 'user_id' => $userId],
             [   'order_id' => $cartId, 'item_id' => $product->id,
                 'sub_amount' => isset($product->discount_price) ?$product->discount_price :$product->price, 'qty' => $qty,
-                'total_amount' => $product->price * $qty,
+                'total_amount' => (isset($product->discount_price)? $product->discount_price : $product->price) * $qty,
                 'gain_point' => ceil($product->point / 5), 'user_id' => $userId, 'status_id' => OrderStatus::CREATED,
                 'currency' => $product->currency]
         );
