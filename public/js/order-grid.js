@@ -70,7 +70,9 @@ function loadUsers(){
                 var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
                 var $pack = $('<a class="btn btn-block btn-info btn-xs">PACK</a>');
                 $pack.attr('href',`orders/${item.id}/checkproduct-qty`);
-                return $result.add($pack);
+                if (item.packed != 'packed'){
+                    return $result.add($pack);
+                }
               },
             }
         ]
