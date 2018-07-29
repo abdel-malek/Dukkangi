@@ -526,6 +526,17 @@ class PageController extends Controller
 				break;
 			}
 		
+		foreach ($simiproducts as $simi) {
+			$simi->order = 0 ;
+			if (isset($cartId)){
+				$cart = OrderItem::where('order_id', '=', session('cartId'))->where('item_id', '=', $simi->id)->get()->first();
+				if (isset($cart)){
+					$simi->order = $cart->qty;
+				}
+			}
+			
+		}
+
 		$ordercount = 0;
 		if ((session('order_item_count')) != null && (session('order_item_count')) != 0 ){
 			$order = OrderItem::where('order_id' , '=', session('cartId')) ->where('item_id', '=' , $id)->where('user_id', '=', Auth::id() )->get()->first();
@@ -730,7 +741,8 @@ class PageController extends Controller
     	foreach ($items as $item) {
     		if ($item->packed == 0)
     			return 'Not all items packed';
-    		$item->item_name = Product::find($item->item_id)->english;
+    		$item->item_name_ar = Product::find($item->item_id)->arabic;
+    		$item->item_name_en = Product::find($item->item_id)->english;
     	}
     	return $items;
     } 
