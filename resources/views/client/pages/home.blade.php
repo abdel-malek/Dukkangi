@@ -185,7 +185,11 @@
     width: auto;
     display: block;
     }
-    
+    @media (min-width: 1400px) {
+    .bottom_left_background_block p {
+    left: 8.5rem !important;
+    }
+    }
     @media (min-width: 1600px) {
     .bottom_left_background_block p{
     left: 54% !important;

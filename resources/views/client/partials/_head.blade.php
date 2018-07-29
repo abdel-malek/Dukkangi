@@ -38,6 +38,9 @@
                 width: 0.75em;
                 height: 0.7em;
             }
+              .shadow_div_discount {
+    display: none;
+    }
             #lang-nav-bar{
                 padding: .5rem 3rem;
             }

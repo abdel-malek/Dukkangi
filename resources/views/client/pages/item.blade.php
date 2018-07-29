@@ -23,6 +23,9 @@
         width: auto !important;
         height: 4.1em !important;
     }
+    .shadow_div_discount {
+    display: none;
+    }
 .header_page .rating {
     left: 29.8%;
 }
@@ -173,8 +176,9 @@
     
 }
 #modal-img{
-    width: 100%;
+        width: auto;
     height: auto !important;
+    max-height: 17rem;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -197,6 +201,23 @@
     margin-top: 1rem !important;
         /*margin-left: -1.3rem !important;*/
 }
+.btn_qty {
+    width: 75%;
+}
+.modal-img_mobile{
+    min-height: 30rem;
+}
+}
+
+@media (min-width: 300px) and (max-width: 768px) {
+.modal_one_item_details {
+    left: 6%;
+    width: 60%;
+}
+/*.img_price_item_details{
+    width: 12.5em !important;
+    margin-left: 1.26em;    
+}*/
 }
     @media (min-width: 300px) and (max-width: 1100px) {
         .div_item .rating {
@@ -886,7 +907,7 @@
                 $(obj).parent().parent().find('p').text(counter_qty);
             }
                 counter_qty = parseInt($('.num_qty').text());
-        $('.total_qty').text((counter_qty * parseInt($('.total_qty').attr('value')))+' €');
+        $('.total_qty').text((counter_qty * parseFloat($('.total_qty').attr('value')))+' €');
     }
     function num_min(obj) {
         counter_qty = parseInt($(obj).parent().parent().text());
@@ -895,7 +916,7 @@
             $(obj).parent().parent().find('p').text(counter_qty);
         }
     counter_qty = parseInt($('.num_qty').text());
-        $('.total_qty').text((counter_qty * parseInt($('.total_qty').attr('value')))+' €');
+        $('.total_qty').text((counter_qty * parseFloat($('.total_qty').attr('value')))+' €');
     }
     function reset_value(){
         counter_qty = 1;
@@ -1078,6 +1099,7 @@
             $('.ul_navbar').addClass('.ul_navbar_mobile');
             $('.old-price').addClass('old-price_mobile');
             $('.tax_include').addClass('tax_include_item_mobile');
+            $('#modal-img').addClass('modal-img_mobile');
         }
 
 link = window.location.href;

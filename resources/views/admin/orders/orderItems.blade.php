@@ -40,6 +40,7 @@
         function getOrder(){
             id = window.location.href ;
             var html = "";
+            var name = "";
             var net_total = 0;
             arr = id.split('/');
             id =arr[arr.length -2 ] ;
@@ -71,9 +72,14 @@
                                 "</thead>"+
                                 "<tbody>";
                                 for(var i =0;i < response.length;i++){
+                                    if(response[i].item_name_ar == ""){
+                                        name = response[i].item_name_en;
+        }else{
+             name = response[i].item_name_ar;
+        }
                                     html +="<tr>"+
                                             "<td style='width:35%;'>"+
-                                            response[i].item_name+
+                                            name+
                                             "</td>"+
                                             "<td>"+
                                             response[i].qty+

@@ -1768,7 +1768,7 @@ width: auto !important;
     $('#btn_modal_one_item_details').click(function () {
     
         showModal();
-        $('.total_qty').text(parseInt($('.new-price').text()) + ' €');
+        $('.total_qty').text(parseInt($('.new-price').text()) * parseInt($('#num_qty').text()) + ' €');
         $('#modal-img').attr('src' , $('#thum1_slider').attr('data-zoom-image'));
     });
     $('.background_modal').click(function () {

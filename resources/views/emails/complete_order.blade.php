@@ -44,9 +44,12 @@
 			text-align: left;
 			margin-left: 50px;
 			line-height: 25px;
+                         width: 50%;
+                        float: left;
 		}
 		.right{
-			margin-left: 40%;
+                        width: 44%;
+                        margin-left: 44px;
 			line-height: 20px;
 			text-align: left;
 		}
@@ -89,11 +92,11 @@
 		}
 		.marginleft{
 		    float: left;
-		    margin-left: 122px;
+		    margin-left: 40px;
 		}
 		.marginright{
 		    float: right;
-			margin-right: 122px;
+			margin-right: 40px;
 		}
 		.footers{
 			background-color: #d80000;
@@ -118,8 +121,9 @@
 			margin-left: 286px;
 		}
 		.media{
-			font-size: 18px;
+			font-size: 14px;
 			padding-left: 5px;
+                        text-align: center;
 			color: #FFF;}.insta{
 		}
 		.insta{
@@ -133,26 +137,31 @@
 			width: 310px;
 			color: #FFF;
 		}
+                .icon_footer{
+                    margin-top: -3px;
+                    /*float: right;*/
+                    margin-left: 5px;
+                }
 	</style>
 </head>
 <body>
 <div class="header" >
 <center>
-<img  src="http://ec2-34-223-221-255.us-west-2.compute.amazonaws.com/emails/logo.png" alt="logo" class='header-img'><br>
-<img src="http://ec2-34-223-221-255.us-west-2.compute.amazonaws.com/emails/email.png" alt="@" width="42px" height="42px" >
+<img  src="http://dukkangi.com/emails/logo.png" alt="logo" class='header-img'><br>
+<img src="http://dukkangi.com/emails/email.png" alt="@" width="42px" height="42px" >
 <span class="glyphicon glyphicon-envelope"></span>
 <p class="text white">Order Completed</p>
 </center>
 </div>
 
-<div class="border">
-		<div class="text first">
-				<p >Dear {{$username}}</p><br>
-				<p>Thank you,we have received your order.Once your items have been shipped,we'll send you the DHL tracking information.</p><br>
+    <div class="border" style="margin: 5px 0px;">
+    <div class="text first" style="text-align: left;">
+				<p >Dear {{$username}}</p>
+				<p>Thank you,we have received your order.Once your items have been shipped,we'll send you the DHL tracking information.</p>
 		</div>
-		<br>
-		<div class="row">
-				<div class="left">
+		
+    <div class="row" >
+				<div class="left" >
 					<p class="text red">Delivery at</p>
 					<p class="text">04.04.2018</p>
 					<p class="text red">Order Number</p>
@@ -167,8 +176,8 @@
 					<p class="text">{{$username}}</p>
 					<p class="text">Dumptener strafe 24</p>
 					<p class="text">Her</p>
-					<p class="text">45476, Mulheim an der Ruhr DE</p><br>
-					<p class="text red">Address</p><br>
+					<p class="text">45476, Mulheim an der Ruhr DE</p>
+					<p class="text red">Address</p>
 					<p class="text">Wassim Msallam</p>
 					<p class="text">Dumptener strafe 24</p>
 					<p class="text">Her</p>
@@ -187,7 +196,7 @@
 								<span class="text">  10:00-12:00 Uhr </span>
 								</center>
 								</div>
-		<div class="borderpink">
+    <div class="borderpink" style="margin: 5px 0px;">
 			<table style="width: -webkit-fill-available;">
 				<thead>
 				<th class="tableth text white"><b>#</b></th>
@@ -198,7 +207,8 @@
 			</thead>
 			<tbody>
 			<tr class="text insidetable">
-				{!! $counter = 0 !!}
+				
+					{!! $counter = 0 !!}
 				 @foreach($orderItems as $order)
 				<td>{{$order->qty}}</td>
 				<td><p>{{$order->name}}</p></td>
@@ -207,6 +217,7 @@
 				<td>{{ $taxes[counter] }} %</td>
 				{!! $counter++; !!}
 				@endforeach
+
 			</tr>
 		</tbody>
 
@@ -216,7 +227,7 @@
 
 				<div class="borderline">
 								<span class="text white marginleft">Sub-Total</span>
-								{{-- <span class="text white marginright">{{$total - $tax}}€</span> --}}
+                                                                {{-- <span class="text white marginright">{{$total - $tax}}€</span> --}}
 				</div>
 
 				<div class="borderline">
@@ -237,9 +248,17 @@
 	</div>
 
 
-<table style="background-color:#d80000 ;margin-top: 10px">
+<table style="background-color:#d80000 ;margin-top: 10px;width: 100%;padding: 10px;">
+    <thead>
+        <tr>
+            <th colspan="3">
+                <br>
+                <big style="color:#fff;"><big> Contact Information</big> </big><br>
+            </th>
+        </tr>
+    </thead>
 	<tr>
-		<td class="td"><big><big> Contact Information</big> </big></td>
+		<td class="td"></td>
 		<td class="td"> +49 5609 394</td>
 		<td class="td"> info@dukkangi.com</td>
 	</tr>
@@ -249,9 +268,9 @@
 		<td class="td"> www.dukkangi.com</td>
 	</tr>
 	<tr>
-		<td class="td"><p class="media insta"><span><img src="http://ec2-34-223-221-255.us-west-2.compute.amazonaws.com/emails/instagram.png" alt="logo" width="28px" height="28px"></span>  instagram/dukkangi.com</p></td>
-		<td class="td">	<p class="media fb"><span><img src="http://ec2-34-223-221-255.us-west-2.compute.amazonaws.com/emails/facebook.png" alt="logo" width="28px" height="28px"> </span>  facebook/dukkangi.com</p></td>
-		<td class="td"><p class="media twit"><span><img src="http://ec2-34-223-221-255.us-west-2.compute.amazonaws.com//emails/twitter.png" alt="logo" width="28px" height="28px"></span>  twitter/dukkangi.com</p></td>
+            <td class="td"><p class="media insta"><span><img src="http://dukkangi.com/emails/instagram.png" alt="logo" class="icon_footer" width="28px" height="28px"></span><br> <span > instagram/dukkangi.com</span></p></td>
+            <td class="td">	<p class="media fb"><span><img src="http://dukkangi.com/emails/facebook.png" alt="logo" class="icon_footer" width="28px" height="28px"> </span><br> <span> facebook/dukkangi.com</span></p></td>
+            <td class="td"><p class="media twit"><span><img src="http://dukkangi.com/emails/twitter.png" alt="logo" class="icon_footer" width="28px" height="28px"></span><br> <span> twitter/dukkangi.com</span></p></td>
 	</tr>
 </table>
 </body>

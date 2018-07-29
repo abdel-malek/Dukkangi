@@ -437,7 +437,7 @@
 <div class="col-md-12 all_page_item_view" id="content_page" style="margin-bottom: 14em;top: 3em;">
     <div class="header_page" style="background-image: url('/front-end/images/items_page/1.png');background-size:133%">
         <p class="header_page_text_div" style="width: 90.3%; padding-left: 30.5em">
-            <b>{{Auth::user()->name }}</b> @lang('Profile')
+            <!--<b>{{Auth::user()->name }}</b> @lang('Profile')-->
             <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
             
         </p>
@@ -457,7 +457,7 @@
 			
 			<input type="text" id="address" class="input_singup" placeholder ="{{ isset(Auth::user()->address) ? Auth::user()->address :'Address'}}     (Changable)">
 			<input type="text" id="date_of_brith" class="input_singup" placeholder ="{{isset(Auth::user()->birth_date) ?Auth::user()->birth_date : Birthdate }} (Changable)" style="margin-bottom: 1em" >
-                        <span class="glyphicon glyphicon-pencil glyph" aria-hidden="true"  onclick="changeDetials()" ></span>
+                        <span class="glyphicon glyphicon-floppy-disk glyph" aria-hidden="true"  onclick="changeDetials()" ></span>
 		</div>
 	</div>
 	<div class="sections" style="overflow: auto;height: 33em;">
