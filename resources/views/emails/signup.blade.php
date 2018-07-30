@@ -138,43 +138,42 @@
 <body>
 <div class="header row" >
 <center>
-
-<img  src="http://ec2-34-223-221-255.us-west-2.compute.amazonaws.com/emails/logo.png" alt="logo" class='header-img'><br>
-<img src="http://ec2-34-223-221-255.us-west-2.compute.amazonaws.com/emails/email.png" alt="@" width="42px" height="42px" ><span class="glyphicon glyphicon-envelope"></span>
-<p class="text white">Welcome To Dukkangi</p>
+    <img  src="http://dukkangi.com/emails/logo.png" alt="logo" class='header-img'><br>
+    <img src="http://dukkangi.com/emails/email.png" alt="@" width="42px" height="42px" ><span class="glyphicon glyphicon-envelope"></span>
+    <p class="text white">Welcome To Dukkangi</p>
 </center>
 </div>
 
-<div class="border">
-		<div class="text first">
-			<p >Dear {{Auth::user()->name}}</p><br>
-			<p>Thank you for your registration in Dukkangi store.</p><br>
-			<br>
-			<br>
-
-			<p>Your E-Mail is <span class="red"><b><i>{{Auth::user()->email}}.</i></b></span> </p>
-			<p>Your Username is <span class="red"><b><i>{{Auth::user()->name}}. </i></b></span> </p>
-			<p>Feel free to contact with our support team at the footer below.</p>
+    <div class="border" style="margin: 0px 0px;margin-top: 24px;">
+    <div class="text first" style="margin-left: 15px;text-align: left;direction: ltr;">
+                    <p >Dear {{Auth::user()->name}}</p>
+                    <p>Thank you for your registration in Dukkangi store.</p>
+                    <p>Your E-Mail is <span class="red"><b><i>{{Auth::user()->email}}.</i></b></span> </p>
+                    <p>Your Username is <span class="red"><b><i>{{Auth::user()->name}}. </i></b></span> </p>
+                    <p>Feel free to contact with our support team at the footer below.</p>
 		</div>
 		<br>
 </div>
 
-<table style="background-color:#d80000 ;margin-top: 10px">
-	<tr>
-		<td class="td"><big><big> Contact Information</big> </big></td>
-		<td class="td"> +49 5609 394</td>
-		<td class="td"> info@dukkangi.com</td>
-	</tr>
-	<tr>
-		<td class="td"></td>
-		<td class="td"> +49 5609 394</td>
-		<td class="td"> www.dukkangi.com</td>
-	</tr>
-	<tr>
-		<td class="td"><p class="media insta"><span><img src="http://ec2-34-223-221-255.us-west-2.compute.amazonaws.com/emails/instagram.png" alt="logo" width="28px" height="28px"></span>  instagram/dukkangi.com</p></td>
-		<td class="td">	<p class="media fb"><span><img src="http://ec2-34-223-221-255.us-west-2.compute.amazonaws.com/emails/facebook.png" alt="logo" width="28px" height="28px"> </span>  facebook/dukkangi.com</p></td>
-		<td class="td"><p class="media twit"><span><img src="http://ec2-34-223-221-255.us-west-2.compute.amazonaws.com//emails/twitter.png" alt="logo" width="28px" height="28px"></span>  twitter/dukkangi.com</p></td>
-	</tr>
-</table>
+<table style="background-color:#d80000 ;margin-top: 10px;width:100%;">
+        <tr>
+            <td class="td" colspan="3" style="text-align: center;"><big style="margin-top: 12px;margin-bottom: 12px;display: -webkit-inline-box;"><big> Contact Information</big> </big></td>
+        </tr>
+        <tr>
+            <td class="td"></td>
+            <td class="td"> +49 5609 394</td>
+            <td class="td"> info@dukkangi.com</td>
+        </tr>
+        <tr>
+            <td class="td"></td>
+            <td class="td"> +49 5609 394</td>
+            <td class="td"> www.dukkangi.com</td>
+        </tr>
+        <tr>
+            <td class="td" style="text-align: center;"><p class="media insta"><span><img src="http://dukkangi.com/emails/instagram.png" alt="logo" width="28px" height="28px"></span> <br> instagram/dukkangi.com</p></td>
+            <td class="td" style="text-align: center;">	<p class="media fb"><span><img src="http://dukkangi.com/emails/facebook.png" alt="logo" width="28px" height="28px"> </span> <br> facebook/dukkangi.com</p></td>
+            <td class="td" style="text-align: center;"><p class="media twit"><span><img src="http://dukkangi.com/emails/twitter.png" alt="logo" width="28px" height="28px"></span> <br> twitter/dukkangi.com</p></td>
+        </tr>
+    </table>
 </body>
 </html>
