@@ -985,9 +985,9 @@
 
 </script>
 <script>
-    var input = document.getElementById("search");
+    var input2 = document.getElementById("search");
 
-    input.addEventListener("keyup", function (event) {
+    input2.addEventListener("keyup", function (event) {
         event.preventDefault();
         if (event.keyCode === 13) {
             var click1 = document.getElementById('myBtn');

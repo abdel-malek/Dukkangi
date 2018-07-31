@@ -32,7 +32,7 @@ use App\Review;
 class PageController extends Controller
 {
 	function __construct() {
-		session('lang', 'ar');
+		$this->middleware('langMiddleware');
 	}
 
 	public function index(){

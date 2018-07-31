@@ -67,10 +67,11 @@ function loadUsers(){
             {
               type: "control", width: 10, editButton: false, modeSwitchButton: false, deleteButton: false,
               itemTemplate: function (value, item) {
+                // console.log(item.oredr_status.name);
                 var $result = jsGrid.fields.control.prototype.itemTemplate.apply(this, arguments);
                 var $pack = $('<a class="btn btn-block btn-info btn-xs">PACK</a>');
                 $pack.attr('href',`orders/${item.id}/checkproduct-qty`);
-                if (item.packed != 'packed'){
+                if (item.packed != 'packed' && item.order_status && item.order_status.name == 'COMPLETED'){
                     return $result.add($pack);
                 }
               },

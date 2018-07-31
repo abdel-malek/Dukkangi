@@ -88,8 +88,7 @@
 
   var input = $('#search-mobile');
   input.keypress(function() {
-    // console.log(inp.val());
-
+    console.log(input);
     text= input.val();
     if(text.length < 1)
       return;
@@ -317,7 +316,7 @@
     // console.log(inp.val());
 
     text= inp.val();
-    console.log(text);
+    // console.log(text);
     if(text.length < 1)
       return;
 
