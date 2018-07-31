@@ -1052,8 +1052,8 @@
 
 
                 
-                <form id="paypalform" action="https://www.paypal.com/cgi-bin/webscr" method="post"> 
-                    <!-- <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post"> -->
+                <!-- <form id="paypalform" action="https://www.paypal.com/cgi-bin/webscr" method="post">  -->
+                    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
                         <!-- Identify your business so that you can collect the payments. -->
                         
                         <!-- <input type="hidden" name="business" value="info@dukkangi.com">  -->

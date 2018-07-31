@@ -31,7 +31,7 @@ class PayPalController extends Controller
 
         $ipn = new PaypalIPN();
         // Use the sandbox endpoint during testing.
-        // $ipn->useSandbox();  
+        $ipn->useSandbox();  
         $verified=false;
         try {
             $verified = $ipn->verifyIPN($raw_post_array);

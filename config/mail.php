@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => 'LaravelChangeAddress@noreply.com' ,
-        'name' => 'Nothing Important',
+        'address' => 'ForgetPassword@dukkangi.com' ,
+        'name' => 'Reset Password',
     ],
 
     /*

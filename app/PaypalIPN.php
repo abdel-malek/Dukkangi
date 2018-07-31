@@ -17,9 +17,9 @@ class PaypalIPN extends Model
     /** @var bool Indicates if the local certificates are used. */
     private $use_local_certs = false;
     /** Production Postback URL */
-    const VERIFY_URI = 'https://ipnpb.paypal.com/cgi-bin/webscr';
+    // const VERIFY_URI = 'https://ipnpb.paypal.com/cgi-bin/webscr';
     /** Sandbox Postback URL */
-    // const SANDBOX_VERIFY_URI = 'https://ipnpb.sandbox.paypal.com/cgi-bin/webscr'; 
+    const SANDBOX_VERIFY_URI = 'https://ipnpb.sandbox.paypal.com/cgi-bin/webscr'; 
     /** Response from PayPal indicating validation was successful */
     const VALID = 'VERIFIED';
     /** Response from PayPal indicating validation failed */
@@ -31,7 +31,7 @@ class PaypalIPN extends Model
      */
     public function useSandbox()
     {
-        $this->use_sandbox = false; // Here
+        $this->use_sandbox = true; // Here
     }
     /**
      * Sets curl to use php curl's built in certs (may be required in some
