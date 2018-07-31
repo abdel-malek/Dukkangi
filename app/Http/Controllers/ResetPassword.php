@@ -16,7 +16,7 @@ class ResetPassword extends Controller
 
       $user = User::where('email', $email)->get()->first();
 
-      if (count($user) > 0 && $token == $user->token) {
+      if ($user->count() > 0 && $token == $user->token) {
 
           User::where('email', $email)->update(['password' => bcrypt($password)]);
 
