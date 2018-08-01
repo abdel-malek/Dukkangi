@@ -21,14 +21,16 @@ class AdminController extends Controller
 
     public function getIndex(){
       $arr = [];
+      $arr[0] = 0;
       $now = Carbon::now();
-      for ($i=0; $i < 12 ; $i ++){   
+      for ($i=1; $i < 13 ; $i ++){   
         $val = Payment::select(DB::raw('SUM(amount) as total'))->whereYear('created_at', $now->year)->whereMonth('created_at',$i)->get();
         if (isset($val[0]->total))
           $arr[$i] = $val[0]->total;
         else 
           $arr[$i] = 0;
       }
+      $arr[13]= 0;
       $thisMonth = $arr[$now->month];
       $thisYear = Payment::select(DB::raw('SUM(amount) as total'))->whereYear('created_at', $now->year)->get()[0]->total;
       $overall = Payment::select(DB::raw('SUM(amount) as total'))->get()[0]->total;

@@ -51,7 +51,7 @@ var speedCanvas = document.getElementById("speedChart");
 Chart.defaults.global.defaultFontFamily = "Lato";
 Chart.defaults.global.defaultFontSize = 18;
 var speedData = {
-  labels: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug" ,"Sep", "Oct" ,"Nov","Dec"],
+  labels: ["","Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug" ,"Sep", "Oct" ,"Nov","Dec",""],
   datasets: [{
     label: "Monthly Income in This Year",
     data: <?php echo json_encode($arr); ?>,
