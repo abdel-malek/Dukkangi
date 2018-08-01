@@ -16,7 +16,7 @@ class ResetPassword extends Controller
 
       $user = User::where('email', $email)->get()->first();
 
-      if ($user->count() > 0 && $token == $user->token) {
+      if (isset($user) && $user->count() > 0 && $token == $user->token) {
 
           User::where('email', $email)->update(['password' => bcrypt($password)]);
 
@@ -31,5 +31,14 @@ class ResetPassword extends Controller
           return redirect(route('login'));
       }
 
+  }
+  public function checkEmail(Request $request){
+    $user = User::where('email', 'like', $request->email)->get();
+    if (isset($user) && $user->count() > 0){
+      return 'ok';
+    }
+    else {
+      return 'wrong';
+    }
   }
 }

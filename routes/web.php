@@ -179,7 +179,7 @@ Route::post('password/reset', ['as' => '',  'uses' => 'ResetPassword@makeReset']
 Route::get('password/reset/{token}', ['as' => 'password.reset',  'uses' => 'Auth\ResetPasswordController@showResetForm']);
 Route::get('register', ['as' => 'register' , 'uses' => 'Auth\RegisterController@showRegistrationForm']);
 Route::post('register', ['as' => '','uses' => 'Auth\RegisterController@register']);
-
+Route::post('/check/email' , 'ResetPassword@checkEmail');
 
 	//Language Change
 Route::get('/lang/{lang}' , 'PageController@setLanguage');

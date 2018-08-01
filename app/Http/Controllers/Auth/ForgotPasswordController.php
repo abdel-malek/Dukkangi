@@ -43,17 +43,16 @@ class ForgotPasswordController extends Controller
         // We will send the password reset link to this user. Once we have attempted
         // to send the link, we will examine the response then see the message we
         // need to show to the user. Finally, we'll send out a proper response.
-        $response = $this->broker()->sendResetLink(
-            $request->only('email')
-        );
+        // $response = $this->broker(););
         $user = User::where('email' , 'like' , $request->input('email'))->get()->first();
         $user->token  = bin2hex(random_bytes(20));
         $user->save();
-//         dd($token[0]->remember_token);
+        // dd("i'm here");
         MailService::send('emails.reset_password',['token' => $user->token], 'signin@dukkangi.com' , $request->input('email') ,'reset password link');
 
+        return redirect(route('home'));
         // return $response == Password::RESET_LINK_SENT
-                    // ? $this->sendResetLinkResponse($response)
-                    // : $this->sendResetLinkFailedResponse($request, $response);
+        //             ? $this->sendResetLinkResponse($response)
+        //             : $this->sendResetLinkFailedResponse($request, $response);
     }
 }
