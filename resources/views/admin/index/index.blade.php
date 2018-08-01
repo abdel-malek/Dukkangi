@@ -9,7 +9,7 @@
     }
     .card {
         background: #ffffff none repeat scroll 0 0;
-        margin: 15px 0;
+        margin: 10px ;
         padding: 20px;
         border: 0 solid #e7e7e7;
         border-radius: 5px;
@@ -26,16 +26,22 @@
 
 @section('grid')
     <div class="row">
-        <canvas id="speedChart" width="600" height="400"></canvas>
-        <div class="col-4 card" >
+        <div class="col-12">
             <div class="row">
-                <div class="col-12">
-                    <h3> Income Details</h3>
+                <div class="col-8">
+                    <canvas id="speedChart" width="600" height="400"></canvas>
                 </div>
-                <div class="col-6">
-                    <label>This Month: </label> {{$thisMonth}} <br>
-                    <label>This year: </label> {{$thisYear}} <br>
-                    <label>Over all: </label> {{$overall}} <br>
+                <div class="col-3 card" >
+                    <div class="row">
+                        <div class="col-12">
+                            <h3> Income Details</h3>
+                        </div>
+                        <div class="col-6">
+                            <label>This Month: </label> {{$thisMonth}} <br>
+                            <label>This year: </label> {{$thisYear}} <br>
+                            <label>Over all: </label> {{$overall}} <br>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,7 +59,7 @@ Chart.defaults.global.defaultFontSize = 18;
 var speedData = {
   labels: ["","Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug" ,"Sep", "Oct" ,"Nov","Dec",""],
   datasets: [{
-    label: "Monthly Income in This Year",
+    label: "Monthly Income",
     data: <?php echo json_encode($arr); ?>,
   }]
 };
