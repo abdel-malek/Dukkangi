@@ -31,10 +31,21 @@ class AdminController extends Controller
           $arr[$i] = 0;
       }
       $arr[13]= 0;
+
       $thisMonth = $arr[$now->month];
       $thisYear = Payment::select(DB::raw('SUM(amount) as total'))->whereYear('created_at', $now->year)->get()[0]->total;
       $overall = Payment::select(DB::raw('SUM(amount) as total'))->get()[0]->total;
       return view('admin.index.index')->withArr($arr)->withThisMonth($thisMonth)->withThisYear($thisYear)->withOverall($overall);
+    }
+
+
+    public function getChartSpecifiedDate(Request $request){
+
+      $from = $request->from;
+      $to = $request->to;
+
+      $total = Payment::select(DB::raw('SUM(amount) as total'))->whereBetween('created_at', [$from, $to])->get()[0]->total;
+      return $total;
     }
 
     public function adminLogin(Request $request){

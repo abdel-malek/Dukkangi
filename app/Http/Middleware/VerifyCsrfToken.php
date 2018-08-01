@@ -25,6 +25,7 @@ class VerifyCsrfToken extends BaseVerifier
       '/changeqty',
       '/getreview',
       '/admin-login',
-      '/review'
+      '/review',
+      '/get-income'
     ];
 }

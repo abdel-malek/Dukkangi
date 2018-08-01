@@ -165,6 +165,8 @@ Route::get('/admin/dhltracker' , 'OrderController@getDHLPage')->name('dhl.index'
 Route::post('/admin/dhltracker' , 'OrderController@loadPackedOrders')->name('dhl.state');
 Route::post('/admin/dhldelivery' , 'OrderController@onDeleviryOrder')->name('submit.dhl');
 
+    //Income
+Route::post('/get-income' , 'AdminController@getChartSpecifiedDate')->middleware('isadmin');
     //DASHBOARD END
 
 
