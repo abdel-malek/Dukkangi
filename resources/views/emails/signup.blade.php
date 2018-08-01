@@ -4,6 +4,9 @@
 	<meta charset="UTF-8">
 
 	<style>
+            .hx .ii{
+                margin: 0px;
+            }
 		.row{
 			margin-left: -15px;
     	margin-right: -15px;
@@ -135,12 +138,12 @@
 		}
 	</style>
 </head>
-<body>
+<body style="background-color: #d80000;">
 <div class="header row" >
 <center>
     <img  src="http://dukkangi.com/emails/logo.png" alt="logo" class='header-img'><br>
     <img src="http://dukkangi.com/emails/email.png" alt="@" width="42px" height="42px" ><span class="glyphicon glyphicon-envelope"></span>
-    <p class="text white">Welcome To Dukkangi</p>
+    <p class="text white" style="margin-top: 8px;">Welcome To Dukkangi</p>
 </center>
 </div>
 
@@ -155,24 +158,20 @@
 		<br>
 </div>
 
-<table style="background-color:#d80000 ;margin-top: 10px;width:100%;">
+<table style="background-color:#d80000 ;margin-top: 10px;width:100%;display: block;margin-left: auto;margin-right: auto;">
         <tr>
             <td class="td" colspan="3" style="text-align: center;"><big style="margin-top: 12px;margin-bottom: 12px;display: -webkit-inline-box;"><big> Contact Information</big> </big></td>
         </tr>
         <tr>
-            <td class="td"></td>
-            <td class="td"> +49 5609 394</td>
-            <td class="td"> info@dukkangi.com</td>
+            <td class="td" colspan="3" style="text-align: center"> +49 5609 394 &nbsp;&nbsp;&nbsp;  info@dukkangi.com</td>
         </tr>
         <tr>
-            <td class="td"></td>
-            <td class="td"> +49 5609 394</td>
-            <td class="td"> www.dukkangi.com</td>
+            <td class="td" colspan="3" style="text-align: center"> +49 5609 394 &nbsp;&nbsp;&nbsp; www.dukkangi.com</td>
         </tr>
         <tr>
-            <td class="td" style="text-align: center;"><p class="media insta"><span><img src="http://dukkangi.com/emails/instagram.png" alt="logo" width="28px" height="28px"></span> <br> instagram/dukkangi.com</p></td>
-            <td class="td" style="text-align: center;">	<p class="media fb"><span><img src="http://dukkangi.com/emails/facebook.png" alt="logo" width="28px" height="28px"> </span> <br> facebook/dukkangi.com</p></td>
-            <td class="td" style="text-align: center;"><p class="media twit"><span><img src="http://dukkangi.com/emails/twitter.png" alt="logo" width="28px" height="28px"></span> <br> twitter/dukkangi.com</p></td>
+            <td class="td" style="text-align: center;"><p class="media insta"><span><img src="http://dukkangi.com/emails/instagram.png" alt="logo" width="28px" height="28px"></span> <br><span style="white-space: nowrap;"> instagram/dukkangi.com</span></p></td>
+            <td class="td" style="text-align: center;">	<p class="media fb"><span><img src="http://dukkangi.com/emails/facebook.png" alt="logo" width="28px" height="28px"> </span> <br><span style="white-space: nowrap;"> facebook/dukkangi.com</span></p></td>
+            <td class="td" style="text-align: center;"><p class="media twit"><span><img src="http://dukkangi.com/emails/twitter.png" alt="logo" width="28px" height="28px"></span> <br><span style="white-space: nowrap;"> twitter/dukkangi.com</span></p></td>
         </tr>
     </table>
 </body>
