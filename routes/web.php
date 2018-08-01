@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/admin', function(){return view('admin.master');})->name('admin.home')->middleware('isadmin');
+Route::get('/admin','AdminController@getIndex')->name('admin.home')->middleware('isadmin');
 Route::get('/', function(){return view('client.pages.home');});
 Route::get('/admin-login', 'AdminController@login');
 Route::post('/admin-login', 'AdminController@adminLogin');
