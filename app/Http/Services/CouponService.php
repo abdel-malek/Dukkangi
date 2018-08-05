@@ -75,6 +75,7 @@ class CouponService {
 			$userEmail = User::find($user);
 			$user = $userEmail->name;
 			$userEmail = $userEmail->email;
+			$value = $coupon->amount;
 
 			MailService::send('view.emails.coupon', [$user,$value,$type,$code,$endDate],'coupons@dukkangi.com',$userEmail , "Coupon" );
 

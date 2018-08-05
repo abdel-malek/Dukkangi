@@ -151,7 +151,7 @@
                 <p >Dear {{$user}} </p>
                 <p>You have received a coupon with a code : {{$code}} </p>
                 <p>
-                    value : {{$value}} {{$type == 'percentage' ? '%' : '€' }}
+                    value : {{$value}} {{$type == 'fixed' ? '€' : '%' }}
                 </p>
                 <p>
                     This coupon is available till {{$endDate}}
