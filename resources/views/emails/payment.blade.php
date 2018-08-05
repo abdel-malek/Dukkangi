@@ -148,10 +148,10 @@
 
     <div class="border" style="margin: 0px 0px;margin-top: 24px;">
         <div class="text first" style="margin-left: 15px;text-align: left;direction: ltr;">
-			<p >Dear {{$Auth::user()->name}}</p>
+			<p >Dear {{$username}}</p>
 			<p>Thank you,we have received your order.Once your items have been shipped,we'll send you the DHL tracking information.</p>
 			<p>
-                            Your order Costed you {{$totalPrice}} € 	
+                            Your order Costed you {{$cost}} € 	
                            See the Order Email for more details.
                         </p>  
 		</div>
@@ -167,7 +167,7 @@
             <td class="td" colspan="3" style="text-align: center"> +49 5609 394 &nbsp;&nbsp;&nbsp;  info@dukkangi.com</td>
         </tr>
         <tr>
-            <td class="td" colspan="3" style="text-align: center"> +49 5609 394 &nbsp;&nbsp;&nbsp; www.dukkangi.com</td>
+            <td class=" td" colspan="3" style="text-align: center"> +49 5609 394 &nbsp;&nbsp;&nbsp; www.dukkangi.com</td>
         </tr>
         <tr>
             <td class="td" style="text-align: center;"><p class="media insta"><span><img src="http://dukkangi.com/emails/instagram.png" alt="logo" width="28px" height="28px"></span> <br><span style="white-space: nowrap;"> instagram/dukkangi.com</span></p></td>
