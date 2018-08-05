@@ -68,4 +68,15 @@ class PayPalController extends Controller
             }
         }
     }
+
+
+    public function test(Request $request){
+        $arr = explode(",", $request->item_number);
+        // dd($arr[1]);
+        $cartId = $arr[0];
+        $userId = $arr[1];
+        $products = CartService::loadProductCartAllData($cartId);
+        $amount = $request->amount;
+        CartService::checkout($cartId , $products , PaymentMethod::PAYPAL , $userId , $amount);
+    }
 }

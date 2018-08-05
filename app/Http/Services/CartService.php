@@ -258,7 +258,7 @@ class CartService
             //make a payment
             // TODO: Pass payment method id
             $payment = PaymentService::createPayment($paymentMethodId, $cartId, $userId, $amount, 'EUR', $tax);
-
+            session(['order_item_count' => 0]);
             return self::completeCart($cartId, $payment->id);
         }
         else {

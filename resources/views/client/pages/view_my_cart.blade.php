@@ -1053,7 +1053,8 @@
 
                 
                 <!-- <form id="paypalform" action="https://www.paypal.com/cgi-bin/webscr" method="post">  -->
-                    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+                    <!-- <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post"> -->
+                        <form action="/paypal-test" method="get">
                         <!-- Identify your business so that you can collect the payments. -->
                         
                         <input type="hidden" name="business" value="info@dukkangi.com"> 
@@ -1070,12 +1071,8 @@
                         <input id="paypalamount" type="hidden" name="amount" value="Nan">
                         <input type="hidden" name="currency_code" value="EUR">
                         <!-- Display the payment button. -->
-                        <div class="block_btn_pay" style="cursor: pointer;
-    box-shadow: 1px 1px 6px #999;
-    border-radius: 1em;
-    width: 26%;
-    padding: 0.3em;">
-                        <img alt="" border="0" style="cursor: pointer;width: 90%;margin-left: 5%;" src="/front-end/images/payment/paypal.png" onclick="submitPaypal(this)">
+                        <div class="block_btn_pay" style="cursor: pointer;box-shadow: 1px 1px 6px #999;border-radius: 1em;width: 26%;padding: 0.3em;">
+                            <img alt="" border="0" style="cursor: pointer;width: 90%;margin-left: 5%;" src="/front-end/images/payment/paypal.png" onclick="submitPaypal(this)">
                         </div>
                         <input type="image" id="clickpaypal" hidden name="submit" border="0" src="/front-end/images/payment/paypal.png" alt="Buy Now">
 
