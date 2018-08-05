@@ -76,7 +76,8 @@ class CouponService {
 			$user = $userEmail->name;
 			$userEmail = $userEmail->email;
 			$value = $coupon->amount;
-
+			$endDate = $coupon->end_date;
+			
 			MailService::send('view.emails.coupon', [$user,$value,$type,$code,$endDate],'coupons@dukkangi.com',$userEmail , "Coupon" );
 
 			DB::table('order_item')->where('user_id' , '=' , $user)->update(['gain_point' => '0']);
