@@ -214,7 +214,7 @@
 				<td><p>{{$order['name']}}</p></td>
 				<td>{{$order['price']}}€</td>
 				<td>{{$order['price'] * $order['qty']}}€</td>
-				<td>{{ $taxes[counter] }} %</td>
+				<td>{{ $taxes[$counter] }} %</td>
 					<?php $counter++; ?>
 				@endforeach
 
