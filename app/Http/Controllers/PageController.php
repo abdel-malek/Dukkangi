@@ -543,6 +543,8 @@ class PageController extends Controller
 			if ($order != null)
 				$ordercount = $order->qty; 
 		}
+		$product->qty = ProductService::getProductQty($product->id);
+		// dd($product);
 
 		return view('client.pages.item_view')->withProduct($product)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments)->withBrand($logo)->withExistedInCart($existedInCart)->withItemQty($ordercount);
 	}

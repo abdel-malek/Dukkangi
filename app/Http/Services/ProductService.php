@@ -346,8 +346,8 @@ class ProductService
 
     public static function checkProductQty($productId , $qty)
     {
-		$productQty = ProducyQty::where('product_id','=',$productId)
-		->groupBy('productId')
+		$productQty = ProductQty::where('product_id','=',$productId)
+		->groupBy('product_id')
 		->sum('qty');
 		$orderQty =  OrderItem::select()
 					->where('item_id', '=', $productId)
@@ -356,8 +356,8 @@ class ProductService
 		return ($productQty - $orderQty) > $qty;
     }
     public static function getProductQty($productId){
-        $productQty = ProducyQty::where('product_id','=',$productId)
-        ->groupBy('productId')
+        $productQty = ProductQty::where('product_id','=',$productId)
+        ->groupBy('product_id')
         ->sum('qty');
         $orderQty =  OrderItem::select()
                     ->where('item_id', '=', $productId)
