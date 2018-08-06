@@ -8,7 +8,14 @@
 @endsection
 
 @section('grid')
-
+<style>
+      .btn_print{
+          background-color: #087380;
+    border: 0px;
+    padding: 0.4vw 1.5vw;
+    color: #fff;
+  }
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <div>
       <div id="order-items-grid"></div>
@@ -17,7 +24,7 @@
     <div class="row">
         <div class="col-md-12 footer" >
             <a href="{{route('order.index')}}" class="btn btn-primary btn-new">Back To Orders</a>
-            <button onclick="getOrder();" type="button">Print</button>
+            <button onclick="getOrder();" type="button" class="btn_print">Print</button>
             <div id="td_print" style="display: none;">
                 
             </div>
@@ -52,9 +59,9 @@
                     headers: {
                         "x-csrf-token": $("[name=_token]").val()
                     },
-                }).done(response => {
-                    if (response == "Not all items packed"){
-                        alert('Not All Items Packed');
+                }).always(response => {
+                    if (response.responseText == "Not all items packed"){
+        swal({ title: 'Faild', text: 'Not all items packed', type: "warning", timer: 2000, showConfirmButton: false });
                     }
                     else {
                         console.log(response);
