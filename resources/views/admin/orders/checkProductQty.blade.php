@@ -10,6 +10,12 @@
     background: #6ea713;
     color:white;
   }
+  .btn_print{
+          background-color: #087380;
+    border: 0px;
+    padding: 0.4vw 1.5vw;
+    color: #fff;
+  }
   </style>
 @endsection
 
@@ -34,7 +40,7 @@
     <div class="row">
         <div class="col-md-12 footer" >
             <a href="{{route('order.index')}}" class="btn btn-primary btn-new">Back To Orders</a>
-                <button onclick="getOrder();" type="button" >Print</button>
+            <button onclick="getOrder();" type="button" class="btn_print" >Print</button>
             <div id="td_print_after_packing" style="display: none;">
                 
             </div>
@@ -72,7 +78,7 @@
                     },
                 }).always(response => {
                     if (response.responseText == "Not all items packed"){
-                        alert('Not All Items Packed');
+                        swal({ title: 'Faild', text: 'Not all items packed', type: "warning", timer: 2000, showConfirmButton: false });
                     }
                     else {
                         html = "<h3>Dukkangi.com</h3>"+
