@@ -9,7 +9,7 @@ function loadUsers(){
         height: 'auto',
         autoload: true,
         paging: true,
-        pageSize: 10,
+        pageSize: 1000,
         pageIndex: 1,
         pageLoading: true,
         editing: false,
@@ -35,7 +35,6 @@ function loadUsers(){
             {name: "id"                 , title: 'User ID'    , type: "text", width: 5},
             {name: "email"              , title: 'Email', type: "text", width: 5},
             {name: "order_item.0.points", title: 'Gain Points', type: "text", width: 5},
-            // {name: "coupon.0.code"      , title: 'Last Coupon', type: "text", width: 5},
             {
               type: "control", width: 10, editButton: false, modeSwitchButton: false, deleteButton: false,
               itemTemplate: function (value, item) {

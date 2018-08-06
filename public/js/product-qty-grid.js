@@ -10,7 +10,7 @@ function loadProduct(){
         height: 'auto',
         autoload: true,
         paging: true,
-        pageSize: 10,
+        pageSize: 1000,
         pageIndex: 1,
         pageLoading: true,
         editing: false,

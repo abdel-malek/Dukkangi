@@ -331,7 +331,7 @@ class ProductService
         $result['total'] = $product->count();
 
         $skip = ($index == 1) ? 0 : ($index-1)*10 ;
-        $result['data']=$product->groupBy('product_id')->take(10)->skip($skip)->get();
+        $result['data']=$product->groupBy('product_id')->take(1000)->skip($skip)->get();
 
         foreach ($result['data'] as $data) {
             $qty = OrderItem::select()

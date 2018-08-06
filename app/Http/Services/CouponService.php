@@ -30,17 +30,20 @@ class CouponService {
 		{
 			$points->where('id' ,'=' , $filter['id']);
 		}
-		
+		if (!empty($filter['email']))
+		{
+			$points->where('email','like', '%'.$filter['email'].'%');
+		}
 		$points->OrderBy('id','desc');
 		$result['total'] = $points->groupBy('id','email')->count();
 
 		$skip = ($index == 1) ? 0 : ($index-1)*10 ;
-		$result['data']=$points->groupBy('id','email')->take(10)->skip($skip)->get();
+		$result['data']=$points->groupBy('id','email')->take(1000)->skip($skip)->get();
 		return $result;
 	}
 
 	private static function couponCodeGenerator($length){
-		$key = '';
+		$key = ''; 
 	    $keys = array_merge(range(0, 9), range('A', 'Z'));
 
 	    for ($i = 0; $i < $length; $i++) {

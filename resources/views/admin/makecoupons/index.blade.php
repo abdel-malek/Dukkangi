@@ -75,7 +75,7 @@
     <div>
       <div id="coupon-grid"></div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12" style="margin-top: 30px">
         <a href="{{route('groupcoupon')}}" class="btn btn-block btn-primary">Make Coupon</a>
         
     </div>

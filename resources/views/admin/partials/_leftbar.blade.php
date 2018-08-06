@@ -7,6 +7,10 @@
             <ul class="nav site-menu live-search-list" id="site-menu" data-plugin="custom-scroll" data-suppress-scroll-x="true" data-height="100%">
                 <li class="menu-title"><i class="icon_compass_alt"></i><span>Main Menu</span>
                     <ul class="main-menu">
+                        
+                        <li class="sub-item">
+                          <a href="/admin"><span>Income Chart</span></a>
+                        </li>
                         <li class="sub-item">
                             <a href="{{route('category.index')}}"><span>Categories</span></a>
                         </li>
