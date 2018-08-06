@@ -70,7 +70,7 @@ class PaymentService {
 	}
 
 	private static function calcualtePaymentFees($amount,$paymentMethodId){
-		$paymentMethod = PaymentMethod::where('id','=',$paymentMethodId)->get()->first();
+		$paymentMethod = PaymentMethod::find($paymentMethodId);
 		$result = 0;
 		if($paymentMethod->percent_fees > 0){
 			$result = $amount * $paymentMethod->percent_fees;

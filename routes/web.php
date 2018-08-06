@@ -197,7 +197,7 @@ Route::post('/cart/delete','CartController@deleteCart');
 Route::post('stripe','StripeController@stripePost');
 // paypal
 Route::post('/paypal','PayPalController@ipn');
-
+Route::get('/paypal-test' , 'PayPalController@test');
 
 // Test
 Route::get('/mail' , 'TestController@mail');

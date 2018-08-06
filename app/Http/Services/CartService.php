@@ -217,11 +217,16 @@ class CartService
     {
         $tax = 0;
         $taxes = [];
+        $items = [];
         foreach ($products as $product) {
             $orderItem = self::addToCart($product['id'], $product['qty'], $cartId, $userId);
             $taxFees = ProductService::getProductTax($product['id']);
             $tax += self::calculateTaxAmount($orderItem->total_amount, $taxFees);
             array_push($taxes, $taxFees);
+            $pr = Product::find($product['id']);
+            $product['price']  = (isset($pr->discount_price) ?$pr->discount_price : $pr->price );
+            $product['name'] = $pr->english;
+            array_push($items, $product);
         }
 
         //Calculate Amount
@@ -244,11 +249,10 @@ class CartService
 
         if (!$fake){
             $user = User::find($userId);
-
             MailService::send('emails.complete_order' , ['total'=>$amount,
             'subtotal' => $amount - ($amount * 0.19),
             'username' => $user->name,
-            'orderItems' => $products,
+            'orderItems' => $items,
             'orderId' => $cartId,
             'taxes' =>$taxes,
             'tax' => $tax ] , 'Order@dukkangi.com' , $user->email, 'order complete');
@@ -258,7 +262,7 @@ class CartService
             //make a payment
             // TODO: Pass payment method id
             $payment = PaymentService::createPayment($paymentMethodId, $cartId, $userId, $amount, 'EUR', $tax);
-
+            session(['order_item_count' => 0]);
             return self::completeCart($cartId, $payment->id);
         }
         else {

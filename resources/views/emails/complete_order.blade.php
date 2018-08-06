@@ -208,14 +208,14 @@
 			<tbody>
 			<tr class="text insidetable">
 				
-					{!! $counter = 0 !!}
+					<?php  $counter = 0 ?>
 				 @foreach($orderItems as $order)
-				<td>{{$order->qty}}</td>
-				<td><p>{{$order->name}}</p></td>
-				<td>{{$order->price}}€</td>
-				<td>{{$order->price * $order->qty}}€</td>
-				<td>{{ $taxes[counter] }} %</td>
-				{!! $counter++; !!}
+				<td>{{$order['qty']}}</td> 
+				<td><p>{{$order['name']}}</p></td>
+				<td>{{$order['price']}}€</td>
+				<td>{{$order['price'] * $order['qty']}}€</td>
+				<td>{{ $taxes[$counter] }} %</td>
+					<?php $counter++; ?>
 				@endforeach
 
 			</tr>
@@ -226,18 +226,8 @@
 		<div class="borderbottom">
 
 				<div class="borderline">
-								<span class="text white marginleft">Sub-Total</span>
-                                                                {{-- <span class="text white marginright">{{$total - $tax}}€</span> --}}
-				</div>
-
-				<div class="borderline">
 								<span class="text white marginleft">Taxes</span>
-								<span class="text white marginright">{{$taxes}}€</span>
-				</div>
-
-				<div class="borderline">
-								<span class="text white marginleft">Delivery Chargers</span>
-								<span class="text white marginright">NaN €</span>
+								<span class="text white marginright">{{$tax}}€</span>
 				</div>
 
 				<div class="order">
