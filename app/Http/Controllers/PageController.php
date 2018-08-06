@@ -185,6 +185,7 @@ class PageController extends Controller
 		$lang = session('lang');
 		App::setLocale($lang);
 		
+
 		$Tags = [];
 		$tags = Tags::select('product_id')->where('category_id' , '=' ,$categoryId)->get()->toArray();
 		// dd($tags);
@@ -220,8 +221,14 @@ class PageController extends Controller
 			if (isset($product->discount_price)) {
 				$product->discount =  sprintf('%0.0f',100 - (($product->discount_price * 100) / $product->price));
 			}
+			$product->order = 0;
+			if (session('cartId') != null){
+				$temp = OrderItem::where('order_id', '=', session('cartId'))->where('item_id', '=', $product->id)->get()->first();
+				if ($temp != null ){
+					$product->order = $temp->qty;
+				}
+			}
 		}
-
 		return view('client.pages.item_products')->withProducts($products);
 	} 
 
@@ -285,6 +292,13 @@ class PageController extends Controller
 			if (isset($product->discount_price)) {
 				$product->discount =  sprintf('%0.0f',100 - (($product->discount_price * 100) / $product->price));
 			}
+			$product->order = 0;
+			if (session('cartId') != null){
+				$temp = OrderItem::where('order_id', '=', session('cartId'))->where('item_id', '=', $product->id)->get()->first();
+				if ($temp != null ){
+					$product->order = $temp->qty;
+				}
+			}
 		}
 		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withLastSearch($request->search)->withCategoryId($request->categoryId);
 	}
@@ -339,6 +353,13 @@ class PageController extends Controller
 		foreach ($products as $product) {
 			if (isset($product->discount_price)) {
 				$product->discount =  sprintf('%0.0f',100 - (($product->discount_price * 100) / $product->price));
+			}
+			$product->order = 0;
+			if (session('cartId') != null){
+				$temp = OrderItem::where('order_id', '=', session('cartId'))->where('item_id', '=', $product->id)->get()->first();
+				if ($temp != null ){
+					$product->order = $temp->qty;
+				}
 			}
 		}
 		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withLastSearch('Filter')->withCategoryId($categories[0]->id)->withFilter(1);
@@ -414,6 +435,13 @@ class PageController extends Controller
 		foreach ($products as $product) {
 			if (isset($product->discount_price)) {
 				$product->discount =  sprintf('%0.0f',100 - (($product->discount_price * 100) / $product->price));
+			}
+			$product->order = 0;
+			if (session('cartId') != null){
+				$temp = OrderItem::where('order_id', '=', session('cartId'))->where('item_id', '=', $product->id)->get()->first();
+				if ($temp != null ){
+					$product->order = $temp->qty;
+				}
 			}
 		}
 		$temp = [];

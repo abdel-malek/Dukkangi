@@ -1,3 +1,4 @@
+
  @extends('client.main') 
 
  @section('styles')
@@ -701,7 +702,7 @@
 
                         </div>
                         @if(isset($filter) && count($products) >= 15)
-                        <div class="col-sm-3" style="float:left;margin-left: 20em;margin-top: 50px">
+                        <div id="loadm" class="col-sm-3" style="float:left;margin-left: 20em;margin-top: 50px">
                             <p class="btn_filter" id="btn_modal_filter" onclick="scrollload()">
                                 @lang('Load More')
                             </p>
@@ -1033,13 +1034,18 @@
      var counter_qty = 1;
     function scrollload() {
         counter++;
-        console.log(counter);
+        // console.log(counter);
         var request = $.ajax({
             url: '',
             type: "POST",
             data: { "loads": counter },
-        }).done((response) => $('#filteredproducts').append(response));
-
+        }).done((response) => {
+            $('#filteredproducts').append(response);
+            if (response[0] == '`' )
+            {
+                hideBtn();
+            }
+        });
     }
 
     function addToCart(id ,qty){
@@ -1118,7 +1124,6 @@ function loadmore(){
             }
         }).done(response => {
             $('#filteredproducts').append(response);
-            console.log(response);
             if (response[0] == '`' )
             {
                 hideBtn();
