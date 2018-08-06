@@ -70,13 +70,11 @@
                     headers: {
                         "x-csrf-token": $("[name=_token]").val()
                     },
-                }).done(response => {
-                    if (response == "Not all items packed"){
+                }).always(response => {
+                    if (response.responseText == "Not all items packed"){
                         alert('Not All Items Packed');
-                        console.log(response);
                     }
                     else {
-                        console.log(response);
                         html = "<h3>Dukkangi.com</h3>"+
                                 "<div class='block_table'>"+
                                 "<p>No:"+id+" </p>"+
