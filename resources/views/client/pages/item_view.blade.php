@@ -1284,6 +1284,25 @@ width: auto !important;
         </div>
 
 @if ($product->qty == 0)
+<style>
+    .points_item_details{
+        margin-top: 11em !important;
+    }
+    .title_reviews{
+        top: 122px !important;
+    }
+    @media (max-width : 1200px){
+        .points_item_details {
+            margin-top: 5em !important;
+            width: 65%;
+        }
+    }
+      @media (min-width : 991px) and (max-width : 1200px){
+      .title_reviews{
+        top: 60px !important;
+    }
+    }
+</style>
         <div class="item_out_of_stock">
             <h3 class="title_item_out_of_stock">
                 Sorry!
@@ -1330,12 +1349,11 @@ width: auto !important;
                 </small>
             </small>
         </p> --}}
-        <p class="points_item_details" style="margin-left:50px;margin-top: 0em; {{ $product->qty == 0 ?" filter: blur(5px)
-            " : '' }}">
+        <p class="points_item_details" style="margin-left:50px;margin-top: 0em;{{ $product->qty == 0 ?" filter: blur(5px) " : '' }}">
             <span> {{ $product->gain_points }} @lang('Points') </span> @lang('Bounce')
         </p>
 
-        <p class="text_item_details" {{ $product->qty == 0 ?"style='filter: blur(5px)'" : '' }} style="margin-top:32px;    font-size: 20px;"> {{ $product->desc_english}}
+        <p class="text_item_details"  style="margin-top:32px;font-size: 20px;{{ $product->qty == 0 ?"filter: blur(5px)" : '' }}"> {{ $product->desc_english}}
 
         </p>
         
