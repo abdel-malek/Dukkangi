@@ -46,7 +46,7 @@ class FilterService {
             $products->whereBetween ('price', [$request->min , $request->max]);
         }
 
-        $products =$products->take(12)->skip(($skip-1)*12)->get();
+        $products =$products->take(15)->skip(($skip-1)*12)->get();
 
 
         if ($lang == "ar"){
