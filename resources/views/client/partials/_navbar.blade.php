@@ -36,8 +36,8 @@
                 </div>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{route('profile')}}" style="text-align: center;margin-right: -5px;;">{{ Auth::user()->name}}</a>
+            <li class="nav-item" style="white-space: nowrap;">
+              <a class="nav-link" href="{{route('profile')}}" style="text-align: center;margin-right: -5px;">{{ Auth::user()->name}}</a>
             </li>
    <li class="nav-item">
               <a class="nav-link" href="{{ route('about-us') }}">@lang('About')</a>

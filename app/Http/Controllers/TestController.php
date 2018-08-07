@@ -22,7 +22,7 @@ class TestController extends Controller
     }
     public function mail()
     {
-       return MailService::send('emails.complete_order',[], 'info@dukkangi.com', 'sorakah.2011@gmail.com', 'order completed');
+       return MailService::send('emails.signup',[], 'info@dukkangi.com', 'sorakah.2011@gmail.com', 'Welcome to Dukkangi');
         return view('emails.signup');
     }
     public function test(){

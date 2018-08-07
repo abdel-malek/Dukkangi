@@ -44,6 +44,8 @@
 }
 #main-navbar-items ul .nav-item{
   margin-right: 10px;
+      overflow: visible;
+    white-space: nowrap;
 }
 #navbarSupportedContent ul li{
   margin-right: 20px;

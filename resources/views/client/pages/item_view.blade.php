@@ -31,11 +31,16 @@
         margin-top: 0em;
         float: left;
     }
-
+    .item_out_of_stock{
+        margin-top: 3em;
+    }
     header {
         position: absolute;
         z-index: 33;
         width: 100%;
+    }
+    .circle_check {
+    margin-left: 47%;
     }
 .title_item_details {
     margin-bottom: 1.6em;
@@ -1277,8 +1282,8 @@ width: auto !important;
                
             </div>
         </div>
-        @if ($product->qty == 0)
 
+@if ($product->qty == 0)
         <div class="item_out_of_stock">
             <h3 class="title_item_out_of_stock">
                 Sorry!
@@ -1293,7 +1298,7 @@ width: auto !important;
                 Notify me by email when this item becomes available
             </p>
         </div>
-        @endif
+     @endif
         <!--<div class="price_tag_item_details">-->
         @if ($product->qty != 0 )
         <p class="price_item_details">
@@ -1856,8 +1861,16 @@ width: auto !important;
     } else {
         $('.one_item_details .text_item_details').css('paddingBottom', '0em');
     }
-    $('.item_out_of_stock').css('height', parseInt($('.one_item_details').height()) - 380);
+    $('.item_out_of_stock').css('height', parseInt($('.one_item_details').height()) - 398);
+$(window).resize(function(){
 
+       if ($(window).width() <= 920) {  
+
+             $('.item_out_of_stock').css('height', parseInt($('.one_item_details').height()) - 330);
+
+       }     
+
+});
 
     str = $('.product-name').text();
     if (str.length < 10)
@@ -1918,6 +1931,7 @@ $('.tax_include_item').addClass('tax_include_item_mobile');
 $('.tax_include').addClass('tax_include_item_mobile');
 $('.old-price').addClass('old-price_mobile');
 $('.text_item_details').addClass('text_item_details_mobile');
+$('.item_out_of_stock').css('height', parseInt($('.one_item_details').height()) - 390);
 }
 
     function imageModal(obj){
