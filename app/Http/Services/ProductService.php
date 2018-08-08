@@ -7,6 +7,8 @@ use App\Category;
 use App\Subcategory;
 use App\ProductQty;
 use App\OrderItem;
+use App\Comment;
+use App\Rate;
 use Illuminate\Support\Facades\DB;
 use Session;
 use App\Tags;
@@ -172,6 +174,10 @@ class ProductService
 
     public static function deleteProduct($id)
     {
+        OrderItem::where('item_id' ,'=', $id)->delete();
+        Rate::where('product_id' , '=', $id)->delete();
+        Comment::where('product_id', '=', $id)->delete();
+        ProductQty::where('product_id', '=', $id)->delete();
         Tags::where('product_id' ,'=', $id)->delete();
         return Product::where('id', '=', $id)->delete();
     }
