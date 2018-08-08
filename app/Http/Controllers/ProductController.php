@@ -10,6 +10,7 @@ use App\Http\Services\ImageService;
 use App\Subcategory;
 use App\Brand;
 use App\Http\Services\ProductService;
+use App\OrderItem;
 use App\Tags;
 use App\ProductNotificationStatus;
 use App\ProductNotification;
@@ -311,6 +312,18 @@ class ProductController extends Controller
         $brand = Brand::find($brandId);
         $categories = [];
         $subcategories = [];
+        foreach ($products as $product) {
+            if (isset($product->discount_price)) {
+                $product->discount =  sprintf('%0.0f',100 - (($product->discount_price * 100) / $product->price));
+            }
+            $product->order = 0;
+            if (session('cartId') != null){
+                $temp = OrderItem::where('order_id', '=', session('cartId'))->where('item_id', '=', $product->id)->get()->first();
+                if ($temp != null ){
+                    $product->order = $temp->qty;
+                }
+            }
+        }
         return view('client.pages.item')->withProducts($products)->withCategories($categories)->withSubcategories($subcategories)->withBrandfilter("1");
     }
     public function addNotification(  Request $request){
