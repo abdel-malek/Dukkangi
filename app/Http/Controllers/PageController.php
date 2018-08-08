@@ -470,10 +470,9 @@ class PageController extends Controller
 
 		$product = Product::find($id);
 		$subcategory = Subcategory::find($product->subcategory_id);
-		$skip = Comment::with(['user'])->where('product_id','=',$product->id)->get()->count();
-	
+		
 		$comments = Comment::with(['user'])->where('product_id','=',$product->id)->orderBy('id', 'desc')
-		->skip($skip-3)->take(3)->get();
+		->skip(0)->take(3)->get();
 		
 		$logo = Brand::select('image_path' , 'id')
 		->where('id' , '=', $product->brand_id)
@@ -580,15 +579,12 @@ class PageController extends Controller
 
 	public function rate(Request $request){
 		$userId = Auth::id();
-
+		// dd($request->request);
 		$type = $request->input('type') == "subategory" ? 2 : 1 ;
 		$id   = $request->input('id');
 		$userrate = $request->input('rate');
 
-		if ( $type == 1 )
-			$rates = Rate::where('product_id' ,'=',$id)->where('type', '=', $type)->get();
-		else
-			$rates = Rate::where('subcategory_id' ,'=',$id)->where('type', '=', $type)->get();
+		$rates = Rate::where('product_id' ,'=',$id)->where('type', '=', $type)->get();
 
 
 		$flag = 0;
