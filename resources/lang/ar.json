@@ -97,5 +97,6 @@
 "Login To Add":"قم بتسجيل الدخول",
 "Already in cart":"موجود بالسلة",
 "You have ordered":"لقد طلبت",
-"tax included" : "متضمن الضريبة" 
+"tax included" : "متضمن الضريبة" ,
+    "Sorry, we don't have this quantity": "عذرا ، ليس لدينا هذه الكمية"
 }

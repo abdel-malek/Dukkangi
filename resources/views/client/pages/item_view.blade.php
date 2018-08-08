@@ -1520,8 +1520,8 @@ width: auto !important;
     </div>
     <div class="col-md-12" style="margin-top: 0.6em;float: left;">
         <div style="width: 30%;float: left;">
-            <h3 class="title_qty">
-                @lang('Quantity')
+            <h3 class="title_qty" id="title_qty">
+                @lang('Quantity') <span style="display: none;font-size: 0.7em;overflow: visible;white-space: nowrap;">@lang("Sorry, we don't have this quantity")</span>
             </h3>
         </div>
         <div style="width: 70%;float: right;">
@@ -1816,13 +1816,15 @@ width: auto !important;
 <script>
     function num_plus(obj) {
         counter = parseInt($(obj).parent().parent().find('p').text());
-        if (counter < <?php echo $product -> qty - 1 ?> ) {
+        if (counter < <?php echo $product -> qty ?> ) {
             counter = counter + 1
+            $('#title_qty span').css('display','none');
             $(obj).parent().parent().find('p').text(counter);
-        }
-                else if (counter < 1) {
+        }else if (counter < 1) {
             counter = 1;
             $(obj).parent().parent().find('p').text(counter);
+        }else{
+        $('#title_qty span').css('display','inline');
         }
         changeTotal(counter);
     }
@@ -1832,6 +1834,7 @@ width: auto !important;
             counter = counter - 1;
             $(obj).parent().parent().find('p').text(counter);
         }
+        $('#title_qty span').css('display','none');
         changeTotal(counter);
     }
 
