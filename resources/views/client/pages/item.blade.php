@@ -599,8 +599,8 @@
 @section('main_section')
 <div class="col-md-12 page_content_item" id="content_page">
     @if(!isset($brandfilter))
-    <div id="content_page_item">
-        <div class="col-md-12 col-sm-12 page_content_item">
+    <div id="content_page_item" style="z-index: -3;">
+        <div class="col-md-12 col-sm-12 page_content_item" style="z-index: -3;">
             <div id="jssor_1" class="jssor_1" style="position:relative;margin:0 auto;top:0px;left:-85px;width:1024px;height:200px;overflow:none;visibility:hidden;background-color:#24262e;">
 
 

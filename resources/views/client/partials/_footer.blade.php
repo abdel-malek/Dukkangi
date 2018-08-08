@@ -552,6 +552,7 @@
 </script>
 <script >
   function addCartModal(src,id,total, qty){
+      alert(1);
     console.log(total);
     console.log(qty);
  if (qty == 0 ) 

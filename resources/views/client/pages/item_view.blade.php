@@ -1291,6 +1291,9 @@ width: auto !important;
     .title_reviews{
         top: 122px !important;
     }
+    .block_similar{
+        margin-top: 6em;
+    }
     @media (max-width : 1200px){
         .points_item_details {
             margin-top: 5em !important;
@@ -1326,7 +1329,7 @@ width: auto !important;
             <span class="price-wrapper" style="width: 5em;">
 
                 <small style="font-size: 50%;">
-                    <b style="font-family: 'EagarFont';"><span class="tax_include_item" style="font-size: 0.8rem;float: left;margin-top: 1.4rem;margin-left: -1rem;font-weight: 500;">@lang('tax included')</span>  <i class="old-price" style="text-decoration: line-through;color:#8e8d8d;">{{$product->price}}€</i>/ <span class="new-price">{{$product->discount_price}}</span> €</b>
+                    <b style="font-family: 'EagarFont';"><span class="tax_include_item" style="font-size: 0.8rem;float: left;margin-top: 1.4rem;margin-left: -1rem;font-weight: 500;" value="@lang('tax included')" >@lang('tax included')</span>  <i class="old-price" style="text-decoration: line-through;color:#8e8d8d;">{{$product->price}}€</i>/ <span class="new-price">{{$product->discount_price}}</span> €</b>
 
                 </small>
                 @else
@@ -1466,9 +1469,15 @@ width: auto !important;
     </div>
 </div>
 <div class="col-md-12 block_similar">
+    @if(!$simiProducts->isEmpty())
     <h3 class="title_similar_items">
         @lang('Similar items')
     </h3>
+    @else
+    <br/>
+    <br/>
+    <br/>
+    @endif
 <div class="container">
     @foreach($simiProducts as $simiproduct) @if($simiproduct->id == $product->id)
     <?php
@@ -1480,7 +1489,7 @@ width: auto !important;
             @if (isset($simiproduct->discount) && $simiproduct->discount != 0)
             <div class="discount_item">
                 <p class="text_discount">
-                    <span style="font-family: 'EagarFont';" >{{$simiproduct->discount}} % <br/><span value="@lang('off')" class="off_item_prodect">@lang('off')</span></span> <br>
+                    <span item_pricestyle="font-family: 'EagarFont';" >{{$simiproduct->discount}} % <br/><span value="@lang('off')" class="off_item_prodect">@lang('off')</span></span> <br>
 <!--                <span style="font-family: unset;font-weight: bolder;font-size: 17px;"> {{ $simiproduct->discount_price}} €</span>-->
             </p>
                 <div class="shadow_div_discount"></div>
@@ -1490,7 +1499,7 @@ width: auto !important;
                 <img src="{{$simiproduct->image_id}}" class="img_item product-img" />
                 <p class="item_name">{{ $simiproduct->english}} </p>
             </a>
-            <p class="item_price" style="margin-bottom: 0em;"> <span class="tax_include" style="font-size: 0.8rem;margin-top: 0.7rem;    position: absolute;margin-left: -4.1rem;float: left;font-weight: 500;">@lang('tax included')</span> &nbsp;{!! isset($simiproduct->discount_price) ?"<span class='old-price' style='text-decoration: line-through;font-family: EagarFont;color: #8e8d8d;font-size: 0.9rem;'>".$simiproduct->price.' €</span>  / '. $simiproduct->discount_price : $simiproduct->price !!}€</p>
+            <p class="item_price" style="margin-bottom: 0em;"> <span class="tax_include" style="font-size: 0.8rem;margin-top: 0.7rem;    position: absolute;margin-left: -4.8rem;float: left;font-weight: 500;" value="@lang('tax included')">@lang('tax included')</span> &nbsp;{!! isset($simiproduct->discount_price) ?"<span class='old-price' style='text-decoration: line-through;font-family: EagarFont;color: #8e8d8d;font-size: 0.9rem;'>".$simiproduct->price.' €</span>  / '. $simiproduct->discount_price : $simiproduct->price !!}€</p>
             <span class="rating ratings{{$simiproduct->rate}}" style="width: 0.75em;height: 1.7em; left: 1em;bottom: 0.2em;"></span>
             <img onclick="addCartModal($(this).parent().find('.product-img').attr('src') , $(this).data('id'),{{isset($simiproduct->discount_price) ?$simiproduct->discount_price : $simiproduct->price }} ,{{ $simiproduct->order }})" data-id="{{$simiproduct->id}}" src="{{($simiproduct->order != 0) ?'\front-end\images\user_actions\view-my-cart_after_add.png' :
             '\front-end\images\user_actions\view-my-cart.png'}}" class="icon_view_my_card" style="cursor: pointer;">
@@ -1566,6 +1575,12 @@ width: auto !important;
 <script src="{{URL::asset('js/jquery.min.js')}}"></script>
 <script src="{{URL::asset('/front-end/js/plugin/jquery-pretty-tabs.js')}}"></script>
 <script>
+      if($('.tax_include').attr('value').length > 14){
+    $('.tax_include').css('marginLeft','-5.9rem');
+    }
+      if($('.off_item').attr('value').length > 5){
+    $('.off_item').css('fontSize','0.6rem');
+    }
    if($('.off_item').attr('value').length > 6){
     $('.off_item').css('fontSize','0.9rem');
     $('.off_item').css('marginLeft','-0.2rem');
@@ -1921,7 +1936,7 @@ $(window).resize(function(){
                              ?>,
                             text: <?php
                                 if (session('lang') == 'ar') 
-                                    echo "'تمت اضافة امنتج'";
+                                    echo "'تمت اضافة المنتج'";
                                 else 
                                     echo "'Item Added'";
                              ?>, type: "success", timer: 2000, showConfirmButton: false });
