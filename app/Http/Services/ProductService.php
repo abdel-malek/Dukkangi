@@ -338,6 +338,11 @@ class ProductService
 					        ->where('item_id', '=', $data->product_id)
 					        ->groupBy('item_id')
 					        ->sum('qty');
+            $product = Product::find($data->product_id);
+            if (!isset($product) || $product->count() == 0){
+                OrderItem::where('item_id', '=' , $data->product_id)->delete();
+                ProductQty::where('product_id','=', $data->product_id)->delete();
+            }
             $data->qty = $data->qty -$qty;
         }
 

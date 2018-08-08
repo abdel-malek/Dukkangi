@@ -488,7 +488,6 @@ class PageController extends Controller
 		foreach ($tags as $tag) {
 			array_push($Tags , $tag);
 		}
-
 		$simiproducts = Product::select('*')
 		->whereIn('id' , $Tags)
 		->where('id','!=',$id)
@@ -580,11 +579,10 @@ class PageController extends Controller
 	public function rate(Request $request){
 		$userId = Auth::id();
 		// dd($request->request);
-		$type = $request->input('type') == "subategory" ? 2 : 1 ;
 		$id   = $request->input('id');
 		$userrate = $request->input('rate');
 
-		$rates = Rate::where('product_id' ,'=',$id)->where('type', '=', $type)->get();
+		$rates = Rate::where('product_id' ,'=',$id)->where('type', '=', 1)->get();
 
 
 		$flag = 0;
@@ -599,23 +597,19 @@ class PageController extends Controller
 
 		if (count($rates) != 0 ){
 			$lastrate = $precalculation / (count($rates) + ($flag ? 0 : 1) );
-
-			if ($type == 1){
 				$update = Product::find($id);
 				$update->rate = round($lastrate);
 				$update->update();
-			}
-			else if ($type == 2){
-				$update = Subcategory::find($id);
-				$update->rate = round($lastrate);
-				$update->update();
-			}
 		}
-
-			 $update = Rate::updateOrCreate(
-				['type' => $type , 'user_id'=>$userId ,$type == 1 ?'product_id' :'subcategory_id'  => $id ],
-	   			['rate' => $userrate,'type' => $type , 'user_id'=>$userId ,$type == 1 ?'product_id' :'subcategory_id'  => $id ]
-		 	);
+		else {
+			$update = Rate::updateOrCreate(
+				['type' => 1 , 'user_id'=>$userId ,'product_id' => $id ],
+   				['rate' => $userrate,'type' => 1 , 'user_id'=>$userId ,'product_id'  => $id ]
+	 		);
+	 		$product = Product::find($id);
+	 		$product->rate = $userrate;
+	 		$product->update();
+		}
 	}
 
 	public function comment(Request $request){
