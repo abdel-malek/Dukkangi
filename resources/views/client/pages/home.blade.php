@@ -425,8 +425,15 @@
     width: 25em;
 }
 .flexslider2{
-    width: 69% !important;
+    width: 68% !important;
     height: 14em !important;
+     left: 15% !important;
+}
+.flexslider2 .div_item{
+    margin-left: 0rem !important;
+}
+.div_icon_footer {
+    margin-left: 21%;
 }
 /*.navbar-nav .nav-link{
     width: 3rem !important;
@@ -489,6 +496,9 @@
     flex: 0 0 100.333333%;
     max-width: 100.333333%;
      }
+     .flexslider2{
+         left: 15% !important;
+     }
  }
 
       </style>
@@ -550,7 +560,7 @@
           @foreach($topProducts as $product)
           <li>
               <div class="col-md-11 col-lg-3" style="margin-top: 1em;float: left;max-width: 100%;margin-bottom: 1em">
-                  <div class="div_item" style="height: 12em;width: 10em;margin-left: 47px;">
+                  <div class="div_item" style="height: 12em;width: 10em;margin-left: 0px;">
                      <a href="{{route('product',(string)$product->id)}}"> <img src="{{$product->image_id}}" class="img_item" />
                       <p class="item_name" style="font-size: 0.7em">{{$product->english}}</p>
                       <p class="item_price" style="margin-bottom: 0em;">{{isset($product->discounted_price) ? $product->discount_price : $product->price}}€</p>

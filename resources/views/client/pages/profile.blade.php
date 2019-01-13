@@ -168,7 +168,9 @@
 	.sections
 	{
 		padding-left: 4em;
+                margin-right: 3.4rem;
 		margin-bottom: 9em;
+                margin-top: 1rem;
 	}
 	thead
 	{
@@ -214,7 +216,7 @@
             margin-top: -6rem !important;
         }
         .sections {
-    width: 65.8%;
+    width: 62.8%;
         }
         .glyph{
             left: 80%;
@@ -232,12 +234,12 @@
                 width: 34% !important;
             }
             .sections {
-                width: 63.8%;
+                width: 60.8%;
             }
         }
         @media (min-width: 768px) and (max-width: 1030px) {
             .sections{
-                width: 60%;
+                width: 57%;
             }
             .div_icon_footer{
                     margin-left: 20%;
@@ -303,7 +305,7 @@
                 left: -4em !important;
             }
             .sections {
-                width: 64%;
+                width: 61%;
             }
             .icon-flag {
     width: 20px !important;
@@ -323,7 +325,7 @@
                 padding-left: 9% !important;
             }
             .sections {
-                width: 70%;
+                width: 67%;
             }
             .header_page_text_div {
     padding-left: 38% !important;
@@ -381,7 +383,7 @@
                     margin-left: 15%;
             }
             .sections {
-    width: 106%;
+    width: 102%;
 }
         }
 
@@ -436,9 +438,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <div class="col-md-12 all_page_item_view" id="content_page" style="margin-bottom: 14em;top: 3em;">
     <div class="header_page" style="background-image: url('/front-end/images/items_page/1.png');background-size:133%">
-        <p class="header_page_text_div" style="width: 90.3%; padding-left: 30.5em">
+        <p class="header_page_text_div" style="width: 92.3%; padding-left: 30.5em">
             <!--<b>{{Auth::user()->name }}</b> @lang('Profile')-->
-            <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
+            <img src="/front-end/images/items_page/star.png" class="one_start_slider" style="opacity: 0;" />
             
         </p>
 	</div>     

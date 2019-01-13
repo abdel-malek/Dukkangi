@@ -27,6 +27,9 @@
                         <li class="sub-item">
                             <a href="{{route('productQty.index')}}"><span>Product Qty</span></a>
                         </li>
+<!--                          <li class="sub-item">
+                          <a href="{{route('about.index') }}"><span>About</span></a>
+                        </li>-->
                         <li class="sub-item">
                             <a href="{{route('user.index')}}"><span>Users</span></a>
                         </li>

@@ -210,23 +210,40 @@
 }
 }
 
-@media (min-width: 300px) and (max-width: 768px) {
+    @media (min-width: 300px) and (max-width: 768px) {
 .modal_one_item_details {
     left: 6%;
     width: 60%;
 }
+.text_discount {
+    line-height: 1.8;
+    top: -7em;
+}
+    }
 /*.img_price_item_details{
     width: 12.5em !important;
     margin-left: 1.26em;    
 }*/
+
+@media (min-width: 768px) and (max-width: 1100px){
+    .text_discount {
+    line-height: 1.4;
+    top: -4em;
+}
 }
     @media (min-width: 300px) and (max-width: 1100px) {
         .div_item .rating {
-            bottom: 0.2em;
+            bottom: 0.7em;
             left: 0.6em;
         }
+        .tabs__item {
+            font-size: 1.1em;
+        }
+        .div_item {
+            padding-bottom: 1em;
+        }
         .tax_include{
-            margin-top: 1.4rem !important;
+            margin-top: 0.6rem !important;
         }
          .thumnbail{
             margin-top: -13rem !important;
@@ -239,7 +256,11 @@
             padding-left: 0rem !important;
         }
         .text_discount span{
-            font-size: 1.8rem !important;
+            font-size: 1.2rem !important;
+        }
+        .discount_item {
+            border-top: 8em solid #d80001;
+            border-right: 7em solid transparent;
         }
         .text_price {
             width: 24%;
@@ -247,6 +268,7 @@
         .item_name {
     margin-bottom: 0rem;
     width: 100%;
+    font-size: 1rem;
 }
 .item_price {
     width: 100%;
@@ -254,7 +276,7 @@
         .text_discount{
             width: 4em;
             left: -0.19em;
-            top: -5em ;
+            /*top: -4em ;*/
         }
         .line_price {
             width: 76%;
@@ -286,8 +308,12 @@
 
         }
         .img_item {
+            max-height: 12rem;
             height: auto;
-            width:100%;
+            /*width:100%;*/
+        }
+        .icon_view_my_card {
+            height: 3.5em;
         }
         .text_footer {
             font-size: 1.3em;
@@ -297,10 +323,13 @@
             bottom: 0.1em;
         }
         .rating {
-            font-size: 2.5em;
+            font-size: 2em;
         }
         .rating_slide {
             font-size: 1.8em;
+        }
+        .item_price {
+            font-size: 1.4em;
         }
         .image_slider {
             height: 17em !important;
@@ -316,8 +345,8 @@
     height: 12rem !important;
         }
         .sub-paragraph {
-            bottom: 3rem;
-            font-size: 1.4em;
+            bottom: 2.4rem;
+            font-size: 1em;
             padding: 4.4px 19.5px !important;
         }
         .thumnbail {
@@ -383,6 +412,13 @@
         
 
     }
+    @media (min-width: 300px) and (max-width: 768px) {
+
+.discount_item {
+    border-top: 7em solid #d80001;
+    border-right: 5em solid transparent;
+}
+    }
         @media (min-width: 1022px) and (max-width: 1100px) {
     .discount_item {
         border-top: 8em solid #d80001;
@@ -391,16 +427,21 @@
     .text_discount span {
         font-size: 1.5rem !important;
     }
-    .text_discount {
+/*    .text_discount {
     left: 0em;
     top: -8em;
-    }
+    }*/
 }
+
+    @media (min-width: 1030px) and (max-width: 1100px) {
+        .text_discount {
+            top: -7em;
+        }
+    }
      @media (min-width: 300px) and (max-width: 1060px) {
     .jssor_1 {
             left: 0px !important;
         }
-        
      }
       @media (min-width: 992px) and (max-width: 1025px) {
 /*   .input_search_sm {
@@ -518,7 +559,7 @@
     margin-right: 0em;
      }
      .text_discount {
-         top: -5.4em;
+         /*top: -5.4em;*/
      }
      .text_discount span {
          font-size: 1rem !important;
@@ -552,18 +593,28 @@
      }
 }
 
-@media (min-width: 626px) and (max-width: 700px) {
+@media (min-width: 574px) and (max-width: 700px) {
+      .block_filter{
+         margin-left: 5rem !important; 
+             flex: 0 0 50.666667%;
+    max-width: 50.666667%;
+     }
+}
+@media (min-width: px) and (max-width: 626px) {
      .thumnbail {
     margin-top: -8rem !important;
         width: 9.6rem !important;
      }
+      .block_filter{
+         margin-left: 4rem !important; 
+     }
 }
-
 @media (min-width: 300px) and (max-width: 626px) {
      .thumnbail {
     margin-top: -7rem !important;
         width: 9.6rem !important;
      }
+    
 }
     @media (min-width: 1024px) and (max-width: 1100px) {
         .item_price {
@@ -665,7 +716,7 @@
                 <img src={{URL::asset( '/front-end/images/light_logo.png')}} class="img-resposive logo_text" />
             </div>
             @endif
-            <div class="col-xl-3 col-lg-5  col-md-5 col-sm-5 col-xs-10" style="float:left;margin-left: 2em;">
+            <div class="col-xl-3 col-lg-5  col-md-5 col-sm-5 col-xs-10 block_filter" style="float:left;margin-left: 2em;">
                 <p class="btn_filter" id="btn_modal_filter">
                     @lang('Filter')
                 </p>
@@ -702,13 +753,13 @@
 
                         </div>
                         @if(isset($filter) && count($products) >= 15)
-                        <div id="loadm" class="col-sm-3" style="float:left;margin-left: 20em;margin-top: 50px">
+                        <div id="loadm" class="col-md-4 col-sm-5" style="float:left;margin-left: 20em;margin-top: 50px">
                             <p class="btn_filter" id="btn_modal_filter" onclick="scrollload()">
                                 @lang('Load More')
                             </p>
                         </div>
                         @elseif (count($products) >= 15)
-                        <div id="loadm" class="col-sm-3" style="float:left;margin-left: 20em;margin-top: 50px">
+                        <div id="loadm" class="col-md-4 col-sm-5" style="float:left;margin-left: 20em;margin-top: 50px">
                             <p class="btn_filter" id="btn_modal_filter" onclick="loadmore()">
                                 @lang('Load More')
                             </p>

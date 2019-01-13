@@ -126,19 +126,19 @@
 </div>
 		<div class="col-md-10 col-md-offset-1">
 				{{ Form::label('desc_arabic' ,'Description in Arabic:')}}
-				{{ Form::textarea('desc_arabic', 'Type Here!' , ['class' => 'form-control', 'required' =>'']) }}
+				{{ Form::textarea('desc_arabic', '' , ['class' => 'form-control', 'required' =>'','placeholder' => 'Type Here!']) }}
 				<br>
 				{{ Form::label('desc_english' ,'Description in English:')}}
-				{{ Form::textarea('desc_english', 'Type Here!' , ['class' => 'form-control', 'required' =>'']) }}
+				{{ Form::textarea('desc_english', '' , ['class' => 'form-control', 'required' =>'','placeholder' => 'Type Here!']) }}
 				<br>
 				{{ Form::label('desc_german' ,'Description in German:')}}
-				{{ Form::textarea('desc_german', 'Type Here!' , ['class' => 'form-control' ]) }}
+				{{ Form::textarea('desc_german', '' , ['class' => 'form-control','placeholder' => 'Type Here!' ]) }}
 				<br>
 				{{ Form::label('desc_turky' ,'Description in Turky:')}}
-				{{ Form::textarea('desc_turky', 'Type Here!' , ['class' => 'form-control' ]) }}
+				{{ Form::textarea('desc_turky', '' , ['class' => 'form-control','placeholder' => 'Type Here!' ]) }}
 				<br>
 				{{ Form::label('desc_kurdi' ,'Description in Kurdi:')}}
-				{{ Form::textarea('desc_kurdi', 'Type Here!' , ['class' => 'form-control' ]) }}
+				{{ Form::textarea('desc_kurdi', '' , ['class' => 'form-control','placeholder' => 'Type Here!' ]) }}
 
 				<div class="row">
 					<div class="col-md-3">

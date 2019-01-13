@@ -1422,6 +1422,7 @@
             amount = parseFloat(response);
             inp.val(amount);
             $('#clickpaypal').click();
+            
         });
     }
 

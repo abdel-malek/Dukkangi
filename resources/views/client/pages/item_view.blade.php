@@ -26,7 +26,9 @@
         cursor: pointer;
         color: #fff;
     }
-
+.footer {
+ margin-top: 1rem !important;
+}
     #content_page {
         margin-top: 0em;
         float: left;
@@ -172,7 +174,7 @@
     .header_page_text_div {
         padding: 0.8em 2em;
         top: 10.9em;
-        width: 90.3%;
+        width: 92.3%;
         padding-left: 30%;
     }
 
@@ -204,12 +206,12 @@
     }
 
     .add_to_card_item_details span {
-        margin-top: 8.3em;
+        margin-top: 13.7em;
         color: #fff;
     }
 
     .img_add_to_card_item_details {
-        margin-top: 10.5em;
+        margin-top: 18.5em;
     }
 
     .logo_prodect {
@@ -246,12 +248,11 @@
         }
 
         .text_item_details{
-            height: 10em;
-/*            margin-bottom: -3em;*/
-			margin-bottom: 0;
+            height: 9em;
+            margin-bottom: 7rem;
             padding-bottom: 0em;
-			overflow-y: auto;
-			overflow-x: hidden
+            overflow-y: auto;
+            overflow-x: hidden
         }
 
                 .block_similar {
@@ -696,7 +697,7 @@
             
          @media (min-width: 1311px) and (max-width: 1339px) {
             .header_page_text_div {
-                width: 90.3%;
+                width: 92.3%;
             }
             .rating2{
                 right: 3.3em !important;
@@ -704,7 +705,7 @@
         }
         @media (min-width: 1280px) and (max-width: 1310px) {
             .header_page_text_div {
-                width: 90.3%;
+                width: 92.3%;
             }
               .rating2{
                 right: 2.6em !important;
@@ -712,7 +713,7 @@
         }
           @media (min-width: 1250px) and (max-width: 1279px) {
             .header_page_text_div {
-                width: 90.2%;
+                width: 92.2%;
             }
               .rating2{
                 right: 2em !important;
@@ -723,7 +724,7 @@
           }
            @media (min-width: 1212px) and (max-width: 1249px) {
             .header_page_text_div {
-                width: 90.2%;
+                width: 92.2%;
             }
               .rating2{
                 right: 1.7em !important;
@@ -734,7 +735,7 @@
         }
          @media (min-width: 1201px) and (max-width: 1211px) {
             .header_page_text_div {
-                width: 90.1%;
+                width: 92.1%;
             }
              .rating2{
                 right: 1.4em !important;
@@ -1415,7 +1416,7 @@ width: auto !important;
         
     </div>
 
-    <div class="col-md-12 title_reviews" style="top: 51px;">
+    <div class="col-md-12 title_reviews" style="top: 140px;">
         <h3 class="title_customer_review">
             @lang("Customer's Reviews")
         </h3>
@@ -1468,7 +1469,7 @@ width: auto !important;
         </div>
     </div>
 </div>
-<div class="col-md-12 block_similar">
+<div class="col-md-12 block_similar" style="margin-top: 5rem;">
     @if(!$simiProducts->isEmpty())
     <h3 class="title_similar_items">
         @lang('Similar items')

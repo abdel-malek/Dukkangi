@@ -2,7 +2,7 @@
 @if($products->count() != 0)
     @foreach($products as $product)
 
-    <div class="col-lg-6 col-sm-11 col-xs-12 col-xl-4 col_item" style="margin-top: 1em;float: left;">
+    <div class="col-lg-6 col-md-6 col-sm-10 col-xs-12 col-xl-4 col_item" style="margin-top: 1em;float: left;">
         <div class="div_item"  data-id="{{$product->id}}">
             @if (isset($product->discount_price) && $product->discount != 0)
             <div class="discount_item">

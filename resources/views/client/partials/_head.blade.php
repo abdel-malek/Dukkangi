@@ -375,6 +375,9 @@
          .rate-us{
              display: none;
          }
+         .rating_navbar{
+             display: block;
+         }
          .bottom_left_background_block .hint_title {
     left: 12rem;
          }

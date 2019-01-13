@@ -124,6 +124,9 @@ Route::post('/admin/users/delete/{id}', ['uses' => 'UserController@destroy'     
     //ORDERS
 Route::get('/admin/orders', ['uses' => 'OrderController@index'         , 'as' => 'order.index' ]);
 Route::post('/admin/orders', ['uses' => 'OrderController@loadOrder'     , 'as' => 'order.data'  ]);
+ //About
+Route::get('/admin/about', ['uses' => 'AboutController@index'         , 'as' => 'about.index' ]);
+//Route::post('/admin/about', ['uses' => 'OrderController@loadOrder'     , 'as' => 'order.data'  ]);
     //USER ORDERS
 Route::get('/admin/orders/user/{id}' , 'OrderController@getUserOrders')->name('getUserOrders');
 Route::post('/admin/orders/user/{id}', 'OrderController@loadUserOrders');

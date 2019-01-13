@@ -12,20 +12,23 @@
 	.img-logo{
 		margin-left:50px;
 	}
-	.right-arrow
-	{    
-		cursor: pointer;
-		left: 21.5em !important;
-    	top: 10.5em !important;
-		background-color: #d80001;
-		border-radius: 1.5em;
-		border-color: #d80001;
-		color: #fff;
-		width: 1.5em;
-   		height: 1.5em;
-    	padding: 2.5px;
-   		font-size: 12px;    	
-	}
+        .title_contact_us{
+            margin-left: -2.4vw;
+        }
+        .right-arrow
+        {    
+            cursor: pointer;
+            left: 19.5vw !important;
+            top: 10.5em !important;
+            background-color: #d80001;
+            border-radius: 1.5em;
+            border-color: #d80001;
+            color: #fff;
+            width: 1.5em;
+            height: 1.5em;
+            padding: 2.5px;
+            font-size: 12px;    	
+        }
 	.left-arrow
 	{    
 		cursor: pointer;
@@ -40,21 +43,21 @@
     	padding: 2.5px;
    		font-size: 12px;
 	}
-	.contact-us-div{
-		max-width: 30% !important;
-	    margin-top: 1em;
-	        left: 61em;
-    top: 0em;
-	   	padding: 10px;
+        .contact-us-div{
+            max-width: 30% !important;
+            margin-top: 1em;
+            left: 62vw;
+            top: 0em;
+            padding: 10px;
+        }
+    .review-div{
+        max-width: 48%;
+        margin-top: 1em;
+        left:10vw;
+        border: 1px solid #c0c0c0;
+        padding: 10px;
+        box-shadow: 1px 1px 6px #999;
     }
-	.review-div{
-	    max-width: 48%;
-	    margin-top: 1em;
-	    left:14em;
-	   	border: 1px solid #c0c0c0;
-    	padding: 10px;
-    	box-shadow: 1px 1px 6px #999;
-	}
 	.inner-review{
 		width: 75%;
 	    margin-left: 12%;
@@ -92,6 +95,7 @@
 	}
 	.contact-par{
 		    margin-left: 2px;
+                    margin-top: -2.3rem;
 	}	
 	.phone {
 	    position: absolute;
@@ -103,7 +107,7 @@
 	.mail
 	{
 		position: relative;
-	    top: 1.4em;
+	    top: 0.5em;
 	    left:-0.3em;
 		color: #d80001;
 	    font-size: 20px;
@@ -202,6 +206,22 @@
                 .section_about{
                     font-size: 1.8rem;
                 }
+
+                @media (min-width: 1450px){
+                    .contact-us-div {
+                        left: 61.5vw;
+                    }
+                }
+                 @media (min-width: 1550px){
+                    .contact-us-div {
+                        left: 60.5vw;
+                    }
+                }
+                   @media (min-width: 1850px){
+                    .contact-us-div {
+                        left: 59.5vw;
+                    }
+                }
 	@media (min-width: 768px) and (max-width: 1030px) {
 		.sth 
 		{
@@ -261,25 +281,30 @@
              margin-top: 2em !important; 
         }
         }
-          @media (min-width: 900px) and (max-width: 1000px) {
-              .contact-us-div{
+        @media (min-width: 900px) and (max-width: 1000px) {
+            .contact-us-div{
                 margin-top: -4em !important;
-        }
+            }
             .contact-us-div_mobile{
-              margin-top: -25em !important;
-    padding-bottom: 23rem;
-        }
-              
+                margin-top: -5em !important;
+                padding-bottom: 23rem;
+            }
+            .right-arrow {
+                left: 25.5vw !important;
+            } 
         }
          @media (min-width: 400px) and (max-width: 900px) {
               .contact-us-div{
                 margin-top: -9em !important;
         }
+       
             
         }
 	@if(session('lang') == 'ar')
 		.rtl{
-			float: right;
+                    float: right;
+                    text-align: right;
+                    direction: rtl;
 		}
 	@endif
 </style>
@@ -342,30 +367,73 @@
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <div class="row"> 
-	<div class="col-lg-5 col-sm-4  about-div">
+    <div class="col-lg-5 col-sm-4  about-div" style="margin-top:-16rem;">
 		<h1 class="rtl"> @lang('About Dukkangi')</h1>
+                @if(session('lang') == 'ar' )
+                    <p class="rtl section_about">
+			موقع دكنجي هو موقع يضم كل مستلزمات المستهلك من مواد غذائية و البسة و معدات ضروري لحياته اليومية 
+                        هدفنا راض المستهلك و سعادته و تامين كل وسائل الراحلة المتاحة  
+                        في حال وجهتك اي مشكلة عند التعامل مع الموقع يمكنك ان ترسلنا و سوف نقوم بحلها مباشرا
+                    </p>
+                @else
 		<p class="rtl section_about">
 			Lorem ipsum dolor sit amet, has et saepe bonorum meliore, eum ex case eros splendide. Mei vide autem at, duo noster patrioque assentior in. Graeci consulatu iracundia in sed, cum autem inermis ut. Has quis quas incorrupte id, cu usu suas eleifend. Eum id ignota everti voluptatum.
 		</p >
-		<p class="rtl section_about">
+                @endif
+                @if(session('lang') == 'ar' )
+                    <p class="rtl section_about">
+                        موقع دكنجي يتح لك العديد من العروض و الهدية يمكنك الاستفادة منها 
+                        كما انه يضمن لك جودة المنتجات التي يقوم ببيعك اياها 
+                        يمكنك ارجاع اي منتاج في حال كان غير مطابق للموصفات المذكور في الموقع
+                    </p>
+                @else
+                    <p class="rtl section_about">
 			Mei placerat phaedrum molestiae ut, te velit debet recusabo cum. Falli choro no vim. Commodo quaerendum ad has. Omnis aperiam alterum his an, eos no minim ignota commune. No pro enim ignota, eirmod omnesque qui an, ei sea augue accusamus efficiendi.
-		</p>
-		<p class="rtl section_about">
-			Mei placerat phaedrum molestiae ut, te velit debet recusabo cum. Falli choro no vim. Commodo quaerendum ad has. Omnis aperiam alterum his an, eos no minim ignota commune. No pro enim ignota, eirmod omnesque qui an, ei sea augue accusamus efficiendi.
-		</p>
+                    </p>
+                @endif
+                @if(session('lang') == 'ar' )
+                    <p class="rtl section_about">
+                        خدمتنا متاحة  اربعون و عشرون ساعة ويوجد موضفين 
+                        للاجاب عن استفسارتكم
+                        و تسائلتكم يمكنكم التواصل معون في اي وقت تريدون 
+                    </p>
+                @else
+                     <p class="rtl section_about">
+                        Mei placerat phaedrum molestiae ut, te velit debet recusabo cum. Falli choro no vim. Commodo quaerendum ad has. Omnis aperiam alterum his an, eos no minim ignota commune. No pro enim ignota, eirmod omnesque qui an, ei sea augue accusamus efficiendi.
+                    </p>
+                @endif
 		<hr class="rtl ">
-		<h3 class="rtl section_title">Section 2</h3>
-		<p class="rtl section_about">
-			Mei placerat phaedrum molestiae ut, te velit debet recusabo cum. Falli choro no vim. Commodo quaerendum ad has. Omnis aperiam alterum his an, eos no minim ignota commune. No pro enim ignota, eirmod omnesque qui an, ei sea augue accusamus efficiendi.
-		</p>
+                @if(session('lang') == 'ar' )
+                <h3 class="rtl section_title" style="font-weight:600;">ما المطلوب من المستخدم :</h3>
+                    <p class="rtl section_about">
+                            نرجو من مستخدمين تقيم المنتجات و ذلك للحصول على خدمة افضل و لمساعدتنا على تطوير ادائن في العمل و تحسين خدمتنا
+                            ادخال المعلومات الصحيح عند تسجيل الدخول و اعطاء العنوان بتفصيل من اجل سرعة و صول المنتج الى المستخدم
+                            
+                    </p>
+                @else
+                <h3 class="rtl section_title" style="font-weight:600;">Section 2</h3>
+                    <p class="rtl section_about">
+                            Mei placerat phaedrum molestiae ut, te velit debet recusabo cum. Falli choro no vim. Commodo quaerendum ad has. Omnis aperiam alterum his an, eos no minim ignota commune. No pro enim ignota, eirmod omnesque qui an, ei sea augue accusamus efficiendi.
+                    </p>
+                @endif
 		<hr class="rtl">
-		<h3 class="rtl section_title"> Section 3</h3>
-		<p class="rtl section_about">
-			Mei placerat phaedrum molestiae ut, te velit debet recusabo cum. Falli choro no vim. Commodo quaerendum ad has. Omnis aperiam alterum his an, eos no minim ignota commune. No pro enim ignota, eirmod omnesque qui an, ei sea augue accusamus efficiendi.
-		</p>
+                @if(session('lang') == 'ar' )
+                <h3 class="rtl section_title" style="font-weight:600;"> طموحتنا :</h3>
+                    <p class="rtl section_about">
+                          نطمح في المستقبل انا نصبح اكبر متجر على مستوى العالم 
+                          وان نلبي كل مطالب زبائننا الكرام 
+                          وان نوفر احسن اخدمة باقل سعر 
+                          
+                    </p>
+                @else
+                    <h3 class="rtl section_title" style="font-weight:600;"> Section 3</h3>
+                    <p class="rtl section_about">
+                            Mei placerat phaedrum molestiae ut, te velit debet recusabo cum. Falli choro no vim. Commodo quaerendum ad has. Omnis aperiam alterum his an, eos no minim ignota commune. No pro enim ignota, eirmod omnesque qui an, ei sea augue accusamus efficiendi.
+                    </p>
+                @endif
 		
 	</div>
-	<div class="col-lg-6 col-sm-8 about-div">
+	<div class="col-lg-6 col-sm-8 about-div" style="margin-top:-16rem;">
 		<img class="img-logo" src="front-end/images/welcome-logo.png" width="500" height="180">
 
 		<div class="review-div col-xs-6">
@@ -385,10 +453,10 @@
 			<br><br>
 		</div>
 	</div> 
-    <div class="contact-us-div col-md-6  sth"  style="margin-top: 5em;">
-        <h2>@lang('Contact Us')</h2>
+    <div class="contact-us-div col-md-6  sth"  style="margin-top: 6em;">
+        <h2 class="title_contact_us">@lang('Contact Us')</h2>
         <span class="mail">@</span>
-        <p class="" ="contact-par">
+        <p class="contact-par">
             info@dukkangi.com
             <br>
             support@dukkangi.com
