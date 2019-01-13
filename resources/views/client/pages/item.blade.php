@@ -310,8 +310,8 @@
 }
     @media (min-width: 300px) and (max-width: 1100px) {
         .div_item .rating {
-            bottom: 0.7em;
-            left: 0.6em;
+            bottom: 1em;
+            left: 1em;
         }
         .tabs__item {
             font-size: 1.1em;
@@ -400,7 +400,8 @@
             bottom: 0.1em;
         }
         .rating {
-            font-size: 2em;
+            font-size: 1.7em;
+            
         }
         .rating_slide {
             font-size: 1.8em;
@@ -498,12 +499,12 @@
     }
         @media (min-width: 1022px) and (max-width: 1100px) {
     .discount_item {
-        border-top: 8em solid #d80001;
-        border-right: 7em solid transparent;
+           border-top: 7.4em solid #d80001;
+    border-right: 6em solid transparent;
     }
-    .text_discount span {
-        font-size: 1.5rem !important;
-    }
+    /*.text_discount span {*/
+        /*font-size: 1.5rem !important;*/
+    /*}*/
 /*    .text_discount {
     left: 0em;
     top: -8em;
@@ -695,7 +696,7 @@
 }
     @media (min-width: 1024px) and (max-width: 1100px) {
         .item_price {
-            font-size: 2.1em;
+            font-size: 1.5em;
         }
 
         .block_navbar_slide {

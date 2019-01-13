@@ -393,7 +393,7 @@
                  }
                  .icon-flag {
            float: right;
-           margin-top: 0.5em;
+           margin-top: 0.3em;
            margin-left: 0.3em;
         }
         

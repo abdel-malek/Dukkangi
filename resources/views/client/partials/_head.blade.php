@@ -300,7 +300,7 @@
                     font-size: 0.9rem;
                 }
                 #lang-nav-bar .nav-item a {
-                    font-size: 1.4em !important;
+                    font-size: 1.1em !important;
                 }
                 .ul_navbar_mobile .nav-item a {
     font-size: 2.2em !important;
@@ -404,7 +404,7 @@
                 }
                 .icon-flag {
                     float: right;
-                    margin-top: 0.5em;
+                    margin-top: 0.3em;
                     margin-left: 0.3em;
                 }
 /*                .item_in_lg{
