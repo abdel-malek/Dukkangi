@@ -470,21 +470,52 @@
     font-size: 1.3em;
          }
 }
-      @media (min-width: 200px) and (max-width: 860px) {
-.div_icon_footer {
-    margin-left: 14%;
-        flex: 0 0 70.333333%;
-    max-width: 70.333333%;
+@media (min-width: 200px) and (max-width: 860px) {
+    .div_icon_footer {
+        margin-left: 14%;
+        flex: 0 0 100.333333%;
+        max-width: 100.333333%;
+    }
+    .footer{
+        margin-top: -1rem !important;
+    }
 }
-.footer{
-    margin-top: -1rem !important;
+@media (min-width: 777px) and (max-width: 860px) {
+    .div_icon_footer {
+        margin-left: 14%;
+        flex: 0 0 100.333333%;
+        max-width: 66.333333%;
+    }
+    .footer{
+        margin-top: -1rem !important;
+    }
 }
- }
  
        @media (min-width: 200px) and (max-width: 700px) {
 .div_icon_footer {
   padding-left: 0%;
 }
+ }
+ @media (min-width: 200px) and (max-width: 650px) {
+ .bottom_right_background_block, .bottom_left_background_block {
+    height: 12em;
+    width: 20em;
+}
+.landing-items-block img {
+    width: 20em;
+}
+.bottom_left_background_block p {
+    left: 8.1rem !important;
+}
+.bottom_left_background_block .img_cloud_right{
+    width: 12rem !important;
+}
+.bottom_left_background_block .text_item_block {
+    font-size: 26px;
+}
+/*.bottom_left_background_block p {
+    top: 27px !important;
+}*/
  }
  @media (min-width: 1024px) {
      
@@ -498,6 +529,13 @@
      }
      .flexslider2{
          left: 15% !important;
+     }
+     .cloum_in_mobile{
+         margin-left: -7rem;
+         overflow-y: visible;
+     }
+     .div_icon_footer {
+        padding-left: 0% !important;
      }
  }
 
@@ -742,12 +780,24 @@ $('.text_item_block').each(function(){
     }else{
          $(this).parent().find('.hint_title').css('display','none');
     }
+    if($(window).width() > 650){
     if($(this).text().length >= 14){
         var styles = $(this).attr('style');
+        
         styles += ";top:16% !important;";
 //        if($(this).hasClass('text_item_block_lg')){
         $(this).attr('style',styles);
 //    }
+    }
+    }else{
+    if($(this).text().length >= 13){
+        var styles = $(this).attr('style');
+        
+        styles += ";top:12% !important;";
+//        if($(this).hasClass('text_item_block_lg')){
+        $(this).attr('style',styles);
+//    }
+    }
     }
 
     

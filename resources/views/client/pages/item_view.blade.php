@@ -882,7 +882,7 @@
             
                       @media (min-width: 300px) and (max-width: 766px) {
                .ul_navbar {
-    width: 22rem;
+    width: 25rem;
         display: flex!important;
 }
 .logo {
@@ -1075,7 +1075,7 @@
 			padding-left: 34% !important;
 		}
 		.title_reviews{
-			margin-top: 450px
+			margin-top: 340px
 		}
 		.leave_constructive_review .details_comment .rating{
 			right: auto !important;
@@ -1469,7 +1469,7 @@ width: auto !important;
         </div>
     </div>
 </div>
-<div class="col-md-12 block_similar" style="margin-top: 5rem;">
+<div class="col-md-12 block_similar" style="margin-top: 8rem;">
     @if(!$simiProducts->isEmpty())
     <h3 class="title_similar_items">
         @lang('Similar items')

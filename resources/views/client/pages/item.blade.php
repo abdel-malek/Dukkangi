@@ -27,6 +27,10 @@
     .shadow_div_discount {
     display: none;
     }
+    .col_item{
+        max-width: 300px;
+            flex: 0 0 300px;
+    }
 .header_page .rating {
     left: 29.8%;
 }
@@ -158,6 +162,79 @@
 .img_item {
     height: 14.4em;
 }
+/*   .tabs__content-wrapper{
+        padding: 0rem 0rem;
+    }*/
+@media (min-width: 1289px) and (max-width: 1348px){
+    .tabs__content-wrapper{
+        padding: 0rem 8rem;
+    }
+}
+@media (min-width: 1196px) and (max-width: 1289px){
+    .tabs__content-wrapper{
+        padding: 0rem 6rem;
+    }
+}
+@media (min-width: 1150px) and (max-width: 1196px){
+    .tabs__content-wrapper{
+        padding: 0rem 5rem;
+    }
+}
+@media (min-width: 1063px) and (max-width: 1150px){
+    .tabs__content-wrapper{
+        padding: 0rem 3rem;
+    }
+}
+@media (min-width: 987px) and (max-width: 1063px){
+    .tabs__content-wrapper{
+        padding: 0rem 2rem;
+    }
+}
+@media (min-width: 940px) and (max-width: 987px){
+    .tabs__content-wrapper{
+        padding: 0rem 1rem;
+    }
+}
+@media (min-width: 894px) and (max-width: 940px){
+    .tabs__content-wrapper{
+        padding: 0rem 0rem;
+    }
+}
+@media (min-width: 800px) and (max-width: 894px){
+    .tabs__content-wrapper{
+        padding: 0rem 7rem;
+    }
+}
+@media (min-width: 750px) and (max-width: 800px){
+    .tabs__content-wrapper{
+        padding: 0rem 6rem;
+    }
+}
+@media (min-width: 650px) and (max-width: 750px){
+    .tabs__content-wrapper{
+        padding: 0rem 4rem;
+    }
+}
+@media (min-width: 600px) and (max-width: 650px){
+    .tabs__content-wrapper{
+        padding: 0rem 3rem;
+    }
+}
+@media (min-width: 550px) and (max-width: 600px){
+    .tabs__content-wrapper{
+        padding: 0rem 2rem;
+    }
+}
+@media (min-width: 500px) and (max-width: 550px){
+    .tabs__content-wrapper{
+        padding: 0rem 0rem;
+    }
+}
+/*@media (min-width:1254){
+    .tabs__content-wrapper{
+        padding: 0rem 8rem;
+    }
+}*/
 @media (min-width: 1200px) and (max-width: 1300px) {
     
     .img_item {
@@ -1186,4 +1263,5 @@ function loadmore(){
 function hideBtn(){
     $('#loadm').css('display','none');
 }
+
 </script> @endsection
