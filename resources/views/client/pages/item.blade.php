@@ -293,15 +293,15 @@
 }
 
     @media (min-width: 300px) and (max-width: 768px) {
-.modal_one_item_details {
-    left: 6%;
-    width: 60%;
-}
-.text_discount {
-    line-height: 1.4;
-        left: 0.1em !important;
-    /*top: -7em;*/
-}
+        .modal_one_item_details {
+            left: 6%;
+            width: 60%;
+        }
+        .text_discount {
+            line-height: 1.4;
+            left: 0.1em !important;
+            /*top: -7em;*/
+        }
     }
 /*.img_price_item_details{
     width: 12.5em !important;
@@ -781,11 +781,123 @@
                 left: 0%;
                 width: 73%;
             }
+            
          }
            @media (min-width: 200px) and (max-width: 450px) {
              
              
          }
+</style>
+
+<!--Style for mobile--> 
+<style>
+    /*@media (min-width: 200px) and (max-width: 568px) {*/
+        .col_item_for_mobile {
+            max-width: 90%;
+            flex: 0 0 90%;
+        }
+        .tabs__item_for_mobile {
+            font-size: 1.7em;
+        }
+        .tabs__items .tabs_active_for_mobile{
+            font-size: 1.8em;
+        }
+        .img_item_for_mobile {
+            max-height: 20rem;
+        }
+        .item_name_for_mobile {
+            margin-bottom: 0rem;
+            width: 100%;
+            font-size: 2rem;
+        }
+        .thumnbail_mobile .block_thum, .pictureFrame_for_mobile {
+            width: 13rem!important;
+            height: 12rem !important;
+        }
+        .discount_item_for_mobile {
+            border-top: 9em solid #d80001;
+            border-right: 8em solid transparent;
+        }
+        .text_discount_for_mobile {
+            line-height: 1.4;
+            top: -4.5em;
+        }
+        .text_discount_for_mobile span{
+            font-size: 1.8rem !important;
+        }
+        #lang-nav-bar .nav-item_for_mobile a {
+             font-size: 1.3em !important;
+        }
+        .icon-flag_for_mobile {
+            width: 35px !important;
+            height: 35px !important;
+            margin-top: 0.1rem;
+        }
+        .input_search_sm_for_mobile, .search_for_mobile {
+            font-size: 1.8rem;
+        }
+        .input-search_icon_for_mobile i {
+            font-size: 2rem;
+        }
+        .input-search_icon_for_mobile {
+            margin-top: 1em !important;
+            left: 2em !important;
+        }
+        .icon_view_my_card_for_mobile {
+            height: 4.5em;
+        }
+        .rating_for_mobile {
+            font-size: 2.2em;
+        }
+        .item_price_for_mobile {
+            font-size: 2.4rem;
+        }
+        .tax_include_item_mobile_for_mobile {
+            font-size: 1.7rem !important;
+        }
+        .div_item .old-price_mobile_for_mobile {
+            font-size: 1.6rem !important;
+        }
+        .sub-paragraph_for_mobile {
+            bottom: 3rem;
+            font-size: 1.6em;
+        }
+        .button_modal_one_item_details .btn_done_for_mobile, .button_modal_one_item_details .btn_cancel_for_mobile, .button_modal_one_item_details .btn_view_my_cart_for_mobile {
+            font-size: 2rem;
+        }
+        .price_item_details_for_mobile, .points_item_details_for_mobile {
+            font-size: 2em;
+        }
+        .button_modal_one_item_details_for_mobile {
+            margin-top: 5em;
+        }
+        .input_search_in_modal_for_mobile {
+            font-size: 2em;
+        }
+        .lable_input_filter_for_mobile {
+            font-size: 2.2rem;
+        }
+        .line_category_for_mobile {
+            margin-top: 3em;
+        }
+        .line_price_for_mobile {
+            margin-top: 3em;
+        }
+        .select-menu .select-label_for_mobile:before {
+            font-size: 1.6rem !important;
+            overflow: visible !important;
+        }
+        .select-label_for_mobile{
+            height: 60px !important;
+        }
+        .max_input_for_mobile, .min_input_for_mobile {
+           height: 2em;
+           font-size: 1.5em;
+        }
+        .btn_model_filter_for_mobile {
+            font-size: 1.8em;
+        }
+    /*}*/
 </style>
 
 @if(session('lang') == 'ar' )
@@ -831,6 +943,7 @@
     .select-menu .select-label:before{
            padding: 0 15px 0 16px !important;
     }
+
 </style>
 @endif
 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
@@ -1377,6 +1490,43 @@ function loadmore(){
 function hideBtn(){
     $('#loadm').css('display','none');
 }
-
+function when_open_mobile(){
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        $('.col_item').addClass('col_item_for_mobile');
+        $('.tabs__item').addClass('tabs__item_for_mobile');
+        $('.tabs_active').addClass('tabs_active_for_mobile');
+        $('.img_item').addClass('img_item_for_mobile');
+        $('.item_name').addClass('item_name_for_mobile');
+        $('.pictureFrame').addClass('pictureFrame_for_mobile');
+        $('.discount_item').addClass('discount_item_for_mobile');
+        $('.text_discount').addClass('text_discount_for_mobile');
+        $('.nav-item').addClass('nav-item_for_mobile');
+        $('.icon-flag').addClass('icon-flag_for_mobile');
+        $('.input_search_sm').addClass('input_search_sm_for_mobile');
+        $('#search').addClass('search_for_mobile');
+        $('.input-search_icon').addClass('input-search_icon_for_mobile');
+        $('.icon_view_my_card').addClass('icon_view_my_card_for_mobile');
+        $('.rating').addClass('rating_for_mobile');
+        $('.item_price').addClass('item_price_for_mobile');
+        $('.tax_include_item_mobile').addClass('tax_include_item_mobile_for_mobile');
+        $('.old-price_mobile').addClass('old-price_mobile_for_mobile');
+        $('.sub-paragraph').addClass('sub-paragraph_for_mobile');
+        $('.btn_done').addClass('btn_done_for_mobile');
+        $('.btn_cancel').addClass('btn_cancel_for_mobile');
+        $('.btn_view_my_cart').addClass('btn_view_my_cart_for_mobile');
+        $('.price_item_details').addClass('price_item_details_for_mobile');
+        $('.points_item_details').addClass('points_item_details_for_mobile');
+        $('.button_modal_one_item_details').addClass('button_modal_one_item_details_for_mobile');
+        $('.input_search_in_modal').addClass('input_search_in_modal_for_mobile');
+        $('.lable_input_filter').addClass('lable_input_filter_for_mobile');
+        $('.line_category').addClass('line_category_for_mobile');
+        $('.line_price').addClass('line_price_for_mobile');
+        $('.select-label').addClass('select-label_for_mobile');
+        $('.max_input').addClass('max_input_for_mobile');
+        $('.min_input').addClass('min_input_for_mobile');
+        $('.btn_model_filter').addClass('btn_model_filter_for_mobile');
+    }
+}
+when_open_mobile();
 $('.header_slider').parent().parent().addClass('block_header');
 </script> @endsection
