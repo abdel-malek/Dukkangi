@@ -241,6 +241,9 @@
          .input_search_sm{
              display: none;
          }
+         .input_search_sm, .input_search_lg{
+             border: none;
+         }
             @media (min-width: 1181px) and (max-width: 1264px) {
                 #nav-bar-search
                 {
@@ -276,7 +279,7 @@
                 }
                 #main-navbar-items ul li{
                     margin-right: 12px;
-                    font-size: 12px;
+                    font-size: 1rem;
                     margin-top: 5px;
                 }
                 #main-navbar-items ul .nav-item{
@@ -288,9 +291,9 @@
                     width:auto !important;
                 }
                 @media (min-width: 1024px) and (max-width: 1288px) {
-                 .nav-item a{
+/*                 .nav-item a{
                     font-size: 0.8em !important;
-                }
+                }*/
                 .ul_navbar_mobile .nav-item a {
     font-size: 1.8em !important;
 }
@@ -300,7 +303,7 @@
                     font-size: 0.9rem;
                 }
                 #lang-nav-bar .nav-item a {
-                    font-size: 1.1em !important;
+                    font-size: 0.7em !important;
                 }
                 .ul_navbar_mobile .nav-item a {
     font-size: 2.2em !important;
@@ -356,6 +359,9 @@
                 {
                     /*width: 4rem;*/
                 }
+                .input_search_sm{
+                    width: 69%;
+                }
             }
            
             @media (min-width: 0px) and (max-width: 1023px) {
@@ -404,7 +410,7 @@
                 }
                 .icon-flag {
                     float: right;
-                    margin-top: 0.3em;
+                    margin-top: 0em;
                     margin-left: 0.3em;
                 }
 /*                .item_in_lg{
@@ -479,7 +485,10 @@
     color: #aaa !important;
     font-weight: bold !important;
 }
-
+.d-md-flex {
+    display: -ms-flexbox !important;
+    display: flex !important;
+}
         </style>
         <style>
             /* jssor slider loading skin spin css */
@@ -567,4 +576,13 @@
 }*/
 }
         </style>
+        @if(session('lang') == 'ar')
+        <style>
+            .input_search_sm, .input_search_lg{
+                text-align: right;
+                direction: rtl;
+                padding-right: 1em;
+            }
+            </style>
+            @endif
       @yield('styles')

@@ -673,9 +673,10 @@
 
 @media (min-width: 574px) and (max-width: 700px) {
       .block_filter{
-         margin-left: 5rem !important; 
-             flex: 0 0 50.666667%;
-    max-width: 50.666667%;
+          margin-top: 1rem;
+          margin-left: 1rem !important; 
+          flex: 0 0 90.666667%;
+          max-width: 90.666667%;
      }
 }
 @media (min-width: px) and (max-width: 626px) {
@@ -718,8 +719,64 @@
             margin-left: 10px !important;
         }
         }
+        
+        
+        
+         @media (min-width: 200px) and (max-width: 568px) {
+            .thumnbail {
+                margin-top: 0rem !important;
+                width: 8.6rem !important;
+            }
+            .block_header{
+                left: 0px !important;
+                width: 96% !important;
+            }
+         }
+           @media (min-width: 200px) and (max-width: 450px) {
+             
+             
+         }
 </style>
 
+@if(session('lang') == 'ar' )
+<style>
+    #search{
+        text-align: right;
+        padding-right: 1rem;
+        padding-left: 3rem;
+    }
+    .input-search_icon {
+    margin-top: 0.6em;
+    right: unset;
+    left: 1.5em;
+    }
+    .item_name{
+        text-align: right;
+    }
+    .tabs__items{
+        text-align: right;
+        direction: rtl;
+    }
+    .input_search_in_modal{
+        text-align: right;
+        direction: rtl;
+    }
+    .lable_input_filter{
+        float: right;
+        text-align: right;
+    }
+    .input_filter {
+        text-align: right;
+        direction: rtl;
+    }
+    .select-label{
+        text-align: right;
+    }
+    .select-menu .select-label:before{
+           padding: 0 15px 0 16px !important;
+    }
+</style>
+@endif
 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 
 <link rel="stylesheet" href="/front-end/css/multe_select.css">
@@ -790,18 +847,18 @@
         <div class="col-md-9 col-sm-12 section_item section_item_select">
             <div class="row" style="width: 100%;">
             @if(!isset($brandfilter))
-            <div class="col-sm-3" style="float:left;">
+            <div class="col-lg-3 col-md-6 col-sm-6" style="float:left;">
                 <img src={{URL::asset( '/front-end/images/light_logo.png')}} class="img-resposive logo_text" />
             </div>
             @endif
-            <div class="col-xl-3 col-lg-5  col-md-5 col-sm-5 col-xs-10 block_filter" style="float:left;margin-left: 2em;">
+            <div class="col-xl-3 col-lg-4  col-md-5 col-sm-12 col-xs-10 block_filter" style="float:left;margin-left: 2em;">
                 <p class="btn_filter" id="btn_modal_filter">
                     @lang('Filter')
                 </p>
             </div>
-            <div class="col-lg-5 col-md-7 col-sm-7 my-1" style="margin-top: 0em !important;float: left; {{isset($brandfilter) ? 'max-width: 70.666667% !important;' : ';'}}">
+            <div class="col-lg-4 col-md-12 col-sm-12 my-1" style="margin-top: 0em !important;float: left; {{isset($brandfilter) ? 'max-width: 70.666667% !important;' : ';'}}">
                 <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
-                <div class="input-gr'oup">
+                <!--<div class="input-group">-->
                     <div class="input-search_icon">
                         <!--                        <img src="./images/signup/at.png">-->
                         <i class="material-icons">&#xE8B6;</i>
@@ -813,7 +870,7 @@
                     <button type="submit" id="myBtn" hidden="hidden">
                         {!! Form::close() !!} Button
                     </button>
-                </div>
+                <!--</div>-->
             </div>
             <div class="container container_item" style="margin-top: 6em;padding-right: 0em;padding-left: 0em;margin-bottom:20px">
                 <div class="tabs">
@@ -1265,4 +1322,5 @@ function hideBtn(){
     $('#loadm').css('display','none');
 }
 
+$('.header_slider').parent().parent().addClass('block_header');
 </script> @endsection
