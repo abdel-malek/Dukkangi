@@ -279,13 +279,20 @@
                 }
                 #main-navbar-items ul li{
                     margin-right: 12px;
-                    font-size: 1rem;
+                    font-size: 0.9rem;
                     margin-top: 5px;
                 }
                 #main-navbar-items ul .nav-item{
                     margin-right: 10px;
                 }
 
+            }
+               @media (min-width: 1024px) and (max-width: 1030px) {
+                #main-navbar-items ul li{
+                    margin-right: 12px;
+                    font-size: 0.8rem;
+                    margin-top: 5px;
+                }
             }
              #main-nav-bar a{
                     width:auto !important;

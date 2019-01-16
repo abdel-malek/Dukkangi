@@ -190,7 +190,7 @@
 
                    @media (min-width: 750px) and (max-width: 817px) {
                .ul_navbar {
-    width: 23rem;
+    width: 25rem;
         display: flex!important;
 }
 

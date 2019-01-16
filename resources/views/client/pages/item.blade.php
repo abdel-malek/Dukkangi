@@ -10,6 +10,10 @@
         border: 0.04em solid #8a8a8a;
         width: 100% !important;
     }
+    .text_in_header{
+        float: left;
+        margin-top: 0.7rem;
+    }
 .shadow_div_discount {
     width: 6.7em;
     -moz-box-shadow: 6px -5px 5px rgba(0,0,0,.8);
@@ -148,6 +152,7 @@
         }
         .input-search_icon i {
     margin-right: 1em;
+    
 }
 .item_name {
     width: 100%;
@@ -293,8 +298,9 @@
     width: 60%;
 }
 .text_discount {
-    line-height: 1.8;
-    top: -7em;
+    line-height: 1.4;
+        left: 0.1em !important;
+    /*top: -7em;*/
 }
     }
 /*.img_price_item_details{
@@ -304,14 +310,25 @@
 
 @media (min-width: 768px) and (max-width: 1100px){
     .text_discount {
-    line-height: 1.4;
-    top: -4em;
+    line-height: 0.8;
+    top: -3.1em;
+    left: -0.19em !important;
 }
 }
     @media (min-width: 300px) and (max-width: 1100px) {
         .div_item .rating {
             bottom: 1em;
             left: 1em;
+        }
+        .modal_filter .input-search_icon {
+            margin-top: 0.4em !important;
+            left: 0.5em !important;
+        }
+        .input-search_icon i {
+            font-size: 24px;
+        }
+        .input-search_icon i {
+             margin-right: 1em;
         }
         .tabs__item {
             font-size: 1.1em;
@@ -336,20 +353,20 @@
             font-size: 1.2rem !important;
         }
         .discount_item {
-            border-top: 8em solid #d80001;
-            border-right: 7em solid transparent;
+            border-top: 6em solid #d80001;
+            border-right: 5em solid transparent;
         }
         .text_price {
             width: 24%;
         }
         .item_name {
-    margin-bottom: 0rem;
-    width: 100%;
-    font-size: 1rem;
-}
-.item_price {
-    width: 100%;
-}
+            margin-bottom: 0rem;
+            width: 100%;
+            font-size: 1rem;
+        }
+        .item_price {
+            width: 100%;
+        }
         .text_discount{
             width: 4em;
             left: -0.19em;
@@ -366,19 +383,25 @@
             height: 63px;
         }
         .select-menu .select-label:before {
-            font-size: 26px !important;
+            font-size: 18px !important;
         }
         .lable_input_filter {
             width: 24%;
-            font-size: 2em;
+            font-size: 1.2rem;
             margin-top: 1em;
+        }
+        .line_category {
+            margin-top: 0.7em;
+        }
+        .line_title_input_modal {
+            margin-top: 1.5em;
         }
 
         .modal_filter {
             width: 55%;
             margin-left: 24%;
             max-height: 100%;
-            padding-top: 57%;
+            padding-top: 2rem;
         }
         .block_slider {
             height: 250px;
@@ -414,13 +437,12 @@
         }
         .thumnbail_mobile .block_thum,
         .pictureFrame {
-               width: 13rem!important;
-    height: 12rem !important;
+            width: 8rem!important;
+            height: 7rem !important;
         }
-         .thumnbail .block_thum,
-        .pictureFrame {
-               width: 13rem!important;
-    height: 12rem !important;
+        .block_thum, .pictureFrame {
+            width: 8rem!important;
+            height: 7rem !important;
         }
         .sub-paragraph {
             bottom: 2.4rem;
@@ -471,15 +493,15 @@
         .max_input,
         .min_input {
             height: 2em;
-            font-size: 1.6em;
+            font-size: 1em;
         }
         .btn_model_filter {
-            font-size: 1.8em;
+            font-size: 1.2em;
             margin-top: 0.5em;
         }
         .input_search_in_modal {
             height: 3em;
-            font-size: 1.5em;
+            font-size: 1em;
         }
         .header_slider{
             width: 730px !important;
@@ -493,14 +515,14 @@
     @media (min-width: 300px) and (max-width: 768px) {
 
 .discount_item {
-    border-top: 7em solid #d80001;
+    border-top: 6em solid #d80001;
     border-right: 5em solid transparent;
 }
     }
         @media (min-width: 1022px) and (max-width: 1100px) {
     .discount_item {
-           border-top: 7.4em solid #d80001;
-    border-right: 6em solid transparent;
+           border-top: 6em solid #d80001;
+    border-right: 5em solid transparent;
     }
     /*.text_discount span {*/
         /*font-size: 1.5rem !important;*/
@@ -513,12 +535,17 @@
 
     @media (min-width: 1030px) and (max-width: 1100px) {
         .text_discount {
-            top: -7em;
+            top: -5.9em;
+            line-height: 1.3;
+            left: -0.1em !important;
         }
     }
      @media (min-width: 300px) and (max-width: 1060px) {
-    .jssor_1 {
+        .jssor_1 {
             left: 0px !important;
+        }
+        .input_search {
+            padding: 0.3em 1em;
         }
      }
       @media (min-width: 992px) and (max-width: 1025px) {
@@ -556,7 +583,7 @@
      
           @media (min-width: 750px) and (max-width: 817px) {
                .ul_navbar {
-    width: 23rem;
+        width: 25rem;
         display: flex!important;
 }
 
@@ -626,8 +653,8 @@
         width: 11.6rem !important;
      }
     .thumnbail .block_thum, .pictureFrame {
-    width: 12rem!important;
-    height: 10rem !important;
+    width: 8rem!important;
+    height: 7rem !important;
 }
      .jssor_1 {
     width: 670px !important;
@@ -679,7 +706,7 @@
           max-width: 90.666667%;
      }
 }
-@media (min-width: px) and (max-width: 626px) {
+/*@media (min-width: px) and (max-width: 626px) {
      .thumnbail {
     margin-top: -8rem !important;
         width: 9.6rem !important;
@@ -687,7 +714,7 @@
       .block_filter{
          margin-left: 4rem !important; 
      }
-}
+}*/
 @media (min-width: 300px) and (max-width: 626px) {
      .thumnbail {
     margin-top: -7rem !important;
@@ -731,6 +758,29 @@
                 left: 0px !important;
                 width: 96% !important;
             }
+            .block_header .header_slider{
+                width: 64rem !important;
+                left: 0rem !important;
+            }
+            .block_header .header_slider div{
+                width: 64rem !important;
+            }
+            .block_header .header_slider .image_header{
+                width: 100% !important;
+            }
+            .block_filter{
+                margin-top: 0.8rem;
+            }
+            .top_nav {
+                max-width: 100% !important;
+            }
+            .section_item_select {
+                width: 66% !important;
+            }
+            .modal_one_item_details {
+                left: 0%;
+                width: 73%;
+            }
          }
            @media (min-width: 200px) and (max-width: 450px) {
              
@@ -744,6 +794,12 @@
         text-align: right;
         padding-right: 1rem;
         padding-left: 3rem;
+    }
+    .one_start_slider {
+        float: left;
+    }
+    .text_in_header{
+        float: right;
     }
     .input-search_icon {
     margin-top: 0.6em;
@@ -799,10 +855,10 @@
 
                     @if(isset($category))
                     <div>
-                        <img data-u="image" src="{{$category->image_id2}}" style="height:15em;width: 45em;    border: 0.04em solid #8a8a8a" />
+                        <img data-u="image" src="{{$category->image_id2}}" style="height:15em;width: 45em;    border: 0.04em solid #8a8a8a" class="image_header"/>
                         <img data-u="thumb" src="{{$category->image_id}}" />
                         <p class="text_big_image_slider">
-                            {{ $category->english }}
+                            <span class="text_in_header"> {{ $category->english }}</span>
                             <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
                         </p>
                     </div>
