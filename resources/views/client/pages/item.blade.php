@@ -10,6 +10,9 @@
         border: 0.04em solid #8a8a8a;
         width: 100% !important;
     }
+    .select-menu .select-label:before {
+        overflow: visible !important;    
+    }
     .text_in_header{
         float: left;
         margin-top: 0.7rem;
@@ -162,10 +165,13 @@
     width: 100%;
 }
 .price_discount{
-        font-family: 'EagarFont';
+    font-family: 'EagarFont';
 }
 .img_item {
     height: 14.4em;
+}
+.item_name {
+    font-size: 0.9em;
 }
 /*   .tabs__content-wrapper{
         padding: 0rem 0rem;
@@ -307,7 +313,11 @@
     width: 12.5em !important;
     margin-left: 1.26em;    
 }*/
-
+@media (max-width: 1030px) and (min-width: 768px){
+    .btn_filter {
+        font-size: 1.2em;
+    }
+}
 @media (min-width: 768px) and (max-width: 1100px){
     .text_discount {
     line-height: 0.8;
@@ -350,7 +360,7 @@
             padding-left: 0rem !important;
         }
         .text_discount span{
-            font-size: 1.2rem !important;
+            font-size: 1rem !important;
         }
         .discount_item {
             border-top: 6em solid #d80001;
@@ -602,6 +612,9 @@
      .tax_include {
     margin-top: 0.6rem !important;
 }
+.block_filter{
+    margin-top: 0.8rem;
+}
        }
             @media (min-width: 300px) and (max-width: 750px) {
                .ul_navbar {
@@ -687,7 +700,7 @@
      }
     .thumnbail .block_thum, .pictureFrame {
     width: 8rem!important;
-    height: 5rem !important;
+    height: 7rem !important;
 }
      .jssor_1 {
     width: 670px !important;
@@ -758,6 +771,10 @@
                 left: 0px !important;
                 width: 96% !important;
             }
+             .input_search_sm{
+                    width: 100%;
+                    margin-right: auto !important;
+                }
             .block_header .header_slider{
                 width: 64rem !important;
                 left: 0rem !important;
@@ -781,7 +798,12 @@
                 left: 0%;
                 width: 73%;
             }
-            
+            .tabs__item {
+                 font-size: 0.9em;
+            }
+            .tabs_active {
+                font-size: 1rem;
+            }
          }
            @media (min-width: 200px) and (max-width: 450px) {
              
@@ -897,11 +919,20 @@
         .btn_model_filter_for_mobile {
             font-size: 1.8em;
         }
+        .text_big_image_slider_for_mobile {
+            font-size: 1.4em;
+        }
+        .text_in_header_for_mobile {
+            margin-top: 1.5rem;
+        }
     /*}*/
 </style>
 
 @if(session('lang') == 'ar' )
 <style>
+    body{
+        font-family: 'Scheherazade', serif;
+    }
     #search{
         text-align: right;
         padding-right: 1rem;
@@ -911,6 +942,7 @@
         float: left;
     }
     .text_in_header{
+        font-family: 'Scheherazade', serif;
         float: right;
     }
     .input-search_icon {
@@ -943,7 +975,25 @@
     .select-menu .select-label:before{
            padding: 0 15px 0 16px !important;
     }
-
+    .nav-link, .sub-paragraph, .input_search_lg, .input_search_sm, .tabs__item, .tabs_active, .btn_filter, .item_name, .tax_include, .off_item, .text_footer, .title_footer a, .tabs_active, .rate-us, .text_in_header, .lable_input_filter, .select-label, .btn_model_filter, .title_qty, .price_item_details span:first-child, .btn_done, .btn_cancel, .btn_view_my_cart {
+        /*font-family: 'Tajawal', sans-serif;*/
+        /*font-family: 'Cairo', sans-serif !important;*/
+        /*font-family: 'Reem Kufi', sans-serif;*/
+        /*font-family: 'Lateef', cursive;*/
+        /*font-family: 'Mirza', cursive;*/
+        font-family: 'Markazi Text', serif;
+        
+        /*font-family: 'Mada', sans-serif;*/
+        /*font-family: 'Aref Ruqaa', serif;*/
+    }
+    .off_item{
+        font-size: 16px;
+    }
+    input::placeholder{
+        /*font-family: 'Tajawal', sans-serif;*/
+        /*font-family: 'Cairo', sans-serif;*/
+        font-family: 'Markazi Text', serif;
+    }
 </style>
 @endif
 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
@@ -1041,7 +1091,7 @@
                     </button>
                 <!--</div>-->
             </div>
-            <div class="container container_item" style="margin-top: 6em;padding-right: 0em;padding-left: 0em;margin-bottom:20px">
+            <div class="container container_item" style="margin-top: 1em;padding-right: 0em;padding-left: 0em;margin-bottom:20px">
                 <div class="tabs">
                     <ul class="tabs__items" >
                         @foreach($categories as $category)
@@ -1525,6 +1575,9 @@ function when_open_mobile(){
         $('.max_input').addClass('max_input_for_mobile');
         $('.min_input').addClass('min_input_for_mobile');
         $('.btn_model_filter').addClass('btn_model_filter_for_mobile');
+        $('.text_big_image_slider').addClass('text_big_image_slider_for_mobile');
+        $('.text_in_header').addClass('text_in_header_for_mobile');
+        
     }
 }
 when_open_mobile();

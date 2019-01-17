@@ -19,7 +19,7 @@
               <a class="nav-link" href="{{ route('register') }}">@lang('Sign up')</a>
             </li>
              <li class="nav-item">
-              <a class="nav-link" href="{{ route('about-us') }}">@lang('About')</a>
+              <a class="nav-link"  href="{{ route('about-us') }}">@lang('About')</a>
             </li>
             @else
 

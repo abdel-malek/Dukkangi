@@ -3,7 +3,12 @@
       <link rel="stylesheet" href="{{URL::asset('/css/bootstrap.min.css')}}">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
       <link rel="stylesheet" href="{{url('/front-end/css/style.css')}}">
+        <!--Fonts--> 
+      <link href="https://fonts.googleapis.com/css?family=Scheherazade:400,700&amp;subset=arabic" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Mada:200,300,400,500,600,700,900&amp;subset=arabic" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Aref+Ruqaa|Cairo|El+Messiri|Lateef|Mada|Markazi+Text|Mirza|Reem+Kufi|Tajawal" rel="stylesheet">
 
+      
       <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
       <link rel="stylesheet" href="{{url('/front-end/css/jquery-pretty-tabs.css')}}">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -320,7 +325,7 @@
                         width: auto;
                 }
                 .ul_navbar{
-                    width: 37rem;
+                    width: 26rem;
                 }
                 .nav-item a{
                     font-size: 1.3em !important;
@@ -350,7 +355,7 @@
                 }
                 #main-navbar-items ul li {
     margin-right: 1.5rem !important;
-    font-size: 0.7rem !important;
+    font-size: 0.6rem !important;
 }
             }
              @media (min-width: 300px) and (max-width: 775px) {
@@ -367,7 +372,8 @@
                     /*width: 4rem;*/
                 }
                 .input_search_sm{
-                    width: 69%;
+                    width: 47%;
+                    margin-right: unset !important;
                 }
             }
            
