@@ -376,11 +376,12 @@
                     margin-right: unset !important;
                 }
             }
-           
+   
             @media (min-width: 0px) and (max-width: 1023px) {
          .item_in_lg{
              display: none !important;
-         }    
+         }   
+         
          .input_search_lg{
              display: none !important;
          }

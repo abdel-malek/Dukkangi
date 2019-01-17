@@ -930,6 +930,26 @@
 
 @if(session('lang') == 'ar' )
 <style>
+@import url(https://fonts.googleapis.com/earlyaccess/amiri.css);
+@import url(https://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+@import url(https://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
+@import url(https://fonts.googleapis.com/earlyaccess/lateef.css); 
+@import url(https://fonts.googleapis.com/earlyaccess/scheherazade.css);
+@import url(https://fonts.googleapis.com/earlyaccess/thabit.css);
+@import url(https://fonts.googleapis.com/earlyaccess/amiri.css);
+  /* font-family: 'Amiri', serif; */
+  
+  @import url(https://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
+  /*font-family: 'Droid Arabic Naskh', serif;*/
+  
+  @import url(https://fonts.googleapis.com/earlyaccess/lateef.css);
+  /* font-family: 'Lateef', serif; */
+  
+  @import url(https://fonts.googleapis.com/earlyaccess/scheherazade.css);
+  /*font-family: 'Scheherazade', serif;*/
+  
+  @import url(https://fonts.googleapis.com/earlyaccess/thabit.css);
+
     body{
         font-family: 'Scheherazade', serif;
     }
@@ -981,7 +1001,11 @@
         /*font-family: 'Reem Kufi', sans-serif;*/
         /*font-family: 'Lateef', cursive;*/
         /*font-family: 'Mirza', cursive;*/
-        font-family: 'Markazi Text', serif;
+        /*font-family: 'Markazi Text', serif;*/
+        
+        /*font-family: 'Droid Arabic Naskh', serif;*/
+        /*font-family: 'Droid Arabic Kufi', serif;*/
+        font-family:'Droid Arabic Naskh', serif;
         
         /*font-family: 'Mada', sans-serif;*/
         /*font-family: 'Aref Ruqaa', serif;*/

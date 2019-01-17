@@ -26,6 +26,11 @@
         cursor: pointer;
         color: #fff;
     }
+    .input_search_lg, .input_search_sm{
+        border: none;
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
 .footer {
  margin-top: 1rem !important;
 }
@@ -296,6 +301,11 @@
     background-color: #00000050;
     display: none;
 }
+@media (max-width: 1030px) and (min-width: 768px){
+    .input_search {
+        padding: 0.2em 1em;
+    }
+}
 
 #slider_preview .carousel-control-prev-icon {
     background-image: url(data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' f…3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E);
@@ -459,7 +469,7 @@
             font-size: 1.5em;
         }
         .text_section {
-            font-size: 1.5em;
+            font-size: 1em;
         }
         .text_item_details {
             font-size: 1.5em;
@@ -487,7 +497,7 @@
             width: 17em;
         }
         .title_section {
-            font-size: 2.4em;
+            font-size: 1.4em;
         }
         .text_item_details {
             margin-bottom: 5em;
@@ -601,6 +611,15 @@
     .zoomContainer_hide {
     z-index: 2 !important;
 }
+    @media (max-width: 991px){
+        .input_search_sm {
+            width: 55%;
+        }   
+        #main-navbar-items ul li {
+            margin-right: 1.5rem !important;
+            font-size: 0.8rem !important;
+        }
+    }
     @media (max-width: 950px){
         #slider_preview{
     width: 500px;
@@ -627,9 +646,12 @@
 }
     }
     @media (min-width: 300px) and (max-width: 600px) {
-       .header_page_text_div {
-    padding-left: 30% !important;
-} 
+        .header_page_text_div {
+            padding-left: 30% !important;
+        } 
+        .top_nav {
+            max-width: 100% !important;
+        }
     }
     @media (min-width: 1050px) and (max-width: 1110px) {
        .rating2 {
@@ -680,21 +702,24 @@
     }
     
     @media (min-width: 300px) and (max-width: 766px) {
-/*        .leave_constructive_review {
-            width: 100%;
-        }*/
+        /*        .leave_constructive_review {
+                    width: 100%;
+                }*/
         #content_page {
-    margin-top: 0em;
-}
+            margin-top: 0em;
+        }
+        .ul_navbar {
+            width: 27rem !important;
+        }
     }
 
     
-          @media (min-width: 700px) and (max-width: 770px) {
-       .rating2 {
-    right: -0.8em !important;
-} 
+    @media (min-width: 700px) and (max-width: 770px) {
+        .rating2 {
+            right: -0.8em !important;
+        } 
     }
-            
+
          @media (min-width: 1311px) and (max-width: 1339px) {
             .header_page_text_div {
                 width: 92.3%;
@@ -1042,155 +1067,220 @@
         width: auto !important;
         height: 2rem !important;
         border: 1px solid #D80F16 !important;
-/*        margin-right: 3px !important;
-        margin-left: 3px !important;
-        margin-bottom: 0px !important;
-        margin-top: 1px !important;*/
+        /*        margin-right: 3px !important;
+                margin-left: 3px !important;
+                margin-bottom: 0px !important;
+                margin-top: 1px !important;*/
     }
-   
-	.one_item_details{
-		width: 29%;
-		margin-left: 1.7em
-		}
-	.price_item_details, .points_item_details{
-		margin-top: 5em
-	}
-        
-        .price_item_details_mobile{
-            margin-top: 11rem;
+
+    .one_item_details{
+        width: 29%;
+        margin-left: 1.7em
+    }
+    .price_item_details, .points_item_details{
+        margin-top: 5em
+    }
+
+    .price_item_details_mobile{
+        margin-top: 11rem;
+    }
+    .header_item_details .slide-bg{
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer
+    }
+
+    @media(min-width: 992px) and (max-width: 1199px){
+        .one_item_details{
+            width: 30%;
+            margin-left: 1.7em
         }
-	.header_item_details .slide-bg{
-		background-size: contain;
-		background-repeat: no-repeat;
-		background-position: center;
-		cursor: pointer
-	}
-      
-	@media(min-width: 992px) and (max-width: 1199px){
-		.one_item_details{
-		width: 30%;
-		margin-left: 1.7em
-		}
-		.header_page_text_div{
-			padding-left: 34% !important;
-		}
-		.title_reviews{
-			margin-top: 340px
-		}
-		.leave_constructive_review .details_comment .rating{
-			right: auto !important;
-			left: 1em;
-/*			margin-top: 25% !important*/
-		}
-	}
-	@media(max-width: 991px){
-              .sections_mobile{
+        .header_page_text_div{
+            padding-left: 34% !important;
+        }
+        .title_reviews{
+            margin-top: 340px
+        }
+        .leave_constructive_review .details_comment .rating{
+            right: auto !important;
+            left: 1em;
+            /*			margin-top: 25% !important*/
+        }
+    }
+    @media(max-width: 991px){
+        .sections_mobile{
             width: 100%;
         }
-		.one_item_details{
-			position: relative;
-			width: 100%;
-			margin: 0;
-			margin-top: 20px
-		}
-                        .title_reviews_mobile{
+         .one_start_slider {
+            height: 1.5em;
+        }
+        .one_item_details{
+            position: relative;
+            width: 100%;
+            margin: 0;
+            margin-top: 20px
+        }
+        .title_reviews_mobile{
             margin-top: -3rem;
         }
-           .input_search_sm{
-        display: block !important;
-    }
-                 .div_title_item_details .product-rate{
-        left: 42% !important;
-    }
-                .all_page_item_view{
-                    padding-left: 3rem !important;
-                    padding-right: 3rem !important;
-                }
-		.sections{
-			width: 100%
-		}
-		.title_reviews{
-			margin-top: 0
-		}
-		.customer_reviews{
-			float: none
-		}
-		.comments_customer_reviews .details_comment .rating{
-			top: 45px
-		}
-		.all_page_item_view{
-			padding: 0
-		}
-		.leave_constructive_review{
-			float: none;
-			width: 100%
-		}
-		.header_page{
-			position: relative;
-			height: 10em;
-			background-size: cover !important;
-			width: 100%;
-			margin-left: 0
-		}
-		.header_page_text_div{
-			top: auto;
-			bottom: 0;
-			width: 100%;
-			padding-left: 2.5em !important;
-			margin: 0
-		}
-		.header_page .rating{
-			left: 0
-		}
-		.leave_constructive_review .details_comment .rating{
-			right: auto !important;
-			left: 1em;
-/*			margin-top: 25% !important*/
-		}
-		.leave_constructive_review{
-			margin-bottom: 40px;
-			background-image: url()
-		}
-	}
-        @media(min-width: 750px) and (max-width: 991px){
-            .all_page_item_view {
-    padding-left: 10rem !important;
-    padding-right: 10rem !important;
-}
-            
+        .input_search_sm{
+            display: block !important;
         }
-	.price_item_details .old-price{
-		font-family: inherit;
-		font-size: 0.9rem;
-		padding-right: 5px
-	}
-	.price_item_details .new-price{
-		font-family: inherit;
-		font-size: 1.3rem;
-	}
-	
-	
-	#slider_preview .carousel-item img{
-width: auto !important;
-		margin: auto
-	}
-	@media(max-width: 767px){
-		#slider_preview{
-    width:100%;
-    max-height: 95vh;
-    position: fixed;
-    top: 21px;
-    left: 0;
-}
-		#slider_preview .carousel-inner,
-		#slider_preview .carousel-item,
-		#slider_preview img{
-			max-height: inherit
-		}
-	}
-	.zoomContainer{
-		z-index: 1000
-	}
+        .div_title_item_details .product-rate{
+            left: 42% !important;
+        }
+        .all_page_item_view{
+            padding-left: 3rem !important;
+            padding-right: 3rem !important;
+        }
+        .sections{
+            width: 100%
+        }
+        .title_reviews{
+            margin-top: 0
+        }
+        .customer_reviews{
+            float: none
+        }
+        .comments_customer_reviews .details_comment .rating{
+            top: 45px
+        }
+        .all_page_item_view{
+            padding: 0
+        }
+        .leave_constructive_review{
+            float: none;
+            width: 100%
+        }
+        .header_page{
+            position: relative;
+            height: 10em;
+            background-size: cover !important;
+            width: 100%;
+            margin-left: 0
+        }
+        .header_page_text_div{
+            top: auto;
+            bottom: 0;
+            width: 100%;
+            padding-left: 2.5em !important;
+            margin: 0
+        }
+        .header_page .rating{
+            left: 0
+        }
+        .leave_constructive_review .details_comment .rating{
+            right: auto !important;
+            left: 1em;
+            /*			margin-top: 25% !important*/
+        }
+        .leave_constructive_review{
+            margin-bottom: 40px;
+            background-image: url()
+        }
+    }
+    @media(min-width: 750px) and (max-width: 991px){
+        .all_page_item_view {
+            padding-left: 10rem !important;
+            padding-right: 10rem !important;
+        }
+
+    }
+    .price_item_details .old-price{
+        font-family: inherit;
+        font-size: 0.9rem;
+        padding-right: 5px
+    }
+    .price_item_details .new-price{
+        font-family: inherit;
+        font-size: 1.3rem;
+    }
+
+
+    #slider_preview .carousel-item img{
+        width: auto !important;
+        margin: auto
+    }
+    
+    @media(max-width: 767px){
+        #slider_preview{
+            width:100%;
+            max-height: 95vh;
+            position: fixed;
+            top: 21px;
+            left: 0;
+        }
+       
+        #slider_preview .carousel-inner,
+        #slider_preview .carousel-item,
+        #slider_preview img{
+            max-height: inherit
+        }
+    }
+
+    @media (min-width: 200px) and (max-width: 530px) {
+        #main-navbar-items ul li {
+            font-size: 0.7rem !important;
+        }
+        .input_search_sm{
+            width: 100%;
+        }
+        .ul_navbar {
+            width: 25rem !important;
+        }
+        .title_section {
+            width: 110%;
+        }
+        .all_page_item_view {
+            padding-left: 2rem !important;
+            padding-right: 2rem !important;
+        }
+        .div_icon_footer {
+            padding-left: 0% !important;
+        }
+    }
+    @media (max-width: 428px){
+        .title_section {
+            width: 110%;
+        }
+    }
+    .zoomContainer{
+        z-index: 1000
+    }
+</style>
+
+<style>
+    .ul_navbar_for_mobile {
+        width: 37rem;
+    }
+    .input_search_sm_for_mobile {
+        width: 77%;
+        font-size: 1.7rem;
+    }
+    .navbarSupportedContent_for_mobile ul li {
+        font-size: 35px !important;
+    }
+    .icon-flag_for_mobile {
+        width: 35px !important;
+        height: 35px !important;
+    }
+    .title_section_for_mobile, .text_leave_constructive_review_for_mobile{
+        font-size: 2.5rem;
+    }
+    .text_section_for_mobile{
+        font-size: 1.9rem;
+    }
+    .rate-logo_for_mobile {
+        width: 185px;
+    }
+    .details_comment .rating_for_mobile {
+        left: 0.5rem !important;
+        font-size: 2.7em !important;
+    }
+    .btn_leave_constructive_review_for_mobile {
+        font-size: 2rem;
+    }
 </style>
 
 @endsection @section('main_section')
@@ -1576,6 +1666,24 @@ width: auto !important;
 <script src="{{URL::asset('js/jquery.min.js')}}"></script>
 <script src="{{URL::asset('/front-end/js/plugin/jquery-pretty-tabs.js')}}"></script>
 <script>
+    function when_open_mobile(){
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            $('.ul_navbar').addClass('ul_navbar_for_mobile');
+            $('.input_search_sm').addClass('input_search_sm_for_mobile');
+            $('#navbarSupportedContent').addClass('navbarSupportedContent_for_mobile');
+            $('.icon-flag').addClass('icon-flag_for_mobile');
+            $('.title_section').addClass('title_section_for_mobile');
+            $('.text_section').addClass('text_section_for_mobile');
+            $('.text_leave_constructive_review').addClass('text_leave_constructive_review_for_mobile');
+            $('.rate-logo').addClass('rate-logo_for_mobile');
+            $('.details_comment .rating2').addClass('rating_for_mobile');
+            $('.btn_leave_constructive_review').addClass('btn_leave_constructive_review_for_mobile');
+        }
+    }
+    
+when_open_mobile();
+   
+    
       if($('.tax_include').attr('value').length > 14){
     $('.tax_include').css('marginLeft','-5.9rem');
     }
