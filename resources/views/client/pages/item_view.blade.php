@@ -475,7 +475,7 @@
             font-size: 1.5em;
         }
         .points_item_details {
-            font-size: 1.7em;
+            font-size: 1.2em;
         }
         .img_buy_item_details,
         .img_add_to_card_item_details {
@@ -484,17 +484,18 @@
         .buy_item_details span,
         .add_to_card_item_details span {
             margin-top: 20.1em;
-            font-size: 2em;
+            font-size: 1.5em;
         }
         .add_to_card_item_details span {
-            margin-top: 10em;
+            margin-top: 13.1em;
         }
         .img_add_to_card_item_details {
             margin-top: 17.5em;
         }
         .img_buy_item_details,
         .img_add_to_card_item_details {
-            width: 17em;
+            width: 14em;
+            right: 2.2rem;
         }
         .title_section {
             font-size: 1.4em;
@@ -505,7 +506,7 @@
         }
         .img_buy_item_details,
         .img_add_to_card_item_details {
-            right: -2.8em;
+            right: -2.2em;
         }
         .options_section {
             padding: 0em 2em;
@@ -1100,12 +1101,62 @@
             padding-left: 34% !important;
         }
         .title_reviews{
-            margin-top: 340px
+            margin-top: 366px
         }
         .leave_constructive_review .details_comment .rating{
             right: auto !important;
             left: 1em;
             /*			margin-top: 25% !important*/
+        }
+    }
+    @media (max-width: 1030px) and (min-width: 768px){
+        .item_price {
+            font-size: 1.3em;
+        }
+        .item_name{
+            font-size: 1rem;
+        }
+        .text_discount {
+            font-size: 1.4em;
+        }
+        .discount_item {
+            border-top: 7em solid #d80001;
+            border-right: 6em solid transparent;
+        }
+        .icon_view_my_card {
+            height: 3.5em;
+        }
+        .div_item .ratings{
+            bottom: 2.2rem !important;
+        }
+        .tax_include {
+            margin-top: 0.4rem !important;
+        }
+        .username_details_comment {
+            font-size: 1.5em;
+        }
+        .text_upvoted_user_actions {
+            font-size: 1.1rem;
+        }
+        .img_upvoted_user_actions{
+            width: 20%;
+        }
+        .text_details_comment {
+            font-size: 1em;
+        }
+        .title_customer_review{
+            font-size: 1.5rem;
+        }
+        .add_to_card_item_details span {
+            font-size: 1.5em;
+            margin-top: 13.1em;
+        }
+        .img_add_to_card_item_details {
+            width: 14em;
+            right: -2.2em;
+        }
+        .points_item_details {
+            font-size: 1.2em;
         }
     }
     @media(max-width: 991px){
@@ -1281,6 +1332,118 @@
     .btn_leave_constructive_review_for_mobile {
         font-size: 2rem;
     }
+    .carousel-indicators_for_mobile .active{
+        height:5rem !important;
+    }
+     .carousel-indicators_for_mobile{
+        height:5rem !important;
+    }
+    .points_item_details_for_mobile span{
+        font-size: 2.5rem !important;
+    }
+    .price_item_details_mobile b_for_mobile {
+        font-size: 2.5rem !important;
+    }
+    .tax_include_item_mobile_for_mobile {
+        font-size: 1.7rem !important;
+    }
+    .text_item_details_mobile_for_mobile {
+        font-size: 1.8rem !important;
+    }
+    .add_to_card_item_details_for_mobile small{
+        font-size: 2rem;
+    }
+    .off_item_for_mobile, .text_discount_details_for_mobile{
+        font-size: 2.2rem;
+    }
+    .text_discount_details_for_mobile{
+            top: -4.5em;
+    }
+    .discount_item_details_for_mobile {
+        border-top: 10em solid #d80001;
+        border-right: 8.8em solid transparent;
+    }
+    .title_customer_review_for_mobile{
+        font-size: 2.3rem;
+    }
+    .text_details_comment_for_mobile{
+        font-size: 1.8rem;
+    }
+    .text_upvoted_user_actions_for_mobile{
+        font-size: 1.6rem;
+    }
+    .img_upvoted_user_actions_for_mobile{
+        width: 30%;
+    }
+    .customer_reviews_for_mobile {
+        max-height: 36em;
+    }
+    .leave_constructive_review_for_mobile {
+        margin-top: 2rem;
+    }
+    .item_name_for_mobile{
+        font-size: 1.8rem;
+    }
+    .img_item_for_mobile{
+        height: 19rem;
+    }
+    .item_price_for_mobile {
+        font-size: 3em;
+    }
+    .div_item .tax_include_item_mobile_for_mobile {
+        margin-top: 1.8rem !important;
+    }
+    .icon_view_my_card_for_mobile {
+        height: 5.5em;
+    }
+    .div_item .rating_for_mobile{
+        font-size: 2.3rem;
+        bottom: 2.9rem !important;
+    }
+    .btn_cancel_for_mobile, .btn_done_for_mobile, .btn_view_my_cart_for_mobile{
+        font-size: 2rem !important;
+    }
+    .total_qty_for_mobile{
+        font-size: 2.2rem;
+        left: 3.2em !important;
+        margin-top: 0.5rem !important;
+    }
+    .title_qty_for_mobile{
+        font-size: 1.9rem;
+    }
+    .modal_one_item_details .div_title_item_details_mobile .rating_for_mobile {
+        font-size: 1.9em !important;
+        left: 1em;
+    }
+    .title_item_details_mobile_for_mobile {
+        font-size: 2.1em !important;
+    }
+    .num_qty_for_mobile{
+        font-size: 2rem;
+    }
+    .img_item_details_for_mobile {
+        max-height:  30rem !important;
+    }
+    .img_price_item_details_mobile_for_mobile{
+        left: -1.6rem;
+        width: 16rem !important;
+    }
+    #product-name .rating_for_mobile{
+        font-size: 2rem;
+        left: 38% !important;
+    }
+    .slider_image_item_for_mobile{
+        height: 437px !important;
+    }
+    .slider_zoom_item_for_mobile{
+        height: 400px !important;
+    }
+    .header_page_text_div_for_mobile{
+        font-size: 1.7rem;
+    }
+    .header_page_for_mobile{
+        height: 15em;
+    }
 </style>
 
 @endsection @section('main_section')
@@ -1326,7 +1489,6 @@
 <!--                        <img class=" d-block w-100" onclick="imageModal(this);" data-target="carouselExampleIndicators" style="height: 350px" src="{{$product->image_id}}" alt="First slide">-->
                         <div class="slide-bg slider_zoom_item"  onclick="imageModal(this);" data-target="slider_image_item" id="thum1_slider" style="height: 350px; background-image: url({{$product->image_id}})" data-zoom-image="{{$product->image_id}}"></div>
                     </div>
-
                 </div>
 
             </div>
@@ -1678,6 +1840,39 @@
             $('.rate-logo').addClass('rate-logo_for_mobile');
             $('.details_comment .rating2').addClass('rating_for_mobile');
             $('.btn_leave_constructive_review').addClass('btn_leave_constructive_review_for_mobile');
+            $('.carousel-indicators').addClass('carousel-indicators_for_mobile');
+            $('.points_item_details').addClass('points_item_details_for_mobile');
+            $('.price_item_details_mobile b').addClass('b_for_mobile');
+            $('.tax_include_item_mobile').addClass('tax_include_item_mobile_for_mobile');
+            $('.text_item_details_mobile').addClass('.text_item_details_mobile_for_mobile');
+            $('.add_to_card_item_details').addClass('add_to_card_item_details_for_mobile');
+            $('.off_item').addClass('off_item_for_mobile');
+            $('.text_discount_details').addClass('text_discount_details_for_mobile');
+            $('.discount_item_details').addClass('discount_item_details_for_mobile');
+            $('.title_customer_review').addClass('title_customer_review_for_mobile');
+            $('.text_details_comment').addClass('text_details_comment_for_mobile');
+            $('.text_upvoted_user_actions').addClass('text_upvoted_user_actions_for_mobile');
+            $('.img_upvoted_user_actions').addClass('img_upvoted_user_actions_for_mobile');
+            $('.customer_reviews').addClass('customer_reviews_for_mobile');
+            $('.leave_constructive_review').addClass('leave_constructive_review_for_mobile');
+            $('.item_name').addClass('item_name_for_mobile');
+            $('.img_item').addClass('img_item_for_mobile');
+            $('.item_price').addClass('item_price_for_mobile');
+            $('.icon_view_my_card').addClass('icon_view_my_card_for_mobile');
+            $('.rating').addClass('rating_for_mobile');
+            $('.btn_view_my_cart').addClass('btn_view_my_cart_for_mobile');
+            $('.btn_cancel').addClass('btn_cancel_for_mobile');
+            $('.btn_done').addClass('btn_done_for_mobile');
+            $('.total_qty').addClass('total_qty_for_mobile');
+            $('.title_qty').addClass('title_qty_for_mobile');
+            $('.title_item_details_mobile').addClass('title_item_details_mobile_for_mobile');
+            $('.num_qty').addClass('num_qty_for_mobile');
+            $('#modal-img').addClass('img_item_details_for_mobile');
+            $('.img_price_item_details_mobile').addClass('img_price_item_details_mobile_for_mobile');
+            $('#slider_image_item').addClass('slider_image_item_for_mobile');
+            $('.slider_zoom_item').addClass('slider_zoom_item_for_mobile');
+            $('.header_page_text_div').addClass('header_page_text_div_for_mobile');
+            $('.header_page').addClass('header_page_for_mobile');
         }
     }
     

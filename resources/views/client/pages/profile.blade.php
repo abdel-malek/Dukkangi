@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{URL::asset('/front-end/css/item_view.css')}}">
 <style>
-	
+
     .jssorl-009-spin img {
         animation-name: jssorl-009-spin;
         animation-duration: 1.6s;
@@ -135,271 +135,343 @@
     }
     .input_singup 
     {
-    	margin-top: 10px;
-    	width: 90%;
-    	color :	#808080;	
+        margin-top: 10px;
+        width: 90%;
+        color :	#808080;	
     }
     .input_singup:hover {
-	    border-color: #9c9c9c;
-	}
-	.glyph {
-  	    width: 2.5em;
-	    padding-left: 0.8em;
-	    padding-top: 0.7em;
-	    height: 2.5em;
-	    margin-top: 0em;
-	    left: 13.5em;
-	    margin-bottom: 1em;
-	    background-color: #d80001;
-	    border-radius: 1.5em;
-	    border-color: #d80001;
-	    color: #fff;
-	    font-size: 19px;
-	    cursor: pointer;
-	}
-	.input_singup:hover
-	{
-	    border-color: #9c9c9c;
-	}
-	.input_singup:focus
-	{
-		color: #808080;
-	}
-	.sections
-	{
-		padding-left: 4em;
-                margin-right: 3.4rem;
-		margin-bottom: 9em;
-                margin-top: 1rem;
-	}
-	thead
-	{
-		border-bottom: 1.5px solid #A9A9A9;
-		color: #d80001;
-		font-family: EagarFont;
-	}
-	.tr
-	{
-		border-top: 1.5px solid #A9A9A9;
-	}
-	td
-	{ 
-		border-right: 1.5px solid #A9A9A9;   
-		text-align: -webkit-center;
-		height: 4.5em;
-	}
-	.order
-	{
-		width: 15em;
-	}
-	.number
-	{
-		width: 3em;
-	}
-	.date 
-	{
-		width: 10em;
-	}
-	.state 
-	{
-		width: 8em;
-	}
-	.rate
-	{
-		width :8em;
-		border-right: 0px solid #A9A9A9;		
-	}
-        #lang-nav-bar {
-            margin-top: -20px;
-        }
-        #content_page {
-            margin-top: -6rem !important;
+        border-color: #9c9c9c;
+    }
+    .glyph {
+        width: 2.5em;
+        padding-left: 0.8em;
+        padding-top: 0.7em;
+        height: 2.5em;
+        margin-top: 0em;
+        left: 13.5em;
+        margin-bottom: 1em;
+        background-color: #d80001;
+        border-radius: 1.5em;
+        border-color: #d80001;
+        color: #fff;
+        font-size: 19px;
+        cursor: pointer;
+    }
+    .input_singup:hover
+    {
+        border-color: #9c9c9c;
+    }
+    .input_singup:focus
+    {
+        color: #808080;
+    }
+    .sections
+    {
+        padding-left: 4em;
+        margin-right: 3.4rem;
+        margin-bottom: 9em;
+        margin-top: 1rem;
+    }
+    thead
+    {
+        border-bottom: 1.5px solid #A9A9A9;
+        color: #d80001;
+        font-family: EagarFont;
+    }
+    .tr
+    {
+        border-top: 1.5px solid #A9A9A9;
+    }
+    td
+    { 
+        border-right: 1.5px solid #A9A9A9;   
+        text-align: -webkit-center;
+        height: 4.5em;
+    }
+    .order
+    {
+        width: 15em;
+    }
+    .number
+    {
+        width: 3em;
+    }
+    .date 
+    {
+        width: 10em;
+    }
+    .state 
+    {
+        width: 8em;
+    }
+    .rate
+    {
+        width :8em;
+        border-right: 0px solid #A9A9A9;		
+    }
+    #lang-nav-bar {
+        margin-top: -20px;
+    }
+    #content_page {
+        margin-top: -6rem !important;
+    }
+    .sections {
+        width: 62.8%;
+    }
+    .glyph{
+        left: 80%;
+    }
+    .div_icon_footer {
+        padding-left: 14% !important;
+    }
+    .input_search_sm{
+        width: 78% !important;   
+    }
+    @media (min-width: 1030px) and (max-width: 1270px) {
+        .one_item_details, .modal_one_item_details
+        {
+            left: 2em !important;
+            width: 34% !important;
         }
         .sections {
-    width: 62.8%;
+            width: 60.8%;
         }
-        .glyph{
-            left: 80%;
+    }
+    @media (min-width: 900px) and (max-width: 1105px){
+        #logout-form{
+            margin: 0.5rem;
+        }
+        #nav-bar-search {
+            margin-right: 0px;
+            width: 325px !important;
+        }
+    }
+    /*        @media (max-width: 1030px) and (min-width: 1024px)
+    #main-navbar-items ul li {
+        margin-right: 12px;
+        font-size: 0.6rem;
+    }
+    }*/
+    @media (min-width: 768px) and (max-width: 1030px) {
+        #main-navbar-items ul li {
+            margin-right: 12px;
+            font-size: 0.7rem !important;
+        }
+        .sections{
+            width: 57%;
+        }
+        .div_icon_footer{
+            margin-left: 20%;
+        }
+        .ul_navbar {
+            width: 59rem !important;
+        }
+        .ul_navbar_mobile{
+            width: 41rem !important;
+        }
+        .nav-item a {
+            font-size: 1.8em !important;
+        }
+        .one_item_details, .modal_one_item_details
+        {
+            left: -1em !important;
+            width: 41% !important;
+        }
+        #content_page{
+            padding-left: 0rem;
+            padding-right: 0rem;
+        }
+        .header_page_text_div{
+            width: 92.3% !important;
+            padding-left: 46% !important;
+        }
+        .icon-flag {
+            margin-top: 0em;
+        }
+    }
+    @media (max-width: 991px){
+        .ul_navbar {
+            width: 34rem !important;
+        }
+        .input_search_sm {
+            width: 43% !important;
+        }
+    }
+    @media (max-width: 910px){
+        .header_page{
+            background-size: 147% !important;
+        }
+
+        .ul_navbar {
+            width: 35rem !important;
+        }
+        .nav-item a {
+            font-size: 2em !important;
+        }
+    }
+    @media (max-width: 870px){
+        .header_page{
+            background-size: 154% !important;
+        }
+    }
+    @media (max-width: 830px){
+        .header_page{
+            background-size: 161% !important;
+            width: 100%;
+            height: 17em;
+            margin-left: 0%;
         }
         .div_icon_footer {
-            padding-left: 14% !important;
+            margin-left: 16% !important;
         }
-         .input_search_sm{
-             width: 78% !important;   
-            }
-        @media (min-width: 1030px) and (max-width: 1270px) {
-            .one_item_details, .modal_one_item_details
-            {
-                left: 2em !important;
-                width: 34% !important;
-            }
-            .sections {
-                width: 60.8%;
-            }
+        .header_page_text_div {
+            width: 100% !important;
+            padding-left: 23em !important;
         }
-        @media (min-width: 768px) and (max-width: 1030px) {
-            .sections{
-                width: 57%;
-            }
-            .div_icon_footer{
-                    margin-left: 20%;
-            }
-            .ul_navbar {
-                width: 50rem !important;
-            }
-            .ul_navbar_mobile{
-                width: 41rem !important;
-            }
-            .nav-item a {
-                font-size: 1.8em !important;
-            }
-            .one_item_details, .modal_one_item_details
-            {
-                left: -1em !important;
-                width: 41% !important;
-            }
-            #content_page{
-                padding-left: 0rem;
-                padding-right: 0rem;
-            }
-            .header_page_text_div{
-                width: 92.3% !important;
-                padding-left: 46% !important;
-            }
-            .icon-flag {
-    margin-top: 0em;
-            }
+        .one_item_details{
+            left: -4em !important;
         }
+        .sections {
+            width: 61%;
+        }
+        .icon-flag {
+            width: 20px !important;
+            height: 20px !important;
+        }
+        #lang-nav-bar .nav-item a {
+            font-size: 1.3em !important;
+        }
+    }
+    @media (min-width: 700px) and (max-width: 767px){
+        .one_item_details{
+            width: 37% !important;
+        }
+        .div_icon_footer {
+            margin-left: 16% !important;
+            width: 60%;
+            padding-left: 9% !important;
+        }
+        .sections {
+            width: 67%;
+        }
+        .header_page_text_div {
+            padding-left: 38% !important;
+        }
+        #content_page {
+            padding: 0rem;
+        }
+        .glyph{
+            font-size: 14px !important;
+        }
+        .navbar-nav{
+            display: flex !important;
+        }
+        #lang-nav-bar .nav-item a {
+            font-size: 1em !important;
+        }
+        .icon-flag {
+            margin-top: 0em;
+        }
+    }
 
-        @media (max-width: 910px){
-            .header_page{
-                background-size: 147% !important;
-            }
-            .ul_navbar {
-                width: 27rem !important;
-            }
-            .nav-item a {
-                font-size: 2em !important;
-            }
+    @media (max-width: 700px){
+        #content_page {
+            padding: 0rem;
         }
-           @media (max-width: 870px){
-            .header_page{
-                background-size: 154% !important;
-            }
+        .input_search_sm {
+            width: 51% !important;
         }
-        @media (max-width: 830px){
-            .header_page{
-                background-size: 161% !important;
-                width: 100%;
-                height: 17em;
-                margin-left: 0%;
-            }
-            .div_icon_footer {
-                margin-left: 16% !important;
-            }
-            .header_page_text_div {
-                width: 100% !important;
-                padding-left: 23em !important;
-            }
-            .one_item_details{
-                left: -4em !important;
-            }
-            .sections {
-                width: 61%;
-            }
-            .icon-flag {
-    width: 20px !important;
-    height: 20px !important;
-}
-#lang-nav-bar .nav-item a {
-    font-size: 1.3em !important;
-}
+        .logo{
+            width: 12rem !important;
         }
-        @media (min-width: 700px) and (max-width: 767px){
-            .one_item_details{
-                width: 37% !important;
-            }
-            .div_icon_footer {
-                margin-left: 16% !important;
-                width: 60%;
-                padding-left: 9% !important;
-            }
-            .sections {
-                width: 67%;
-            }
-            .header_page_text_div {
-    padding-left: 38% !important;
-            }
-            #content_page {
-    padding: 0rem;
-            }
-            .glyph{
-                font-size: 14px !important;
-            }
-            .navbar-nav{
-                display: flex !important;
-            }
-            #lang-nav-bar .nav-item a {
-    font-size: 1em !important;
-            }
-            .icon-flag {
-    margin-top: 0em;
-            }
+        .div_icon_footer {
+            margin-left: 18% !important;
+            width: 60%;
+            padding-left: 4% !important;
         }
-        
-        @media (max-width: 700px){
-            #content_page {
-                padding: 0rem;
-            }
-              .div_icon_footer {
-                margin-left: 18% !important;
-                width: 60%;
-                padding-left: 4% !important;
-            }
-            #lang-nav-bar .nav-item a {
-    font-size:0.9em !important;
-            }
-               .icon-flag {
-    margin-top: 0em;
-        width: 18px !important;
-    height: 18px !important;;
-            }
-               .navbar-nav{
-                display: flex !important;
-            }
-            .header_page {
-                  background-size: 170% !important;
-    background-position: center;
-                height: 14.8em;
-            }
-            .header_page_text_div {
-                top: 9.8em;
-                padding-left: 4em !important;
-            }
-            .one_item_details{
-                position: initial; 
-                margin-top: 1.2em;
-                    width: 70% !important;
-                    margin-left: 15%;
-            }
-            .sections {
-    width: 102%;
-}
+        #lang-nav-bar .nav-item a {
+            font-size:0.9em !important;
         }
+        .icon-flag {
+            margin-top: 0em;
+            width: 18px !important;
+            height: 18px !important;;
+        }
+        .navbar-nav{
+            display: flex !important;
+        }
+        .header_page {
+            background-size: 170% !important;
+            background-position: center;
+            height: 14.8em;
+        }
+        .header_page_text_div {
+            top: 9.8em;
+            padding-left: 4em !important;
+        }
+        .one_item_details{
+            position: initial; 
+            margin-top: 1.2em;
+            width: 70% !important;
+            margin-left: 15%;
+        }
+        .sections {
+            width: 102%;
+        }
+    }
 
-        @media (max-width: 582px){
-            .header_page {
-                background-size: 190% !important;
-            }
-               .div_icon_footer {
-                margin-left: 10% !important;
-                width: 80%;
-                padding-left: 4% !important;
-            }
-               #lang-nav-bar .nav-item a {
-    font-size: 0.7em !important;
-            }
+    @media (max-width: 582px){
+        .header_page {
+            background-size: 190% !important;
         }
+        .div_icon_footer {
+            margin-left: 10% !important;
+            width: 80%;
+            padding-left: 4% !important;
+        }
+        .input_search_sm {
+            width: 100% !important;
+        }
+        #main-navbar-items ul li {
+            margin-right: 26px;
+            font-size: 0.6rem;
+        }
+        #lang-nav-bar .nav-item a {
+            font-size: 0.7em !important;
+        }
+        #lang-nav-bar {
+            margin-top: -2rem;
+        }
+        .navbar-expand-lg{
+            max-height: 22rem !important;
+        }
+        .ul_navbar {
+            width: 29rem !important;
+        }
+        #main-nav-bar a {
+            width: 100% !important;
+        }
+        .logo {
+            width: 12rem !important;
+            float: left;
+        }
+        .top_nav {
+            max-width: 78% !important;
+        }
+        .div_icon_footer {
+            margin-left: 0% !important;
+            width: 100%;
+        }
+        .icon_inst {
+            margin-left: 2em !important;
+        }
+        .sections {
+            margin-left: 0rem;
+            margin-right: 0rem;
+            overflow: hidden !important;
+            padding-left: 0rem;
+        }
+    }
 </style>
 @endsection
 

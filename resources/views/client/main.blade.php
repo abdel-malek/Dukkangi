@@ -96,7 +96,7 @@
     padding: .5em;
         }
          .icon_shopping_cart {
-             font-size: 2.6em !important;
+             font-size: 2.3em !important;
          }
         @media (max-width: 767px)and (min-width:577px){
         .div_login, .div_singup {
@@ -171,20 +171,21 @@
              font-size: 2.3em !important;
          }
          #ex3 .fa-stack[data-count]:after {
-    right: -12% !important;
+    right: -24% !important;
     font-size: 52% !important;
-        padding: .6em;
+        padding: .5em;
       /*font-family: sans-serif;*/
          }
           
       }
      @media (min-width: 1108px) and (max-width: 1288px) {
          .icon_shopping_cart {
-             font-size: 2.7em !important;
+             font-size: 2.2em !important;
          }
          #ex3 .fa-stack[data-count]:after {
-    right: -30% !important;
-    font-size: 60% !important;
+    right: -25% !important;
+    font-size: 50% !important;
+        padding: .6em;
          }
      }
 
