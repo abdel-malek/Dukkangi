@@ -649,7 +649,7 @@
         /*font-family: 'Reem Kufi', sans-serif;*/
         /*font-family: 'Lateef', cursive;*/
         /*font-family: 'Mirza', cursive;*/
-        font-family: 'Markazi Text', serif;
+        /*font-family: 'Markazi Text', serif;*/
         
         /*font-family: 'Mada', sans-serif;*/
         /*font-family: 'Aref Ruqaa', serif;*/
@@ -660,7 +660,7 @@
     input::placeholder{
         /*font-family: 'Tajawal', sans-serif;*/
         /*font-family: 'Cairo', sans-serif;*/
-        font-family: 'Markazi Text', serif;
+        /*font-family: 'Markazi Text', serif;*/
     }
 </style>
 
