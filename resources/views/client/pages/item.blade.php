@@ -1005,7 +1005,7 @@
         
         /*font-family: 'Droid Arabic Naskh', serif;*/
         /*font-family: 'Droid Arabic Kufi', serif;*/
-        font-family:'Droid Arabic Naskh', serif;
+        /*font-family:arabic3Font;*/
         
         /*font-family: 'Mada', sans-serif;*/
         /*font-family: 'Aref Ruqaa', serif;*/
@@ -1016,7 +1016,7 @@
     input::placeholder{
         /*font-family: 'Tajawal', sans-serif;*/
         /*font-family: 'Cairo', sans-serif;*/
-        font-family: 'Markazi Text', serif;
+        /*font-family: 'Markazi Text', serif;*/
     }
 </style>
 @endif

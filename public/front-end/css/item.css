@@ -13,6 +13,28 @@
     src: url(../fonts/HelveticaNeue-Medium.ttf);
     font-weight: bold;
 }
+@font-face {
+    font-family: arabic1Font;
+    src: url(../fonts/dastnevis.otf);
+    font-weight: bold;
+}
+@font-face {
+    font-family: arabic2Font;
+    src: url(../fonts/Sp_Kamran-Bold_p30download.com_.ttf);
+    font-weight: bold;
+}
+@font-face {
+    font-family: arabic3Font;
+    src: url(../fonts/DimaFont.ttf);
+    font-weight: bold;
+}
+@font-face {
+    font-family: arabic4Font;
+    src: url(../fonts/joude.ttf);
+    font-weight: bold;
+}
+
+
 input:focus,
 select:focus,
 textarea:focus,

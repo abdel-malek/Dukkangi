@@ -14,7 +14,9 @@
         animation-iteration-count: infinite;
         animation-timing-function: linear;
     }
-
+    .header_page{
+        border:none;
+    }
     @keyframes jssorl-009-spin {
         from {
             transform: rotate(0deg);
@@ -227,6 +229,9 @@
     .input_search_sm{
         width: 78% !important;   
     }
+    #logout-form{
+        margin-top: -0.2rem;
+    }
     @media (min-width: 1030px) and (max-width: 1270px) {
         .one_item_details, .modal_one_item_details
         {
@@ -239,7 +244,7 @@
     }
     @media (min-width: 900px) and (max-width: 1105px){
         #logout-form{
-            margin: 0.5rem;
+            margin: 0.2rem;
         }
         #nav-bar-search {
             margin-right: 0px;
@@ -252,6 +257,14 @@
         font-size: 0.6rem;
     }
     }*/
+      @media (min-width: 1024px) and (max-width: 1105px) {
+                #main-navbar-items ul li{
+                    font-size: 1.1rem;
+                }
+         }
+
+    
+       
     @media (min-width: 768px) and (max-width: 1030px) {
         #main-navbar-items ul li {
             margin-right: 12px;
@@ -264,7 +277,7 @@
             margin-left: 20%;
         }
         .ul_navbar {
-            width: 59rem !important;
+            width: 61rem !important;
         }
         .ul_navbar_mobile{
             width: 41rem !important;
@@ -296,6 +309,15 @@
         .input_search_sm {
             width: 43% !important;
         }
+        
+    }
+    @media (max-width: 993){
+        #navbarSupportedContent ul li {
+            font-size: 11px;
+        }
+        #lang-nav-bar .nav-item a {
+    font-size: 0.7em !important;
+}
     }
     @media (max-width: 910px){
         .header_page{
@@ -339,7 +361,29 @@
             height: 20px !important;
         }
         #lang-nav-bar .nav-item a {
-            font-size: 1.3em !important;
+            font-size: 0.7em !important;
+        }
+    }
+        @media (max-width: 1030px) and (min-width: 1026px){
+        #main-navbar-items ul li {
+            font-size: 0.6rem !important;
+        }
+    }
+    @media (max-width: 1030px) and (min-width: 1024px){
+        #navbarSupportedContent ul li {
+            font-size: 9px;
+        }
+    }
+  
+      @media (max-width: 1024px) and (min-width: 993px){
+        #main-navbar-items ul li {
+            font-size: 0.8rem !important;
+        }
+        #navbarSupportedContent ul li {
+            font-size: 11px;
+        }
+        #lang-nav-bar .nav-item a {
+            font-size: 1.2em !important;
         }
     }
     @media (min-width: 700px) and (max-width: 767px){
@@ -367,7 +411,7 @@
             display: flex !important;
         }
         #lang-nav-bar .nav-item a {
-            font-size: 1em !important;
+            font-size: 0.7em !important;
         }
         .icon-flag {
             margin-top: 0em;
@@ -390,7 +434,7 @@
             padding-left: 4% !important;
         }
         #lang-nav-bar .nav-item a {
-            font-size:0.9em !important;
+            font-size:0.7em !important;
         }
         .icon-flag {
             margin-top: 0em;
@@ -419,10 +463,21 @@
             width: 102%;
         }
     }
-
+            @media (max-width: 950px){
+            .header_page{
+                background-size: 140% !important;
+            }
+.ul_navbar_mobile .nav-item a {
+    font-size: 2.9em !important;
+}
+           
+        }
     @media (max-width: 582px){
         .header_page {
             background-size: 190% !important;
+        }
+        .header_page {
+            background-size: 180% !important;
         }
         .div_icon_footer {
             margin-left: 10% !important;
@@ -473,19 +528,12 @@
         }
     }
 </style>
+
 @endsection
 
 @section ('main_section')
 <style>
-            @media (max-width: 950px){
-            .header_page{
-                background-size: 140% !important;
-            }
-.ul_navbar_mobile .nav-item a {
-    font-size: 2.9em !important;
-}
-           
-        }
+
         @media (max-width: 1024px) and (min-width: 400px){
 .ul_navbar_mobile .nav-item a {
     font-size: 2.9em !important;
@@ -507,14 +555,64 @@
 }
 }
 </style>
+<style>
+    .nav-item_for_mobile{
+        font-size: 3.5rem !important;
+    }
+    .ul_navbar_mobile .nav-item_for_mobile a {
+        font-size: 3em !important;
+    }
+    .ul_navbar_for_mobile {
+        width: 59rem !important;
+    }
+    .top_nav_for_mobile {
+        max-width: 80% !important;
+    }
+    .input_search_sm_for_mobile{
+        padding: 2rem 12px !important;
+        font-size: 2rem !important;
+        margin-right: 5rem !important;
+    }
+    .logout-form_for_mobile {
+        margin-top: -0.4rem !important;
+    }
+    .icon-flag_for_mobile {
+        width: 35px;
+        height: 35px;
+        margin-top: -0.2rem;
+    }
+    .one_item_details_for_mobile {
+        position: initial;
+        margin-top: 1.2em;
+        width: 70% !important;
+        margin-left: 15%;
+    }
+    .sections_for_mobile {
+        width: 102%;
+        height: 50em !important;
+    }
+    .sections_for_mobile table td{
+        font-size: 2.5rem;
+    }
+    .username_for_mobile{
+        font-size: 3.4rem;
+    }
+    .input_singup_for_mobile{
+        font-size: 2.8rem;
+        padding: 0rem;
+    }
+    .glyphicon-cloud-upload_for_mobile{
+        font-size: 2.8rem;
+    }
+</style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <div class="col-md-12 all_page_item_view" id="content_page" style="margin-bottom: 14em;top: 3em;">
     <div class="header_page" style="background-image: url('/front-end/images/items_page/1.png');background-size:133%">
-        <p class="header_page_text_div" style="width: 92.3%; padding-left: 30.5em">
+        <!--<p class="header_page_text_div" style="width: 92.3%; padding-left: 30.5em">-->
             <!--<b>{{Auth::user()->name }}</b> @lang('Profile')-->
-            <img src="/front-end/images/items_page/star.png" class="one_start_slider" style="opacity: 0;" />
+            <!--<img src="/front-end/images/items_page/star.png" class="one_start_slider" style="opacity: 0;" />-->
             
-        </p>
+        <!--</p>-->
 	</div>     
 	<div class="one_item_details" style="left:5em;width: 28%;">
 		<div class="header_item_details" style="    margin-bottom: -6em;">
@@ -525,7 +623,7 @@
 			{!! Form::close() !!}
 		</div>
 		<div style="padding-left: 2em;padding-top: 2em;">
-			<h3> {{Auth::user()->name}}</h3>
+                    <h3 class="username"> {{Auth::user()->name}}</h3>
 		
 			<p type="text" class="input_singup" >{{Auth::user()->email}} </p>
 			
@@ -600,7 +698,24 @@
             <script src="/front-end/js/main.js"></script>
 
 <script src="{{URL::asset('/front-end/js/plugin/SimpleStarRating.js')}}"></script>
-<script >
+<script>
+      function when_open_mobile(){
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            $('.nav-item').addClass('nav-item_for_mobile');
+            $('.ul_navbar').addClass('ul_navbar_for_mobile');
+            $('.top_nav').addClass('top_nav_for_mobile');
+            $('.input_search_sm').addClass('input_search_sm_for_mobile');
+            $('#logout-form').addClass('logout-form_for_mobile');
+            $('.icon-flag').addClass('icon-flag_for_mobile');
+            $('.one_item_details').addClass('one_item_details_for_mobile');
+            $('.sections').addClass('sections_for_mobile');
+            $('.username').addClass('username_for_mobile');
+            $('.input_singup').addClass('input_singup_for_mobile');
+            $('.glyphicon-cloud-upload').addClass('glyphicon-cloud-upload_for_mobile');
+        }
+    }
+when_open_mobile();
+    
 	 $( function() {
 	    $("#date_of_brith").datepicker({
 	       yearRange: "-70:-15",
