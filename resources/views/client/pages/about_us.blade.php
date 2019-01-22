@@ -595,15 +595,96 @@
 </style>
 
 <style>
-    .ul_navbar_mobile_for_mobile {
-        width: 33em !important;
+    .ul_navbar_mobile_for_mobile .navbar-nav {
+        width: 41em !important;
+        padding-top: 1rem !important;
     }
-/*    .ul_navbar_mobile_for_mobile {
-        width: 65em !important;
-    }*/
-/*    .main-navbar-items_for_mobile {
+    .input_search_sm_for_mobile{
+        padding: 2.5rem 12px !important;
+        font-size: 2.5rem !important;
+        width: 47rem !important;
+    }
+    .logout-form_for_mobile{
+        margin-top: -0.7rem;
+    }
+    .main-navbar-items_for_mobile {
         font-size: 0.7rem !important;
-    }*/
+    }
+    .ul_navbar_mobile .nav-item_for_mobile a {
+        font-size: 4em !important;
+    }
+    .logo_for_mobile {
+        width: 16rem;
+    }
+    #lang-nav-bar .nav-item_for_mobile a {
+        font-size: 2.4em !important;
+    }
+    .icon-flag_for_mobile {
+        width: 35px;
+        height: 35px;
+        margin-top: -0.5rem !important;
+    }
+    .div_icon_footer_mobile_for_mobile {
+        margin-left: 20% !important;
+        padding-left: 4% !important;
+    }
+    .text_in_about_for_mobile{
+        max-width: 92%;
+        flex: 0 0  92%;
+        left: 4%;
+    }
+    .img-logo_mobile_for_mobile{
+        display: none !important;
+    }
+    .slider_image_about_for_mobile{
+        margin-top: 0rem !important;
+        margin-bottom: 20rem;
+    }
+    .slider_image_about_for_mobile .review-div{
+        flex: 0 0 80%;
+        max-width: 80%;
+    }
+    .hr-review_for_mobile {
+        width: 106.5%;
+    }
+    .section_about_for_mobile{
+        font-size: 2.5rem;
+    }
+    .section_title_for_mobile{
+        font-size: 3rem;
+    }
+    .contact-us-div_for_mobile{
+        left: -44rem !important;
+        margin-top: 40em !important;
+        padding-bottom: 5rem;
+    }
+    .contact-par_for_mobile{
+        font-size: 2.3rem;
+    }
+    .phone_for_mobile, .mail_for_mobile {
+        font-size: 2.3rem;
+    }
+    .icon_slider_right_for_mobile, .icon_slider_left_for_mobile{
+        padding: 0.4rem;
+        font-size: 2rem;
+        top: 7em !important;
+    }
+    .top_for_mobile{
+            left: 5em !important;
+            bottom:  2% !important;
+    }
+    .title_block_slider_for_mobile{
+        font-size: 2.2rem;
+    }
+    .title_footer_for_mobile{
+        font-size: 3.7rem;
+    }
+    .text_footer_for_mobile{
+        font-size: 2.6rem;
+    }
+    .icon_footer_for_mobile{
+       font-size: 4rem;
+    }
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <div class="row"> 
@@ -664,7 +745,7 @@
                           وان نلبي كل مطالب زبائننا الكرام 
                           وان نوفر احسن اخدمة باقل سعر 
                           
-                    </p>
+                    </p><span class="off_item" value="5"></span>
                 @else
                     <h3 class="rtl section_title" style="font-weight:600;"> Section 3</h3>
                     <p class="rtl section_about">
@@ -673,19 +754,19 @@
                 @endif
 		
 	</div>
-	<div class="col-lg-6 col-md-8 col-sm-11  about-div" style="margin-top:-16rem;">
+	<div class="col-lg-6 col-md-8 col-sm-11  about-div slider_image_about" style="margin-top:-16rem;">
 		<img class="img-logo" src="front-end/images/welcome-logo.png" width="500" height="180">
 
 		<div class="review-div col-xl-6 col-lg-7 col-xs-12">
-			<h4 style="@if(session('lang') == 'ar' )
+                    <h4 class="title_block_slider" style="@if(session('lang') == 'ar' )
 				float: right;
 				@endif
 			  ">
 				@lang('REVIEWS')
 			</h4>
 			<hr class="hr-review" style="margin-top: 40px;">
-                        <span  class="glyphicon glyphicon-chevron-right right-arrow" style="left: 91% !important;" onclick="right();"></span>
-			<span  class="glyphicon glyphicon-chevron-left left-arrow" onclick="left();"></span>
+                        <span  class="glyphicon glyphicon-chevron-right right-arrow icon_slider_right" style="left: 91% !important;" onclick="right();"></span>
+			<span  class="glyphicon glyphicon-chevron-left left-arrow icon_slider_left" onclick="left();"></span>
 			<div class="inner-review">
 				{{$review->desc}}
 					<span class='rating ratings{{$review->rate}} top'></span>
@@ -717,7 +798,29 @@
     function when_open_mobile(){
         if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
             $('#main-navbar-items').addClass('ul_navbar_mobile_for_mobile');
-//            alert(1);
+            $('.input_search_sm').addClass('input_search_sm_for_mobile');
+            $('.logo').addClass('logo_for_mobile');
+            $('.nav-item').addClass('nav-item_for_mobile');
+            $('.icon-flag').addClass('icon-flag_for_mobile');
+            $('.about').addClass('div_icon_footer_mobile_for_mobile');
+            $('.text_in_about').addClass('text_in_about_for_mobile');
+            $('.img-logo').addClass('img-logo_mobile_for_mobile');
+            $('.slider_image_about').addClass('slider_image_about_for_mobile');
+            $('.hr-review').addClass('hr-review_for_mobile');
+            $('.section_about').addClass('section_about_for_mobile');
+            $('.section_title').addClass('section_title_for_mobile');
+            $('.contact-us-div').addClass('contact-us-div_for_mobile');
+            $('.contact-par').addClass('contact-par_for_mobile');
+            $('.phone').addClass('phone_for_mobile');
+            $('.mail').addClass('mail_for_mobile');
+            $('.icon_slider_right').addClass('icon_slider_right_for_mobile');
+            $('.icon_slider_left').addClass('icon_slider_left_for_mobile');
+            $('.top').addClass('top_for_mobile');
+            $('.title_block_slider').addClass('title_block_slider_for_mobile');
+            $('.title_footer').addClass('title_footer_for_mobile');
+            $('.text_footer').addClass('text_footer_for_mobile');
+            $('.icon_footer').addClass('icon_footer_for_mobile');
+            $('#logout-form').addClass('logout-form_for_mobile');
         }
     }
     
@@ -824,7 +927,7 @@ $('body').addClass('body_mobile');
 $('.img-logo').addClass('img-logo_mobile');
 $('.div_icon_footer').addClass('div_icon_footer_mobile');
 $('.contact-us-div').addClass('contact-us-div_mobile');
-$('#main-navbar-items').addClass('ul_navbar_mobile_for_mobile');
+
 }
 
 	</script>
