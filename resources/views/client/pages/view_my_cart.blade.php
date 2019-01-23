@@ -270,6 +270,10 @@
  .total_item_qty i{
      float: right;
  }
+ .input_search {
+     padding-right: 1rem;
+     border: none;
+ }
    @media(min-width: 1600px){
             
         .price_item_details {
@@ -304,14 +308,44 @@
 }
 }
 
-
+    @media (max-width: 1024px) and (min-width: 300px){
+        #lang-nav-bar .nav-item a {
+            font-size: 1em !important;
+        }
+    }
+    @media (max-width: 991px) and (min-width: 300px){
+        .ul_navbar {
+            width: 23rem;
+        }
+        .navbar {
+            padding: .5rem 4rem;
+        }
+        .input_search_sm{
+            width: 22rem;
+        }
+        
+    }
+     
     @media (min-width: 768px) and (max-width: 1030px) {
         .swal2-popup .swal2-content {
     font-size: 1.8rem !important;
         }
         .swal2-popup .swal2-styled{
             font-size: 1.8rem !important;
+        }   
+        .input_search {
+            padding: 0.3em 1em;
         }
+        .nav-item a {
+            font-size: 1em;
+        }
+        .btn_control_item_qty {
+            width: 48%;
+        }
+        #main-navbar-items ul li {
+            font-size: 0.7rem;
+        }
+        
         .swal2-popup .swal2-title{
             font-size: 2.8rem !important;
         }
@@ -336,7 +370,7 @@
         .header_page_text_div {
             width: 100%;
             padding: 0.8em 2em;
-            top: 11.1em;
+            top: 10.8em;
         }
         .one_item_details,
         .modal_one_item_details {
@@ -487,31 +521,32 @@
             font-size: 1.7em;
         }
         .btn_credit_card_details {
-            width: 85%;
-            font-size: 1.3em;
+            width: 79%;
+            font-size: 1em;
             padding: 0.6em 1em;
         }
         .title_choose_payment,
         .title_credit_card_details {
-            font-size: 1.6em;
+            font-size: 1.3em;
         }
+        
         .title_one_item_details {
-            font-size: 2.8em;
+            font-size: 1.8em;
         }
         .title_detail_my_card {
-            font-size: 1.6em;
+            font-size: 1.3em;
         }
         .text_item_qty h3 {
-            font-size: 1.2em;
+            font-size: 1em;
         }
         .text_item_qty p {
-            font-size: 1.2em;
+            font-size: 1em;
         }
         .gained_point_rewards h3,
         .taxes_taxes h3,
         .total_discount h3,
         .discount_discount h3 {
-            font-size: 1.8em;
+            font-size: 1.2em;
             width: 33%;
         }
         .gained_point_rewards p,
@@ -519,8 +554,26 @@
         .total_discount p,
         .discount_discount p,
         .code_voucher_code p {
-            font-size: 1.3em;
+            font-size: 1em;
             width: 64%;
+        }
+        .price_item_details span{
+            font-size: 1.3rem !important;
+        }
+        .price_item_details i{
+            font-size: 1.2rem !important;
+            margin-top: 0.8em !important;
+            left: -1rem !important;
+        }
+        .img_price_item_details{
+            width: 12em !important;
+            left: -1.2em;
+        }
+        .text_total{
+            margin-top: 0.7rem !important;
+        }
+        .number_total{
+            margin-top: 0.8rem !important;
         }
         .one_code_voucher_code {
             width: 52%;
@@ -530,7 +583,7 @@
             width: 42%;
         }
         .num_item_qty {
-            font-size: 1.6em;
+            font-size: 1.3em;
         }
         .text_item_qty {
             width: 38%;
@@ -539,7 +592,7 @@
             width: 34%;
         }
         .total_item_qty {
-            font-size: 1.1em;
+            font-size: 1em;
         }
         .line_qty {
             width: 65%;
@@ -582,7 +635,25 @@
     padding-left: 52%;
 }
 }
-
+@media (max-width: 817px) and (min-width: 750px){
+    .ul_navbar {
+        width: 23rem;
+        display: flex!important;
+    }
+}
+@media (max-width: 880px) and (min-width: 770px){
+    .div_icon_footer {
+        float: left;
+        margin-left: 18% !important;
+        padding-left: 5% !important;
+    }
+}
+@media (max-width: 776px) and (min-width: 768px){
+.div_icon_footer {
+    margin-left: 18% !important;
+    padding-left: 5% !important;
+}
+}
 @media (min-width: 200px) and (max-width: 787px) {
     .one_item_details, .modal_one_item_details {
         width: 90%;
@@ -590,6 +661,12 @@
         margin-top: 2.2em;
         position: initial;
     }
+    .d-none {
+    display: flex !important;
+}
+     #main-navbar-items ul li {
+            font-size: 0.6rem !important;
+        }
     .footer {
         margin-top: 1em !important;
     }
@@ -617,24 +694,70 @@
     margin-left: -9rem;
 }
 .price_item_details i{
-    left: 0rem !important;
+    left: 3rem !important;
 }
 .sections {
     width: 93.8%;
 }
 .header_page_text_div {
-    width: 92.4%;
+    width: 100.4%;
     padding-left: 3.7%;
+    
 }
-}
-@media  (max-width: 700px) {
-.img_price_item_details {
-    left: 2.2rem;
-}
-#Total {
-    margin-left: -7.8rem;
 }
 
+    @media  (max-width: 768px) {
+        .header_page{
+            width: 100%;
+            margin-left: 0%;  
+        }
+        .text_header{
+            float: left;
+            margin-top: 0.6rem;
+        }
+        .text_total{
+            font-size: 1.3rem !important;
+            margin-top: 0.8rem !important;
+        }
+        #Total {
+            margin-left: -7rem;
+        }
+        .price_item_details i {
+            left: 2rem !important;
+        }
+/*        .price_item_details i{
+            font-size: 1.2rem !important;
+            margin-top: 0.8em !important;
+            left: -1rem !important;
+        }*/
+/*        .img_price_item_details{
+            width: 12em !important;
+            left: -1.2em;
+        }*/
+    }
+
+    @media  (max-width: 700px) {
+        .img_price_item_details {
+            left: 2.2rem;
+        }
+        .price_item_details i {
+            left: 1rem !important;
+        }
+        #Total {
+            margin-left: -6rem;
+            left: 13rem !important;
+        }
+    }
+@media (max-width: 775px){
+    #main-navbar-items ul li {
+        font-size: 0.72rem !important;
+    }
+    .ul_navbar {
+        width: 22rem !important;
+    }
+    .header_page{
+        background-position: center;
+    }
 }
 @media  (max-width: 650px) {
 .img_price_item_details {
@@ -643,6 +766,11 @@
 #Total {
     margin-left: -6.8rem;
 }
+.text_total{
+    margin-left: 4rem;
+    margin-top: 1.1rem !important;
+}
+    
 }
 @media  (max-width: 600px) {
 .img_price_item_details {
@@ -651,14 +779,62 @@
 #Total {
     margin-left: -5.8rem;
 }
+.text_footer {
+    font-size: 1em !important;
+}
 }
 @media  (max-width: 550px) {
-.img_price_item_details {
-    left: 1.3rem;
+    .img_price_item_details {
+        left: 1.3rem;
+    }
+    #Total {
+        margin-left: -4.8rem;
+    }
+    .top_nav {
+        max-width: 100% !important;
+    }
+    #header .navbar-light{
+        max-height: 11.19em !important;
+    }
+    .text_total{
+        margin-left: 6rem;
+    }
+    .div_icon_footer {
+        padding-left: 0% !important;
+    }
+    .icon_inst {
+        margin-left: 2em !important;
+    }
+    .div_icon_footer {
+        padding-left: 12% !important;
+    }
 }
-#Total {
-    margin-left: -4.8rem;
-}
+@media (max-width: 480px){
+    .text_item_qty {
+        float: left;
+        width: 39%;
+    }
+    .div_icon_footer {
+        padding-left: 6% !important;
+    }
+    .img_price_item_details{
+        width: 13em !important;
+        left: 0.3rem;
+    }
+    .icon_paybal{
+        margin-top: -0.4rem;
+    }
+    .text_total {
+        margin-left: 4.6rem;
+    }
+    .price_item_details i{
+        width: 3rem !important;
+        left: 2rem !important;
+    }
+    #Total {
+        margin-left: -6.8rem !important;
+
+    }
 }
 </style>
 <style>
@@ -835,7 +1011,7 @@
     <div class="col-md-12 all_page_item_view">
         <div class="header_page" style="background-image: url('/front-end/images/items_page/2.png')" />
         <p class="header_page_text_div">
-            Dukkangi Store
+            <span class="text_header"> Dukkangi Store </span>
             <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
             <span class="rating start_header"></span>
         </p>
@@ -936,9 +1112,9 @@
         </div>
 
         <p class="price_item_details">
-            <span style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;position: absolute;z-index: 22;">@lang('Total')</span>
+            <span class="text_total" style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;position: absolute;z-index: 22;">@lang('Total')</span>
 
-            <span style="left:2em;position: absolute;z-index: 22;    margin-top: 1rem;" id="Total"> {{$total }} </span>
+            <span class="number_total" style="left:2em;position: absolute;z-index: 22;    margin-top: 1rem;" id="Total"> {{$total }} </span>
             <i style="color: #fff;position: absolute;z-index: 22;    font-size: 1.5em;font-family: 'EagarFont';margin-top: 0.2em;width: 4em;    left: -3rem;text-align: center;position: absolute;z-index: 18;">
                 €</i>
             <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details" />
@@ -1071,7 +1247,7 @@
                         <input id="paypalamount" type="hidden" name="amount" value="Nan">
                         <input type="hidden" name="currency_code" value="EUR">
                         <!-- Display the payment button. -->
-                        <div class="block_btn_pay" style="cursor: pointer;box-shadow: 1px 1px 6px #999;border-radius: 1em;width: 26%;padding: 0.3em;">
+                        <div class="block_btn_pay icon_paybal" style="cursor: pointer;box-shadow: 1px 1px 6px #999;border-radius: 1em;width: 26%;padding: 0.3em;">
                             <img alt="" border="0" style="cursor: pointer;width: 90%;margin-left: 5%;" src="/front-end/images/payment/paypal.png" onclick="submitPaypal(this)">
                         </div>
                         <input type="image" id="clickpaypal" hidden name="submit" border="0" src="/front-end/images/payment/paypal.png" alt="Buy Now">

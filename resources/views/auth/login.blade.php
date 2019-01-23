@@ -35,24 +35,24 @@
                 .checkbox{    
                     margin-left: 0px;
                     margin-top: 18px;
-                    width: 1em;
-                    height: 1em;
+                    width: 0.8em;
+                    height: 0.8em;
                 }
                 .long-div{
                     height: 86.7em;
                 }
                 .input_login, .input_singup{
-                    font-size: 2rem;
+                    font-size: 1rem;
                     padding: .675rem .75rem;
                     padding-left: 3em;
                     
                 }
                 .input-group-prepend img {
-                    height: 2.3em;
+                    height: 1.3em;
                 }
                 .input-group-prepend {
                    margin-left: 1.2em;
-                   margin-top: 1em;
+                   margin-top: 0.9em;
                 }
                 .welcome-img {
                     margin-left: 22%;
@@ -62,11 +62,13 @@
                     width: 36em;
                 }
                 .btn_login, .btn_cancel {
-                    font-size: 2em;
+                    font-size: 1em;
                     padding: 0.6em 1em;
+                    width: 80%;
+                    margin-left: 10%;
                 }
                 .singup_text {
-                    font-size: 2.3em;
+                    font-size: 1.3em;
                 }
                 .icon_social_media {
                     height: 5.7em;
@@ -158,10 +160,120 @@
     font-weight: bold !important;
 }
     </style>
-
+ 
 @endsection
 @section('main_section')
-      
+         <!--for header and footer--> 
+    <style>
+        @media (max-width: 1367px) and (min-width: 1300px){
+            .div_icon_footer {
+                padding-left: 12%;
+            }
+        }
+        @media (max-width: 1024px) and (min-width: 400px){
+            .logo {
+                width: 11rem;
+            }
+        }
+        @media (max-width: 1030px) and (min-width: 768px){
+            .input_search {
+                padding: 0.4em 1em;
+                font-size: 0.9rem;
+            }
+        }
+        @media (max-width: 1030px) and (min-width: 992px){
+            #nav-bar-search {
+                width: 22rem !important;
+            }
+        }
+        @media (max-width: 1105px) and (min-width: 1024px){
+            #nav-bar-search {
+                margin-right: 0px;
+                width: 22rem;
+            }
+        }
+        @media (max-width: 1024px) and (min-width: 400px){
+            .ul_navbar {
+                width: 39rem;
+            }
+        }
+        @media (max-width: 780px) and (min-width: 768px){
+            .div_icon_footer {
+                float: left;
+                margin-left: 16%;
+                padding-left: 8%;
+            }
+        }
+        @media (max-width: 920px) and (min-width: 780px){
+            .div_icon_footer {
+                padding-left: 5%;
+            }
+        }
+         @media (max-width: 990px) and (min-width: 920px){
+            .div_icon_footer {
+                padding-left: 7%;
+            }
+        }
+        @media (max-width: 991px){
+            .input_search_sm {
+                display: none !important;
+            }
+            .input_search_lg{
+                display: block !important
+            }
+            .ul_navbar {
+                width: 32rem;
+            }
+        }
+        @media (max-width: 850px){
+            .input_search_sm {
+                display: block !important;
+            }
+            .input_search_lg{
+                display: none !important
+            }
+            .ul_navbar {
+                width: 18rem;
+            }
+            .input_search_sm {
+                width: 13.7rem;
+            }
+        }
+        @media (max-width: 740px){
+            .welcome-img {
+                width: 600px;
+                left: -125px;
+            }
+        }
+        @media (max-width: 577px){
+            .username_form{
+                width: 22rem;
+            }
+            .welcome-img {
+                width: 500px;
+                left: -59px;
+            }
+        }
+        @media (max-width: 505px){
+            .ul_navbar {
+                width: 18rem;
+            }
+            .welcome-img {
+                width: 431px;
+                left: -4px;
+            }
+            .top_nav {
+                max-width: 80% !important;
+            }
+            .input_search_sm {
+                width: 100%;
+            }
+            .div_icon_footer{
+                padding-left: 2%;
+            }
+        }
+        
+    </style>
       <div class="col-md-12" style="padding-left:0px;padding-right: 0px  " id="content_page">
         <div  id="main-container" class="main-container long-div">
             <div class="container">
@@ -178,7 +290,7 @@
                                         <strong class="alert">{{ $errors->first('email') }}</strong>
                                     </span>
                             @endif
-                            <div class="col-sm-12 my-1" style="margin-top: 19em !important;float: left;">
+                            <div class="col-sm-12 my-1 username_form" style="margin-top: 19em !important;float: left;">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <img src="/front-end/images/signup/at.png" />

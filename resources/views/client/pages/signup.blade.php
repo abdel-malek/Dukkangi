@@ -119,6 +119,98 @@
 @endsection    
 
 @section('main_section')
+        <!--for header and footer--> 
+    <style>
+        @media (max-width: 1367px) and (min-width: 1300px){
+            .div_icon_footer {
+                padding-left: 12%;
+            }
+        }
+        @media (max-width: 1024px) and (min-width: 400px){
+            .logo {
+                width: 11rem;
+            }
+        }
+        @media (max-width: 1030px) and (min-width: 768px){
+            .input_search {
+                padding: 0.4em 1em;
+                font-size: 0.9rem;
+            }
+        }
+        @media (max-width: 1030px) and (min-width: 992px){
+            #nav-bar-search {
+                width: 22rem !important;
+            }
+        }
+        @media (max-width: 1105px) and (min-width: 1024px){
+            #nav-bar-search {
+                margin-right: 0px;
+                width: 22rem;
+            }
+        }
+        @media (max-width: 1024px) and (min-width: 400px){
+            .ul_navbar {
+                width: 39rem;
+            }
+        }
+        @media (max-width: 780px) and (min-width: 768px){
+            .div_icon_footer {
+                float: left;
+                margin-left: 16%;
+                padding-left: 8%;
+            }
+        }
+        @media (max-width: 920px) and (min-width: 780px){
+            .div_icon_footer {
+                padding-left: 5%;
+            }
+        }
+         @media (max-width: 990px) and (min-width: 920px){
+            .div_icon_footer {
+                padding-left: 7%;
+            }
+        }
+        @media (max-width: 991px){
+            .input_search_sm {
+                display: none !important;
+            }
+            .input_search_lg{
+                display: block !important
+            }
+            .ul_navbar {
+                width: 32rem;
+            }
+        }
+        @media (max-width: 940px){
+            .input_search_sm {
+                display: block !important;
+            }
+            .input_search_lg{
+                display: none !important
+            }
+            .ul_navbar {
+                width: 18rem;
+            }
+            .input_search_sm {
+                width: 16.7rem;
+            }
+        }
+        @media (max-width: 505px){
+            .ul_navbar {
+                width: 18rem;
+            }
+            .top_nav {
+                max-width: 80% !important;
+            }
+            .input_search_sm {
+                width: 100%;
+            }
+            .div_icon_footer{
+                padding-left: 2%;
+            }
+        }
+        
+    </style>
  <div class="col-md-12" style="padding-left:0px;padding-right: 0px  " id="content_page">
         <div  id="main-container" class="main-container main-container_singup">
             <div class="container">

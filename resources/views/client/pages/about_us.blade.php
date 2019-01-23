@@ -5,9 +5,9 @@
 		margin-top: -16px !important;
 	}
 	.about-div{
-		left: 7em;
-    	top: 11em;
-    	margin-bottom: 4em;
+            left: 7em;
+            top: 11em;
+            margin-bottom: 4em;
 	}
 	.img-logo{
 		margin-left:50px;
@@ -29,20 +29,20 @@
             padding: 2.5px;
             font-size: 12px;    	
         }
-	.left-arrow
-	{    
-		cursor: pointer;
-		top: 10.5em !important;
-    	left: -1em;
-    	background-color: #d80001;
-		border-radius: 1.5em;
-		border-color: #d80001;
-		color: #fff;
-		width: 1.5em;
-   		height: 1.5em;
-    	padding: 2.5px;
-   		font-size: 12px;
-	}
+        .left-arrow
+        {    
+            cursor: pointer;
+            top: 10.5em !important;
+            left: -1em;
+            background-color: #d80001;
+            border-radius: 1.5em;
+            border-color: #d80001;
+            color: #fff;
+            width: 1.5em;
+            height: 1.5em;
+            padding: 2.5px;
+            font-size: 12px;
+        }
         .contact-us-div{
             max-width: 30% !important;
             margin-top: 1em;
@@ -245,7 +245,8 @@
                         left: 15em;
                     }
                     .img-logo{
-                        width: 80%;
+                        width: 70%;
+                        height: auto;
                     }
                     .logo {
                         width: 13rem;
@@ -437,6 +438,9 @@
             }
             .about {
                 padding-left: 18% !important;
+            }
+            .img-logo{
+                display: none !important;
             }
         }
         </style>

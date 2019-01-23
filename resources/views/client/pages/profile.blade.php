@@ -524,9 +524,18 @@
             margin-left: 0rem;
             margin-right: 0rem;
             overflow: hidden !important;
+            overflow-y: auto !important;
             padding-left: 0rem;
         }
+        .div_icon_footer {
+            padding-left: 20% !important;
+        }
     }
+     @media (max-width: 460px){
+         .div_icon_footer {
+            padding-left: 9% !important;
+        }
+     }
 </style>
 
 @endsection

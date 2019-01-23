@@ -567,6 +567,9 @@
              flex: 0 0 100.333333%;
              max-width: 100.333333%;
          }
+         .flexslider2 .div_item {
+            margin-left: 2rem !important;
+        }
          .flexslider2{
              left: 15% !important;
          }
@@ -829,7 +832,7 @@
         <ul class="slides">
           @foreach($topProducts as $product)
           <li>
-              <div class="col-md-11 col-lg-3" style="margin-top: 1em;float: left;max-width: 100%;margin-bottom: 1em">
+              <div class="col-md-11 col-lg-3" style="margin-top: 1em;float: left;max-width: 100%;margin-bottom: 1em" class="block_logo_company">
                   <div class="div_item" style="height: 14em;width: 12em;margin-left: 47px;">
                      <a href="{{route('product',(string)$product->id)}}"> <img src="{{$product->image_id}}" class="img_item" />
                       <p class="item_name" style="font-size: 0.7em">{{$product->english}}</p>
@@ -840,7 +843,7 @@
           </li>
           @endforeach
           <!-- items mirrored twice, total of 12 -->
-        </ul>
+        </ul><span class="off_item" value="5"></span>
       </div>
                <div class="col-12 cloum_in_mobile" style="float:left;    padding-left: 3em;">
                 <?php $counter = 0 ?>
@@ -890,6 +893,7 @@
     slideshowSpeed: 5000, 
   });
        }else{
+           if($(window).width() > 520){
          $('.flexslider').flexslider({
     animation: "slide",
     animationLoop: true,
@@ -902,7 +906,22 @@
     animationSpeed: 2000, 
     slideshowSpeed: 5000, 
   });   
+           }else{
+                      $('.flexslider').flexslider({
+    animation: "slide",
+    animationLoop: true,
+    itemWidth: 400,
+    directionNav: true,  
+    itemMargin: 1,
+    minItems: 1,
+    maxItems: 1,
+    controlNav : false, 
+    animationSpeed: 2000, 
+    slideshowSpeed: 5000, 
+  });    
+           }
        }
+       if($(window).width() > 600){
   $('.flexslider2').flexslider({
     animation: "slide",
     animationLoop: true,
@@ -916,6 +935,21 @@
     animationSpeed: 100, 
     slideshowSpeed: 10000,     
   });
+       }else{
+             $('.flexslider2').flexslider({
+    animation: "slide",
+    animationLoop: true,
+    itemWidth: 270, 
+    itemMargin: 5,
+    minItems: 1,
+    maxItems: 1,
+    slideshow : false,
+    controlNav : true,
+    directionNav: true,    
+    animationSpeed: 100, 
+    slideshowSpeed: 10000,     
+  });
+       }
 });
 </script>
 <script>
