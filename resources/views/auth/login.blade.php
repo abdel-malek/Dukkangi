@@ -194,7 +194,14 @@
         }
         @media (max-width: 1024px) and (min-width: 400px){
             .ul_navbar {
-                width: 39rem;
+                width: 46rem;
+            }
+            #nav-bar-search {
+                margin-right: 2rem;
+                width: 270px;
+            }
+            .navbar {
+                padding: .5rem 1rem;
             }
         }
         @media (max-width: 780px) and (min-width: 768px){
@@ -222,7 +229,7 @@
                 display: block !important
             }
             .ul_navbar {
-                width: 32rem;
+                width: 34rem;
             }
         }
         @media (max-width: 850px){
@@ -259,8 +266,11 @@
                 width: 18rem;
             }
             .welcome-img {
-                width: 431px;
-                left: -4px;
+                width: 420px;
+                left: -10px;
+            }
+            .username_form {
+                width: 24rem;
             }
             .top_nav {
                 max-width: 80% !important;
@@ -274,6 +284,63 @@
         }
         
     </style>
+    
+     <style>
+        .input_search_lg_for_mobile{
+            display: none !important;
+        }
+        .input_search_sm_for_mobile{
+            display: block !important;
+                font-size: 1.4rem;
+        }
+        .ul_navbar_for_mobile {
+            width: 26rem;
+        }
+        #lang-nav-bar .nav-item_for_mobile a {
+            font-size: 1.7em !important;
+        }
+        .icon-flag_for_mobile {
+            width: 35px;
+            height: 35px;
+            margin-top: 0.2em;
+        }
+        .input_login_for_mobile, .input_singup_for_mobile {
+            font-size: 2rem;
+        }
+        .div_login_for_mobile, .div_singup_for_mobile {
+            width: 42em;
+        }
+        .welcome-img_for_mobile {
+            width: 826px;
+        }
+        .btn_login_for_mobile, .btn_cancel_for_mobile {
+            font-size: 1.8em;
+            width: 100%;
+            margin-left: 0%;
+        }
+        #navbarSupportedContent ul .nav-item_for_mobile {
+            font-size: 20px;
+        }
+        .singup_text_for_mobile {
+            font-size: 1.9em;
+        }
+        .welcome-img_for_mobile{
+            margin-left: 15%;
+        }
+        .logo_for_mobile {
+            width: 13rem;
+        }
+        .input-group-prepend_for_mobile img {
+            height: 2.3em;
+        }
+        .title_footer_for_mobile{
+            font-size: 2.5em;
+        }
+        .title_footer_for_mobile{
+            font-size: 1.6em;
+        }
+    </style>
+    
       <div class="col-md-12" style="padding-left:0px;padding-right: 0px  " id="content_page">
         <div  id="main-container" class="main-container long-div">
             <div class="container">
@@ -358,7 +425,29 @@
 @section('scripts')
     <!--<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>-->
       <script>
-
+            function when_open_mobile(){
+            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                $('.input_search_lg').addClass('input_search_lg_for_mobile');
+                $('.input_search_sm').addClass('input_search_sm_for_mobile');
+                $('.ul_navbar').addClass('ul_navbar_for_mobile');
+                $('.nav-item').addClass('nav-item_for_mobile');
+                $('.icon-flag').addClass('icon-flag_for_mobile');
+                $('.input_singup').addClass('input_singup_for_mobile');
+                $('.input_login').addClass('input_singup_for_mobile');
+                $('.div_singup').addClass('div_singup_for_mobile');
+                $('.div_login').addClass('div_login_for_mobile');
+                $('.welcome-img').addClass('welcome-img_for_mobile');
+                $('.btn_cancel').addClass('btn_cancel_for_mobile');
+                $('.btn_login').addClass('btn_login_for_mobile');
+                $('.singup_text').addClass('singup_text_for_mobile');
+                $('.welcome-img').addClass('welcome-img_for_mobile');
+                $('.logo').addClass('logo_for_mobile');
+                $('.input-group-prepend').addClass('input-group-prepend_for_mobile');
+                $('.title_footer').addClass('title_footer_for_mobile');
+                $('.title_footer').addClass('title_footer_for_mobile');
+            }
+        }
+when_open_mobile();
         $("input::-webkit-input-placeholder").css({"color": "#fff"});
     </script>
 @endsection

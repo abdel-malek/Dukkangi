@@ -61,7 +61,7 @@
                     background-position-x: -16em;
                 }
                 .input_login, .input_singup{
-                    font-size: 2rem;
+                    font-size: 1rem;
                     padding: .675rem .75rem;
                 }
                 .input-group-prepend img {
@@ -72,15 +72,17 @@
                     margin-top: 1em;
                 }
                 .welcome-img {
-                    margin-left: 22%;
+                    margin-left: 15%;
                 }
                 .div_login, .div_singup {
                     height: 86.7em;
-                    width: 37em;
+                    width: 30em;
                 }
                 .btn_login, .btn_cancel {
-                    font-size: 2em;
+                    font-size: 1em;
                     padding: 0.6em 1em;
+                    width: 80%;
+                    margin-left: 10%;
                 }
                 .singup_text {
                     font-size: 2.3em;
@@ -195,6 +197,22 @@
                 width: 16.7rem;
             }
         }
+        
+        @media (max-width: 725px){
+            .welcome-img {
+                width: 600px;
+                left: -130px;
+            }
+        }
+        @media (max-width: 576px){
+            .div_singup{
+                width: 22rem;
+            }
+              .welcome-img {
+                width: 500px;
+                left: -61px;
+            }
+        }
         @media (max-width: 505px){
             .ul_navbar {
                 width: 18rem;
@@ -208,8 +226,50 @@
             .div_icon_footer{
                 padding-left: 2%;
             }
+                .welcome-img {
+                width: 420px;
+                left: -15px;
+            }
         }
         
+    </style>
+    
+    <style>
+        .input_search_lg_for_mobile{
+            display: none !important;
+        }
+        .input_search_sm_for_mobile{
+            display: block !important;
+                font-size: 1.4rem;
+        }
+        .ul_navbar_for_mobile {
+            width: 26rem;
+        }
+        #lang-nav-bar .nav-item_for_mobile a {
+            font-size: 1.7em !important;
+        }
+        .icon-flag_for_mobile {
+            width: 35px;
+            height: 35px;
+            margin-top: 0.2em;
+        }
+        .input_login_for_mobile, .input_singup_for_mobile {
+            font-size: 2rem;
+        }
+        .div_login_for_mobile, .div_singup_for_mobile {
+            width: 42em;
+        }
+           .btn_login_for_mobile, .btn_cancel_for_mobile {
+            font-size: 1.8em;
+            width: 100%;
+            margin-left: 0%;
+        }
+         .welcome-img_for_mobile {
+            width: 826px;
+        }
+        .logo_for_mobile {
+            width: 13rem;
+        }
     </style>
  <div class="col-md-12" style="padding-left:0px;padding-right: 0px  " id="content_page">
         <div  id="main-container" class="main-container main-container_singup">
@@ -292,7 +352,7 @@
                                 <a href="https://twitter.com/" target="_blank"><img src="/front-end/images/signup/twitter.png" class="icon_social_media" /></a>
                             </div>
                         </div>
-
+<span class="off_item" value="5"></span>
                     </div>
                     <div class="col align-self-end">
                     </div>
@@ -309,6 +369,24 @@
             <script src="/front-end/js/main.js"></script>
 
     <script>
+        function when_open_mobile(){
+            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                $('.input_search_lg').addClass('input_search_lg_for_mobile');
+                $('.input_search_sm').addClass('input_search_sm_for_mobile');
+                $('.ul_navbar').addClass('ul_navbar_for_mobile');
+                $('.nav-item').addClass('nav-item_for_mobile');
+                $('.icon-flag').addClass('icon-flag_for_mobile');
+                $('.input_singup').addClass('input_singup_for_mobile');
+                $('.input_login').addClass('input_singup_for_mobile');
+                $('.div_singup').addClass('div_singup_for_mobile');
+                $('.div_login').addClass('div_login_for_mobile');
+                 $('.welcome-img').addClass('welcome-img_for_mobile');
+                $('.btn_cancel').addClass('btn_cancel_for_mobile');
+                $('.btn_login').addClass('btn_login_for_mobile');
+                $('.logo').addClass('logo_for_mobile');
+            }
+        }
+when_open_mobile();
     $( function() {
     $("#date_of_brith").datepicker({
        yearRange: "-70:-15",

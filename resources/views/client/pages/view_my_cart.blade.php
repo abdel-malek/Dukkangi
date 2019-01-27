@@ -1000,6 +1000,71 @@
         border-radius: 100px;
     }
 </style>
+
+<style>
+    .text_item_qty_for_mobile h3{
+        font-size: 1.5em;
+    }
+    .text_item_qty_for_mobile p{
+        font-size: 1.3em;
+    }
+    .one_item_details_for_mobile{
+    width: 50%;
+    }
+    .sections_for_mobile {
+        width: 46.8% !important;
+    }
+    .img_item_qty_for_mobile {
+        width: 6em;
+        height: 6em;
+    }
+    .num_item_qty_for_mobile {
+        font-size: 1.7em;
+    }
+    .total_item_qty_for_mobile {
+        font-size: 1.4em;
+    }
+    .fa-trash-o_for_mobile{
+        font-size: 2rem;
+    }
+    .title_detail_my_card_for_mobile {
+        font-size: 1.9em !important;
+    }
+    .gained_point_rewards_for_mobile p, .taxes_taxes_for_mobile p{
+        font-size: 1.5em;
+    }
+    .gained_point_rewards_for_mobile h3, .taxes_taxes_for_mobile h3{
+        font-size: 1.7em;
+    }
+    .text_enter_code_for_mobile{
+        font-size: 1.4rem !important;
+    }
+    .price_item_details_for_mobile span{
+        font-size: 1.7rem !important;
+    }
+    .price_item_details_for_mobile {
+        width: 59%;
+    }
+    .price_item_details_for_mobile i{
+        font-size: 1.7rem !important;
+        margin-top: 0.5em !important;
+    }
+    .price_item_details_for_mobile .number_total{
+        margin-top: 0.6rem !important;
+    }
+    .price_item_details_for_mobile .img_price_item_details{
+            width: 13em !important;
+    }
+    .header_page_text_div_for_mobile {
+        padding-left: 29.8em;
+    }
+    .header_page_text_div_for_mobile .text_header{
+        font-size: 1.5rem;
+    }
+    .title_one_item_details_for_mobile{
+        font-size: 2.2em;
+    }
+</style>
 @endsection @section('main_section')
 <?php
         $total = 0;
@@ -1277,7 +1342,20 @@
 <script type="text/javascript">
      if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
          $('.sections').addClass('sections_mobile');
-         
+         $('.text_item_qty').addClass('text_item_qty_for_mobile');
+         $('.one_item_details').addClass('one_item_details_for_mobile');
+         $('.sections').addClass('sections_for_mobile');
+         $('.img_item_qty').addClass('img_item_qty_for_mobile');
+         $('.num_item_qty').addClass('num_item_qty_for_mobile');
+         $('.total_item_qty').addClass('total_item_qty_for_mobile');
+         $('.fa-trash-o').addClass('fa-trash-o_for_mobile');
+         $('.title_detail_my_card').addClass('title_detail_my_card_for_mobile');
+         $('.gained_point_rewards').addClass('gained_point_rewards_for_mobile');
+         $('.taxes_taxes').addClass('taxes_taxes_for_mobile');
+         $('.text_enter_code').addClass('text_enter_code_for_mobile');
+         $('.price_item_details').addClass('price_item_details_for_mobile');
+         $('.header_page_text_div').addClass('header_page_text_div_for_mobile');
+         $('.title_one_item_details').addClass('title_one_item_details_for_mobile');
      }
      var height_block_mycard = 22; 
      $('.item_qty_detail_my_card').each(function(){
