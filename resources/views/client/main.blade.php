@@ -114,7 +114,8 @@
              display: none !important;
          }
         }
-   
+
+        
         @media (min-width: 300px) and (max-width: 690px) {
  .div_icon_footer {
     float: left;
@@ -123,16 +124,39 @@
     
  }
  }
- 
+ .icon_search{
+         width: 2.9rem;
+    text-align: center;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    background-color: #fff;
+    border-radius: 12rem;
+    display: none;
+    cursor: pointer;
+ }
+  @media (min-width: 1200px){
+     .input_search_lg{
+        width: 17rem !important;
+    }
+ }
+ @media (min-width: 993px) and (max-width: 1200px){
+     .input_search_lg{
+        width: 13rem !important;
+    }
+ }
  @media(max-width: 991px){
-              .title_reviews_mobile{
-            margin-top: -3rem;
-        }
-           .input_search_lg{
-             display: none !important;
-         }
+     .icon_search{
+         display: block;
+     }
+     .title_reviews_mobile{
+         margin-top: -3rem;
+    }
+    .input_search_lg{
+        display: block !important;
+        
+    }
          .input_search_sm{
-             display: block !important;
+             display: none !important;
              margin-top: 1rem;
          }
          .autocomplete-items {
@@ -150,13 +174,14 @@
  }
  }
  
-      @media (min-width: 992px) and (max-width: 1025px) {
+      @media (min-width: 993px) and (max-width: 1025px) {
 
 .top_nav {
     max-width: 83% !important;
 }
 #nav-bar-search {
     margin-right: 0rem;
+     margin-top: 0rem;
     width: 179px;
 }
 .ul_navbar {
@@ -206,10 +231,15 @@
 }
 
      }
-
+       @media (min-width: 20px) and (max-width: 1023px) {
+         .input_search_lg{
+             display: block !important;
+             width: 0px;
+         }
+       }
      @media (min-width: 300px) and (max-width: 766px) {
          .ul_navbar {
-             width: 25rem;
+             width: 22.7rem;
              display: flex!important;
          }
          .logo {
@@ -251,6 +281,19 @@
      
   </body>
   <script>
+      var is_open_search = false;
+      $('.icon_search').click(function (){
+          if(is_open_search == false){
+         $('#nav-bar-search').css({'width':'350px','marginRight':'260px','transition':'0.9s'});
+         is_open_search = true;
+     }else{
+         $('#nav-bar-search').css({'width':'0px','marginRight':'0px','transition':'0.9s'});
+         setTimeout(function(){
+            $('#nav-bar-search').css({'transition':'0s'}); 
+         },1000);
+         is_open_search = false;
+     }
+      });
           if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 
 $('.container').addClass('container_mobile');

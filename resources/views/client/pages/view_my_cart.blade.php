@@ -783,6 +783,16 @@
     font-size: 1em !important;
 }
 }
+             @media (max-width: 1024px) and (min-width: 300px){
+         #nav-bar-search {
+             margin-top: -2.3rem;
+             height: 2.28rem;
+         }
+         .icon_search {
+             width: 2.2rem !important;
+             padding-bottom: 0.2rem !important;
+         }
+     }
 @media  (max-width: 550px) {
     .img_price_item_details {
         left: 1.3rem;

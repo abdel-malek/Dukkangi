@@ -4,7 +4,7 @@
       <a href="{{route('home')}}"> <img class="logo" src="/front-end/images/logo.png"/></a>
          <div class="collapse navbar-collapse top_nav" id="main-navbar-items" style="display: block;text-align: right;">
           <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex ul_navbar" style="text-align: right;direction: ltr;float: right;">
-            <li > 
+            <li > <div class="icon_search"><i class="material-icons">&#xE8B6;</i></div>
               <input type="text" class="form-control input_search input_search_lg" style="float: left;" id="nav-bar-search" name="search" placeholder=" @lang('Search')..."></li>
             <li class="nav-item active">
               <a class="nav-link" href="{{ route('home') }}">@lang('Home')</a>
@@ -39,17 +39,15 @@
             <li class="nav-item" style="white-space: nowrap;">
               <a class="nav-link" href="{{route('profile')}}" style="text-align: center;margin-right: -5px;">{{ Auth::user()->name}}</a>
             </li>
-   <li class="nav-item">
-              <a class="nav-link" href="{{ route('about-us') }}">@lang('About')</a>
+            <li class="nav-item">
+               <a class="nav-link" href="{{ route('about-us') }}">@lang('About')</a>
             </li>
             <li class="nav-item">
               {!! Form::open(['route' => 'logout' , 'id' => 'logout-form']) !!}
                 <a class="nav-link" href="javascript:{}" onclick="document.getElementById('logout-form').submit();" >@lang('Logout') </a>
-
               {!! Form::close() !!}
             </li>
             @endif
-
 
 
           </ul>

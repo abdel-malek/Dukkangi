@@ -189,7 +189,7 @@
             .top_nav {
                 margin-left: 55px;
             }
-            #nav-bar-search
+            .input_search_lg
             {
                 margin-right: 8rem;
                 width: 300px;
@@ -333,11 +333,19 @@
                 #main-nav-bar a{
                     width:5rem ;
                 }
-                  #nav-bar-search
-            {
-                margin-right: 4rem;
-                width: 300px;
-            }
+                #nav-bar-search
+                {
+                    border: none;
+                    margin-right: 0rem ;
+                    margin-left: 0.1rem;
+                    width: 0px;
+                    border-top-left-radius: 22rem;
+                    border-bottom-left-radius: 22rem;
+                    padding-top: 0.3rem;
+                    padding-bottom: 0.32rem;
+                    margin-top: -2.97rem;
+                    height: 2.97rem;
+                }
                 .logo {
                     width: 13rem;
                     display: block;
@@ -366,7 +374,13 @@
                     font-size: 1em !important;
                 }
              }
-            @media (min-width: 400px) and (max-width: 991px) {
+             @media (max-width: 992px){
+                 .icon_search{
+                     display: block !important;
+                     transition: 0.9s;
+                 }
+             }
+            @media (min-width: 400px) and (max-width: 992px) {
                 #main-nav-bar a
                 {
                     /*width: 4rem;*/

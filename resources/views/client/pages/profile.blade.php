@@ -248,7 +248,19 @@
         }
         #nav-bar-search {
             margin-right: 0px;
-            width: 325px !important;
+            width: 0px !important;
+        }
+    }
+    @media (min-width:992px){
+          #nav-bar-search {
+            width: 17rem !important;
+            margin-top: 0rem !important;
+        }
+    }
+       @media (min-width:992px){
+          #nav-bar-search {
+            width: 30rem !important;
+            margin-top: 0rem !important;
         }
     }
     /*        @media (max-width: 1030px) and (min-width: 1024px)
@@ -374,7 +386,7 @@
             font-size: 9px;
         }
     }
-  
+
       @media (max-width: 1024px) and (min-width: 993px){
         #main-navbar-items ul li {
             font-size: 0.8rem !important;
@@ -543,26 +555,38 @@
 @section ('main_section')
 <style>
 
-        @media (max-width: 1024px) and (min-width: 400px){
-.ul_navbar_mobile .nav-item a {
-    font-size: 2.9em !important;
-}
-#main-navbar-items ul li {
-    margin-top: 13px;
-}
-.ul_navbar_mobile {
-    width: 55rem !important;
-}
-.input_search_sm{
-    margin-top: 2rem !important;
-}
-.main-nav-bar_mobile{
-    margin-right: 1.5rem;
-}
-#ex3{
-    margin-right: 1rem;
-}
-}
+    @media (max-width: 1024px) and (min-width: 300px){
+        .ul_navbar_mobile .nav-item a {
+            font-size: 2.9em !important;
+        }
+        #main-navbar-items ul li {
+            margin-top: 13px;
+        }
+        .ul_navbar_mobile {
+            width: 55rem !important;
+        }
+        .input_search_sm{
+            margin-top: 2rem !important;
+        }
+        .main-nav-bar_mobile{
+            margin-right: 1.5rem;
+        }
+        #ex3{
+            margin-right: 1rem;
+        }
+        #nav-bar-search {
+            border: none;
+            margin-right: 0rem;
+            margin-left: 0.1rem;
+            width: 0px;
+            border-top-left-radius: 22rem;
+            border-bottom-left-radius: 22rem;
+            padding-top: 0.3rem;
+            padding-bottom: 0.32rem;
+            margin-top: -3.17rem;
+            height: 3.1rem;
+        }
+    }
 </style>
 <style>
     .nav-item_for_mobile{

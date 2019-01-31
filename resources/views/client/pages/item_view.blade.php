@@ -618,7 +618,7 @@
         }   
         #main-navbar-items ul li {
             margin-right: 1.5rem !important;
-            font-size: 0.8rem !important;
+            font-size: 0.7rem !important;
         }
     }
     @media (max-width: 950px){
@@ -710,11 +710,22 @@
             margin-top: 0em;
         }
         .ul_navbar {
-            width: 27rem !important;
+            width: 24rem !important;
         }
     }
 
-    
+        @media (min-width: 300px) and (max-width: 600px) {
+        /*        .leave_constructive_review {
+                    width: 100%;
+                }*/
+        #content_page {
+            margin-top: 0em;
+        }
+        .ul_navbar {
+            width: 29rem !important;
+        }
+    }
+
     @media (min-width: 700px) and (max-width: 770px) {
         .rating2 {
             right: -0.8em !important;
@@ -904,6 +915,16 @@
     font-size: 1.8em !important;
 }
 
+     }
+              @media (max-width: 1024px) and (min-width: 400px){
+         #nav-bar-search {
+             margin-top: -2.3rem;
+             height: 2.28rem;
+         }
+         .icon_search {
+             width: 2.2rem !important;
+             padding-bottom: 0.2rem !important;
+         }
      }
             
                       @media (min-width: 300px) and (max-width: 766px) {
@@ -1238,6 +1259,9 @@
         }
 
     }
+    .navbar {
+    padding: .5rem 5rem;
+}
     .price_item_details .old-price{
         font-family: inherit;
         font-size: 0.9rem;
@@ -1272,8 +1296,11 @@
 
     @media (min-width: 200px) and (max-width: 530px) {
         #main-navbar-items ul li {
-            font-size: 0.7rem !important;
+            font-size: 0.6rem !important;
         }
+              .ul_navbar {
+    width: 25.7rem !important; 
+            }
         .input_search_sm{
             width: 100%;
         }
@@ -1683,7 +1710,7 @@
                         <?php if($comment->rate != 0){ ?> @lang('Rated this product')
                         <?php } ?>
                     </p>
-                    <span class="rating ratings{{$comment->rate}} margin-right"></span>
+                    <span class="rating ratings{{$comment->rate}} margin-right" ></span>
                     <p class="text_details_comment">
                         {{$comment->description}}
                     </p>

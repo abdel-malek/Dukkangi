@@ -760,12 +760,24 @@
         }
         }
         
-        
+             @media (max-width: 1024px) and (min-width: 400px){
+         #nav-bar-search {
+             margin-top: -2.3rem;
+             height: 2.28rem;
+         }
+         .icon_search {
+             width: 2.2rem !important;
+             padding-bottom: 0.2rem !important;
+         }
+     }
         
          @media (min-width: 200px) and (max-width: 568px) {
             .thumnbail {
                 margin-top: 0rem !important;
                 width: 8.6rem !important;
+            }
+            .ul_navbar {
+    width: 25.7rem !important; 
             }
             .block_header{
                 left: 0px !important;
@@ -1057,9 +1069,9 @@
                             <img data-u="image" src="{{$subcategory->image_id}}" style="height:15em;width: 45em;    border: 0.04em solid #8a8a8a" />
                             <img data-u="thumb" src="{{$subcategory->image_id}}" />
                             <p class="text_big_image_slider">
-                                {{ $subcategory->english }}
+                                <span class="text_in_header">{{ $subcategory->english }}</span>
                                 <img src="/front-end/images/items_page/star.png" class="one_start_slider" />
-                                <span class="rating ratings{{$subcategory->rate}}" style="bottom: 0.1em;left: 0.9em;"></span>
+                                <!--<span class="rating ratings{{$subcategory->rate}}" style="bottom: 0.1em;left: 0.9em;"></span>-->
                             </p>
                         </div>
                         @endforeach
