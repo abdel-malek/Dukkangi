@@ -1017,7 +1017,7 @@
         
         /*font-family: 'Droid Arabic Naskh', serif;*/
         /*font-family: 'Droid Arabic Kufi', serif;*/
-        /*font-family:arabic3Font;*/
+        font-family:arabic3Font !important;
         
         /*font-family: 'Mada', sans-serif;*/
         /*font-family: 'Aref Ruqaa', serif;*/
@@ -1026,6 +1026,7 @@
         font-size: 16px;
     }
     input::placeholder{
+        font-family:arabic3Font !important;
         /*font-family: 'Tajawal', sans-serif;*/
         /*font-family: 'Cairo', sans-serif;*/
         /*font-family: 'Markazi Text', serif;*/

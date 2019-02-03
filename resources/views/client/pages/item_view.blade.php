@@ -1472,7 +1472,14 @@
         height: 15em;
     }
 </style>
-
+@if(session('lang') == 'ar' )
+<style>
+    .nav-link, .header_page_text_div, .title_section, .off_item, .product-name, .tax_include_item, .text_item_details, small, .title_customer_review, .rated_details_comment, .text_upvoted_user_actions, .text_leave_constructive_review, .btn_leave_constructive_review, .title_similar_items, .off_item_prodect, .text_discount, .item_name, .tax_include, .title_footer a, .text_footer, 
+    .title_item_details, .title_qty, .price_item_details span, .btn_done, .btn_cancel, .btn_view_my_cart{
+        font-family:arabic3Font !important;
+    }
+</style>
+@endif
 @endsection @section('main_section')
 
 <div class="col-md-12 all_page_item_view" id="content_page" >
