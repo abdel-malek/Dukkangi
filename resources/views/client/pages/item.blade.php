@@ -176,6 +176,18 @@
 /*   .tabs__content-wrapper{
         padding: 0rem 0rem;
     }*/
+
+.header_is_empty_category{
+    width: 100% !important;
+    left:0rem !important;
+}
+.header_is_empty_category div{
+       width: 97.5% !important;
+    left:1rem !important;
+}
+.header_is_empty_category .image_header{
+    width: 100% !important;
+}
 @media (min-width: 1289px) and (max-width: 1348px){
     .tabs__content-wrapper{
         padding: 0rem 8rem;
@@ -770,12 +782,17 @@
              padding-bottom: 0.2rem !important;
          }
      }
-        
+     @media (min-width: 200px) and (max-width: 576px) {
+         #loadm{
+             margin-left: 0rem !important;
+         }
+     }
          @media (min-width: 200px) and (max-width: 568px) {
             .thumnbail {
                 margin-top: 0rem !important;
                 width: 8.6rem !important;
             }
+            
             .ul_navbar {
     width: 25.7rem !important; 
             }
@@ -1103,7 +1120,7 @@
         <div class="col-md-9 col-sm-12 section_item section_item_select">
             <div class="row" style="width: 100%;">
             @if(!isset($brandfilter))
-            <div class="col-lg-3 col-md-6 col-sm-6" style="float:left;">
+            <div class="col-lg-3 col-md-6 col-sm-6 block_logo_tabs" style="float:left;">
                 <img src={{URL::asset( '/front-end/images/light_logo.png')}} class="img-resposive logo_text" />
             </div>
             @endif
@@ -1133,24 +1150,22 @@
                     <ul class="tabs__items" >
                         @foreach($categories as $category)
                         <a href="{{route('category',$category->id)}}">
-                            <li class="tabs__item {{ isset($subcategories[0]) ?($subcategories[0]->category_id == $category->id ? 'tabs_active':'' ) : ''}} ">{{ $category->english }}</li>
+                            <li class="tabs__item {{ isset($subcategories[0]) ?($subcategories[0]->category_id == $category->id ? 'tabs_active':'' ) : ($id_category == $category->id ? 'tabs_active':'')}} ">{{ $category->english }}</li>
                         </a>
                         @endforeach
                     </ul>
                     <div class="tabs__content-wrapper" style="    border-top: 0.1em solid #aaa;">
                         <div class="tabs__content tabs_active" id="filteredproducts">
                             @include('client.pages.item_products',["products" =>$products ])
-
-
                         </div>
                         @if(isset($filter) && count($products) >= 15)
-                        <div id="loadm" class="col-md-4 col-sm-5" style="float:left;margin-left: 20em;margin-top: 50px">
+                        <div id="loadm" class="col-lg-4 col-md-6 col-sm-6" style="float:left;margin-left: 30%;margin-top: 50px">
                             <p class="btn_filter" id="btn_modal_filter" onclick="scrollload()">
                                 @lang('Load More')
                             </p>
                         </div>
                         @elseif (count($products) >= 15)
-                        <div id="loadm" class="col-md-4 col-sm-5" style="float:left;margin-left: 20em;margin-top: 50px">
+                        <div id="loadm" class="col-lg-4 col-md-6 col-sm-6" style="float:left;margin-left: 30%;margin-top: 50px">
                             <p class="btn_filter" id="btn_modal_filter" onclick="loadmore()">
                                 @lang('Load More')
                             </p>
@@ -1315,6 +1330,19 @@
 <script src="/front-end/js/plugin/jquery-pretty-tabs.js"></script>
 
 <script>
+        function is_empty_category(){
+        if($('.thumnbail').height() < 10){
+//            alert(1);
+            $('.jssor_1').addClass('header_is_empty_category');
+            $('.section_item_select').removeClass('col-md-9');
+            $('.section_item_select').addClass('col-md-12');
+            $('.section_item_select').css({'width':'98%','marginRight':'0rem'});
+            $('.container_item').css({'maxWidth':'100%'});
+//            $('.block_logo_tabs').removeClass('col-lg-3');
+//            $('.block_logo_tabs').addClass('col-lg-4');
+        }
+    }
+    is_empty_category();
     if($('.tax_include').attr('value').length > 14){
     $('.tax_include').css('marginLeft','-5.9rem');
     }

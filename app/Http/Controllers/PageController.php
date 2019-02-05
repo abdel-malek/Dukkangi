@@ -100,7 +100,7 @@ class PageController extends Controller
 		return view('client.pages.home')->withCategories($categories)->withTopProducts($topProducts)->withBrands($brands);
 	}
 	public function getCategoryPage($categoryId){
-	
+                $id_category = $categoryId;
 		$lang = session('lang');
 		App::setLocale($lang);
 		$categories = Category::all();
@@ -176,7 +176,7 @@ class PageController extends Controller
 		if ($lang == 'ku') $category->english = $category->kurdi;
 		if ($lang == 'de') $category->english = $category->german;
 		if ($lang == 'tr') $category->english = $category->turky;
-		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withCategoryId($categoryId)->withCategory($category);
+		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withCategoryId($categoryId)->withCategory($category)->with('id_category',$id_category);
 	}
 
 

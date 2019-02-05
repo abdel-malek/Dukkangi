@@ -631,6 +631,46 @@
              width: 100% !important;
          }
      }
+     
+     @media (max-width:600px){
+         .flexslider2 .div_item {
+             margin-left: 6.5rem !important;
+         }
+     }
+     @media (max-width:568px){
+         .flexslider2 .div_item {
+             margin-left: 5rem !important;
+         }
+     }
+     @media (max-width:525px){
+         .div_item{
+             margin-left: 8.5rem !important;
+         }
+          .flexslider2 .div_item {
+             margin-left: 4rem !important;
+         }
+     }
+     @media (max-width:500px){
+         .div_item{
+             margin-left: 7rem !important;
+         }
+          .flexslider2 .div_item {
+             margin-left: 3rem !important;
+         }
+     }
+     @media (max-width:460px){
+         .div_item{
+             margin-left: 6rem !important;
+         }
+          .flexslider2 .div_item {
+             margin-left: 2rem !important;
+         }
+     }
+      @media (max-width:430px){
+         .div_item{
+             margin-left: 5rem !important;
+         }
+     }
 
       </style>
       
@@ -996,6 +1036,7 @@
 });
 </script>
 <script>
+
     function when_open_mobile(){
         if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
             $('.ul_navbar').addClass('ul_navbar_for_mobile');
