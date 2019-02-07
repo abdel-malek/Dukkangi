@@ -677,6 +677,14 @@
       
 @if(session('lang') == 'ar' )
 <style>
+    .item_name{
+        float: right;
+        text-align: right;
+    }
+    .item_price{
+        float: left;
+        text-align: left;
+    }
 /*    body{
         font-family: 'Scheherazade', serif;
     }
@@ -729,10 +737,8 @@
         /*font-family: 'Lateef', cursive;*/
         /*font-family: 'Mirza', cursive;*/
         /*font-family: 'Markazi Text', serif;*/
-        
         /*font-family: 'Mada', sans-serif;*/
         /*font-family: 'Aref Ruqaa', serif;*/
-        
         font-family:arabic3Font !important;
     }
     .off_item{
@@ -746,6 +752,8 @@
     }
 </style>
 
+@endif
+      
 <style>
     .ul_navbar_for_mobile {
         width: 40rem;
@@ -782,8 +790,6 @@
         overflow-y: auto;
     }
 </style>
-@endif
-      
 @endsection
 @section ('main_section')
 <?php 

@@ -1079,11 +1079,61 @@
 
 @if(session('lang') == 'ar' )
 <style>
-    .nav-link, .header_page_text_div, .title_section, .off_item, .product-name, .tax_include_item, .text_item_details, small, .title_customer_review, .rated_details_comment, .text_upvoted_user_actions, .text_leave_constructive_review, .btn_leave_constructive_review, .title_similar_items, .off_item_prodect, .text_discount, .item_name, .tax_include, .title_footer a, .text_footer, 
-    .title_item_details, .title_qty, .price_item_details span, .btn_done, .btn_cancel, .btn_view_my_cart, .navbar-brand, table tr td, .title_one_item_details, .title_detail_my_card, .text_item_qty p, .text_item_qty h3, .text_item_qty span, .total_item_qty, .gained_point_rewards p, .taxes_taxes small, .taxes_taxes p, .text_enter_code, 
+    .nav-link, .header_page_text_div, .title_section, .off_item, .product-name, 
+    .tax_include_item, .text_item_details, small, .title_customer_review, .rated_details_comment, 
+    .text_upvoted_user_actions, .text_leave_constructive_review, .btn_leave_constructive_review, 
+    .title_similar_items, .off_item_prodect, .text_discount, .item_name, .tax_include, .title_footer a, .text_footer, 
+    .title_item_details, .title_qty, .price_item_details span, .btn_done, .btn_cancel, .btn_view_my_cart, 
+    .navbar-brand, table tr td, .title_one_item_details, .title_detail_my_card, .text_item_qty p, .text_item_qty h3, 
+    .text_item_qty span, .total_item_qty, .gained_point_rewards p, .taxes_taxes small, .taxes_taxes p, .text_enter_code, 
     .title_choose_payment, .btn_credit_card_details{
         font-family:arabic3Font !important;
     }
+/*    .one_item_details{
+        right: 7rem;
+    }
+    .header_page_text_div{
+        padding-left: 3%;
+        padding-right: 30%;
+    }
+    .sections{
+        float: left;
+        margin-left: 1rem;
+    }
+    .title_choose_payment{
+        text-align: right;
+    }
+    .title_detail_my_card{
+        float: right;
+        text-align: right;
+    }
+    .img_item_qty{
+        float: right;
+        margin-right: 0.5rem;
+        margin-left: 0rem;
+    }
+    .text_item_qty{
+        float: right;
+        padding-right: 0.5rem;
+        text-align: right;
+    }
+    .tax_text {
+        float: right !important;
+        direction: rtl;
+        margin-left: 0.3rem;
+        margin-right: 0rem !important;
+    }
+    .block_btn_pay {
+        float: right;
+        margin-right: 9%;
+    }
+    .btn_credit_card_details{
+        float: right;
+    }
+    .num_item_qty, .fa-trash-o{
+        float: right;
+    }
+    */
 </style>
 @endif
 
@@ -1130,7 +1180,7 @@
                 <h3>{{$order->product->english}}</h3>
                 <p style="margin-bottom: 0.01em;">{{$order->product->section1_english}}</p>
                 <span>
-                    <p><span style="float: left;    margin-right: 1rem;"> @lang('Tax') :</span> {{ isset($order->product->discount_price)?sprintf('%0.2f', $order->product->discount_price
+                    <p><span style="float: left;    margin-right: 1rem;" class="tax_text"> @lang('Tax') :</span> {{ isset($order->product->discount_price)?sprintf('%0.2f', $order->product->discount_price
                         *0.19) : sprintf('%0.2f', $order->product->price *0.19) }} €</p>
 
                 </span>

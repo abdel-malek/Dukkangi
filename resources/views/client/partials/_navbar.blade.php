@@ -114,7 +114,7 @@
           <hr>
           {{Form::submit('Submit' , ['class' => 'btn btn-block btn-success' , 'style' => 'margin-bottom:30x'])}}
 
-          <a class="btn btn-block btn-default" onclick="$('#rate-us-modal').css({'display':'none'});" >Cancel</a>
+          <a class="btn btn-block btn-default btn_cancel_rate" onclick="$('#rate-us-modal').css({'display':'none'});" >Cancel</a>
         {!! Form::close() !!}
       </div>
     </div>

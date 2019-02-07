@@ -358,6 +358,15 @@
     .title_choose_payment, .btn_credit_card_details, .form-control, .singup_text, .btn_login, .singup_text a, .singup_text a{
         font-family:arabic3Font !important;
     }
+    .input_login{
+        padding-right: 2.5rem;
+        padding-left: 1rem;
+        text-align: right;
+        direction: rtl;
+    }
+    .input-group-prepend{
+        right: 0.8rem;
+    }
 </style>
 @endif
 

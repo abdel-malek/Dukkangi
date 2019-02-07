@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="{{URL::asset('/front-end/css/buy_item.css')}}">
 <link rel="stylesheet" href="{{URL::asset('/front-end/css/out_of_stock.css')}}">
 <link rel="stylesheet" href="{{URL::asset('/front-end/css/material_icons.css')}}">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <script type="text/javascript" src="{{URL::asset('/front-end/js/plugin/jssor.slider.min.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('/front-end/js/plugin/slide.js')}}"></script>
 <link rel="stylesheet" href="{{URL::asset('/front-end/css/SimpleStarRating.css')}}">
@@ -1326,6 +1328,9 @@
     .zoomContainer{
         z-index: 1000
     }
+    .navbar-light{
+        z-index: 2 !important;
+    }
 </style>
 
 <style>
@@ -1478,6 +1483,79 @@
     .title_item_details, .title_qty, .price_item_details span, .btn_done, .btn_cancel, .btn_view_my_cart{
         font-family:arabic3Font !important;
     }
+/*    .text_leave_constructive_review, .item_name, .text_item_details, .title_customer_review, .text_details_comment{
+        text-align: right;
+    }
+    .rate-logo{
+        float: right;
+    }
+    .block_comment_logo{
+        width: 100%;
+    }
+    .block_comment_logo .rating {
+     right: 0% !important;
+     margin-right: 13px !important;
+    }
+    .input_leave_constructive_review{
+        text-align: right;
+        direction: rtl;
+    }
+    .icon_view_my_card{
+        float: left;
+    }
+    .ratings5, .ratings4, .ratings3, .ratings1, .ratings2{
+        left: 7.5em !important;
+    }
+    .rating_comment{
+        left: unset !important;
+    }
+    .one_item_details{
+        right: 3rem;
+    }
+    .header_page_text_div {
+     padding-left: 3%;
+     padding-right: 30%;
+    }
+    .sections {
+     float: left;
+     margin-left: 1rem;
+    }
+    .customer_reviews, .section, .img_user_comments_customer_reviews, .username_details_comment, .rated_details_comment, .text_details_comment, .upvoted_user_actions{
+        float: right;
+    }
+    .leave_constructive_review{
+        float: left;
+    }
+    .section{
+        text-align: right;
+        margin-right: 2rem;
+        width: 48%;
+    }
+    .logo_prodect{
+        float: left;
+        margin-left: 1rem;
+        margin-top: 0.4rem;
+    }
+    .rating_comment{
+        left: 2rem !important;
+        right: unset !important;
+    }
+    .rated_details_comment{
+        margin-right: 0.5rem;
+    }
+    .username_details_comment, .text_upvoted_user_actions{
+        text-align: right;
+    }
+    .img_user_comments_customer_reviews{
+        margin-right: 0rem;
+    }
+    .img_upvoted_user_actions{
+        float: right;
+    }
+    .title_similar_items{
+        width:90.7%;
+        text-align: right;
+    }*/
 </style>
 @endif
 @endsection @section('main_section')
@@ -1698,7 +1776,6 @@
                
             </p>
         </div>
-
         
     </div>
 
@@ -1706,10 +1783,10 @@
         <h3 class="title_customer_review">
             @lang("Customer's Reviews")
         </h3>
-        <div class="customer_reviews col-lg-7">
+        <div class="customer_reviews col-lg-8">
         
             @foreach($comments as $comment)
-            <div class="comments_customer_reviews">
+            <div class="comments_customer_reviews block_one_comment" comment_id="{{$comment->id}}" user_id="{{$comment->user->id}}">
                 <img src="{{isset($comment->user->image_id) ? $comment->user->image_id : '/uploads/user.png'}}" style="min-height: 0em;" class="img_user_comments_customer_reviews">
                 <div class="details_comment">
                     <h3 class="username_details_comment" style="width:225px">{{isset($comment->user->name) ?$comment->user->name :'Anonymous' }}</h3>
@@ -1717,13 +1794,13 @@
                         <?php if($comment->rate != 0){ ?> @lang('Rated this product')
                         <?php } ?>
                     </p>
-                    <span class="rating ratings{{$comment->rate}} margin-right" ></span>
+                    <span class="rating ratings{{$comment->rate}} margin-right rating_comment" ></span>
                     <p class="text_details_comment">
                         {{$comment->description}}
                     </p>
                     <div class="user_actions_details_comment">
                         <div class="upvoted_user_actions">
-                            <img src="/front-end/images/user_actions/upvoted.png" class="img_upvoted_user_actions">
+                            <img src="/front-end/images/user_actions/upvoted.png" class="img_upvoted_user_actions" onclick="like_user('{{$comment->user->id}}','{{$comment->id}}',this)" />
                             <p class="text_upvoted_user_actions">
                                 @lang('Upvoted')
                             </p>
@@ -1739,7 +1816,7 @@
             {!! Form::open(['route' => ['comment',$product->id ]]) !!}
             <h3 class="text_leave_constructive_review" style="color: #d80001;margin-top: 0em;">@lang('Leave a constructive review')</h3>
             <p class="text_leave_constructive_review" style="margin-top:0.6em;">@lang('Rate this product') </p>
-            <div class="details_comment" style="margin-bottom: 50px">
+            <div class="details_comment block_comment_logo" style="margin-bottom: 50px">
                 <span class="rating2 ratinge rating form-rate" data-id="{{$product->id }}" style="margin-right: 130px;right: 9%;margin-top: 11%;"></span>
                 <img src="/front-end/images/logo.png" class="rate-logo" >
             </div>
@@ -1775,10 +1852,10 @@
         <div class="div_item">
             @if (isset($simiproduct->discount) && $simiproduct->discount != 0)
             <div class="discount_item">
-                <p class="text_discount">
-                    <span item_pricestyle="font-family: 'EagarFont';" >{{$simiproduct->discount}} % <br/><span value="@lang('off')" class="off_item_prodect">@lang('off')</span></span> <br>
+                <p class="text_discount" style="font-family: 'EagarFont' !important;">
+                    <span item_pricestyle="font-family: 'EagarFont';"  style="font-family: 'EagarFont' !important;">{{$simiproduct->discount}} % <br/><span value="@lang('off')" class="off_item_prodect">@lang('off')</span></span> <br>
 <!--                <span style="font-family: unset;font-weight: bolder;font-size: 17px;"> {{ $simiproduct->discount_price}} €</span>-->
-            </p>
+                </p>
                 <div class="shadow_div_discount"></div>
             </div>
             @endif
@@ -1862,6 +1939,43 @@
 <script src="{{URL::asset('js/jquery.min.js')}}"></script>
 <script src="{{URL::asset('/front-end/js/plugin/jquery-pretty-tabs.js')}}"></script>
 <script>
+    function validation_is_like(){
+        var id_user = "";    
+        $('.customer_reviews .block_one_comment').each(function(){
+            id_user = $(this).attr('user_id');
+        });
+            $.ajax({
+            url: "/load_like",
+            type: "POST",
+            data: {"_token": "{{ csrf_token() }}", "user_id": id_user},
+            dataType: 'json',
+            success: function (response) {
+            console.log(response);
+            var data = response.data;
+            for(var i = 0;i < data.length; i++){
+                $('.customer_reviews .block_one_comment').each(function(){
+                    if(data[i] == $(this).attr('comment_id')){
+                        $(this).find('.img_upvoted_user_actions').attr('src','/front-end/images/user_actions/upvote.png');
+                    }
+                });
+            }
+        });
+    }
+    validation_is_like();
+    
+    function like_user(user_id,comment_id,obj){
+          $.ajax({
+            url: "/like",
+            type: "POST",
+            data: {"_token": "{{ csrf_token() }}", "user_id": user_id, "comment_id": comment_id},
+            dataType: 'json',
+            success: function (response) {
+               if(response.status == 'true'){
+                    $(obj).attr('src','/front-end/images/user_actions/upvote.png');
+               }
+            }
+        });
+    }
     function when_open_mobile(){
         if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
             $('.ul_navbar').addClass('ul_navbar_for_mobile');

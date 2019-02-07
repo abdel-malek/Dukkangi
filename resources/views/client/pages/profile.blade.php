@@ -645,6 +645,24 @@
     .title_item_details, .title_qty, .price_item_details span, .btn_done, .btn_cancel, .btn_view_my_cart, .navbar-brand, table tr td{
         font-family:arabic3Font !important;
     }
+/*    .one_item_details{
+        right: 5rem;
+        left: unset !important;
+    }
+    .sections{
+        float: left;
+    }
+    table{
+        direction: rtl;
+        text-align: right;
+    }
+    td{
+       border-right: none;
+       border-left: 1.5px solid #A9A9A9;
+    }
+    .rate{
+        border-left: none;
+    }*/
 </style>
 @endif
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">

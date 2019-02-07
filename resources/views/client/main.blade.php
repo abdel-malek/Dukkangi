@@ -98,6 +98,10 @@
          .icon_shopping_cart {
              font-size: 2.3em !important;
          }
+         .btn_cancel_rate{
+             border:1px solid #aaa;
+             margin-bottom: 1rem;
+         }
         @media (max-width: 767px)and (min-width:577px){
         .div_login, .div_singup {
     width: 300px;

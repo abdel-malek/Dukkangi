@@ -11,7 +11,7 @@ use App\Product;
 class Comment extends Model
 {
     protected $table = "comment";
-    protected $fillable = ['user_id','rate','description', 'product_id'];
+    protected $fillable = ['id','user_id','rate','description', 'product_id'];
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');

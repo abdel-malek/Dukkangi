@@ -12,6 +12,7 @@ use App\User;
 use App\Rate;
 use App\OrderItem;
 use App\Comment;
+use App\UserLike;
 use App\Http\Services\FilterService;
 use App\Http\Services\CartService;
 use App\Http\Services\ImageService;
@@ -234,6 +235,7 @@ class PageController extends Controller
 
 
 	public function getCategoryNameFilteredPage(Request $request){
+            $id_category = '';
 		$lang = session('lang');
 		App::setLocale($lang);
 		// dd($request->categoryId); 
@@ -300,9 +302,8 @@ class PageController extends Controller
 				}
 			}
 		}
-		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withLastSearch($request->search)->withCategoryId($request->categoryId);
+		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withLastSearch($request->search)->withCategoryId($request->categoryId)->with('id_category',$id_category);
 	}
-
 
 	public function getCategoryFilteredPage(Request $request){
 
@@ -310,13 +311,9 @@ class PageController extends Controller
 		App::setLocale($lang);;
 		$products =  FilterService::loadProducts($request,0);
 
-
 		$categories = Category::all();
 
-
 		$subcategories = Subcategory::all();
-
-
 
 		if ($lang == "ar"){
 			foreach ($categories as $category) {
@@ -371,8 +368,9 @@ class PageController extends Controller
 	}
 
 	public function getCategorySubcategoryFilteredPage($subcategory){
+                $categoryId = $subcategory;
 		$subcategory = Subcategory::find($subcategory);
-
+                
 		$lang = session('lang');
 		App::setLocale($lang);
 
@@ -458,7 +456,8 @@ class PageController extends Controller
 		ksort($temp);
 		$subcategories = $temp;
 
-		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withLastSearch($subcategory->category_id);
+                
+		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withLastSearch($subcategory->category_id)->with('categoryId',$categoryId);
 	}
 
 
@@ -537,9 +536,9 @@ class PageController extends Controller
 			$product->abstract_price = $product->discount_price - $product->tax;
 		}
 		foreach ($simiproducts as $simiproduct) {
-			if (isset($simiproduct->discount_price)) {
-				$simiproduct->discount =  sprintf('%0.0f',100 - (($simiproduct->discount_price * 100) / $simiproduct->price));
-			}
+                    if (isset($simiproduct->discount_price)) {
+                        $simiproduct->discount =  sprintf('%0.0f',100 - (($simiproduct->discount_price * 100) / $simiproduct->price));
+                    }
 		}
 		// $product->qty = 0;
 		// dd($comments);
@@ -630,8 +629,36 @@ class PageController extends Controller
 
 		return 1;
 	}
+        
+        public function like(Request $request){
+            $val_like = true;
+            $get_like = UserLike::where('user_id',$request->user_id)->get();
+            foreach($get_like as $validation_like){
+                if($validation_like->comment_id == $request->comment_id){
+                    $val_like = false;
+                }
+            }
+            if($val_like == true){
+                $like = new UserLike;
+                $like->user_id = $request->user_id;
+                $like->comment_id = $request->comment_id;
+                $like->save();
+                return response(['status' => 'true', 'data' => 'true', 'message' => '']);
+            }else{
+                return response(['status' => 'false', 'data' => 'true', 'message' => '']);
+            }
+        }
+        public function load_like(Request $request){
+            $comments_id = [];
+            $get_like = UserLike::where('user_id',$request->user_id)->get();
+            foreach($get_like as $validation_like){
+                    $comments_id [] = $validation_like->comment_id;
+            }
+                return response(['status' => 'false', 'data' => $comments_id, 'message' => '']);
+        }
 
-	public function setLanguage($lang)
+
+        public function setLanguage($lang)
 	{
   		session(['lang' => $lang]);
   		return Redirect::back();

@@ -706,9 +706,126 @@
        font-size: 4rem;
     }
 </style>
+
+    @if(session('lang') == 'ar' )
+<style>
+    .nav-link, .header_page_text_div, .title_section, .off_item, .product-name, .tax_include_item, .text_item_details, small, .title_customer_review, .rated_details_comment, .text_upvoted_user_actions, .text_leave_constructive_review, .btn_leave_constructive_review, .title_similar_items, .off_item_prodect, .text_discount, .item_name, .tax_include, .title_footer a, .text_footer, 
+    .title_item_details, .title_qty, .price_item_details span, .btn_done, .btn_cancel, .btn_view_my_cart, .navbar-brand, table tr td, .title_one_item_details, .title_detail_my_card, .text_item_qty p, .text_item_qty h3, .text_item_qty span, .total_item_qty, .gained_point_rewards p, .taxes_taxes small, .taxes_taxes p, .text_enter_code, 
+    .title_choose_payment, .btn_credit_card_details, .form-control, .singup_text, .btn_login, .singup_text a, .singup_text a{
+        font-family:arabic3Font !important;
+    }
+/*    .slider_image_about{
+        float: left !important;
+    }
+    .text_in_about{
+        float: right !important;
+    }
+    .contact-us-div {
+        left: 20vw;
+    }*/
+</style>
+@endif
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+@if(session('lang') == 'ar' )
+<!--<div class="row"> 
+
+	<div class="col-lg-6 col-md-8 col-sm-11  about-div slider_image_about" style="margin-top:-16rem;">
+		<img class="img-logo" src="front-end/images/welcome-logo.png" width="500" height="180">
+
+		<div class="review-div col-xl-6 col-lg-7 col-xs-12">
+                    <h4 class="title_block_slider" style="@if(session('lang') == 'ar' )
+				float: right;
+				@endif
+			  ">
+				@lang('REVIEWS')
+			</h4>
+			<hr class="hr-review" style="margin-top: 40px;">
+                        <span  class="glyphicon glyphicon-chevron-right right-arrow icon_slider_right" style="left: 91% !important;" onclick="right();"></span>
+			<span  class="glyphicon glyphicon-chevron-left left-arrow icon_slider_left" onclick="left();"></span>
+			<div class="inner-review">
+				{{$review->desc}}
+					<span class='rating ratings{{$review->rate}} top'></span>
+			</div>
+			<br><br>
+		</div>
+	</div> 
+    
+        <div class="col-lg-5 col-md-4 col-sm-11 col-xs-11  about-div text_in_about" style="margin-top:-16rem;">
+		<h1 class="rtl"> @lang('About Dukkangi')</h1>
+                @if(session('lang') == 'ar' )
+                    <p class="rtl section_about">موقع دكنجي هو موقع يضم كل مستلزمات المستهلك من مواد غذائية
+                        
+                        و ألبسة و معدات ضرورية لحياتنا اليومية هدفنا إرضاء المستهلك و سعادته و تأمين كل وسائل الراحة المتاحة،
+                        في حال واجهتك أي مشكلة عند التعامل مع الموقع يمكنك أن تراسلنا و سوف نقوم بحلها مباشرةً
+                    </p>
+                @else
+		<p class="rtl section_about">
+			Lorem ipsum dolor sit amet, has et saepe bonorum meliore, eum ex case eros splendide. Mei vide autem at, duo noster patrioque assentior in. Graeci consulatu iracundia in sed, cum autem inermis ut. Has quis quas incorrupte id, cu usu suas eleifend. Eum id ignota everti voluptatum.
+		</p >
+                @endif
+                @if(session('lang') == 'ar' )
+                    <p class="rtl section_about">موقع دكنجي يتيح لك العديد من العروض و الهدايا يمكنك الاستفادة منها كما أنه يضمن لك جودة
+                        المنتجات التي يقوم ببيعك إياها،
+                        يمكنك إرجاع أي منتج في حال كان غير مطابق للمواصفات المذكورة في الموقع
+                    </p>
+                @else
+                    <p class="rtl section_about">
+			Mei placerat phaedrum molestiae ut, te velit debet recusabo cum. Falli choro no vim. Commodo quaerendum ad has. Omnis aperiam alterum his an, eos no minim ignota commune. No pro enim ignota, eirmod omnesque qui an, ei sea augue accusamus efficiendi.
+                    </p>
+                @endif
+                @if(session('lang') == 'ar' )
+                    <p class="rtl section_about">
+                      خدماتنا متاحة أربع و عشرون ساعة ويوجد موظفين للإجابة عن استفساراتكم و تساؤلاتكم يمكنكم التواصل معهم في أي وقت
+                    </p>
+                @else
+                     <p class="rtl section_about">
+                        Mei placerat phaedrum molestiae ut, te velit debet recusabo cum. Falli choro no vim. Commodo quaerendum ad has. Omnis aperiam alterum his an, eos no minim ignota commune. No pro enim ignota, eirmod omnesque qui an, ei sea augue accusamus efficiendi.
+                    </p>
+                @endif
+		<hr class="rtl ">
+                @if(session('lang') == 'ar' )
+                <h3 class="rtl section_title" style="font-weight:600;">ما المطلوب من المستخدم :</h3>
+                    <p class="rtl section_about">
+                    نرجو من المستخدمين تقييم المنتجات وذلك للحصول على خدمة أفضل و لمساعدتنا في تطوير الأداء في العمل و تحسين خدماتنا، ويُرجى من حضراتكم إدخال المعلومات الصحيحة عند تسجيل الدخول و إعطاء تفاصيل العنوان  من أجل سرعة و صول المنتَج إلى المستخدم
+                    </p>
+                @else
+                <h3 class="rtl section_title" style="font-weight:600;">Section 2</h3>
+                    <p class="rtl section_about">
+                            Mei placerat phaedrum molestiae ut, te velit debet recusabo cum. Falli choro no vim. Commodo quaerendum ad has. Omnis aperiam alterum his an, eos no minim ignota commune. No pro enim ignota, eirmod omnesque qui an, ei sea augue accusamus efficiendi.
+                    </p>
+                @endif
+		<hr class="rtl">
+                @if(session('lang') == 'ar' )
+                <h3 class="rtl section_title" style="font-weight:600;"> طموحتنا :</h3>
+                    <p class="rtl section_about">نطمح في المستقبل أن نصبح أكبر متجر على مستوى العالم وأن نلبي كل طلبات زبائننا الكرام وأن نوفر أفضل خدمة بأقل سعر
+                          
+                    </p><span class="off_item" value="5"></span>
+                @else
+                    <h3 class="rtl section_title" style="font-weight:600;"> Section 3</h3>
+                    <p class="rtl section_about">
+                            Mei placerat phaedrum molestiae ut, te velit debet recusabo cum. Falli choro no vim. Commodo quaerendum ad has. Omnis aperiam alterum his an, eos no minim ignota commune. No pro enim ignota, eirmod omnesque qui an, ei sea augue accusamus efficiendi.
+                    </p>
+                @endif
+		
+	</div>
+    <div class="contact-us-div col-md-6  sth"  style="margin-top: 6em;">
+        <h2 class="title_contact_us">@lang('Contact Us')</h2>
+        <span class="mail">@</span>
+        <p class="contact-par">
+            info@dukkangi.com
+            <br>
+            support@dukkangi.com
+        </p><span class="glyphicon glyphicon-earphone phone"></span>
+        <p class="contact-par">
+            +49 5609-809<br>
+            +49 5609-808
+        </p>
+    </div>
+</div>-->
+
 <div class="row"> 
-    <div class="col-lg-5 col-md-4 col-sm-11 col-xs-11  about-div text_in_about" style="margin-top:-16rem;">
+        <div class="col-lg-5 col-md-4 col-sm-11 col-xs-11  about-div text_in_about" style="margin-top:-16rem;">
 		<h1 class="rtl"> @lang('About Dukkangi')</h1>
                 @if(session('lang') == 'ar' )
                     <p class="rtl section_about">موقع دكنجي هو موقع يضم كل مستلزمات المستهلك من مواد غذائية
@@ -786,6 +903,102 @@
 			<br><br>
 		</div>
 	</div> 
+    
+    <div class="contact-us-div col-md-6  sth"  style="margin-top: 6em;">
+        <h2 class="title_contact_us">@lang('Contact Us')</h2>
+        <span class="mail">@</span>
+        <p class="contact-par">
+            info@dukkangi.com
+            <br>
+            support@dukkangi.com
+        </p><span class="glyphicon glyphicon-earphone phone"></span>
+        <p class="contact-par">
+            +49 5609-809<br>
+            +49 5609-808
+        </p>
+    </div>
+</div>
+@else
+<div class="row"> 
+        <div class="col-lg-5 col-md-4 col-sm-11 col-xs-11  about-div text_in_about" style="margin-top:-16rem;">
+		<h1 class="rtl"> @lang('About Dukkangi')</h1>
+                @if(session('lang') == 'ar' )
+                    <p class="rtl section_about">موقع دكنجي هو موقع يضم كل مستلزمات المستهلك من مواد غذائية
+                        
+                        و ألبسة و معدات ضرورية لحياتنا اليومية هدفنا إرضاء المستهلك و سعادته و تأمين كل وسائل الراحة المتاحة،
+                        في حال واجهتك أي مشكلة عند التعامل مع الموقع يمكنك أن تراسلنا و سوف نقوم بحلها مباشرةً
+                    </p>
+                @else
+		<p class="rtl section_about">
+			Lorem ipsum dolor sit amet, has et saepe bonorum meliore, eum ex case eros splendide. Mei vide autem at, duo noster patrioque assentior in. Graeci consulatu iracundia in sed, cum autem inermis ut. Has quis quas incorrupte id, cu usu suas eleifend. Eum id ignota everti voluptatum.
+		</p >
+                @endif
+                @if(session('lang') == 'ar' )
+                    <p class="rtl section_about">موقع دكنجي يتيح لك العديد من العروض و الهدايا يمكنك الاستفادة منها كما أنه يضمن لك جودة
+                        المنتجات التي يقوم ببيعك إياها،
+                        يمكنك إرجاع أي منتج في حال كان غير مطابق للمواصفات المذكورة في الموقع
+                    </p>
+                @else
+                    <p class="rtl section_about">
+			Mei placerat phaedrum molestiae ut, te velit debet recusabo cum. Falli choro no vim. Commodo quaerendum ad has. Omnis aperiam alterum his an, eos no minim ignota commune. No pro enim ignota, eirmod omnesque qui an, ei sea augue accusamus efficiendi.
+                    </p>
+                @endif
+                @if(session('lang') == 'ar' )
+                    <p class="rtl section_about">
+                      خدماتنا متاحة أربع و عشرون ساعة ويوجد موظفين للإجابة عن استفساراتكم و تساؤلاتكم يمكنكم التواصل معهم في أي وقت
+                    </p>
+                @else
+                     <p class="rtl section_about">
+                        Mei placerat phaedrum molestiae ut, te velit debet recusabo cum. Falli choro no vim. Commodo quaerendum ad has. Omnis aperiam alterum his an, eos no minim ignota commune. No pro enim ignota, eirmod omnesque qui an, ei sea augue accusamus efficiendi.
+                    </p>
+                @endif
+		<hr class="rtl ">
+                @if(session('lang') == 'ar' )
+                <h3 class="rtl section_title" style="font-weight:600;">ما المطلوب من المستخدم :</h3>
+                    <p class="rtl section_about">
+                    نرجو من المستخدمين تقييم المنتجات وذلك للحصول على خدمة أفضل و لمساعدتنا في تطوير الأداء في العمل و تحسين خدماتنا، ويُرجى من حضراتكم إدخال المعلومات الصحيحة عند تسجيل الدخول و إعطاء تفاصيل العنوان  من أجل سرعة و صول المنتَج إلى المستخدم
+                    </p>
+                @else
+                <h3 class="rtl section_title" style="font-weight:600;">Section 2</h3>
+                    <p class="rtl section_about">
+                            Mei placerat phaedrum molestiae ut, te velit debet recusabo cum. Falli choro no vim. Commodo quaerendum ad has. Omnis aperiam alterum his an, eos no minim ignota commune. No pro enim ignota, eirmod omnesque qui an, ei sea augue accusamus efficiendi.
+                    </p>
+                @endif
+		<hr class="rtl">
+                @if(session('lang') == 'ar' )
+                <h3 class="rtl section_title" style="font-weight:600;"> طموحتنا :</h3>
+                    <p class="rtl section_about">نطمح في المستقبل أن نصبح أكبر متجر على مستوى العالم وأن نلبي كل طلبات زبائننا الكرام وأن نوفر أفضل خدمة بأقل سعر
+                          
+                    </p><span class="off_item" value="5"></span>
+                @else
+                    <h3 class="rtl section_title" style="font-weight:600;"> Section 3</h3>
+                    <p class="rtl section_about">
+                            Mei placerat phaedrum molestiae ut, te velit debet recusabo cum. Falli choro no vim. Commodo quaerendum ad has. Omnis aperiam alterum his an, eos no minim ignota commune. No pro enim ignota, eirmod omnesque qui an, ei sea augue accusamus efficiendi.
+                    </p>
+                @endif
+		
+	</div>
+	<div class="col-lg-6 col-md-8 col-sm-11  about-div slider_image_about" style="margin-top:-16rem;">
+		<img class="img-logo" src="front-end/images/welcome-logo.png" width="500" height="180">
+
+		<div class="review-div col-xl-6 col-lg-7 col-xs-12">
+                    <h4 class="title_block_slider" style="@if(session('lang') == 'ar' )
+				float: right;
+				@endif
+			  ">
+				@lang('REVIEWS')
+			</h4>
+			<hr class="hr-review" style="margin-top: 40px;">
+                        <span  class="glyphicon glyphicon-chevron-right right-arrow icon_slider_right" style="left: 91% !important;" onclick="right();"></span>
+			<span  class="glyphicon glyphicon-chevron-left left-arrow icon_slider_left" onclick="left();"></span>
+			<div class="inner-review">
+				{{$review->desc}}
+					<span class='rating ratings{{$review->rate}} top'></span>
+			</div>
+			<br><br>
+		</div>
+	</div> 
+    
     <div class="contact-us-div col-md-6  sth"  style="margin-top: 6em;">
         <h2 class="title_contact_us">@lang('Contact Us')</h2>
         <span class="mail">@</span>
@@ -801,6 +1014,7 @@
     </div>
 </div>
 
+@endif
 @endsection
 
 @section('scripts')

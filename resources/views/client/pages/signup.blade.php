@@ -293,6 +293,11 @@
     .title_choose_payment, .btn_credit_card_details, .form-control, .singup_text, .btn_login, .singup_text a, .singup_text a{
         font-family:arabic3Font !important;
     }
+    .input_singup{
+        text-align: right;
+        direction: rtl;
+    }
+    
 </style>
 @endif
  <div class="col-md-12" style="padding-left:0px;padding-right: 0px  " id="content_page">
@@ -317,37 +322,37 @@
                 
                                 <div class="input-group">
 
-                                    <input type="text" required class="form-control input_singup" id="inlineFormInputGroupUsername" placeholder="@lang('Username')" name="name">
+                                    <input type="text" required class="form-control input_singup" id="inlineFormInputGroupUsername" placeholder="@lang('Username')" name="name" value="{{old("name")}}">
                                 </div>
                             </div>
                             <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
                                 <div class="input-group">
 
-                                    <input type="email" required class="form-control input_singup" id="inlineFormInputGroupEmail" placeholder="@lang('Email')" name="email">
+                                    <input type="email" required class="form-control input_singup" id="inlineFormInputGroupEmail" placeholder="@lang('Email')" name="email" value="{{old("email")}}">
                                 </div>
                             </div>
                             <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
                                 <div class="input-group">
 
-                                    <input name="password" required type="password" class="form-control input_singup" id="inlineFormInputGroupPassword" placeholder="@lang('Password')">
+                                    <input name="password" required type="password" class="form-control input_singup" id="inlineFormInputGroupPassword" placeholder="@lang('Password')" value="{{old("password")}}">
                                 </div>
                             </div>
                             <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
                                 <div class="input-group">
 
-                                    <input type="password" required class="form-control input_singup" id="inlineFormInputGroupConfirmPassword" placeholder="@lang('Confirm Password')" name="password_confirmation">
+                                    <input type="password" required class="form-control input_singup" id="inlineFormInputGroupConfirmPassword" placeholder="@lang('Confirm Password')" name="password_confirmation" value="{{old("password_confirmation")}}">
                                 </div>
                             </div>
                            
                             <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
                                 <div class="input-group">
 
-                                    <input type="text" required class="form-control input_singup datepicker" id="date_of_brith" placeholder="@lang('Date of birth')" name="dateofbirth">
+                                    <input type="text" required class="form-control input_singup datepicker" id="date_of_brith" placeholder="@lang('Date of birth')" name="dateofbirth" value="{{old("dateofbirth")}}">
                                 </div>
                             </div>
                             <div class="col-sm-12 my-1" style="margin-top: 0.6em !important;float: left;">
                                 <div class="input-group">
-                                    <select class="custom-select form-control input_singup input_select" name="gender">
+                                    <select class="custom-select form-control input_singup input_select" name="gender" value="{{old("gender")}}">
                                        <option value="male"  >@lang('Male') </option>
                                        <option value="female" >@lang('Female') </option>
                                     </select>
