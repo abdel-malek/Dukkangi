@@ -1127,7 +1127,7 @@
             margin-top: 366px
         }
         .leave_constructive_review .details_comment .rating{
-            right: auto !important;
+            right: 0% !important;
             left: 1em;
             /*			margin-top: 25% !important*/
         }
@@ -1245,7 +1245,7 @@
             left: 0
         }
         .leave_constructive_review .details_comment .rating{
-            right: auto !important;
+            right: 0% !important;
             left: 1em;
             /*			margin-top: 25% !important*/
         }
@@ -1479,13 +1479,13 @@
 </style>
 @if(session('lang') == 'ar' )
 <style>
-    .nav-link, .header_page_text_div, .title_section, .off_item, .product-name, .tax_include_item, .text_item_details, small, .title_customer_review, .rated_details_comment, .text_upvoted_user_actions, .text_leave_constructive_review, .btn_leave_constructive_review, .title_similar_items, .off_item_prodect, .text_discount, .item_name, .tax_include, .title_footer a, .text_footer, 
-    .title_item_details, .title_qty, .price_item_details span, .btn_done, .btn_cancel, .btn_view_my_cart{
+    .nav-link, .header_page_text_div, .title_section, .off_item, .product-name, .tax_include_item, .text_item_details, small, .title_customer_review, .rated_details_comment, .text_upvoted_user_actions, .text_leave_constructive_review, .btn_leave_constructive_review, .title_similar_items, .off_item_prodect, .text_discount, .item_name, .tax_include, .title_footer a,  
+    .title_item_details, .title_qty, .btn_done, .btn_cancel, .btn_view_my_cart{
         font-family:arabic3Font !important;
     }
-/*    .text_leave_constructive_review, .item_name, .text_item_details, .title_customer_review, .text_details_comment{
+    .text_leave_constructive_review, .item_name, .text_item_details, .title_customer_review, .text_details_comment{
         text-align: right;
-    }
+    } 
     .rate-logo{
         float: right;
     }
@@ -1495,7 +1495,8 @@
     .block_comment_logo .rating {
      right: 0% !important;
      margin-right: 13px !important;
-    }
+     left: unset !important;
+    }/*
     .input_leave_constructive_review{
         text-align: right;
         direction: rtl;

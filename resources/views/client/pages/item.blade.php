@@ -1023,7 +1023,7 @@
     .select-menu .select-label:before{
            padding: 0 15px 0 16px !important;
     }
-    .nav-link, .sub-paragraph, .input_search_lg, .input_search_sm, .tabs__item, .tabs_active, .btn_filter, .item_name, .tax_include, .off_item, .text_footer, .title_footer a, .tabs_active, .rate-us, .text_in_header, .lable_input_filter, .select-label, .btn_model_filter, .title_qty, .price_item_details span:first-child, .btn_done, .btn_cancel, .btn_view_my_cart {
+    .nav-link, .sub-paragraph, .input_search_lg, .input_search_sm, .tabs__item, .tabs_active, .btn_filter, .item_name, .tax_include, .off_item, .title_footer a, .tabs_active, .rate-us, .text_in_header, .lable_input_filter, .select-label, .btn_model_filter, .title_qty, .price_item_details span:first-child, .btn_done, .btn_cancel, .btn_view_my_cart {
         /*font-family: 'Tajawal', sans-serif;*/
         /*font-family: 'Cairo', sans-serif !important;*/
         /*font-family: 'Reem Kufi', sans-serif;*/

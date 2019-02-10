@@ -520,6 +520,11 @@
             left: 23.5vw !important;
         }
     }
+    @media (min-width:1105px){
+        .input_search_lg {
+    width: 30rem !important;
+}
+    }
     /*        @media (min-width: 1110px) and (max-width: 1200px) {
                .right-arrow {
                     left: 30.5rem !important;
@@ -709,11 +714,12 @@
 
     @if(session('lang') == 'ar' )
 <style>
-    .nav-link, .header_page_text_div, .title_section, .off_item, .product-name, .tax_include_item, .text_item_details, small, .title_customer_review, .rated_details_comment, .text_upvoted_user_actions, .text_leave_constructive_review, .btn_leave_constructive_review, .title_similar_items, .off_item_prodect, .text_discount, .item_name, .tax_include, .title_footer a, .text_footer, 
+    .nav-link, .header_page_text_div, .title_section, .off_item, .product-name, .tax_include_item, .text_item_details, small, .title_customer_review, .rated_details_comment, .text_upvoted_user_actions, .text_leave_constructive_review, .btn_leave_constructive_review, .title_similar_items, .off_item_prodect, .text_discount, .item_name, .tax_include, .title_footer a,  
     .title_item_details, .title_qty, .price_item_details span, .btn_done, .btn_cancel, .btn_view_my_cart, .navbar-brand, table tr td, .title_one_item_details, .title_detail_my_card, .text_item_qty p, .text_item_qty h3, .text_item_qty span, .total_item_qty, .gained_point_rewards p, .taxes_taxes small, .taxes_taxes p, .text_enter_code, 
     .title_choose_payment, .btn_credit_card_details, .form-control, .singup_text, .btn_login, .singup_text a, .singup_text a{
         font-family:arabic3Font !important;
     }
+
 /*    .slider_image_about{
         float: left !important;
     }
