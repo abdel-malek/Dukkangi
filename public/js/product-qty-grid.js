@@ -35,7 +35,7 @@ function loadProduct(){
        fields: [
             {name: "product.id", title:'ID',type: "text",width: 5},
             {name: "product.arabic", title: 'Product', type: "text", width: 5},
-            {name: "qty", title: 'Available Qty'  , type: "text", width: 5},
+            {name: "qty", title: 'Available Qty'  , type: "", width: 5},
             {
               type: "control", width: 10, editButton: false, modeSwitchButton: false, deleteButton: false,
               itemTemplate: function (value, item) {

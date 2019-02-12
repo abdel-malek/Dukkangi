@@ -332,7 +332,11 @@ class ProductService
                 $query->where('arabic', 'like', '%'.$filter['product']['arabic'].'%');
             });
         }
-
+//        if (!empty($filter['qty'])) {
+//            $product->whereHas('product', function ($query) use ($filter) {
+//                $query->where('arabic', 'like', '%'.$filter['product']['arabic'].'%');
+//            });
+//        }
         $product->groupBy('product_id')->orderBy('product_id', 'ASC');
         $result['total'] = $product->count();
 

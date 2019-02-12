@@ -1257,7 +1257,7 @@
         </p>
     </div>
 
-    <div class="sections">
+        <div class="sections" style="display: none;">
         <div class="choose_payment">
             <h4 class="title_choose_payment">
                 @lang('Choose your payment method:')
@@ -1428,6 +1428,12 @@
          $('.header_page_text_div').addClass('header_page_text_div_for_mobile');
          $('.title_one_item_details').addClass('title_one_item_details_for_mobile');
      }
+     function if_empty_card(){
+         $('.one_item_details .item_qty_detail_my_card').each(function(i){
+             $('.sections').css('display','block');
+         });
+     }
+     if_empty_card();
      var height_block_mycard = 22; 
      $('.item_qty_detail_my_card').each(function(){
          height_block_mycard = height_block_mycard + 6;

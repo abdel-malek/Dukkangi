@@ -14,6 +14,17 @@
     .nav .open>a, .nav .open>a:focus, .nav .open>a:hover{
         background-color: #333;
     }
+    .jsgrid-search-button{
+        background-image: url({{URL::asset("front-end/images/user_actions/search.svg")}}) !important;  
+        width: 17px !important;
+        height: 17px !important;
+    }
+    .jsgrid-clear-filter-button{
+        background-image: url({{URL::asset("front-end/images/user_actions/letter-x.svg")}}) !important;
+    }
+    .btn-default{
+        color: #000 !important;
+    }
 </style>
     <link rel="stylesheet" href={{URL::asset('css/color-default.min.css')}} />
     <link rel="stylesheet" href={{URL::asset('css/perfect-scrollbar.min.css')}} />

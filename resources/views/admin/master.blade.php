@@ -20,6 +20,9 @@
       padding-left: 15px;
       padding-right: 15px;
     }
+    .jsgrid-search-button{
+     background-image: url(front-end/images/user_actions/magnifying-glass.svg);   
+    }
    </style>
    
 </head>

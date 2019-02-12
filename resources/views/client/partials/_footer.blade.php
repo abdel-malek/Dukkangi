@@ -2,8 +2,15 @@
    .flex-control-paging li a.flex-active{
         background-color: #fff ;
    }
-
 </style>
+
+@if(session('lang') == 'ar' )
+<style>
+     .title_footer{
+       direction: rtl;
+   }
+</style>
+@endif
 
 <footer class=" footer" style="margin-top: 0px" >
 @if(isset($brands))

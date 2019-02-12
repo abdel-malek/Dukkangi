@@ -232,7 +232,10 @@ class PageController extends Controller
 		}
 		return view('client.pages.item_products')->withProducts($products);
 	} 
-
+//
+//        public function productQty(){
+//            
+//        }
 
 	public function getCategoryNameFilteredPage(Request $request){
             $id_category = '';

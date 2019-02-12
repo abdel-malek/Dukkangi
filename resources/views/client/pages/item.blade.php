@@ -1049,6 +1049,31 @@
     }
 </style>
 @endif
+   @if(isset($brandfilter))
+   <style>
+       .col_item {
+    display: block;
+    margin: 0rem auto;
+}
+.tabs__content.tabs_active {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: center;
+}
+@media (max-width: 568px) and (min-width: 200px){
+    .section_item_select {
+        width: 95% !important;
+    }
+    .block_filter{
+        margin-left: 0rem !important;
+    }
+    .block_search_tabs{
+        max-width: 100% !important;
+    }
+}
+   </style>
+   @endif
 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 
 <link rel="stylesheet" href="/front-end/css/multe_select.css">
@@ -1131,7 +1156,7 @@
                     @lang('Filter')
                 </p>
             </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 my-1" style="margin-top: 0em !important;float: left; {{isset($brandfilter) ? 'max-width: 70.666667% !important;' : ';'}}">
+            <div class="col-lg-4 col-md-12 col-sm-12 my-1 block_search_tabs" style="margin-top: 0em !important;float: left; {{isset($brandfilter) ? 'max-width: 70.666667%;' : ';'}}">
                 <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
                 <!--<div class="input-group">-->
                     <div class="input-search_icon">
@@ -1370,7 +1395,17 @@
 </script>
 <script>
     function num_plus(obj) {
-    
+//    console.log($('#modal_one_item_details').attr('data-productId'));
+//           $.ajax({
+//            type: "POST",
+//            url: `/product_qty`,
+//            data: { 'productId': $('#modal_one_item_details').attr('data-productId')},
+//            headers: {
+//                "x-csrf-token": $("[name=_token]").val()
+//            },
+//        }).done(response => {
+//
+//        });
             if (counter_qty < 1) {
                 counter_qty = 1;
                 $(obj).parent().parent().find('p').text(counter_qty);
