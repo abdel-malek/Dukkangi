@@ -7,7 +7,17 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{URL::asset('/front-end/css/item_view.css')}}">
 <style>
-
+    .div_icon_footer {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        padding-left: 1% ;
+    }
+    .icon_inst {
+        margin-left: 0em !important;
+    }
     .jssorl-009-spin img {
         animation-name: jssorl-009-spin;
         animation-duration: 1.6s;
@@ -224,7 +234,7 @@
         left: 80%;
     }
     .div_icon_footer {
-        padding-left: 14% !important;
+        padding-left: 1% !important;
     }
     .input_search_sm{
         width: 78% !important;   
@@ -271,7 +281,7 @@
     }*/
       @media (min-width: 1024px) and (max-width: 1105px) {
                 #main-navbar-items ul li{
-                    font-size: 1.1rem;
+                    font-size: 1.4rem;
                 }
          }
 
@@ -378,7 +388,7 @@
     }
         @media (max-width: 1030px) and (min-width: 1026px){
         #main-navbar-items ul li {
-            font-size: 0.6rem !important;
+            font-size: 0.7rem !important;
         }
     }
     @media (max-width: 1030px) and (min-width: 1024px){
@@ -389,7 +399,7 @@
 
       @media (max-width: 1024px) and (min-width: 993px){
         #main-navbar-items ul li {
-            font-size: 0.8rem !important;
+            font-size: 0.9rem !important;
         }
         #navbarSupportedContent ul li {
             font-size: 11px;
@@ -530,7 +540,7 @@
             width: 100%;
         }
         .icon_inst {
-            margin-left: 2em !important;
+            margin-left: 0em !important;
         }
         .sections {
             margin-left: 0rem;
@@ -540,7 +550,7 @@
             padding-left: 0rem;
         }
         .div_icon_footer {
-            padding-left: 20% !important;
+            padding-left: 2% !important;
         }
     }
      @media (max-width: 460px){
@@ -638,7 +648,39 @@
         font-size: 2.8rem;
     }
 </style>
-
+ <style>
+        @media (max-width: 582px) and (min-width: 200px){
+            #main-nav-bar a{
+                float: none !important;
+                margin: 8px auto !important;
+                width: auto !important;
+                text-align: center !important;
+            }
+            .ul_navbar{
+                float: none !important;
+                margin: 5px auto !important;
+            }
+            .top_nav{
+                margin-left: 0rem;
+            }
+            #main-navbar-items ul li {
+                margin-right: 0.65rem !important;
+                margin-left: 0.65rem;
+                font-size: 0.64rem !important;
+            }
+            .logo {
+                width: 12rem !important;
+            }
+            .icon_search{
+                margin-top: 0.3rem;
+            }
+        }
+        @media (max-width: 573px) and (min-width: 200px){
+            #main-navbar-items ul li {
+                font-size: 0.74rem !important;
+            }
+        }
+    </style>
 @if(session('lang') == 'ar' )
 <style>
     .nav-link, .header_page_text_div, .title_section, .off_item, .product-name, .tax_include_item, .text_item_details, small, .title_customer_review, .rated_details_comment, .text_upvoted_user_actions, .text_leave_constructive_review, .btn_leave_constructive_review, .title_similar_items, .off_item_prodect, .text_discount, .item_name, .tax_include, .title_footer a,  

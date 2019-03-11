@@ -15,6 +15,17 @@
 <script type="text/javascript" src="/front-end/js/plugin/slide.js"></script>
 <link rel="stylesheet" href="/front-end/css/SimpleStarRating.css">
 <style>
+    .div_icon_footer {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        padding-left: 1%;
+    }
+    .icon_inst {
+        margin-left: 0em !important;
+    }
     .star {
         cursor: pointer;
         color: #fff;
@@ -52,7 +63,11 @@
         bottom: 0.2em;
         left: 19.2em;
     }
-
+    .title_choose_payment{
+        padding-left: 2rem;
+        text-align: right;
+        direction: rtl;
+    }
     .rating .star::after {
         color: #d80001;
     }
@@ -313,6 +328,12 @@
             font-size: 1em !important;
         }
     }
+    @media (max-width: 1024px) and (min-width: 400px){
+        #main-navbar-items ul li {
+            margin-right: 1.2rem !important;
+            font-size: 0.7rem !important;
+        }
+    }
     @media (max-width: 991px) and (min-width: 300px){
         .ul_navbar {
             width: 23rem;
@@ -343,7 +364,7 @@
             width: 48%;
         }
         #main-navbar-items ul li {
-            font-size: 0.7rem;
+            font-size: 0.9rem;
         }
         
         .swal2-popup .swal2-title{
@@ -750,7 +771,7 @@
     }
 @media (max-width: 775px){
     #main-navbar-items ul li {
-        font-size: 0.72rem !important;
+        font-size: 0.78rem !important;
     }
     .ul_navbar {
         width: 22rem !important;
@@ -800,7 +821,7 @@
         margin-left: -4.8rem;
     }
     .top_nav {
-        max-width: 100% !important;
+        max-width: 90% !important;
     }
     #header .navbar-light{
         max-height: 11.19em !important;
@@ -812,10 +833,10 @@
         padding-left: 0% !important;
     }
     .icon_inst {
-        margin-left: 2em !important;
+        margin-left: 0em !important;
     }
     .div_icon_footer {
-        padding-left: 12% !important;
+        padding-left: 2% !important;
     }
 }
 @media (max-width: 480px){
@@ -824,7 +845,7 @@
         width: 39%;
     }
     .div_icon_footer {
-        padding-left: 6% !important;
+        padding-left: 1% !important;
     }
     .img_price_item_details{
         width: 13em !important;
@@ -1088,6 +1109,58 @@
     .title_choose_payment, .btn_credit_card_details{
         font-family:arabic3Font !important;
     }
+    .img_item_qty{
+        float: right;
+        margin-right: 0.3rem;
+    }
+    .text_item_qty{
+        float: right;
+        text-align: right;
+        direction: rtl;
+        margin-left: 0rem;
+    }
+    .tax_text{
+        float: right !important;
+        margin-right: 0rem !important;
+    }
+    .num_item_qty{
+        float: right;
+    }
+    .total_item_qty{
+        float: right;
+    }
+    .btn_control_item_qty{
+        text-align: center;
+    }
+    .total_item_qty span{
+        float: left;
+        margin-left: 0.2rem;
+    }
+    .total_item_qty i{
+        float: left;
+        margin-left: 0.4rem;
+    }
+    .title_detail_my_card{
+        float: right;
+        text-align: right;
+    }
+    .gained_point_rewards p, .taxes_taxes p{
+        float: right;
+        text-align: right;
+        padding-right: 1rem;
+        padding-left: 0rem;
+    }
+    .text_enter_code{
+         float: right !important;
+        text-align: right;
+        padding-right: 1rem;
+        padding-left: 0rem !important;
+    }
+    .gained_point_rewards h3, .taxes_taxes h3{
+        text-align: right;
+        padding-right: 0rem;
+        padding-left: 1rem;
+    }
 /*    .one_item_details{
         right: 7rem;
     }
@@ -1137,6 +1210,31 @@
 @endif
 
 @endsection @section('main_section')
+    <style>
+        @media (max-width: 550px) and (min-width: 200px){
+            #main-nav-bar a{
+                float: none !important;
+                margin: 8px auto !important;
+                width: auto !important;
+                text-align: center !important;
+            }
+            .ul_navbar{
+                float: none !important;
+                margin: 5px auto !important;
+            }
+            .top_nav{
+                margin-left: 0rem;
+            }
+            #main-navbar-items ul li {
+                margin-right: 0.65rem !important;
+                margin-left: 0.65rem;
+                font-size: 0.8rem !important;
+            }
+            .logo {
+                width: 9rem !important;
+            }
+        }
+    </style>
 <?php
         $total = 0;
         $gain=0;
@@ -1163,39 +1261,52 @@
         </div>
 
         @foreach($orders as $order)
-        @if($order->qty == 0)
+        @if($order->qty_in_my_card == 0)
         <?php continue; ?>
         @endif
         <?php
-                    $total += (isset($order->product->discount_price) ? $order->product->discount_price : $order->product->price) * $order->qty ;
-                    $gain  += (isset($order->product->discount_price) ? ceil($order->product->discount_price/5) : ceil($order->product->price/5)) * $order->qty;
-                    $taxes += (isset($order->product->discount_price) ? sprintf('%0.2f', $order->product->discount_price*0.19 * $order->qty ) : sprintf('%0.2f', $order->product->price*0.19 * $order->qty )  );
+                    $total += (isset($order->product->discount_price) ? $order->product->discount_price : $order->product->price) * $order->qty_in_my_card ;
+                    $gain  += (isset($order->product->discount_price) ? ceil($order->product->discount_price/5) : ceil($order->product->price/5)) * $order->qty_in_my_card;
+                    $taxes += (isset($order->product->discount_price) ? sprintf('%0.2f', $order->product->discount_price*0.19 * $order->qty_in_my_card ) : sprintf('%0.2f', $order->product->price*0.19 * $order->qty_in_my_card ));
                 ?>
         <div class="item_qty_detail_my_card" data-price="{{ isset($order->product->discount_price) ? $order->product->discount_price : $order->product->price }}"
             data-tax="{{$order->product->tax_fees}}" data-gain="{{isset($order->product->discount_price ) ? ceil($order->product->discount_price /5) : ceil($order->product->price /5 ) }}"
             data-productId='{{$order->product->id}}'>
             <img src="{{$order->product->image_id}}" class="img_item_qty" />
             <div class="text_item_qty">
+            @if(session('lang') == 'ar' )
+                <h3>{{$order->product->arabic}}</h3>
+            @elseif(session('lang') == 'de' )
+                <h3>{{$order->product->german}}</h3>
+            @elseif(session('lang') == 'tr' )
+                <h3>{{$order->product->turky}}</h3>
+            @elseif(session('lang') == 'ku' )
+                <h3>{{$order->product->kurdi}}</h3>
+            @else
                 <h3>{{$order->product->english}}</h3>
+            @endif
                 <p style="margin-bottom: 0.01em;">{{$order->product->section1_english}}</p>
                 <span>
-                    <p><span style="float: left;    margin-right: 1rem;" class="tax_text"> @lang('Tax') :</span> {{ isset($order->product->discount_price)?sprintf('%0.2f', $order->product->discount_price
-                        *0.19) : sprintf('%0.2f', $order->product->price *0.19) }} €</p>
+                    <p>
+                        <span style="float: left;margin-right: 1rem;" class="tax_text"> @lang('Tax') :</span>
+                        {{ isset($order->product->discount_price)?sprintf('%0.2f', $order->product->discount_price
+                        *0.19) : sprintf('%0.2f', $order->product->price *0.19) }} €
+                    </p>
 
                 </span>
             </div>
             <div class="control_item_qty">
-                <h4 class="num_item_qty" id="total">{{ $order->qty }}</h4>
+                <h4 class="num_item_qty" id="total">{{ $order->qty_in_my_card }}</h4>
                 <div class="btn_control_item_qty">
                     <img src="/front-end/images/payment/handler-plus.png" onclick="num_plus(this);" id="this" />
                     <img src="/front-end/images/payment/handler-min.png" onclick="num_min(this);" style="margin-top:-0.8em;" />
-                    <i class="fa fa-trash-o" onclick="deleteItem(this)" style="cursor: pointer;"></i>
+                    <i class="fa fa-trash-o" onclick="deleteItem(this,'true')" style="cursor: pointer;"></i>
                 </div>
                 <p class="total_item_qty">
                     @lang('Total')
                       <i style="color: #d80001;font-weight: bold;font-family: 'EagarFont';font-size: 1em;">€</i>
-                    <span class="findit">{{ isset($order->product->discount_price) ? $order->product->discount_price * $order->qty : $order->product->price
-                        * $order->qty }} </span>
+                    <span class="findit">{{ isset($order->product->discount_price) ? $order->product->discount_price * $order->qty_in_my_card : $order->product->price
+                        * $order->qty_in_my_card }} </span>
                   
                 </p>
             </div>
@@ -1250,8 +1361,8 @@
         <p class="price_item_details">
             <span class="text_total" style="font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;position: absolute;z-index: 22;">@lang('Total')</span>
 
-            <span class="number_total" style="left:2em;position: absolute;z-index: 22;    margin-top: 1rem;" id="Total"> {{$total }} </span>
-            <i style="color: #fff;position: absolute;z-index: 22;    font-size: 1.5em;font-family: 'EagarFont';margin-top: 0.2em;width: 4em;    left: -3rem;text-align: center;position: absolute;z-index: 18;">
+            <span class="number_total" style="left:2em;position: absolute;z-index: 22;    margin-top: 1rem;font-family: 'HeadlinesFont' !important;" id="Total"> {{$total }} </span>
+            <i style="color: #fff;position: absolute;z-index: 22;    font-size: 1.5em;font-family: 'EagarFont';margin-top: 0.2em;width: 4em;left: -3rem;text-align: center;position: absolute;z-index: 18;">
                 €</i>
             <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details" />
         </p>
@@ -1277,7 +1388,7 @@
                 <img src="/front-end/images/payment/visa.png" id='btn-checkout' class="block_btn_pay" style="cursor: pointer;
     box-shadow: 1px 1px 6px #999;
     border-radius: 1em;
-    width: 26%;
+    width: 23%;
     padding: 0.3em;" class="img_visa_choose_payment">
                 <form action="/stripe" method="POST" id='stripe-form'>
                     <input type="text" class="form-control products" name='products' hidden value=''>
@@ -1366,8 +1477,11 @@
                 
                 <!-- <form id="paypalform" action="https://www.paypal.com/cgi-bin/webscr" method="post">  -->
                     <!-- <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post"> -->
-                        <form action="/paypal-test" method="get">
+                    
+                    <form action="/paypal-test" method="get" onsubmit="return false;" id="form_test_buy" class="myform">
+                        
                         <!-- Identify your business so that you can collect the payments. -->
+                        
                         
                         <input type="hidden" name="business" value="info@dukkangi.com"> 
 
@@ -1376,6 +1490,7 @@
 
                         <!-- Specify a Buy Now button. -->
                         <input type="hidden" name="cmd" value="_xclick">
+                        <input type="hidden" id="qty_products" />
 
                         <!-- Specify details about the item that buyers will purchase. -->
                         <input type="hidden" name="item_name" value="{{$productsName}}">
@@ -1561,7 +1676,7 @@
         $('#tax').text(parseFloat(parseFloat($('#tax').text()) + parseFloat(parseFloat($(obj).parent().parent().parent().data('price')) * 0.19)).toFixed(2) + "€");
 
         total = parseFloat(parseFloat(parseFloat($('#Total').text()) + $(obj).parent().parent().parent().data('price'))).toFixed(2);
-
+       
         $('#Total').text(total);
 
         qty = parseInt($(obj).parent().parent().find('.num_item_qty').text()) + 1;
@@ -1723,7 +1838,7 @@
                              ?>
             });
     }
-    function deleteItem(obj){
+    function deleteItem(obj,is_click_delete = 'false'){
         var id = $(obj).parent().parent().parent().attr('data-productId');
         var count = $(obj).parent().parent().find('#total').text();
         for (i=0; i<count ; i ++ ){
@@ -1732,7 +1847,7 @@
         $.ajax({
             type: "POST",
             url: `/deletefromcart`,
-            data: { 'id': id },
+            data: { 'id': id, 'is_click_delete': is_click_delete },
             headers: {
                 "x-csrf-token": $("[name=_token]").val()
             },
@@ -1741,11 +1856,80 @@
         location.reload();
     }
     function submitPaypal() {
+        var qty_product = [];
+        
+        $('.one_item_details .item_qty_detail_my_card').each(function(){
+//            alert($(this).attr('data-productid'));
+            qty_product.push({
+                product_id: $(this).attr('data-productid'),
+                qty: parseInt($(this).find('.num_item_qty').text())
+            });
+        });
+//        alert(qty_product);
+        console.log(qty_product);
         var inp = $('#paypalamount');
+        var text_message= "";
         var amount;
+           $.ajax({
+            type: "POST",
+            url: '/get_qty_after_buy',
+            //contentType: "application/json; charset=utf-8",
+            
+            data:{'qty': qty_product},
+            headers: {
+                "x-csrf-token": $("[name=_token]").val()
+            },
+            success : function(response){
+      console.log(response);
+//
+            for(var i = 0;i < response.length;i++){
+             $('.one_item_details .item_qty_detail_my_card').each(function(){
+                 if(response[i]['id'] == $(this).attr('data-productid')){
+                     text_message = text_message + "sorry, there is only "+response[i]['qty']+" left from "+$(this).find('.text_item_qty h3').text()+", ";
+                }
+//            alert($(this).attr('data-productid'));
+             });
+           }
+//           alert(response);
+            if(response != ""){
+                alert(text_message);
+           }else{
+//               alert(1);
+               $('.myform').attr('onsubmit','return true;');
+               console.log("true");
+        }           
+    }
+        });
+//        (response => {
+//            console.log(response);
+//
+//           for(var i = 0;i < response.length;i++){
+//             $('.one_item_details .item_qty_detail_my_card').each(function(){
+//                 if(response[i]['id'] == $(this).attr('data-productid')){
+//                     text_message = text_message + " the product"+$(this).find('.text_item_qty h3').text()+" qty avialibal ="+ response[i]['qty']+", ";
+//                }
+////            alert($(this).attr('data-productid'));
+//             });
+//           }
+//            if(response != ""){
+////                e.preventDefault();
+//
+//            alert(text_message);
+//           }else{
+//               $('#form_test_buy').submit();
+//        }
+////            alert('get Qty After Buy');
+////            console.log(response);
+//        });
+//        
+
+
         $.ajax({
             type: "POST",
             url: `/getamount`,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data:{'qty': qty_product},
             headers: {
                 "x-csrf-token": $("[name=_token]").val()
             },
@@ -1756,7 +1940,10 @@
             
         });
     }
-
+    
+//    function handleData(response) {
+//
+//}
     $('footer').css('margin-top' ,$('.one_item_details').height() -500);
 
 </script> @endsection

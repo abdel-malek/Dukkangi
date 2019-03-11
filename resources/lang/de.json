@@ -16,6 +16,10 @@
 "Tax":"MwSt",
 "Product Price":"Produktpreis",
 "off":"Verkauft",
+"Show All Comment":"Alle Kommentare anzeigen",
+"Sorry":"Es tut uns leid",
+"item is out of stock":"Artikel ist nicht auf Lager",
+"Notify me by email when this item becomes available":"Benachrichtigen Sie mich per E-Mail, wenn dieser Artikel verfügbar ist",
 "Buy This Item":"Kaufe dieses Produkt",
 "Add to cart":"in den Warenkorb legen",
 "Price in Points":"Preis in Punkten",
@@ -89,4 +93,5 @@
 "Already in cart":"Bereits im Warenkorb",
  "Sorry, we don't have this quantity": "Entschuldigung, wir haben diese Menge nicht",
 "tax included":"Steuern inklusive"
+    
 }

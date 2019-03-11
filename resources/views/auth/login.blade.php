@@ -2,6 +2,17 @@
 @extends('client.main')
 @section('styles')
     <style>
+           .div_icon_footer {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        padding-left: 1% ;
+    }
+    .icon_inst {
+        margin-left: 0em !important;
+    }
           .first_input{
                     margin-top: 19em !important;
                 }
@@ -176,7 +187,7 @@
     <style>
         @media (max-width: 1367px) and (min-width: 1300px){
             .div_icon_footer {
-                padding-left: 12%;
+                padding-left: 1%;
             }
         }
         @media (max-width: 1024px) and (min-width: 400px){
@@ -213,6 +224,31 @@
                 padding: .5rem 1rem;
             }
         }
+        @media (max-width: 1024px) and (min-width: 400px){
+            #main-navbar-items ul li {
+                margin-right: 1.1rem !important;
+                font-size: 0.68rem !important;
+            }
+            }
+        @media (max-width:991px) and (min-width:660px){
+            .top_nav {
+                max-width: 50% !important;
+            }
+            #main-navbar-items ul li {
+                margin-right: 1.2rem !important;
+                font-size: 0.67rem !important;
+            }
+        }
+           @media (max-width:660px) and (min-width:570px){
+            .top_nav {
+                max-width: 40% !important;
+            }
+        }
+           @media (max-width:570px) and (min-width:480px){
+            .top_nav {
+                max-width: 75% !important;
+            }
+        }
         @media (max-width: 780px) and (min-width: 768px){
             .div_icon_footer {
                 float: left;
@@ -222,12 +258,12 @@
         }
         @media (max-width: 920px) and (min-width: 780px){
             .div_icon_footer {
-                padding-left: 5%;
+                padding-left: 1%;
             }
         }
          @media (max-width: 990px) and (min-width: 920px){
             .div_icon_footer {
-                padding-left: 7%;
+                padding-left: 1%;
             }
         }
         @media (max-width: 991px){
@@ -350,7 +386,34 @@
             font-size: 1.6em;
         }
     </style>
-    
+        <style>
+        @media (max-width: 570px) and (min-width: 200px){
+                 #main-nav-bar a{
+                float: none !important;
+                margin: 8px auto !important;
+                width: auto !important;
+                text-align: center !important;
+            }
+            .ul_navbar{
+                float: none !important;
+                margin: 5px auto !important;
+            }
+            .top_nav{
+                margin-left: 0rem;
+            }
+            #main-navbar-items ul li {
+                margin-right: 0.65rem !important;
+                margin-left: 0.65rem;
+                font-size: 0.74rem !important;
+            }
+            .logo {
+                width: 9rem !important;
+            }
+            .icon_search{
+                margin-top: 0.3rem;
+            }
+        }
+</style>
 @if(session('lang') == 'ar' )
 <style>
     .nav-link, .header_page_text_div, .title_section, .off_item, .product-name, .tax_include_item, .text_item_details, small, .title_customer_review, .rated_details_comment, .text_upvoted_user_actions, .text_leave_constructive_review, .btn_leave_constructive_review, .title_similar_items, .off_item_prodect, .text_discount, .item_name, .tax_include, .title_footer a, .text_footer, 
@@ -391,7 +454,7 @@
                                     <div class="input-group-prepend">
                                         <img src="/front-end/images/signup/at.png" />
                                     </div>
-                                    <input type="text" required class="form-control input_login" id="inlineFormInputGroupUsername" name="email" placeholder="@lang('Username')">
+                                    <input type="text" required class="form-control input_login" id="inlineFormInputGroupUsername" style="font-family: NormalFont !important;"  name="email" placeholder="@lang('Username')">
                                 </div>
                                 @if ($errors->has('password'))
                                     <span class="help-block">

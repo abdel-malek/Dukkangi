@@ -16,6 +16,9 @@
 "Bounce":" ",
 "Quantity":"الكمية",
 "off":"حسم",
+    "Sorry":"اسف",
+        "item is out of stock":"البضاعة غير متوفرة",
+    "Notify me by email when this item becomes available":"أبلغني عبر البريد الإلكتروني عندما يتوفر هذا العنصر",
 "Buy This Item":"شراء هذه المادة",
 "Add to cart":"اضافة الى السلة",
 "Section":"جزء",
@@ -87,7 +90,7 @@
 
 
 
-"Email":"البريد الاكلتروني",
+"Email":"البريد الالكتروني",
 "Confirm Password":"تأكيد كلمة المرور",
 "Date of birth":"تاريخ الولادة",
 "Male":"ذكر",
@@ -98,5 +101,6 @@
 "Already in cart":"موجود بالسلة",
 "You have ordered":"لقد طلبت",
 "tax included" : "متضمن الضريبة" ,
-    "Sorry, we don't have this quantity": "عذرا ، ليس لدينا هذه الكمية"
+    "Sorry, we don't have this quantity": "عذرا ، ليس لدينا هذه الكمية",
+    "Show All Comment":"أظهار المزيد من التعليقات"
 }

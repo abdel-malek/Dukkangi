@@ -24,6 +24,17 @@
     crossorigin="anonymous"></script>
 
 <style>
+        .div_icon_footer {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    padding-left: 1%;
+    }
+    .icon_inst {
+        margin-left: 0em !important;
+    }
     .star {
         cursor: pointer;
         color: #fff;
@@ -303,6 +314,33 @@
     background-color: #00000050;
     display: none;
 }
+
+.modal_all_comment{
+    max-height: 38rem;
+    min-height: 15rem;
+    width: 80%;
+    position: fixed;
+    top: 5%;
+    margin-left: 10%;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    z-index: 111;
+    padding: 2rem;
+    /*overflow-y: auto;*/
+}
+.btn_modal_all_comment{
+    margin-top: 2rem;
+    padding: 0.4rem 2rem;
+    border: none;
+    color: #fff;
+    border-radius: 0.4rem;
+    background-color: #d80001;
+    cursor: pointer;
+}
+
+.customer_reviews {
+    max-height: 40em;
+}
 @media (max-width: 1030px) and (min-width: 768px){
     .input_search {
         padding: 0.2em 1em;
@@ -338,7 +376,7 @@
     top: unset !important;
     bottom: unset !important;
     height: 97px;
-    margin-top: -4rem;
+    margin-top: -4rem !important;
 }
 .modal_one_item_details .div_title_item_details_mobile{
     margin-top: -6rem !important;
@@ -407,7 +445,7 @@
         right: -1.6em;
         left: unset;
     }
-
+  
         .margin-right {
             margin-right :31px !important;
         }
@@ -418,10 +456,13 @@
             display: none;
         }
         .details_comment .rating {
-            margin-top: 1.8em !important;
+            margin-top: 0em !important;
             font-size: 1.7em !important;
             margin-right: 82px !important;
         }
+          .block_comment_logo .rating{
+        margin-top: 1.5rem !important;
+    }
         .simi {
 /*
             max-width: 50% !important;
@@ -603,6 +644,9 @@
         .button_modal_one_item_details {
             margin-top: 5em;
         }
+        .modal_all_comment .button_modal_one_item_details{
+            margin-top: 2em;
+        }
         .one_item_details, .modal_one_item_details {
     box-shadow: 1px 1px 25px #000000b0;
     
@@ -618,6 +662,16 @@
         .input_search_sm {
             width: 55%;
         }   
+        .block_comment_logo{
+            margin-top: 2rem !important;
+            margin-bottom: 2rem !important;
+        }
+        .rate-logo {
+            margin-top: 2%;
+        }
+           .details_comment .rating {
+            margin-top: -1.2em !important;
+           }
         #main-navbar-items ul li {
             margin-right: 1.5rem !important;
             font-size: 0.7rem !important;
@@ -627,7 +681,13 @@
         #slider_preview{
     width: 500px;
 }
+.details_comment .rating {
+    margin-right: 39px !important;
+}
 
+.username_details_comment{
+    width: 100% !important;
+}
 .modal_one_item_details .div_title_item_details{
     margin-top: -4rem !important;
 }
@@ -639,6 +699,11 @@
     height: 20px !important;
     margin-top: 0.2rem !important;
 }
+    }
+    @media (max-width:768px){
+        .modal_one_item_details .div_title_item_details{
+            margin-top: 0rem !important;
+        }
     }
     @media (max-width: 650px){
         .modal_one_item_details{
@@ -1250,6 +1315,7 @@
             /*			margin-top: 25% !important*/
         }
         .leave_constructive_review{
+            margin-top: 2rem;
             margin-bottom: 40px;
             background-image: url()
         }
@@ -1496,7 +1562,30 @@
      right: 0% !important;
      margin-right: 13px !important;
      left: unset !important;
-    }/*
+    }
+    .title_item_details{
+        text-align: right;
+    }
+    .block_title_qty{
+        float: right !important;
+    }
+    .block_qty{
+        float: left !important;
+    }
+    .block_qty div{
+        float: right !important;
+    }
+    .block_qty .num_qty{
+        float: right ;
+        text-align: left;
+        margin-left: 0rem;
+        margin-right: 2rem;
+    }
+    .title_qty span{
+        float: right;
+        margin-bottom: 1rem;
+    }
+    /*
     .input_leave_constructive_review{
         text-align: right;
         direction: rtl;
@@ -1560,7 +1649,34 @@
 </style>
 @endif
 @endsection @section('main_section')
-
+    <style>
+        @media (max-width: 600px) and (min-width: 200px){
+            #main-nav-bar a{
+                float: none !important;
+                margin: 8px auto !important;
+                width: auto !important;
+                text-align: center !important;
+            }
+            .ul_navbar{
+                float: none !important;
+                margin: 5px auto !important;
+            }
+            .top_nav{
+                margin-left: 0rem;
+            }
+            #main-navbar-items ul li {
+                margin-right: 0.65rem !important;
+                margin-left: 0.65rem;
+                font-size: 0.76rem !important;
+            }
+            .logo {
+                width: 9rem !important;
+            }
+            .icon_search{
+                margin-top: 0.3rem;
+            }
+        }
+    </style>
 <div class="col-md-12 all_page_item_view" id="content_page" >
     <div class="header_page" style="background-image: url('{{$subcategory->image_id}}');background-size:133%">
 
@@ -1576,7 +1692,7 @@
             @if(isset($product->discount) && $product->discount != 0)
             <div class="discount_item_details" style="z-index: 20">
                 <p class="text_discount_details" >
-                    <small style="font-family: 'EagarFont';">{{sprintf('%0.0f',$product->discount)}}</small> %<span value="@lang('off')" class="off_item"> @lang('off')</span></p>
+                    <small style="font-family: 'EagarFont' !important;">{{sprintf('%0.0f',$product->discount)}}</small> %<span value="@lang('off')" class="off_item"> @lang('off')</span></p>
             </div>
             @endif
 
@@ -1674,16 +1790,16 @@
 </style>
         <div class="item_out_of_stock">
             <h3 class="title_item_out_of_stock">
-                Sorry!
+                @lang('Sorry')
             </h3>
             <p class="text_item_out_of_stock" style="font-family: 'EagarFont';padding: 0em 0em !important;">
-                item is out of stock
+                @lang('item is out of stock')
             </p>
             <div class="circle_check" onclick="circle_check(this);" style="cursor: pointer;">
                 <img src="/front-end/images/user_actions/check.png" class="icon_item_out_of_stock" style="display: none;">
             </div>
             <p class="text_item_out_of_stock" style="font-size: 1.3em;padding: 0em 0em !important;">
-                Notify me by email when this item becomes available
+                @lang('Notify me by email when this item becomes available')
             </p>
         </div>
      @endif
@@ -1787,10 +1903,10 @@
         <div class="customer_reviews col-lg-8">
         
             @foreach($comments as $comment)
-            <div class="comments_customer_reviews block_one_comment" comment_id="{{$comment->id}}" user_id="{{$comment->user->id}}">
-                <img src="{{isset($comment->user->image_id) ? $comment->user->image_id : '/uploads/user.png'}}" style="min-height: 0em;" class="img_user_comments_customer_reviews">
+            <div class="comments_customer_reviews block_one_comment" comment_id="{{$comment->id}}" user_id="{{isset($comment->user)?$comment->user->id:''}}">
+                <img src="{{isset($comment->user) && isset($comment->user->image_id) ? $comment->user->image_id : '/uploads/user.png'}}" style="min-height: 0em;" class="img_user_comments_customer_reviews">
                 <div class="details_comment">
-                    <h3 class="username_details_comment" style="width:225px">{{isset($comment->user->name) ?$comment->user->name :'Anonymous' }}</h3>
+                    <h3 class="username_details_comment" style="width:225px">{{isset($comment->user) && isset($comment->user->name) ?$comment->user->name :'Anonymous' }}</h3>
                     <p class="rated_details_comment" style="margin-left: 0px">
                         <?php if($comment->rate != 0){ ?> @lang('Rated this product')
                         <?php } ?>
@@ -1801,7 +1917,7 @@
                     </p>
                     <div class="user_actions_details_comment">
                         <div class="upvoted_user_actions">
-                            <img src="/front-end/images/user_actions/upvoted.png" class="img_upvoted_user_actions" onclick="like_user('{{$comment->user->id}}','{{$comment->id}}',this)" />
+                            <img src="/front-end/images/user_actions/upvoted.png" class="img_upvoted_user_actions" onclick="like_user('{{isset($comment->user) ?$comment->user->id: ''}}','{{$comment->id}}',this)" />
                             <p class="text_upvoted_user_actions">
                                 @lang('Upvoted')
                             </p>
@@ -1810,7 +1926,9 @@
                 </div>
             </div>
             @endforeach
-            	
+            @if(!$comments->isEmpty())
+                <button type="button" id="btn_modal_all_comment" class="btn_modal_all_comment">@lang('Show All Comment')</button>
+            @endif
 
         </div>
         <div class="leave_constructive_review col-lg-4">
@@ -1866,7 +1984,7 @@
             </a>
             <p class="item_price" style="margin-bottom: 0em;"> <span class="tax_include" style="font-size: 0.8rem;margin-top: 0.7rem;    position: absolute;margin-left: -4.8rem;float: left;font-weight: 500;" value="@lang('tax included')">@lang('tax included')</span> &nbsp;{!! isset($simiproduct->discount_price) ?"<span class='old-price' style='text-decoration: line-through;font-family: EagarFont;color: #8e8d8d;font-size: 0.9rem;'>".$simiproduct->price.' €</span>  / '. $simiproduct->discount_price : $simiproduct->price !!}€</p>
             <span class="rating ratings{{$simiproduct->rate}}" style="width: 0.75em;height: 1.7em; left: 1em;bottom: 0.2em;"></span>
-            <img onclick="addCartModal($(this).parent().find('.product-img').attr('src') , $(this).data('id'),{{isset($simiproduct->discount_price) ?$simiproduct->discount_price : $simiproduct->price }} ,{{ $simiproduct->order }})" data-id="{{$simiproduct->id}}" src="{{($simiproduct->order != 0) ?'\front-end\images\user_actions\view-my-cart_after_add.png' :
+            <img onclick="addCartModal($(this).parent().find('.product-img').attr('src') , $(this).data('id'),{{isset($simiproduct->discount_price) ?$simiproduct->discount_price : $simiproduct->price }} ,{{ $simiproduct->order }},'{{$simiproduct->english}}')" data-id="{{$simiproduct->id}}" src="{{($simiproduct->order != 0) ?'\front-end\images\user_actions\view-my-cart_after_add.png' :
             '\front-end\images\user_actions\view-my-cart.png'}}" class="icon_view_my_card" style="cursor: pointer;">
         </div>
     </div>
@@ -1888,17 +2006,17 @@
             <p class="title_item_details" style="">
                 {{$product->english}}
             </p>
-            <span class="rating ratings{{$product->rate}}" style="float:left;"></span>
+            <!--<span class="rating ratings{{$product->rate}}" style="float:left;"></span>-->
             
         </div>
     </div>
     <div class="col-md-12" style="margin-top: 0.6em;float: left;">
-        <div style="width: 30%;float: left;">
+        <div style="width: 30%;float: left;" class="block_title_qty">
             <h3 class="title_qty" id="title_qty">
                 @lang('Quantity') <span style="display: none;font-size: 0.7em;overflow: visible;white-space: nowrap;">@lang("Sorry, we don't have this quantity")</span>
             </h3>
         </div>
-        <div style="width: 70%;float: right;">
+        <div style="width: 70%;float: right;" class="block_qty">
             <p class="num_qty" id="num_qty">
                 {{ $itemQty != 0 ? $itemQty : '1' }}
             </p>
@@ -1927,6 +2045,40 @@
 
         <a class="btn_cancel" style="margin-left: 9%;cursor: pointer" onclick="hideModal()">@lang('Cancel') </a>
         @endif
+    </div>
+</div>
+
+
+<div class="modal_all_comment" id="modal_all_comment" style="display: none;" data-qty='1'>
+    <div class="col-md-12" style="margin-top: 0.6em;float: left;min-height: 7rem;max-height: 27rem;overflow-y: auto;overflow-x: hidden;">
+        @foreach($all_comments as $all_comment)
+            <div class="comments_customer_reviews block_one_comment" comment_id="{{$all_comment->id}}" user_id="{{isset($all_comment->user)?$all_comment->user->id:''}}">
+                <img src="{{isset($all_comment->user) && isset($all_comment->user->image_id) ? $all_comment->user->image_id : '/uploads/user.png'}}" style="min-height: 0em;" class="img_user_comments_customer_reviews">
+                <div class="details_comment">
+                    <h3 class="username_details_comment" style="width:225px">{{isset($all_comment->user) && isset($all_comment->user->name) ?$all_comment->user->name :'Anonymous' }}</h3>
+                    <p class="rated_details_comment" style="margin-left: 0px">
+                        <?php if($all_comment->rate != 0){ ?> 
+                            @lang('Rated this product')
+                        <?php } ?>
+                    </p>
+                    <span class="rating ratings{{$all_comment->rate}} margin-right rating_comment" ></span>
+                    <p class="text_details_comment">
+                        {{$all_comment->description}}
+                    </p>
+                    <div class="user_actions_details_comment">
+                        <div class="upvoted_user_actions">
+                            <img src="/front-end/images/user_actions/upvoted.png" class="img_upvoted_user_actions" onclick="like_user('{{isset($all_comment->user) ?$all_comment->user->id: ''}}','{{$all_comment->id}}',this)" />
+                            <p class="text_upvoted_user_actions">
+                                @lang('Upvoted')
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+        <div class="button_modal_one_item_details">
+        <a class="btn_cancel" style="margin-left: 0%;cursor: pointer;width: 30%;" onclick="hideModal()">@lang('Cancel') </a>
     </div>
 </div>
 <!-- 
@@ -2276,16 +2428,31 @@ when_open_mobile();
         productId = $('#modal_one_item_details').attr('data-productId');
         qty = $('#modal_one_item_details').attr('data-qty');
         //submit add to cart ajax.
-        addToCart(productId, qty);
+        addToCart(productId, qty, 'false');
     });
 
   
 </script>
+    
+    <script>
+    $('#btn_modal_all_comment').click(function () {
+        $('#modal_all_comment').show();
+        $('.background_modal').show();
+        $('#header').css('filter', 'blur(5px)');
+        $('#content_page').css('filter', 'blur(5px)');
+        $('.footer').css('filter', 'blur(5px)');
+    });
+    
+    $('#modal_all_comment .btn_cancel').on('click', function () {
+        hideModal();
+    });
+
+</script>
 <script>
     function num_plus(obj) {
         counter = parseInt($(obj).parent().parent().find('p').text());
-        if (counter < <?php echo $product -> qty ?> ) {
-            counter = counter + 1
+        if (counter + 1 <= <?php echo $product -> qty ?> ) {
+            counter = counter + 1;
             $('#title_qty span').css('display','none');
             $(obj).parent().parent().find('p').text(counter);
         }else if (counter < 1) {
@@ -2364,18 +2531,18 @@ $(window).resize(function(){
     str = $('.product-name').text();
     if (str.length < 10)
     {
-        $('.product-name').css('text-align',  'left');
-        $('.product-rate').css('left','9.5em').css("bottom" , "0.8em");
+        $('.product-name').css('text-align',  'center');
+        $('.product-rate').css('left','9.5em').css("bottom" , "0.5em");
         $('#product-name').css('height','4em');
     }   
 </script> 
 
 <script >
-    function addToCart(productId , qty  = 1){
+    function addToCart(productId , qty  = 1,  is_pay = 'true'){
         $.ajax({
             type: "POST",
             url: `/cart/add`,
-            data: { 'productId': productId, 'qty': qty },
+            data: { 'productId': productId, 'qty': qty, 'is_pay': is_pay },
             headers: {
                 "x-csrf-token": $("[name=_token]").val()
             },

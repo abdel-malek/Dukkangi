@@ -16,6 +16,10 @@
 "Tax":"Vergi",
 "Product Price":"Ürün fiyatı",
 "off":"Satıldı",
+"Show All Comment":"Tüm Yorumları Göster",
+"Sorry":"Afedersiniz",
+"item is out of stock":"ürün stokta kalmadı",
+"Notify me by email when this item becomes available":"Bu ürün uygun olduğunda bana e-posta ile bildir",
 "Buy This Item":"Bu öğeyi satın al",
 "Add to cart":"Sepete ekle",
 "Price in Points":"Puanlarda Fiyat",
@@ -91,8 +95,6 @@
 "Already in cart":"Zaten sepetinizde",
 
 "Load More":"Daha fazla yükle",
-
-
 
  "Sorry, we don't have this quantity": "Üzgünüz, bu miktara sahip değiliz",
 "tax included" : "vergi dahil" 

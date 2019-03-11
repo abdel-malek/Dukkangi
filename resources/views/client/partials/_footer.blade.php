@@ -558,14 +558,23 @@
   }
 </script>
 <script >
-  function addCartModal(src,id,total, qty){
+  function addCartModal(src,id,total, qty,title=""){
  
     console.log(total);
     console.log(qty);
  if (qty == 0 ) 
         qty = 1;
     
-    
+        $.ajax({
+            url: "/get_qty/",
+            type: "POST",
+            data: {"_token": "{{ csrf_token() }}","product_id": id},
+            dataType: 'json',
+            success: function (response) {
+               console.log(response);
+               $('#modal_one_item_details').attr('all_qty', response);
+            }
+        });
     $('#modal_one_item_details').attr('data-productId', id);
     $('#modal_one_item_details').data('data-qty', qty);
     
@@ -576,6 +585,14 @@
      $('#num_qty').text(qty);
     $('#total_qty').text(total+' €');
     $('#modal_one_item_details .price_item_details').attr('data-product-price' , total);
+//    $('#modal_one_item_details .rating').removeClass('ratings1');
+//    $('#modal_one_item_details .rating').removeClass('ratings2');
+//    $('#modal_one_item_details .rating').removeClass('ratings3');
+//    $('#modal_one_item_details .rating').removeClass('ratings4');
+//    $('#modal_one_item_details .rating').removeClass('ratings5');
+//    $('#modal_one_item_details .rating').addClass('ratings'+rating);
+    
+    $('#modal_one_item_details .title_item_details').text(title);
     $('#modal_one_item_details .total_qty').text(total+' €');
     $('#modal_one_item_details .total_qty').attr('value',total);
     $('#modal-img').attr('src' , src );
@@ -592,6 +609,8 @@
     }
 
     function hideModal() {
+        $('#title_qty span').css('display','none');
+        $('#modal_all_comment').hide();
         $('#modal_one_item_details').hide();
         $('.background_modal').hide();
         $('#header').css('filter', 'blur(0px)');

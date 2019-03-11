@@ -7,6 +7,22 @@
          <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
       
         <style type="text/css">
+               .div_icon_footer {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        padding-left: 1% ;
+    }
+    .icon_inst {
+        margin-left: 0em !important;
+    }
+/*    .align-self-center{
+        display: flex;
+        justify-content: center;
+        justify-items:center; 
+    }*/
                     .first_input{
                 margin-top: 19em !important;
             }
@@ -49,6 +65,13 @@
 /*                 .input_select{
                     height: 5rem !important;
                 }*/
+                
+@media (min-width: 1024px) and (max-width:1030px){
+    #main-navbar-items ul .nav-item {
+     font-size: 0.7rem;   
+    }
+}
+
             @media (min-width: 768px) and (max-width: 1023px) {
                 .input_select{
                     height: 5rem !important;
@@ -141,7 +164,7 @@
         }
         @media (max-width: 1030px) and (min-width: 992px){
             #nav-bar-search {
-                width: 22rem !important;
+                width: 20rem !important;
             }
         }
         @media (max-width: 1105px) and (min-width: 1024px){
@@ -164,12 +187,12 @@
         }
         @media (max-width: 920px) and (min-width: 780px){
             .div_icon_footer {
-                padding-left: 5%;
+                padding-left: 1%;
             }
         }
          @media (max-width: 990px) and (min-width: 920px){
             .div_icon_footer {
-                padding-left: 7%;
+                padding-left: 1%;
             }
         }
         @media (max-width: 1024px) and (min-width: 992px){
@@ -185,7 +208,11 @@
                 display: block !important
             }
             .ul_navbar {
-                width: 32rem;
+                width: 20rem;
+            }
+            #main-navbar-items ul li {
+                margin-right: 1.4rem !important;
+                font-size: 0.7rem !important;
             }
         }
         
@@ -197,7 +224,7 @@
                 display: block !important
             }
             .ul_navbar {
-                width: 18rem;
+                width: 20rem;
             }
             .input_search_sm {
                 width: 16.7rem;
@@ -247,6 +274,24 @@
              padding-bottom: 0.2rem !important;
          }
      }
+        @media (min-width:631px) and (max-width:775px){
+         #main-navbar-items ul li {
+             font-size: 0.8rem !important;
+         }
+     }
+     @media (min-width:514px) and (max-width:630px){
+         #main-navbar-items ul li {
+             font-size: 0.7rem !important;
+         }
+     }
+     @media (min-width:400px) and (max-width:570px){
+        #main-navbar-items ul li {
+           font-size: 0.8rem !important;
+       }
+       .top_nav {
+    max-width: 74% !important;
+}
+    }
     </style>
     
     <style>
@@ -286,6 +331,34 @@
             width: 13rem;
         }
     </style>
+    <style>
+        @media (max-width: 570px) and (min-width: 200px){
+                 #main-nav-bar a{
+                float: none !important;
+                margin: 8px auto !important;
+                width: auto !important;
+                text-align: center !important;
+            }
+            .ul_navbar{
+                float: none !important;
+                margin: 5px auto !important;
+            }
+            .top_nav{
+                margin-left: 0rem;
+            }
+            #main-navbar-items ul li {
+                margin-right: 0.65rem !important;
+                margin-left: 0.65rem;
+                font-size: 0.84rem !important;
+            }
+            .logo {
+                width: 9rem !important;
+            }
+            .icon_search{
+                margin-top: 0.3rem;
+            }
+        }
+</style>
     @if(session('lang') == 'ar' )
 <style>
     .nav-link, .header_page_text_div, .title_section, .off_item, .product-name, .tax_include_item, .text_item_details, small, .title_customer_review, .rated_details_comment, .text_upvoted_user_actions, .text_leave_constructive_review, .btn_leave_constructive_review, .title_similar_items, .off_item_prodect, .text_discount, .item_name, .tax_include, .title_footer a,  
@@ -302,8 +375,8 @@
 @endif
  <div class="col-md-12" style="padding-left:0px;padding-right: 0px  " id="content_page">
         <div  id="main-container" class="main-container main-container_singup">
-            <div class="container">
-                <div class="row" style="width: 100%;">
+            <div class="container" style="display: flex;">
+                <div class="row" style="width: 108%;">
                     <div class="col align-self-start">
                     </div>
                     <div class="col align-self-center">
@@ -321,14 +394,13 @@
                                 @endif
                 
                                 <div class="input-group">
-
-                                    <input type="text" required class="form-control input_singup" id="inlineFormInputGroupUsername" placeholder="@lang('Username')" name="name" value="{{old("name")}}">
+                                    <input type="text" required class="form-control input_singup " id="inlineFormInputGroupUsername"  placeholder="@lang('Username')" name="name" value="{{old("name")}}">
                                 </div>
                             </div>
                             <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
                                 <div class="input-group">
 
-                                    <input type="email" required class="form-control input_singup" id="inlineFormInputGroupEmail" placeholder="@lang('Email')" name="email" value="{{old("email")}}">
+                                    <input type="email" required class="form-control input_singup" id="inlineFormInputGroupEmail" placeholder="@lang('Email')" name="email" style="font-family: NormalFont !important;"  value="{{old("email")}}">
                                 </div>
                             </div>
                             <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">

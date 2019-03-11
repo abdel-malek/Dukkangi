@@ -163,15 +163,16 @@ class PageController extends Controller
 			if (isset($product->discount_price)) {
 				$product->discount =  sprintf('%0.0f',100 - (($product->discount_price * 100) / $product->price));
 			}
+                      
 			$product->order = 0;
 			if (session('cartId') != null){
 				$temp = OrderItem::where('order_id', '=', session('cartId'))->where('item_id', '=', $product->id)->get()->first();
 				if ($temp != null ){
-					$product->order = $temp->qty;
+					$product->order = $temp->qty_in_my_card;
 				}
 			}
 		}
-		// dd($products);
+//		 dd($products);
 		$category = Category::find($categoryId);
 		if ($lang == 'ar') $category->english = $category->arabic;
 		if ($lang == 'ku') $category->english = $category->kurdi;
@@ -180,6 +181,26 @@ class PageController extends Controller
 		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withCategoryId($categoryId)->withCategory($category)->with('id_category',$id_category);
 	}
 
+        public function get_qty(Request $request){
+              $qty = ProductService::getProductQty($request->product_id);
+              return $qty;
+        }
+        
+          public function get_qty_after_buy(Request $request){
+              $qty= [];
+              $id_products = [];
+            for($i = 0;$i < count($request->qty);$i++){
+               $qty[] = ProductService::getProductQty($request->qty[$i]['product_id']);
+//               echo $qty[$i];
+               if($qty[$i] < $request->qty[$i]['qty']){
+                   $id_products []= ['id' =>$request->qty[$i]['product_id'],'qty' => $qty[$i]];
+               }
+            }
+            return $id_products;
+//            }else{
+//                return -1;
+//            }
+        }
 
 	public function loadMoreCategoryProduct(Request $request){
 		$categoryId = $request->category_id;
@@ -226,7 +247,7 @@ class PageController extends Controller
 			if (session('cartId') != null){
 				$temp = OrderItem::where('order_id', '=', session('cartId'))->where('item_id', '=', $product->id)->get()->first();
 				if ($temp != null ){
-					$product->order = $temp->qty;
+					$product->order = $temp->qty_in_my_card;
 				}
 			}
 		}
@@ -298,10 +319,11 @@ class PageController extends Controller
 				$product->discount =  sprintf('%0.0f',100 - (($product->discount_price * 100) / $product->price));
 			}
 			$product->order = 0;
+                        $products->qty = ProductService::getProductQty($product->id);
 			if (session('cartId') != null){
 				$temp = OrderItem::where('order_id', '=', session('cartId'))->where('item_id', '=', $product->id)->get()->first();
 				if ($temp != null ){
-					$product->order = $temp->qty;
+					$product->order = $temp->qty_in_my_card;
 				}
 			}
 		}
@@ -358,7 +380,7 @@ class PageController extends Controller
 			if (session('cartId') != null){
 				$temp = OrderItem::where('order_id', '=', session('cartId'))->where('item_id', '=', $product->id)->get()->first();
 				if ($temp != null ){
-					$product->order = $temp->qty;
+					$product->order = $temp->qty_in_my_card;
 				}
 			}
 		}
@@ -437,11 +459,12 @@ class PageController extends Controller
 			if (isset($product->discount_price)) {
 				$product->discount =  sprintf('%0.0f',100 - (($product->discount_price * 100) / $product->price));
 			}
+                        
 			$product->order = 0;
 			if (session('cartId') != null){
 				$temp = OrderItem::where('order_id', '=', session('cartId'))->where('item_id', '=', $product->id)->get()->first();
 				if ($temp != null ){
-					$product->order = $temp->qty;
+					$product->order = $temp->qty_in_my_card;
 				}
 			}
 		}
@@ -458,12 +481,13 @@ class PageController extends Controller
 		}
 		ksort($temp);
 		$subcategories = $temp;
-
+//                $Qty_product = ProductService::getProductQty($product->id);
                 
 		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withLastSearch($subcategory->category_id)->with('categoryId',$categoryId);
 	}
 
 
+        
 	public function getProductView($id){
 
 		$lang = session('lang');
@@ -476,6 +500,8 @@ class PageController extends Controller
 		$comments = Comment::with(['user'])->where('product_id','=',$product->id)->orderBy('id', 'desc')
 		->skip(0)->take(3)->get();
 		
+                $all_comments = Comment::with(['user'])->where('product_id','=',$product->id)->orderBy('id', 'desc')->get();
+                
 		$logo = Brand::select('image_path' , 'id')
 		->where('id' , '=', $product->brand_id)
 		->get()->first();
@@ -559,7 +585,7 @@ class PageController extends Controller
 			if (isset($cartId)){
 				$cart = OrderItem::where('order_id', '=', session('cartId'))->where('item_id', '=', $simi->id)->get()->first();
 				if (isset($cart)){
-					$simi->order = $cart->qty;
+					$simi->order = $cart->qty_in_my_card;
 				}
 			}
 			
@@ -569,11 +595,11 @@ class PageController extends Controller
 		if ((session('order_item_count')) != null && (session('order_item_count')) != 0 ){
 			$order = OrderItem::where('order_id' , '=', session('cartId')) ->where('item_id', '=' , $id)->where('user_id', '=', Auth::id() )->get()->first();
 			if ($order != null)
-				$ordercount = $order->qty; 
+				$ordercount = $order->qty_in_my_card; 
 		}
 		$product->qty = ProductService::getProductQty($product->id);
 
-		return view('client.pages.item_view')->withProduct($product)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments)->withBrand($logo)->withExistedInCart($existedInCart)->withItemQty($ordercount);
+		return view('client.pages.item_view')->withProduct($product)->withSubcategory($subcategory)->withSimiProducts($simiproducts)->withComments($comments)->withBrand($logo)->withExistedInCart($existedInCart)->withItemQty($ordercount)->with('all_comments',$all_comments);
 	}
 
 
@@ -782,7 +808,7 @@ class PageController extends Controller
     	$id =$request->id; 
     	$order = OrderItem::where('order_id', '=', session('cartId'))->where('item_id' , '=', $id)->get()->first();
     	// dd($order);
-     	return CartService::removeOrderItem($order->id);
+     	return CartService::removeOrderItem($order->id,$request->is_click_delete);
     }
     public function  getOrder(Request $request){
     	$items =OrderItem::select('item_id' , 'qty', 'sub_amount','total_amount','packed')->where('order_id', '=' , $request->id)->get();

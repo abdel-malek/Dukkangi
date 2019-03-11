@@ -31,7 +31,12 @@
 #content_page{
     margin-top: 0rem;
 }
-
+.navbar {
+    padding: .5rem 3rem;
+}
+.top_nav {
+    max-width: 84.5%;
+}
      /*For mobile iphone s6+ (5 inch)*/  
          
         .container_mobile{
@@ -102,6 +107,7 @@
              border:1px solid #aaa;
              margin-bottom: 1rem;
          }
+         
         @media (max-width: 767px)and (min-width:577px){
         .div_login, .div_singup {
     width: 300px;
@@ -124,8 +130,11 @@
  .div_icon_footer {
     float: left;
     margin-left: 0%;
-    padding-left: 17%;
+    padding-left: 2%;
     
+ }
+ #nav-bar-search{
+     padding: 0rem;
  }
  }
  .icon_search{
@@ -152,6 +161,9 @@
      .icon_search{
          display: block;
      }
+     #nav-bar-search{
+         padding: 0rem;
+     }
      .title_reviews_mobile{
          margin-top: -3rem;
     }
@@ -174,7 +186,7 @@
  .div_icon_footer {
     float: left;
     margin-left: 0%;
-    padding-left: 23%;
+    padding-left: 2%;
  }
  }
  
@@ -288,10 +300,10 @@
       var is_open_search = false;
       $('.icon_search').click(function (){
           if(is_open_search == false){
-         $('#nav-bar-search').css({'width':'350px','marginRight':'260px','transition':'0.9s'});
+         $('#nav-bar-search').css({'width':'350px','marginRight':'260px','transition':'0.9s','paddingLeft':'2rem'});
          is_open_search = true;
      }else{
-         $('#nav-bar-search').css({'width':'0px','marginRight':'0px','transition':'0.9s'});
+         $('#nav-bar-search').css({'width':'0px','marginRight':'0px','transition':'0.9s','padding':'0rem'});
          setTimeout(function(){
             $('#nav-bar-search').css({'transition':'0s'}); 
          },1000);

@@ -78,5 +78,6 @@ class PayPalController extends Controller
         $products = CartService::loadProductCartAllData($cartId);
         $amount = $request->amount;
         CartService::checkout($cartId , $products , PaymentMethod::PAYPAL , $userId , $amount);
+        
     }
 }

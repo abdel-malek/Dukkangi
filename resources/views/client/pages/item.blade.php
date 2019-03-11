@@ -5,6 +5,17 @@
 
 <link rel="stylesheet" href="{{URL::asset('/front-end/css/buy_item.css')}}">
 <style>
+    .div_icon_footer {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    padding-left: 1%;
+    }
+    .icon_inst {
+        margin-left: 0em !important;
+    }
     .image_slider {
         height: 13em !important;
         border: 0.04em solid #8a8a8a;
@@ -167,7 +178,7 @@
     font-family: 'EagarFont';
 }
 .img_item {
-    height: 14.4em;
+    height: auto;
 }
 .item_name {
     font-size: 0.9em;
@@ -175,7 +186,9 @@
 /*   .tabs__content-wrapper{
         padding: 0rem 0rem;
     }*/
-
+    .btn_filter {
+        font-size: 1.2em;
+    }
 .header_is_empty_category{
     width: 100% !important;
     left:0rem !important;
@@ -184,8 +197,17 @@
        width: 97.5% !important;
     left:1rem !important;
 }
+ .input-search_icon {
+        margin-top: 0.5em;
+        right: 0em;
+    }
 .header_is_empty_category .image_header{
     width: 100% !important;
+}
+@media (min-width:1500px) and (max-width:1900px){
+    .section_item_select{
+    width: 67% !important;
+    }
 }
 @media (min-width: 1289px) and (max-width: 1348px){
     .tabs__content-wrapper{
@@ -217,6 +239,15 @@
         padding: 0rem 1rem;
     }
 }
+@media (min-width:700px) and (max-width: 991px){
+    .block_search_tabs{
+        max-width: 50% !important;
+    }
+    .input-search_icon {
+        margin-top: 0.5em;
+        right: 0em;
+    }
+}
 @media (min-width: 894px) and (max-width: 940px){
     .tabs__content-wrapper{
         padding: 0rem 0rem;
@@ -231,6 +262,20 @@
     .tabs__content-wrapper{
         padding: 0rem 6rem;
     }
+}
+@media (min-width:300px) and (max-width: 768px){
+    .block_search_tabs{
+        max-width: 100% !important;
+    }
+    .input-search_icon {
+        margin-top: 0.5em;
+        right: 0em;
+    }
+    .block_filter {
+    margin-left: 0rem !important;
+    flex: 0 0 100.666667%;
+    max-width: 100.666667%;
+}
 }
 @media (min-width: 650px) and (max-width: 750px){
     .tabs__content-wrapper{
@@ -260,7 +305,7 @@
 @media (min-width: 1200px) and (max-width: 1300px) {
     
     .img_item {
-    height: 12.4em;
+    height: auto;
 }
 }
 @media (min-width: 768px) and (max-width: 1000px) {
@@ -725,9 +770,9 @@
 @media (min-width: 574px) and (max-width: 700px) {
       .block_filter{
           margin-top: 1rem;
-          margin-left: 1rem !important; 
-          flex: 0 0 90.666667%;
-          max-width: 90.666667%;
+          margin-left: 0rem !important; 
+          flex: 0 0 100.666667%;
+          max-width: 100.666667%;
      }
 }
 /*@media (min-width: px) and (max-width: 626px) {
@@ -760,8 +805,9 @@
     .col_item_mobile {
         max-width: 48%;
     }
+   
     .col_item_mobile .img_item {
-    height: 13.4em;
+    height: auto;
     }
         }
         @media (min-width: 1100px) and (max-width: 1201px) {
@@ -849,6 +895,9 @@
         .tabs__item_for_mobile {
             font-size: 1.7em;
         }
+         .image_block_header_for_mobile{
+        height: 24rem !important;
+    }
         .tabs__items .tabs_active_for_mobile{
             font-size: 1.8em;
         }
@@ -1005,6 +1054,7 @@
         text-align: right;
         direction: rtl;
     }
+
     .input_search_in_modal{
         text-align: right;
         direction: rtl;
@@ -1047,6 +1097,19 @@
         /*font-family: 'Cairo', sans-serif;*/
         /*font-family: 'Markazi Text', serif;*/
     }
+    .block_title_modal{
+        float: right !important;
+        
+    }
+    .num_qty{
+        text-align: left;
+        float: right;
+        margin-left: 0rem;
+        margin-right: 1rem;
+    }
+    .title_qty span{
+        margin-left: -3rem;
+    }
 </style>
 @endif
    @if(isset($brandfilter))
@@ -1071,6 +1134,17 @@
     .block_search_tabs{
         max-width: 100% !important;
     }
+    #main-nav-bar {
+     clear: left;   
+    }
+    .link_logo{
+        float: none !important;
+        margin: 8px auto !important;
+    }
+    .ul_navbar{
+        float: none !important;
+        margin: 5px auto !important;
+    }
 }
    </style>
    @endif
@@ -1080,6 +1154,23 @@
 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css"> 
 @endsection 
 @section('main_section')
+<style>
+    @media (max-width: 568px) and (min-width: 200px){
+        .link_logo{
+            float: none !important;
+            margin: 8px auto !important;
+        }
+        .ul_navbar{
+            float: none !important;
+            margin: 5px auto !important;
+        }
+        #main-navbar-items ul li {
+            margin-right: 0.85rem !important;
+            margin-left: 0.85rem;
+            font-size: 0.6rem !important;
+        }
+    }
+</style>
 <div class="col-md-12 page_content_item" id="content_page">
     @if(!isset($brandfilter))
     <div id="content_page_item" style="z-index: -3;">
@@ -1160,7 +1251,7 @@
                 <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
                 <!--<div class="input-group">-->
                     <div class="input-search_icon">
-                        <!--                        <img src="./images/signup/at.png">-->
+                        <!--              <img src="./images/signup/at.png">-->
                         <i class="material-icons">&#xE8B6;</i>
                     </div>
                     {!! Form::open(['route' => 'categoryfilter' , 'method' =>'GET']) !!}
@@ -1308,9 +1399,9 @@
         
     </div>
     <div class="col-md-12" style="margin-top: 0.6em;float: left;">
-        <div style="width: 30%;float: left;">
-            <h3 class="title_qty">
-                @lang('Quantity')
+        <div style="width: 30%;float: left;" class="block_title_modal">
+            <h3 class="title_qty" id="title_qty">
+                @lang('Quantity')<span style="display: none;font-size: 0.7em;overflow: visible;white-space: nowrap;">@lang("Sorry, we don't have this quantity")</span>
             </h3>
         </div>
         <div style="width: 70%;float: right;">
@@ -1406,6 +1497,12 @@
 //        }).done(response => {
 //
 //        });
+if(parseInt($('#modal_one_item_details').attr('all_qty')) <= counter_qty){
+    $('#title_qty span').css('display','block');
+    return false;
+}else{
+    $('#title_qty span').css('display','none');
+}
             if (counter_qty < 1) {
                 counter_qty = 1;
                 $(obj).parent().parent().find('p').text(counter_qty);
@@ -1418,6 +1515,7 @@
         $('.total_qty').text((counter_qty * parseFloat($('.total_qty').attr('value')))+' €');
     }
     function num_min(obj) {
+        $('#title_qty span').css('display','none');
         counter_qty = parseInt($(obj).parent().parent().text());
         if ((counter_qty > 1)) {
             counter_qty = counter_qty - 1;
@@ -1555,12 +1653,12 @@
         });
     }
 
-    function addToCart(id ,qty){
-        // id = $(obj).data('id');
+    function addToCart(id ,qty, is_pay = 'true'){
+//         id = $(obj).data('id');
         $.ajax({
             type: "POST",
             url: `/cart/add`,
-            data: { 'productId': id, 'qty': qty },
+            data: { 'productId': id, 'qty': qty, 'is_pay': is_pay },
             headers: {
                 "x-csrf-token": $("[name=_token]").val()
             },
@@ -1602,7 +1700,7 @@
         qty = $('.num_qty').text();
         // console.log(qty);
         //submit add to cart ajax.
-        addToCart(productId, qty);
+        addToCart(productId, qty, 'false');
     });
 
 
@@ -1679,6 +1777,7 @@ function when_open_mobile(){
         $('.btn_model_filter').addClass('btn_model_filter_for_mobile');
         $('.text_big_image_slider').addClass('text_big_image_slider_for_mobile');
         $('.text_in_header').addClass('text_in_header_for_mobile');
+        $('.image_block_header').addClass('image_block_header_for_mobile');
         
     }
 }

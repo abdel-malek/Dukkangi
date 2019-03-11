@@ -30,19 +30,34 @@ class CartService
     }
 
 
-    private static function createOrderItem($product, $qty, $cartId, $userId)
+    private static function createOrderItem($product, $qty, $cartId, $userId, $is_pay = 'true')
     {
         $cartId = self::createCart($cartId, $userId, null);
         $price = isset($product->discount_price) ?$product->discount_price :$product->price;
+//        dd($is_pay);
+        if($is_pay == 'false'){
         $orderItems = OrderItem::updateOrCreate(
             ['order_id' => $cartId, 'item_id' => $product->id, 'user_id' => $userId],
             ['order_id' => $cartId, 'item_id' => $product->id,
                 'sub_amount' => $price,
-                'qty' => $qty,
+                'qty' => 0,
+                'qty_in_my_card' => $qty,
                 'total_amount' => $price * $qty,
                 'gain_point' => ceil($product->point / 5), 'user_id' => $userId, 'status_id' => OrderStatus::CREATED,
                 'currency' => $product->currency]
         );
+        }else{
+           $orderItems = OrderItem::updateOrCreate(
+            ['order_id' => $cartId, 'item_id' => $product->id, 'user_id' => $userId],
+            ['order_id' => $cartId, 'item_id' => $product->id,
+                'sub_amount' => $price,
+                'qty' => $qty,
+                'qty_in_my_card' => 0,
+                'total_amount' => $price * $qty,
+                'gain_point' => ceil($product->point / 5), 'user_id' => $userId, 'status_id' => OrderStatus::CREATED,
+                'currency' => $product->currency]
+        );   
+        }
         return $orderItems;
     }
     private static function getOrderItemCount($cartId){
@@ -80,20 +95,23 @@ class CartService
         );
     }
 
-    public static function removeOrderItem($id)
+    public static function removeOrderItem($id,$is_click_delete)
     {
+//        dd($id);
+        if($is_click_delete == true){
         OrderItem::where('id', '=', $id)->delete();
         $count = OrderItem::where('order_id','=',session('cartId'))
             ->where('status_id','=',OrderStatus::CREATED)
             ->count();
         session(['order_item_count' => $count]);
         session()->save();
+        }
     }
     
-    public static function addToCart($productId, $qty, $cartId, $userId)
+    public static function addToCart($productId, $qty, $cartId, $userId, $is_pay = 'true')
     {
         $product = ProductService::loadById($productId);
-        $orderItem = self::createOrderItem($product, $qty, $cartId, $userId);
+        $orderItem = self::createOrderItem($product, $qty, $cartId, $userId, $is_pay);
 
         self::getOrderItemCount($cartId);
         // session(['order_item_count' => session('order_item_count') + 1]);
@@ -219,7 +237,7 @@ class CartService
         $taxes = [];
         $items = [];
         foreach ($products as $product) {
-            $orderItem = self::addToCart($product['id'], $product['qty'], $cartId, $userId);
+            $orderItem = self::addToCart($product['id'], $product['qty_in_my_card'], $cartId, $userId, 'true');
             $taxFees = ProductService::getProductTax($product['id']);
             $tax += self::calculateTaxAmount($orderItem->total_amount, $taxFees);
             array_push($taxes, $taxFees);
@@ -297,7 +315,7 @@ class CartService
         $description = '';
         foreach ($products as $product) {
             $mProduct = ProductService::loadById($product['id']);
-            self::addToCart($product['id'], $product['qty'], $cartId, $userId);
+            self::addToCart($product['id'], $product['qty'], $cartId, $userId, 'true');
             $description = $description . $mProduct->english . '-' . $product['qty'] . "\n";
         }
         return ['amount' => self::getTotalAmount($cartId), 'description' => $description];
@@ -310,7 +328,7 @@ class CartService
     }
     public static function loadProductCartAllData($cartId){
 
-        return OrderItem::select('item_id as id','qty')->where('order_id', '=', $cartId)->get()->toArray();
+        return OrderItem::select('item_id as id','qty','qty_in_my_card')->where('order_id', '=', $cartId)->get()->toArray();
     }
     public static function clearCart(){
         // $session =Session::all();

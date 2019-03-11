@@ -38,6 +38,9 @@
                 width: 0.75em;
                 height: 0.7em;
             }
+            .page-body-wrapper {
+                padding-top: 25px !important;
+            }
            .modal_one_item_details .rating .star::before {
                 color: #d80001;
                 width: 0.75em;
@@ -501,7 +504,7 @@
  .div_icon_footer {
     float: left;
     margin-left: 0%;
-    padding-left: 23%;
+    padding-left: 2%;
  }
  }
  

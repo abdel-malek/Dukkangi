@@ -9,6 +9,7 @@ use App\Http\Services\CouponService;
 use Auth;
 use App;
 use App\Product;
+use App\ProductQty;
 
 use App\Subcategory;
 
@@ -24,13 +25,13 @@ class CartController extends Controller
         // dd($qty);
         $userId = Auth::id();
         $cartId = session('cartId');
-        return CartService::addToCart($productId, $qty, $cartId, $userId);
+        $is_pay = $request->is_pay;
+//        dd($is_pay);
+        return CartService::addToCart($productId, $qty, $cartId, $userId, $is_pay);
     }
 
 
-    public function getViewMyCartPage()
-    {
-        
+    public function getViewMyCartPage() {
         $lang = session('lang');
         App::setLocale($lang);
 
@@ -43,19 +44,57 @@ class CartController extends Controller
         $amount = $cart['amount'];
         //	$taxes = $cart['taxes'];
         $itemNumber = $cartId . ',' . $userId;
-        $productsName='';
-        foreach ($orders as $orderItem) {
-            $productsName = $productsName.$orderItem->product->english."\n";
-        }
-
+        $productsName = '';
+            foreach ($orders as $orderItem) {
+                $productsName = $productsName . $orderItem->product->english . "\n";
+            }
+//        if ($lang == "ar") {
+//            foreach ($orders as $orderItem) {
+//                $productsName = $productsName . $orderItem->product->arabic . "\n";
+//            }
+//        }
+//        if ($lang == "de") {
+//            foreach ($orders as $orderItem) {
+//                $productsName = $productsName . $orderItem->product->german . "\n";
+//            }
+//        }
+//        if ($lang == "tr") {
+//            foreach ($orders as $orderItem) {
+//                $productsName = $productsName . $orderItem->product->turky . "\n";
+//            }
+//        }
+//        if ($lang == "ku") {
+//            foreach ($orders as $orderItem) {
+//                $productsName = $productsName . $orderItem->product->kurdi . "\n";
+//            }
+//        }
         return view('client.pages.view_my_cart')->withOrders($orders)->withGainPoints($gainPoints)->withAmount($amount)
-            ->withItemNumber($itemNumber)->withProductsName($productsName);
+                                                ->withItemNumber($itemNumber)->withProductsName($productsName);
     }
+
     public function getAmount(){
+//        $productQty = ProductQty::all();
+//        $update_productQty = ProductQty::find($request->product_id);
+//        $qty_arr = $request['qty'];
+//        for($i = 0;$i < count($qty_arr);$i++ ){
+//            foreach($productQty as $get_productQty){
+//                if($qty_arr[i].product_id == $get_productQty->product_id){
+//                        $update_productQty = ProductQty::find($qty_arr[i]['product_id']);
+//                        $update_productQty->qty -= $qty_arr[i]['qty'];
+//                        $update_productQty->save();
+//                
+//                }
+//            }
+//        }
+        
         $cart = CartService::getAmount(session('cartId'));
         $amount = $cart['amount'];
         return $amount;
     }
+    
+//    public function minQty(Request $request){
+//        
+//    }
 
     public function checkout(Request $request)
     {

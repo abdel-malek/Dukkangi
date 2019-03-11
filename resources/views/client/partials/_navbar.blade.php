@@ -1,7 +1,7 @@
 
 <header id="header">
       <nav class="navbar navbar-expand-lg navbar-light bg-light " id="main-nav-bar" style="width: 102%;max-height: 4.19em;">
-      <a href="{{route('home')}}"> <img class="logo" src="/front-end/images/logo.png"/></a>
+      <a href="{{route('home')}}" class="link_logo"> <img class="logo" src="/front-end/images/logo.png"/></a>
          <div class="collapse navbar-collapse top_nav" id="main-navbar-items" style="display: block;text-align: right;">
           <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex ul_navbar" style="text-align: right;direction: ltr;float: right;">
             <li > <div class="icon_search"><i class="material-icons">&#xE8B6;</i></div>

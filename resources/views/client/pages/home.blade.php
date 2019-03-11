@@ -17,11 +17,19 @@
 
      }
      .div_icon_footer {
-    padding-left: 11.5vw;
+    padding-left: 0vw;
+        text-align: center;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
      }
+     .icon_inst {
+    margin-left: 0em !important;
+}
      @media (min-width: 1600px){
          .div_icon_footer {
-    padding-left: 11.5vw;
+    padding-left: 0vw;
      }
      }
      /* .icon_shopping_cart{
@@ -198,7 +206,7 @@
              left: 8.5rem !important;
          }
           .div_icon_footer {
-            padding-left: 12.5vw;
+            padding-left: 0vw;
           }
      }
      @media (min-width: 1600px) {
@@ -206,7 +214,7 @@
              left: 54% !important;
          }
           .div_icon_footer {
-            padding-left: 15.5vw;
+            padding-left: 0vw;
           }
          .bottom_right_background_block p {
              left: 7% !important;
@@ -298,6 +306,9 @@
          }   
          .bottom_right_background_block, .bottom_left_background_block {
             margin-top: 5em;
+         }
+         .top_nav{
+             margin-left: 0rem;
          }
          .input_search_lg{
              display: none !important;
@@ -508,7 +519,7 @@
              font-size: 0.8rem !important;
          }
          #main-navbar-items ul li {
-             font-size: 0.7rem !important;
+             font-size: 0.8rem !important;
          }
          .div_item .item_name{
              font-size: 0.8rem !important;
@@ -531,7 +542,25 @@
          #main-navbar-items ul li {
              font-size: 0.8rem !important;
          }
+         .top_nav {
+            margin-left: 12px;
+        }
      }
+     @media (min-width: 610px) and (max-width: 775px){
+         #main-navbar-items ul li {
+             font-size: 0.9rem !important;
+         }
+         .top_nav {
+            margin-left: -2rem;
+        }
+     }
+     @media (max-width: 776px) and (min-width: 690px){
+.div_icon_footer {
+    float: left;
+    margin-left: 0%;
+    padding-left: 2%;
+}
+}
      @media (min-width: 200px) and (max-width: 860px) {
          .div_icon_footer {
              margin-left: 14%;
@@ -567,6 +596,9 @@
             left: -6rem;
             width: 110%;
          }
+         .bottom_left_background_block .text_item_block {
+             width: 75% !important;
+         }
          .landing-items-block img {
              width: 20em;
          }
@@ -574,10 +606,13 @@
              left: 6.1rem !important;
          }
          .bottom_left_background_block .img_cloud_right{
-             width: 12rem !important;
+             width: 10rem !important;
          }
          .bottom_left_background_block .text_item_block {
              font-size: 19px;
+         }
+         .text_item_block{
+             width: 40% !important;
          }
          /*.bottom_left_background_block p {
              top: 27px !important;
@@ -792,6 +827,34 @@
 </style>
 @endsection
 @section ('main_section')
+<style>
+        @media (max-width: 570px) and (min-width: 200px){
+                 #main-nav-bar a{
+                float: none !important;
+                margin: 8px auto !important;
+                width: auto !important;
+                text-align: center !important;
+            }
+            .ul_navbar{
+                float: none !important;
+                margin: 5px auto !important;
+            }
+            .top_nav{
+                margin-left: 0rem;
+            }
+            #main-navbar-items ul li {
+                margin-right: 0.65rem !important;
+                margin-left: 0.65rem;
+                font-size: 0.84rem !important;
+            }
+            .logo {
+                width: 9rem !important;
+            }
+            .icon_search{
+                margin-top: 0.3rem;
+            }
+        }
+</style>
 <?php 
 // echo App::getLocale();
   $count = $categories->count();
