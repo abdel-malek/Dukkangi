@@ -196,8 +196,12 @@ class CouponService {
 	}
 
 	public static function deleteCoupon($id){
-		return Coupon::where('id', '=', $id)->delete();
+            CouponUser::where('coupon_id','=',$id)->delete();
+            return Coupon::where('id', '=', $id)->delete();
 	}
+//        public static function deleteCoupon($id){
+//		return Coupon::where('id', '=', $id)->delete();
+//	}
 	public static function getCouponUsers($couponId){
 		$users = [];
 		$couponUsers = CouponUser::where('coupon_id' , '=' , $couponId)->get();

@@ -390,7 +390,7 @@
                    /*create a DIV element for each matching element:*/
                     if(i == 0){
                       b = document.createElement("DIV");
-                        b.innerHTML = "<label> Products </label>";                    
+                        b.innerHTML = "<label> @lang('Products') </label>";                    
                         a.appendChild(b);
                       
                     }
@@ -414,7 +414,7 @@
                     if (response[i]['type'] != type) break;
                     if (x== 0 ){
                         b = document.createElement("DIV");
-                        b.innerHTML = "<label> Categories </label>";                    
+                        b.innerHTML = "<label> @lang('Categories') </label>";                    
                         a.appendChild(b);
                         x++;
                     }
@@ -438,7 +438,7 @@
                     if (response[i]['type'] != type) break;
                     if (x== 1){
                         b = document.createElement("DIV");
-                        b.innerHTML = "<label> Subcategories </label>";                    
+                        b.innerHTML = "<label> @lang('Subcategories') </label>";                    
                         a.appendChild(b);
                         x++;
                     }
@@ -461,7 +461,7 @@
                     if (response[i]['type'] != type) break;
                      if (x== 2){
                         b = document.createElement("DIV");
-                        b.innerHTML = "<label> Brands </label>";                    
+                        b.innerHTML = "<label> @lang('Brands') </label>";                    
                         a.appendChild(b);
                         x++;
                     }

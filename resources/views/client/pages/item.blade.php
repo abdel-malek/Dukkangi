@@ -13,6 +13,9 @@
     justify-items: center;
     padding-left: 1%;
     }
+  .modal_filter {
+    padding: 5em 1em;
+  }
     .icon_inst {
         margin-left: 0em !important;
     }
@@ -56,11 +59,12 @@
         color: inherit;
         text-decoration: none;
     }
-
+    .input-search_icon i{
+        float: right;
+    }
     a {
         color: inherit;
         text-decoration: none;
-
     }
 
     .div_item .rating .star::after {
@@ -182,6 +186,14 @@
 }
 .item_name {
     font-size: 0.9em;
+}
+
+.div_item .rating .star::before {
+   width: 0.9em;
+}
+
+.div_item .rating .star::after {
+   width: 0.9em;
 }
 /*   .tabs__content-wrapper{
         padding: 0rem 0rem;
@@ -1030,6 +1042,16 @@
     body{
         font-family: 'Scheherazade', serif;
     }
+    .menu-item{
+       text-align: right;
+    }
+    .select-menu .menu-item {
+        padding: 8px 36px 8px 8px !important;
+    }
+    .select-menu .menu-item .choice-input {
+        left: unset !important;
+        right: 8px;
+    }
     #search{
         text-align: right;
         padding-right: 1rem;
@@ -1304,7 +1326,7 @@
 <div class="background_modal" style="display: none">
 </div>
 {!! Form::open(['route'=> 'fullfiltercategory' , 'method'=>'GET' ]) !!}
-<div class="modal_filter" id="modal_filter" style="display: none;   overflow: hidden;;max-height: 100%;">
+<div class="modal_filter" id="modal_filter" style="display: none;   overflow: auto;max-height: 100%;">
     <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">
         <div class="input-group">
             <input type="text" class="form-control input_filter input_search_in_modal" id="inlineFormInputGroupUsername" name="name"
@@ -1349,7 +1371,7 @@
                 <i class="material-icons" style="color:#fff;">€</i>
             </div>
             <input type="text" class="form-control input_filter validation_just_number max_input" name="max" id="inlineFormInputGroupUsername"
-                placeholder="@lang('Max')">
+                placeholder="@lang('Max')" >
         </div>
     </div>
     <div class="col-sm-12 my-1" style="margin-top: 0em !important;float: left;">

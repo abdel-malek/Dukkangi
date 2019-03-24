@@ -20,7 +20,7 @@
         "item is out of stock":"البضاعة غير متوفرة",
     "Notify me by email when this item becomes available":"أبلغني عبر البريد الإلكتروني عندما يتوفر هذا العنصر",
 "Buy This Item":"شراء هذه المادة",
-"Add to cart":"اضافة الى السلة",
+"Add to cart":"إضافة إلى السلة",
 "Section":"جزء",
 "Options":"خيارات",
 "Option":"خيار",
@@ -32,19 +32,20 @@
 "Rate this product":"قيم هذا المنتج",
 "Leave a comment":"ترك تعليق",
 "Post my review":"اضافة التعليق",
-"Cancel":"الغاء",
+"Cancel":"إلغاء",
 "Similar items":"منتجات مشابهة",
 "Leave a comment":"ترك تعليق",
 "Reply":"رد",
 "Report":"ابلاغ",
 "Upvoted":"نفس الرأي",
 "Something" : "شيء ما",
-"Done":"اتمام",
+"Done":"إتمام",
 "View my Cart" :"رؤية السلة",
 "Total":"الإجمالي",
 "My Cart":"السلة",
 "Logout":"تسجيل الخروج",
 "Product Price":"سعر المنتج",
+  
 "Tax":"ضريبة",
 "Taxes":"ضرائب",
 "Quantities":"الكميات",
@@ -81,15 +82,20 @@
 "Category":"نوع",
 "Min":"الحد الادنى",
 "Max":"الحد الاعلى",
-"Show results":"اظهار النتائج",
+"Show results":"إظهار المزيد",
 "Profile":"حساب",
 "LOGIN": "تسجيل الدخول",
 "Load More" : "اظهار المزيد",
 
-"Sign up":"انشاء حساب",
+"Sign up":"إنشاء حساب",
 
-
-
+"Products":"المنتجات",
+"Categories":"التصنيفات",
+"Subcategories":"تصنيفات فرعية",
+"Brands":"العلامات التجارية",
+    
+"Address":"العنوان",
+"Order State":"حالة اطلب",
 "Email":"البريد الالكتروني",
 "Confirm Password":"تأكيد كلمة المرور",
 "Date of birth":"تاريخ الولادة",
@@ -102,5 +108,5 @@
 "You have ordered":"لقد طلبت",
 "tax included" : "متضمن الضريبة" ,
     "Sorry, we don't have this quantity": "عذرا ، ليس لدينا هذه الكمية",
-    "Show All Comment":"أظهار المزيد من التعليقات"
+    "Show All Comment":"إظهار التعليقات"
 }

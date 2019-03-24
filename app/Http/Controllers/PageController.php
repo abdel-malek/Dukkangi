@@ -333,11 +333,11 @@ class PageController extends Controller
 	public function getCategoryFilteredPage(Request $request){
 
 		$lang = session('lang');
-		App::setLocale($lang);;
-		$products =  FilterService::loadProducts($request,0);
+		App::setLocale($lang);
+		$products =  FilterService::loadAfterProducts($request,0);
 
 		$categories = Category::all();
-
+//                dd($request->max);
 		$subcategories = Subcategory::all();
 
 		if ($lang == "ar"){
@@ -376,6 +376,7 @@ class PageController extends Controller
 			if (isset($product->discount_price)) {
 				$product->discount =  sprintf('%0.0f',100 - (($product->discount_price * 100) / $product->price));
 			}
+//                        dd($product);
 			$product->order = 0;
 			if (session('cartId') != null){
 				$temp = OrderItem::where('order_id', '=', session('cartId'))->where('item_id', '=', $product->id)->get()->first();
@@ -384,6 +385,7 @@ class PageController extends Controller
 				}
 			}
 		}
+//                dd($products);
 		return view('client.pages.item')->withCategories($categories)->withSubcategories($subcategories)->withProducts($products)->withLastSearch('Filter')->withCategoryId($categories[0]->id)->withFilter(1);
 	}
 

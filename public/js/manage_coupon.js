@@ -32,9 +32,9 @@ function loadUsers(){
             },
         },
        fields: [
-            {name: "id"         , title: 'Copuon ID'      , type: "text", width: 5},
+            {name: "id"         , title: 'Coupon ID'      , type: "text", width: 5},
             {name: "amount" , title: 'Coupon Amount' , type: "text", width: 5},
-            {name: "coupon_type" , title: 'Copuon Type' , type: "text", width: 5},
+            {name: "coupon_type" , title: 'Coupon Type' , type: "text", width: 5},
             {
                 type: "control", width: 10, editButton: false, modeSwitchButton: false, deleteButton: false,
                 itemTemplate: function (value, item) {

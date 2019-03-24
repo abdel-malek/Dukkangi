@@ -15,6 +15,9 @@
         justify-items: center;
         padding-left: 1% ;
     }
+    #lang-nav-bar{
+        z-index: 16 !important;
+    }
     .icon_inst {
         margin-left: 0em !important;
     }
@@ -492,9 +495,15 @@
 .ul_navbar_mobile .nav-item a {
     font-size: 2.9em !important;
 }
+.sections table{
+            margin-left: 1rem;
+        }
            
         }
     @media (max-width: 582px){
+        .sections table{
+            margin-left: 1rem;
+        }
         .header_page {
             background-size: 190% !important;
         }

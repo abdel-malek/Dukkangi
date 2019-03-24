@@ -79,6 +79,12 @@
 "LOGIN":"Anmeldung",
 "No Matches":"Keine Treffer",
 
+"Products":"Produkte",
+"Categories":"Kategorien",
+"Subcategories":"Unterkategorien",
+"Brands":"Marken",
+    
+    "Address":"Adresse",
 
 "Confirm Password":"Bestätige das Passwort",
 "Date of birth":"Geburtsdatum",
@@ -86,6 +92,8 @@
 "Female":"Weiblich",
 "About":"Über",
 "Load More":"Mehr laden",
+    
+    "Order State":"Auftragsstatus",
 
 "Sign up":"Anmelden",
 "Cancel":"Stornieren",

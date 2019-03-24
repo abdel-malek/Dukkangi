@@ -20,6 +20,7 @@ class AdminController extends Controller
     }
 
     public function getIndex(){
+        if(Auth::user()->user_category_id == 1){
       $arr = [];
       $arr[0] = 0;
       $now = Carbon::now();
@@ -36,6 +37,9 @@ class AdminController extends Controller
       $thisYear = Payment::select(DB::raw('SUM(amount) as total'))->whereYear('created_at', $now->year)->get()[0]->total;
       $overall = Payment::select(DB::raw('SUM(amount) as total'))->get()[0]->total;
       return view('admin.index.index')->withArr($arr)->withThisMonth($thisMonth)->withThisYear($thisYear)->withOverall($overall);
+        }else{
+            redirect('/');
+        }
     }
 
 

@@ -44,7 +44,7 @@
                         {!! Form::input('hidden','orginal_image_path',!empty($brand->image_path) ? $brand->image_path : '') !!}
                         @if($brand->image_path)
                             <br/>
-                            <center><img src="{{$brand->image_path}}" width="200px"/></center>
+                            <center><img src="{{$brand->image_path}}" width="200px" alt=""/></center>
                         @endif
                      </div>
 	                </div>

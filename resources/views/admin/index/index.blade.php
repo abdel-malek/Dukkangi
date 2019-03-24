@@ -130,7 +130,7 @@
     function checkSpicificDateIncome(){
         from = $('#from-date').val();
         to = $('#to-date').val();
-        if (from == null  || to == null || from == ""  || to == ""){
+        if (from == null  || to == null || from == ""  || to == "" || from > to){
             swal({
               type: 'error',
               title: 'Fill the form',
@@ -144,6 +144,35 @@
             dataType: 'json'
         }).done(response => {
             $('#res').val(response);
+//            speedCanvas.destroy();
+//            speedCanvas.clear();
+//             var speedCanvas = document.getElementById("speedChart");
+//    Chart.defaults.global.defaultFontFamily = "Lato";
+//    Chart.defaults.global.defaultFontSize = 18;
+//    var speedData = {
+//      labels: ["","Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug" ,"Sep", "Oct" ,"Nov","Dec",""],
+//      datasets: [{
+//        label: "Monthly Income",
+//        data: response,
+//      }]
+//    };
+//     
+//    var chartOptions = {
+//      legend: {
+//        display: true,
+//        position: 'top',
+//        labels: {
+//          boxWidth: 80,
+//          fontColor: 'black'
+//        }
+//      }
+//    };
+//    var lineChart = new Chart(speedCanvas, {
+//      type: 'line',
+//      data: speedData,
+//      options: chartOptions
+//    });
+//alert(1);
             // $('#res').attr('placeholder' ,response);
         });
 

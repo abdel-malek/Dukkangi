@@ -252,6 +252,11 @@
          .input_search_sm, .input_search_lg{
              border: none;
          }
+         @media (min-width:991px){
+             #nav-bar-search {
+              padding: 0.4rem 1rem !important;   
+             }
+         }
             @media (min-width: 1181px) and (max-width: 1264px) {
                 #nav-bar-search
                 {

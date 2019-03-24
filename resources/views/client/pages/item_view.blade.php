@@ -64,7 +64,7 @@
     }
 .title_item_details {
     margin-bottom: 1.6em;
-    font-size: 1.1em;
+    font-size: 1.2em;
 }
 .title_item_details_mobile{
      font-size: 1.8em;
@@ -341,11 +341,23 @@
 .customer_reviews {
     max-height: 40em;
 }
+@media (min-width:1550px){
+    .header_page_text_div {
+        width: 93%;
+    }
+}
+@media (min-width:1450px){
+    .div_title_item_details .product-rate {
+    left: 40% !important;
+}
+}
 @media (max-width: 1030px) and (min-width: 768px){
     .input_search {
         padding: 0.2em 1em;
     }
 }
+
+
 
 #slider_preview .carousel-control-prev-icon {
     background-image: url(data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' f…3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E);
@@ -662,6 +674,9 @@
         .input_search_sm {
             width: 55%;
         }   
+        #content_page .title_reviews{
+            top: 0rem !important;
+        }
         .block_comment_logo{
             margin-top: 2rem !important;
             margin-bottom: 2rem !important;
@@ -1179,7 +1194,9 @@
         background-position: center;
         cursor: pointer
     }
-
+    .btn_qty {
+        width: 75%;
+    }
     @media(min-width: 992px) and (max-width: 1199px){
         .one_item_details{
             width: 30%;
@@ -1546,7 +1563,7 @@
 @if(session('lang') == 'ar' )
 <style>
     .nav-link, .header_page_text_div, .title_section, .off_item, .product-name, .tax_include_item, .text_item_details, small, .title_customer_review, .rated_details_comment, .text_upvoted_user_actions, .text_leave_constructive_review, .btn_leave_constructive_review, .title_similar_items, .off_item_prodect, .text_discount, .item_name, .tax_include, .title_footer a,  
-    .title_item_details, .title_qty, .btn_done, .btn_cancel, .btn_view_my_cart{
+    .title_item_details, .title_qty, .btn_done, .btn_cancel, .btn_view_my_cart, .title_total{
         font-family:arabic3Font !important;
     }
     .text_leave_constructive_review, .item_name, .text_item_details, .title_customer_review, .text_details_comment{
@@ -1811,7 +1828,7 @@
             <span class="price-wrapper" style="width: 5em;">
 
                 <small style="font-size: 50%;">
-                    <b style="font-family: 'EagarFont';"><span class="tax_include_item" style="font-size: 0.8rem;float: left;margin-top: 1.4rem;margin-left: -1rem;font-weight: 500;" value="@lang('tax included')" >@lang('tax included')</span>  <i class="old-price" style="text-decoration: line-through;color:#8e8d8d;">{{$product->price}}€</i>/ <span class="new-price">{{$product->discount_price}}</span> €</b>
+                    <b style="font-family: 'EagarFont';"><span class="tax_include_item" style="font-size: 0.9rem;float: left;margin-top: 1.4rem;margin-left: -1rem;font-weight: 500;" value="@lang('tax included')" >@lang('tax included')</span>  <i class="old-price" style="text-decoration: line-through;color:#8e8d8d;">{{$product->price}}€</i>/ <span class="new-price">{{$product->discount_price}}</span> €</b>
 
                 </small>
                 @else
@@ -2029,7 +2046,7 @@
     </div>
 
     <p class="price_item_details" style="margin-top: 0em;" data-product-price='{{isset($product->discount_price) ? $product->discount_price: $product->price}}'>
-        <span style="    position: absolute;font-family: 'HeadlinesFont';font-size: 1.3em;margin-top: 0.4em;left: 0em;z-index:22;">@lang('Total') </span>
+        <span class="title_total" style="    position: absolute;font-size: 1.3em;margin-top: 0.4em;left: 0em;z-index:22;">@lang('Total') </span>
         <span class="total_qty" style="    position: absolute;left:4.2em;width: 6em;margin-top:1rem;z-index:22;" value="{{isset($product->discount_price) ? $product->discount_price: $product->price}}"> {{isset($product->discount_price) ? $product->discount_price: $product->price}} €</span>
         <img src="/front-end/images/price-tag/price-tag@3x.png" style="width: 14em;" class="img_price_item_details" />
     </p>
@@ -2111,6 +2128,7 @@
                         $(this).find('.img_upvoted_user_actions').attr('src','/front-end/images/user_actions/upvote.png');
                     }
                 });
+            }
             }
         });
     }

@@ -21,7 +21,8 @@ class IsAdmin
         }
 
         if (Auth::Guest() || Auth::user()->user_category_id != 1) {
-            abort(403, 'Unauthorized action.');
+//            abort(403, 'Unauthorized action.');
+             return redirect('login');
         }
 
         return $next($request);

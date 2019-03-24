@@ -370,7 +370,15 @@
         text-align: right;
         direction: rtl;
     }
-    
+    .input_email{
+        font-family: NormalFont !important;
+    }
+    .input_email::-moz-placeholder {
+        font-family: arabic3Font !important;
+    }
+    .input_email::-webkit-input-placeholder{
+         font-family: arabic3Font !important;
+    }
 </style>
 @endif
  <div class="col-md-12" style="padding-left:0px;padding-right: 0px  " id="content_page">
@@ -394,13 +402,13 @@
                                 @endif
                 
                                 <div class="input-group">
-                                    <input type="text" required class="form-control input_singup " id="inlineFormInputGroupUsername"  placeholder="@lang('Username')" name="name" value="{{old("name")}}">
+                                    <input type="text" required class="form-control input_singup input_email" id="inlineFormInputGroupUsername"  placeholder="@lang('Username')" name="name" value="{{old("name")}}">
                                 </div>
                             </div>
                             <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
                                 <div class="input-group">
 
-                                    <input type="email" required class="form-control input_singup" id="inlineFormInputGroupEmail" placeholder="@lang('Email')" name="email" style="font-family: NormalFont !important;"  value="{{old("email")}}">
+                                    <input type="email" required class="form-control input_singup input_email" id="inlineFormInputGroupEmail" placeholder="@lang('Email')" name="email"   value="{{old("email")}}">
                                 </div>
                             </div>
                             <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
@@ -413,6 +421,13 @@
                                 <div class="input-group">
 
                                     <input type="password" required class="form-control input_singup" id="inlineFormInputGroupConfirmPassword" placeholder="@lang('Confirm Password')" name="password_confirmation" value="{{old("password_confirmation")}}">
+                                </div>
+                            </div>
+                            
+                              <div class="col-sm-12 my-1" style="margin-top: 0.5em !important;float: left;">
+                                <div class="input-group">
+
+                                    <input type="text" required class="form-control input_singup" id="inlineFormInputGroupConfirmAddress" placeholder="@lang('Address')" name="address" value="{{old("address")}}">
                                 </div>
                             </div>
                            

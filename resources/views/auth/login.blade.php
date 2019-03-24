@@ -430,6 +430,16 @@
     .input-group-prepend{
         right: 0.8rem;
     }
+    
+        .input_email{
+        font-family: NormalFont !important;
+    }
+    .input_email::-moz-placeholder {
+        font-family: arabic3Font !important;
+    }
+    .input_email::-webkit-input-placeholder{
+         font-family: arabic3Font !important;
+    }
 </style>
 @endif
 
@@ -454,7 +464,7 @@
                                     <div class="input-group-prepend">
                                         <img src="/front-end/images/signup/at.png" />
                                     </div>
-                                    <input type="text" required class="form-control input_login" id="inlineFormInputGroupUsername" style="font-family: NormalFont !important;"  name="email" placeholder="@lang('Username')">
+                                    <input type="text" required class="form-control input_login input_email" id="inlineFormInputGroupUsername"  name="email" placeholder="@lang('Username')">
                                 </div>
                                 @if ($errors->has('password'))
                                     <span class="help-block">
