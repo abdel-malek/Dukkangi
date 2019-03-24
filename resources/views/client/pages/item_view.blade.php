@@ -32,6 +32,20 @@
     justify-items: center;
     padding-left: 1%;
     }
+    .div_item .rating .star::before {
+   width: 0.9em;
+}
+
+.div_item .rating .star::after {
+   width: 0.9em;
+}
+    .rating .star::before {
+   width: 0.9em;
+}
+
+.rating .star::after {
+   width: 0.9em;
+}
     .icon_inst {
         margin-left: 0em !important;
     }
